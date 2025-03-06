@@ -46,7 +46,7 @@ social:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
 # Avatar (頭像)
 avatar:
@@ -57,17 +57,17 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: img-\home-img.jpg
+index_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: img-\home-img.jpg
+default_top_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
 
 # The banner image of archive page
-archive_img: img-\home-img.jpg
+archive_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: img-\home-img.jpg
+tag_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
 
 # The banner image of tag page
 # format:
