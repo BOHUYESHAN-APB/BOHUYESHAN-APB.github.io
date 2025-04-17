@@ -14,11 +14,9 @@ tags:
 - CNN
 - 微生物
 title: '【预发稿】CNN-MicroAI-Colony: 深度学习驱动的智能菌落计数系统'
-updated: '2025-04-16T21:16:03.313+08:00'
+updated: '2025-04-17T11:14:40.716+08:00'
 ---
-glmos-code-explainglmos-code-explain
-
-# 【预发稿】CNN-MicroAI-Colony: 深度学习驱动的智能菌落计数系统
+glmos-code-explain# 【预发稿】CNN-MicroAI-Colony: 深度学习驱动的智能菌落计数系统
 
 ## 项目简介
 
