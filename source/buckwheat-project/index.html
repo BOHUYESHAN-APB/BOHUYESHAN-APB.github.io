@@ -5,36 +5,308 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智荟荞缘 & 智耕未来：AI与互联网+赋能荞麦全产业链革新</title>
     
-    <!-- 引入基础样式 -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/theme.css">
-    
     <!-- 引入字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- 特效库 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- 引入必要的库 -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+    <!-- 主题样式 -->
+    <style>
+    /* 主题相关样式 */
+    :root {
+        /* 亮色主题变量 */
+        --light-primary: #38BDF8;
+        --light-secondary: #818CF8;
+        --light-accent: #34D399;
+        --light-background: #ffffff;
+        --light-surface: #f8fafc;
+        --light-text: #1f2937;
+        --light-text-secondary: #4b5563;
+        --light-border: #e2e8f0;
+        
+        /* 暗色主题变量 */
+        --dark-primary: #1f2937;
+        --dark-secondary: #1E40AF;
+        --dark-accent: #059669;
+        --dark-background: #0f172a;
+        --dark-surface: #1e293b;
+        --dark-text: #f1f5f9;
+        --dark-text-secondary: #cbd5e1;
+        --dark-border: #334155;
+
+        /* 新拟态效果阴影 */
+        --light-shadow-1: #ffffff;
+        --light-shadow-2: rgba(148, 163, 184, 0.1);
+        --dark-shadow-1: rgba(17, 24, 39, 0.7);
+        --dark-shadow-2: rgba(2, 6, 23, 0.5);
+    }
+
+    /* 主题切换动画 */
+    .theme-transition {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* 亮色主题 */
+    .theme-light {
+        --primary: var(--light-primary);
+        --secondary: var(--light-secondary);
+        --accent: var(--light-accent);
+        --background: var(--light-background);
+        --surface: var(--light-surface);
+        --text: var(--light-text);
+        --text-secondary: var(--light-text-secondary);
+        --border: var(--light-border);
+        --shadow-1: var(--light-shadow-1);
+        --shadow-2: var(--light-shadow-2);
+
+        background: linear-gradient(135deg, var(--light-primary), var(--light-secondary));
+        color: var(--text);
+    }
+
+    /* 暗色主题 */
+    .theme-dark {
+        --primary: var(--dark-primary);
+        --secondary: var(--dark-secondary);
+        --accent: var(--dark-accent);
+        --background: var(--dark-background);
+        --surface: var(--dark-surface);
+        --text: var(--dark-text);
+        --text-secondary: var(--dark-text-secondary);
+        --border: var(--dark-border);
+        --shadow-1: var(--dark-shadow-1);
+        --shadow-2: var(--dark-shadow-2);
+
+        background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary));
+        color: var(--text);
+    }
+    </style>
+
+    <!-- 基础样式 -->
+    <style>
+    /* 重置样式 */
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* 页面布局样式 */
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* 导航栏样式 */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: var(--surface);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+        padding: 0 1.5rem;
+    }
+
+    .logo {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: var(--text);
+        text-decoration: none;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--accent);
+    }
+
+    /* 首屏区域样式 */
+    .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding-top: 4rem;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+
+    /* 按钮样式 */
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background: var(--accent);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+
+    /* 新拟态卡片样式 */
+    .card {
+        background: var(--surface);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin: 1rem;
+        box-shadow: 
+            20px 20px 60px var(--shadow-2),
+            -20px -20px 60px var(--shadow-1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+        }
+    }
+    </style>
+
+    <!-- 动画样式 -->
+    <style>
+    /* 淡入动画 */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+        animation: fadeIn 1s ease forwards;
+    }
+
+    /* 滚动指示器动画 */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-10px);
+        }
+        60% {
+            transform: translateY(-5px);
+        }
+    }
+
+    .scroll-indicator {
+        animation: bounce 2s infinite;
+    }
+
+    /* 故障文字效果 */
+    @keyframes glitch {
+        2%, 64% {
+            transform: translate(2px,0) skew(0deg);
+        }
+        4%, 60% {
+            transform: translate(-2px,0) skew(0deg);
+        }
+        62% {
+            transform: translate(0,0) skew(5deg); 
+        }
+    }
+
+    .glitch {
+        animation: glitch 1s linear infinite;
+    }
+    </style>
 </head>
 <body class="theme-light">
     <!-- 主题切换按钮 -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    <button id="theme-toggle" aria-label="切换主题">
+        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1v2m0 18v2M4 4l2 2m12 12l2 2M1 12h2m18 0h2M4 20l2-2M18 6l2-2"/>
         </svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
         </svg>
     </button>
 
-    <!-- 3D背景画布 -->
+    <!-- 背景画布 -->
     <canvas id="background-canvas"></canvas>
 
     <!-- 导航栏 -->
-    <nav class="main-nav neumorphic">
+    <nav class="main-nav">
         <div class="nav-content">
             <a href="#" class="logo">智荟荞缘</a>
             <div class="nav-links">
@@ -44,70 +316,184 @@
                 <a href="#products">产品服务</a>
                 <a href="#contact">联系我们</a>
             </div>
-            <button class="mobile-menu-btn" aria-label="菜单">
-                <span></span><span></span><span></span>
-            </button>
         </div>
     </nav>
 
     <!-- 首屏区域 -->
-    <header id="home" class="hero-section">
-        <div class="content-wrapper">
-            <h1 class="glitch-text">智荟荞缘 & 智耕未来</h1>
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title glitch">智荟荞缘 & 智耕未来</h1>
             <p class="hero-subtitle">AI与互联网+赋能荞麦全产业链革新</p>
-            <div class="cta-buttons">
-                <a href="#ai-solutions" class="btn btn-primary neumorphic">探索AI技术</a>
-                <a href="#products" class="btn btn-secondary neumorphic">了解更多</a>
+            <div class="button-group">
+                <a href="#ai-solutions" class="btn btn-primary">探索AI技术</a>
+                <a href="#products" class="btn btn-secondary">了解更多</a>
             </div>
         </div>
         <div class="scroll-indicator">
-            <div class="mouse"></div>
             <span>向下滚动</span>
-        </div>
-    </header>
-
-    <!-- AI功能展示区 -->
-    <section id="ai-solutions" class="ai-solutions">
-        <h2 class="section-title">AI赋能解决方案</h2>
-        <div class="solutions-grid">
-            <div class="solution-card neumorphic" data-tilt data-tilt-max="5">
-                <div class="card-content">
-                    <h3>智能种子筛选</h3>
-                    <p>运用计算机视觉技术，精准筛选优质荞麦种子</p>
-                    <button class="demo-btn">查看演示</button>
-                </div>
-            </div>
-            <!-- 其他AI功能卡片 -->
         </div>
     </section>
 
-    <!-- 产品展示区 -->
-    <section id="products" class="products-section">
-        <h2 class="section-title">产品服务</h2>
-        <div class="product-cards">
-            <!-- 产品卡片 -->
+    <!-- AI解决方案 -->
+    <section id="ai-solutions" class="section">
+        <div class="container">
+            <h2 class="section-title">AI赋能解决方案</h2>
+            <div class="cards-grid">
+                <div class="card" data-tilt>
+                    <h3>智能种子筛选</h3>
+                    <p>利用计算机视觉技术，精准筛选优质荞麦种子。</p>
+                </div>
+                <!-- 更多卡片 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品服务 -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title">产品服务</h2>
+            <div class="products-grid">
+                <!-- 产品卡片 -->
+            </div>
         </div>
     </section>
 
     <!-- 联系我们 -->
-    <section id="contact" class="contact-section neumorphic">
-        <h2 class="section-title">联系我们</h2>
-        <div class="contact-content">
-            <!-- 联系表单 -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-content">
+                <!-- 联系信息 -->
+            </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="main-footer">
-        <div class="footer-content">
+    <footer>
+        <div class="container">
             <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队</p>
         </div>
     </footer>
 
-    <!-- 自定义脚本 -->
-    <script src="js/theme.js"></script>
-    <script src="js/background.js"></script>
-    <script src="js/animation.js"></script>
-    <script src="js/main.js"></script>
+    <!-- 脚本 -->
+    <script>
+    // 主题切换
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function setTheme(theme) {
+            document.body.className = `theme-${theme}`;
+            localStorage.setItem('theme', theme);
+        }
+
+        // 初始化主题
+        const savedTheme = localStorage.getItem('theme') || 
+            (prefersDarkScheme.matches ? 'dark' : 'light');
+        setTheme(savedTheme);
+
+        // 主题切换
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.className.includes('dark') ? 'light' : 'dark';
+            setTheme(currentTheme);
+        });
+
+        // 监听系统主题变化
+        prefersDarkScheme.addEventListener('change', e => {
+            setTheme(e.matches ? 'dark' : 'light');
+        });
+    });
+
+    // 3D背景
+    class Background {
+        constructor() {
+            this.canvas = document.getElementById('background-canvas');
+            this.scene = new THREE.Scene();
+            this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            this.renderer = new THREE.WebGLRenderer({
+                canvas: this.canvas,
+                alpha: true
+            });
+
+            this.init();
+        }
+
+        init() {
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+            this.camera.position.z = 5;
+
+            // 创建网格
+            const geometry = new THREE.PlaneGeometry(10, 10, 50, 50);
+            const material = new THREE.MeshBasicMaterial({
+                color: 0x38BDF8,
+                wireframe: true
+            });
+            this.mesh = new THREE.Mesh(geometry, material);
+            this.scene.add(this.mesh);
+
+            // 事件监听
+            window.addEventListener('resize', () => this.onWindowResize());
+            this.animate();
+        }
+
+        onWindowResize() {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        animate() {
+            requestAnimationFrame(() => this.animate());
+            this.mesh.rotation.x += 0.001;
+            this.mesh.rotation.y += 0.001;
+            this.renderer.render(this.scene, this.camera);
+        }
+    }
+
+    // 动画管理器
+    class AnimationManager {
+        constructor() {
+            this.initScrollAnimations();
+            this.initTiltEffect();
+        }
+
+        initScrollAnimations() {
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+
+            document.querySelectorAll('.card, .section-title, .hero-content')
+                .forEach(el => observer.observe(el));
+        }
+
+        initTiltEffect() {
+            document.querySelectorAll('[data-tilt]').forEach(el => {
+                VanillaTilt.init(el, {
+                    max: 5,
+                    speed: 400,
+                    glare: true,
+                    'max-glare': 0.2
+                });
+            });
+        }
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+        new Background();
+        new AnimationManager();
+        
+        // 设置年份
+        document.getElementById('current-year').textContent = 
+            new Date().getFullYear();
+    });
+    </script>
 </body>
 </html>
