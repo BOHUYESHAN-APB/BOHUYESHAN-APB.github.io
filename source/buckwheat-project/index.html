@@ -1,499 +1,370 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<!-- 保持之前的 head 部分代码 -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智荟荞缘 & 智耕未来：AI与互联网+赋能荞麦全产业链革新</title>
-    
-    <!-- 引入字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- 引入必要的库 -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-
-    <!-- 主题样式 -->
+    <!-- 添加新功能所需的额外样式 -->
     <style>
-    /* 主题相关样式 */
-    :root {
-        /* 亮色主题变量 */
-        --light-primary: #38BDF8;
-        --light-secondary: #818CF8;
-        --light-accent: #34D399;
-        --light-background: #ffffff;
-        --light-surface: #f8fafc;
-        --light-text: #1f2937;
-        --light-text-secondary: #4b5563;
-        --light-border: #e2e8f0;
-        
-        /* 暗色主题变量 */
-        --dark-primary: #1f2937;
-        --dark-secondary: #1E40AF;
-        --dark-accent: #059669;
-        --dark-background: #0f172a;
-        --dark-surface: #1e293b;
-        --dark-text: #f1f5f9;
-        --dark-text-secondary: #cbd5e1;
-        --dark-border: #334155;
+        /* 聊天助手样式 */
+        .chat-assistant {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
 
-        /* 新拟态效果阴影 */
-        --light-shadow-1: #ffffff;
-        --light-shadow-2: rgba(148, 163, 184, 0.1);
-        --dark-shadow-1: rgba(17, 24, 39, 0.7);
-        --dark-shadow-2: rgba(2, 6, 23, 0.5);
-    }
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    /* 主题切换动画 */
-    .theme-transition {
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+        .chat-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    /* 亮色主题 */
-    .theme-light {
-        --primary: var(--light-primary);
-        --secondary: var(--light-secondary);
-        --accent: var(--light-accent);
-        --background: var(--light-background);
-        --surface: var(--light-surface);
-        --text: var(--light-text);
-        --text-secondary: var(--light-text-secondary);
-        --border: var(--light-border);
-        --shadow-1: var(--light-shadow-1);
-        --shadow-2: var(--light-shadow-2);
+        .chat-window {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            width: 360px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: none;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-        background: linear-gradient(135deg, var(--light-primary), var(--light-secondary));
-        color: var(--text);
-    }
+        .chat-window.active {
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* 暗色主题 */
-    .theme-dark {
-        --primary: var(--dark-primary);
-        --secondary: var(--dark-secondary);
-        --accent: var(--dark-accent);
-        --background: var(--dark-background);
-        --surface: var(--dark-surface);
-        --text: var(--dark-text);
-        --text-secondary: var(--dark-text-secondary);
-        --border: var(--dark-border);
-        --shadow-1: var(--dark-shadow-1);
-        --shadow-2: var(--dark-shadow-2);
+        .chat-header {
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary));
-        color: var(--text);
-    }
-    </style>
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
 
-    <!-- 基础样式 -->
-    <style>
-    /* 重置样式 */
-    *, *::before, *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 0.5rem;
+        }
 
-    body {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        min-height: 100vh;
-        overflow-x: hidden;
-    }
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
 
-    /* 页面布局样式 */
-    .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
+        /* 用户面板样式 */
+        .user-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* 导航栏样式 */
-    .main-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background: var(--surface);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+        .user-panel.active {
+            right: 0;
+        }
 
-    .nav-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 4rem;
-        padding: 0 1.5rem;
-    }
+        .user-panel-header {
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+        }
 
-    .logo {
-        font-weight: bold;
-        font-size: 1.5rem;
-        color: var(--text);
-        text-decoration: none;
-    }
+        .user-panel-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
 
-    .nav-links {
-        display: flex;
-        gap: 2rem;
-    }
+        .user-panel-footer {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
 
-    .nav-links a {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-        color: var(--accent);
-    }
-
-    /* 首屏区域样式 */
-    .hero-section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        padding-top: 4rem;
-    }
-
-    .hero-content {
-        text-align: center;
-        max-width: 800px;
-        padding: 2rem;
-    }
-
-    .hero-title {
-        font-size: 3.5rem;
-        font-weight: bold;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-    }
-
-    .hero-subtitle {
-        font-size: 1.5rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-    }
-
-    /* 按钮样式 */
-    .btn {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-        background: var(--accent);
-        color: white;
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-secondary {
-        background: var(--surface);
-        color: var(--text);
-        border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
-    }
-
-    /* 新拟态卡片样式 */
-    .card {
-        background: var(--surface);
-        border-radius: 1rem;
-        padding: 2rem;
-        margin: 1rem;
-        box-shadow: 
-            20px 20px 60px var(--shadow-2),
-            -20px -20px 60px var(--shadow-1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-        .nav-links {
+        /* 数据导出面板样式 */
+        .export-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
             display: none;
         }
 
-        .hero-title {
-            font-size: 2.5rem;
+        .export-panel.active {
+            display: block;
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
+        .export-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
         }
-    }
-    </style>
 
-    <!-- 动画样式 -->
-    <style>
-    /* 淡入动画 */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+        .export-option {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-    .fade-in {
-        animation: fadeIn 1s ease forwards;
-    }
+        .export-option:hover {
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
 
-    /* 滚动指示器动画 */
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
+        /* 分享功能样式 */
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
-        40% {
-            transform: translateY(-10px);
-        }
-        60% {
-            transform: translateY(-5px);
-        }
-    }
 
-    .scroll-indicator {
-        animation: bounce 2s infinite;
-    }
+        .share-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-    /* 故障文字效果 */
-    @keyframes glitch {
-        2%, 64% {
-            transform: translate(2px,0) skew(0deg);
+        .share-button:hover {
+            transform: translateY(-2px);
         }
-        4%, 60% {
-            transform: translate(-2px,0) skew(0deg);
-        }
-        62% {
-            transform: translate(0,0) skew(5deg); 
-        }
-    }
 
-    .glitch {
-        animation: glitch 1s linear infinite;
-    }
+        .share-wechat { background: #07C160; }
+        .share-weibo { background: #E6162D; }
+        .share-qq { background: #12B7F5; }
     </style>
 </head>
-<body class="theme-light">
-    <!-- 主题切换按钮 -->
-    <button id="theme-toggle" aria-label="切换主题">
-        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1v2m0 18v2M4 4l2 2m12 12l2 2M1 12h2m18 0h2M4 20l2-2M18 6l2-2"/>
-        </svg>
-        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-        </svg>
-    </button>
+<body>
+    <!-- 保持原有内容 -->
 
-    <!-- 背景画布 -->
-    <canvas id="background-canvas"></canvas>
-
-    <!-- 导航栏 -->
-    <nav class="main-nav">
-        <div class="nav-content">
-            <a href="#" class="logo">智荟荞缘</a>
-            <div class="nav-links">
-                <a href="#home">首页</a>
-                <a href="#about">项目介绍</a>
-                <a href="#ai-solutions">AI赋能</a>
-                <a href="#products">产品服务</a>
-                <a href="#contact">联系我们</a>
+    <!-- 添加聊天助手 -->
+    <div class="chat-assistant">
+        <div class="chat-button" onclick="toggleChat()">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>智能助手</h3>
+                <button onclick="toggleChat()">×</button>
             </div>
-        </div>
-    </nav>
-
-    <!-- 首屏区域 -->
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title glitch">智荟荞缘 & 智耕未来</h1>
-            <p class="hero-subtitle">AI与互联网+赋能荞麦全产业链革新</p>
-            <div class="button-group">
-                <a href="#ai-solutions" class="btn btn-primary">探索AI技术</a>
-                <a href="#products" class="btn btn-secondary">了解更多</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>向下滚动</span>
-        </div>
-    </section>
-
-    <!-- AI解决方案 -->
-    <section id="ai-solutions" class="section">
-        <div class="container">
-            <h2 class="section-title">AI赋能解决方案</h2>
-            <div class="cards-grid">
-                <div class="card" data-tilt>
-                    <h3>智能种子筛选</h3>
-                    <p>利用计算机视觉技术，精准筛选优质荞麦种子。</p>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    您好！我是智能助手，有什么可以帮您的吗？
                 </div>
-                <!-- 更多卡片 -->
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="输入您的问题..." id="chatInput">
+                <button onclick="sendMessage()">发送</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 产品服务 -->
-    <section id="products" class="section">
-        <div class="container">
-            <h2 class="section-title">产品服务</h2>
-            <div class="products-grid">
-                <!-- 产品卡片 -->
+    <!-- 添加用户面板 -->
+    <div class="user-panel" id="userPanel">
+        <div class="user-panel-header">
+            <h3>个人中心</h3>
+        </div>
+        <div class="user-panel-content">
+            <div class="user-info">
+                <h4>基本信息</h4>
+                <p>用户名：Demo User</p>
+                <p>邮箱：demo@example.com</p>
+            </div>
+            <div class="user-history">
+                <h4>咨询历史</h4>
+                <ul id="consultHistory">
+                    <!-- 历史记录将通过 JavaScript 动态添加 -->
+                </ul>
             </div>
         </div>
-    </section>
+        <div class="user-panel-footer">
+            <button onclick="toggleUserPanel()">关闭</button>
+        </div>
+    </div>
 
-    <!-- 联系我们 -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">联系我们</h2>
-            <div class="contact-content">
-                <!-- 联系信息 -->
+    <!-- 添加数据导出面板 -->
+    <div class="export-panel" id="exportPanel">
+        <h3>导出数据</h3>
+        <div class="export-options">
+            <div class="export-option" onclick="exportData('excel')">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Excel</span>
+            </div>
+            <div class="export-option" onclick="exportData('pdf')">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>PDF</span>
             </div>
         </div>
-    </section>
+        <button onclick="closeExportPanel()">取消</button>
+    </div>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队</p>
+    <!-- 添加分享按钮到数据卡片 -->
+    <div class="share-buttons">
+        <div class="share-button share-wechat" onclick="shareToSocial('wechat')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
         </div>
-    </footer>
+        <div class="share-button share-weibo" onclick="shareToSocial('weibo')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+        </div>
+        <div class="share-button share-qq" onclick="shareToSocial('qq')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+        </div>
+    </div>
 
-    <!-- 脚本 -->
+    <!-- 新功能相关的 JavaScript -->
     <script>
-    // 主题切换
-    document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('theme-toggle');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        function setTheme(theme) {
-            document.body.className = `theme-${theme}`;
-            localStorage.setItem('theme', theme);
+        // 聊天助手功能
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.classList.toggle('active');
         }
 
-        // 初始化主题
-        const savedTheme = localStorage.getItem('theme') || 
-            (prefersDarkScheme.matches ? 'dark' : 'light');
-        setTheme(savedTheme);
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            
+            if (input.value.trim() === '') return;
 
-        // 主题切换
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.body.className.includes('dark') ? 'light' : 'dark';
-            setTheme(currentTheme);
+            // 添加用户消息
+            messages.innerHTML += `
+                <div class="message user">
+                    ${input.value}
+                </div>
+            `;
+
+            // 模拟机器人回复
+            setTimeout(() => {
+                messages.innerHTML += `
+                    <div class="message bot">
+                        正在处理您的问题...
+                    </div>
+                `;
+                messages.scrollTop = messages.scrollHeight;
+            }, 500);
+
+            input.value = '';
+        }
+
+        // 用户面板功能
+        function toggleUserPanel() {
+            const panel = document.getElementById('userPanel');
+            panel.classList.toggle('active');
+        }
+
+        // 数据导出功能
+        function showExportPanel() {
+            document.getElementById('exportPanel').classList.add('active');
+        }
+
+        function closeExportPanel() {
+            document.getElementById('exportPanel').classList.remove('active');
+        }
+
+        function exportData(type) {
+            // 模拟导出过程
+            alert(`正在导出${type}格式的数据...`);
+            closeExportPanel();
+        }
+
+        // 分享功能
+        function shareToSocial(platform) {
+            // 模拟分享功能
+            const shareData = {
+                title: '智荟荞缘数据分析',
+                url: window.location.href,
+                image: 'path/to/share-image.jpg'
+            };
+
+            switch(platform) {
+                case 'wechat':
+                    alert('已打开微信分享');
+                    break;
+                case 'weibo':
+                    alert('已打开微博分享');
+                    break;
+                case 'qq':
+                    alert('已打开QQ分享');
+                    break;
+            }
+        }
+
+        // 初始化功能
+        document.addEventListener('DOMContentLoaded', () => {
+            // 添加示例历史记录
+            const history = document.getElementById('consultHistory');
+            if (history) {
+                history.innerHTML = `
+                    <li>2025-05-28: 技术咨询</li>
+                    <li>2025-05-25: 产品询价</li>
+                    <li>2025-05-20: 合作洽谈</li>
+                `;
+            }
         });
-
-        // 监听系统主题变化
-        prefersDarkScheme.addEventListener('change', e => {
-            setTheme(e.matches ? 'dark' : 'light');
-        });
-    });
-
-    // 3D背景
-    class Background {
-        constructor() {
-            this.canvas = document.getElementById('background-canvas');
-            this.scene = new THREE.Scene();
-            this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            this.renderer = new THREE.WebGLRenderer({
-                canvas: this.canvas,
-                alpha: true
-            });
-
-            this.init();
-        }
-
-        init() {
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
-            this.camera.position.z = 5;
-
-            // 创建网格
-            const geometry = new THREE.PlaneGeometry(10, 10, 50, 50);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0x38BDF8,
-                wireframe: true
-            });
-            this.mesh = new THREE.Mesh(geometry, material);
-            this.scene.add(this.mesh);
-
-            // 事件监听
-            window.addEventListener('resize', () => this.onWindowResize());
-            this.animate();
-        }
-
-        onWindowResize() {
-            this.camera.aspect = window.innerWidth / window.innerHeight;
-            this.camera.updateProjectionMatrix();
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        animate() {
-            requestAnimationFrame(() => this.animate());
-            this.mesh.rotation.x += 0.001;
-            this.mesh.rotation.y += 0.001;
-            this.renderer.render(this.scene, this.camera);
-        }
-    }
-
-    // 动画管理器
-    class AnimationManager {
-        constructor() {
-            this.initScrollAnimations();
-            this.initTiltEffect();
-        }
-
-        initScrollAnimations() {
-            const observer = new IntersectionObserver(
-                entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('fade-in');
-                        }
-                    });
-                },
-                { threshold: 0.1 }
-            );
-
-            document.querySelectorAll('.card, .section-title, .hero-content')
-                .forEach(el => observer.observe(el));
-        }
-
-        initTiltEffect() {
-            document.querySelectorAll('[data-tilt]').forEach(el => {
-                VanillaTilt.init(el, {
-                    max: 5,
-                    speed: 400,
-                    glare: true,
-                    'max-glare': 0.2
-                });
-            });
-        }
-    }
-
-    // 初始化
-    document.addEventListener('DOMContentLoaded', () => {
-        new Background();
-        new AnimationManager();
-        
-        // 设置年份
-        document.getElementById('current-year').textContent = 
-            new Date().getFullYear();
-    });
     </script>
 </body>
 </html>
