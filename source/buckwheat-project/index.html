@@ -1,369 +1,344 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<!-- 保持之前的 head 部分代码 -->
 <head>
-    <!-- 添加新功能所需的额外样式 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智荟荞缘 & 智耕未来</title>
+    
+    <!-- 简化样式 -->
     <style>
-        /* 聊天助手样式 */
-        .chat-assistant {
+        :root {
+            --primary: #10B981;
+            --secondary: #60A5FA;
+            --text: #1F2937;
+            --bg: #F9FAFB;
+            --border: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* 简洁的导航栏 */
+        .nav {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-        }
-
-        .chat-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .chat-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .chat-window {
-            position: fixed;
-            bottom: 5rem;
-            right: 2rem;
-            width: 360px;
-            height: 500px;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            display: none;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 100;
         }
 
-        .chat-window.active {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
+        .nav__inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 4rem;
+            padding: 0 1.5rem;
         }
 
-        .chat-messages {
-            flex: 1;
-            padding: 1rem;
-            overflow-y: auto;
+        .nav__logo {
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
         }
 
-        .chat-input {
-            padding: 1rem;
-            border-top: 1px solid #eee;
+        .nav__links {
             display: flex;
-            gap: 0.5rem;
+            gap: 2rem;
         }
 
-        .chat-input input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+        .nav__link {
+            color: var(--text);
+            text-decoration: none;
         }
 
-        /* 用户面板样式 */
-        .user-panel {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
-            transition: right 0.3s ease;
-            display: flex;
-            flex-direction: column;
+        .nav__link:hover {
+            color: var(--primary);
         }
 
-        .user-panel.active {
-            right: 0;
-        }
-
-        .user-panel-header {
-            padding: 2rem;
-            background: var(--primary);
-            color: white;
-        }
-
-        .user-panel-content {
-            flex: 1;
-            padding: 2rem;
-            overflow-y: auto;
-        }
-
-        .user-panel-footer {
-            padding: 1rem;
-            border-top: 1px solid #eee;
-        }
-
-        /* 数据导出面板样式 */
-        .export-panel {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            z-index: 2000;
-            display: none;
-        }
-
-        .export-panel.active {
-            display: block;
-        }
-
-        .export-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .export-option {
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            cursor: pointer;
+        /* 首屏区域 */
+        .hero {
+            padding-top: 6rem;
+            padding-bottom: 4rem;
             text-align: center;
-            transition: all 0.3s ease;
+            background: linear-gradient(to bottom right, #f0fdf4, #e0f2fe);
         }
 
-        .export-option:hover {
-            border-color: var(--primary);
-            background: rgba(16, 185, 129, 0.1);
+        .hero__title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: var(--text);
         }
 
-        /* 分享功能样式 */
-        .share-buttons {
-            display: flex;
-            gap: 0.5rem;
+        .hero__subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #4B5563;
+        }
+
+        /* 内容区块通用样式 */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section__title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        /* 技术原理展示 */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-card__title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .tech-card__content {
+            color: #4B5563;
+        }
+
+        /* 功能演示区域 */
+        .demo-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .demo-panel {
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
             margin-top: 1rem;
         }
 
-        .share-button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .demo-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #F3F4F6;
+            border-radius: 0.5rem;
+            display: none;
         }
 
-        .share-button:hover {
-            transform: translateY(-2px);
+        .demo-result.active {
+            display: block;
         }
 
-        .share-wechat { background: #07C160; }
-        .share-weibo { background: #E6162D; }
-        .share-qq { background: #12B7F5; }
+        /* 图表容器 */
+        .chart-container {
+            height: 300px;
+            margin: 2rem 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav__links {
+                display: none;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- 保持原有内容 -->
-
-    <!-- 添加聊天助手 -->
-    <div class="chat-assistant">
-        <div class="chat-button" onclick="toggleChat()">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h3>智能助手</h3>
-                <button onclick="toggleChat()">×</button>
+    <!-- 导航栏 -->
+    <nav class="nav">
+        <div class="nav__inner container">
+            <a href="#" class="nav__logo">智荟荞缘</a>
+            <div class="nav__links">
+                <a href="#intro" class="nav__link">项目介绍</a>
+                <a href="#tech" class="nav__link">技术原理</a>
+                <a href="#demo" class="nav__link">功能演示</a>
+                <a href="#application" class="nav__link">应用场景</a>
             </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    您好！我是智能助手，有什么可以帮您的吗？
+        </div>
+    </nav>
+
+    <!-- 首屏 -->
+    <section class="hero" id="intro">
+        <div class="container">
+            <h1 class="hero__title">智能荞麦种植解决方案</h1>
+            <p class="hero__subtitle">
+                运用人工智能技术，优化荞麦种植全过程，
+                提供精准化、智能化的农业解决方案
+            </p>
+        </div>
+    </section>
+
+    <!-- 技术原理 -->
+    <section class="section" id="tech">
+        <div class="container">
+            <h2 class="section__title">核心技术</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3 class="tech-card__title">智能种子筛选</h3>
+                    <p class="tech-card__content">
+                        采用计算机视觉技术，通过深度学习模型分析种子形态特征，
+                        实现种子品质的快速、准确识别。
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-card__title">生长监测</h3>
+                    <p class="tech-card__content">
+                        结合多源数据采集和机器学习算法，实时监测作物生长状况，
+                        提供精准的生长评估和预测。
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-card__title">智能决策</h3>
+                    <p class="tech-card__content">
+                        基于历史数据和环境因素，为种植过程提供个性化的
+                        灌溉、施肥等决策建议。
+                    </p>
                 </div>
             </div>
-            <div class="chat-input">
-                <input type="text" placeholder="输入您的问题..." id="chatInput">
-                <button onclick="sendMessage()">发送</button>
-            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 添加用户面板 -->
-    <div class="user-panel" id="userPanel">
-        <div class="user-panel-header">
-            <h3>个人中心</h3>
-        </div>
-        <div class="user-panel-content">
-            <div class="user-info">
-                <h4>基本信息</h4>
-                <p>用户名：Demo User</p>
-                <p>邮箱：demo@example.com</p>
-            </div>
-            <div class="user-history">
-                <h4>咨询历史</h4>
-                <ul id="consultHistory">
-                    <!-- 历史记录将通过 JavaScript 动态添加 -->
-                </ul>
-            </div>
-        </div>
-        <div class="user-panel-footer">
-            <button onclick="toggleUserPanel()">关闭</button>
-        </div>
-    </div>
-
-    <!-- 添加数据导出面板 -->
-    <div class="export-panel" id="exportPanel">
-        <h3>导出数据</h3>
-        <div class="export-options">
-            <div class="export-option" onclick="exportData('excel')">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-                <span>Excel</span>
-            </div>
-            <div class="export-option" onclick="exportData('pdf')">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                </svg>
-                <span>PDF</span>
-            </div>
-        </div>
-        <button onclick="closeExportPanel()">取消</button>
-    </div>
-
-    <!-- 添加分享按钮到数据卡片 -->
-    <div class="share-buttons">
-        <div class="share-button share-wechat" onclick="shareToSocial('wechat')">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-            </svg>
-        </div>
-        <div class="share-button share-weibo" onclick="shareToSocial('weibo')">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-            </svg>
-        </div>
-        <div class="share-button share-qq" onclick="shareToSocial('qq')">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-            </svg>
-        </div>
-    </div>
-
-    <!-- 新功能相关的 JavaScript -->
-    <script>
-        // 聊天助手功能
-        function toggleChat() {
-            const chatWindow = document.getElementById('chatWindow');
-            chatWindow.classList.toggle('active');
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const messages = document.getElementById('chatMessages');
+    <!-- 功能演示 -->
+    <section class="section" id="demo">
+        <div class="container">
+            <h2 class="section__title">功能演示</h2>
             
-            if (input.value.trim() === '') return;
-
-            // 添加用户消息
-            messages.innerHTML += `
-                <div class="message user">
-                    ${input.value}
-                </div>
-            `;
-
-            // 模拟机器人回复
-            setTimeout(() => {
-                messages.innerHTML += `
-                    <div class="message bot">
-                        正在处理您的问题...
+            <!-- 种子筛选演示 -->
+            <div class="demo-section">
+                <h3>种子品质识别</h3>
+                <div class="demo-panel">
+                    <button onclick="showSeedAnalysis()" class="btn">开始分析</button>
+                    <div id="seedResult" class="demo-result">
+                        正在分析种子品质...
                     </div>
+                </div>
+            </div>
+
+            <!-- 生长监测演示 -->
+            <div class="demo-section">
+                <h3>生长状况监测</h3>
+                <div class="chart-container" id="growthChart"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="section" id="application">
+        <div class="container">
+            <h2 class="section__title">实际应用</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3 class="tech-card__title">规模化种植</h3>
+                    <p class="tech-card__content">
+                        在大规模种植基地实现智能化管理，
+                        提高种植效率和产量。
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="tech-card__title">科研应用</h3>
+                    <p class="tech-card__content">
+                        为荞麦育种研究提供数据支持，
+                        加速优质品种选育过程。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 引入必要的库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 核心功能脚本 -->
+    <script>
+        // 种子分析演示
+        function showSeedAnalysis() {
+            const result = document.getElementById('seedResult');
+            result.classList.add('active');
+            
+            // 模拟分析过程
+            setTimeout(() => {
+                result.innerHTML = `
+                    <h4>分析结果：</h4>
+                    <ul>
+                        <li>种子纯度：98%</li>
+                        <li>发芽率：95%</li>
+                        <li>水分含量：适中</li>
+                    </ul>
                 `;
-                messages.scrollTop = messages.scrollHeight;
-            }, 500);
-
-            input.value = '';
+            }, 1500);
         }
 
-        // 用户面板功能
-        function toggleUserPanel() {
-            const panel = document.getElementById('userPanel');
-            panel.classList.toggle('active');
+        // 生长监测图表
+        const ctx = document.getElementById('growthChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['第1周', '第2周', '第3周', '第4周', '第5周', '第6周'],
+                    datasets: [{
+                        label: '生长高度',
+                        data: [5, 15, 30, 45, 60, 70],
+                        borderColor: '#10B981',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
         }
 
-        // 数据导出功能
-        function showExportPanel() {
-            document.getElementById('exportPanel').classList.add('active');
-        }
-
-        function closeExportPanel() {
-            document.getElementById('exportPanel').classList.remove('active');
-        }
-
-        function exportData(type) {
-            // 模拟导出过程
-            alert(`正在导出${type}格式的数据...`);
-            closeExportPanel();
-        }
-
-        // 分享功能
-        function shareToSocial(platform) {
-            // 模拟分享功能
-            const shareData = {
-                title: '智荟荞缘数据分析',
-                url: window.location.href,
-                image: 'path/to/share-image.jpg'
-            };
-
-            switch(platform) {
-                case 'wechat':
-                    alert('已打开微信分享');
-                    break;
-                case 'weibo':
-                    alert('已打开微博分享');
-                    break;
-                case 'qq':
-                    alert('已打开QQ分享');
-                    break;
-            }
-        }
-
-        // 初始化功能
-        document.addEventListener('DOMContentLoaded', () => {
-            // 添加示例历史记录
-            const history = document.getElementById('consultHistory');
-            if (history) {
-                history.innerHTML = `
-                    <li>2025-05-28: 技术咨询</li>
-                    <li>2025-05-25: 产品询价</li>
-                    <li>2025-05-20: 合作洽谈</li>
-                `;
-            }
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
