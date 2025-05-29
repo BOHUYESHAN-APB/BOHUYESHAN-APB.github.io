@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智荟荞缘 & 智耕未来：AI与互联网+赋能荞麦全产业链革新</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/heroicons/2.0.18/24/outline/heroicons.min.css" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tailwind.css"> <!-- For local Tailwind build if used -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#hero" class="text-2xl font-bold text-emerald-600">
+                        智荟荞缘 & 智耕未来
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#hero" class="nav-item">首页</a>
+                        <a href="#about" class="nav-item">项目介绍</a>
+                        <a href="#ai-solutions" class="nav-item">AI赋能</a>
+                        <a href="#sprout-standard" class="nav-item">苗菜标准</a>
+                        <a href="#platform" class="nav-item">线上平台</a>
+                        <a href="#bookstore" class="nav-item">智能书苑</a>
+                        <a href="#products" class="nav-item">产品服务</a>
+                        <a href="#culture-community" class="nav-item">文化社区</a>
+                        <a href="#impact" class="nav-item">项目影响</a>
+                        <a href="#contact" class="nav-item">联系我们</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-emerald-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">打开主菜单</span>
+                        <svg class="block h-6 w-6" id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#hero" class="nav-item-mobile block">首页</a>
+                <a href="#about" class="nav-item-mobile block">项目介绍</a>
+                <a href="#ai-solutions" class="nav-item-mobile block">AI赋能</a>
+                <a href="#sprout-standard" class="nav-item-mobile block">苗菜标准</a>
+                <a href="#platform" class="nav-item-mobile block">线上平台</a>
+                <a href="#bookstore" class="nav-item-mobile block">智能书苑</a>
+                <a href="#products" class="nav-item-mobile block">产品服务</a>
+                <a href="#culture-community" class="nav-item-mobile block">文化社区</a>
+                <a href="#impact" class="nav-item-mobile block">项目影响</a>
+                <a href="#contact" class="nav-item-mobile block">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero-bg text-white pt-32 pb-20 md:pt-48 md:pb-32">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                智荟荞缘 & 智耕未来
+            </h1>
+            <p class="text-lg md:text-2xl mb-8">
+                AI与互联网+赋能荞麦全产业链革新，从一粒好种子到健康生活方式的引领者。
+            </p>
+            <div class="space-x-4">
+                <a href="#ai-solutions" class="btn btn-primary text-lg">探索AI技术</a>
+                <a href="#platform" class="btn btn-secondary text-lg">了解线上平台</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="py-16 md:py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">关于我们：数字科技引领荞麦产业新生态</h2>
+                <p class="section-subtitle">
+                    我们致力于融合尖端AI技术与“互联网+”创新模式，深入剖析并解决荞麦全产业链中的关键痛点，从源头育种到终端消费，打造高效、智能、可持续的荞麦产业新未来。
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="feature-card">
+                        <img src="img/placeholder/ai-chip-icon.svg" alt="AI赋能图标" class="feature-icon mx-auto">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">AI赋能农业</h3>
+                        <p class="text-gray-600">利用人工智能优化育种、种植、病虫害防治等环节，提升荞麦产量与品质。</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="img/placeholder/internet-plus-icon.svg" alt="互联网+图标" class="feature-icon mx-auto">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">互联网+创新</h3>
+                        <p class="text-gray-600">构建线上平台，连接产业链各方，实现信息共享、高效协作与精准营销。</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="img/placeholder/leaf-recycle-icon.svg" alt="可持续发展图标" class="feature-icon mx-auto">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">可持续发展</h3>
+                        <p class="text-gray-600">推广绿色种植标准，关注生态效益，助力乡村振兴与农业现代化。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-solutions" class="py-16 md:py-24">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">AI赋能解决方案：科技驱动产业升级</h2>
+                <p class="section-subtitle">
+                    探索人工智能在荞麦产业链中的前沿应用，从种子筛选到生长监测，再到品质评估，AI技术为每一个环节注入智能动力。我们将重点研发基于百度飞桨等国产AI平台的智能系统。
+                </p>
+                <div class="space-y-12">
+                    <div class="ai-module">
+                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600">1. AI荞麦种子智能筛选系统 (重点研发)</h3>
+                        <p class="text-gray-700 mb-6">
+                            通过高精度图像识别与深度学习算法，智能筛选出品质优良、无缺陷的荞麦种子，从源头保障作物产量与品质。未来将融合多模态数据（RGB、近红外光谱、3D点云），提升对种子内部品质的识别能力。
+                        </p>
+                        <div class="ai-demo-panel">
+                            <p class="text-lg font-medium mb-2">种子筛选演示 (模拟)</p>
+                            <div class="flex flex-col sm:flex-row items-center gap-4">
+                                <img src="img/placeholder/seeds-to-filter.jpg" alt="待筛选种子图像" class="rounded-lg shadow-md w-full sm:w-1/3 object-cover h-40">
+                                <div class="flex-grow">
+                                    <button id="seed-filter-button" class="btn btn-primary w-full sm:w-auto mb-2">开始智能筛选</button>
+                                    <div id="seed-filter-result" class="ai-result-placeholder hidden">
+                                        <p><span class="font-semibold">筛选结果：</span>检测到3粒优质种子，1粒破损种子，1粒霉变种子。</p>
+                                        <p><span class="font-semibold">处理建议：</span>优质种子进入培育环节，缺陷种子已剔除。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-module">
+                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600">2. 荞麦智能生长监测与病虫害预警系统 (重点研发)</h3>
+                        <p class="text-gray-700 mb-6">
+                            利用物联网传感器实时采集环境数据，结合AI图像分析，监测荞麦生长状态，智能识别生长异常及早期病虫害特征，为精准农事管理提供决策支持，降低损失，提升产量。
+                        </p>
+                        <div class="ai-demo-panel">
+                           <p class="text-lg font-medium mb-2">生长监测演示 (模拟)</p>
+                            <img src="img/placeholder/buckwheat-field-monitoring.jpg" alt="荞麦田监测" class="rounded-lg shadow-md w-full object-cover h-48 mb-4">
+                            <div id="growth-monitor-result" class="ai-result-placeholder">
+                                <p><span class="font-semibold">当前状态：</span>生长良好，叶片湿度略高。</p>
+                                <p><span class="font-semibold">AI预警：</span>西南角区域有轻微白粉病早期迹象，请注意观察并采取预防措施。</p>
+                                <p><span class="font-semibold">农事建议：</span>适当通风，控制湿度，可考虑使用生物防治剂。</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="ai-module">
+                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600">3. 荞麦苗菜健康与品质智能评估</h3>
+                        <p class="text-gray-700 mb-6">
+                            整合团队已有的基于Faster R-CNN ResNet-50的微生物菌落计数模型（将迁移至国产AI框架），对荞麦苗菜培育过程中的微生物污染情况进行快速、准确的量化评估，保障苗菜品质安全。
+                        </p>
+                        <div class="ai-demo-panel">
+                            <p class="text-lg font-medium mb-2">苗菜菌落计数演示 (模拟)</p>
+                            <div class="flex flex-col sm:flex-row items-center gap-4">
+                                <img src="img/placeholder/sprout-culture-dish.jpg" alt="苗菜培养基" class="rounded-lg shadow-md w-full sm:w-1/3 object-cover h-40">
+                                <div class="flex-grow">
+                                    <button id="sprout-eval-button" class="btn btn-primary w-full sm:w-auto mb-2">开始菌落计数</button>
+                                    <div id="sprout-eval-result" class="ai-result-placeholder hidden">
+                                        <p><span class="font-semibold">检测结果：</span>菌落总数 5 CFU/皿，符合优良标准。</p>
+                                        <p><span class="font-semibold">品质评估：</span>苗菜健康，无明显污染。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sprout-standard" class="py-16 md:py-24 bg-emerald-50">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">标准化荞麦苗菜智慧培育方案</h2>
+                <p class="section-subtitle">
+                    我们致力于研发一套科学、规范、可复制的荞麦苗菜规模化、标准化、智能化培育技术体系，确保苗菜的产量、品质和安全。
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="img/placeholder/standardized-sprout-cultivation.jpg" alt="标准化苗菜培育" class="rounded-xl shadow-lg">
+                    </div>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start">
+                            <img src="img/placeholder/check-circle-icon.svg" alt="check" class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">优良品种筛选：</span>结合AI种子筛选结果，选择最适合苗菜生产的荞麦品种。</p>
+                        </div>
+                        <div class="flex items-start">
+                            <img src="img/placeholder/settings-icon.svg" alt="settings" class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">智能环境控制：</span>通过物联网传感器和控制器，精准调控光照、温湿度、CO2浓度等。</p>
+                        </div>
+                        <div class="flex items-start">
+                           <img src="img/placeholder/water-drop-icon.svg" alt="water drop" class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">营养精准供给：</span>优化无土栽培营养液配方，按需供给，保障苗菜营养均衡。</p>
+                        </div>
+                        <div class="flex items-start">
+                            <img src="img/placeholder/shield-check-icon.svg" alt="shield" class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">绿色防控与品质评估：</span>优先采用生物、物理防治，结合AI菌落计数模型进行品质监控。</p>
+                        </div>
+                         <div class="flex items-start">
+                            <img src="img/placeholder/clipboard-list-icon.svg" alt="clipboard" class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">SOP制定与推广：</span>形成标准化操作规程，便于技术推广和产业化应用。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="platform" class="py-16 md:py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">“智荟荞缘”线上综合服务平台</h2>
+                <p class="section-subtitle">
+                    打造一个集科普资讯、在线商城、智能农场云体验、健康社群互动和技术服务于一体的数字化平台，连接生产者与消费者，传播荞麦文化，赋能产业发展。
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card text-center">
+                        <img src="img/placeholder/book-open-icon.svg" alt="科普资讯" class="feature-icon mx-auto">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">科普与资讯</h3>
+                        <p class="text-gray-600">提供丰富的荞麦种植、营养、食谱、文化等内容。</p>
+                    </div>
+                    <div class="feature-card text-center">
+                        <img src="img/placeholder/shopping-cart-icon.svg" alt="在线商城" class="feature-icon mx-auto">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">在线商城</h3>
+                        <p class="text-gray-600">销售AI优选苗菜、健康食品、文创产品，支持O2O模式。</p>
+                    </div>
+                    <div class="feature-card text-center">
+                        <img src="img/placeholder/users-group-icon.svg" alt="健康社群" class="feature-icon mx-auto">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">健康社群</h3>
+                        <p class="text-gray-600">构建用户社群，分享健康知识，组织线上线下活动。</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="#" class="btn btn-primary text-lg">访问“智荟荞缘”平台 (敬请期待)</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="bookstore" class="py-16 md:py-24 bg-green-50">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">“智能荞麦书苑”：线下体验与文化交流中心</h2>
+                <p class="section-subtitle">
+                    一个融合荞麦健康轻食、科研成果展示、文化体验、3D打印文创销售的复合型校园文化空间。这里是技术的展示窗口，也是文化的交流平台，更是健康生活的倡导地。咖啡等饮品作为辅助，核心是荞麦主题体验。
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div class="feature-card flex items-start">
+                            <img src="img/placeholder/food-icon.svg" alt="健康轻食" class="w-8 h-8 text-emerald-500 mr-4 flex-shrink-0 mt-1">
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-600">健康轻食体验</h4>
+                                <p class="text-gray-600">品尝AI优选荞麦苗菜、荞麦饮品和特色烘焙。</p>
+                            </div>
+                        </div>
+                        <div class="feature-card flex items-start">
+                           <img src="img/placeholder/science-icon.svg" alt="科技互动" class="w-8 h-8 text-emerald-500 mr-4 flex-shrink-0 mt-1">
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-600">科技互动展示</h4>
+                                <p class="text-gray-600">近距离了解AI种子筛选、智能监测等前沿农业科技。</p>
+                            </div>
+                        </div>
+                        <div class="feature-card flex items-start">
+                            <img src="img/placeholder/chat-bubble-icon.svg" alt="文化沙龙" class="w-8 h-8 text-emerald-500 mr-4 flex-shrink-0 mt-1">
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-600">文化沙龙与社群活动</h4>
+                                <p class="text-gray-600">定期举办荞麦文化讲座、健康分享会、DIY工作坊。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="img/placeholder/buckwheat-bookstore-concept.jpg" alt="智能荞麦书苑" class="rounded-xl shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="py-16 md:py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">我们的产品与服务</h2>
+                <p class="section-subtitle">
+                    从田间到餐桌，从科研到文创，我们为您提供全方位的荞麦主题产品与服务体验。
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card">
+                        <img src="img/placeholder/ai-selected-sprouts.jpg" alt="AI优选荞麦苗菜" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">AI优选荞麦苗菜</h3>
+                        <p class="text-gray-600">采用AI筛选的优质种子和标准化方案培育，营养丰富，口感鲜嫩。</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="img/placeholder/buckwheat-health-foods.jpg" alt="荞麦主题健康食品" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">荞麦主题健康食品</h3>
+                        <p class="text-gray-600">荞麦茶、荞麦糕点、荞麦面等，美味与健康兼得。</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="img/placeholder/3d-printed-buckwheat-crafts.jpg" alt="3D打印荞麦文创" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">3D打印荞麦文创</h3>
+                        <p class="text-gray-600">以荞麦植株为灵感，结合3D打印技术，打造独特的文化创意产品。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="culture-community" class="py-16 md:py-24 bg-gray-100">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">文化传播与社群力量 (丁习功工作室)</h2>
+                <p class="section-subtitle">
+                    我们深知文化的力量。丁习功同学及其文化传媒工作室将主导项目的数字内容创作与品牌文化传播，通过新媒体平台讲述荞麦故事，弘扬健康生活理念，构建充满活力的线上社群。
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="img/placeholder/dingxigong-studio-newmedia.jpg" alt="文化传播与丁习功工作室" class="rounded-xl shadow-lg">
+                    </div>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start">
+                            <img src="img/placeholder/video-camera-icon.svg" alt="数字内容" class="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">优质数字内容：</span>创作科普短视频、Vlog、图文专栏，讲述荞麦的科技、文化与健康故事。</p>
+                        </div>
+                        <div class="flex items-start">
+                            <img src="img/placeholder/share-icon.svg" alt="新媒体" class="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">新媒体矩阵运营：</span>覆盖微信、抖音、B站、小红书等平台，打造“智荟荞缘”品牌IP。</p>
+                        </div>
+                        <div class="flex items-start">
+                            <img src="img/placeholder/users-icon.svg" alt="社群互动" class="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-1">
+                            <p><span class="font-semibold">社群互动与价值共创：</span>构建线上社群，组织互动活动，激发用户参与，共同推广健康生活。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-16 md:py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">项目影响与未来愿景</h2>
+                <p class="section-subtitle">
+                    我们致力于通过技术创新和模式创新，为荞麦产业带来积极改变，为社会创造更大价值。关键指标包括带动农户增收30%+。
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 border border-emerald-200 rounded-xl bg-emerald-50">
+                        <div class="text-4xl font-bold text-emerald-600 mb-2">30%+</div>
+                        <p class="text-gray-700 font-semibold">带动农户增收</p>
+                        <p class="text-sm text-gray-500">通过技术输出和订单农业，切实提升合作农户收益。</p>
+                    </div>
+                    <div class="text-center p-6 border border-blue-200 rounded-xl bg-blue-50">
+                        <img src="img/placeholder/industry-upgrade-icon.svg" alt="产业升级" class="w-12 h-12 text-blue-600 mx-auto mb-2">
+                        <p class="text-gray-700 font-semibold mt-2">赋能产业升级</p>
+                        <p class="text-sm text-gray-500">推动荞麦产业数字化、智能化、品牌化发展。</p>
+                    </div>
+                    <div class="text-center p-6 border border-purple-200 rounded-xl bg-purple-50">
+                        <img src="img/placeholder/healthy-lifestyle-icon.svg" alt="健康生活" class="w-12 h-12 text-purple-600 mx-auto mb-2">
+                        <p class="text-gray-700 font-semibold mt-2">引领健康生活</p>
+                        <p class="text-sm text-gray-500">传播荞麦文化与健康理念，倡导绿色健康生活方式。</p>
+                    </div>
+                </div>
+                <p class="text-center text-gray-700 mt-12 text-lg">
+                    未来，我们期望将“智荟荞缘”打造成国内知名的“互联网+荞麦”品牌，构建完善的数字农业服务体系，为乡村振兴和可持续发展贡献力量。
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 bg-emerald-700 text-white">
+            <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-6">联系我们</h2>
+                <p class="text-lg mb-8">
+                    如果您对我们的项目感兴趣，无论是技术合作、市场推广，还是想了解更多关于荞麦的魅力，都欢迎与我们联系。
+                </p>
+                <!-- 简单邮件链接，实际项目中会用表单 -->
+                <a href="mailto:info@zhihuiqiaoyuan.com?subject=关于智荟荞缘项目的咨询" class="btn bg-white text-emerald-700 hover:bg-emerald-50 text-lg">
+                    发送邮件咨询
+                </a>
+                 <p class="mt-6 text-sm text-emerald-200">
+                    团队负责人：韩涛 | 新媒体与文化传播：丁习功工作室
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队. 保留所有权利.</p>
+            <p class="text-sm text-gray-400 mt-1">技术支持：云南农业大学创新创业中心 (模拟)</p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
