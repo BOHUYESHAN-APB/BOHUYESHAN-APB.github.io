@@ -1,318 +1,435 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<!-- head 部分保持不变 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智荟荞缘 & 智耕未来：AI与互联网+赋能荞麦全产业链革新</title>
+    
+    <!-- 引入必要的库 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/heroicons/2.0.18/24/outline/heroicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* 保持原有样式 */
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        /* 添加新的技术展示相关样式 */
-        .tech-detail {
-            @apply bg-white p-6 rounded-xl shadow-lg mb-8;
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('https://source.unsplash.com/1920x1080/?buckwheat,field');
+            background-size: cover;
+            background-position: center;
         }
-        .tech-header {
-            @apply flex items-center gap-4 mb-4;
+        .section-title {
+            @apply text-3xl font-bold text-center mb-4 text-emerald-700;
         }
-        .tech-icon {
-            @apply w-12 h-12 text-emerald-600 bg-emerald-100 p-2 rounded-lg;
+        .section-subtitle {
+            @apply text-center text-gray-600 mb-12 max-w-2xl mx-auto;
         }
-        .code-block {
-            @apply bg-gray-800 text-gray-200 p-4 rounded-lg font-mono text-sm overflow-x-auto my-4;
+        .feature-card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300;
         }
-        .demo-controls {
-            @apply flex flex-wrap gap-4 mt-4;
+        .feature-icon {
+            @apply w-12 h-12 text-emerald-500 mb-4;
         }
-        .param-control {
-            @apply flex items-center gap-2;
+        .btn {
+            @apply px-6 py-3 rounded-lg font-semibold transition-colors duration-300;
         }
-        .param-label {
-            @apply text-sm text-gray-600;
+        .btn-primary {
+            @apply bg-emerald-600 text-white hover:bg-emerald-700;
         }
-        .param-input {
-            @apply w-24 px-2 py-1 border border-gray-300 rounded;
+        .btn-secondary {
+            @apply bg-gray-200 text-emerald-700 hover:bg-gray-300;
         }
-        .result-detail {
-            @apply grid grid-cols-1 md:grid-cols-3 gap-4 mt-4;
+        .ai-demo-panel {
+            @apply bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200;
         }
-        .result-card {
-            @apply bg-gray-50 p-4 rounded-lg border border-gray-200;
+        .ai-result-placeholder {
+            @apply mt-4 p-4 bg-emerald-50 text-emerald-700 rounded-md border border-emerald-200;
         }
-        .accuracy-meter {
-            @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden mt-2;
+        nav a {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600;
         }
-        .accuracy-fill {
-            @apply h-full bg-emerald-500 transition-all duration-500;
+        nav a.active {
+            @apply bg-emerald-100 text-emerald-700;
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- 导航栏和首屏部分保持不变 -->
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="text-2xl font-bold text-emerald-600">
+                    智荟荞缘 & 智耕未来
+                </a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#hero" class="active">首页</a>
+                    <a href="#about">项目介绍</a>
+                    <a href="#ai-solutions">AI赋能</a>
+                    <a href="#sprout-standard">苗菜标准</a>
+                    <a href="#platform">线上平台</a>
+                    <a href="#bookstore">智能书苑</a>
+                    <a href="#products">产品服务</a>
+                    <a href="#impact">项目影响</a>
+                    <a href="#contact">联系我们</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#hero" class="block">首页</a>
+                <a href="#about" class="block">项目介绍</a>
+                <a href="#ai-solutions" class="block">AI赋能</a>
+                <a href="#sprout-standard" class="block">苗菜标准</a>
+                <a href="#platform" class="block">线上平台</a>
+                <a href="#bookstore" class="block">智能书苑</a>
+                <a href="#products" class="block">产品服务</a>
+                <a href="#impact" class="block">项目影响</a>
+                <a href="#contact" class="block">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <header id="hero" class="hero-bg text-white pt-32 pb-20 md:pt-48 md:pb-32">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                智荟荞缘 & 智耕未来
+            </h1>
+            <p class="text-lg md:text-2xl mb-8">
+                AI与互联网+赋能荞麦全产业链革新，从一粒好种子到健康生活方式的引领者
+            </p>
+            <div class="space-x-4">
+                <a href="#ai-solutions" class="btn btn-primary">探索AI技术</a>
+                <a href="#platform" class="btn btn-secondary">了解线上平台</a>
+            </div>
+        </div>
+    </header>
 
     <main>
-        <!-- AI技术展示 - 改进版 -->
-        <section id="ai-tech" class="py-16 md:py-24">
+        <!-- 关于我们 -->
+        <section id="about" class="py-16 md:py-24 bg-white">
             <div class="max-w-5xl mx-auto px-4">
-                <h2 class="section-title">AI技术展示</h2>
+                <h2 class="section-title">关于我们：数字科技引领荞麦产业新生态</h2>
                 <p class="section-subtitle">
-                    基于深度学习的智能识别与监测系统，实现荞麦种植全程智能化
+                    本项目以"互联网+"为核心驱动，融合人工智能、物联网等数字技术，
+                    致力于构建一个覆盖荞麦全产业链的创新服务生态系统
                 </p>
-
-                <!-- 种子智能筛选技术 -->
-                <div class="tech-detail">
-                    <div class="tech-header">
-                        <svg class="tech-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="feature-card">
+                        <svg class="feature-icon mx-auto" viewBox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
-                        <div>
-                            <h3 class="text-xl font-semibold text-emerald-600">种子智能筛选</h3>
-                            <p class="text-gray-600">基于深度学习的计算机视觉技术，实现种子品质快速识别</p>
-                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">AI赋能农业</h3>
+                        <p class="text-gray-600">运用国产AI平台，实现荞麦生产智能化、精准化</p>
                     </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <div class="relative">
-                                <img id="seed-preview" src="https://source.unsplash.com/400x300/?seed,grain" 
-                                     alt="种子示例" class="w-full rounded-lg shadow-md">
-                                <div id="detection-overlay" class="absolute inset-0 pointer-events-none">
-                                    <!-- 检测框将通过JS动态添加 -->
-                                </div>
-                            </div>
-                            <div class="demo-controls">
-                                <button id="upload-btn" class="btn btn-secondary">
-                                    上传图片
-                                </button>
-                                <button id="detect-btn" class="btn btn-primary">
-                                    开始检测
-                                </button>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h4 class="font-semibold mb-2">检测参数</h4>
-                                <div class="space-y-2">
-                                    <div class="param-control">
-                                        <label class="param-label">检测阈值</label>
-                                        <input type="range" min="0" max="100" value="80" 
-                                               class="param-input" id="threshold-control">
-                                        <span class="text-sm text-gray-600">80%</span>
-                                    </div>
-                                    <div class="param-control">
-                                        <label class="param-label">最小尺寸</label>
-                                        <input type="number" value="32" min="16" max="128" 
-                                               class="param-input" id="size-control">
-                                        <span class="text-sm text-gray-600">像素</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="detection-results" class="mt-4 hidden">
-                                <h4 class="font-semibold mb-2">检测结果</h4>
-                                <div class="result-detail">
-                                    <div class="result-card">
-                                        <div class="text-sm text-gray-600">优质种子</div>
-                                        <div class="text-2xl font-bold text-emerald-600">85%</div>
-                                        <div class="accuracy-meter">
-                                            <div class="accuracy-fill" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="result-card">
-                                        <div class="text-sm text-gray-600">发芽率预测</div>
-                                        <div class="text-2xl font-bold text-blue-600">92%</div>
-                                        <div class="accuracy-meter">
-                                            <div class="accuracy-fill bg-blue-500" style="width: 92%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="result-card">
-                                        <div class="text-sm text-gray-600">健康状况</div>
-                                        <div class="text-2xl font-bold text-green-600">良好</div>
-                                        <div class="text-xs text-gray-500 mt-1">建议：适合培育</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon mx-auto" viewBox="0 0 24 24">
+                            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">互联网+创新</h3>
+                        <p class="text-gray-600">打造线上线下融合平台，拓宽产销渠道，传播荞麦文化</p>
                     </div>
-
-                    <div class="mt-8">
-                        <h4 class="font-semibold mb-2">技术说明</h4>
-                        <div class="prose prose-emerald">
-                            <p class="text-gray-600">
-                                使用改进的YOLOv5模型进行种子检测，结合迁移学习提高识别准确率。
-                                模型训练数据包含超过10,000张标注图片，准确率达95%以上。
-                            </p>
-                            <div class="code-block">
-                                <pre><code>// 核心检测算法示例
-model = await tf.loadLayersModel('seed_detection_model.json');
-const prediction = model.predict(preprocessImage(imageData));
-const results = postProcess(prediction, {
-    threshold: 0.8,
-    minSize: 32
-});</code></pre>
-                            </div>
-                        </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon mx-auto" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">可持续发展</h3>
+                        <p class="text-gray-600">推广绿色种植理念，助力农户增收，促进乡村振兴</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- 生长监测系统 -->
-                <div class="tech-detail">
-                    <div class="tech-header">
-                        <svg class="tech-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                        <div>
-                            <h3 class="text-xl font-semibold text-emerald-600">生长监测系统</h3>
-                            <p class="text-gray-600">实时监测生长状况，预测产量和健康状况</p>
+        <!-- AI赋能解决方案 -->
+        <section id="ai-solutions" class="py-16 md:py-24">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="section-title">AI赋能：荞麦产业的智慧引擎</h2>
+                <p class="section-subtitle">
+                    我们将重点研发基于百度飞桨等国产AI平台的智能系统，为荞麦产业的每一个环节注入科技动力
+                </p>
+                
+                <!-- 种子智能筛选系统 -->
+                <div class="space-y-12">
+                    <div class="ai-demo-panel">
+                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600">
+                            1. AI荞麦种子智能筛选系统
+                        </h3>
+                        <p class="text-gray-700 mb-6">
+                            通过高精度图像识别与深度学习算法，智能筛选出品质优良、无缺陷的荞麦种子，
+                            从源头保障作物产量与品质
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="w-full sm:w-1/2">
+                                <img src="https://source.unsplash.com/400x300/?seed,grain" 
+                                     alt="种子样本" class="rounded-lg shadow-md w-full object-cover">
+                            </div>
+                            <div class="flex-grow">
+                                <button id="seed-sort-button" class="btn btn-primary w-full sm:w-auto mb-2">
+                                    开始智能筛选
+                                </button>
+                                <div id="seed-sort-result" class="ai-result-placeholder hidden">
+                                    <p><span class="font-semibold">筛选结果：</span>检测到3粒优质种子，1粒破损种子</p>
+                                    <p><span class="font-semibold">处理建议：</span>优质种子进入培育环节，缺陷种子已剔除</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <h4 class="font-semibold mb-4">生长趋势</h4>
-                            <canvas id="growth-chart" height="200"></canvas>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <h4 class="font-semibold mb-4">环境参数</h4>
-                            <canvas id="env-chart" height="200"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="bg-emerald-50 p-4 rounded-lg">
-                            <div class="text-sm text-gray-600">平均株高</div>
-                            <div class="text-2xl font-bold text-emerald-600">45cm</div>
-                        </div>
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <div class="text-sm text-gray-600">生长速度</div>
-                            <div class="text-2xl font-bold text-blue-600">2.3cm/天</div>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-lg">
-                            <div class="text-sm text-gray-600">预测产量</div>
-                            <div class="text-2xl font-bold text-purple-600">1.8吨/亩</div>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="text-sm text-gray-600">健康指数</div>
-                            <div class="text-2xl font-bold text-green-600">95</div>
+                    <!-- 生长监测系统 -->
+                    <div class="ai-demo-panel">
+                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600">
+                            2. 荞麦智能生长监测系统
+                        </h3>
+                        <p class="text-gray-700 mb-6">
+                            利用物联网传感器实时采集环境数据，结合AI图像分析，监测荞麦生长状态，
+                            智能识别生长异常及早期病虫害特征
+                        </p>
+                        <div id="growth-monitor" class="space-y-4">
+                            <img src="https://source.unsplash.com/800x400/?farm,monitoring" 
+                                 alt="生长监测" class="w-full rounded-lg shadow-md">
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="bg-emerald-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-emerald-600">实时数据</h4>
+                                    <p class="text-sm text-gray-600">温度：25°C</p>
+                                    <p class="text-sm text-gray-600">湿度：65%</p>
+                                    <p class="text-sm text-gray-600">光照：12000lux</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-600">生长状况</h4>
+                                    <p class="text-sm text-gray-600">株高：45cm</p>
+                                    <p class="text-sm text-gray-600">长势：良好</p>
+                                    <p class="text-sm text-gray-600">预测产量：1.8吨/亩</p>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-yellow-600">系统建议</h4>
+                                    <p class="text-sm text-gray-600">建议通风散湿</p>
+                                    <p class="text-sm text-gray-600">预防性喷施生物菌剂</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 应用场景部分保持不变 -->
-    </main>
-
-    <script>
-        // 种子检测演示
-        document.getElementById('detect-btn')?.addEventListener('click', function() {
-            this.textContent = '检测中...';
-            this.disabled = true;
-
-            // 模拟检测过程
-            setTimeout(() => {
-                document.getElementById('detection-results').classList.remove('hidden');
-                
-                // 添加检测框动画
-                const overlay = document.getElementById('detection-overlay');
-                overlay.innerHTML = `
-                    <div class="absolute border-2 border-emerald-500 rounded-lg" 
-                         style="top: 20%; left: 30%; width: 40%; height: 30%; 
-                                animation: detect 0.5s ease-out">
-                        <div class="absolute -top-6 left-2 bg-emerald-500 text-white px-2 py-1 text-xs rounded">
-                            优质种子: 98%
+        <!-- 标准化荞麦苗菜智慧培育方案 -->
+        <section id="sprout-standard" class="py-16 md:py-24 bg-emerald-50">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="section-title">标准化荞麦苗菜智慧培育方案</h2>
+                <p class="section-subtitle">
+                    我们致力于研发一套科学、规范、可复制的荞麦苗菜规模化、标准化、智能化培育技术体系
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="https://source.unsplash.com/600x400/?hydroponics,farm" 
+                             alt="标准化培育" class="rounded-xl shadow-lg">
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">优良品种筛选</h4>
+                                <p class="text-gray-600">结合AI种子筛选结果，选择最适合苗菜生产的荞麦品种</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0" viewBox="0 0 24 24">
+                                <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">智能环境控制</h4>
+                                <p class="text-gray-600">通过物联网传感器和控制器，精准调控生长环境</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">绿色防控</h4>
+                                <p class="text-gray-600">采用生物防治，确保产品品质安全</p>
+                            </div>
                         </div>
                     </div>
-                `;
+                </div>
+            </div>
+        </section>
 
-                this.textContent = '开始检测';
+        <!-- 线上平台 -->
+        <section id="platform" class="py-16 md:py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="section-title">"智荟荞缘"线上综合服务平台</h2>
+                <p class="section-subtitle">
+                    打造一个集科普资讯、技术服务、社群互动于一体的数字化平台
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card">
+                        <svg class="feature-icon mx-auto" viewBox="0 0 24 24">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">科普资讯</h3>
+                        <p class="text-gray-600">提供荞麦种植、营养价值等科普知识</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon mx-auto" viewBox="0 0 24 24">
+                            <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">技术服务</h3>
+                        <p class="text-gray-600">在线咨询、远程诊断、技术指导</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg class="feature-icon mx-auto" viewBox="0 0 24 24">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">社群互动</h3>
+                        <p class="text-gray-600">用户交流、经验分享、活动组织</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 智能书苑 -->
+        <section id="bookstore" class="py-16 md:py-24 bg-green-50">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="section-title">"智能荞麦书苑"线下体验中心</h2>
+                <p class="section-subtitle">
+                    一个融合科技展示、文化体验、健康生活的复合型文化空间
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="https://source.unsplash.com/600x400/?cafe,books" 
+                             alt="智能书苑" class="rounded-xl shadow-lg">
+                    </div>
+                    <div class="space-y-6">
+                        <div class="feature-card">
+                            <h4 class="text-lg font-semibold text-emerald-600">科技展示</h4>
+                            <p class="text-gray-600">近距离体验AI技术在农业中的应用</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="text-lg font-semibold text-emerald-600">文化交流</h4>
+                            <p class="text-gray-600">定期举办讲座、工作坊等文化活动</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="text-lg font-semibold text-emerald-600">健康生活</h4>
+                            <p class="text-gray-600">品尝健康荞麦美食，感受慢生活之美</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目影响 -->
+        <section id="impact" class="py-16 md:py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="section-title">项目影响与社会价值</h2>
+                <p class="section-subtitle">
+                    通过技术创新和模式创新，为荞麦产业带来积极改变
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 bg-emerald-50 rounded-xl">
+                        <div class="text-4xl font-bold text-emerald-600 mb-2">30%+</div>
+                        <p class="text-gray-700 font-semibold">带动农户增收</p>
+                        <p class="text-sm text-gray-500">通过技术赋能提升合作农户收益</p>
+                    </div>
+                    <div class="text-center p-6 bg-blue-50 rounded-xl">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">95%</div>
+                        <p class="text-gray-700 font-semibold">种植成功率</p>
+                        <p class="text-sm text-gray-500">AI技术助力提高种植效率</p>
+                    </div>
+                    <div class="text-center p-6 bg-purple-50 rounded-xl">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">1000+</div>
+                        <p class="text-gray-700 font-semibold">服务农户</p>
+                        <p class="text-sm text-gray-500">带动更多农户参与产业升级</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="py-16 md:py-24 bg-emerald-700 text-white">
+            <div class="max-w-3xl mx-auto text-center px-4">
+                <h2 class="text-3xl font-bold mb-6">加入我们，共创未来！</h2>
+                <p class="text-lg mb-8">
+                    如果您对我们的项目感兴趣，期待与您携手共进
+                </p>
+                <a href="mailto:contact@zhihuiqiaoyuan.com" class="btn bg-white text-emerald-700 hover:bg-emerald-50">
+                    联系我们
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队. 保留所有权利.</p>
+            <p class="text-sm text-gray-400 mt-2">技术支持：云南农业大学创新创业中心</p>
+        </div>
+    </footer>
+
+    <!-- 核心脚本 -->
+    <script>
+        // 移动端菜单
+        document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
+            document.getElementById('mobile-menu')?.classList.toggle('hidden');
+        });
+
+        // 种子筛选演示
+        document.getElementById('seed-sort-button')?.addEventListener('click', function() {
+            this.textContent = '分析中...';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                document.getElementById('seed-sort-result')?.classList.remove('hidden');
+                this.textContent = '开始智能筛选';
                 this.disabled = false;
             }, 1500);
         });
 
-        // 生长监测图表
-        const growthChart = new Chart(document.getElementById('growth-chart'), {
-            type: 'line',
-            data: {
-                labels: ['第1周', '第2周', '第3周', '第4周', '第5周', '第6周'],
-                datasets: [{
-                    label: '实际生长高度',
-                    data: [5, 15, 30, 45, 60, 70],
-                    borderColor: '#10B981',
-                    tension: 0.3
-                }, {
-                    label: '预测生长曲线',
-                    data: [4, 16, 28, 44, 62, 75],
-                    borderColor: '#60A5FA',
-                    borderDash: [5, 5],
-                    tension: 0.3
-                }]
-            },
-            options: {
-                responsive: true,
-                interaction: {
-                    intersect: false,
-                    mode: 'index'
-                },
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    },
-                    tooltip: {
-                        enabled: true
-                    }
-                }
-            }
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // 移动端菜单自动关闭
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+            });
         });
 
-        // 环境参数图表
-        const envChart = new Chart(document.getElementById('env-chart'), {
-            type: 'line',
-            data: {
-                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
-                datasets: [{
-                    label: '温度 (°C)',
-                    data: [18, 16, 20, 25, 23, 19],
-                    borderColor: '#F59E0B',
-                    yAxisID: 'y'
-                }, {
-                    label: '湿度 (%)',
-                    data: [65, 70, 60, 45, 50, 60],
-                    borderColor: '#60A5FA',
-                    yAxisID: 'y1'
-                }]
-            },
-            options: {
-                responsive: true,
-                interaction: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                scales: {
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                    },
-                    y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        grid: {
-                            drawOnChartArea: false,
-                        },
-                    }
+        // 导航高亮
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
                 }
-            }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
         });
+
+        // 设置年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
