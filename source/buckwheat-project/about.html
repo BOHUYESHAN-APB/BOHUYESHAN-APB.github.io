@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我们 - 智荟荞缘 & 智耕未来</title>
+    <title>关于我们 - 智荟荞缘</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* 页面背景设为浅灰 */
+            background-color: #f9fafb; 
         }
         .about-header {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png'); /* 使用与首页一致的图片 */
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png'); 
             background-size: cover;
             background-position: center;
+            /* 移除了 transform: rotate(180deg) 如果之前有的话 */
         }
         .section-title {
             @apply text-3xl font-bold text-center mb-4 text-emerald-700;
@@ -31,14 +32,20 @@
         .team-member-card {
             @apply bg-white/70 backdrop-blur-sm p-6 rounded-lg text-center shadow-md hover:shadow-lg transition-shadow;
         }
-        .team-member-card img {
-            @apply w-24 h-24 rounded-full mx-auto mb-4 border-2 border-emerald-500 object-cover;
+        .team-member-card .placeholder-img { /* 团队成员占位符图片/图标 */
+            @apply w-24 h-24 rounded-full mx-auto mb-4 bg-gray-200 flex items-center justify-center border-2 border-emerald-300;
+        }
+        .team-member-card .placeholder-img svg {
+            @apply w-12 h-12 text-gray-400;
         }
         .stat-card {
             @apply bg-emerald-50/70 backdrop-blur-sm p-6 rounded-lg text-center border border-emerald-200/50;
         }
-        .contact-icon {
-            @apply w-6 h-6 text-emerald-600;
+        .contact-icon { /* 调整联系方式图标大小 */
+            @apply w-5 h-5 text-emerald-600; /* 之前是 w-6 h-6 */
+        }
+        .partner-logo { /* 合作伙伴logo占位符 */
+            @apply h-12 sm:h-14 w-auto max-w-[150px] opacity-70 hover:opacity-100 transition-opacity object-contain;
         }
         .btn {
             @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
@@ -51,8 +58,20 @@
             @apply bg-emerald-600 text-white hover:bg-emerald-700;
         }
         /* 响应式导航 */
-        #mobileMenu a {
+        #mobileMenuAbout a { /* 确保ID唯一性 */
             @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600;
+        }
+        /* 响应式文本 */
+        @media (max-width: 767px) {
+            .about-header h1 { @apply text-3xl; }
+            .about-header p { @apply text-base; }
+            .section-title { @apply text-2xl; }
+            .section-subtitle { @apply text-sm; }
+            .about-card h2 { @apply text-xl; }
+            .about-card h3 { @apply text-lg; }
+            .about-card p, .about-card ul { @apply text-sm; }
+            .team-member-card h3 { @apply text-base; }
+            .stat-card p:first-child { @apply text-2xl; } /* Stat card 数字大小 */
         }
     </style>
 </head>
@@ -93,7 +112,7 @@
     <header class="about-header text-white pt-32 pb-20 md:pt-36 md:pb-24">
         <div class="max-w-4xl mx-auto text-center px-4">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">关于我们</h1>
-            <p class="text-lg md:text-xl mb-8">致力于通过科技创新赋能荞麦产业，创造可持续价值。</p>
+            <p class="text-lg md:text-xl mb-8">云南农业大学智荟荞缘科技工作室，致力于通过科技创新赋能荞麦产业，创造可持续价值。</p>
         </div>
     </header>
 
@@ -105,37 +124,37 @@
                     <h2 class="text-2xl font-semibold text-center text-emerald-700 mb-6">我们的愿景与使命</h2>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">项目愿景</h3>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">工作室愿景</h3>
                             <p class="text-gray-700 leading-relaxed">
-                                成为全球领先的智慧荞麦产业解决方案提供商，通过科技创新引领荞麦产业的现代化转型，
-                                让古老的荞麦焕发新生机，为人类健康与地球可持续发展贡献力量。
+                                成为智慧荞麦产业领域的创新先锋，通过科技手段引领荞麦产业的现代化发展，
+                                让古老的荞麦作物焕发新的生机与活力，为区域农业发展与人类健康事业贡献力量。
                             </p>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">项目使命</h3>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">工作室使命</h3>
                             <p class="text-gray-700 leading-relaxed">
-                                聚焦荞麦全产业链，融合人工智能、物联网、大数据等前沿技术，
-                                打造高效、绿色、智能的生产体系；传承与创新荞麦文化，提升产品附加值，
-                                助力农户增收致富，推动乡村振兴。
+                                聚焦荞麦全产业链的科技创新与应用，融合人工智能、物联网、大数据等前沿技术，
+                                探索并推广高效、绿色、智能的荞麦生产新模式；传承与创新荞麦文化，
+                                提升荞麦产品附加值，助力农户增收，服务乡村振兴战略。
                             </p>
                         </div>
                     </div>
                     <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
                         <div class="stat-card">
-                            <p class="text-3xl font-bold text-emerald-600">5+</p>
-                            <p class="text-sm text-gray-600">年行业深耕</p>
+                            <p class="text-3xl font-bold text-emerald-600">XX+</p>
+                            <p class="text-sm text-gray-600">年技术积累</p>
                         </div>
                         <div class="stat-card">
-                            <p class="text-3xl font-bold text-emerald-600">10+</p>
-                            <p class="text-sm text-gray-600">核心专利技术</p>
+                            <p class="text-3xl font-bold text-emerald-600">XX+</p>
+                            <p class="text-sm text-gray-600">项科研成果 (含专利)</p>
                         </div>
                         <div class="stat-card">
-                            <p class="text-3xl font-bold text-emerald-600">100+</p>
-                            <p class="text-sm text-gray-600">合作伙伴</p>
+                            <p class="text-3xl font-bold text-emerald-600">XX+</p>
+                            <p class="text-sm text-gray-600">合作单位/个人</p>
                         </div>
                         <div class="stat-card">
-                            <p class="text-3xl font-bold text-emerald-600">1M+</p>
-                            <p class="text-sm text-gray-600">亩示范推广</p>
+                            <p class="text-3xl font-bold text-emerald-600">XX+</p>
+                            <p class="text-sm text-gray-600">亩示范应用 (规划)</p>
                         </div>
                     </div>
                 </div>
@@ -143,69 +162,78 @@
 
             <!-- 核心团队 -->
             <section id="core-team" class="mb-12 md:mb-16">
-                <h2 class="section-title">核心团队</h2>
+                <h2 class="section-title">核心团队成员</h2>
                 <p class="section-subtitle">
-                    我们拥有一支充满激情、经验丰富且跨学科的专业团队，致力于项目的成功。
+                    我们的团队由来自云南农业大学相关专业的师生组成，具备跨学科知识背景和实践经验。
+                    （具体成员信息请参考项目申报书或相关正式文档，此处为占位展示）
                 </p>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 团队成员占位符示例 -->
                     <div class="team-member-card">
-                        <img src="https://source.unsplash.com/200x200/?portrait,man,ceo" alt="团队成员1">
-                        <h3 class="text-lg font-semibold text-gray-800">李明远博士</h3>
-                        <p class="text-sm text-emerald-600 mb-1">首席科学家 & AI专家</p>
-                        <p class="text-xs text-gray-500">专注于农业人工智能模型研发，拥有10余年相关领域经验。</p>
+                        <div class="placeholder-img">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">指导老师/负责人 XX</h3>
+                        <p class="text-sm text-emerald-600 mb-1">职称/角色</p>
+                        <p class="text-xs text-gray-500">主要研究方向或负责领域简介。</p>
                     </div>
                     <div class="team-member-card">
-                        <img src="https://source.unsplash.com/200x200/?portrait,woman,expert" alt="团队成员2">
-                        <h3 class="text-lg font-semibold text-gray-800">张慧敏</h3>
-                        <p class="text-sm text-emerald-600 mb-1">农业技术总监</p>
-                        <p class="text-xs text-gray-500">资深农艺师，精通荞麦优良品种选育与标准化种植技术。</p>
+                        <div class="placeholder-img">
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">团队成员 XX</h3>
+                        <p class="text-sm text-emerald-600 mb-1">专业/角色</p>
+                        <p class="text-xs text-gray-500">主要负责内容或技术特长简介。</p>
                     </div>
                     <div class="team-member-card">
-                        <img src="https://source.unsplash.com/200x200/?portrait,man,manager" alt="团队成员3">
-                        <h3 class="text-lg font-semibold text-gray-800">王浩宇</h3>
-                        <p class="text-sm text-emerald-600 mb-1">市场运营负责人</p>
-                        <p class="text-xs text-gray-500">擅长品牌建设与市场推广，成功运作多个农产品牌项目。</p>
+                        <div class="placeholder-img">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">团队成员 XX</h3>
+                        <p class="text-sm text-emerald-600 mb-1">专业/角色</p>
+                        <p class="text-xs text-gray-500">主要负责内容或技术特长简介。</p>
                     </div>
-                    <div class="team-member-card">
-                        <img src="https://source.unsplash.com/200x200/?portrait,woman,designer" alt="团队成员4">
-                        <h3 class="text-lg font-semibold text-gray-800">刘欣怡</h3>
-                        <p class="text-sm text-emerald-600 mb-1">文化与产品设计师</p>
-                        <p class="text-xs text-gray-500">致力于荞麦文化挖掘与创新产品设计，赋予产品文化灵魂。</p>
-                    </div>
+                    <!-- 可根据实际团队规模增加更多占位符 -->
                 </div>
             </section>
 
             <!-- 合作伙伴与支持 -->
              <section id="partners" class="mb-12 md:mb-16">
-                <h2 class="section-title">合作伙伴与支持单位</h2>
+                <h2 class="section-title">合作伙伴与支持单位 (示例)</h2>
                 <p class="section-subtitle">
-                    感谢以下机构与伙伴对我们项目的大力支持与深度合作。
+                    感谢相关机构与伙伴对我们项目探索与实践的支持。
                 </p>
                 <div class="about-card">
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-10 items-center">
                         <div class="flex justify-center">
-                            <img src="https://via.placeholder.com/150x80.png?text=云南农大" alt="云南农业大学" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                            <img src="https://via.placeholder.com/180x80.png?text=云南农业大学" alt="云南农业大学" class="partner-logo">
                         </div>
                         <div class="flex justify-center">
-                             <img src="https://via.placeholder.com/150x80.png?text=农科院" alt="农业科学院" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                             <img src="https://via.placeholder.com/180x80.png?text=学院/部门A" alt="学院/部门A" class="partner-logo">
                         </div>
                         <div class="flex justify-center">
-                             <img src="https://via.placeholder.com/150x80.png?text=科技厅" alt="科技厅" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                             <img src="https://via.placeholder.com/180x80.png?text=合作企业B" alt="合作企业B" class="partner-logo">
                         </div>
                         <div class="flex justify-center">
-                             <img src="https://via.placeholder.com/150x80.png?text=龙头企业A" alt="龙头企业A" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                             <img src="https://via.placeholder.com/180x80.png?text=科研机构C" alt="科研机构C" class="partner-logo">
                         </div>
                          <div class="flex justify-center">
-                            <img src="https://via.placeholder.com/150x80.png?text=合作社B" alt="合作社B" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                            <img src="https://via.placeholder.com/180x80.png?text=支持单位D" alt="支持单位D" class="partner-logo">
                         </div>
                         <div class="flex justify-center">
-                             <img src="https://via.placeholder.com/150x80.png?text=电商平台C" alt="电商平台C" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                            <img src="https://via.placeholder.com/180x80.png?text=丁习功工作室" alt="丁习功工作室" class="partner-logo">
                         </div>
                         <div class="flex justify-center">
-                             <img src="https://via.placeholder.com/150x80.png?text=基金会D" alt="基金会D" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                             <img src="https://via.placeholder.com/180x80.png?text=其他伙伴E" alt="其他伙伴E" class="partner-logo">
                         </div>
                         <div class="flex justify-center">
-                             <img src="https://via.placeholder.com/150x80.png?text=丁习功工作室" alt="丁习功工作室" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                             <img src="https://via.placeholder.com/180x80.png?text=更多伙伴" alt="更多伙伴" class="partner-logo">
                         </div>
                     </div>
                 </div>
@@ -220,40 +248,40 @@
                 <div class="about-card max-w-3xl mx-auto">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">项目垂询</h3>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">工作室联系方式</h3>
                             <ul class="space-y-3 text-gray-700">
                                 <li class="flex items-start">
                                     <svg class="contact-icon mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    <span><span class="font-medium">邮箱：</span>contact@zhihuiqiaoyuan.com</span>
+                                    <span><span class="font-medium">邮箱：</span>contact.zhqy@example.com (示例)</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="contact-icon mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.034 11.034 0 005.37 5.37l1.154-2.308a1 1 0 011.21-.502l4.493 1.498A1 1 0 0119 12.72V16a2 2 0 01-2 2h-1C6.04 18 2 13.96 2 8V6a2 2 0 012-2h1z"></path></svg>
-                                    <span><span class="font-medium">电话：</span>+86 0871-XXXXXXX</span>
+                                    <span><span class="font-medium">电话：</span>+86 XXX-XXXXXXX (示例)</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="contact-icon mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                    <span><span class="font-medium">地址：</span>云南省昆明市盘龙区云南农业大学国家大学科技园</span>
+                                    <span><span class="font-medium">地址：</span>云南省昆明市盘龙区云南农业大学校内 (具体地址请咨询)</span>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">在线留言</h3>
-                            <form action="#" method="POST">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">在线留言 (功能暂未开放)</h3>
+                            <form action="#" method="POST" onsubmit="alert('留言功能暂未开放，敬请期待！'); return false;">
                                 <div class="space-y-4">
                                     <div>
                                         <label for="name" class="sr-only">姓名</label>
-                                        <input type="text" name="name" id="name" autocomplete="name" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" placeholder="您的姓名">
+                                        <input type="text" name="name" id="name" autocomplete="name" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500 disabled:bg-gray-100" placeholder="您的姓名" disabled>
                                     </div>
                                     <div>
                                         <label for="email" class="sr-only">邮箱</label>
-                                        <input type="email" name="email" id="email" autocomplete="email" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" placeholder="您的邮箱">
+                                        <input type="email" name="email" id="email" autocomplete="email" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500 disabled:bg-gray-100" placeholder="您的邮箱" disabled>
                                     </div>
                                     <div>
                                         <label for="message" class="sr-only">留言</label>
-                                        <textarea id="message" name="message" rows="4" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" placeholder="您的留言内容..."></textarea>
+                                        <textarea id="message" name="message" rows="4" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500 disabled:bg-gray-100" placeholder="您的留言内容..." disabled></textarea>
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-primary w-full">
+                                        <button type="submit" class="btn btn-primary w-full disabled:opacity-50" disabled>
                                             发送留言
                                         </button>
                                     </div>
@@ -269,8 +297,8 @@
     <!-- 页脚 -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; <span id="current-year-about"></span> 智荟荞缘 & 智耕未来项目团队</p>
-            <p class="text-sm text-gray-400 mt-2">云南农业大学创新创业项目</p>
+            <p>&copy; <span id="current-year-about"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
+            <p class="text-sm text-gray-400 mt-2">技术支持：云南农业大学创新创业中心 (模拟)</p>
         </div>
     </footer>
 

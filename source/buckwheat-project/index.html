@@ -3,142 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智荟荞缘 & 智耕未来：AI与互联网+赋能荞麦全产业链革新</title>
+    <title>智荟荞缘 - AI与互联网+赋能荞麦全产业链革新</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            background-color: #f9fafb; /* 页面背景设为浅灰 */
         }
-        
-        /* 导航栏毛玻璃效果 */
-        .nav-blur {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* 卡片毛玻璃效果 */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 特性卡片毛玻璃效果 */
-        .feature-glass {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* 数据展示卡片毛玻璃效果 */
-        .stats-glass {
-            background: rgba(16, 185, 129, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
         .hero-bg {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
-                             url('/buckwheat-project/img/home-pg (1).png');
-            background-size: cover;
-            background-position: center;
             position: relative;
+            overflow: hidden;
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-overlay {
+        .hero-bg::before,
+        .hero-bg::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, 
-                rgba(0,0,0,0.4) 0%,
-                rgba(0,0,0,0.2) 50%,
-                rgba(0,0,0,0.6) 100%
-            );
-            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1.5s ease-in-out; /* 调整过渡效果 */
+            /* 移除了 transform: rotate(180deg) 如果之前有的话 */
         }
-
+        .hero-bg::before {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+                             url('/buckwheat-project/img/home-pg (1).png');
+            z-index: 1;
+            opacity: 1;
+        }
+        .hero-bg::after {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+                             url('/buckwheat-project/img/home-pg (2).png');
+            opacity: 0;
+            z-index: 2;
+        }
+        .hero-bg.alternate::before {
+            opacity: 0;
+        }
+        .hero-bg.alternate::after {
+            opacity: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-4 text-emerald-700;
+        }
+        .section-subtitle {
+            @apply text-center text-gray-600 mb-12 max-w-3xl mx-auto; /* 增加最大宽度 */
+        }
+        .feature-card-main { /* 用于首页的卡片，区别于其他页面的 tech-card/culture-card */
+            @apply bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200/50;
+        }
+        .feature-card-main:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            @apply w-16 h-16 bg-emerald-100 rounded-lg flex items-center justify-center mb-6; /* 调整图标背景和大小 */
+        }
+        .feature-icon svg {
+            @apply w-8 h-8 text-emerald-600; /* 调整SVG图标大小 */
+        }
         .btn {
             @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
         }
-
         .btn-primary {
-            background: rgba(16, 185, 129, 0.9);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: white;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+            @apply bg-emerald-600 text-white hover:bg-emerald-700;
         }
-
         .btn-primary:hover {
-            background: rgba(16, 185, 129, 1);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
         }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
+        .btn-secondary { /* 首页Hero区域的次要按钮 */
+            @apply bg-white/30 backdrop-blur-sm text-white hover:bg-white/40 border border-white/50;
         }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
+         .btn-secondary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
         }
 
-        .section-card {
-            @apply rounded-xl p-6 transition-all duration-300;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        /* 响应式设计优化 */
-        @media (max-width: 640px) {
-            .nav-blur {
-                background: rgba(255, 255, 255, 0.95);
+        /* 响应式优化 */
+        @media (max-width: 767px) { /* md断点以下 */
+            .hero-content h1 {
+                @apply text-3xl; /* 调整移动端标题大小 */
             }
-            .glass-card {
-                background: rgba(255, 255, 255, 0.95);
+            .hero-content p {
+                @apply text-base; /* 调整移动端段落大小 */
             }
+            .section-title {
+                @apply text-2xl;
+            }
+            .section-subtitle {
+                @apply text-sm;
+            }
+            .feature-icon {
+                @apply w-12 h-12 mb-4;
+            }
+            .feature-icon svg {
+                @apply w-6 h-6;
+            }
+        }
+        #mobileMenu a {
+            @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-white">
-    <!-- 导航栏 - 应用毛玻璃效果 -->
-    <nav class="nav-blur fixed w-full z-50 top-0 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4">
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <a href="/buckwheat-project/" class="text-2xl font-bold text-emerald-600">
-                    智荟荞缘 & 智耕未来
+                    智荟荞缘
                 </a>
                 <div class="hidden md:flex space-x-4">
-                    <a href="/buckwheat-project/" class="nav-link active">首页</a>
-                    <a href="/buckwheat-project/tech.html" class="nav-link">技术展示</a>
-                    <a href="/buckwheat-project/culture.html" class="nav-link">文化传播</a>
-                    <a href="/buckwheat-project/about.html" class="nav-link">关于我们</a>
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium bg-emerald-100 text-emerald-700">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
                 </div>
                 <!-- 移动端菜单按钮 -->
                 <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButton">
@@ -148,150 +135,276 @@
                 </button>
             </div>
         </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/buckwheat-project/">首页</a>
+                <a href="/buckwheat-project/tech.html">技术展示</a>
+                <a href="/buckwheat-project/culture.html">文化传播</a>
+                <a href="/buckwheat-project/about.html">关于我们</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero区域 -->
-    <header class="hero-bg text-white min-h-screen flex items-center relative">
-        <div class="hero-overlay"></div>
-        <div class="hero-content max-w-4xl mx-auto text-center px-4 py-20">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                智荟荞缘 & 智耕未来
+    <header class="hero-bg text-white pt-32 pb-20 md:pt-48 md:pb-32 min-h-[60vh] md:min-h-[70vh] flex items-center justify-center">
+        <div class="hero-content max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                智荟荞缘
             </h1>
-            <p class="text-lg md:text-2xl mb-8">
-                AI与互联网+赋能荞麦全产业链革新，打造智慧农业新模式
+            <p class="text-lg md:text-xl lg:text-2xl mb-8">
+                AI与互联网+赋能荞麦全产业链革新 · 云南农业大学智荟荞缘科技工作室
             </p>
-            <div class="space-x-4">
-                <a href="/buckwheat-project/tech.html" class="btn btn-primary">探索技术</a>
-                <a href="/buckwheat-project/culture.html" class="btn btn-secondary">了解更多</a>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#overview" class="btn btn-primary inline-block">了解项目详情</a>
+                <a href="/buckwheat-project/tech.html" class="btn btn-secondary inline-block">探索核心技术</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- 项目概览 -->
-        <section class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">项目概览</h2>
+        <!-- 项目概览部分 -->
+        <section id="overview" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">智能荞麦全产业链解决方案</h2>
+                <p class="section-subtitle">
+                    我们致力于通过人工智能、物联网及大数据分析等前沿技术，构建从优良品种选育、智慧种植管理到精深加工与品牌营销的荞麦全产业链智能化创新体系。
+                </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 技术创新 -->
-                    <div class="section-card">
-                        <div class="w-16 h-16 bg-emerald-100 rounded-lg flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    <div class="feature-card-main">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">技术创新</h3>
-                        <p class="text-gray-600">运用AI技术优化种植流程，提升产品品质</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">AI智能技术驱动</h3>
+                        <p class="text-gray-600 mb-4 text-sm">运用深度学习与计算机视觉，实现荞麦种子智能筛选、生长状态实时监测、病虫害智能预警及产品品质智能评估。</p>
+                        <a href="/buckwheat-project/tech.html#smart-farming" class="text-emerald-600 hover:text-emerald-700 inline-flex items-center font-medium text-sm">
+                            探索AI应用
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
 
                     <!-- 标准化生产 -->
-                    <div class="section-card">
-                        <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="feature-card-main">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">标准化生产</h3>
-                        <p class="text-gray-600">建立规范化、可复制的种植标准</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">标准化生产体系</h3>
+                        <p class="text-gray-600 mb-4 text-sm">建立并推广荞麦标准化种植规程（SOP），覆盖品种选择、田间管理、绿色防控及采收加工，确保产品品质与安全。</p>
+                        <a href="/buckwheat-project/tech.html#standardization" class="text-emerald-600 hover:text-emerald-700 inline-flex items-center font-medium text-sm">
+                            了解生产标准
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
 
                     <!-- 文化传承 -->
-                    <div class="section-card">
-                        <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="feature-card-main">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">文化传承</h3>
-                        <p class="text-gray-600">传播荞麦文化，弘扬传统价值</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">荞麦文化弘扬</h3>
+                        <p class="text-gray-600 mb-4 text-sm">挖掘与传播荞麦深厚的历史文化底蕴，结合现代创意打造“智能荞麦书苑”等文化体验空间，推广健康生活方式。</p>
+                        <a href="/buckwheat-project/culture.html" class="text-emerald-600 hover:text-emerald-700 inline-flex items-center font-medium text-sm">
+                            体验文化魅力
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 核心优势 -->
-        <section class="py-20 bg-gradient-to-br from-emerald-50 to-blue-50 relative">
-            <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">核心优势</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 左侧：图片 -->
-                    <div class="glass-card p-4">
-                        <img src="https://source.unsplash.com/600x400/?agriculture,technology" 
-                             alt="智慧农业" class="rounded-lg shadow-lg w-full">
+        <!-- 技术特色 -->
+        <section id="features" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">核心技术特色</h2>
+                <p class="section-subtitle">
+                    我们整合多项关键技术，为荞麦产业的每个环节提供创新解决方案。
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- 左侧：技术图解 -->
+                    <div class="relative order-last md:order-first">
+                        <img src="https://source.unsplash.com/600x450/?abstract,technology,green" 
+                             alt="核心技术示意图" class="rounded-xl shadow-xl w-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-blue-500/10 rounded-xl"></div>
                     </div>
-                    <!-- 右侧：优势列表 -->
+                    <!-- 右侧：技术列表 -->
                     <div class="space-y-6">
-                        <div class="feature-glass p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-2">AI技术赋能</h3>
-                            <p class="text-gray-600">运用深度学习技术，实现全程智能化管理</p>
+                        <div class="flex items-start gap-4 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200/50">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-gray-800">AI视觉识别</h3>
+                                <p class="text-gray-600 text-sm">应用于种子筛选、苗情监测、病虫害识别、果实成熟度判断等。</p>
+                            </div>
                         </div>
-                        <div class="feature-glass p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-2">标准化生产</h3>
-                            <p class="text-gray-600">建立完整的标准体系，保障产品品质</p>
+                        <div class="flex items-start gap-4 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200/50">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                               <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10m16-5H4m16 0a2 2 0 100-4H4a2 2 0 100 4zm0 0a2 2 0 110 4H4a2 2 0 110-4zm0 0H4"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-gray-800">物联网 (IoT) 应用</h3>
+                                <p class="text-gray-600 text-sm">实时采集环境数据（温湿度、光照、土壤参数），远程控制灌溉、施肥等设备。</p>
+                            </div>
                         </div>
-                        <div class="feature-glass p-6 rounded-lg">
-                            <h3 class="text-lg font-semibold mb-2">产业链升级</h3>
-                            <p class="text-gray-600">推动传统农业向智慧农业转型</p>
+                        <div class="flex items-start gap-4 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200/50">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-gray-800">大数据与预测模型</h3>
+                                <p class="text-gray-600 text-sm">分析历史与实时数据，构建产量预测、品质评估、灾害预警等模型。</p>
+                            </div>
                         </div>
+                         <div class="flex items-start gap-4 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-gray-200/50">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-gray-800">区块链溯源技术</h3>
+                                <p class="text-gray-600 text-sm">保障产品从田间到餐桌的全程信息透明与不可篡改，提升品牌信任度。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 应用场景 -->
+        <section id="applications" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">主要应用场景</h2>
+                <p class="section-subtitle">我们的技术与方案广泛适用于荞麦产业链的各个关键环节。</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card-main overflow-hidden">
+                        <img src="https://source.unsplash.com/400x250/?precision,farming,drone" alt="智慧种植基地" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">智慧种植基地</h3>
+                        <p class="text-gray-600 text-sm">为大规模荞麦种植基地提供智能化管理平台，实现精准作业，降本增效。</p>
+                    </div>
+                    <div class="feature-card-main overflow-hidden">
+                        <img src="https://source.unsplash.com/400x250/?seed,lab,research" alt="优良品种选育" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">优良品种选育</h3>
+                        <p class="text-gray-600 text-sm">辅助科研机构进行荞麦品种的性状分析与智能筛选，加速育种进程。</p>
+                    </div>
+                    <div class="feature-card-main overflow-hidden">
+                        <img src="https://source.unsplash.com/400x250/?food,processing,factory" alt="农产品精深加工" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">农产品精深加工</h3>
+                        <p class="text-gray-600 text-sm">在荞麦清洗、分级、加工等环节引入智能质检与过程控制，提升产品附加值。</p>
+                    </div>
+                    <div class="feature-card-main overflow-hidden">
+                        <img src="https://source.unsplash.com/400x250/?qr,code,food,package" alt="产品质量溯源" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">产品质量溯源</h3>
+                        <p class="text-gray-600 text-sm">为消费者提供透明可信的产品溯源信息，保障食品安全，赋能品牌建设。</p>
+                    </div>
+                     <div class="feature-card-main overflow-hidden">
+                        <img src="https://source.unsplash.com/400x250/?data,analytics,dashboard" alt="农业大数据服务" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">农业大数据服务</h3>
+                        <p class="text-gray-600 text-sm">为政府、企业、合作社等提供区域农业数据分析与决策支持服务。</p>
+                    </div>
+                     <div class="feature-card-main overflow-hidden">
+                        <img src="https://source.unsplash.com/400x250/?education,training,agriculture" alt="技术培训与推广" class="w-full h-48 object-cover mb-4 rounded-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">技术培训与推广</h3>
+                        <p class="text-gray-600 text-sm">通过线上平台和线下示范基地，开展智慧农业技术培训与推广服务。</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 项目价值 -->
-        <section class="py-20 relative">
-            <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">项目价值</h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div class="stats-glass p-6 rounded-lg text-center">
-                        <div class="text-4xl font-bold text-emerald-600 mb-2">30%+</div>
-                        <p class="text-gray-600">农户增收</p>
+        <section id="value" class="py-16 bg-emerald-600 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-10">项目带来的价值</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+                        <div class="text-5xl font-extrabold mb-2">XX%</div>
+                        <p class="font-medium">生产效率提升 (预期)</p>
                     </div>
-                    <div class="stats-glass p-6 rounded-lg text-center">
-                        <div class="text-4xl font-bold text-emerald-600 mb-2">95%</div>
-                        <p class="text-gray-600">种植成功率</p>
+                    <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+                        <div class="text-5xl font-extrabold mb-2">XX%</div>
+                        <p class="font-medium">资源利用率提高 (目标)</p>
                     </div>
-                    <div class="stats-glass p-6 rounded-lg text-center">
-                        <div class="text-4xl font-bold text-emerald-600 mb-2">1000+</div>
-                        <p class="text-gray-600">服务农户</p>
+                    <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+                        <div class="text-5xl font-extrabold mb-2">XX+</div>
+                        <p class="font-medium">带动农户数量 (规划)</p>
                     </div>
-                    <div class="stats-glass p-6 rounded-lg text-center">
-                        <div class="text-4xl font-bold text-emerald-600 mb-2">20+</div>
-                        <p class="text-gray-600">示范基地</p>
+                    <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+                        <div class="text-5xl font-extrabold mb-2">XX+</div>
+                        <p class="font-medium">示范基地建设 (计划)</p>
                     </div>
                 </div>
+                 <p class="text-center mt-10 text-emerald-200 text-sm">
+                    注：以上数据为项目发展目标或基于初步试验的预期，具体数值将随项目进展动态更新。
+                </p>
             </div>
         </section>
     </main>
 
     <!-- 页脚 -->
-    <footer class="bg-gray-800 bg-opacity-95 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队</p>
-            <p class="text-sm text-gray-400 mt-2">云南农业大学创新创业项目</p>
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-2">&copy; <span id="current-year"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
+            <p class="text-sm text-gray-400">技术支持：云南农业大学创新创业中心 (模拟)</p>
         </div>
     </footer>
 
     <script>
-        // 更新年份
+        // 设置年份
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 0) {
-                nav.classList.add('shadow-md');
-            } else {
-                nav.classList.remove('shadow-md');
-            }
-        });
-
-        // 移动端菜单
+        // 移动端菜单切换
         const menuButton = document.getElementById('menuButton');
         const mobileMenu = document.getElementById('mobileMenu');
+        if(menuButton && mobileMenu){
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
         
-        menuButton?.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+
+        // 背景图片自动切换
+        const heroBg = document.querySelector('.hero-bg');
+        if(heroBg){
+            let isAlternate = false;
+            function toggleBackground() {
+                isAlternate = !isAlternate;
+                if (isAlternate) {
+                    heroBg.classList.add('alternate');
+                } else {
+                    heroBg.classList.remove('alternate');
+                }
+            }
+            setInterval(toggleBackground, 6000); // 调整切换时间
+        }
+
+        // 页面滚动时的渐入效果 (仅为示例，可根据需要扩展)
+        const fadeInElements = document.querySelectorAll('.feature-card-main, .section-title, .section-subtitle');
+        
+        const fadeInOptions = {
+            threshold: 0.1, // 元素可见10%时触发
+            rootMargin: '0px 0px -50px 0px' // 视窗底部向上偏移50px
+        };
+
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // 触发后停止观察
+                }
+            });
+        }, fadeInOptions);
+
+        fadeInElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            fadeInObserver.observe(element);
         });
     </script>
 </body>
