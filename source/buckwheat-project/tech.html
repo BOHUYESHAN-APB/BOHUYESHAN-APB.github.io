@@ -1,4 +1,3 @@
-<!-- 保持原有内容，只更新header部分的背景图片设置 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -11,12 +10,33 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* 页面背景设为浅灰 */
         }
         .tech-header {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/buckwheat-project/img/home-pg (2).png');
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (2).png');
             background-size: cover;
             background-position: center;
-            transition: background-image 0.5s ease;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-4 text-emerald-700;
+        }
+        .section-subtitle {
+            @apply text-center text-gray-600 mb-12 max-w-2xl mx-auto;
+        }
+        .tech-card {
+            @apply bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200/50;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+        .data-card {
+            @apply bg-emerald-50/70 backdrop-blur-sm p-4 rounded-lg border border-emerald-200/50;
+        }
+        .chart-container {
+            @apply bg-white/70 backdrop-blur-md p-4 rounded-lg shadow-md transition-all duration-300 border border-gray-200/50;
+        }
+        .chart-container:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
         .btn {
             @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
@@ -25,19 +45,296 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .tech-card {
-            @apply bg-white p-6 rounded-xl shadow-lg transition-all duration-300;
-        }
-        .tech-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-        }
-        .chart-container {
-            @apply bg-white p-4 rounded-lg shadow-md transition-all duration-300;
-        }
-        .chart-container:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        /* 响应式导航 */
+        #mobileMenu a {
+            @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600;
         }
     </style>
 </head>
-<!-- 保持原有的body内容不变 -->
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/buckwheat-project/" class="text-2xl font-bold text-emerald-600">
+                    智荟荞缘
+                </a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium bg-emerald-100 text-emerald-700">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
+                </div>
+                <!-- 移动端菜单按钮 -->
+                <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButtonTech">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden" id="mobileMenuTech">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/buckwheat-project/">首页</a>
+                <a href="/buckwheat-project/tech.html">技术展示</a>
+                <a href="/buckwheat-project/culture.html">文化传播</a>
+                <a href="/buckwheat-project/about.html">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 技术展示头部 -->
+    <header class="tech-header text-white pt-32 pb-20 md:pt-36 md:pb-24">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">AI赋能 · 智慧农业</h1>
+            <p class="text-lg md:text-xl mb-8">探索人工智能在荞麦全产业链的创新应用与实践</p>
+        </div>
+    </header>
+
+    <main class="py-12 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 智能种植系统 -->
+            <section id="smart-farming" class="mb-12 md:mb-16">
+                <h2 class="section-title">智能种植决策系统</h2>
+                <p class="section-subtitle">
+                    融合AI算法与农业专家知识，实现荞麦种植全过程的精准化、智能化管理。
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">AI环境感知与调控</h3>
+                        <p class="text-gray-700 mb-4">通过物联网传感器实时采集温度、湿度、光照、土壤参数等数据，AI模型分析后智能调节环境设备，为荞麦生长创建最佳条件。</p>
+                        <div class="chart-container mb-4">
+                            <canvas id="env-chart"></canvas>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div class="data-card text-center">
+                                <p class="text-sm text-gray-600">实时温度</p>
+                                <p class="text-2xl font-bold text-emerald-600">24.5°C</p>
+                            </div>
+                            <div class="data-card text-center">
+                                <p class="text-sm text-gray-600">土壤湿度</p>
+                                <p class="text-2xl font-bold text-emerald-600">68%</p>
+                            </div>
+                            <div class="data-card text-center">
+                                <p class="text-sm text-gray-600">光照强度</p>
+                                <p class="text-2xl font-bold text-emerald-600">11500lx</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">智能生长监测与预警</h3>
+                         <p class="text-gray-700 mb-4">利用高清摄像头与图像识别技术，AI模型自动监测作物长势、叶片颜色、株高等指标，预测生长趋势，并对潜在的生长异常或早期病虫害进行预警。</p>
+                        <div class="chart-container mb-4">
+                             <canvas id="growth-chart"></canvas>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>实时作物健康评估</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>产量与品质预测模型</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>智能化农事建议推送</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 数据分析与可视化平台 -->
+            <section id="data-analysis" class="mb-12 md:mb-16">
+                <h2 class="section-title">农业大数据分析平台</h2>
+                <p class="section-subtitle">
+                    汇聚种植全过程数据，通过可视化分析与深度挖掘，为农业生产提供数据驱动的决策支持。
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">产量与效益分析</h3>
+                        <div class="chart-container h-56 mb-4">
+                            <canvas id="yield-chart"></canvas>
+                        </div>
+                        <p class="text-sm text-gray-700">基于历史数据与实时监测，分析不同管理措施对产量和经济效益的影响，优化投入产出比。</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">荞麦品质智能评估</h3>
+                         <div class="chart-container h-56 mb-4">
+                            <canvas id="quality-chart"></canvas>
+                        </div>
+                        <p class="text-sm text-gray-700">结合图像识别与理化指标数据，AI模型对荞麦籽粒、苗菜等产品进行多维度品质评估与分级。</p>
+                    </div>
+                    <div class="tech-card md:col-span-2 lg:col-span-1">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">生长周期优化</h3>
+                        <div class="chart-container h-56 mb-4">
+                             <canvas id="cycle-chart"></canvas>
+                        </div>
+                        <p class="text-sm text-gray-700">分析各生长阶段的关键影响因素，优化水肥管理、病虫害防治等农事操作，缩短生长周期，提高资源利用效率。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 标准化生产与溯源 -->
+            <section id="standardization" class="mb-12 md:mb-16">
+                <h2 class="section-title">标准化生产与质量溯源</h2>
+                <p class="section-subtitle">
+                    建立从田间到餐桌的全程标准化生产规范，结合区块链技术实现产品质量可信溯源。
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">智慧种植SOP</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 mt-1 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                <span>标准化的土壤改良与管理方案，确保地力持续。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 mt-1 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                <span>基于作物需求的科学灌溉与精准施肥计划。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 mt-1 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                <span>规范化的田间管理流程与绿色防控措施。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tech-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">区块链质量溯源</h3>
+                        <img src="https://source.unsplash.com/600x350/?blockchain,traceability" alt="区块链溯源" class="rounded-lg shadow-md mb-4 w-full object-cover">
+                        <p class="text-gray-700">将品种、产地、种植过程、加工、检测等关键信息上链存证，消费者扫码即可查询产品“前世今生”，保障食品安全与品牌信誉。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队</p>
+            <p class="text-sm text-gray-400 mt-2">云南农业大学创新创业项目</p>
+        </div>
+    </footer>
+
+    <script>
+        // 更新年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 移动端菜单切换 (Tech Page)
+        const menuButtonTech = document.getElementById('menuButtonTech');
+        const mobileMenuTech = document.getElementById('mobileMenuTech');
+        if(menuButtonTech && mobileMenuTech){
+            menuButtonTech.addEventListener('click', () => {
+                mobileMenuTech.classList.toggle('hidden');
+            });
+        }
+
+
+        // 环境监测图表
+        const envCtx = document.getElementById('env-chart');
+        if (envCtx) {
+            new Chart(envCtx, {
+                type: 'line',
+                data: {
+                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+                    datasets: [{
+                        label: '温度 (°C)',
+                        data: [18.5, 17.0, 20.2, 24.5, 23.0, 19.8],
+                        borderColor: '#10B981', // emerald-600
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                    }, {
+                        label: '湿度 (%)',
+                        data: [65, 70, 62, 55, 60, 68],
+                        borderColor: '#3B82F6', // blue-500
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    scales: { y: { beginAtZero: false } }
+                }
+            });
+        }
+
+        // 生长监测图表
+        const growthCtx = document.getElementById('growth-chart');
+        if (growthCtx) {
+            new Chart(growthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['第1周', '第2周', '第3周', '第4周', '第5周', '第6周', '第7周', '第8周'],
+                    datasets: [{
+                        label: '实际株高 (cm)',
+                        data: [5, 15, 30, 45, 60, 72, 80, 85],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                    }, {
+                        label: '预测株高 (cm)',
+                        data: [4, 16, 28, 44, 62, 75, 82, 88],
+                        borderColor: '#60A5FA', // Tailwind blue-400
+                        borderDash: [5, 5],
+                        tension: 0.3
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+            });
+        }
+
+        // 产量分析图表
+        const yieldCtx = document.getElementById('yield-chart');
+        if (yieldCtx) {
+            new Chart(yieldCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['地块A', '地块B', '地块C', '地块D'],
+                    datasets: [{
+                        label: '预测产量 (吨/亩)',
+                        data: [1.8, 2.1, 1.9, 2.3],
+                        backgroundColor: ['rgba(16, 185, 129, 0.6)', 'rgba(59, 130, 246, 0.6)', 'rgba(239, 68, 68, 0.6)', 'rgba(245, 158, 11, 0.6)'],
+                        borderColor: ['#10B981', '#3B82F6', '#EF4444', '#F59E0B'],
+                        borderWidth: 1
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+            });
+        }
+
+        // 品质评估图表
+        const qualityCtx = document.getElementById('quality-chart');
+        if (qualityCtx) {
+            new Chart(qualityCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['特级品', '一级品', '二级品', '合格品'],
+                    datasets: [{
+                        data: [45, 30, 15, 10],
+                        backgroundColor: ['#10B981', '#60A5FA', '#F59E0B', '#EF4444']
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+            });
+        }
+
+        // 生长周期图表
+        const cycleCtx = document.getElementById('cycle-chart');
+        if (cycleCtx) {
+            new Chart(cycleCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['播种期', '苗期', '分蘖期', '拔节期', '抽穗期', '成熟期'],
+                    datasets: [{
+                        label: '关键指标达成率 (%)',
+                        data: [95, 92, 88, 90, 93, 85],
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderColor: '#10B981',
+                        pointBackgroundColor: '#10B981',
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 100 } } }
+            });
+        }
+    </script>
+</body>
+</html>

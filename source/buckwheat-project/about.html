@@ -9,12 +9,12 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* 页面背景设为浅灰 */
         }
         .about-header {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/buckwheat-project/img/home-pg (2).png');
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png'); /* 使用与首页一致的图片 */
             background-size: cover;
             background-position: center;
-            transition: background-image 0.5s ease;
         }
         .section-title {
             @apply text-3xl font-bold text-center mb-4 text-emerald-700;
@@ -23,43 +23,22 @@
             @apply text-center text-gray-600 mb-12 max-w-2xl mx-auto;
         }
         .about-card {
-            @apply bg-white p-6 rounded-xl shadow-lg transition-all duration-300;
+            @apply bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50;
         }
         .about-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
-        .team-member {
-            @apply flex items-start gap-4 p-4 transition-all duration-300;
+        .team-member-card {
+            @apply bg-white/70 backdrop-blur-sm p-6 rounded-lg text-center shadow-md hover:shadow-lg transition-shadow;
         }
-        .team-member:hover {
-            background-color: rgba(16, 185, 129, 0.05);
-            border-radius: 0.5rem;
-        }
-        .team-member:hover .member-icon {
-            transform: scale(1.1);
-            background-color: rgba(16, 185, 129, 0.2);
-        }
-        .member-icon {
-            @apply w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 transition-all duration-300;
+        .team-member-card img {
+            @apply w-24 h-24 rounded-full mx-auto mb-4 border-2 border-emerald-500 object-cover;
         }
         .stat-card {
-            @apply text-center p-4 bg-emerald-50 rounded-lg transition-all duration-300;
+            @apply bg-emerald-50/70 backdrop-blur-sm p-6 rounded-lg text-center border border-emerald-200/50;
         }
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background-color: rgba(16, 185, 129, 0.1);
-        }
-        .contact-link {
-            @apply flex items-center gap-3 transition-all duration-300;
-        }
-        .contact-link:hover {
-            color: #10B981;
-            transform: translateX(5px);
-        }
-        .contact-link:hover svg {
-            transform: scale(1.1);
+        .contact-icon {
+            @apply w-6 h-6 text-emerald-600;
         }
         .btn {
             @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
@@ -68,6 +47,248 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+        .btn-primary {
+            @apply bg-emerald-600 text-white hover:bg-emerald-700;
+        }
+        /* 响应式导航 */
+        #mobileMenu a {
+            @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600;
+        }
     </style>
 </head>
-<!-- 保持原有的body内容不变 -->
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/buckwheat-project/" class="text-2xl font-bold text-emerald-600">
+                    智荟荞缘
+                </a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium bg-emerald-100 text-emerald-700">关于我们</a>
+                </div>
+                 <!-- 移动端菜单按钮 -->
+                <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButtonAbout">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden" id="mobileMenuAbout">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/buckwheat-project/">首页</a>
+                <a href="/buckwheat-project/tech.html">技术展示</a>
+                <a href="/buckwheat-project/culture.html">文化传播</a>
+                <a href="/buckwheat-project/about.html">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 关于我们头部 -->
+    <header class="about-header text-white pt-32 pb-20 md:pt-36 md:pb-24">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">关于我们</h1>
+            <p class="text-lg md:text-xl mb-8">致力于通过科技创新赋能荞麦产业，创造可持续价值。</p>
+        </div>
+    </header>
+
+    <main class="py-12 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 项目愿景与使命 -->
+            <section id="mission-vision" class="mb-12 md:mb-16">
+                <div class="about-card">
+                    <h2 class="text-2xl font-semibold text-center text-emerald-700 mb-6">我们的愿景与使命</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">项目愿景</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                成为全球领先的智慧荞麦产业解决方案提供商，通过科技创新引领荞麦产业的现代化转型，
+                                让古老的荞麦焕发新生机，为人类健康与地球可持续发展贡献力量。
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">项目使命</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                聚焦荞麦全产业链，融合人工智能、物联网、大数据等前沿技术，
+                                打造高效、绿色、智能的生产体系；传承与创新荞麦文化，提升产品附加值，
+                                助力农户增收致富，推动乡村振兴。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="stat-card">
+                            <p class="text-3xl font-bold text-emerald-600">5+</p>
+                            <p class="text-sm text-gray-600">年行业深耕</p>
+                        </div>
+                        <div class="stat-card">
+                            <p class="text-3xl font-bold text-emerald-600">10+</p>
+                            <p class="text-sm text-gray-600">核心专利技术</p>
+                        </div>
+                        <div class="stat-card">
+                            <p class="text-3xl font-bold text-emerald-600">100+</p>
+                            <p class="text-sm text-gray-600">合作伙伴</p>
+                        </div>
+                        <div class="stat-card">
+                            <p class="text-3xl font-bold text-emerald-600">1M+</p>
+                            <p class="text-sm text-gray-600">亩示范推广</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 核心团队 -->
+            <section id="core-team" class="mb-12 md:mb-16">
+                <h2 class="section-title">核心团队</h2>
+                <p class="section-subtitle">
+                    我们拥有一支充满激情、经验丰富且跨学科的专业团队，致力于项目的成功。
+                </p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="team-member-card">
+                        <img src="https://source.unsplash.com/200x200/?portrait,man,ceo" alt="团队成员1">
+                        <h3 class="text-lg font-semibold text-gray-800">李明远博士</h3>
+                        <p class="text-sm text-emerald-600 mb-1">首席科学家 & AI专家</p>
+                        <p class="text-xs text-gray-500">专注于农业人工智能模型研发，拥有10余年相关领域经验。</p>
+                    </div>
+                    <div class="team-member-card">
+                        <img src="https://source.unsplash.com/200x200/?portrait,woman,expert" alt="团队成员2">
+                        <h3 class="text-lg font-semibold text-gray-800">张慧敏</h3>
+                        <p class="text-sm text-emerald-600 mb-1">农业技术总监</p>
+                        <p class="text-xs text-gray-500">资深农艺师，精通荞麦优良品种选育与标准化种植技术。</p>
+                    </div>
+                    <div class="team-member-card">
+                        <img src="https://source.unsplash.com/200x200/?portrait,man,manager" alt="团队成员3">
+                        <h3 class="text-lg font-semibold text-gray-800">王浩宇</h3>
+                        <p class="text-sm text-emerald-600 mb-1">市场运营负责人</p>
+                        <p class="text-xs text-gray-500">擅长品牌建设与市场推广，成功运作多个农产品牌项目。</p>
+                    </div>
+                    <div class="team-member-card">
+                        <img src="https://source.unsplash.com/200x200/?portrait,woman,designer" alt="团队成员4">
+                        <h3 class="text-lg font-semibold text-gray-800">刘欣怡</h3>
+                        <p class="text-sm text-emerald-600 mb-1">文化与产品设计师</p>
+                        <p class="text-xs text-gray-500">致力于荞麦文化挖掘与创新产品设计，赋予产品文化灵魂。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 合作伙伴与支持 -->
+             <section id="partners" class="mb-12 md:mb-16">
+                <h2 class="section-title">合作伙伴与支持单位</h2>
+                <p class="section-subtitle">
+                    感谢以下机构与伙伴对我们项目的大力支持与深度合作。
+                </p>
+                <div class="about-card">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center">
+                        <div class="flex justify-center">
+                            <img src="https://via.placeholder.com/150x80.png?text=云南农大" alt="云南农业大学" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex justify-center">
+                             <img src="https://via.placeholder.com/150x80.png?text=农科院" alt="农业科学院" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex justify-center">
+                             <img src="https://via.placeholder.com/150x80.png?text=科技厅" alt="科技厅" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex justify-center">
+                             <img src="https://via.placeholder.com/150x80.png?text=龙头企业A" alt="龙头企业A" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                         <div class="flex justify-center">
+                            <img src="https://via.placeholder.com/150x80.png?text=合作社B" alt="合作社B" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex justify-center">
+                             <img src="https://via.placeholder.com/150x80.png?text=电商平台C" alt="电商平台C" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex justify-center">
+                             <img src="https://via.placeholder.com/150x80.png?text=基金会D" alt="基金会D" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex justify-center">
+                             <img src="https://via.placeholder.com/150x80.png?text=丁习功工作室" alt="丁习功工作室" class="h-12 sm:h-16 opacity-70 hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 联系我们 -->
+            <section id="contact-us">
+                <h2 class="section-title">联系我们</h2>
+                <p class="section-subtitle">
+                    我们期待与您交流合作，共同推动荞麦产业的智慧发展。
+                </p>
+                <div class="about-card max-w-3xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">项目垂询</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="contact-icon mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span><span class="font-medium">邮箱：</span>contact@zhihuiqiaoyuan.com</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="contact-icon mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.034 11.034 0 005.37 5.37l1.154-2.308a1 1 0 011.21-.502l4.493 1.498A1 1 0 0119 12.72V16a2 2 0 01-2 2h-1C6.04 18 2 13.96 2 8V6a2 2 0 012-2h1z"></path></svg>
+                                    <span><span class="font-medium">电话：</span>+86 0871-XXXXXXX</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="contact-icon mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    <span><span class="font-medium">地址：</span>云南省昆明市盘龙区云南农业大学国家大学科技园</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">在线留言</h3>
+                            <form action="#" method="POST">
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="name" class="sr-only">姓名</label>
+                                        <input type="text" name="name" id="name" autocomplete="name" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" placeholder="您的姓名">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="sr-only">邮箱</label>
+                                        <input type="email" name="email" id="email" autocomplete="email" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" placeholder="您的邮箱">
+                                    </div>
+                                    <div>
+                                        <label for="message" class="sr-only">留言</label>
+                                        <textarea id="message" name="message" rows="4" class="block w-full shadow-sm py-2 px-3 border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" placeholder="您的留言内容..."></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary w-full">
+                                            发送留言
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="current-year-about"></span> 智荟荞缘 & 智耕未来项目团队</p>
+            <p class="text-sm text-gray-400 mt-2">云南农业大学创新创业项目</p>
+        </div>
+    </footer>
+
+    <script>
+        // 更新年份
+        const currentYearAbout = document.getElementById('current-year-about');
+        if(currentYearAbout) {
+            currentYearAbout.textContent = new Date().getFullYear();
+        }
+
+        // 移动端菜单切换 (About Page)
+        const menuButtonAbout = document.getElementById('menuButtonAbout');
+        const mobileMenuAbout = document.getElementById('mobileMenuAbout');
+        if(menuButtonAbout && mobileMenuAbout){
+            menuButtonAbout.addEventListener('click', () => {
+                mobileMenuAbout.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
