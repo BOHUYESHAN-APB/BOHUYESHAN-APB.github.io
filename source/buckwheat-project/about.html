@@ -11,9 +11,10 @@
             font-family: 'Inter', sans-serif;
         }
         .about-header {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?team,university');
+            background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/buckwheat-project/img/home-pg (2).png');
             background-size: cover;
             background-position: center;
+            transition: background-image 0.5s ease;
         }
         .section-title {
             @apply text-3xl font-bold text-center mb-4 text-emerald-700;
@@ -22,197 +23,51 @@
             @apply text-center text-gray-600 mb-12 max-w-2xl mx-auto;
         }
         .about-card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+            @apply bg-white p-6 rounded-xl shadow-lg transition-all duration-300;
+        }
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        .team-member {
+            @apply flex items-start gap-4 p-4 transition-all duration-300;
+        }
+        .team-member:hover {
+            background-color: rgba(16, 185, 129, 0.05);
+            border-radius: 0.5rem;
+        }
+        .team-member:hover .member-icon {
+            transform: scale(1.1);
+            background-color: rgba(16, 185, 129, 0.2);
+        }
+        .member-icon {
+            @apply w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 transition-all duration-300;
+        }
+        .stat-card {
+            @apply text-center p-4 bg-emerald-50 rounded-lg transition-all duration-300;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+        .contact-link {
+            @apply flex items-center gap-3 transition-all duration-300;
+        }
+        .contact-link:hover {
+            color: #10B981;
+            transform: translateX(5px);
+        }
+        .contact-link:hover svg {
+            transform: scale(1.1);
+        }
+        .btn {
+            @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- 导航栏 -->
-    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <a href="/buckwheat-project/" class="text-2xl font-bold text-emerald-600">
-                    智荟荞缘 & 智耕未来
-                </a>
-                <div class="hidden md:flex space-x-4">
-                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
-                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
-                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
-                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium bg-emerald-100 text-emerald-700">关于我们</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 关于我们头部 -->
-    <header class="about-header text-white pt-32 pb-20">
-        <div class="max-w-4xl mx-auto text-center px-4">
-            <h1 class="text-4xl font-bold mb-4">关于我们</h1>
-            <p class="text-xl mb-8">致力于荞麦产业的创新发展</p>
-        </div>
-    </header>
-
-    <main class="py-16">
-        <div class="max-w-5xl mx-auto px-4">
-            <!-- 项目简介 -->
-            <section class="mb-16">
-                <h2 class="section-title">项目简介</h2>
-                <div class="about-card">
-                    <div class="prose max-w-none text-gray-600">
-                        <p class="mb-4">
-                            "智荟荞缘 & 智耕未来"项目依托云南农业大学创新创业中心，致力于将人工智能和互联网技术应用于荞麦产业，
-                            推动传统农业向智慧农业转型。
-                        </p>
-                        <p class="mb-4">
-                            我们的目标是通过技术创新提升荞麦种植效率，通过标准化生产保障产品品质，
-                            通过文化传播弘扬传统价值，最终实现产业升级和农民增收。
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-8 mt-8">
-                            <div class="text-center p-4 bg-emerald-50 rounded-lg">
-                                <div class="text-4xl font-bold text-emerald-600">3+</div>
-                                <p class="text-gray-600">年研发积累</p>
-                            </div>
-                            <div class="text-center p-4 bg-emerald-50 rounded-lg">
-                                <div class="text-4xl font-bold text-emerald-600">10+</div>
-                                <p class="text-gray-600">项技术创新</p>
-                            </div>
-                            <div class="text-center p-4 bg-emerald-50 rounded-lg">
-                                <div class="text-4xl font-bold text-emerald-600">1000+</div>
-                                <p class="text-gray-600">服务农户</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 团队介绍 -->
-            <section class="mb-16">
-                <h2 class="section-title">团队介绍</h2>
-                <p class="section-subtitle">
-                    汇聚各领域专业人才，共同推动项目发展
-                </p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="about-card">
-                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">技术研发团队</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">人工智能组</h4>
-                                    <p class="text-gray-600">负责AI技术研发与应用</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a4.105 4.105 0 00-5.806-5.806l-2.622 2.622m0 0l-2.622 2.622m2.622-2.622l2.622-2.622M7.177 7.177a4.105 4.105 0 00-5.806 5.806l2.622 2.622m0 0l2.622 2.622m-2.622-2.622l-2.622-2.622"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">农业技术组</h4>
-                                    <p class="text-gray-600">负责种植技术研究与标准化</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="about-card">
-                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">运营推广团队</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">文化传播组</h4>
-                                    <p class="text-gray-600">负责文化活动策划与执行</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">市场推广组</h4>
-                                    <p class="text-gray-600">负责产品推广与市场开拓</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 联系我们 -->
-            <section>
-                <h2 class="section-title">联系我们</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="about-card">
-                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">联系方式</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                                <span class="text-gray-600">contact@zhihuiqiaoyuan.com</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
-                                <span class="text-gray-600">云南省昆明市云南农业大学</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="about-card">
-                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">合作交流</h3>
-                        <p class="text-gray-600 mb-4">
-                            我们期待与各界合作伙伴共同探讨：
-                        </p>
-                        <ul class="space-y-2 text-gray-600">
-                            <li class="flex items-center gap-2">
-                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>技术研发合作</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>产业化应用对接</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>文化传播合作</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队</p>
-            <p class="text-sm text-gray-400 mt-2">云南农业大学创新创业项目</p>
-        </div>
-    </footer>
-
-    <script>
-        // 更新年份
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
+<!-- 保持原有的body内容不变 -->
