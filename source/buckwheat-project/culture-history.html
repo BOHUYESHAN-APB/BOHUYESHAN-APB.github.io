@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史与民俗 - 智荟荞缘</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .culture-header {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-emerald-700;
+        }
+        .section-subtitle {
+            @apply text-sm sm:text-base text-center text-gray-600 mb-8 sm:mb-12 max-w-xl sm:max-w-2xl mx-auto;
+        }
+        .culture-card {
+            @apply bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50;
+        }
+        .culture-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 时间轴样式 */
+        .timeline {
+            @apply relative;
+        }
+        .timeline::before {
+            content: '';
+            @apply absolute left-4 sm:left-1/2 h-full w-0.5 bg-emerald-200;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            @apply relative pl-12 sm:pl-0 mb-8 sm:mb-12 last:mb-0;
+        }
+        .timeline-item::before {
+            content: '';
+            @apply absolute left-3 sm:left-1/2 top-2 w-3 h-3 bg-emerald-500 rounded-full border-4 border-white;
+            transform: translateX(-50%);
+        }
+        .timeline-content {
+            @apply sm:w-5/12 relative;
+        }
+        .timeline-item:nth-child(even) {
+            @apply sm:ml-auto;
+        }
+
+        /* 民俗文化卡片样式 */
+        .folk-card {
+            @apply bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300;
+        }
+        .folk-card-header {
+            @apply flex items-center mb-4;
+        }
+        .folk-card-icon {
+            @apply w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/buckwheat-project/" class="text-xl sm:text-2xl font-bold text-emerald-600">
+                    智荟荞缘
+                </a>
+                <div class="hidden md:flex space-x-1 lg:space-x-4">
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
+                </div>
+                <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButtonHistory">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobileMenuHistory">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/buckwheat-project/">首页</a>
+                <a href="/buckwheat-project/tech.html">技术展示</a>
+                <a href="/buckwheat-project/culture.html">文化传播</a>
+                <a href="/buckwheat-project/about.html">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 文化历史头部 -->
+    <header class="culture-header text-white pt-28 pb-16 md:pt-36 md:pb-24">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">千年荞韵 · 文化薪传</h1>
+            <p class="text-base sm:text-lg md:text-xl">探寻荞麦四千年的历史足迹，品味多彩的民俗文化魅力。</p>
+        </div>
+    </header>
+
+    <main class="py-10 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 历史时间轴 -->
+            <section class="mb-16">
+                <h2 class="section-title">荞麦历史长河</h2>
+                <p class="section-subtitle">
+                    追溯荞麦从起源到传播的历史足迹，见证这一"智慧之麦"的文明演进。
+                </p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="culture-card">
+                                <h3 class="text-lg font-semibold text-emerald-600 mb-2">约4000年前</h3>
+                                <p class="text-gray-600">中国北方地区开始荞麦栽培，最早的考古和孢粉学证据。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="culture-card">
+                                <h3 class="text-lg font-semibold text-emerald-600 mb-2">约3300年前</h3>
+                                <p class="text-gray-600">苦荞随彝族从喜马拉雅地区传播到中国西南地区，开启了新的发展篇章。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="culture-card">
+                                <h3 class="text-lg font-semibold text-emerald-600 mb-2">汉代（约2000年前）</h3>
+                                <p class="text-gray-600">陕西咸阳杨家湾汉墓出土荞麦籽粒，证实汉代已有成熟的荞麦种植。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="culture-card">
+                                <h3 class="text-lg font-semibold text-emerald-600 mb-2">唐朝初期（约1400年前）</h3>
+                                <p class="text-gray-600">中国苦荞栽培应用达到较大规模，种植技术不断提升。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 民族文化展示 -->
+            <section class="mb-16">
+                <h2 class="section-title">多彩民族文化</h2>
+                <p class="section-subtitle">
+                    探索不同民族对荞麦的文化传承与智慧结晶。
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="folk-card">
+                        <div class="folk-card-header">
+                            <div class="folk-card-icon">
+                                <i class="fas fa-mountain text-emerald-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-emerald-700">彝族荞麦文化</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">"五谷杂粮，荞麦为王"——彝族人民对荞麦的推崇</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                <span class="text-gray-700">传统祭祀仪式中的重要祭品</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                <span class="text-gray-700">荞饭、荞粑等传统美食的制作</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                <span class="text-gray-700">明朝时期的荞酥制作工艺</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="folk-card">
+                        <div class="folk-card-header">
+                            <div class="folk-card-icon">
+                                <i class="fas fa-pagelines text-emerald-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-emerald-700">其他民族文化</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">荞麦在各民族文化中的多元展现</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                <span class="text-gray-700">保安族：融合伊斯兰与蒙古文化的荞麦饮食</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                <span class="text-gray-700">白族、傣族：山区荞麦主食文化</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                <span class="text-gray-700">汉族：荞麦在节庆中的应用</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 传统节日与习俗 -->
+            <section class="mb-16">
+                <h2 class="section-title">传统节日与习俗</h2>
+                <p class="section-subtitle">
+                    探寻荞麦在传统节日中的文化内涵与习俗传承。
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="culture-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-moon text-4xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-emerald-600 mb-3">腊八节</h3>
+                        <p class="text-gray-600 text-center">
+                            荞麦作为腊八粥的传统食材，寓意健康与福祉。适合血糖和心脑血管病患者食用。
+                        </p>
+                    </div>
+                    <div class="culture-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-bowl-rice text-4xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-emerald-600 mb-3">除夕夜</h3>
+                        <p class="text-gray-600 text-center">
+                            日本传统中，除夕夜食用荞麦面，象征长寿与新的开始。
+                        </p>
+                    </div>
+                    <div class="culture-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-calendar-days text-4xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-emerald-600 mb-3">文化节庆</h3>
+                        <p class="text-gray-600 text-center">
+                            各地举办荞麦文化旅游节，展示非遗技艺，传承文化精髓。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 文艺展示 -->
+            <section>
+                <h2 class="section-title">文学艺术展现</h2>
+                <p class="section-subtitle">
+                    欣赏荞麦在诗词、绘画等艺术形式中的独特魅力。
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="culture-card">
+                        <img src="https://source.unsplash.com/600x400/?art,painting" alt="艺术展示" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">传统艺术</h3>
+                        <p class="text-gray-600">
+                            通过剪纸、刺绣、柳编、木雕、泥塑等非遗技艺，展现荞麦文化的多元艺术表达。
+                        </p>
+                    </div>
+                    <div class="culture-card">
+                        <img src="https://source.unsplash.com/600x400/?culture,festival" alt="文化展示" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">现代传承</h3>
+                        <p class="text-gray-600">
+                            结合现代艺术形式，通过文化节庆活动、艺术展览等方式，让荞麦文化焕发新的生机。
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 sm:py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-1 sm:mb-2 text-sm sm:text-base">&copy; <span id="current-year-history"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
+            <p class="text-xs sm:text-sm text-gray-400">技术支持：云南农业大学创新创业中心</p>
+        </div>
+    </footer>
+
+    <script>
+        // 设置年份
+        document.getElementById('current-year-history').textContent = new Date().getFullYear();
+        
+        // 移动端菜单
+        const menuButtonHistory = document.getElementById('menuButtonHistory');
+        const mobileMenuHistory = document.getElementById('mobileMenuHistory');
+        
+        if(menuButtonHistory && mobileMenuHistory) {
+            menuButtonHistory.addEventListener('click', () => {
+                mobileMenuHistory.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
