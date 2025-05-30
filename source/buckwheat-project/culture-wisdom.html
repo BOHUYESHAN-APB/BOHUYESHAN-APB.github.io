@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食养智慧 - 智荟荞缘</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .culture-header {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-emerald-700;
+        }
+        .section-subtitle {
+            @apply text-sm sm:text-base text-center text-gray-600 mb-8 sm:mb-12 max-w-xl sm:max-w-2xl mx-auto;
+        }
+        .wisdom-card {
+            @apply bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50;
+        }
+        .wisdom-card:hover {
+            transform: translateY(-5px);
+        }
+        .nutrient-table {
+            @apply w-full bg-white rounded-lg overflow-hidden shadow-md my-4;
+        }
+        .nutrient-table th {
+            @apply bg-emerald-100 text-emerald-700 font-semibold px-4 py-2 text-left;
+        }
+        .nutrient-table td {
+            @apply px-4 py-2 border-t border-gray-200;
+        }
+        .recipe-card {
+            @apply bg-emerald-50/70 backdrop-blur-sm p-4 sm:p-6 rounded-lg border border-emerald-200/50 hover:shadow-md transition-shadow;
+        }
+        .recipe-card-header {
+            @apply flex items-center gap-4 mb-4;
+        }
+        .recipe-card-icon {
+            @apply w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/buckwheat-project/" class="text-xl sm:text-2xl font-bold text-emerald-600">
+                    智荟荞缘
+                </a>
+                <div class="hidden md:flex space-x-1 lg:space-x-4">
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
+                </div>
+                <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButtonWisdom">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobileMenuWisdom">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/buckwheat-project/">首页</a>
+                <a href="/buckwheat-project/tech.html">技术展示</a>
+                <a href="/buckwheat-project/culture.html">文化传播</a>
+                <a href="/buckwheat-project/about.html">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 食养智慧头部 -->
+    <header class="culture-header text-white pt-28 pb-16 md:pt-36 md:pb-24">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">药食同源 · 智慧养生</h1>
+            <p class="text-base sm:text-lg md:text-xl">探索荞麦千年食养之道，传承现代健康生活方式。</p>
+        </div>
+    </header>
+
+    <main class="py-10 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 营养价值 -->
+            <section class="mb-16">
+                <h2 class="section-title">营养价值</h2>
+                <p class="section-subtitle">
+                    荞麦营养丰富均衡，被誉为"营养王者"，蕴含多种人体所需的重要营养物质。
+                </p>
+                <div class="overflow-x-auto">
+                    <table class="nutrient-table">
+                        <thead>
+                            <tr>
+                                <th>营养成分</th>
+                                <th>含量（每100g）</th>
+                                <th>主要功能</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>蛋白质</td>
+                                <td>9.3–19g</td>
+                                <td>含18种氨基酸，赖氨酸含量高，与谷物互补</td>
+                                <td>苦荞蛋白质含量高于普通荞麦</td>
+                            </tr>
+                            <tr>
+                                <td>膳食纤维</td>
+                                <td>6.5–10.9g</td>
+                                <td>促进肠道蠕动，预防便秘和结肠癌</td>
+                                <td>可溶性纤维占20–30%</td>
+                            </tr>
+                            <tr>
+                                <td>芦丁（维生素P）</td>
+                                <td>苦荞：1.09%</td>
+                                <td>软化血管、降血压、抗氧化</td>
+                                <td>苦荞含量为甜荞的2.5倍</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 养生功效 -->
+            <section class="mb-16">
+                <h2 class="section-title">养生功效</h2>
+                <p class="section-subtitle">
+                    荞麦具有多种养生保健功效，是传统中医理论中的"药食同源"佳品。
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="wisdom-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-heart text-4xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-emerald-600 mb-3">调节血糖血脂</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>富含铬元素，增强胰岛素活性</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>降低血清胆固醇和甘油三酯</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="wisdom-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-md text-4xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-emerald-600 mb-3">健脾消积</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>促进消化吸收，改善胃肠功能</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>帮助排除体内毒素</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="wisdom-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-spa text-4xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center text-emerald-600 mb-3">美容养颜</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>帮助吸收维生素C，抗氧化</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>减少细纹，延缓衰老</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 食疗方案 -->
+            <section class="mb-16">
+                <h2 class="section-title">传统食疗方</h2>
+                <p class="section-subtitle">
+                    根据中医理论，荞麦可用于多种食疗方案，调理身体机能。
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="recipe-card">
+                        <div class="recipe-card-header">
+                            <div class="recipe-card-icon">
+                                <i class="fas fa-moon text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">荞麦腊八粥</h4>
+                                <p class="text-gray-600 text-sm">适合血糖和心脑血管病患者</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-gray-700">
+                            <p class="font-medium">食材：</p>
+                            <p>荞麦、大枣、杂粮等</p>
+                            <p class="font-medium">功效：</p>
+                            <p>健脾养胃，降低血脂，调节血糖</p>
+                        </div>
+                    </div>
+                    <div class="recipe-card">
+                        <div class="recipe-card-header">
+                            <div class="recipe-card-icon">
+                                <i class="fas fa-leaf text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">荞麦藕节汤</h4>
+                                <p class="text-gray-600 text-sm">预防高血压引起的脑溢血</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-gray-700">
+                            <p class="font-medium">食材：</p>
+                            <p>荞麦茎叶60克，藕节30克</p>
+                            <p class="font-medium">功效：</p>
+                            <p>软化血管，预防脑溢血</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 现代应用 -->
+            <section>
+                <h2 class="section-title">现代应用</h2>
+                <p class="section-subtitle">
+                    在现代生活中，荞麦以多种形式融入健康饮食，创新传统与现代的结合。
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="wisdom-card">
+                        <img src="https://source.unsplash.com/400x300/?healthy,drink" alt="荞麦饮品" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">创新饮品</h3>
+                        <p class="text-gray-600">结合现代工艺，开发荞麦茶、荞麦拿铁等健康饮品，为现代人提供便捷的养生选择。</p>
+                    </div>
+                    <div class="wisdom-card">
+                        <img src="https://source.unsplash.com/400x300/?sprouts,food" alt="荞麦芽菜" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">营养苗菜</h3>
+                        <p class="text-gray-600">以荞麦芽菜为代表的新兴健康食材，富含微量元素和活性物质，适合现代轻食理念。</p>
+                    </div>
+                    <div class="wisdom-card">
+                        <img src="https://source.unsplash.com/400x300/?bakery,healthy" alt="荞麦烘焙" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">健康烘焙</h3>
+                        <p class="text-gray-600">开发荞麦面包、饼干等无麸质烘焙产品，满足特殊人群的饮食需求。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 sm:py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-1 sm:mb-2 text-sm sm:text-base">&copy; <span id="current-year-wisdom"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
+            <p class="text-xs sm:text-sm text-gray-400">技术支持：云南农业大学创新创业中心</p>
+        </div>
+    </footer>
+
+    <script>
+        // 设置年份
+        document.getElementById('current-year-wisdom').textContent = new Date().getFullYear();
+        
+        // 移动端菜单
+        const menuButtonWisdom = document.getElementById('menuButtonWisdom');
+        const mobileMenuWisdom = document.getElementById('mobileMenuWisdom');
+        
+        if(menuButtonWisdom && mobileMenuWisdom) {
+            menuButtonWisdom.addEventListener('click', () => {
+                mobileMenuWisdom.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
