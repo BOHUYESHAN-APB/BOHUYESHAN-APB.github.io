@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文化传播 - 智荟荞缘 & 智耕未来</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .culture-header {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?culture,books');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-4 text-emerald-700;
+        }
+        .section-subtitle {
+            @apply text-center text-gray-600 mb-12 max-w-2xl mx-auto;
+        }
+        .culture-card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/buckwheat-project/" class="text-2xl font-bold text-emerald-600">
+                    智荟荞缘 & 智耕未来
+                </a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium bg-emerald-100 text-emerald-700">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 文化传播头部 -->
+    <header class="culture-header text-white pt-32 pb-20">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-4xl font-bold mb-4">智能荞麦书苑</h1>
+            <p class="text-xl mb-8">传承荞麦文化，引领健康生活</p>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <!-- 荞麦文化展示 -->
+            <section class="mb-16">
+                <h2 class="section-title">荞麦文化</h2>
+                <p class="section-subtitle">
+                    探索千年荞麦文化，感受传统智慧
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="culture-card">
+                        <img src="https://source.unsplash.com/400x300/?history,culture" alt="历史传承" class="rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">历史传承</h3>
+                        <p class="text-gray-600">荞麦种植千年历史，蕴含丰富的农耕文化遗产</p>
+                    </div>
+                    <div class="culture-card">
+                        <img src="https://source.unsplash.com/400x300/?tradition,food" alt="饮食文化" class="rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">饮食文化</h3>
+                        <p class="text-gray-600">传统荞麦美食，传承人间美味</p>
+                    </div>
+                    <div class="culture-card">
+                        <img src="https://source.unsplash.com/400x300/?modern,innovation" alt="创新发展" class="rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">创新发展</h3>
+                        <p class="text-gray-600">传统与现代的完美融合，开创荞麦文化新篇章</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 智能书苑 -->
+            <section class="mb-16">
+                <h2 class="section-title">智能书苑空间</h2>
+                <p class="section-subtitle">
+                    打造集文化展示、知识分享、休闲体验于一体的创新空间
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="https://source.unsplash.com/600x400/?library,cafe" alt="智能书苑" class="rounded-xl shadow-lg">
+                    </div>
+                    <div class="space-y-6">
+                        <div class="culture-card">
+                            <h3 class="text-lg font-semibold text-emerald-600">文化展示</h3>
+                            <p class="text-gray-600">通过多媒体展示，生动呈现荞麦文化的魅力</p>
+                        </div>
+                        <div class="culture-card">
+                            <h3 class="text-lg font-semibold text-emerald-600">知识分享</h3>
+                            <p class="text-gray-600">定期举办讲座、工作坊，传播健康生活理念</p>
+                        </div>
+                        <div class="culture-card">
+                            <h3 class="text-lg font-semibold text-emerald-600">休闲体验</h3>
+                            <p class="text-gray-600">品味荞麦美食，感受慢生活之美</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 活动日历 -->
+            <section>
+                <h2 class="section-title">文化活动</h2>
+                <p class="section-subtitle">
+                    丰富多彩的文化活动，等待您的参与
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="culture-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">近期活动</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-emerald-600">15</div>
+                                    <div class="text-sm text-gray-600">六月</div>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">荞麦文化讲座</h4>
+                                    <p class="text-sm text-gray-600">探索荞麦的历史与现代价值</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-emerald-50 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-emerald-600">20</div>
+                                    <div class="text-sm text-gray-600">六月</div>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">荞麦美食工坊</h4>
+                                    <p class="text-sm text-gray-600">传统与创新的美味碰撞</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="culture-card">
+                        <h3 class="text-xl font-semibold mb-4 text-emerald-600">活动预告</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h4 class="font-semibold">荞麦文化节</h4>
+                                <p class="text-sm text-gray-600 mb-2">七月份</p>
+                                <p class="text-sm text-gray-600">为期一周的荞麦文化主题活动，包括展览、讲座、美食品鉴等多个环节</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h4 class="font-semibold">科技与传统论坛</h4>
+                                <p class="text-sm text-gray-600 mb-2">八月份</p>
+                                <p class="text-sm text-gray-600">探讨现代科技如何助力传统农业发展，共话农业未来</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p>&copy; <span id="current-year"></span> 智荟荞缘 & 智耕未来项目团队</p>
+            <p class="text-sm text-gray-400 mt-2">云南农业大学创新创业项目</p>
+        </div>
+    </footer>
+
+    <script>
+        // 更新年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
