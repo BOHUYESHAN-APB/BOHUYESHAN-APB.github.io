@@ -12,28 +12,30 @@
             background-color: #f9fafb; 
         }
         .culture-header {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png'); /* 统一页头背景 */
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png'); 
             background-size: cover;
             background-position: center;
-            /* 移除了 transform: rotate(180deg) 如果之前有的话 */
         }
         .section-title {
-            @apply text-3xl font-bold text-center mb-4 text-emerald-700;
+            @apply text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-emerald-700;
         }
         .section-subtitle {
-            @apply text-center text-gray-600 mb-12 max-w-2xl mx-auto;
+            @apply text-sm sm:text-base text-center text-gray-600 mb-8 sm:mb-12 max-w-xl sm:max-w-2xl mx-auto;
         }
         .culture-card {
-            @apply bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50;
+            @apply bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50;
         }
         .culture-card:hover {
             transform: translateY(-5px);
         }
+        .culture-card img.h-48 { /* 确保图片高度在小屏幕上不会过大 */
+            @apply h-40 sm:h-48;
+        }
         .event-card {
-            @apply bg-emerald-50/70 backdrop-blur-sm p-6 rounded-lg border border-emerald-200/50 hover:shadow-md transition-shadow;
+            @apply bg-emerald-50/70 backdrop-blur-sm p-4 sm:p-6 rounded-lg border border-emerald-200/50 hover:shadow-md transition-shadow;
         }
         .btn {
-            @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+            @apply px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-xs sm:text-sm; /* 调整按钮padding和文字大小 */
         }
         .btn:hover {
             transform: translateY(-2px);
@@ -42,19 +44,28 @@
         .btn-primary-outline {
             @apply bg-transparent border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white;
         }
-        /* 响应式导航 */
-        #mobileMenuCulture a { /* 确保ID唯一性 */
+        
+        #mobileMenuCulture a { 
             @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600;
         }
-        /* 响应式文本 */
-        @media (max-width: 767px) {
-            .culture-header h1 { @apply text-3xl; }
-            .culture-header p { @apply text-base; }
-            .section-title { @apply text-2xl; }
-            .section-subtitle { @apply text-sm; }
-            .culture-card h3, .culture-card h4 { @apply text-lg; }
-            .culture-card p, .culture-card ul { @apply text-sm; }
-            .event-card h4 { @apply text-base; }
+        
+        .culture-header h1 { @apply text-3xl sm:text-4xl md:text-5xl; }
+        .culture-header p { @apply text-base sm:text-lg md:text-xl; }
+        .culture-card h3 { @apply text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-emerald-600; }
+        .culture-card h4 { @apply text-base sm:text-lg font-semibold text-emerald-700; }
+        .culture-card p, .culture-card ul { @apply text-xs sm:text-sm text-gray-700; }
+        .culture-card ul li svg { @apply w-3.5 h-3.5 sm:w-4 sm:h-4; }
+
+        .event-card h4 { @apply text-base sm:text-lg font-semibold text-emerald-700; }
+        .event-card p { @apply text-xs sm:text-sm; }
+        .event-card span.text-xs { @apply px-1.5 py-0.5 sm:px-2 sm:py-1; } /* 调整活动标签padding */
+
+        /* 智能书苑部分图标和文字 */
+        #smart-bookstore .culture-card .flex-shrink-0 { @apply w-10 h-10 sm:w-12 sm:h-12 mr-3 sm:mr-4; }
+        #smart-bookstore .culture-card .flex-shrink-0 svg { @apply w-5 h-5 sm:w-6 sm:h-6; }
+        
+        main .max-w-6xl {
+             @apply px-4 sm:px-6 lg:px-8;
         }
     </style>
 </head>
@@ -63,16 +74,15 @@
     <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <a href="/buckwheat-project/" class="text-2xl font-bold text-emerald-600">
+                <a href="/buckwheat-project/" class="text-xl sm:text-2xl font-bold text-emerald-600">
                     智荟荞缘
                 </a>
-                <div class="hidden md:flex space-x-4">
+                <div class="hidden md:flex space-x-1 lg:space-x-4">
                     <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
                     <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
                     <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium bg-emerald-100 text-emerald-700">文化传播</a>
                     <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
                 </div>
-                <!-- 移动端菜单按钮 -->
                 <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButtonCulture">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -80,7 +90,6 @@
                 </button>
             </div>
         </div>
-        <!-- 移动端菜单 -->
         <div class="md:hidden hidden" id="mobileMenuCulture">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="/buckwheat-project/">首页</a>
@@ -92,80 +101,80 @@
     </nav>
 
     <!-- 文化传播头部 -->
-    <header class="culture-header text-white pt-32 pb-20 md:pt-36 md:pb-24">
+    <header class="culture-header text-white pt-28 pb-16 md:pt-36 md:pb-24">
         <div class="max-w-4xl mx-auto text-center px-4">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">传承荞麦文脉 · 智创健康生活</h1>
-            <p class="text-lg md:text-xl mb-8">探索荞麦的千年智慧，体验科技赋能的现代健康生活方式。</p>
+            <h1 class="font-bold mb-3 sm:mb-4">传承荞麦文脉 · 智创健康生活</h1>
+            <p class="mb-6 sm:mb-8">探索荞麦的千年智慧，体验科技赋能的现代健康生活方式。</p>
         </div>
     </header>
 
-    <main class="py-12 md:py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="py-10 md:py-16">
+        <div class="max-w-6xl mx-auto">
             <!-- 荞麦文化渊源 -->
-            <section id="buckwheat-history" class="mb-12 md:mb-16">
+            <section id="buckwheat-history" class="mb-10 md:mb-16">
                 <h2 class="section-title">千年荞韵 · 文化薪传</h2>
                 <p class="section-subtitle">
                     荞麦，不仅是滋养生命的作物，更是承载着深厚历史与人文底蕴的文化符号。
                 </p>
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8">
                     <div class="culture-card">
-                        <img src="https://source.unsplash.com/400x300/?history,agriculture,grain" alt="历史渊源" class="rounded-lg mb-4 w-full h-48 object-cover">
-                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">历史渊源</h3>
-                        <p class="text-gray-700 text-sm">追溯荞麦在中国的悠久种植史，及其在不同地域文化中的独特印记与民间传说故事。</p>
+                        <img src="https://source.unsplash.com/400x300/?history,agriculture,grain" alt="历史渊源" class="rounded-lg mb-3 sm:mb-4 w-full h-48 object-cover">
+                        <h3>历史渊源</h3>
+                        <p>追溯荞麦在中国的悠久种植史，及其在不同地域文化中的独特印记与民间传说故事。</p>
                     </div>
                     <div class="culture-card">
-                        <img src="https://source.unsplash.com/400x300/?culture,folk,art" alt="民俗文化" class="rounded-lg mb-4 w-full h-48 object-cover">
-                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">民俗与艺术</h3>
-                        <p class="text-gray-700 text-sm">探寻与荞麦相关的传统节日习俗、庆典活动、以及在诗歌、绘画等艺术形式中的表现。</p>
+                        <img src="https://source.unsplash.com/400x300/?culture,folk,art" alt="民俗文化" class="rounded-lg mb-3 sm:mb-4 w-full h-48 object-cover">
+                        <h3>民俗与艺术</h3>
+                        <p>探寻与荞麦相关的传统节日习俗、庆典活动、以及在诗歌、绘画等艺术形式中的表现。</p>
                     </div>
                     <div class="culture-card">
-                        <img src="https://source.unsplash.com/400x300/?nutrition,health,food" alt="营养价值" class="rounded-lg mb-4 w-full h-48 object-cover">
-                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">食养智慧</h3>
-                        <p class="text-gray-700 text-sm">了解荞麦在中医食疗及现代营养学中的重要价值，传承“药食同源”的健康生活理念。</p>
+                        <img src="https://source.unsplash.com/400x300/?nutrition,health,food" alt="营养价值" class="rounded-lg mb-3 sm:mb-4 w-full h-48 object-cover">
+                        <h3>食养智慧</h3>
+                        <p>了解荞麦在中医食疗及现代营养学中的重要价值，传承“药食同源”的健康生活理念。</p>
                     </div>
                 </div>
             </section>
 
             <!-- 智能荞麦书苑 -->
-            <section id="smart-bookstore" class="mb-12 md:mb-16">
+            <section id="smart-bookstore" class="mb-10 md:mb-16">
                 <h2 class="section-title">智能荞麦书苑 · 体验新空间</h2>
                 <p class="section-subtitle">
                     一个融合科技、文化、健康与休闲的复合型体验中心概念，让大众沉浸式感受荞麦的独特魅力。
                 </p>
-                <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
                     <div class="relative rounded-xl overflow-hidden shadow-xl">
-                        <img src="https://source.unsplash.com/600x450/?modern,interactive,exhibition" alt="智能书苑概念图" class="w-full object-cover">
+                        <img src="https://source.unsplash.com/600x450/?modern,interactive,exhibition" alt="智能书苑概念图" class="w-full h-auto md:h-[450px] object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h3 class="text-2xl font-semibold text-white">“智荟荞缘”文化体验空间 (概念)</h3>
+                        <div class="absolute bottom-0 left-0 p-4 sm:p-6">
+                            <h3 class="text-xl sm:text-2xl font-semibold text-white">“智荟荞缘”文化体验空间 (概念)</h3>
                         </div>
                     </div>
-                    <div class="space-y-6">
+                    <div class="space-y-4 sm:space-y-6">
                         <div class="culture-card flex items-start">
-                            <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <div class="flex-shrink-0 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <svg class="text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-semibold text-emerald-700">AI互动科普展示</h4>
-                                <p class="text-gray-600 text-sm">通过AR/VR、触摸屏等互动装置，生动展示荞麦从田间到餐桌的全过程及AI技术的相关应用场景。</p>
+                                <h4>AI互动科普展示</h4>
+                                <p>通过AR/VR、触摸屏等互动装置，生动展示荞麦从田间到餐桌的全过程及AI技术的相关应用场景。</p>
                             </div>
                         </div>
                         <div class="culture-card flex items-start">
-                             <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                             <div class="flex-shrink-0 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <svg class="text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-semibold text-emerald-700">文化沙龙与主题工作坊</h4>
-                                <p class="text-gray-600 text-sm">定期策划举办荞麦文化讲座、传统手工艺体验、健康食谱分享会等系列活动。</p>
+                                <h4>文化沙龙与主题工作坊</h4>
+                                <p>定期策划举办荞麦文化讲座、传统手工艺体验、健康食谱分享会等系列活动。</p>
                             </div>
                         </div>
                         <div class="culture-card flex items-start">
-                            <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.218 17.808A8.964 8.964 0 0112 21a8.964 8.964 0 01-9.218-3.192M12 3v1m5.95.658l-.707.707M6.757 4.365l-.707-.707M12 21a8.964 8.964 0 01-9.218-3.192m0 0A8.964 8.964 0 013 12c0-4.135 2.834-7.588 6.692-8.658m2.616 0A8.964 8.964 0 0121 12c0 .39-.026.774-.076 1.152M5 12a7 7 0 1014 0 7 7 0 00-14 0z"></path></svg>
+                            <div class="flex-shrink-0 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <svg class="text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.218 17.808A8.964 8.964 0 0112 21a8.964 8.964 0 01-9.218-3.192M12 3v1m5.95.658l-.707.707M6.757 4.365l-.707-.707M12 21a8.964 8.964 0 01-9.218-3.192m0 0A8.964 8.964 0 013 12c0-4.135 2.834-7.588 6.692-8.658m2.616 0A8.964 8.964 0 0121 12c0 .39-.026.774-.076 1.152M5 12a7 7 0 1014 0 7 7 0 00-14 0z"></path></svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-semibold text-emerald-700">荞麦主题轻食与文创产品</h4>
-                                <p class="text-gray-600 text-sm">提供创意荞麦饮品、健康点心，并开发系列特色文创产品，推广健康雅致的生活美学。</p>
+                                <h4>荞麦主题轻食与文创产品</h4>
+                                <p>提供创意荞麦饮品、健康点心，并开发系列特色文创产品，推广健康雅致的生活美学。</p>
                             </div>
                         </div>
                     </div>
@@ -173,43 +182,43 @@
             </section>
 
             <!-- 文化活动与社群 -->
-            <section id="community-events">
+            <section id="community-events" class="mb-10 md:mb-16">
                 <h2 class="section-title">精彩活动 · 社群互动</h2>
                 <p class="section-subtitle">
                     我们定期策划丰富多彩的线上线下活动，旨在构建一个活跃的荞麦文化爱好者社群。
                 </p>
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8">
                     <div class="culture-card">
-                        <h3 class="text-xl font-semibold mb-6 text-emerald-600">近期活动示例</h3>
-                        <div class="space-y-6">
+                        <h3 class="mb-4 sm:mb-6">近期活动示例</h3>
+                        <div class="space-y-4 sm:space-y-6">
                             <div class="event-card">
-                                <div class="flex justify-between items-center mb-2">
-                                    <h4 class="font-semibold text-lg text-emerald-700">“荞麦之美”主题XX活动</h4>
-                                    <span class="text-xs bg-emerald-500 text-white px-2 py-1 rounded-full">线上/线下</span>
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1.5 sm:mb-2">
+                                    <h4>“荞麦之美”主题XX活动</h4>
+                                    <span class="text-xs bg-emerald-500 text-white rounded-full mt-1 sm:mt-0">线上/线下</span>
                                 </div>
-                                <p class="text-sm text-gray-600 mb-2"><span class="font-medium">时间：</span>XX年XX月XX日</p>
-                                <p class="text-sm text-gray-700">活动简介：围绕荞麦文化、艺术或美食等主题开展的互动体验活动。</p>
-                                <button class="btn btn-primary-outline mt-4 text-sm py-2 px-4">了解详情 (示例)</button>
+                                <p class="mb-1 sm:mb-2"><span class="font-medium">时间：</span>XX年XX月XX日</p>
+                                <p class="mb-2 sm:mb-3">活动简介：围绕荞麦文化、艺术或美食等主题开展的互动体验活动。</p>
+                                <button class="btn btn-primary-outline">了解详情 (示例)</button>
                             </div>
                             <div class="event-card">
-                                <div class="flex justify-between items-center mb-2">
-                                    <h4 class="font-semibold text-lg text-emerald-700">XX文化传承系列讲座</h4>
-                                    <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">线上/线下</span>
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1.5 sm:mb-2">
+                                    <h4>XX文化传承系列讲座</h4>
+                                    <span class="text-xs bg-blue-500 text-white rounded-full mt-1 sm:mt-0">线上/线下</span>
                                 </div>
-                                <p class="text-sm text-gray-600 mb-2"><span class="font-medium">时间：</span>XX年XX月XX日</p>
-                                <p class="text-sm text-gray-700">活动简介：邀请相关领域专家学者（如XX老师）分享荞麦文化研究成果与实践经验。</p>
-                                <button class="btn btn-primary-outline mt-4 text-sm py-2 px-4">预约参与 (示例)</button>
+                                <p class="mb-1 sm:mb-2"><span class="font-medium">时间：</span>XX年XX月XX日</p>
+                                <p class="mb-2 sm:mb-3">活动简介：邀请相关领域专家学者（如XX老师）分享荞麦文化研究成果与实践经验。</p>
+                                <button class="btn btn-primary-outline">预约参与 (示例)</button>
                             </div>
                         </div>
                     </div>
                     <div class="culture-card">
-                        <h3 class="text-xl font-semibold mb-6 text-emerald-600">加入我们的社群</h3>
-                        <img src="https://source.unsplash.com/600x300/?nature,community,friends" alt="社群活动示意" class="rounded-lg shadow-md mb-4 w-full object-cover h-48">
-                        <p class="text-gray-700 mb-4">无论您是荞麦种植者、美食爱好者、文化研究者，还是关注健康生活的朋友，都欢迎加入我们的社群，共同交流分享，探索荞麦的无限可能。</p>
-                        <ul class="space-y-2 text-sm text-gray-700 mb-6">
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>获取最新活动资讯</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>参与线上话题讨论</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>优先获得线下活动名额</li>
+                        <h3 class="mb-4 sm:mb-6">加入我们的社群</h3>
+                        <img src="https://source.unsplash.com/600x300/?nature,community,friends" alt="社群活动示意" class="rounded-lg shadow-md mb-3 sm:mb-4 w-full h-40 sm:h-48 object-cover">
+                        <p class="mb-3 sm:mb-4">无论您是荞麦种植者、美食爱好者、文化研究者，还是关注健康生活的朋友，都欢迎加入我们的社群，共同交流分享，探索荞麦的无限可能。</p>
+                        <ul class="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+                            <li class="flex items-center"><svg class="mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>获取最新活动资讯</li>
+                            <li class="flex items-center"><svg class="mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>参与线上话题讨论</li>
+                            <li class="flex items-center"><svg class="mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>优先获得线下活动名额</li>
                         </ul>
                         <button class="btn bg-emerald-600 text-white w-full hover:bg-emerald-700">关注我们 (示例)</button>
                     </div>
@@ -219,22 +228,19 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-800 text-white py-8 sm:py-10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; <span id="current-year-culture"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
-            <p class="text-sm text-gray-400 mt-2">技术支持：云南农业大学创新创业中心 (模拟)</p>
+            <p class="mb-1 sm:mb-2 text-sm sm:text-base">&copy; <span id="current-year-culture"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
+            <p class="text-xs sm:text-sm text-gray-400">技术支持：云南农业大学创新创业中心 (模拟)</p>
         </div>
     </footer>
 
     <script>
-        // 更新年份
         const currentYearCulture = document.getElementById('current-year-culture');
         if(currentYearCulture) {
             currentYearCulture.textContent = new Date().getFullYear();
         }
         
-
-        // 移动端菜单切换 (Culture Page)
         const menuButtonCulture = document.getElementById('menuButtonCulture');
         const mobileMenuCulture = document.getElementById('mobileMenuCulture');
         if(menuButtonCulture && mobileMenuCulture){
