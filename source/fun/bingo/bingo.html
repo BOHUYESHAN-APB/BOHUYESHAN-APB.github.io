@@ -504,18 +504,38 @@
         @media (max-width: 480px) {
             body { padding: 10px; }
             .bingo-cell { 
-                font-size: 0.65rem; 
-                padding: 8px 5px; 
-                min-height: 90px;
+                font-size: 0.6rem; 
+                padding: 8px 6px; 
+                min-height: 140px;
+                aspect-ratio: auto;
             }
             .bingo-cell .content {
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
-                font-size: 0.65rem;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+                line-clamp: 4;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 0.6rem;
+                line-height: 1.4;
+                word-break: break-word;
             }
             .action-btn span { display: none; }
             .action-btn { padding: 16px 10px; }
             .modal-content { max-width: 90%; }
+        }
+        @media (max-width: 360px) {
+            .bingo-cell { 
+                font-size: 0.58rem; 
+                min-height: 150px;
+            }
+            .bingo-cell .content {
+                font-size: 0.58rem;
+                -webkit-line-clamp: 5;
+                line-clamp: 5;
+                line-height: 1.4;
+                word-break: break-word;
+            }
         }
     </style>
 </head>
