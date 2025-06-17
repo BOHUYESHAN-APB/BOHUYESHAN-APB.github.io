@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校园生活 Bingo</title>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #007AFF;
+      --primary-light: #E1F0FF;
+      --secondary: #5856D6;
+      --success: #34C759;
+      --warning: #FF9500;
+      --danger: #FF3B30;
+      --background: #F2F2F7;
+      --surface: rgba(255, 255, 255, 0.8); /* 半透明白色 */
+      --glass-effect: rgba(255, 255, 255, 0.6); /* 毛玻璃效果 */
+      --border: #C5C6D0;
+      --text-primary: #1D1D1F;
+      --text-secondary: #8E8E93;
+      --elevation-1: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+      --elevation-2: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+      --elevation-3: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.1);
+      --section-radius: 16px;
+      --card-radius: 12px;
+      --animation-speed: 0.3s;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #E1F0FF 0%, #F2F2F7 100%);
+      color: var(--text-primary);
+      line-height: 1.5;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    /* iOS风格顶部导航 */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px); /* 毛玻璃效果 */
+      border-radius: var(--section-radius);
+      box-shadow: var(--elevation-1);
+      position: relative;
+    }
+    .navbar-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .navbar-icons {
+      display: flex;
+      gap: 18px;
+    }
+    .icon-btn {
+      background: none;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      transition: all var(--animation-speed) ease;
+    }
+    .icon-btn:hover, .icon-btn:active {
+      background-color: rgba(0,0,0,0.05);
+      color: var(--text-primary);
+    }
+    /* iOS风格标题卡片 */
+    .header-card {
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px);
+      border-radius: var(--section-radius);
+      padding: 22px 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--elevation-1);
+    }
+    .app-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-primary);
+      text-align: center;
+    }
+    .app-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* 主题选择器 */
+    .theme-selector {
+      display: flex;
+      background-color: var(--background);
+      border-radius: 100px;
+      padding: 5px;
+      max-width: 90%;
+      margin: 0 auto 20px;
+    }
+    .theme-option {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all var(--animation-speed) ease;
+    }
+    .theme-option.active {
+      background-color: var(--surface);
+      box-shadow: var(--elevation-1);
+      color: var(--primary);
+    }
+    /* Bingo卡片区域 - iOS卡片风格 */
+    .bingo-container {
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px);
+      border-radius: var(--section-radius);
+      box-shadow: var(--elevation-2);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bingo-header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .header-cell {
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 10px 5px;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .bingo-cell {
+      aspect-ratio: 1;
+      background-color: var(--surface);
+      border-radius: var(--card-radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: var(--elevation-1);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .bingo-cell .content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+        line-clamp: 2;
+      -webkit-box-orient: vertical;
+      margin-bottom: 8px;
+    }
+    .bingo-cell.free {
+      background: linear-gradient(135deg, var(--primary-light) 0%, rgba(142, 142, 147, 0.1) 100%);
+      border-color: var(--primary);
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .bingo-cell.completed {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border-color: var(--primary);
+      color: white;
+      transform: scale(0.98);
+    }
+    .bingo-cell.completed::after {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    .bingo-cell.completed .content {
+      text-decoration: line-through;
+      opacity: 0.9;
+    }
+    .bingo-cell:not(.free):not(.completed):active {
+      background-color: rgba(0,0,0,0.03);
+      transform: scale(0.97);
+    }
+    .evaluation {
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      right: 0;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 5px;
+      text-align: center;
+    }
+    .bingo-cell.completed .evaluation {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    /* iOS风格底部工具栏 */
+    .action-bar {
+      display: flex;
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 10px 15px;
+      box-shadow: var(--elevation-2);
+      margin-bottom: 20px;
+    }
+    .action-btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      gap: 5px;
+      transition: all var(--animation-speed) ease;
+    }
+    .action-btn i {
+      font-size: 1.2rem;
+    }
+    .action-btn:hover, .action-btn:active {
+      background-color: rgba(0,0,0,0.05);
+      color: var(--primary);
+    }
+    .action-btn.primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      box-shadow: 0 2px 10px rgba(0, 122, 255, 0.3);
+    }
+    .action-btn.primary:hover, .action-btn.primary:active {
+      opacity: 0.9;
+    }
+    /* iOS风格成就卡片 */
+    .stats-container {
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px);
+      border-radius: var(--section-radius);
+      box-shadow: var(--elevation-1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title i {
+      color: var(--primary);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      background: var(--glass-effect);
+      border-radius: var(--card-radius);
+      padding: 15px 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--elevation-2);
+    }
+    .stat-value {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+        background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .achievements {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+    .badge:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--elevation-1);
+    }
+    .badge.disabled {
+      background: var(--background);
+      color: var(--text-secondary);
+      opacity: 0.7;
+    }
+    /* iOS风格模态框 */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-content {
+      width: 100%;
+      max-width: 400px;
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px);
+      border-radius: var(--section-radius);
+      box-shadow: var(--elevation-3);
+      overflow: hidden;
+      transform: translateY(30px);
+      transition: all 0.3s ease;
+    }
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+    .modal-header {
+      padding: 20px;
+      border-bottom: 1px solid #EFEFF4;
+      text-align: center;
+    }
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .modal-body {
+      padding: 20px;
+    }
+    .textarea-eval {
+      width: 100%;
+      padding: 15px;
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border);
+      background: var(--background);
+      min-height: 120px;
+      margin-bottom: 15px;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: none;
+      transition: all 0.2s ease;
+    }
+    .textarea-eval:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+    }
+    .modal-footer {
+      display: flex;
+      border-top: 1px solid #EFEFF4;
+    }
+    .modal-footer button {
+      flex: 1;
+      padding: 18px;
+      border: none;
+      background: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .modal-footer button:first-child {
+      color: var(--text-secondary);
+    }
+    .modal-footer button:first-child:hover {
+      background-color: rgba(0,0,0,0.05);
+    }
+    .modal-footer button:last-child {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .modal-footer button:last-child:hover {
+      background-color: rgba(0, 122, 255, 0.1);
+    }
+    /* iOS风格导出预览 */
+    .export-preview {
+      background: var(--glass-effect);
+      backdrop-filter: blur(10px);
+      border-radius: var(--section-radius);
+      padding: 20px;
+      margin: 0 0 20px;
+      box-shadow: var(--elevation-1);
+    }
+    .export-preview img {
+      width: 100%;
+      border-radius: var(--card-radius);
+      box-shadow: var(--elevation-1);
+    }
+    /* 庆祝动画 */
+    .celebration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 999;
+      display: none;
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      animation: confetti 3s ease-in-out forwards;
+    }
+    @keyframes confetti {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    /* 编辑模式样式 */
+    .edit-mode .bingo-cell:not(.free) {
+      cursor: pointer;
+      border: 1px dashed var(--primary);
+    }
+    .edit-mode .bingo-cell:not(.free):hover {
+      background-color: var(--primary-light);
+    }
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .navbar-title {
+        font-size: 1rem;
+      }
+      .bingo-cell {
+        font-size: 0.75rem;
+        padding: 8px 5px;
+      }
+      .header-cell {
+        font-size: 1rem;
+        padding: 8px 3px;
+      }
+      .evaluation {
+        font-size: 0.6rem;
+      }
+      .action-btn {
+        font-size: 0.75rem;
+        padding: 12px 8px;
+      }
+      .theme-option {
+        font-size: 0.8rem;
+        padding: 8px;
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .bingo-cell {
+        font-size: 0.65rem;
+      }
+      .action-btn span {
+        display: none;
+      }
+      .stat-card {
+        padding: 12px 10px;
+      }
+      .stat-value {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- iOS风格顶部导航栏 -->
+    <div class="navbar">
+      <div class="navbar-title">校园生活 Bingo</div>
+      <div class="navbar-icons">
+        <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i></button>
+        <button class="icon-btn" id="settingsBtn"><i class="fas fa-cog"></i></button>
+      </div>
+    </div>
+    
+    <!-- 应用标题卡片 -->
+    <div class="header-card">
+      <h1 class="app-title">校园生活 Bingo</h1>
+      <p class="app-subtitle">探索不同领域的校园精彩瞬间</p>
+      
+      <!-- 主题选择器 -->
+      <div class="theme-selector">
+        <div class="theme-option active" data-theme="tech">技术宅</div>
+        <div class="theme-option" data-theme="bio">生物技术</div>
+        <div class="theme-option" data-theme="anime">二次元</div>
+      </div>
+    </div>
+    
+    <!-- Bingo卡片区域 -->
+    <div class="bingo-container" id="bingoContainer">
+      <div class="bingo-header">
+        <div class="header-cell">B</div>
+        <div class="header-cell">I</div>
+        <div class="header-cell">N</div>
+        <div class="header-cell">G</div>
+        <div class="header-cell">O</div>
+      </div>
+      
+      <div class="bingo-grid" id="bingoGrid">
+        <!-- 格子将通过JS生成 -->
+      </div>
+    </div>
+    
+    <!-- iOS风格底部工具栏 -->
+    <div class="action-bar">
+      <button class="action-btn" id="resetBtn">
+        <i class="fas fa-rotate-left"></i>
+        <span>重置</span>
+      </button>
+      <button class="action-btn" id="editBtn">
+        <i class="fas fa-pen"></i>
+        <span>编辑</span>
+      </button>
+      <button class="action-btn" id="favoriteBtn">
+        <i class="fas fa-heart"></i>
+        <span>收藏</span>
+      </button>
+      <button class="action-btn primary" id="exportBtn">
+        <i class="fas fa-camera"></i>
+        <span>导出图片</span>
+      </button>
+    </div>
+    
+    <!-- 活动数据卡片 -->
+    <div class="stats-container">
+      <h3 class="section-title"><i class="fas fa-chart-line"></i> 活动数据</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="completedCount">0</div>
+          <div class="stat-label">完成项目</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="percentComplete">0%</div>
+          <div class="stat-label">完成率</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="bingoCount">0</div>
+          <div class="stat-label">达成Bingo</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="evalCount">0</div>
+          <div class="stat-label">评价项目</div>
+        </div>
+      </div>
+      
+      <h3 class="section-title"><i class="fas fa-trophy"></i> 个人成就</h3>
+      <div class="achievements">
+        <div class="badge disabled" data-achievement="campus-guru">
+          <i class="fas fa-user-graduate"></i> 校园大佬
+        </div>
+        <div class="badge" data-achievement="code-superman">
+          <i class="fas fa-laptop-code"></i> 代码超人
+        </div>
+        <div class="badge disabled" data-achievement="bio-wizard">
+          <i class="fas fa-flask"></i> 生物奇才
+        </div>
+        <div class="badge disabled" data-achievement="anime-master">
+          <i class="fas fa-paint-brush"></i> 二次元大师
+        </div>
+        <div class="badge" data-achievement="single-king">
+          <i class="fas fa-heart-crack"></i> 单身王者
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 评价模态框 -->
+  <div class="modal" id="evaluationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">添加评价</h2>
+      </div>
+      <div class="modal-body">
+        <div id="evaluationTarget" style="font-weight:500; margin-bottom:10px; text-align:center;">项目名称</div>
+        <textarea class="textarea-eval" id="evaluationText" placeholder="写下你的感想或评价..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelEvaluation">取消</button>
+        <button id="saveEvaluation">保存</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 编辑模态框 -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">编辑内容</h2>
+      </div>
+      <div class="modal-body">
+        <div id="editTarget" style="font-weight:500; margin-bottom:10px; text-align:center;">编辑项目</div>
+        <textarea class="textarea-eval" id="editText" placeholder="输入新内容..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelEdit">取消</button>
+        <button id="saveEdit">保存</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 导出图片预览 -->
+  <div class="container">
+    <div id="exportPreview"></div>
+  </div>
+  
+  <!-- 分享模态框 -->
+  <div class="modal" id="shareModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">分享你的成就</h2>
+      </div>
+      <div class="modal-body">
+        <div class="share-options">
+          <button class="action-btn" id="shareWeixin">
+            <i class="fab fa-weixin" style="font-size: 2rem;"></i>
+            <span>微信</span>
+          </button>
+          <button class="action-btn" id="shareQQ">
+            <i class="fab fa-qq" style="font-size: 2rem;"></i>
+            <span>QQ</span>
+          </button>
+          <button class="action-btn" id="shareWeibo">
+            <i class="fab fa-weibo" style="font-size: 2rem;"></i>
+            <span>微博</span>
+          </button>
+          <button class="action-btn" id="copyLink">
+            <i class="fas fa-link" style="font-size: 2rem;"></i>
+            <span>复制链接</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeShareModal">关闭</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 庆祝动画容器 -->
+  <div class="celebration" id="celebration"></div>
+
+  <script>
+    // 不同主题的卡片数据
+    const cardData = {
+      tech: [
+        // B 列 - 极客日常
+        "通宵写代码到凌晨三点", "GitHub连续日更超过30天", "收集三款以上机械键盘", "一周内学习一门新编程语言", "每天关注AI领域最新动态",
+        // I 列 - 校园生存
+        "食堂抢饭失败三次以上", "体测800/1000米代跑被抓包", "寝室夜聊到凌晨一点", "500元内淘到二手高性能显卡", "共享单车扫码失败五次以上",
+        // N 列 - 技术救生活
+        "写Python脚本自动抢选修课", "自制Arduino宿舍智能灯", "成功维修损坏的笔记本电脑", "开发Bot自动回复消息", "用Excel制作个人财务管理系统",
+        // G 列 - 情感状态
+        "没有谈恋爱", "觉得嗑CP比自己谈恋爱更香", "母胎单身至今", "二次元角色比真人更有吸引力", "用AI机器人进行情感咨询",
+        // O 列 - 硬核娱乐
+        "给机械键盘更换不同轴体", "一个月内氪金超过生活费1/3", "装机过程中多次翻车", "剪辑Vlog到凌晨导致翘课", "熬夜追科技发布会直播"
+      ],
+      bio: [
+        // B 列 - 基础实验技能
+        "第一次使用显微镜观察洋葱表皮细胞", "独立完成DNA提取实验", "学会正确使用移液枪", "制作完美的琼脂糖凝胶电泳", "成功接种大肠杆菌菌落",
+        // I 列 - 课程学习体验
+        "解剖青蛙实验不敢下刀", "植物学野外实习采集10种标本", "参与项目答辩", "生物化学考试前通宵复习", "参与小组课堂展示获得优秀",
+        // N 列 - 实验室趣事
+        "忘记给离心管贴标签", "培养皿被污染长出霉菌", "显微镜下找到目标细胞激动拍照", "染色剂染色双手", "不小心打碎玻璃仪器",
+        // G 列 - 学科认知
+        "参观校史馆了解DNA双螺旋发现史", "参加辩论赛", "观看《工作细胞》动画学知识", "用Python处理实验数据", "读《自私的基因》深受启发",
+        // O 列 - 生活应用
+        "自制酸奶体验发酵过程", "学会用PCR检测", "用显微镜观察家中自来水微生物", "制作植物叶脉书签", "尝试培养多肉植物成功"
+      ],
+      anime: [
+        // B 列 - 二次元日常
+        "连续追新番熬夜超一周", "买手办花超一个月生活费", "尝试角色扮演(COS)", "参加大型动漫展会(如Comiket)", "收集超50件动漫周边",
+        // I 列 - 宅文化
+        "日常交流用日语口头禅", "学习并表演宅舞", "成为虚拟偶像粉丝", "被同学称为'中二病晚期'", "将一切事物'萌化'解读",
+        // N 列 - 经典作品
+        "补完三部经典老番(如EVA)", "一周内看完24集热血番", "少女心被某部动漫点燃", "沉迷推理烧脑番无法自拔", "被治愈系动漫感动流泪",
+        // G 列 - 社交行为
+        "安利动漫失败超10次", "在现实中找到二次元同好", "看视频依赖弹幕护体", "听声优声线认出角色", "使用字幕组特有梗交流",
+        // O 列 - 衍生创作
+        "绘制超10张动漫同人图", "撰写5000字以上同人文", "剪辑高质量AMV上传B站", "翻唱动漫歌曲并发布", "深度体验二次元游戏写攻略"
+      ]
+    };
+    
+    // 成就定义
+    const achievements = {
+      "campus-guru": {
+        name: "校园大佬",
+        condition: (completedCount, bingoCount) => completedCount >= 20 && bingoCount >= 3
+      },
+      "code-superman": {
+        name: "代码超人",
+        condition: (completedCount, bingoCount, theme) => theme === 'tech' && completedCount >= 15
+      },
+      "bio-wizard": {
+        name: "生物奇才",
+        condition: (completedCount, bingoCount, theme) => theme === 'bio' && completedCount >= 15
+      },
+      "anime-master": {
+        name: "二次元大师",
+        condition: (completedCount, bingoCount, theme) => theme === 'anime' && completedCount >= 15
+      },
+      "single-king": {
+        name: "单身王者",
+        condition: () => true // 初始解锁
+      }
+    };
+    
+    // 游戏状态
+    let gameState = {
+      currentTheme: 'tech',
+      completed: new Array(25).fill(false),
+      evaluations: new Array(25).fill(""),
+      customContent: JSON.parse(localStorage.getItem('customContent')) || {},
+      favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+      editMode: false
+    };
+    
+    // 当前打开的格子索引
+    let currentCellIndex = -1;
+    
+    // DOM加载完成后初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      loadGameState();
+      initGame();
+      setupEventListeners();
+      updateStats();
+    });
+    
+    // 从localStorage加载游戏状态
+    function loadGameState() {
+      const savedState = localStorage.getItem('bingoGameState');
+      if (savedState) {
+        try {
+          const parsedState = JSON.parse(savedState);
+          gameState = {
+            ...gameState,
+            ...parsedState
+          };
+        } catch (e) {
+          console.error('Failed to load saved game state', e);
+        }
+      }
+      
+
+    }
+    
+    // 保存游戏状态到localStorage
+    function saveGameState() {
+      localStorage.setItem('bingoGameState', JSON.stringify(gameState));
+    }
+    
+    // 初始化游戏板
+    function initGame() {
+      const bingoGrid = document.getElementById('bingoGrid');
+      bingoGrid.innerHTML = '';
+
+      // 中央Free格默认完成
+      gameState.completed[12] = false;
+      saveGameState();
+
+      const currentCardData = gameState.currentTheme === 'custom' 
+        ? gameState.customContent[gameState.currentCustomSet] || cardData.tech 
+        : cardData[gameState.currentTheme];
+      
+      for (let i = 0; i < 25; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('bingo-cell');
+        cell.dataset.index = i;
+        
+        // 获取单元格内容，优先使用自定义内容
+        const content = gameState.customContent[gameState.currentTheme] 
+          ? gameState.customContent[gameState.currentTheme][i] || currentCardData[i] 
+          : currentCardData[i];
+        
+        if (i === 12) { // 中央Free格
+          cell.classList.add('free');
+          cell.innerHTML = `<div class="content">${content}</div>
+                          <div class="evaluation"></div>`;
+        } else {
+          cell.innerHTML = `
+            <div class="content">${content}</div>
+            <div class="evaluation"></div>
+          `;
+        }
+        
+        // 恢复已完成状态
+        if (gameState.completed[i]) {
+          cell.classList.add('completed');
+        }
+        
+        // 恢复评价
+        if (gameState.evaluations[i]) {
+          const evalElement = cell.querySelector('.evaluation');
+          evalElement.textContent = gameState.evaluations[i];
+        }
+        
+        // 应用编辑模式样式
+        if (gameState.editMode && i !== 12) {
+          cell.classList.add('editable');
+        }
+        
+        bingoGrid.appendChild(cell);
+      }
+      
+
+    }
+    
+    // 设置事件监听
+    function setupEventListeners() {
+      // 格子点击事件
+      document.querySelectorAll('.bingo-cell').forEach(cell => {
+        // 单击 - 根据模式切换完成状态或编辑内容
+        cell.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          
+          if (gameState.editMode && index !== 12) {
+            openEditModal(index);
+          } else {
+            toggleCellCompletion(index);
+          }
+        });
+        
+        // 双击 - 添加评价
+        cell.addEventListener('dblclick', function(e) {
+          e.preventDefault();
+          if (!gameState.editMode) {
+            const index = parseInt(this.dataset.index);
+            openEvaluationModal(index);
+          }
+        });
+        
+        // 阻止双击选择文字
+        cell.addEventListener('mousedown', (e) => {
+          if (e.detail > 1) e.preventDefault();
+        });
+        
+        // 移动端触摸支持
+        let touchStartTime = 0;
+        cell.addEventListener('touchstart', function() {
+          touchStartTime = new Date().getTime();
+        });
+        
+        cell.addEventListener('touchend', function(e) {
+          const touchDuration = new Date().getTime() - touchStartTime;
+          if (touchDuration > 500 && !gameState.editMode) {
+            const index = parseInt(this.dataset.index);
+            openEvaluationModal(index);
+            e.preventDefault();
+          }
+        });
+      });
+      
+      // 主题切换事件
+      document.querySelectorAll('.theme-option').forEach(option => {
+        option.addEventListener('click', function() {
+          // 切换主题
+          const theme = this.dataset.theme;
+          if (theme !== gameState.currentTheme) {
+            gameState.currentTheme = theme;
+            
+            // 更新UI
+            document.querySelectorAll('.theme-option').forEach(opt => {
+              opt.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // 重新初始化游戏板
+            initGame();
+            setupEventListeners();
+            updateStats();
+            saveGameState();
+          }
+        });
+      });
+      
+      // 按钮事件
+      document.getElementById('exportBtn').addEventListener('click', function() { alert('图片导出功能尚未实现'); });
+      document.getElementById('resetBtn').addEventListener('click', resetGame);
+      document.getElementById('editBtn').addEventListener('click', toggleEditMode);
+
+      document.getElementById('shareBtn').addEventListener('click', openShareModal);
+      document.getElementById('closeShareModal').addEventListener('click', closeShareModal);
+      
+      // 模态框事件
+      document.getElementById('cancelEvaluation').addEventListener('click', closeModal);
+      document.getElementById('saveEvaluation').addEventListener('click', saveEvaluation);
+      document.getElementById('cancelEdit').addEventListener('click', closeEditModal);
+      document.getElementById('saveEdit').addEventListener('click', saveEdit);
+      
+      // 点击模态框外部关闭
+      document.getElementById('evaluationModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
+      
+      document.getElementById('editModal').addEventListener('click', function(e) {
+        if (e.target === this) closeEditModal();
+      });
+      
+      document.getElementById('shareModal').addEventListener('click', function(e) {
+        if (e.target === this) closeShareModal();
+      });
+      
+      // 键盘支持
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+          closeEditModal();
+          closeShareModal();
+        }
+        if (document.getElementById('evaluationModal').classList.contains('active') && e.key === 'Enter' && !e.shiftKey) {
+          saveEvaluation();
+        }
+        if (document.getElementById('editModal').classList.contains('active') && e.key === 'Enter' && !e.shiftKey) {
+          saveEdit();
+        }
+      });
+    }
+    
+    // 切换格子完成状态
+    function toggleCellCompletion(index) {
+      const cell = document.querySelector(`.bingo-cell[data-index="${index}"]`);
+      
+      // 不允许取消中央Free格
+      if (index === 12) return; // 中央Free格索引假设为12
+      cell.classList.toggle('completed');
+      updateStats();
+      checkBingo();
+    }
+  </script>
+    }
+  }
+}</script>
