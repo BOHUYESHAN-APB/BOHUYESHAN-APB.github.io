@@ -6,25 +6,72 @@
     <title>CNN-MicroAI-Colony - 微生物智能分析平台</title>
     <meta name="description" content="基于深度学习和计算机视觉的微生物培养综合分析系统">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, footer {
+            background-color: #0078d4;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        header h1, footer p {
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #e3f2fd;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #666;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
-    <header class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>🧬 CNN-MicroAI-Colony</h1>
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="./index.html" class="active">首页</a></li>
-                    <li><a href="./cnn-demo.html">CNN模型</a></li>
-                    <li><a href="./opencv-demo.html">OpenCV系统</a></li>
-                    <li><a href="./tech-comparison.html">技术对比</a></li>
-                    <li><a href="./documentation.html">技术文档</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-        </div>
+    <header>
+        <h1>🧬 CNN-MicroAI-Colony</h1>
     </header>
 
     <!-- 主内容 -->
@@ -66,12 +113,7 @@
 
     <!-- 页脚 -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 版本：v2.1</p>
-            <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
-        </div>
+        <p>&copy; 2025 CNN-MicroAI-Colony | 本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
     </footer>
-
-    <script src="scripts.js"></script>
 </body>
 </html>

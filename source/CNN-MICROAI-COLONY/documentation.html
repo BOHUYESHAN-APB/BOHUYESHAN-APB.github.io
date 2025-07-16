@@ -6,25 +6,72 @@
     <title>技术文档中心 - CNN-MicroAI-Colony</title>
     <meta name="description" content="CNN-MicroAI-Colony微生物智能分析平台的完整技术文档集合">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, footer {
+            background-color: #0078d4;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        header h1, footer p {
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #e3f2fd;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #666;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
-    <header class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>🧬 CNN-MicroAI-Colony</h1>
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="./index.html">首页</a></li>
-                    <li><a href="./cnn-demo.html">CNN模型</a></li>
-                    <li><a href="./opencv-demo.html">OpenCV系统</a></li>
-                    <li><a href="./tech-comparison.html">技术对比</a></li>
-                    <li><a href="./documentation.html" class="active">技术文档</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-        </div>
+    <header>
+        <h1>🧬 CNN-MicroAI-Colony</h1>
     </header>
 
     <!-- 主内容 -->
@@ -43,18 +90,38 @@
                     <div class="card">
                         <h3>技术架构</h3>
                         <p>详细介绍系统架构设计与模块划分。</p>
+                        <ul>
+                            <li>前端：基于React和Tauri，提供用户友好的交互界面。</li>
+                            <li>后端：使用FastAPI实现高效的API服务。</li>
+                            <li>AI模型：支持多种深度学习框架，灵活扩展。</li>
+                        </ul>
                     </div>
                     <div class="card">
                         <h3>算法原理</h3>
                         <p>深入解析核心算法与优化策略。</p>
+                        <ul>
+                            <li>菌落检测：基于深度学习的高精度检测。</li>
+                            <li>抑菌圈分析：多策略检测，支持滤纸片与透明圈。</li>
+                            <li>数据增强：小样本优化与多场景适配。</li>
+                        </ul>
                     </div>
                     <div class="card">
                         <h3>性能测试</h3>
                         <p>提供模型性能基准测试数据与分析。</p>
+                        <ul>
+                            <li>检测精度：mAP@0.5高达96.8%。</li>
+                            <li>处理速度：支持GPU加速与多线程优化。</li>
+                            <li>资源需求：低内存占用与高效推理。</li>
+                        </ul>
                     </div>
                     <div class="card">
                         <h3>专利对比</h3>
                         <p>对比现有专利技术与创新点。</p>
+                        <ul>
+                            <li>创新点：多策略融合与参数自适应。</li>
+                            <li>专利覆盖：菌落检测与抑菌圈分析。</li>
+                            <li>未来规划：扩展至更多微生物检测场景。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -63,12 +130,7 @@
 
     <!-- 页脚 -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 文档中心版本：v2.0</p>
-            <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
-        </div>
+        <p>&copy; 2025 CNN-MicroAI-Colony | 本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
     </footer>
-
-    <script src="scripts.js"></script>
 </body>
 </html>

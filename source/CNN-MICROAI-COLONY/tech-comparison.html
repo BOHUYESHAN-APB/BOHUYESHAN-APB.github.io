@@ -6,25 +6,72 @@
     <title>技术对比分析 - CNN vs OpenCV 双引擎架构</title>
     <meta name="description" content="深度学习与传统计算机视觉在微生物检测领域的全面对比分析">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, footer {
+            background-color: #0078d4;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        header h1, footer p {
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #e3f2fd;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #666;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
-    <header class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>🧬 CNN-MicroAI-Colony</h1>
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="./index.html">首页</a></li>
-                    <li><a href="./cnn-demo.html">CNN模型</a></li>
-                    <li><a href="./opencv-demo.html">OpenCV系统</a></li>
-                    <li><a href="./tech-comparison.html" class="active">技术对比</a></li>
-                    <li><a href="./documentation.html">技术文档</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-        </div>
+    <header>
+        <h1>🧬 CNN-MicroAI-Colony</h1>
     </header>
 
     <!-- 主内容 -->
@@ -42,8 +89,8 @@
                 <div class="grid">
                     <div class="card">
                         <h3>深度学习 (CNN)</h3>
+                        <p>采用卷积神经网络，适用于复杂场景和多类别菌落检测。</p>
                         <ul>
-                            <li>算法类型：卷积神经网络</li>
                             <li>数据需求：大量标注数据</li>
                             <li>开发周期：较长</li>
                             <li>泛化能力：强</li>
@@ -51,8 +98,8 @@
                     </div>
                     <div class="card">
                         <h3>传统计算机视觉 (OpenCV)</h3>
+                        <p>基于传统图像处理算法，适用于快速原型和低成本部署。</p>
                         <ul>
-                            <li>算法类型：传统图像处理</li>
                             <li>数据需求：少量或无标注</li>
                             <li>开发周期：较短</li>
                             <li>泛化能力：中等</li>
@@ -65,30 +112,49 @@
         <section class="performance">
             <div class="container">
                 <h2>检测性能对比</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>深度学习性能</h3>
-                        <p>菌落计数准确率：96.8% (ResNet50)</p>
-                        <p>复杂场景适应性：优秀</p>
-                    </div>
-                    <div class="card">
-                        <h3>传统视觉性能</h3>
-                        <p>滤纸片检测准确率：100%</p>
-                        <p>几何测量精度：±0.1mm</p>
-                    </div>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>技术</th>
+                            <th>检测准确率</th>
+                            <th>处理速度</th>
+                            <th>适用场景</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CNN (深度学习)</td>
+                            <td>96.8%</td>
+                            <td>待测定</td>
+                            <td>复杂场景</td>
+                        </tr>
+                        <tr>
+                            <td>OpenCV (传统视觉)</td>
+                            <td>90%</td>
+                            <td>2-4秒/张</td>
+                            <td>简单场景</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2>融合策略</h2>
+                <p>结合深度学习和传统视觉的优势，提供灵活的双引擎架构：</p>
+                <ul>
+                    <li><strong>深度学习：</strong>适用于高精度需求和复杂场景。</li>
+                    <li><strong>传统视觉：</strong>适用于快速原型和低成本部署。</li>
+                    <li><strong>融合应用：</strong>根据场景自动切换算法，提升整体性能。</li>
+                </ul>
             </div>
         </section>
     </main>
 
     <!-- 页脚 -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 对比分析版本：v1.1</p>
-            <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
-        </div>
+        <p>&copy; 2025 CNN-MicroAI-Colony | 本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
     </footer>
-
-    <script src="scripts.js"></script>
 </body>
 </html>
