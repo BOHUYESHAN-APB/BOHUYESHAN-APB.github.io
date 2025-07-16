@@ -5,92 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CNN-MicroAI-Colony - 微生物智能分析平台</title>
     <meta name="description" content="基于深度学习和计算机视觉的微生物培养综合分析系统">
-    <meta name="keywords" content="深度学习,计算机视觉,微生物检测,CNN,OpenCV,抑菌圈检测">
-    <style>
-        /* ...原有样式保持不变... */
-        /* 夜间模式支持 */
-        body.dark-mode {
-            background: #181a1b;
-            color: #e8eaed;
-        }
-        body.dark-mode .container,
-        body.dark-mode .feature-card,
-        body.dark-mode .arch-block,
-        body.dark-mode .app-card,
-        body.dark-mode .demo-card,
-        body.dark-mode .highlight-section,
-        body.dark-mode .contact-card,
-        body.dark-mode .footer,
-        body.dark-mode .footer-section,
-        body.dark-mode .footer-content {
-            background: #23272a !important;
-            color: #e8eaed !important;
-        }
-        body.dark-mode .feature-card,
-        body.dark-mode .arch-block,
-        body.dark-mode .app-card,
-        body.dark-mode .demo-card,
-        body.dark-mode .highlight-section,
-        body.dark-mode .contact-card,
-        body.dark-mode .footer-section {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .nav-brand h1,
-        body.dark-mode h2,
-        body.dark-mode .feature-card h3,
-        body.dark-mode .arch-block h3,
-        body.dark-mode .app-card h3,
-        body.dark-mode .demo-card h3,
-        body.dark-mode .highlight-section h3,
-        body.dark-mode .contact-card h3,
-        body.dark-mode .footer-section h3 {
-            color: #7abaff !important;
-        }
-        body.dark-mode .nav-menu a,
-        body.dark-mode .footer-section a {
-            color: #b3c7f9 !important;
-        }
-        body.dark-mode .nav-menu a.active,
-        body.dark-mode .nav-menu a:hover {
-            color: #7abaff !important;
-        }
-        body.dark-mode .btn-primary {
-            background: #106ebe;
-            color: #fff;
-        }
-        body.dark-mode .btn-secondary {
-            background: #333;
-            color: #fff;
-            border: 1px solid #555;
-        }
-        body.dark-mode .performance-table table,
-        body.dark-mode table {
-            background: #23272a;
-            color: #e8eaed;
-        }
-        body.dark-mode th {
-            background: #106ebe;
-            color: #fff;
-        }
-        body.dark-mode .performance-note {
-            background: #222e3c;
-            border-left: 4px solid #106ebe;
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer-bottom {
-            color: #b3c7f9;
-            border-top: 1px solid #333;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <header class="navbar">
         <div class="container">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <h1>🧬 CNN-MicroAI-Colony</h1>
-                </div>
+            <div class="nav-brand">
+                <h1>🧬 CNN-MicroAI-Colony</h1>
+            </div>
+            <nav>
                 <ul class="nav-menu">
                     <li><a href="./index.html" class="active">首页</a></li>
                     <li><a href="./cnn-demo.html">CNN模型</a></li>
@@ -98,53 +22,56 @@
                     <li><a href="./tech-comparison.html">技术对比</a></li>
                     <li><a href="./documentation.html">技术文档</a></li>
                 </ul>
-                <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-            </div>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
         </div>
-    </nav>
-    <main class="main-content">
-        <!-- ...原有内容保持不变... -->
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>欢迎来到CNN-MicroAI-Colony</h2>
+                <p>基于深度学习和计算机视觉的微生物培养综合分析系统，提供高效、精准的菌落检测与分析解决方案。</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>核心功能</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>高精度检测</h3>
+                        <p>采用Faster R-CNN、YOLO等深度学习模型，支持多类别菌落识别。</p>
+                    </div>
+                    <div class="card">
+                        <h3>实时分析</h3>
+                        <p>结合OpenCV传统算法，实现快速、低成本的抑菌圈检测。</p>
+                    </div>
+                    <div class="card">
+                        <h3>多场景适配</h3>
+                        <p>支持实验室、工业生产等多种应用场景，灵活部署。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2>关于我们</h2>
+                <p>CNN-MicroAI-Colony致力于推动微生物检测技术的发展，通过创新的算法和高效的工具，为科研和工业提供可靠的解决方案。</p>
+            </div>
+        </section>
     </main>
-    <footer class="footer">
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <!-- ...原有footer内容保持不变... -->
-            </div>
-            <div class="footer-bottom">
-                &copy; 2025 CNN-MicroAI-Colony | 版本：v2.1 | <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">GitHub仓库</a> | <a href="https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">Gitee国内镜像</a>
-            </div>
+            <p>&copy; 2025 CNN-MicroAI-Colony | 版本：v2.1</p>
+            <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
         </div>
     </footer>
-    <script>
-        // 夜间模式切换
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        function setTheme(mode) {
-            if (mode === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeToggleBtn.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeToggleBtn.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        // 初始化主题
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
-        })();
-        themeToggleBtn.addEventListener('click', function() {
-            if (document.body.classList.contains('dark-mode')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        });
-    </script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

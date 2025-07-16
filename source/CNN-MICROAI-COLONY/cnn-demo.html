@@ -5,99 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CNN深度学习模型 - 菌落智能识别系统</title>
     <meta name="description" content="基于卷积神经网络的高精度微生物菌落检测和计数解决方案">
-    <style>
-        /* 统一风格与夜间模式支持 */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary-color: #0078d4;
-            --secondary-color: #106ebe;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #333333;
-            --text-secondary: #6c757d;
-            --border-color: #dee2e6;
-            --shadow: 0 2px 10px rgba(0,0,0,0.1);
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --code-bg: #f8f9fa;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-        }
-        body.dark-mode {
-            background: #181a1b;
-            color: #e8eaed;
-        }
-        body.dark-mode .container,
-        body.dark-mode .performance-card,
-        body.dark-mode .features-list,
-        body.dark-mode .case-card,
-        body.dark-mode .innovation-section,
-        body.dark-mode .footer,
-        body.dark-mode .nav-links {
-            background: #23272a !important;
-            color: #e8eaed !important;
-        }
-        body.dark-mode h2,
-        body.dark-mode h3,
-        body.dark-mode .nav-brand h1 {
-            color: #7abaff !important;
-        }
-        body.dark-mode .nav-menu a,
-        body.dark-mode .footer a {
-            color: #b3c7f9 !important;
-        }
-        body.dark-mode .nav-menu a.active,
-        body.dark-mode .nav-menu a:hover {
-            color: #7abaff !important;
-        }
-        body.dark-mode .performance-card,
-        body.dark-mode .features-list,
-        body.dark-mode .case-card,
-        body.dark-mode .innovation-section {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .performance-card,
-        body.dark-mode .features-list,
-        body.dark-mode .case-card,
-        body.dark-mode .innovation-section,
-        body.dark-mode .footer,
-        body.dark-mode .nav-links {
-            background: #23272a !important;
-        }
-        body.dark-mode table {
-            background: #23272a;
-            color: #e8eaed;
-        }
-        body.dark-mode th {
-            background: #106ebe;
-            color: #fff;
-        }
-        body.dark-mode .note {
-            background: #222e3c;
-            border-left: 4px solid #106ebe;
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer {
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer-bottom {
-            color: #b3c7f9;
-            border-top: 1px solid #333;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <header class="navbar">
         <div class="container">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <h1>🧬 CNN-MicroAI-Colony</h1>
-                </div>
+            <div class="nav-brand">
+                <h1>🧬 CNN-MicroAI-Colony</h1>
+            </div>
+            <nav>
                 <ul class="nav-menu">
                     <li><a href="./index.html">首页</a></li>
                     <li><a href="./cnn-demo.html" class="active">CNN模型</a></li>
@@ -105,148 +22,68 @@
                     <li><a href="./tech-comparison.html">技术对比</a></li>
                     <li><a href="./documentation.html">技术文档</a></li>
                 </ul>
-                <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-            </div>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
         </div>
-    </nav>
-    <main class="main-content">
-        <div class="container">
-            <!-- 模型概述 -->
-            <section>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section class="hero">
+            <div class="container">
                 <h2>模型概述</h2>
-                <p>
-                    本系统采用Faster R-CNN、YOLOv8等主流深度学习目标检测框架，结合微生物领域专用数据增强与小样本优化策略，实现高精度菌落检测与抑菌圈自动计数。支持多类别菌落识别、复杂场景适应与端到端自动化处理。
-                </p>
-            </section>
-            <!-- 性能指标 -->
-            <section>
+                <p>本系统采用Faster R-CNN、YOLOv8等主流深度学习目标检测框架，结合微生物领域专用数据增强与小样本优化策略，实现高精度菌落检测与抑菌圈自动计数。</p>
+            </div>
+        </section>
+
+        <section class="performance">
+            <div class="container">
                 <h2>性能指标</h2>
-                <div class="performance-card">
-                    <h3>检测精度</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>模型版本</th>
-                                <th>mAP@0.5</th>
-                                <th>准确率</th>
-                                <th>召回率</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Faster R-CNN + ResNet50</td>
-                                <td>96.8%</td>
-                                <td>95.2%</td>
-                                <td>97.1%</td>
-                            </tr>
-                            <tr>
-                                <td>YOLOv8-Medium</td>
-                                <td>95.4%</td>
-                                <td>94.8%</td>
-                                <td>96.3%</td>
-                            </tr>
-                            <tr>
-                                <td>EfficientDet-D3</td>
-                                <td>94.9%</td>
-                                <td>93.9%</td>
-                                <td>95.7%</td>
-                            </tr>
-                            <tr>
-                                <td>自定义CNN</td>
-                                <td>93.7%</td>
-                                <td>92.4%</td>
-                                <td>94.8%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="performance-card">
-                    <h3>处理速度</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>模型版本</th>
-                                <th>推理速度</th>
-                                <th>模型大小</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Faster R-CNN</td>
-                                <td><span class="evaluation">待测定</span></td>
-                                <td>158 MB</td>
-                            </tr>
-                            <tr>
-                                <td>YOLOv8-Medium</td>
-                                <td><span class="evaluation">待测定</span></td>
-                                <td>52 MB</td>
-                            </tr>
-                            <tr>
-                                <td>EfficientDet</td>
-                                <td><span class="evaluation">待测定</span></td>
-                                <td>42 MB</td>
-                            </tr>
-                            <tr>
-                                <td>轻量级版本</td>
-                                <td><span class="evaluation">待测定</span></td>
-                                <td>18 MB</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="note">
-                        <strong>性能测试说明：</strong>所有模型推理速度正在多种硬件环境下进行量化评估，结果将于后续发布。
+                <div class="grid">
+                    <div class="card">
+                        <h3>检测精度</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>模型版本</th>
+                                    <th>mAP@0.5</th>
+                                    <th>准确率</th>
+                                    <th>召回率</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Faster R-CNN + ResNet50</td>
+                                    <td>96.8%</td>
+                                    <td>95.2%</td>
+                                    <td>97.1%</td>
+                                </tr>
+                                <tr>
+                                    <td>YOLOv8-Medium</td>
+                                    <td>95.4%</td>
+                                    <td>94.8%</td>
+                                    <td>96.3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <h3>处理速度</h3>
+                        <p>性能测试正在进行中，结果将于后续发布。</p>
                     </div>
                 </div>
-            </section>
-            <!-- 页面导航 -->
-            <div class="nav-links">
-                <a href="./index.html">🏠 返回首页</a>
-                <a href="./opencv-demo.html">📏 OpenCV检测系统</a>
-                <a href="./tech-comparison.html">📊 技术对比分析</a>
-                <a href="./documentation.html">📚 技术文档</a>
             </div>
-        </div>
+        </section>
     </main>
-    <footer class="footer">
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 模型版本：v2.1 | 性能测试：量化评估进行中</p>
+            <p>&copy; 2025 CNN-MicroAI-Colony | 模型版本：v2.1</p>
             <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
-            <p>
-                <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">GitHub仓库</a> |
-                <a href="https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">Gitee国内镜像</a>
-            </p>
         </div>
     </footer>
-    <script>
-        // 夜间模式切换
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        function setTheme(mode) {
-            if (mode === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeToggleBtn.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeToggleBtn.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        // 初始化主题
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
-        })();
-        themeToggleBtn.addEventListener('click', function() {
-            if (document.body.classList.contains('dark-mode')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        });
-    </script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

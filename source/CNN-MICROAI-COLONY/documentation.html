@@ -5,81 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>技术文档中心 - CNN-MicroAI-Colony</title>
     <meta name="description" content="CNN-MicroAI-Colony微生物智能分析平台的完整技术文档集合">
-    <style>
-        /* 统一风格与夜间模式支持 */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary-color: #0078d4;
-            --secondary-color: #106ebe;
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --info-color: #17a2b8;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #333333;
-            --text-secondary: #6c757d;
-            --border-color: #dee2e6;
-            --shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-        }
-        body.dark-mode {
-            background: #181a1b;
-            color: #e8eaed;
-        }
-        body.dark-mode .container,
-        body.dark-mode .doc-category,
-        body.dark-mode .featured-docs,
-        body.dark-mode .version-info,
-        body.dark-mode .footer,
-        body.dark-mode .nav-buttons {
-            background: #23272a !important;
-            color: #e8eaed !important;
-        }
-        body.dark-mode h2,
-        body.dark-mode h3,
-        body.dark-mode .nav-brand h1 {
-            color: #7abaff !important;
-        }
-        body.dark-mode .nav-menu a,
-        body.dark-mode .footer a {
-            color: #b3c7f9 !important;
-        }
-        body.dark-mode .nav-menu a.active,
-        body.dark-mode .nav-menu a:hover {
-            color: #7abaff !important;
-        }
-        body.dark-mode .doc-category,
-        body.dark-mode .featured-docs,
-        body.dark-mode .version-info {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .note {
-            background: #222e3c;
-            border-left: 4px solid #106ebe;
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer {
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer-bottom {
-            color: #b3c7f9;
-            border-top: 1px solid #333;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <header class="navbar">
         <div class="container">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <h1>🧬 CNN-MicroAI-Colony</h1>
-                </div>
+            <div class="nav-brand">
+                <h1>🧬 CNN-MicroAI-Colony</h1>
+            </div>
+            <nav>
                 <ul class="nav-menu">
                     <li><a href="./index.html">首页</a></li>
                     <li><a href="./cnn-demo.html">CNN模型</a></li>
@@ -87,137 +22,53 @@
                     <li><a href="./tech-comparison.html">技术对比</a></li>
                     <li><a href="./documentation.html" class="active">技术文档</a></li>
                 </ul>
-                <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-            </div>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
         </div>
-    </nav>
-    <main class="main-content">
-        <div class="container">
-            <!-- 文档分类导航 -->
-            <section>
-                <h2>文档分类导航</h2>
-                <div class="docs-grid">
-                    <!-- 技术文档示例 -->
-                    <div class="doc-category" id="tech-docs">
-                        <div class="category-header">
-                            <div class="category-icon">🔬</div>
-                            <h3>技术文档</h3>
-                            <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">面向技术人员的架构和原理</p>
-                        </div>
-                        <div class="category-content">
-                            <ul class="doc-list">
-                                <li>
-                                    <a href="#architecture">
-                                        🏗️ 技术架构文档
-                                        <span class="doc-status status-completed">已完成</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#algorithms">
-                                        🧮 算法原理说明
-                                        <span class="doc-status status-completed">已完成</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#performance">
-                                        📊 性能基准测试
-                                        <span class="doc-status status-planned">待创建</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#patent-comparison">
-                                        🆚 专利技术对比
-                                        <span class="doc-status status-completed">已完成</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p><strong>目标读者：</strong>技术开发者、系统集成商</p>
-                            <p><strong>技术难度：</strong>⭐⭐⭐⭐☆</p>
-                            <div class="note" style="margin-top:1rem;">
-                                <strong>核心技术细节补充：</strong>
-                                <ul>
-                                    <li>抑菌圈检测支持滤纸片与透明圈两种类型，参数自适应，亮度/标准差/圆度多重验证。</li>
-                                    <li>滤纸片检测采用高斯模糊+霍夫圆+亮度/标准差阈值，透明圈检测采用反色+低阈值+圆度判别。</li>
-                                    <li>完整流程包括培养皿检测、物质类型判别、虚拟中心点补偿、抑菌圈ROI提取与圆形拟合。</li>
-                                    <li>小数据集模型采用骨干冻结、anchor缩放、数据增强等策略提升泛化。</li>
-                                    <li>大数据集模型支持FP16混合精度与分布式训练，提升效率与精度。</li>
-                                    <li>所有核心部件均基于Apache 2.0协议，依赖PyTorch、OpenCV、MMDetection等主流开源组件。</li>
-                                </ul>
-                                <p style="margin-top:0.5rem;">
-                                    <strong>最佳实践：</strong>根据场景自动选择检测器，避免过度复杂的边缘检测，优先保证参数调优与场景适配。
-                                </p>
-                                <p style="margin-top:0.5rem;">
-                                    <strong>专利对比与待补充内容：</strong>
-                                    <span class="doc-status status-planned">待添加</span>
-                                    <ul>
-                                        <li>专利文档详细内容尚未补充，后续将对比现有检测流程与专利技术的异同，标注创新点与待完善环节。</li>
-                                    </ul>
-                                </p>
-                                <p style="margin-top:0.5rem;">
-                                    <strong>模型速率量化：</strong>
-                                    <span class="doc-status status-planned">待测定，准备进行量化评估</span>
-                                </p>
-                                <p style="margin-top:0.5rem;">
-                                    <strong>项目仓库：</strong>
-                                    <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank">https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony</a>
-                                    <br>
-                                    <a href="https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony" target="_blank">https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony（国内镜像）</a>
-                                </p>
-                            </div>
-                        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>技术文档中心</h2>
+                <p>全面的技术文档集合，涵盖架构设计、算法原理、性能测试等内容，助力开发与集成。</p>
+            </div>
+        </section>
+
+        <section class="docs">
+            <div class="container">
+                <h2>文档分类</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>技术架构</h3>
+                        <p>详细介绍系统架构设计与模块划分。</p>
                     </div>
-                    <!-- 其余文档分类可按需补充 -->
+                    <div class="card">
+                        <h3>算法原理</h3>
+                        <p>深入解析核心算法与优化策略。</p>
+                    </div>
+                    <div class="card">
+                        <h3>性能测试</h3>
+                        <p>提供模型性能基准测试数据与分析。</p>
+                    </div>
+                    <div class="card">
+                        <h3>专利对比</h3>
+                        <p>对比现有专利技术与创新点。</p>
+                    </div>
                 </div>
-            </section>
-            <!-- 页面导航 -->
-            <div class="nav-links">
-                <a href="./index.html">🏠 返回首页</a>
-                <a href="./cnn-demo.html">🧠 CNN模型演示</a>
-                <a href="./opencv-demo.html">👁️ OpenCV系统</a>
-                <a href="./tech-comparison.html">📊 技术对比</a>
             </div>
-        </div>
+        </section>
     </main>
-    <footer class="footer">
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 文档中心版本：v2.0 | 文档总数：8个</p>
-            <p>建立时间：2025年7月15日 | 最后更新：2025年7月15日</p>
-            <p>
-                <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">GitHub仓库</a> |
-                <a href="https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">Gitee国内镜像</a>
-            </p>
+            <p>&copy; 2025 CNN-MicroAI-Colony | 文档中心版本：v2.0</p>
+            <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
         </div>
     </footer>
-    <script>
-        // 夜间模式切换
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        function setTheme(mode) {
-            if (mode === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeToggleBtn.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeToggleBtn.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        // 初始化主题
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
-        })();
-        themeToggleBtn.addEventListener('click', function() {
-            if (document.body.classList.contains('dark-mode')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        });
-    </script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

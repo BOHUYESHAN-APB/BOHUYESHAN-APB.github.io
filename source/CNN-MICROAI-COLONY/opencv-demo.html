@@ -5,87 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenCV检测系统 - 菌落智能识别平台</title>
     <meta name="description" content="基于OpenCV的高效微生物抑菌圈与菌落检测系统">
-    <style>
-        /* 统一风格与夜间模式支持 */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary-color: #0078d4;
-            --secondary-color: #106ebe;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #333333;
-            --text-secondary: #6c757d;
-            --border-color: #dee2e6;
-            --shadow: 0 2px 10px rgba(0,0,0,0.1);
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --code-bg: #f8f9fa;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-        }
-        body.dark-mode {
-            background: #181a1b;
-            color: #e8eaed;
-        }
-        body.dark-mode .container,
-        body.dark-mode .feature-card,
-        body.dark-mode .case-card,
-        body.dark-mode .footer,
-        body.dark-mode .nav-links {
-            background: #23272a !important;
-            color: #e8eaed !important;
-        }
-        body.dark-mode h2,
-        body.dark-mode h3,
-        body.dark-mode .nav-brand h1 {
-            color: #7abaff !important;
-        }
-        body.dark-mode .nav-menu a,
-        body.dark-mode .footer a {
-            color: #b3c7f9 !important;
-        }
-        body.dark-mode .nav-menu a.active,
-        body.dark-mode .nav-menu a:hover {
-            color: #7abaff !important;
-        }
-        body.dark-mode .feature-card,
-        body.dark-mode .case-card {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        body.dark-mode table {
-            background: #23272a;
-            color: #e8eaed;
-        }
-        body.dark-mode th {
-            background: #106ebe;
-            color: #fff;
-        }
-        body.dark-mode .note {
-            background: #222e3c;
-            border-left: 4px solid #106ebe;
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer {
-            color: #b3c7f9;
-        }
-        body.dark-mode .footer-bottom {
-            color: #b3c7f9;
-            border-top: 1px solid #333;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <header class="navbar">
         <div class="container">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <h1>🧬 CNN-MicroAI-Colony</h1>
-                </div>
+            <div class="nav-brand">
+                <h1>🧬 CNN-MicroAI-Colony</h1>
+            </div>
+            <nav>
                 <ul class="nav-menu">
                     <li><a href="./index.html">首页</a></li>
                     <li><a href="./cnn-demo.html">CNN模型</a></li>
@@ -93,152 +22,89 @@
                     <li><a href="./tech-comparison.html">技术对比</a></li>
                     <li><a href="./documentation.html">技术文档</a></li>
                 </ul>
-                <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
-            </div>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
         </div>
-    </nav>
-    <main class="main-content">
-        <div class="container">
-            <section class="hero">
-                <h1>👁️ OpenCV检测系统</h1>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>OpenCV检测系统</h2>
                 <p>基于OpenCV的高效微生物抑菌圈与菌落检测系统，支持滤纸片与透明圈多场景自适应。</p>
-            </section>
-            <section>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
                 <h2>系统亮点</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
+                <div class="grid">
+                    <div class="card">
                         <h3>高效检测</h3>
                         <p>采用高斯模糊+霍夫圆检测，滤纸片与透明圈参数自适应，支持亚像素级测量。</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
+                    <div class="card">
                         <h3>多策略抑菌圈识别</h3>
                         <p>滤纸片检测采用亮度/标准差阈值，透明圈检测采用反色+低阈值+圆度判别。</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🧪</div>
+                    <div class="card">
                         <h3>完整流程</h3>
                         <p>自动完成培养皿检测、物质类型判别、虚拟中心点补偿、抑菌圈ROI提取与圆形拟合。</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛠️</div>
+                    <div class="card">
                         <h3>参数可调</h3>
                         <p>支持场景自适应参数组合，便于不同实验环境下的快速部署。</p>
                     </div>
                 </div>
-            </section>
-            <section>
-                <h2>检测流程概览</h2>
-                <div class="features-list" style="background:var(--bg-secondary);padding:2rem;border-radius:1rem;">
-                    <ul>
-                        <li>1. <strong>培养皿检测</strong>：高斯模糊+霍夫圆，自动标定像素比例。</li>
-                        <li>2. <strong>物质类型判别</strong>：滤纸片/透明圈参数自适应，亮度与标准差多重验证。</li>
-                        <li>3. <strong>虚拟中心点补偿</strong>：无物质时自动在培养皿中心创建虚拟点。</li>
-                        <li>4. <strong>抑菌圈检测</strong>：ROI提取，滤纸片用亮度/标准差，透明圈用反色+圆度。</li>
-                        <li>5. <strong>结果输出</strong>：支持可视化与详细统计。</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <h2>典型应用案例</h2>
-                <div class="case-studies" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;">
-                    <div class="case-card">
-                        <h3>滤纸片法抑菌圈检测</h3>
-                        <p>100%准确率，适用于药敏实验与标准化检测。</p>
-                    </div>
-                    <div class="case-card">
-                        <h3>透明挖孔法抑菌圈检测</h3>
-                        <p>75%准确率，适用于多孔板与特殊培养基。</p>
-                    </div>
-                    <div class="case-card">
-                        <h3>混合场景自适应</h3>
-                        <p>自动选择检测策略，提升通用性与鲁棒性。</p>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h2>性能与参数</h2>
-                <div class="performance-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>场景</th>
-                                <th>检测准确率</th>
-                                <th>处理速度</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>滤纸片法</td>
-                                <td>100%</td>
-                                <td>2-3秒/张</td>
-                                <td>推荐原始检测器</td>
-                            </tr>
-                            <tr>
-                                <td>透明挖孔法</td>
-                                <td>75%</td>
-                                <td>2-4秒/张</td>
-                                <td>推荐修正检测器</td>
-                            </tr>
-                            <tr>
-                                <td>混合场景</td>
-                                <td>自动选择</td>
-                                <td>2-4秒/张</td>
-                                <td>参数自适应</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="note">
-                    <strong>说明：</strong>参数可根据实际图像与场景灵活调整，支持批量处理与多平台部署。
-                </div>
-            </section>
-            <!-- 页面导航 -->
-            <div class="nav-links">
-                <a href="./index.html">🏠 返回首页</a>
-                <a href="./cnn-demo.html">🧠 CNN模型演示</a>
-                <a href="./tech-comparison.html">📊 技术对比</a>
-                <a href="./documentation.html">📚 技术文档</a>
             </div>
-        </div>
+        </section>
+
+        <section class="performance">
+            <div class="container">
+                <h2>性能与参数</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>场景</th>
+                            <th>检测准确率</th>
+                            <th>处理速度</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>滤纸片法</td>
+                            <td>100%</td>
+                            <td>2-3秒/张</td>
+                            <td>推荐原始检测器</td>
+                        </tr>
+                        <tr>
+                            <td>透明挖孔法</td>
+                            <td>75%</td>
+                            <td>2-4秒/张</td>
+                            <td>推荐修正检测器</td>
+                        </tr>
+                        <tr>
+                            <td>混合场景</td>
+                            <td>自动选择</td>
+                            <td>2-4秒/张</td>
+                            <td>参数自适应</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
-    <footer class="footer">
+
+    <!-- 页脚 -->
+    <footer>
         <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | OpenCV检测系统 | <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">GitHub仓库</a> | <a href="https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">Gitee国内镜像</a></p>
+            <p>&copy; 2025 CNN-MicroAI-Colony | OpenCV检测系统</p>
+            <p>本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
         </div>
     </footer>
-    <script>
-        // 夜间模式切换
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        function setTheme(mode) {
-            if (mode === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeToggleBtn.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeToggleBtn.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        // 初始化主题
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
-        })();
-        themeToggleBtn.addEventListener('click', function() {
-            if (document.body.classList.contains('dark-mode')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        });
-    </script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
