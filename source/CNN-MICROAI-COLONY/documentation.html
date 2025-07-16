@@ -6,6 +6,7 @@
     <title>技术文档中心 - CNN-MicroAI-Colony</title>
     <meta name="description" content="CNN-MicroAI-Colony微生物智能分析平台的完整技术文档集合">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,6 +25,19 @@
             text-align: center;
             margin: 0;
         }
+        nav {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        nav a {
+            margin: 0 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -35,7 +49,7 @@
             background-color: #e3f2fd;
         }
         .hero h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         .hero p {
@@ -72,61 +86,67 @@
     <!-- 导航栏 -->
     <header>
         <h1>🧬 CNN-MicroAI-Colony</h1>
+        <nav>
+            <a href="./index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="./cnn-demo.html"><i class="fas fa-brain"></i> CNN模型</a>
+            <a href="./opencv-demo.html"><i class="fas fa-eye"></i> OpenCV系统</a>
+            <a href="./tech-comparison.html"><i class="fas fa-chart-bar"></i> 技术对比</a>
+            <a href="./documentation.html"><i class="fas fa-book"></i> 技术文档</a>
+        </nav>
     </header>
 
-    <!-- 主内容 -->
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h2>技术文档中心</h2>
-                <p>全面的技术文档集合，涵盖架构设计、算法原理、性能测试等内容，助力开发与集成。</p>
-            </div>
-        </section>
+    <!-- 英雄栏 -->
+    <section class="hero">
+        <div class="container">
+            <h2>技术文档中心</h2>
+            <p>全面的技术文档集合，涵盖架构设计、算法原理、性能测试等内容，助力开发与集成。</p>
+        </div>
+    </section>
 
-        <section class="docs">
-            <div class="container">
-                <h2>文档分类</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>技术架构</h3>
-                        <p>详细介绍系统架构设计与模块划分。</p>
-                        <ul>
-                            <li>前端：基于React和Tauri，提供用户友好的交互界面。</li>
-                            <li>后端：使用FastAPI实现高效的API服务。</li>
-                            <li>AI模型：支持多种深度学习框架，灵活扩展。</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>算法原理</h3>
-                        <p>深入解析核心算法与优化策略。</p>
-                        <ul>
-                            <li>菌落检测：基于深度学习的高精度检测。</li>
-                            <li>抑菌圈分析：多策略检测，支持滤纸片与透明圈。</li>
-                            <li>数据增强：小样本优化与多场景适配。</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>性能测试</h3>
-                        <p>提供模型性能基准测试数据与分析。</p>
-                        <ul>
-                            <li>检测精度：mAP@0.5高达96.8%。</li>
-                            <li>处理速度：支持GPU加速与多线程优化。</li>
-                            <li>资源需求：低内存占用与高效推理。</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>专利对比</h3>
-                        <p>对比现有专利技术与创新点。</p>
-                        <ul>
-                            <li>创新点：多策略融合与参数自适应。</li>
-                            <li>专利覆盖：菌落检测与抑菌圈分析。</li>
-                            <li>未来规划：扩展至更多微生物检测场景。</li>
-                        </ul>
-                    </div>
+    <!-- 文档分类 -->
+    <section class="docs">
+        <div class="container">
+            <h2>文档分类</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fas fa-project-diagram"></i> 技术架构</h3>
+                    <p>详细介绍系统架构设计与模块划分。</p>
+                    <ul>
+                        <li>前端：基于React和Tauri，提供用户友好的交互界面。</li>
+                        <li>后端：使用FastAPI实现高效的API服务。</li>
+                        <li>AI模型：支持多种深度学习框架，灵活扩展。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-brain"></i> 算法原理</h3>
+                    <p>深入解析核心算法与优化策略。</p>
+                    <ul>
+                        <li>菌落检测：基于深度学习的高精度检测。</li>
+                        <li>抑菌圈分析：多策略检测，支持滤纸片与透明圈。</li>
+                        <li>数据增强：小样本优化与多场景适配。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> 性能测试</h3>
+                    <p>提供模型性能基准测试数据与分析。</p>
+                    <ul>
+                        <li>检测精度：mAP@0.5高达96.8%。</li>
+                        <li>处理速度：支持GPU加速与多线程优化。</li>
+                        <li>资源需求：低内存占用与高效推理。</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-balance-scale"></i> 专利对比</h3>
+                    <p>对比现有专利技术与创新点。</p>
+                    <ul>
+                        <li>创新点：多策略融合与参数自适应。</li>
+                        <li>专利覆盖：菌落检测与抑菌圈分析。</li>
+                        <li>未来规划：扩展至更多微生物检测场景。</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- 页脚 -->
     <footer>

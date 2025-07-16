@@ -6,6 +6,7 @@
     <title>OpenCV检测系统 - 菌落智能识别平台</title>
     <meta name="description" content="基于OpenCV的高效微生物抑菌圈与菌落检测系统">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,6 +25,19 @@
             text-align: center;
             margin: 0;
         }
+        nav {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        nav a {
+            margin: 0 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -35,7 +49,7 @@
             background-color: #e3f2fd;
         }
         .hero h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         .hero p {
@@ -72,89 +86,97 @@
     <!-- 导航栏 -->
     <header>
         <h1>🧬 CNN-MicroAI-Colony</h1>
+        <nav>
+            <a href="./index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="./cnn-demo.html"><i class="fas fa-brain"></i> CNN模型</a>
+            <a href="./opencv-demo.html"><i class="fas fa-eye"></i> OpenCV系统</a>
+            <a href="./tech-comparison.html"><i class="fas fa-chart-bar"></i> 技术对比</a>
+            <a href="./documentation.html"><i class="fas fa-book"></i> 技术文档</a>
+        </nav>
     </header>
 
-    <!-- 主内容 -->
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h2>OpenCV检测系统</h2>
-                <p>基于OpenCV的高效微生物抑菌圈与菌落检测系统，支持滤纸片与透明圈多场景自适应。</p>
-            </div>
-        </section>
+    <!-- 英雄栏 -->
+    <section class="hero">
+        <div class="container">
+            <h2>OpenCV检测系统</h2>
+            <p>基于OpenCV的高效微生物抑菌圈与菌落检测系统，支持滤纸片与透明圈多场景自适应。</p>
+        </div>
+    </section>
 
-        <section class="features">
-            <div class="container">
-                <h2>系统亮点</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>高效检测</h3>
-                        <p>采用高斯模糊+霍夫圆检测，滤纸片与透明圈参数自适应，支持亚像素级测量。</p>
-                    </div>
-                    <div class="card">
-                        <h3>多策略抑菌圈识别</h3>
-                        <p>滤纸片检测采用亮度/标准差阈值，透明圈检测采用反色+低阈值+圆度判别。</p>
-                    </div>
-                    <div class="card">
-                        <h3>完整流程</h3>
-                        <p>自动完成培养皿检测、物质类型判别、虚拟中心点补偿、抑菌圈ROI提取与圆形拟合。</p>
-                    </div>
-                    <div class="card">
-                        <h3>参数可调</h3>
-                        <p>支持场景自适应参数组合，便于不同实验环境下的快速部署。</p>
-                    </div>
+    <!-- 系统亮点 -->
+    <section class="features">
+        <div class="container">
+            <h2>系统亮点</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fas fa-bolt"></i> 高效检测</h3>
+                    <p>采用高斯模糊+霍夫圆检测，滤纸片与透明圈参数自适应，支持亚像素级测量。</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-search"></i> 多策略抑菌圈识别</h3>
+                    <p>滤纸片检测采用亮度/标准差阈值，透明圈检测采用反色+低阈值+圆度判别。</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-tools"></i> 完整流程</h3>
+                    <p>自动完成培养皿检测、物质类型判别、虚拟中心点补偿、抑菌圈ROI提取与圆形拟合。</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-sliders-h"></i> 参数可调</h3>
+                    <p>支持场景自适应参数组合，便于不同实验环境下的快速部署。</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="performance">
-            <div class="container">
-                <h2>性能与参数</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>场景</th>
-                            <th>检测准确率</th>
-                            <th>处理速度</th>
-                            <th>备注</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>滤纸片法</td>
-                            <td>100%</td>
-                            <td>2-3秒/张</td>
-                            <td>推荐原始检测器</td>
-                        </tr>
-                        <tr>
-                            <td>透明挖孔法</td>
-                            <td>75%</td>
-                            <td>2-4秒/张</td>
-                            <td>推荐修正检测器</td>
-                        </tr>
-                        <tr>
-                            <td>混合场景</td>
-                            <td>自动选择</td>
-                            <td>2-4秒/张</td>
-                            <td>参数自适应</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    <!-- 性能与参数 -->
+    <section class="performance">
+        <div class="container">
+            <h2>性能与参数</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>场景</th>
+                        <th>检测准确率</th>
+                        <th>处理速度</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>滤纸片法</td>
+                        <td>100%</td>
+                        <td>2-3秒/张</td>
+                        <td>推荐原始检测器</td>
+                    </tr>
+                    <tr>
+                        <td>透明挖孔法</td>
+                        <td>75%</td>
+                        <td>2-4秒/张</td>
+                        <td>推荐修正检测器</td>
+                    </tr>
+                    <tr>
+                        <td>混合场景</td>
+                        <td>自动选择</td>
+                        <td>2-4秒/张</td>
+                        <td>参数自适应</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-        <section class="about">
-            <div class="container">
-                <h2>技术架构</h2>
-                <p>系统采用模块化设计，分为以下部分：</p>
-                <ul>
-                    <li><strong>图像处理：</strong>基于OpenCV的高效图像预处理与特征提取。</li>
-                    <li><strong>检测算法：</strong>多策略融合，支持滤纸片与透明圈检测。</li>
-                    <li><strong>结果输出：</strong>支持可视化与详细统计，便于分析与报告生成。</li>
-                </ul>
-            </div>
-        </section>
-    </main>
+    <!-- 技术架构 -->
+    <section class="about">
+        <div class="container">
+            <h2><i class="fas fa-project-diagram"></i> 技术架构</h2>
+            <p>系统采用模块化设计，分为以下部分：</p>
+            <ul>
+                <li><strong>图像处理：</strong>基于OpenCV的高效图像预处理与特征提取。</li>
+                <li><strong>检测算法：</strong>多策略融合，支持滤纸片与透明圈检测。</li>
+                <li><strong>结果输出：</strong>支持可视化与详细统计，便于分析与报告生成。</li>
+            </ul>
+        </div>
+    </section>
 
     <!-- 页脚 -->
     <footer>
