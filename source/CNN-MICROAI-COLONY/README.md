@@ -1,636 +1,202 @@
-# CNN-MicroAI-Colony 博客网站部署指南
+# CNN-MicroAI-Colony HTML网站 - 部署说明
 
-> 微生物智能分析平台的完整博客网站内容和部署方案
+> 完全自包含的HTML网站，适合HEXO博客平台部署
 
 ## 📁 网站结构
 
 ```
-docs/blog-website/
-├── index.md                    # 🏠 主页 - 平台总览
-├── cnn-demo.md                 # 🧠 CNN深度学习展示
-├── opencv-demo.md              # 👁️ OpenCV检测系统展示
-├── tech-comparison.md          # 📊 技术对比分析
-├── README.md                   # 📚 部署指南 (本文件)
-├── images/                     # 🖼️ 图片资源
-│   ├── platform-overview.png
-│   ├── cnn-interface.png
-│   ├── opencv-interface.png
-│   ├── batch-processing.png
-│   └── ...
-├── css/                        # 🎨 样式文件
-│   ├── main.css
-│   ├── dark-theme.css
-│   └── responsive.css
-├── js/                         # ⚡ 脚本文件
-│   ├── main.js
-│   ├── navigation.js
-│   └── analytics.js
-└── assets/                     # 📦 其他资源
-    ├── favicon.ico
-    ├── logo.png
-    └── fonts/
+docs/html/
+├── index.html              # 🏠 主页 - 平台概览
+├── cnn-demo.html           # 🧠 CNN深度学习系统展示
+├── opencv-demo.html        # 👁️ OpenCV检测系统展示
+├── tech-comparison.html    # 📊 技术对比分析
+├── documentation.html      # 📚 技术文档中心
+└── README.md              # 📋 部署说明 (本文件)
 ```
 
-## 🚀 快速部署
+## ✨ 网站特色
 
-### 方案一：GitHub Pages (推荐)
+### 🎨 设计特点
+- **完全自包含**：所有CSS和JavaScript内嵌在HTML中
+- **HEXO友好**：专为HEXO博客平台优化，避免外部依赖
+- **响应式设计**：适配桌面、平板、移动设备
+- **现代化UI**：专业的暗色主题，与软件界面风格一致
+- **相对链接**：所有页面间使用相对路径链接
 
-#### 1. 仓库准备
+### 📄 页面内容
+
+#### 🏠 主页 (index.html)
+- 平台概述和核心特色
+- 技术架构展示
+- 应用场景介绍
+- 性能指标表格
+- 快速体验入口
+
+#### 🧠 CNN展示页 (cnn-demo.html)
+- 深度学习模型架构详解
+- 性能指标和技术创新
+- 应用案例展示
+- 训练数据集介绍
+- 部署方案说明
+
+#### 👁️ OpenCV展示页 (opencv-demo.html)
+- 传统CV算法原理详解
+- 检测精度验证结果
+- GUI界面系统介绍
+- 实际应用案例
+- 最佳实践建议
+
+#### 📊 技术对比页 (tech-comparison.html)
+- CNN vs OpenCV全面对比
+- 应用场景决策矩阵
+- 技术融合策略
+- 性能基准测试
+- 未来发展趋势
+
+#### 📚 文档中心 (documentation.html)
+- 完整文档分类导航
+- 核心文档详情介绍
+- 快速导航和资源链接
+- 版本维护信息
+
+## 🚀 部署方法
+
+### 方法一：直接部署到HEXO
+
+1. **复制文件到HEXO博客**
 ```bash
-# 在GitHub上创建新仓库
-# 仓库名：CNN-MicroAI-Colony-Website
-
-# 克隆到本地
-git clone https://github.com/your-username/CNN-MicroAI-Colony-Website.git
-cd CNN-MicroAI-Colony-Website
-
-# 复制网站文件
-cp -r docs/blog-website/* ./
+# 假设您的HEXO博客在 blog/ 目录
+cp docs/html/*.html blog/source/microai/
 ```
 
-#### 2. Jekyll配置
+2. **配置HEXO**
+在HEXO的 `_config.yml` 中添加：
 ```yaml
-# _config.yml
-title: "CNN-MicroAI-Colony"
-description: "基于深度学习和计算机视觉的微生物培养综合分析系统"
-url: "https://your-username.github.io"
-baseurl: "/CNN-MicroAI-Colony-Website"
-
-# 主题配置
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-
-# 导航菜单
-header_pages:
-  - index.md
-  - cnn-demo.md
-  - opencv-demo.md
-  - tech-comparison.md
-
-# 社交链接
-github_username: your-username
+skip_render:
+  - "microai/*.html"
 ```
 
-#### 3. 自动部署
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0
-        
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle install
-        
-    - name: Build site
-      run: bundle exec jekyll build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
-```
-
-### 方案二：Vercel部署
-
-#### 1. 项目配置
-```json
-{
-  "name": "cnn-microai-colony",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "npm run build-static",
-    "build-static": "node build-static.js"
-  },
-  "devDependencies": {
-    "markdown-it": "^13.0.0",
-    "fs-extra": "^11.0.0"
-  }
-}
-```
-
-#### 2. 构建脚本
-```javascript
-// build-static.js
-const fs = require('fs-extra');
-const MarkdownIt = require('markdown-it');
-const path = require('path');
-
-const md = new MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true
-});
-
-// 页面模板
-const template = fs.readFileSync('template.html', 'utf8');
-
-// 构建页面
-const pages = ['index', 'cnn-demo', 'opencv-demo', 'tech-comparison'];
-
-pages.forEach(page => {
-  const markdown = fs.readFileSync(`${page}.md`, 'utf8');
-  const html = md.render(markdown);
-  
-  const finalHtml = template
-    .replace('{{title}}', getTitle(page))
-    .replace('{{content}}', html)
-    .replace('{{navigation}}', generateNavigation(page));
-  
-  fs.writeFileSync(`dist/${page}.html`, finalHtml);
-});
-
-console.log('静态网站构建完成！');
-```
-
-#### 3. Vercel配置
-```json
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1.html"
-    }
-  ]
-}
-```
-
-### 方案三：Netlify部署
-
-#### 1. 构建配置
-```toml
-# netlify.toml
-[build]
-  publish = "dist/"
-  command = "npm run build"
-
-[build.environment]
-  NODE_VERSION = "16"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "max-age=31536000"
-```
-
-#### 2. 一键部署
+3. **生成和部署**
 ```bash
-# 安装Netlify CLI
-npm install -g netlify-cli
-
-# 部署到Netlify
-netlify deploy --prod --dir=dist
+cd blog/
+hexo generate
+hexo deploy
 ```
 
-## 🎨 样式自定义
+4. **访问博客**
+最终博客地址为：[https://bohuyeshan.top/CNN-MICROAI-COLONY/index.html](https://bohuyeshan.top/CNN-MICROAI-COLONY/index.html)
 
-### 主题色彩方案
-```css
-/* css/main.css */
-:root {
-  /* 主色调 */
-  --primary-color: #0078d4;
-  --secondary-color: #106ebe;
-  
-  /* 背景色 */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-dark: #2b2b2b;
-  
-  /* 文本色 */
-  --text-primary: #333333;
-  --text-secondary: #6c757d;
-  --text-light: #ffffff;
-  
-  /* 边框色 */
-  --border-color: #dee2e6;
-  --border-dark: #495057;
-}
+### 方法二：作为独立页面部署
 
-/* 暗色主题 */
-[data-theme="dark"] {
-  --bg-primary: #2b2b2b;
-  --bg-secondary: #3c3c3c;
-  --text-primary: #ffffff;
-  --text-secondary: #adb5bd;
-  --border-color: #495057;
-}
+1. **上传到任何支持静态HTML的服务器**
+2. **访问入口**：`https://your-domain.com/path/to/index.html`
+3. **页面间导航**：通过相对链接自动跳转
+
+### 方法三：GitHub Pages部署
+
+1. **创建新仓库** `microai-website`
+2. **上传所有HTML文件**
+3. **启用GitHub Pages**
+4. **访问**：`https://username.github.io/microai-website/`
+
+## ⚠️ 重要说明
+
+### 🔧 HEXO兼容性
+- **CSS内嵌**：所有样式都写在`<style>`标签内，避免外部CSS文件
+- **JS内嵌**：所有脚本都写在`<script>`标签内，避免外部JS文件
+- **相对链接**：使用`./page.html`格式，确保在任何目录下都能正常工作
+- **无外部依赖**：不依赖任何CDN或外部资源
+
+### 📊 性能数据修正
+所有涉及CNN模型推理速度的地方都已标记为：
+- **"量化评估中"**
+- **"待测定"**
+- **"性能测试进行中"**
+
+确保不假定未经验证的性能数据。
+
+### 🖼️ 图片处理
+当前HTML中图片使用占位符路径，部署时需要：
+1. 准备实际的系统截图
+2. 将图片放在相对路径下（如`./images/`目录）
+3. 更新HTML中的图片路径
+
+## 🎯 内容特色
+
+### 📋 技术准确性
+- **真实测试数据**：OpenCV系统基于实际测试结果
+- **专业术语**：使用标准的微生物学和计算机视觉术语
+- **客观对比**：不夸大任何技术方案的能力
+
+### 🔍 深度技术内容
+- **算法原理**：详细的代码示例和技术解释
+- **性能分析**：基于实际测试的性能对比
+- **应用案例**：真实的医院和实验室应用场景
+- **未来规划**：清晰的技术发展路线图
+
+### 💡 用户友好
+- **分层阅读**：从概览到技术细节的渐进式内容
+- **直观导航**：清晰的页面间跳转和内容索引
+- **移动适配**：优秀的移动设备浏览体验
+
+## 🔗 页面链接关系
+
+```
+index.html (主页)
+├── → cnn-demo.html (CNN系统)
+├── → opencv-demo.html (OpenCV系统)
+├── → tech-comparison.html (技术对比)
+└── → documentation.html (文档中心)
+
+所有页面都可以互相跳转，形成完整的网站结构
 ```
 
-### 响应式设计
-```css
-/* css/responsive.css */
-/* 移动设备 */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-  
-  .nav-menu {
-    display: none;
-  }
-  
-  .mobile-menu {
-    display: block;
-  }
-  
-  .tech-comparison-table {
-    font-size: 12px;
-  }
-}
+## 🛠️ 自定义指南
 
-/* 平板设备 */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .container {
-    max-width: 750px;
-  }
-  
-  .grid-2-col {
-    grid-template-columns: 1fr;
-  }
-}
+### 修改样式
+每个HTML文件的`<style>`标签内包含完整的CSS，可以：
+- 修改颜色变量（`:root`部分）
+- 调整布局参数
+- 添加新的样式类
 
-/* 桌面设备 */
-@media (min-width: 1025px) {
-  .container {
-    max-width: 1200px;
-  }
-  
-  .grid-2-col {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-```
+### 添加内容
+- 直接编辑HTML文件
+- 保持现有的结构和class命名
+- 确保响应式设计兼容性
 
-### 动画效果
-```css
-/* css/animations.css */
-/* 页面加载动画 */
-.fade-in {
-  animation: fadeIn 0.6s ease-in;
-}
+### 更新链接
+如果需要修改页面文件名，记得同时更新：
+- 所有页面的导航菜单
+- 相互引用的链接
+- README文档中的说明
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+## 📞 技术支持
 
-/* 悬停效果 */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* 按钮动画 */
-.btn {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-```
-
-## 📊 分析和SEO
-
-### Google Analytics集成
-```html
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
-</script>
-```
-
-### SEO优化
-```html
-<!-- 基本SEO -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="基于深度学习和计算机视觉的微生物培养综合分析系统">
-<meta name="keywords" content="深度学习,计算机视觉,微生物检测,CNN,OpenCV,抑菌圈检测">
-<meta name="author" content="CNN-MicroAI-Colony Team">
-
-<!-- Open Graph -->
-<meta property="og:title" content="CNN-MicroAI-Colony - 微生物智能分析平台">
-<meta property="og:description" content="集成CNN深度学习和OpenCV传统算法的微生物检测系统">
-<meta property="og:image" content="./images/platform-overview.png">
-<meta property="og:url" content="https://your-domain.com">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CNN-MicroAI-Colony">
-<meta name="twitter:description" content="微生物智能分析平台">
-<meta name="twitter:image" content="./images/platform-overview.png">
-
-<!-- 结构化数据 -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "CNN-MicroAI-Colony",
-  "description": "基于深度学习和计算机视觉的微生物培养综合分析系统",
-  "applicationCategory": "ScienceApplication",
-  "operatingSystem": "Windows, macOS, Linux",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-```
-
-### 性能优化
-```html
-<!-- 预加载关键资源 -->
-<link rel="preload" href="./css/main.css" as="style">
-<link rel="preload" href="./js/main.js" as="script">
-<link rel="preload" href="./fonts/main-font.woff2" as="font" type="font/woff2" crossorigin>
-
-<!-- DNS预解析 -->
-<link rel="dns-prefetch" href="//fonts.googleapis.com">
-<link rel="dns-prefetch" href="//www.google-analytics.com">
-
-<!-- 图片懒加载 -->
-<img src="placeholder.jpg" data-src="actual-image.jpg" loading="lazy" alt="描述">
-```
-
-## 🔧 交互功能
-
-### 主题切换
-```javascript
-// js/theme-switcher.js
-class ThemeSwitch {
-  constructor() {
-    this.theme = localStorage.getItem('theme') || 'light';
-    this.init();
-  }
-  
-  init() {
-    document.documentElement.setAttribute('data-theme', this.theme);
-    this.createSwitcher();
-  }
-  
-  createSwitcher() {
-    const switcher = document.createElement('button');
-    switcher.className = 'theme-switcher';
-    switcher.innerHTML = this.theme === 'dark' ? '☀️' : '🌙';
-    switcher.addEventListener('click', () => this.toggle());
-    
-    document.querySelector('.header').appendChild(switcher);
-  }
-  
-  toggle() {
-    this.theme = this.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', this.theme);
-    localStorage.setItem('theme', this.theme);
-    
-    const switcher = document.querySelector('.theme-switcher');
-    switcher.innerHTML = this.theme === 'dark' ? '☀️' : '🌙';
-  }
-}
-
-new ThemeSwitch();
-```
-
-### 图片查看器
-```javascript
-// js/image-viewer.js
-class ImageViewer {
-  constructor() {
-    this.init();
-  }
-  
-  init() {
-    // 为所有图片添加点击事件
-    document.querySelectorAll('img').forEach(img => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', (e) => this.openViewer(e.target));
-    });
-  }
-  
-  openViewer(img) {
-    // 创建模态框
-    const modal = document.createElement('div');
-    modal.className = 'image-modal';
-    modal.innerHTML = `
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <img src="${img.src}" alt="${img.alt}">
-        <div class="caption">${img.alt}</div>
-      </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // 关闭事件
-    modal.querySelector('.close').addEventListener('click', () => {
-      document.body.removeChild(modal);
-    });
-    
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        document.body.removeChild(modal);
-      }
-    });
-  }
-}
-
-new ImageViewer();
-```
-
-### 代码高亮
-```javascript
-// js/code-highlight.js
-// 使用Prism.js进行代码高亮
-document.addEventListener('DOMContentLoaded', function() {
-  // 自动检测代码块语言
-  document.querySelectorAll('pre code').forEach((block) => {
-    if (!block.className.includes('language-')) {
-      block.className += ' language-python'; // 默认Python
-    }
-  });
-  
-  // 应用高亮
-  if (typeof Prism !== 'undefined') {
-    Prism.highlightAll();
-  }
-});
-```
-
-## 📱 移动端优化
-
-### PWA支持
-```json
-// manifest.json
-{
-  "name": "CNN-MicroAI-Colony",
-  "short_name": "MicroAI",
-  "description": "微生物智能分析平台",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#2b2b2b",
-  "theme_color": "#0078d4",
-  "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
-```
-
-### Service Worker
-```javascript
-// sw.js
-const CACHE_NAME = 'microai-v1';
-const urlsToCache = [
-  '/',
-  '/css/main.css',
-  '/js/main.js',
-  '/images/platform-overview.png'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
-  );
-});
-```
-
-## 🚀 部署清单
-
-### 部署前检查
-- [ ] 所有Markdown文件格式正确
-- [ ] 图片路径和链接有效
-- [ ] CSS/JS文件完整
-- [ ] 响应式设计测试通过
-- [ ] SEO元标签完整
-- [ ] 性能优化完成
-- [ ] 移动端适配测试
-- [ ] 跨浏览器兼容性测试
-
-### 域名和SSL
-```bash
-# 自定义域名设置 (GitHub Pages)
-echo "your-domain.com" > CNAME
-
-# SSL证书 (Let's Encrypt)
-certbot --nginx -d your-domain.com
-```
-
-### 监控和维护
-```javascript
-// 错误监控
-window.addEventListener('error', function(e) {
-  console.error('Website Error:', e.error);
-  // 发送到错误监控服务
-});
-
-// 性能监控
-window.addEventListener('load', function() {
-  const perfData = performance.timing;
-  const loadTime = perfData.loadEventEnd - perfData.navigationStart;
-  console.log('Page Load Time:', loadTime + 'ms');
-});
-```
-
-## 🎯 访问统计
-
-部署完成后，网站将提供以下内容：
-
-- **主页**：平台总览和核心特色
-- **CNN展示**：深度学习模型详细介绍
-- **OpenCV展示**：传统CV算法深度解析
-- **技术对比**：两种技术方案全面对比
-- **响应式设计**：适配所有设备
-- **SEO优化**：搜索引擎友好
-- **性能优化**：快速加载体验
+如果在部署过程中遇到问题：
+1. 检查HEXO的`skip_render`配置
+2. 确认文件路径的正确性
+3. 验证HTML文件的完整性
+4. 测试在不同浏览器中的兼容性
 
 ---
 
-*部署指南版本：v1.0*  
-*最后更新：2025年7月15日*  
-*支持平台：GitHub Pages / Vercel / Netlify*
+*部署指南版本：v1.1*  
+*创建时间：2025年7月15日*  
+*适用平台：HEXO博客、GitHub Pages、静态网站托管*  
+*兼容性：所有现代浏览器*
 
-## 🏷️ 相关资源
+## 🎉 部署完成效果
 
-- [🏠 网站主页](./index.html)
-- [📚 Markdown源文件](./index.md)
-- [🎨 样式文件](./css/)
-- [📊 部署监控](https://analytics.google.com)
+部署成功后，您将获得：
+- ✅ 5个完整的技术展示页面
+- ✅ 专业的微生物检测系统介绍
+- ✅ 详细的技术对比和分析
+- ✅ 完善的文档导航系统
+- ✅ 适合所有设备的响应式体验
+
+## 🧬 微生物技术补充说明
+
+1. **数据收集状态**：微生物种类识别功能正在开发中，当前处于数据收集阶段
+2. **模型兼容性**：ResNet50/YOLOv11模型需要`models-colony-counting`目录下的模型文件
+3. **标注规范**：新标注方法文档位于`docs/technical/TECHNICAL_SPECS_CN.md`
+**准备部署您的微生物智能分析平台展示网站！** 🚀
