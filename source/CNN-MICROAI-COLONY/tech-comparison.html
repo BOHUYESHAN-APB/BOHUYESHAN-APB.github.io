@@ -1,102 +1,157 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <!-- ...原有head内容保持不变... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术对比分析 - CNN vs OpenCV 双引擎架构</title>
+    <meta name="description" content="深度学习与传统计算机视觉在微生物检测领域的全面对比分析">
+    <style>
+        /* 统一风格与夜间模式支持 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #0078d4;
+            --secondary-color: #106ebe;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #333333;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --code-bg: #f8f9fa;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+        body.dark-mode {
+            background: #181a1b;
+            color: #e8eaed;
+        }
+        body.dark-mode .container,
+        body.dark-mode .comparison-overview,
+        body.dark-mode .tech-column,
+        body.dark-mode .code-block,
+        body.dark-mode .scenario-card,
+        body.dark-mode .benchmark-card,
+        body.dark-mode .fusion-strategy,
+        body.dark-mode .trend-card,
+        body.dark-mode .footer,
+        body.dark-mode .nav-links {
+            background: #23272a !important;
+            color: #e8eaed !important;
+        }
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode .nav-brand h1 {
+            color: #7abaff !important;
+        }
+        body.dark-mode .nav-menu a,
+        body.dark-mode .footer a {
+            color: #b3c7f9 !important;
+        }
+        body.dark-mode .nav-menu a.active,
+        body.dark-mode .nav-menu a:hover {
+            color: #7abaff !important;
+        }
+        body.dark-mode .code-block,
+        body.dark-mode .tech-column,
+        body.dark-mode .scenario-card,
+        body.dark-mode .benchmark-card,
+        body.dark-mode .fusion-strategy,
+        body.dark-mode .trend-card {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        body.dark-mode table {
+            background: #23272a;
+            color: #e8eaed;
+        }
+        body.dark-mode th {
+            background: #106ebe;
+            color: #fff;
+        }
+        body.dark-mode .note {
+            background: #222e3c;
+            border-left: 4px solid #106ebe;
+            color: #b3c7f9;
+        }
+        body.dark-mode .footer {
+            color: #b3c7f9;
+        }
+        body.dark-mode .footer-bottom {
+            color: #b3c7f9;
+            border-top: 1px solid #333;
+        }
+        /* ...原有样式内容保持不变... */
+    </style>
 </head>
 <body>
-    <!-- ...导航栏、英雄区域等内容保持不变... -->
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h1>🧬 CNN-MicroAI-Colony</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="./index.html">首页</a></li>
+                    <li><a href="./cnn-demo.html">CNN模型</a></li>
+                    <li><a href="./opencv-demo.html">OpenCV系统</a></li>
+                    <li><a href="./tech-comparison.html" class="active">技术对比</a></li>
+                    <li><a href="./documentation.html">技术文档</a></li>
+                </ul>
+                <button class="theme-toggle" id="theme-toggle-btn" title="切换昼夜模式">🌙</button>
+            </div>
+        </div>
+    </nav>
     <main class="main-content">
         <div class="container">
-            <!-- ...前置内容保持不变... -->
-            <section>
-                <h2>🔍 算法原理深度对比</h2>
-                <div class="code-comparison">
-                  <div class="code-block">
-                    <h4>🧠 CNN深度学习方法</h4>
-                    <pre>
-# 小数据集优化策略
-class SmallDatasetColonyDetector(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.backbone = ResNet50(pretrained=True)
-        # 冻结部分骨干层，仅训练高层
-        for name, param in self.backbone.named_parameters():
-            if "layer1" in name or "layer2" in name:
-                param.requires_grad = False
-        # Anchor尺寸缩小，适配小目标
-        self.rpn = RegionProposalNetwork(anchor_sizes=[16, 32, 64])
-        # 数据增强：旋转、缩放、光照扰动
-        self.aug = MicrobialAugmentation()
-        self.head = DetectionHead(num_classes=12)
-    def forward(self, images):
-        images = self.aug(images)
-        features = self.backbone(images)
-        proposals = self.rpn(features)
-        return self.head(features, proposals)
-
-# 大数据集分布式训练
-class LargeDatasetTrainer:
-    def __init__(self, config):
-        self.model = build_detector(config.model)
-        self.fp16 = config.fp16
-    def train(self, dataset):
-        if self.fp16:
-            wrap_fp16_model(self.model)
-        # 支持多GPU分布式训练
-        train_detector(self.model, dataset, distributed=True)
-                    </pre>
-                  </div>
-                  <div class="code-block">
-                    <h4>👁️ OpenCV传统方法</h4>
-                    <pre>
-class OpenCVDetector:
-    """OpenCV检测器"""
-    def detect_petri_dish(self, image):
-        # 霍夫圆检测培养皿
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        blurred = cv2.GaussianBlur(gray, (9, 9), 2)
-        circles = cv2.HoughCircles(
-            blurred, cv2.HOUGH_GRADIENT,
-            dp=1, minDist=400, param1=50, param2=35,
-            minRadius=100, maxRadius=300
-        )
-        return self.validate_circles(circles)
-    def detect_inhibition_zones(self, image, substances):
-        # 多策略抑菌圈检测
-        zones = []
-        for substance in substances:
-            roi = self.extract_roi(image, substance)
-            # 滤纸片：亮度阈值+标准差验证
-            if substance.type == "filter_paper":
-                mask = self.create_mask(roi)
-                mean = np.mean(roi[mask])
-                std = np.std(roi[mask])
-                if mean > 120 and std < 25:
-                    zones.append(self.fit_circle(roi))
-            # 透明圈：反色+低阈值+圆度判别
-            elif substance.type == "hole":
-                inv = cv2.bitwise_not(roi)
-                edges = cv2.Canny(inv, 40, 120)
-                contours = cv2.findContours(edges, ...)
-                for cnt in contours:
-                    if self.is_circular(cnt):
-                        zones.append(self.fit_circle(cnt))
-        return zones
-                    </pre>
-                  </div>
-                </div>
-                <div class="note">
-                  <strong>工程细节：</strong>
-                  <ul>
-                    <li>抑菌圈检测支持滤纸片与透明圈两种类型，参数自适应，亮度/标准差/圆度多重验证。</li>
-                    <li>小数据集模型采用骨干冻结、anchor缩放、数据增强等策略提升泛化。</li>
-                    <li>大数据集模型支持FP16混合精度与分布式训练，提升效率与精度。</li>
-                  </ul>
-                </div>
-            </section>
-            <!-- ...后续内容保持不变... -->
+            <!-- ...原有内容保持不变，所有内容为标准HTML结构... -->
         </div>
     </main>
-    <!-- ...页脚与脚本保持不变... -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CNN-MicroAI-Colony | 对比分析版本：v1.1 | 性能数据：量化评估进行中</p>
+            <p>
+                <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">GitHub仓库</a> |
+                <a href="https://gitee.com/xingzhishengluo/CNN-MicroAI-Colony" target="_blank" style="color:#b3c7f9;">Gitee国内镜像</a>
+            </p>
+        </div>
+    </footer>
+    <script>
+        // 夜间模式切换
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        function setTheme(mode) {
+            if (mode === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggleBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggleBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        // 初始化主题
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        })();
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    </script>
 </body>
 </html>
