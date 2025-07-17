@@ -6,6 +6,7 @@
     <title>技术方案对比 - CNN-MicroAI-Colony</title>
     <meta name="description" content="深度学习CNN与传统OpenCV视觉技术在微生物菌落检测中的全面对比分析">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-color: #0078d4;
@@ -118,220 +119,15 @@
             margin: 0 auto 2rem;
         }
 
-        /* 对比表格 */
-        .comparison {
+        /* 动态图表 */
+        .chart-container {
             padding: 4rem 0;
             background: white;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .comparison-table {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin: 2rem 0;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 800px;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background: var(--gradient-primary);
-            color: white;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
-        }
-
-        td {
-            vertical-align: middle;
-        }
-
-        .cnn-col {
-            background-color: rgba(0, 120, 212, 0.1);
-        }
-
-        .opencv-col {
-            background-color: rgba(40, 167, 69, 0.1);
-        }
-
-        .highlight {
-            background-color: var(--warning-color);
-            color: var(--text-color);
-            font-weight: bold;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        /* 优缺点卡片 */
-        .pros-cons {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .pros-cons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .pros-card, .cons-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-        }
-
-        .pros-card {
-            border-left: 4px solid var(--success-color);
-        }
-
-        .cons-card {
-            border-left: 4px solid var(--warning-color);
-        }
-
-        .pros-card h3 {
-            color: var(--success-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cons-card h3 {
-            color: var(--warning-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pros-list, .cons-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .pros-list li, .cons-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .pros-list li::before {
-            content: "✓";
-            color: var(--success-color);
-            font-weight: bold;
-            margin-top: 0.1rem;
-        }
-
-        .cons-list li::before {
-            content: "✗";
-            color: var(--warning-color);
-            font-weight: bold;
-            margin-top: 0.1rem;
-        }
-
-        /* 使用场景 */
-        .scenarios {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .scenario-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .scenario-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .cnn-scenario .scenario-icon {
-            color: var(--primary-color);
-        }
-
-        .opencv-scenario .scenario-icon {
-            color: var(--success-color);
-        }
-
-        .scenario-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        /* 决策矩阵 */
-        .decision-matrix {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .matrix-container {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .decision-flow {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
+        .chart-wrapper {
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .decision-step {
-            background: var(--secondary-color);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-        }
-
-        .decision-step::after {
-            content: "↓";
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .decision-step:last-child::after {
-            display: none;
         }
 
         /* 响应式设计 */
@@ -354,12 +150,8 @@
                 font-size: 1.1rem;
             }
 
-            .pros-cons-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-table {
-                font-size: 0.9rem;
+            .chart-wrapper {
+                max-width: 100%;
             }
         }
 
@@ -427,233 +219,70 @@
             </div>
         </section>
 
-        <!-- 详细对比表格 -->
-        <section class="comparison">
+        <!-- 动态图表 -->
+        <section class="chart-container">
             <div class="container">
-                <h2 class="section-title">详细技术对比</h2>
-                <div class="comparison-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>对比维度</th>
-                                <th class="cnn-col">CNN深度学习</th>
-                                <th class="opencv-col">OpenCV传统视觉</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>检测精度</strong></td>
-                                <td class="cnn-col">96.8-99.2% <span class="highlight">高精度</span></td>
-                                <td class="opencv-col">90-100% <span class="highlight">场景依赖</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>处理速度</strong></td>
-                                <td class="cnn-col">1-5秒/张 <span class="highlight">GPU加速</span></td>
-                                <td class="opencv-col">2-4秒/张 <span class="highlight">CPU优化</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>数据需求</strong></td>
-                                <td class="cnn-col">大量标注数据 <span class="highlight">5000+样本</span></td>
-                                <td class="opencv-col">少量或无标注 <span class="highlight">即装即用</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>部署复杂度</strong></td>
-                                <td class="cnn-col">高 <span class="highlight">需要GPU</span></td>
-                                <td class="opencv-col">低 <span class="highlight">CPU即可</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>维护成本</strong></td>
-                                <td class="cnn-col">高 <span class="highlight">持续训练</span></td>
-                                <td class="opencv-col">低 <span class="highlight">参数调优</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>算法透明度</strong></td>
-                                <td class="cnn-col">低 <span class="highlight">黑盒模型</span></td>
-                                <td class="opencv-col">高 <span class="highlight">白盒算法</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>泛化能力</strong></td>
-                                <td class="cnn-col">强 <span class="highlight">适应复杂场景</span></td>
-                                <td class="opencv-col">弱 <span class="highlight">依赖标准化</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>硬件要求</strong></td>
-                                <td class="cnn-col">GPU + 大内存 <span class="highlight">8GB+</span></td>
-                                <td class="opencv-col">普通CPU <span class="highlight">4GB即可</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>开发周期</strong></td>
-                                <td class="cnn-col">2-4个月 <span class="highlight">含训练</span></td>
-                                <td class="opencv-col">1-2周 <span class="highlight">快速部署</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>适用场景</strong></td>
-                                <td class="cnn-col">复杂环境、多类别</td>
-                                <td class="opencv-col">标准化、单一类别</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 优缺点分析 -->
-        <section class="pros-cons">
-            <div class="container">
-                <h2 class="section-title">优缺点分析</h2>
-                <div class="pros-cons-grid">
-                    <div class="pros-card">
-                        <h3><i class="fas fa-thumbs-up"></i> CNN深度学习优势</h3>
-                        <ul class="pros-list">
-                            <li>检测精度高，适应复杂场景</li>
-                            <li>支持多类别菌落识别</li>
-                            <li>端到端学习，减少人工特征工程</li>
-                            <li>持续学习，性能可提升</li>
-                            <li>支持实时检测和批量处理</li>
-                            <li>可扩展至其他检测任务</li>
-                        </ul>
-                    </div>
-                    <div class="cons-card">
-                        <h3><i class="fas fa-thumbs-down"></i> CNN深度学习劣势</h3>
-                        <ul class="cons-list">
-                            <li>需要大量标注训练数据</li>
-                            <li>计算资源需求高，需要GPU</li>
-                            <li>模型训练时间长，成本高</li>
-                            <li>算法黑盒，可解释性差</li>
-                            <li>对数据质量敏感</li>
-                            <li>部署和维护复杂</li>
-                        </ul>
-                    </div>
-                    <div class="pros-card">
-                        <h3><i class="fas fa-thumbs-up"></i> OpenCV传统视觉优势</h3>
-                        <ul class="pros-list">
-                            <li>无需训练数据，即装即用</li>
-                            <li>算法透明，易于理解和调试</li>
-                            <li>计算资源需求低，CPU即可运行</li>
-                            <li>部署简单，维护成本低</li>
-                            <li>处理速度快，适合实时应用</li>
-                            <li>成熟稳定，可靠性高</li>
-                        </ul>
-                    </div>
-                    <div class="cons-card">
-                        <h3><i class="fas fa-thumbs-down"></i> OpenCV传统视觉劣势</h3>
-                        <ul class="cons-list">
-                            <li>精度受场景影响大</li>
-                            <li>需要人工调参，泛化能力弱</li>
-                            <li>难以处理复杂背景和光照变化</li>
-                            <li>不支持多类别识别</li>
-                            <li>对图像质量要求高</li>
-                            <li>扩展性有限</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 使用场景 -->
-        <section class="scenarios">
-            <div class="container">
-                <h2 class="section-title">推荐使用场景</h2>
-                <div class="scenario-grid">
-                    <div class="scenario-card cnn-scenario">
-                        <div class="scenario-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>CNN深度学习适用</h3>
-                        <ul style="text-align: left; margin-top: 1rem;">
-                            <li>• 复杂背景下的菌落检测</li>
-                            <li>• 多类别微生物识别</li>
-                            <li>• 高精度科研应用</li>
-                            <li>• 大规模数据处理</li>
-                            <li>• 需要持续学习的场景</li>
-                            <li>• 商业化产品开发</li>
-                        </ul>
-                    </div>
-                    <div class="scenario-card opencv-scenario">
-                        <div class="scenario-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>OpenCV传统视觉适用</h3>
-                        <ul style="text-align: left; margin-top: 1rem;">
-                            <li>• 标准化实验室环境</li>
-                            <li>• 教学演示和培训</li>
-                            <li>• 快速原型验证</li>
-                            <li>• 低成本部署需求</li>
-                            <li>• 资源受限环境</li>
-                            <li>• 单一类别检测</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 决策矩阵 -->
-        <section class="decision-matrix">
-            <div class="container">
-                <h2 class="section-title">技术选择决策矩阵</h2>
-                <div class="matrix-container">
-                    <div class="decision-flow">
-                        <div class="decision-step">
-                            <strong>步骤1：评估数据量</strong>
-                            <p>是否有足够的标注数据（>1000张）？</p>
-                        </div>
-                        <div class="decision-step">
-                            <strong>步骤2：评估精度需求</strong>
-                            <p>是否需要>95%的检测精度？</p>
-                        </div>
-                        <div class="decision-step">
-                            <strong>步骤3：评估资源限制</strong>
-                            <p>是否有GPU和足够的计算资源？</p>
-                        </div>
-                        <div class="decision-step">
-                            <strong>步骤4：评估时间要求</strong>
-                            <p>是否有2-4个月的开发周期？</p>
-                        </div>
-                        <div class="decision-step" style="background: var(--success-color); color: white;">
-                            <strong>最终决策</strong>
-                            <p>根据以上评估，选择最适合的技术方案</p>
-                        </div>
-                    </div>
+                <h2 class="section-title">性能对比图表</h2>
+                <div class="chart-wrapper">
+                    <canvas id="performanceChart"></canvas>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
-        </div>
-    </footer>
-
     <script>
-        // 页面加载动画
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['检测精度', '处理速度', '数据需求', '部署复杂度', '维护成本'],
+                datasets: [
+                    {
+                        label: 'CNN深度学习',
+                        data: [99.2, 4, 5000, 8, 7],
+                        backgroundColor: 'rgba(0, 120, 212, 0.7)',
+                        borderColor: 'rgba(0, 120, 212, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'OpenCV传统视觉',
+                        data: [95, 3, 100, 2, 2],
+                        backgroundColor: 'rgba(40, 167, 69, 0.7)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 1
                     }
-                });
-            });
-
-            document.querySelectorAll('.pros-card, .cons-card, .scenario-card').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '评分 (0-100)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '对比维度'
+                        }
+                    }
                 }
-            });
+            }
         });
     </script>
 </body>

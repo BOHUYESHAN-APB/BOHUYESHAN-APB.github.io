@@ -6,6 +6,7 @@
     <title>OpenCV传统视觉系统 - 菌落智能识别系统</title>
     <meta name="description" content="基于OpenCV的高效微生物菌落检测系统，无需大量训练数据，快速部署">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-color: #0078d4;
@@ -118,179 +119,15 @@
             margin: 0 auto 2rem;
         }
 
-        /* 特性部分 */
-        .features {
+        /* 动态图表 */
+        .chart-container {
             padding: 4rem 0;
             background: white;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* 算法流程 */
-        .workflow {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .workflow-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .step-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-color);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .step-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin: 1rem 0;
-        }
-
-        /* 技术规格 */
-        .specs {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .spec-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-        }
-
-        .spec-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .spec-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .spec-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .spec-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* 性能对比 */
-        .performance {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .performance-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .perf-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .perf-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            display: block;
-        }
-
-        .perf-label {
-            color: #666;
-            margin-top: 0.5rem;
+        .chart-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* 响应式设计 */
@@ -313,12 +150,8 @@
                 font-size: 1.1rem;
             }
 
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .workflow-steps {
-                grid-template-columns: 1fr;
+            .chart-wrapper {
+                max-width: 100%;
             }
         }
 
@@ -386,44 +219,66 @@
             </div>
         </section>
 
-        <!-- 系统特性 -->
-        <section class="features">
+        <!-- 动态图表 -->
+        <section class="chart-container">
             <div class="container">
-                <h2 class="section-title">系统特性</h2>
-                <div class="grid">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>快速部署</h3>
-                        <p>无需训练数据，即装即用，部署周期短至1-2周，适合快速原型验证。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-cog"></i>
-                        </div>
-                        <h3>算法透明</h3>
-                        <p>传统计算机视觉算法，逻辑清晰，易于理解和调试，适合教学演示。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <h3>低成本</h3>
-                        <p>计算资源需求低，无需GPU，可在普通计算机上运行，维护成本低。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>稳定可靠</h3>
-                        <p>基于成熟的OpenCV库，算法稳定，结果可预测，适合标准化生产环境。</p>
-                    </div>
+                <h2 class="section-title">算法性能对比</h2>
+                <div class="chart-wrapper">
+                    <canvas id="opencvPerformanceChart"></canvas>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- 算法流程 -->
-        <section class="workflow">
-            <div class="container">
-                <h2 class="section-title">算法处理流程</h2>
+    <script>
+        const ctx = document.getElementById('opencvPerformanceChart').getContext('2d');
+        const opencvPerformanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['图像输入', '预处理', '边缘检测', '圆检测', '尺寸测量', '结果输出'],
+                datasets: [
+                    {
+                        label: '处理时间 (ms)',
+                        data: [50, 100, 150, 200, 250, 300],
+                        backgroundColor: 'rgba(0, 120, 212, 0.2)',
+                        borderColor: 'rgba(0, 120, 212, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw} ms`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '处理时间 (ms)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '算法步骤'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

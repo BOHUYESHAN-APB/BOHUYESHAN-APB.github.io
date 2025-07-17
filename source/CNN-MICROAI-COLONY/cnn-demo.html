@@ -6,6 +6,7 @@
     <title>CNN深度学习模型 - 菌落智能识别系统</title>
     <meta name="description" content="基于卷积神经网络的高精度微生物菌落检测和计数解决方案">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-color: #0078d4;
@@ -118,167 +119,15 @@
             margin: 0 auto 2rem;
         }
 
-        /* 特性部分 */
-        .features {
+        /* 动态图表 */
+        .chart-container {
             padding: 4rem 0;
             background: white;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* 性能表格 */
-        .performance {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .table-container {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin: 2rem 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background: var(--gradient-primary);
-            color: white;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        /* 模型卡片 */
-        .models {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .model-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin: 1rem 0;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .model-card:hover {
-            box-shadow: var(--hover-shadow);
-        }
-
-        .model-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .model-specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .spec-item {
-            background: var(--secondary-color);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .spec-item strong {
-            display: block;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* 架构部分 */
-        .architecture {
-            padding: 4rem 0;
-            background: var(--light-gray);
-        }
-
-        .architecture-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .arch-card {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .arch-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .chart-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* 响应式设计 */
@@ -301,12 +150,8 @@
                 font-size: 1.1rem;
             }
 
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .model-specs {
-                grid-template-columns: 1fr;
+            .chart-wrapper {
+                max-width: 100%;
             }
         }
 
@@ -374,228 +219,64 @@
             </div>
         </section>
 
-        <!-- 模型特点 -->
-        <section class="features">
+        <!-- 动态图表 -->
+        <section class="chart-container">
             <div class="container">
-                <h2 class="section-title">模型特点</h2>
-                <div class="grid">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <h3>高精度检测</h3>
-                        <p>支持多类别菌落识别，复杂场景适应性强，准确率≥99.2%，误差≤0.5mm。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3>优化策略</h3>
-                        <p>采用小样本优化、数据增强、迁移学习等技术，提升模型泛化能力。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3>端到端处理</h3>
-                        <p>从图像预处理到结果输出，全流程自动化，支持24/7无人值守运行。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-expand-arrows-alt"></i>
-                        </div>
-                        <h3>灵活扩展</h3>
-                        <p>支持多种深度学习框架，可扩展至其他微生物检测任务。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 性能指标 -->
-        <section class="performance">
-            <div class="container">
-                <h2 class="section-title">性能指标</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>模型版本</th>
-                                <th>mAP@0.5</th>
-                                <th>准确率</th>
-                                <th>召回率</th>
-                                <th>处理速度</th>
-                                <th>适用场景</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Faster R-CNN + ResNet50</td>
-                                <td>96.8%</td>
-                                <td>95.2%</td>
-                                <td>97.1%</td>
-                                <td>3-5秒/张</td>
-                                <td>高精度需求</td>
-                            </tr>
-                            <tr>
-                                <td>YOLOv8-Medium</td>
-                                <td>95.4%</td>
-                                <td>94.8%</td>
-                                <td>96.3%</td>
-                                <td>1-2秒/张</td>
-                                <td>实时检测</td>
-                            </tr>
-                            <tr>
-                                <td>YOLOv8-Large</td>
-                                <td>97.2%</td>
-                                <td>96.1%</td>
-                                <td>97.8%</td>
-                                <td>2-3秒/张</td>
-                                <td>平衡性能</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 模型详情 -->
-        <section class="models">
-            <div class="container">
-                <h2 class="section-title">模型详情</h2>
-                
-                <div class="model-card">
-                    <h3><i class="fas fa-brain"></i> Faster R-CNN + ResNet50</h3>
-                    <p>基于区域建议网络的两阶段检测器，适合高精度菌落检测任务。采用ResNet50作为主干网络，结合FPN特征金字塔网络，支持多尺度检测。</p>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <strong>输入尺寸</strong>
-                            800×800
-                        </div>
-                        <div class="spec-item">
-                            <strong>类别数</strong>
-                            10+
-                        </div>
-                        <div class="spec-item">
-                            <strong>训练数据</strong>
-                            5000+标注
-                        </div>
-                        <div class="spec-item">
-                            <strong>优化器</strong>
-                            SGD + 余弦退火
-                        </div>
-                        <div class="spec-item">
-                            <strong>主干网络</strong>
-                            ResNet50 + FPN
-                        </div>
-                        <div class="spec-item">
-                            <strong>检测头</strong>
-                            RPN + RoI Heads
-                        </div>
-                    </div>
-                </div>
-
-                <div class="model-card">
-                    <h3><i class="fas fa-rocket"></i> YOLOv8 系列</h3>
-                    <p>单阶段检测器，平衡速度与精度，支持实时检测需求。采用anchor-free设计，减少超参数数量，提升检测效率。</p>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <strong>输入尺寸</strong>
-                            640×640
-                        </div>
-                        <div class="spec-item">
-                            <strong>类别数</strong>
-                            10+
-                        </div>
-                        <div class="spec-item">
-                            <strong>训练数据</strong>
-                            3000+标注
-                        </div>
-                        <div class="spec-item">
-                            <strong>优化器</strong>
-                            AdamW + 余弦退火
-                        </div>
-                        <div class="spec-item">
-                            <strong>网络结构</strong>
-                            CSPDarknet + PAN
-                        </div>
-                        <div class="spec-item">
-                            <strong>损失函数</strong>
-                            CIoU + BCE
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 技术架构 -->
-        <section class="architecture">
-            <div class="container">
-                <h2 class="section-title">技术架构</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-                    系统采用模块化设计，分为前端、后端和AI模型三大部分：
-                </p>
-                <div class="architecture-grid">
-                    <div class="arch-card">
-                        <div class="arch-icon">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <h3>前端界面</h3>
-                        <p>基于React和Tauri，提供用户友好的交互界面，支持拖拽上传、实时预览、结果可视化。</p>
-                    </div>
-                    <div class="arch-card">
-                        <div class="arch-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>后端服务</h3>
-                        <p>使用FastAPI实现高效的API服务，支持并发处理、缓存优化、异步任务队列。</p>
-                    </div>
-                    <div class="arch-card">
-                        <div class="arch-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>AI模型</h3>
-                        <p>支持PyTorch、TensorFlow等多种深度学习框架，可灵活切换和扩展模型。</p>
-                    </div>
+                <h2 class="section-title">模型性能对比</h2>
+                <div class="chart-wrapper">
+                    <canvas id="modelPerformanceChart"></canvas>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 CNN-MicroAI-Colony | 本项目基于 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> 开源协议发布。</p>
-        </div>
-    </footer>
-
     <script>
-        // 页面加载动画
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
+        const ctx = document.getElementById('modelPerformanceChart').getContext('2d');
+        const modelPerformanceChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['检测精度', '召回率', '处理速度', '适用场景', '模型复杂度'],
+                datasets: [
+                    {
+                        label: 'Faster R-CNN',
+                        data: [96.8, 97.1, 3, 5, 8],
+                        backgroundColor: 'rgba(0, 120, 212, 0.2)',
+                        borderColor: 'rgba(0, 120, 212, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'YOLOv8',
+                        data: [95.4, 96.3, 4, 7, 6],
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 2
                     }
-                });
-            });
-
-            document.querySelectorAll('.feature-card, .model-card, .arch-card').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '评分 (0-100)'
+                        }
+                    }
                 }
-            });
+            }
         });
     </script>
 </body>
