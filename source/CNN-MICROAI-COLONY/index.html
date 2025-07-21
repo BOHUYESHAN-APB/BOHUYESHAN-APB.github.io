@@ -237,6 +237,8 @@
         .chart-wrapper {
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
+            padding: 0 15px;
         }
 
         /* 页脚 */
@@ -295,20 +297,34 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
+                padding: 0 1rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+                gap: 0.8rem;
+            }
+
+            .cta-buttons .btn {
+                justify-content: center;
+                padding: 0.8rem 1.5rem;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 1rem;
             }
         }
 
