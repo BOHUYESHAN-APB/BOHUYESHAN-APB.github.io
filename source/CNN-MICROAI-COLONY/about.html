@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智能菌落分析系统</title>
+    <title>关于 - 智能菌落分析系统</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -66,6 +66,16 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        .about-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -86,7 +96,7 @@
 </head>
 <body>
     <header>
-        <h1>智能菌落分析和抑菌圈检测系统</h1>
+        <h1>关于项目</h1>
     </header>
     
     <nav>
@@ -98,18 +108,36 @@
 
     <main>
         <div class="card">
-            <h2>项目简介</h2>
-            <p>新一代智能菌落分析和抑菌圈检测系统，基于深度学习和计算机视觉技术，实现高精度菌落计数、抑菌圈测量和形态分析。</p>
+            <div class="about-section">
+                <h2>项目简介</h2>
+                <p>新一代智能菌落分析和抑菌圈检测系统，基于深度学习和计算机视觉技术，实现高精度菌落计数、抑菌圈测量和形态分析。</p>
+            </div>
+
+            <div class="about-section">
+                <h2>许可证</h2>
+                <p>本项目采用 <a href="LICENSE" style="color: var(--primary-color);">Apache-2.0 license</a> 开源许可证。</p>
+            </div>
         </div>
 
         <div class="card">
-            <h2>功能特点</h2>
-            <ul>
-                <li>高精度菌落检测和计数</li>
-                <li>实时相机预览和图像采集</li>
-                <li>多种检测算法支持</li>
-                <li>批量处理功能</li>
-            </ul>
+            <div class="about-section">
+                <h2>贡献指南</h2>
+                <p>我们欢迎任何形式的贡献，包括但不限于：</p>
+                <ul>
+                    <li>代码改进</li>
+                    <li>文档完善</li>
+                    <li>问题报告</li>
+                    <li>功能建议</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>联系方式</h2>
+                <div class="contact-info">
+                    <span>问题反馈：<a href="https://github.com/yourusername/colony-analysis-system/issues" style="color: var(--primary-color);">GitHub Issues</a></span>
+                    <span>技术支持：<a href="mailto:project@example.com" style="color: var(--primary-color);">project@example.com</a></span>
+                </div>
+            </div>
         </div>
     </main>
 

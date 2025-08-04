@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智能菌落分析系统</title>
+    <title>使用指南 - 智能菌落分析系统</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -66,6 +66,15 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+
+        .guide-section h3 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -86,7 +95,7 @@
 </head>
 <body>
     <header>
-        <h1>智能菌落分析和抑菌圈检测系统</h1>
+        <h1>使用指南</h1>
     </header>
     
     <nav>
@@ -98,18 +107,57 @@
 
     <main>
         <div class="card">
-            <h2>项目简介</h2>
-            <p>新一代智能菌落分析和抑菌圈检测系统，基于深度学习和计算机视觉技术，实现高精度菌落计数、抑菌圈测量和形态分析。</p>
+            <div class="guide-section">
+                <h3>基本操作</h3>
+                <h4>图像导入</h4>
+                <ol>
+                    <li>拖放文件到主窗口</li>
+                    <li>使用"打开文件"按钮</li>
+                    <li>从剪贴板粘贴</li>
+                </ol>
+            </div>
+
+            <div class="guide-section">
+                <h3>分析模式</h3>
+                <ul>
+                    <li><strong>单图分析</strong>: 逐张处理</li>
+                    <li><strong>批量分析</strong>: 多图同时处理</li>
+                    <li><strong>实时分析</strong>: 摄像头实时处理</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>结果查看</h3>
+                <ul>
+                    <li>图表可视化</li>
+                    <li>数据表格</li>
+                    <li>统计信息</li>
+                    <li>对比分析</li>
+                </ul>
+            </div>
         </div>
 
         <div class="card">
-            <h2>功能特点</h2>
-            <ul>
-                <li>高精度菌落检测和计数</li>
-                <li>实时相机预览和图像采集</li>
-                <li>多种检测算法支持</li>
-                <li>批量处理功能</li>
-            </ul>
+            <div class="guide-section">
+                <h3>高级功能</h3>
+                <h4>分析设置</h4>
+                <ul>
+                    <li>检测阈值调整</li>
+                    <li>处理参数配置</li>
+                    <li>批量处理设置</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>故障排除</h3>
+                <h4>常见问题</h4>
+                <ol>
+                    <li>启动失败</li>
+                    <li>检测异常</li>
+                    <li>导出错误</li>
+                    <li>性能问题</li>
+                </ol>
+            </div>
         </div>
     </main>
 

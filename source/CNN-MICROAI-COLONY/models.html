@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智能菌落分析系统</title>
+    <title>模型介绍 - 智能菌落分析系统</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -66,6 +66,10 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        .model-detail {
+            margin-bottom: 1.5rem;
+        }
+
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -82,11 +86,19 @@
             border: none;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
+
+        pre {
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>智能菌落分析和抑菌圈检测系统</h1>
+        <h1>菌落检测模型介绍</h1>
     </header>
     
     <nav>
@@ -98,17 +110,47 @@
 
     <main>
         <div class="card">
-            <h2>项目简介</h2>
-            <p>新一代智能菌落分析和抑菌圈检测系统，基于深度学习和计算机视觉技术，实现高精度菌落计数、抑菌圈测量和形态分析。</p>
+            <h2>模型训练流程</h2>
+            <div class="model-detail">
+                <p>基于深度学习的菌落检测模型训练脚本，使用PyTorch框架实现。</p>
+                <pre># 训练主函数
+def main():
+    args = parse_args()
+    
+    # 加载配置
+    cfg = Config.fromfile(args.config)
+    
+    # 设置工作目录
+    if args.work_dir is not None:
+        cfg.work_dir = args.work_dir
+    elif cfg.get('work_dir', None) is None:
+        cfg.work_dir = os.path.join('./work_dirs',
+                                  os.path.splitext(os.path.basename(args.config))[0])
+    os.makedirs(cfg.work_dir, exist_ok=True)
+    
+    # 训练模型
+    train_detector(
+        model,
+        datasets[0],
+        cfg,
+        distributed=False,
+        validate=(not args.no_validate),
+        timestamp=timestamp,
+        meta=dict(
+            mmdet_version=mmdet.__version__ + get_git_hash()[:7],
+            config=cfg.pretty_text
+        ))</pre>
+            </div>
         </div>
 
         <div class="card">
-            <h2>功能特点</h2>
+            <h2>模型特点</h2>
             <ul>
-                <li>高精度菌落检测和计数</li>
-                <li>实时相机预览和图像采集</li>
-                <li>多种检测算法支持</li>
-                <li>批量处理功能</li>
+                <li>基于Faster R-CNN架构</li>
+                <li>支持ResNet50/101等骨干网络</li>
+                <li>支持FP16混合精度训练</li>
+                <li>支持从检查点恢复训练</li>
+                <li>支持多GPU训练</li>
             </ul>
         </div>
     </main>
