@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打字游戏</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .game-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        .score, .accuracy, .level {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .game-area {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .letter {
+            position: absolute;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+        .input-area {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .input-area:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .game-over {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .hit-effect {
+            animation: hit 0.3s ease-out;
+        }
+        @keyframes hit {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="back-btn">← 返回主页</a>
+    
+    <div class="container">
+        <h1>⌨️ 打字游戏</h1>
+        
+        <div class="game-info">
+            <div class="score">得分: <span id="score">0</span></div>
+            <div class="accuracy">准确率: <span id="accuracy">100%</span></div>
+            <div class="level">等级: <span id="level">1</span></div>
+        </div>
+        
+        <div class="game-area" id="gameArea"></div>
+        
+        <input type="text" class="input-area" id="inputField" placeholder="输入上方落下的字母..." autocomplete="off">
+        
+        <div class="controls">
+            <button id="startBtn">开始游戏</button>
+            <button id="pauseBtn">暂停</button>
+            <button id="resetBtn">重新开始</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>游戏说明</h3>
+            <p>在字母落到屏幕底部前输入正确的字母</p>
+            <p>每正确输入一个字母得10分</p>
+            <p>错误输入会降低准确率</p>
+            <p>随着等级提高，字母下落速度会加快</p>
+        </div>
+    </div>
+
+    <script>
+        const gameArea = document.getElementById('gameArea');
+        const inputField = document.getElementById('inputField');
+        const scoreElement = document.getElementById('score');
+        const accuracyElement = document.getElementById('accuracy');
+        const levelElement = document.getElementById('level');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let activeLetters = [];
+        let score = 0;
+        let totalTyped = 0;
+        let correctTyped = 0;
+        let level = 1;
+        let gameSpeed = 2000;
+        let letterInterval;
+        let gameRunning = false;
+        let gamePaused = false;
+        
+        function getRandomLetter() {
+            return letters[Math.floor(Math.random() * letters.length)];
+        }
+        
+        function createLetter() {
+            if (!gameRunning || gamePaused) return;
+            
+            const letter = getRandomLetter();
+            const letterElement = document.createElement('div');
+            letterElement.className = 'letter';
+            letterElement.textContent = letter;
+            letterElement.dataset.letter = letter;
+            
+            const maxLeft = gameArea.offsetWidth - 40;
+            const left = Math.floor(Math.random() * maxLeft);
+            
+            letterElement.style.left = left + 'px';
+            letterElement.style.top = '0px';
+            
+            gameArea.appendChild(letterElement);
+            
+            const letterData = {
+                element: letterElement,
+                letter: letter,
+                top: 0,
+                speed: Math.random() * 2 + 1 + (level * 0.5)
+            };
+            
+            activeLetters.push(letterData);
+        }
+        
+        function updateLetters() {
+            if (gamePaused) return;
+            
+            for (let i = activeLetters.length - 1; i >= 0; i--) {
+                const letter = activeLetters[i];
+                letter.top += letter.speed;
+                letter.element.style.top = letter.top + 'px';
+                
+                // 检查是否落到底部
+                if (letter.top > gameArea.offsetHeight) {
+                    gameArea.removeChild(letter.element);
+                    activeLetters.splice(i, 1);
+                    updateAccuracy(false);
+                }
+            }
+        }
+        
+        function checkInput() {
+            const input = inputField.value.toUpperCase();
+            if (input.length === 0) return;
+            
+            const lastChar = input[input.length - 1];
+            inputField.value = '';
+            
+            totalTyped++;
+            
+            for (let i = activeLetters.length - 1; i >= 0; i--) {
+                const letter = activeLetters[i];
+                if (letter.letter === lastChar) {
+                    // 命中
+                    letter.element.classList.add('hit-effect');
+                    setTimeout(() => {
+                        gameArea.removeChild(letter.element);
+                    }, 300);
+                    
+                    activeLetters.splice(i, 1);
+                    score += 10;
+                    correctTyped++;
+                    scoreElement.textContent = score;
+                    updateAccuracy(true);
+                    
+                    // 检查升级
+                    if (score % 200 === 0) {
+                        level++;
+                        levelElement.textContent = level;
+                        gameSpeed = Math.max(500, 2000 - (level * 200));
+                        
+                        if (letterInterval) {
+                            clearInterval(letterInterval);
+                            letterInterval = setInterval(createLetter, gameSpeed);
+                        }
+                    }
+                    
+                    return;
+                }
+            }
+            
+            // 没有命中任何字母
+            updateAccuracy(false);
+        }
+        
+        function updateAccuracy(hit) {
+            const accuracy = totalTyped === 0 ? 100 : Math.round((correctTyped / totalTyped) * 100);
+            accuracyElement.textContent = accuracy + '%';
+            
+            if (!hit) {
+                // 错误输入的视觉反馈
+                inputField.style.backgroundColor = '#ff6b6b';
+                setTimeout(() => {
+                    inputField.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                }, 300);
+            }
+        }
+        
+        function startGame() {
+            if (!gameRunning) {
+                gameRunning = true;
+                gamePaused = false;
+                inputField.disabled = false;
+                inputField.focus();
+                
+                letterInterval = setInterval(createLetter, gameSpeed);
+                setInterval(updateLetters, 16);
+                
+                startBtn.textContent = '游戏进行中';
+                startBtn.disabled = true;
+            }
+        }
+        
+        function pauseGame() {
+            if (gameRunning && !gamePaused) {
+                gamePaused = true;
+                inputField.disabled = true;
+                pauseBtn.textContent = '继续';
+            } else if (gameRunning && gamePaused) {
+                gamePaused = false;
+                inputField.disabled = false;
+                inputField.focus();
+                pauseBtn.textContent = '暂停';
+            }
+        }
+        
+        function resetGame() {
+            // 清理游戏状态
+            clearInterval(letterInterval);
+            gameRunning = false;
+            gamePaused = false;
+            
+            // 移除所有字母
+            activeLetters.forEach(letter => {
+                if (letter.element.parentNode) {
+                    gameArea.removeChild(letter.element);
+                }
+            });
+            activeLetters = [];
+            
+            // 重置分数和状态
+            score = 0;
+            totalTyped = 0;
+            correctTyped = 0;
+            level = 1;
+            gameSpeed = 2000;
+            
+            scoreElement.textContent = score;
+            accuracyElement.textContent = '100%';
+            levelElement.textContent = level;
+            
+            inputField.value = '';
+            inputField.disabled = false;
+            
+            startBtn.textContent = '开始游戏';
+            startBtn.disabled = false;
+            pauseBtn.textContent = '暂停';
+        }
+        
+        function gameOver() {
+            gameRunning = false;
+            clearInterval(letterInterval);
+            
+            const gameOverDiv = document.createElement('div');
+            gameOverDiv.className = 'game-over';
+            gameOverDiv.innerHTML = `
+                <h2>游戏结束!</h2>
+                <p>最终得分: ${score}</p>
+                <p>准确率: ${accuracyElement.textContent}</p>
+                <button onclick="this.parentElement.remove(); resetGame();">再玩一次</button>
+            `;
+            document.body.appendChild(gameOverDiv);
+        }
+        
+        inputField.addEventListener('input', checkInput);
+        startBtn.addEventListener('click', startGame);
+        pauseBtn.addEventListener('click', pauseGame);
+        resetBtn.addEventListener('click', resetGame);
+        
+        // 初始聚焦输入框
+        inputField.focus();
+    </script>
+</body>
+</html>
