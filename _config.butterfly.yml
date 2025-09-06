@@ -1,9 +1,8 @@
-
 # Navigation bar settings (導航欄設置)
 # see https://butterfly.js.org/posts/4aa8abbe/##導航欄設置-Navigation-bar-settings
 # --------------------------------------
 
-nav: 
+nav:
   logo: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
   display_title: true
   fixed: false # fixed navigation bar
@@ -53,32 +52,34 @@ avatar:
   effect: false # true: small to large on hover
 
 # Disable all banner image
-# disable_top_img: false
+disable_top_img: false
 
 # The banner image of home page
 index_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
 # If the banner of page not setting, it will show the top_img
-# default_top_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+default_top_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
 # The banner image of archive page
-# archive_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+archive_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
 # If the banner of tag page not setting, it will show the top_img
-# tag_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+tag_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
 # The banner image of tag page
-# tag_per_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+tag_per_img:
 
 # If the banner of category page not setting, it will show the top_img
-# category_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+category_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
 # The banner image of category page
-# category_per_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+category_per_img:
 
 cover:
   # display the cover or not (是否顯示cover)
-  enable: true
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
   # the position of cover to show (cover顯示的位置)
   # left: left on the post (文章左側)
   # right: right on the post (文章右側)
@@ -108,11 +109,12 @@ error_404:
 
 # toc (目錄)
 toc:
-  enable: true
+  post: true
+  page: false
   number: true
+  expand: false
   style_simple: false # for post
   scroll_percent: true
-  auto_open: true # auto open the sidebar
 
 # post_copyright (版權)
 post_copyright:
@@ -179,14 +181,15 @@ click_heart:
   mobile: false
 
 # Mouse click effects: words (鼠標點擊效果: 文字)
-click_show_text:
+clickShowText:
   enable: false
   text:
     # - I
     # - LOVE
     # - YOU
-  font_size: 15px
+  fontSize: 15px
   random: false
+  mobile: false
 
 # Default display mode (默認顯示模式)
 # light (default) / dark / auto (follow system)
@@ -361,675 +364,4 @@ disqus:
   shortname:
 
 # Alternative Disqus - Render comments with Disqus API
-# https://github.com/SukkaW/DisqusJS
-disqusjs:
-  shortname:
-  apikey:
-  option:
-
-# Livere
-# https://www.livere.com/
-livere:
-  uid:
-
-# Gitalk
-# https://gitalk.github.io/
-gitalk:
-  client_id:
-  client_secret:
-  repo:
-  owner:
-  admin:
-  language: zh-CN
-  perPage: 10
-  distractionFreeMode: false
-  pagerDirection: last
-  createIssueManually: false
-  option:
-
-# Valine
-# https://valine.js.org/
-valine:
-  appId: # leancloud application app id
-  appKey: # leancloud application app key
-  pageSize: 10 # comment list page size
-  lang: zh-CN
-  placeholder: 请留下你的足迹 # valine comment input placeholder (like: 请留下你的足迹)
-  avatar: mp # gravatar style https://valine.js.org/avatar
-  meta: nick,mail,link # comment input meta (nick/mail/link)
-  pageview: false # page view counter
-  recordIP: false # Record commenter IP
-  serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
-  bg: # valine background
-  emojiCDN: # emoji CDN
-  enableQQ: false # enable the Nickname box to automatically get QQ Nickname and QQ Avatar
-  requiredFields: nick,mail # required fields (nick/mail/link)
-  visitor: false
-  option:
-
-# waline - A simple comment system with backend support fork from Valine
-# https://waline.js.org/
-waline:
-  serverURL: # Waline server address url
-  bg: # waline background
-  pageview: false
-  option:
-
-# utterances
-# https://utteranc.es/
-utterances:
-  repo:
-  # Issue Mapping: pathname/url/title/og:title
-  issue_term: pathname
-  # Theme: github-light/github-dark/github-dark-orange/icy-dark/dark-blue/photon-dark
-  light_theme: github-light
-  dark_theme: photon-dark
-
-# Facebook Comments Plugin
-# https://developers.facebook.com/docs/plugins/comments/
-facebook_comments:
-  app_id:
-  user_id: # optional
-  pageSize: 10 # The number of comments to show
-  order_by: social # social/time/reverse_time
-  lang: zh_TW # Language en_US/zh_CN/zh_TW and so on
-
-# Twikoo
-# https://github.com/imaegoo/twikoo
-twikoo:
-  envId:
-  region:
-  visitor: false
-  option:
-
-# Giscus
-# https://giscus.app/
-giscus:
-  repo:
-  repo_id:
-  category_id:
-  mapping: pathname
-  input_position: top
-  lang: zh-CN
-  reactions_enabled: 1
-  emit_metadata: 0
-  crossorigin: anonymous
-
-# Remark42
-# https://remark42.com/
-remark42:
-  host: # Your host url
-  site_id: # Your site id
-  option:
-
-# Artalk
-# https://artalk.js.org/
-artalk:
-  server:
-  site:
-  option:
-
-# --------------------------------------
-# Right side bottom button (右下角按鈕)
-# --------------------------------------
-
-# Change font size
-change_font_size:
-  enable: false
-
-# Conversion between Traditional and Simplified Chinese (簡繁轉換)
-translate:
-  enable: false
-  # The text of a button
-  default: 繁
-  # the language of website (1: Traditional Chinese/2: Simplified Chinese)
-  defaultEncoding: 2
-  # Time delay
-  translateDelay: 0
-  # The text of the button when the language is Simplified Chinese
-  msgToTraditionalChinese: '繁'
-  # The text of the button when the language is Traditional Chinese
-  msgToSimplifiedChinese: '簡'
-
-# Read Mode (閱讀模式)
-readmode:
-  enable: false
-
-# Reading progress bar (閱讀進度條)
-reading_progress:
-  enable: false
-  # Available values: left | top | right
-  start: top
-  # Available values: vertical | horizontal
-  direction: horizontal
-  # If set true, then it will be fixed at the top of the page
-  fixed: false
-  # Color
-  color: '#37c6c0'
-  # Height (in px)
-  height: 3
-  # Opacity (0-1)
-  opacity: 0.8
-
-# Auto scroll to the comment area (自動跳轉到評論區)
-comments_scroll:
-  enable: false
-
-# Auto open sidebar (自動打開側邊欄)
-auto_open_sidebar:
-  enable: false
-
-# Anchor scroll through the navigation menu (錨點滾動)
-anchor_nav:
-  enable: false
-  offset: 0
-  showPercent: false
-
-# --------------------------------------
-# Tags Settings (標籤設置)
-# --------------------------------------
-
-# Tags Cloud 標籤雲
-tagcloud:
-  enable: false
-  min_font: 0.8
-  max_font: 1.5
-  unit: rem
-  start_color: '#999'
-  end_color: '#99F'
-  threshold: 0
-
-# Tag plugins (標籤外掛)
-# --------------------------------------
-
-# Note (Bootstrap Callout)
-note:
-  # Note tag style values:
-  #  - simple    bs-callout old alert style. Default.
-  #  - modern    bs-callout new (AdminLTE) style
-  #  - flat      flat callout style with background, like on NeilOrangePeel.com
-  #  - disabled  disable all CSS styles import of note tag
-  style: simple
-  icons: false
-  border_radius: 3
-  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
-  # Offset also applied to label tag variables. This option can work with disabled note tag.
-  light_bg_offset: 0
-
-# Button
-btn:
-  icon: true
-  animation: false
-  # Custom button color for button
-  color: '#07c160'
-  # Custom hover color for button
-  hover_color: '#049f48'
-
-# Mermaid
-# see https://github.com/knsv/mermaid
-mermaid:
-  enable: false
-  # built-in themes: default/forest/dark/neutral
-  theme: default
-  theme_variables: false
-  # import mermaid.min.js
-  cdn:
-  # <script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js"></script>
-  # <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.css">
-  # Custom mermaid option
-  option:
-    # startOnLoad: true
-    # theme: 'dark'
-
-# Chart
-# see https://www.chartjs.org/
-chart:
-  enable: false
-  # import chart.js
-  cdn:
-  # <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-
-# ABCJS
-# see https://github.com/paulrosen/abcjs
-abcjs:
-  enable: false
-  # import abcjs
-  cdn:
-  # <script src="https://cdn.jsdelivr.net/npm/abcjs@6.0.0-beta.21/dist/abcjs-basic-min.js"></script>
-
-# Tags in the post (文章標籤)
-# --------------------------------------
-
-# Donate (打賞)
-donate:
-  enable: false
-  # Donate images
-  QR_code:
-    # - img: /img/wechat.jpg
-    #   link:
-    #   text: wechat
-    # - img: /img/alipay.jpg
-    #   link:
-    #   text: alipay
-
-# Post copyright (文章版權)
-post_copyright:
-  enable: true
-  decode: false
-  author_href:
-  location: 广东省广州市
-  license: CC BY-NC-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-# Post edit (文章編輯)
-post_edit:
-  enable: false
-  url: https://github.com/xxx/xxx/tree/main/source/_posts/ # Link for viewing posts
-  # For example: https://github.com/xxx/xxx/tree/main/source/_posts/
-  # If your article is in the subdirectory, you need to fill in the subdirectory path
-  # For example: https://github.com/xxx/xxx/tree/main/source/_posts/subdirectory/
-  branch: main
-
-# Related articles (相關文章)
-related_post:
-  enable: true
-  filter: false
-  date_type: created
-  date_format: YYYY-MM-DD
-  headline: 相关文章
-  limit: 6
-
-# Post pagination (文章分頁)
-# Pagination by sub_post (按子文章分頁)
-# If you want to show the pagination button in the post, you need to set the following
-# sub_post:
-#   - title: xxx
-#     url: xxx
-#     date: xxx
-#   - title: xxx
-#     url: xxx
-#     date: xxx
-# --------------------------------------
-
-# Displays outdated notice for a post (文章過期提醒)
-noticeOutdate:
-  enable: false
-  style: flat
-  date_param: created
-  limit_day: 500
-  position: top
-  message_prev: It has been
-  message_next: days since the last update, the content of the article may be outdated.
-
-# --------------------------------------
-# Pjax
-# --------------------------------------
-
-pjax:
-  enable: false
-  timeout: 10000
-  cacheBust: false
-  exclude:
-    # - /xxx/
-    # - /xxx/
-
-# --------------------------------------
-# Inject
-# --------------------------------------
-
-# Insert the code to head (before the '</head>' tag) and the bottom (before the '</body>' tag)
-# 插入代码到头部 </head> 之前 和 底部 </body> 之前
-inject:
-  head:
-    # - <link rel="stylesheet" href="/xxx.css">
-  bottom:
-    # - <script src="xxx"></script>
-
-# CDN
-# Don't modify the following settings unless you know what they are (非必要請不要修改)
-# 非必要請不要修改
-CDN:
-  # The CDN provider of internal scripts
-  # option: local/jsdelivr/unpkg/cdnjs/custom
-  # Dev version can only choose. ( dev版的主題只能設置為 local )
-  internal_provider: local
-
-  # The CDN provider of third party scripts
-  # option: local/jsdelivr/unpkg/cdnjs/custom
-  # Theme version can only choose. ( 主題版本只能設置為 local )
-  third_party_provider: local
-
-  # Add version number to CDN, true or false
-  version: false
-
-  # Custom format
-  # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
-  custom_format:
-
-  # CDN option
-  # The value of each option is a CDN name
-  # The CDN name has the following values:
-  # local/jsdelivr/unpkg/cdnjs/custom
-  # Example:
-  # algolia_search: local
-  # instantsearch: local
-
-  # algolia_search
-  algolia_search:
-
-  # instantsearch
-  instantsearch:
-
-  # pjax
-  pjax:
-
-  # gitalk
-  gitalk:
-
-  # valine
-  valine:
-
-  # waline
-  waline:
-
-  # twikoo
-  twikoo:
-
-  # giscus
-  giscus:
-
-  # sharejs
-  sharejs:
-
-  # addtoany
-  addtoany:
-
-  # algolia
-  algolia:
-
-  # local_search
-  local_search:
-
-  # mermaid
-  mermaid:
-
-  # chart
-  chart:
-
-  # abcjs
-  abcjs:
-
-  # katex
-  katex:
-
-  # mathjax
-  mathjax:
-
-  # comments
-  comments:
-
-  # disqusjs
-  disqusjs:
-
-  # twikoo
-  twikoo:
-
-  # remark42
-  remark42:
-
-  # artalk
-  artalk:
-
-  # fontawesome
-  fontawesome:
-
-  # flickr_justified_gallery
-  flickr_justified_gallery:
-
-  # aplayer
-  aplayer:
-
-  # meting
-  meting:
-
-  # prismjs
-  prismjs:
-
-  # prismjs_line_number
-  prismjs_line_number:
-
-  # prismjs_copy
-  prismjs_copy:
-
-  # artalk
-  artalk:
-
-  # pace
-  pace:
-
-  # canvas_ribbon
-  canvas_ribbon:
-
-  # canvas_fluttering_ribbon
-  canvas_fluttering_ribbon:
-
-  # canvas_nest
-  canvas_nest:
-
-  # activate_power_mode
-  activate_power_mode:
-
-  # fireworks
-  fireworks:
-
-  # click_heart
-  click_heart:
-
-  # click_show_text
-  click_show_text:
-
-  # fancybox
-  fancybox:
-
-  # medium_zoom
-  medium_zoom:
-
-  # snackbar
-  snackbar:
-
-  # search
-  search:
-
-  # algolia
-  algolia:
-
-  # instantsearch
-  instantsearch:
-
-  # local_search
-  local_search:
-
-  # mermaid
-  mermaid:
-
-  # chart
-  chart:
-
-  # abcjs
-  abcjs:
-
-  # katex
-  katex:
-
-  # mathjax
-  mathjax:
-
-  # comments
-  comments:
-
-  # disqusjs
-  disqusjs:
-
-  # twikoo
-  twikoo:
-
-  # remark42
-  remark42:
-
-  # artalk
-  artalk:
-
-  # fontawesome
-  fontawesome:
-
-  # flickr_justified_gallery
-  flickr_justified_gallery:
-
-  # aplayer
-  aplayer:
-
-  # meting
-  meting:
-
-  # prismjs
-  prismjs:
-
-  # prismjs_line_number
-  prismjs_line_number:
-
-  # prismjs_copy
-  prismjs_copy:
-
-  # artalk
-  artalk:
-
-  # pace
-  pace:
-
-  # canvas_ribbon
-  canvas_ribbon:
-
-  # canvas_fluttering_ribbon
-  canvas_fluttering_ribbon:
-
-  # canvas_nest
-  canvas_nest:
-
-  # activate_power_mode
-  activate_power_mode:
-
-  # fireworks
-  fireworks:
-
-  # click_heart
-  click_heart:
-
-  # click_show_text
-  click_show_text:
-
-  # fancybox
-  fancybox:
-
-  # medium_zoom
-  medium_zoom:
-
-  # snackbar
-  snackbar:
-
-  # search
-  search:
-
-  # algolia
-  algolia:
-
-  # instantsearch
-  instantsearch:
-
-  # local_search
-  local_search:
-
-  # mermaid
-  mermaid:
-
-  # chart
-  chart:
-
-  # abcjs
-  abcjs:
-
-  # katex
-  katex:
-
-  # mathjax
-  mathjax:
-
-  # comments
-  comments:
-
-  # disqusjs
-  disqusjs:
-
-  # twikoo
-  twikoo:
-
-  # remark42
-  remark42:
-
-  # artalk
-  artalk:
-
-  # fontawesome
-  fontawesome:
-
-  # flickr_justified_gallery
-  flickr_justified_gallery:
-
-  # aplayer
-  aplayer:
-
-  # meting
-  meting:
-
-  # prismjs
-  prismjs:
-
-  # prismjs_line_number
-  prismjs_line_number:
-
-  # prismjs_copy
-  prismjs_copy:
-
-  # artalk
-  artalk:
-
-  # pace
-  pace:
-
-  # canvas_ribbon
-  canvas_ribbon:
-
-  # canvas_fluttering_ribbon
-  canvas_fluttering_ribbon:
-
-  # canvas_nest
-  canvas_nest:
-
-  # activate_power_mode
-  activate_power_mode:
-
-  # fireworks
-  fireworks:
-
-  # click_heart
-  click_heart:
-
-  # click_show_text
-  click_show_text:
-
-  # fancybox
-  fancybox:
-
-  # medium_zoom
-  medium_zoom:
-
-  # snackbar
+# https://github
