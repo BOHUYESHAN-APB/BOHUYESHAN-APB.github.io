@@ -1,0 +1,301 @@
+# Navigation bar settings (導航欄設置)
+# see https://butterfly.js.org/posts/4aa8abbe/##導航欄設置-Navigation-bar-settings
+# --------------------------------------
+
+nav: 
+  logo: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+  display_title: true
+  fixed: false # fixed navigation bar
+
+# Menu 目錄
+menu:
+  首页: / || fas fa-home
+  时间轴: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  清单||fa fa-heartbeat:
+    音乐: /music/ || fas fa-music
+    照片: /Gallery/ || fas fa-images
+    影视: /movies/ || fas fa-video
+    书单: /books/ || fas fa-book
+    说说: /say/ || fas fa-comments 
+  友链: /link/ || fas fa-link
+  关于: /about/ || fas fa-heart
+
+# Code Blocks (代碼相關)
+# --------------------------------------
+
+highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
+highlight_copy: true # copy button
+highlight_lang: true # show the code language
+highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
+highlight_height_limit: false # unit: px
+code_word_wrap: false
+
+# Social Settings (社交圖標設置)
+# formal:
+#   icon: link || the description || color
+social:
+  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
+  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-github-square: https://github.com/BOHUYESHAN-APB || Github博客仓库 || '#525252'
+  fab fa-github: https://github.com/BoHuYeShan || Github个人仓库 || '#24292e'
+  fab fa-bilibili: https://space.bilibili.com/316318805 || bilibili个人主页 || '#FB7299'
+  
+# Image (圖片設置)
+# --------------------------------------
+
+# Favicon（網站圖標）
+favicon: /img/favicon.png
+
+# Avatar (頭像)
+avatar:
+  img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+  effect: false
+
+# Disable all banner image
+disable_top_img: false
+
+# The banner image of home page
+index_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+
+# If the banner of page not setting, it will show the top_img
+default_top_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+
+# The banner image of archive page
+archive_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+
+# If the banner of tag page not setting, it will show the top_img
+# note: tag page, not tags page (子標籤頁面的 top_img)
+tag_img:
+
+# The banner image of tag page
+# format:
+#  - tag name: xxxxx
+tag_per_img:
+
+# If the banner of category page not setting, it will show the top_img
+# note: category page, not categories page (子分類頁面的 top_img)
+category_img:
+
+# The banner image of category page
+# format:
+#  - category name: xxxxx
+category_per_img:
+
+cover:
+  # display the cover or not (是否顯示文章封面)
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  # the position of cover in home page (封面顯示的位置)
+  # left/right/both
+  position: both
+  # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
+  default_cover:
+    # - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
+
+# Replace Broken Images (替換無法顯示的圖片)
+error_img:
+  flink: /img/friend_404.gif
+  post_page: /img/404.jpg
+
+# A simple 404 page
+error_404:
+  enable: true
+  subtitle: "页面没有找到"
+  background: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+
+# Post Settings (文章設置)
+# --------------------------------------
+# highlight:
+#   line_number: true
+#   auto_detect: false
+#   tab_replace: ''
+#   wrap: true
+#   hljs: false
+
+toc:
+  enable: true
+  number: true
+  auto_open: true
+  wrap: false
+  min_depth: 2
+  max_depth: 6
+
+# copyright
+# Add the copyright info, after copied the post content, will add the copyright info (复制文章时，添加版权信息)
+copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# Related Articles (相關文章)
+related_post:
+  enable: true
+  filter: false
+  date_type: created
+  date_format: YYYY-MM-DD
+  headline: 相关文章
+  limit: 6
+
+# figcaption (圖片描述文字)
+photofigcaption: false
+
+# Post
+# --------------------------------------
+
+# anchor
+# when you scroll in post, the URL will update according to header id.
+anchor: false
+
+# Displays outdated notice for a post (文章過期提醒)
+noticeOutdate:
+  enable: false
+  style: flat
+  date_param: created
+  limit_day: 500
+  position: top
+  message_prev: It has been
+  message_next: days since the last update, the content of the article may be outdated.
+
+# Share System (分享功能)
+# --------------------------------------
+share:
+  enable: true
+  H5Share: false
+
+# AddThis
+addThis:
+  enable: false
+  pubid:
+
+# Sharejs
+# https://github.com/overtrue/share.js
+sharejs:
+  enable: false
+  sites: facebook,twitter,wechat,weibo,qq
+
+# AddToAny
+# https://www.addtoany.com
+addtoany:
+  enable: false
+  buttons:
+
+# Comments System (評論系統)
+# --------------------------------------
+comments:
+  # Up to two comments system, the first will be shown as default
+  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
+  use: # Valine,Disqus
+  text: true # Display the comment name next to the button
+  # lazyload: The comment system will be load when comment element enters the browser's viewport.
+  # If you set it to true, the comments will be loaded when the comment element enters the viewport
+  lazyload: false
+  count: false # Display comment count in top_img
+  card_post_count: false # Display comment count in Home Page
+
+# Disqus
+# https://disqus.com/
+disqus:
+  shortname:
+
+# DisqusJS
+# https://github.com/SukkaW/DisqusJS
+disqusjs:
+  shortname:
+  siteName:
+  apikey:
+  api:
+
+# Livere
+# https://livere.com/
+livere:
+  uid:
+
+# Gitalk
+# https://gitalk.github.io/
+gitalk:
+  client_id:
+  client_secret:
+  repo:
+  owner:
+  admin:
+  language: zh-CN
+  perPage: 10
+  distractionFreeMode: false
+  pagerDirection: last
+  createIssueManually: false
+  option:
+
+# Valine
+# https://valine.js.org/
+valine:
+  appId: # leancloud application app id
+  appKey: # leancloud application app key
+  pageSize: 10 # comment list page size
+  lang: zh-CN
+  placeholder: 请留下你的足迹 # valine comment input placeholder (like: 请留下你的足迹)
+  avatar: mp # gravatar style https://valine.js.org/avatar
+  meta: nick,mail,link # comment input meta (nick/mail/link)
+  pageview: false # page view counter
+  recordIP: false # Record commenter IP
+  serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
+  bg: # valine background
+  emojiCDN: # emoji CDN
+  enableQQ: false # enable the Nickname box to automatically get QQ Nickname and QQ Avatar
+  requiredFields: nick,mail # required fields (nick/mail/link)
+  visitor: false
+  option:
+
+# waline - A simple comment system with backend support fork from Valine
+# https://waline.js.org/
+waline:
+  serverURL: # Waline server address url
+  bg: # waline background
+  pageview: false
+  option:
+
+# utterances
+# https://utteranc.es/
+utterances:
+  repo:
+  # Issue Mapping: pathname/url/title/og:title
+  issue_term: pathname
+  # Theme: github-light/github-dark/github-dark-orange/icy-dark/dark-blue/photon-dark
+  light_theme: github-light
+  dark_theme: photon-dark
+
+# Facebook Comments Plugin
+# https://developers.facebook.com/docs/plugins/comments/
+facebook_comments:
+  app_id:
+  user_id: # optional
+  pageSize: 10 # The number of comments to show
+  order_by: social # social/time/reverse_time
+  lang: zh_TW # Language en_US/zh_CN/zh_TW and so on
+
+# Twikoo
+# https://github.com/imaegoo/twikoo
+twikoo:
+  envId:
+  region:
+  visitor: false
+  option:
+
+# Giscus
+# https://giscus.app/
+giscus:
+  repo:
+  repo_id:
+  category_id:
+  mapping: pathname
+  input_position: top
+  lang: zh-CN
+  loading: lazy
+  theme:
+    light: preferred_color_scheme
+    dark: dark
+  reactions_enabled: 1
+  emit_metadata: 0
+  crossorigin: anonymous
