@@ -44,33 +44,33 @@ social:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: /img/Avatar.jpg
 
 # Avatar (頭像)
 avatar:
-  img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+  img: /img/Avatar.jpg
   effect: false # true: small to large on hover
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+index_img: /img/banner/home-img.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+default_top_img: /img/banner/home-img.jpg
 
 # The banner image of archive page
-archive_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+archive_img: /img/banner/home-img.jpg
 
 # If the banner of tag page not setting, it will show the top_img
-tag_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+tag_img: /img/banner/home-img.jpg
 
 # The banner image of tag page
 tag_per_img:
 
 # If the banner of category page not setting, it will show the top_img
-category_img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+category_img: /img/banner/home-img.jpg
 
 # The banner image of category page
 category_per_img:
