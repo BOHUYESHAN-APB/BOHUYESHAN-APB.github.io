@@ -809,7 +809,7 @@
       <a class="toc-link"></a>
     </template>
 
-    <script>window.__ASSET_BASE__ = '/buckwheat-project/img/';</script>
+  <!-- removed duplicated default assignment; production base is defined below in JS as PROD_ASSET_BASE -->
 
     <script>
       (function () {
@@ -820,8 +820,11 @@
   const REMOTE_RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${DEFAULT_BRANCH}/`;
   const REMOTE_BLOB_BASE = `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/${DEFAULT_BRANCH}/`;
   const CDN_BASE = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@${DEFAULT_BRANCH}/`;
-        const CUSTOM_ASSET_BASE = (window.__ASSET_BASE__ || document.documentElement.getAttribute("data-asset-base") || "")
-          .trim();
+        // Production asset base: your hosted images path (use this in production).
+        const PROD_ASSET_BASE = 'https://bohuyeshan.top/buckwheat-project/model/img/';
+
+        // Custom asset base (can be set by embedding page) - kept for backward compatibility
+        const CUSTOM_ASSET_BASE = (window.__ASSET_BASE__ || document.documentElement.getAttribute("data-asset-base") || "").trim();
         let customImageBase = null;
         if (CUSTOM_ASSET_BASE) {
           const ensured = CUSTOM_ASSET_BASE.endsWith("/") ? CUSTOM_ASSET_BASE : `${CUSTOM_ASSET_BASE}/`;
@@ -896,18 +899,41 @@
           if (/^(https?:|mailto:|tel:)/i.test(href) || href.startsWith("#")) {
             return href;
           }
+
+          // Normalize relative paths
           const normalized = href.replace(/^\.\//, "").replace(/^\//, "");
-          if (isImage && customImageBase) {
+
+          // If this is an image and we have a local deployment asset (for dev), prefer it
+          if (isImage) {
             try {
-              return new URL(normalized, customImageBase).href;
-            } catch (error) {
-              return customImageBase + normalized;
+              // Check local deployment_assets by filename
+              const name = normalized.split("/").pop();
+              const localCandidate = new URL(`deployment_assets/${name}`, window.location.href).href;
+              // We can't synchronously test existence without network/fs, but using a relative URL
+              // will work when served from the repo (e.g., python -m http.server) or when
+              // the deployment_assets are included in the Pages repo next to index.html.
+              // Use customImageBase if explicitly provided (overrides everything)
+              if (customImageBase) {
+                return new URL(name, customImageBase).href;
+              }
+
+              // If we're on localhost (dev) prefer localCandidate
+              if (isLocalhost) {
+                return localCandidate;
+              }
+
+              // Production: use the explicit production host base (your site)
+              return new URL(name, PROD_ASSET_BASE).href;
+            } catch (err) {
+              // fallback to raw
             }
           }
+
+          // Non-image links: point to repository blob URL
           try {
-            return new URL(normalized, isImage ? RAW_BASE : BLOB_BASE).href;
+            return new URL(normalized, BLOB_BASE).href;
           } catch (error) {
-            return (isImage ? RAW_BASE : BLOB_BASE) + normalized;
+            return BLOB_BASE + normalized;
           }
         }
 
