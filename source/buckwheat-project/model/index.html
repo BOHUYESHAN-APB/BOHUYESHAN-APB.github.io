@@ -809,6 +809,17 @@
   const REMOTE_RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${DEFAULT_BRANCH}/`;
   const REMOTE_BLOB_BASE = `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/${DEFAULT_BRANCH}/`;
   const CDN_BASE = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@${DEFAULT_BRANCH}/`;
+        const CUSTOM_ASSET_BASE = (window.__ASSET_BASE__ || document.documentElement.getAttribute("data-asset-base") || "")
+          .trim();
+        let customImageBase = null;
+        if (CUSTOM_ASSET_BASE) {
+          const ensured = CUSTOM_ASSET_BASE.endsWith("/") ? CUSTOM_ASSET_BASE : `${CUSTOM_ASSET_BASE}/`;
+          try {
+            customImageBase = new URL(ensured, window.location.origin).href;
+          } catch (error) {
+            customImageBase = ensured;
+          }
+        }
         const isLocalhost =
           location.protocol === "file:" ||
           ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
@@ -872,7 +883,14 @@
           if (/^(https?:|mailto:|tel:)/i.test(href) || href.startsWith("#")) {
             return href;
           }
-          const normalized = href.replace(/^\.\//, "");
+          const normalized = href.replace(/^\.\//, "").replace(/^\//, "");
+          if (isImage && customImageBase) {
+            try {
+              return new URL(normalized, customImageBase).href;
+            } catch (error) {
+              return customImageBase + normalized;
+            }
+          }
           try {
             return new URL(normalized, isImage ? RAW_BASE : BLOB_BASE).href;
           } catch (error) {
