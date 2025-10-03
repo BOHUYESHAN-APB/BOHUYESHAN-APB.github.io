@@ -740,6 +740,15 @@
             <span class="badge__dot" aria-hidden="true"></span>
             <span class="badge__text">正在获取文档…</span>
           </div>
+          <!-- Customize this to match where your Pages serves images. If you copy the files from
+               html_preview/deployment_assets/ into your Pages repo under `img/`, set this to
+               '/buckwheat-project/img/' or '/img/' as appropriate. You can override this by
+               setting window.__ASSET_BASE__ before this file executes. -->
+          <script>
+            // Default asset base used by the client-side renderer. Override in hosting page if needed.
+            // Your hosted example URL uses: /buckwheat-project/model/img/... so default to that.
+            window.__ASSET_BASE__ = window.__ASSET_BASE__ || '/buckwheat-project/model/img/';
+          </script>
           <div class="masthead__meta-row">
             <span>文档源：<strong>README_cn.md</strong></span>
             <span>最近同步：<strong data-build>-</strong></span>
@@ -799,7 +808,9 @@
     <template id="toc-item-template">
       <a class="toc-link"></a>
     </template>
-<script>window.__ASSET_BASE__ = '/img/';</script>
+
+    <script>window.__ASSET_BASE__ = '/buckwheat-project/img/';</script>
+
     <script>
       (function () {
         const README_FILE = "README_cn.md";
