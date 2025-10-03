@@ -740,17 +740,11 @@
             <span class="badge__dot" aria-hidden="true"></span>
             <span class="badge__text">正在获取文档…</span>
           </div>
-          <!-- Customize this to match where your Pages serves images. If you copy the files from
-               html_preview/deployment_assets/ into your Pages repo under `img/`, set this to
-               '/buckwheat-project/img/' or '/img/' as appropriate. You can override this by
-               setting window.__ASSET_BASE__ before this file executes. -->
-          <script>
-            // Default asset base used by the client-side renderer. Override in hosting page if needed.
-            // Your hosted example URL uses: /buckwheat-project/model/img/... so default to that.
-            window.__ASSET_BASE__ = window.__ASSET_BASE__ || '/buckwheat-project/model/img/';
-          </script>
+    <!-- If you want to override where images are loaded from, set `window.__ASSET_BASE__`
+      or the <html data-asset-base="..."></html> attribute in the hosting page before
+      this script runs. By default production uses the built-in PROD_ASSET_BASE. -->
           <div class="masthead__meta-row">
-            <span>文档源：<strong>README_cn.md</strong></span>
+            <span>文档源：<strong>README.md</strong></span>
             <span>最近同步：<strong data-build>-</strong></span>
           </div>
           <div class="masthead__actions">
@@ -794,7 +788,7 @@
 
       <footer class="page-footer">
         <p>
-          本页面会在访问时实时抓取 <code>main</code> 分支的 <code>README_cn.md</code>，适合集成到 GitHub Pages、Hexo 或任意静态站点。
+          本页面会在访问时实时抓取 <code>main</code> 分支的 <code>README.md</code>，适合集成到 GitHub Pages、Hexo 或任意静态站点。
         </p>
         <p>
           所有相对链接都已自动补全为仓库地址，图片使用 <code>raw.githubusercontent.com</code>，保证跨站展示正常。
@@ -813,7 +807,7 @@
 
     <script>
       (function () {
-        const README_FILE = "README_cn.md";
+  const README_FILE = "README.md";
         const REPO_OWNER = "BOHUYESHAN-APB";
         const REPO_NAME = "Buckwheat-seed-quality";
         const DEFAULT_BRANCH = "main";
@@ -1153,7 +1147,7 @@
     updateStatus("error", "加载失败");
     docContent.innerHTML = `
       <div class="empty-state">
-        <strong>无法加载 README_cn.md</strong>
+  <strong>无法加载 README.md</strong>
         <p>错误信息：${lastError ? lastError.message : "未知错误"}</p>
         <p>您可以稍后重试，或直接访问 <a href="${README_BLOB_URL}" target="_blank" rel="noopener">GitHub 仓库查看原文</a>。</p>
       </div>
