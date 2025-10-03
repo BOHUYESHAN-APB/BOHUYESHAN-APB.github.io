@@ -423,6 +423,12 @@
         box-shadow: 0 16px 36px rgba(15, 23, 42, 0.22);
       }
 
+      .markdown-body img[data-asset-error="true"] {
+        border: 2px dashed rgba(99, 102, 241, 0.35);
+        background: rgba(99, 102, 241, 0.12);
+        box-shadow: none;
+      }
+
       .markdown-body a {
         position: relative;
         color: var(--accent);
@@ -485,6 +491,14 @@
       .markdown-body table tbody tr:hover td {
         background: rgba(79, 70, 229, 0.12);
         color: var(--text-primary);
+      }
+
+      .markdown-body table code {
+        background: rgba(15, 23, 42, 0.08);
+        padding: 2px 6px;
+        border-radius: 6px;
+        color: var(--text-primary);
+        font-size: 0.9em;
       }
 
       .heading-anchor {
@@ -690,6 +704,16 @@
         }
 
         #back-to-top {
+
+        .markdown-body table code {
+          background: rgba(148, 163, 184, 0.18);
+          color: #f8fafc;
+        }
+
+        .markdown-body img[data-asset-error="true"] {
+          border-color: rgba(99, 102, 241, 0.55);
+          background: rgba(45, 55, 72, 0.9);
+        }
           width: 46px;
           height: 46px;
         }
@@ -782,16 +806,18 @@
         const REPO_OWNER = "BOHUYESHAN-APB";
         const REPO_NAME = "Buckwheat-seed-quality";
         const DEFAULT_BRANCH = "main";
-        const REMOTE_RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${DEFAULT_BRANCH}/`;
-        const REMOTE_BLOB_BASE = `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/${DEFAULT_BRANCH}/`;
+  const REMOTE_RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${DEFAULT_BRANCH}/`;
+  const REMOTE_BLOB_BASE = `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/${DEFAULT_BRANCH}/`;
+  const CDN_BASE = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@${DEFAULT_BRANCH}/`;
         const isLocalhost =
           location.protocol === "file:" ||
           ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
         const LOCAL_BASE = new URL("../", window.location.href).href;
         const RAW_BASE = isLocalhost ? LOCAL_BASE : REMOTE_RAW_BASE;
         const BLOB_BASE = isLocalhost ? LOCAL_BASE : REMOTE_BLOB_BASE;
-        const README_URL = new URL(README_FILE, RAW_BASE).href;
-        const README_BLOB_URL = new URL(README_FILE, REMOTE_BLOB_BASE).href;
+  const README_URL = new URL(README_FILE, RAW_BASE).href;
+  const README_BLOB_URL = new URL(README_FILE, REMOTE_BLOB_BASE).href;
+  let hasShownAssetWarning = false;
 
         const docContent = document.getElementById("doc-content");
         const loadingState = document.getElementById("loading-state");
@@ -854,6 +880,40 @@
           }
         }
 
+        function buildCdnUrlFromRaw(rawUrl) {
+          try {
+            const url = new URL(rawUrl);
+            if (url.hostname !== "raw.githubusercontent.com") return null;
+            const segments = url.pathname.split("/").filter(Boolean);
+            if (segments.length < 4) return null;
+            const [owner, repo, branch, ...rest] = segments;
+            if (!owner || !repo || !rest.length) return null;
+            if (branch !== DEFAULT_BRANCH) {
+              return `https://cdn.jsdelivr.net/gh/${owner}/${repo}@${branch}/${rest.join("/")}`;
+            }
+            return CDN_BASE + rest.join("/");
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function applyAssetPlaceholder(img) {
+          img.dataset.assetError = "true";
+          const label = img.alt || "资源加载失败";
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='480' height='320' viewBox='0 0 480 320'>` +
+            `<defs><linearGradient id='g' x1='0%' x2='100%' y1='0%' y2='100%'><stop offset='0%' stop-color='#6366f1' stop-opacity='0.75'/><stop offset='100%' stop-color='#0ea5e9' stop-opacity='0.75'/></linearGradient></defs>` +
+            `<rect width='480' height='320' rx='24' fill='url(#g)'/>` +
+            `<g fill='white' font-family='Inter,Segoe UI' text-anchor='middle'>` +
+            `<text x='240' y='168' font-size='28' font-weight='600'>${label.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</text>` +
+            `<text x='240' y='208' font-size='18' opacity='0.75'>请检查仓库权限或资源路径</text>` +
+            `</g></svg>`;
+          img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+          if (!hasShownAssetWarning) {
+            showToast("部分图片加载失败，请确认仓库已公开或资源路径正确");
+            hasShownAssetWarning = true;
+          }
+        }
+
         const renderer = new marked.Renderer();
         const baseImage = renderer.image.bind(renderer);
         renderer.image = (href, title, text) => {
@@ -878,6 +938,16 @@
           container.querySelectorAll("img").forEach((img) => {
             img.loading = "lazy";
             img.decoding = "async";
+            img.addEventListener("error", () => {
+              if (img.dataset.assetError === "true") return;
+              const candidate = buildCdnUrlFromRaw(img.currentSrc || img.src);
+              if (candidate && img.dataset.cdnFallback !== "true") {
+                img.dataset.cdnFallback = "true";
+                img.src = candidate;
+                return;
+              }
+              applyAssetPlaceholder(img);
+            });
           });
 
           container.querySelectorAll("table").forEach((table) => {
