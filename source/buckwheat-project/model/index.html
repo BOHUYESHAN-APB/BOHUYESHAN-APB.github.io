@@ -837,7 +837,9 @@
         const LOCAL_BASE = new URL("../", window.location.href).href;
         const RAW_BASE = isLocalhost ? LOCAL_BASE : REMOTE_RAW_BASE;
         const BLOB_BASE = isLocalhost ? LOCAL_BASE : REMOTE_BLOB_BASE;
-  const README_URL = new URL(README_FILE, RAW_BASE).href;
+  // Prefer CDN (jsDelivr) which sets CORS headers for cross-origin fetches from Pages.
+  const README_CDN_URL = isLocalhost ? null : (CDN_BASE + README_FILE);
+  const README_RAW_URL = new URL(README_FILE, RAW_BASE).href;
   const README_BLOB_URL = new URL(README_FILE, REMOTE_BLOB_BASE).href;
   let hasShownAssetWarning = false;
 
@@ -1095,37 +1097,48 @@
         }
 
         updateStatus("loading");
-  fetch(README_URL, { cache: "no-store" })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`HTTP ${response.status}`);
-            }
-            return response.text();
-          })
-          .then((markdown) => {
-            const html = marked.parse(markdown);
-            docContent.innerHTML = html;
-            enhanceContent(docContent);
-            buildTOC(docContent);
-            updateStatus("success");
-            showToast("README 已同步至最新版本");
-          })
-          .catch((error) => {
-            updateStatus("error", "加载失败");
-            docContent.innerHTML = `
-              <div class="empty-state">
-                <strong>无法加载 README_cn.md</strong>
-                <p>错误信息：${error.message}</p>
-                <p>您可以稍后重试，或直接访问 <a href="${README_BLOB_URL}" target="_blank" rel="noopener">GitHub 仓库查看原文</a>。</p>
-              </div>
-            `;
-          })
-          .finally(() => {
-            if (loadingState) {
-              loadingState.remove();
-            }
-            toggleBackToTop();
-          });
+
+  // Try fetching README from multiple sources: CDN first (CORS-friendly), then raw.
+  (async function fetchMarkdown() {
+    const candidates = [];
+    if (README_CDN_URL) candidates.push(README_CDN_URL);
+    candidates.push(README_RAW_URL);
+
+    let lastError = null;
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+        const markdown = await res.text();
+        const html = marked.parse(markdown);
+        docContent.innerHTML = html;
+        enhanceContent(docContent);
+        buildTOC(docContent);
+        updateStatus("success");
+        showToast("README 已同步至最新版本");
+        return;
+      } catch (err) {
+        lastError = err;
+        // try next candidate
+      }
+    }
+
+    // If we reach here, all attempts failed
+    updateStatus("error", "加载失败");
+    docContent.innerHTML = `
+      <div class="empty-state">
+        <strong>无法加载 README_cn.md</strong>
+        <p>错误信息：${lastError ? lastError.message : "未知错误"}</p>
+        <p>您可以稍后重试，或直接访问 <a href="${README_BLOB_URL}" target="_blank" rel="noopener">GitHub 仓库查看原文</a>。</p>
+      </div>
+    `;
+  })()
+    .finally(() => {
+      if (loadingState) {
+        loadingState.remove();
+      }
+      toggleBackToTop();
+    });
       })();
     </script>
   </body>
