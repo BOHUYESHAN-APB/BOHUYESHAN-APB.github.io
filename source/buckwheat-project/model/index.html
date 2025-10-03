@@ -838,6 +838,7 @@
   const README_CDN_URL = isLocalhost ? null : (CDN_BASE + README_FILE);
   const README_RAW_URL = new URL(README_FILE, RAW_BASE).href;
   const README_BLOB_URL = new URL(README_FILE, REMOTE_BLOB_BASE).href;
+  const README_DOWNLOAD_URL = README_CDN_URL || README_RAW_URL;
   let hasShownAssetWarning = false;
 
         const docContent = document.getElementById("doc-content");
@@ -853,7 +854,7 @@
         const tocToggle = document.querySelector(".toc-toggle");
 
         if (downloadBtn) {
-          downloadBtn.href = README_URL;
+          downloadBtn.href = README_DOWNLOAD_URL;
         }
         if (buildTimeNode) {
           buildTimeNode.textContent = new Date().toLocaleString("zh-CN", {
