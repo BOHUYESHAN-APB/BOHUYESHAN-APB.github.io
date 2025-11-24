@@ -179,8 +179,8 @@
         const DINO_HEIGHT = 47;
         const CACTUS_WIDTH = 20;
         const CACTUS_HEIGHT = 43;
-        const GRAVITY = 0.8;
-        const JUMP_FORCE = -16;
+        const GRAVITY = 0.6;
+        const JUMP_FORCE = -12;
         
         // 游戏状态
         let dino = {
@@ -195,7 +195,7 @@
         let obstacles = [];
         let score = 0;
         let highScore = localStorage.getItem('dinoHighScore') || 0;
-        let gameSpeed = 1;
+        let gameSpeed = 0.8; // 降低初始速度
         let gameRunning = false;
         let gamePaused = false;
         let animationId;
@@ -230,10 +230,6 @@
         
         // 创建障碍物
         function createObstacle() {
-            const minGap = 300 * gameSpeed;
-            const maxGap = 600 * gameSpeed;
-            const gap = Math.random() * (maxGap - minGap) + minGap;
-            
             const obstacle = {
                 x: canvas.width,
                 y: canvas.height - GROUND_HEIGHT - CACTUS_HEIGHT,
@@ -271,9 +267,12 @@
             }
             
             // 随机生成新障碍物
+            // 确保最小间距，避免障碍物太近无法跳过
+            const minDistance = 400 + (gameSpeed * 50);
+            
             if (obstacles.length === 0 || 
-                canvas.width - obstacles[obstacles.length - 1].x > 300 / gameSpeed) {
-                if (Math.random() < 0.02) {
+                canvas.width - obstacles[obstacles.length - 1].x > minDistance) {
+                if (Math.random() < 0.03) {
                     createObstacle();
                 }
             }
@@ -351,12 +350,9 @@
                 lastTime = 0;
                 animationId = requestAnimationFrame(gameLoop);
                 
-                // 开始生成障碍物
-                setInterval(() => {
-                    if (gameRunning && !gamePaused) {
-                        createObstacle();
-                    }
-                }, 2000 / gameSpeed);
+                // 移除 setInterval 生成逻辑，完全由 updateObstacles 控制
+                // 这样可以避免障碍物重叠或生成过快
+                createObstacle(); // 立即生成第一个
             }
         }
         
@@ -413,7 +409,7 @@
             
             obstacles = [];
             score = 0;
-            gameSpeed = 1;
+            gameSpeed = 0.8;
             
             scoreElement.textContent = score;
             speedElement.textContent = gameSpeed.toFixed(1);

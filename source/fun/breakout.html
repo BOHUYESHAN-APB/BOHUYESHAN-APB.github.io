@@ -6,12 +6,12 @@
     <title>打砖块</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #E1F0FF 0%, #F2F2F7 100%);
             margin: 0;
             padding: 20px;
             min-height: 100vh;
-            color: white;
+            color: #1D1D1F;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,16 +20,21 @@
         .container {
             text-align: center;
             position: relative;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
         }
         h1 {
             margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            color: #1D1D1F;
+            text-shadow: none;
         }
         canvas {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             touch-action: none; /* Prevent scrolling on mobile */
         }
         .info-bar {
@@ -40,57 +45,62 @@
             margin-bottom: 15px;
             font-size: 1.2em;
             font-weight: bold;
+            color: #1D1D1F;
         }
         .controls {
             margin-top: 20px;
         }
         button {
-            background: #ff4b1f;
-            background: -webkit-linear-gradient(to right, #ff9068, #ff4b1f);
-            background: linear-gradient(to right, #ff9068, #ff4b1f);
+            background: #007AFF;
             border: none;
             padding: 10px 30px;
             border-radius: 50px;
             color: white;
             font-size: 1.1em;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 75, 31, 0.4);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+            transition: transform 0.2s, opacity 0.2s;
         }
         button:hover {
             transform: scale(1.05);
+            opacity: 0.9;
         }
         .back-btn {
             position: absolute;
             top: 20px;
             left: 20px;
-            color: white;
+            color: #007AFF;
             text-decoration: none;
-            font-size: 1.1em;
-            opacity: 0.8;
-            transition: opacity 0.2s;
+            font-size: 1em;
+            font-weight: 500;
+            background: rgba(255,255,255,0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .back-btn:hover {
-            opacity: 1;
+            opacity: 0.8;
         }
         .modal {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             color: #333;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
             display: none;
             z-index: 10;
             min-width: 250px;
         }
         .modal h2 {
             margin-top: 0;
-            color: #1e3c72;
+            color: #007AFF;
         }
     </style>
 </head>
@@ -178,9 +188,9 @@
         const ballRadius = 10;
         let x = canvas.width / 2;
         let y = canvas.height - 30;
-        let dx = 2;
-        let dy = -2;
-        const ballSpeed = 3;
+        let dx = 1.5; // 降低初始速度，原为 2
+        let dy = -1.5; // 降低初始速度，原为 -2
+        const ballSpeed = 2; // 降低基准速度
 
         // Paddle
         const paddleHeight = 10;
@@ -190,12 +200,12 @@
         let leftPressed = false;
 
         // Bricks
-        const brickRowCount = 5;
-        let brickColumnCount = 6; // Adjusted for 480 width
+        const brickRowCount = 4; // 减少行数，增加距离
+        let brickColumnCount = 6; 
         const brickWidth = 65;
         const brickHeight = 20;
         const brickPadding = 10;
-        const brickOffsetTop = 30;
+        const brickOffsetTop = 50; // 增加顶部距离，原为 30
         let brickOffsetLeft = 20;
 
         let bricks = [];
@@ -269,8 +279,9 @@
                             
                             // Increase speed slightly every 5 points
                             if (score % 5 === 0) {
-                                dx = dx > 0 ? dx + 0.2 : dx - 0.2;
-                                dy = dy > 0 ? dy + 0.2 : dy - 0.2;
+                                // 速度增加幅度减小
+                                dx = dx > 0 ? dx + 0.1 : dx - 0.1;
+                                dy = dy > 0 ? dy + 0.1 : dy - 0.1;
                             }
 
                             if (score == brickRowCount * brickColumnCount) {
@@ -358,8 +369,8 @@
                     } else {
                         x = canvas.width / 2;
                         y = canvas.height - 30;
-                        dx = 2;
-                        dy = -2;
+                        dx = 1.5; // 重置为低速
+                        dy = -1.5;
                         paddleX = (canvas.width - paddleWidth) / 2;
                     }
                 }
@@ -396,8 +407,8 @@
             
             x = canvas.width / 2;
             y = canvas.height - 30;
-            dx = 2;
-            dy = -2;
+            dx = 1.5; // 重置为低速
+            dy = -1.5;
             paddleX = (canvas.width - paddleWidth) / 2;
             
             initBricks();

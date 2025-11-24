@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>中国象棋</title>
+    <style>
+        body {
+            font-family: "KaiTi", "楷体", serif;
+            background: linear-gradient(135deg, #E1F0FF 0%, #F2F2F7 100%);
+            margin: 0;
+            padding: 10px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1D1D1F;
+        }
+        h1 {
+            color: #1D1D1F;
+            margin: 10px 0;
+        }
+        .game-container {
+            position: relative;
+            background: #deb887;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 2px solid #8d6e63;
+        }
+        canvas {
+            background: #deb887;
+            cursor: pointer;
+            display: block;
+        }
+        .status {
+            margin: 15px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1D1D1F;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.6);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            background: #b71c1c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-family: inherit;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #b71c1c;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255,255,255,0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="back-btn">← 返回</a>
+    
+    <h1>中国象棋</h1>
+    
+    <div class="status">
+        <span id="statusText">红方回合</span>
+    </div>
+    
+    <div class="game-container">
+        <canvas id="board"></canvas>
+    </div>
+    
+    <div class="controls">
+        <button onclick="initGame()">重新开始</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('board');
+        const ctx = canvas.getContext('2d');
+        const statusText = document.getElementById('statusText');
+        
+        const GRID_SIZE = 9; // 9列
+        const ROW_SIZE = 10; // 10行
+        let CELL_SIZE;
+        let BOARD_WIDTH;
+        let BOARD_HEIGHT;
+        let PADDING;
+        
+        // 棋子定义
+        // 红方: 帅(K) 士(A) 相(B) 马(N) 车(R) 炮(C) 兵(P)
+        // 黑方: 将(k) 士(a) 象(b) 马(n) 车(r) 炮(c) 卒(p)
+        const pieces = {
+            'K': '帅', 'A': '士', 'B': '相', 'N': '马', 'R': '车', 'C': '炮', 'P': '兵',
+            'k': '将', 'a': '士', 'b': '象', 'n': '马', 'r': '车', 'c': '炮', 'p': '卒'
+        };
+        
+        let board = [];
+        let turn = 'red'; // 'red' or 'black'
+        let selectedPiece = null; // {x, y}
+        
+        function resize() {
+            const maxWidth = Math.min(window.innerWidth - 20, 450);
+            CELL_SIZE = maxWidth / 9;
+            PADDING = CELL_SIZE / 2;
+            BOARD_WIDTH = CELL_SIZE * 8 + PADDING * 2;
+            BOARD_HEIGHT = CELL_SIZE * 9 + PADDING * 2;
+            
+            canvas.width = BOARD_WIDTH;
+            canvas.height = BOARD_HEIGHT;
+            
+            drawBoard();
+            drawPieces();
+        }
+        
+        window.addEventListener('resize', resize);
+        
+        function initGame() {
+            // 初始化棋盘
+            board = [
+                ['r', 'n', 'b', 'a', 'k', 'a', 'b', 'n', 'r'],
+                ['', '', '', '', '', '', '', '', ''],
+                ['', 'c', '', '', '', '', '', 'c', ''],
+                ['p', '', 'p', '', 'p', '', 'p', '', 'p'],
+                ['', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', ''],
+                ['P', '', 'P', '', 'P', '', 'P', '', 'P'],
+                ['', 'C', '', '', '', '', '', 'C', ''],
+                ['', '', '', '', '', '', '', '', ''],
+                ['R', 'N', 'B', 'A', 'K', 'A', 'B', 'N', 'R']
+            ];
+            turn = 'red';
+            selectedPiece = null;
+            updateStatus();
+            resize();
+        }
+        
+        function drawBoard() {
+            ctx.fillStyle = '#deb887';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = '#5d4037';
+            ctx.lineWidth = 1.5;
+            
+            // 横线
+            for (let i = 0; i < ROW_SIZE; i++) {
+                ctx.beginPath();
+                ctx.moveTo(PADDING, PADDING + i * CELL_SIZE);
+                ctx.lineTo(BOARD_WIDTH - PADDING, PADDING + i * CELL_SIZE);
+                ctx.stroke();
+            }
+            
+            // 竖线
+            for (let i = 0; i < GRID_SIZE; i++) {
+                if (i === 0 || i === GRID_SIZE - 1) {
+                    ctx.beginPath();
+                    ctx.moveTo(PADDING + i * CELL_SIZE, PADDING);
+                    ctx.lineTo(PADDING + i * CELL_SIZE, BOARD_HEIGHT - PADDING);
+                    ctx.stroke();
+                } else {
+                    // 楚河汉界断开
+                    ctx.beginPath();
+                    ctx.moveTo(PADDING + i * CELL_SIZE, PADDING);
+                    ctx.lineTo(PADDING + i * CELL_SIZE, PADDING + 4 * CELL_SIZE);
+                    ctx.stroke();
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(PADDING + i * CELL_SIZE, PADDING + 5 * CELL_SIZE);
+                    ctx.lineTo(PADDING + i * CELL_SIZE, BOARD_HEIGHT - PADDING);
+                    ctx.stroke();
+                }
+            }
+            
+            // 九宫格斜线
+            // 上方
+            ctx.beginPath();
+            ctx.moveTo(PADDING + 3 * CELL_SIZE, PADDING);
+            ctx.lineTo(PADDING + 5 * CELL_SIZE, PADDING + 2 * CELL_SIZE);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(PADDING + 5 * CELL_SIZE, PADDING);
+            ctx.lineTo(PADDING + 3 * CELL_SIZE, PADDING + 2 * CELL_SIZE);
+            ctx.stroke();
+            
+            // 下方
+            ctx.beginPath();
+            ctx.moveTo(PADDING + 3 * CELL_SIZE, BOARD_HEIGHT - PADDING);
+            ctx.lineTo(PADDING + 5 * CELL_SIZE, BOARD_HEIGHT - PADDING - 2 * CELL_SIZE);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(PADDING + 5 * CELL_SIZE, BOARD_HEIGHT - PADDING);
+            ctx.lineTo(PADDING + 3 * CELL_SIZE, BOARD_HEIGHT - PADDING - 2 * CELL_SIZE);
+            ctx.stroke();
+            
+            // 楚河汉界文字
+            ctx.font = `${CELL_SIZE * 0.6}px KaiTi`;
+            ctx.fillStyle = '#5d4037';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.save();
+            ctx.translate(BOARD_WIDTH / 4, BOARD_HEIGHT / 2);
+            ctx.rotate(-Math.PI / 2);
+            // ctx.fillText("楚河", 0, 0);
+            ctx.restore();
+            
+            ctx.fillText("楚 河", BOARD_WIDTH / 4, BOARD_HEIGHT / 2);
+            ctx.fillText("汉 界", BOARD_WIDTH * 3 / 4, BOARD_HEIGHT / 2);
+        }
+        
+        function drawPieces() {
+            for (let y = 0; y < ROW_SIZE; y++) {
+                for (let x = 0; x < GRID_SIZE; x++) {
+                    const piece = board[y][x];
+                    if (piece) {
+                        drawPiece(x, y, piece);
+                    }
+                }
+            }
+            
+            // 绘制选中框
+            if (selectedPiece) {
+                const x = PADDING + selectedPiece.x * CELL_SIZE;
+                const y = PADDING + selectedPiece.y * CELL_SIZE;
+                const r = CELL_SIZE * 0.45;
+                
+                ctx.strokeStyle = '#007AFF';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.rect(x - r, y - r, r * 2, r * 2);
+                ctx.stroke();
+            }
+        }
+        
+        function drawPiece(x, y, code) {
+            const cx = PADDING + x * CELL_SIZE;
+            const cy = PADDING + y * CELL_SIZE;
+            const r = CELL_SIZE * 0.4;
+            
+            // 棋子背景
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, Math.PI * 2);
+            ctx.fillStyle = '#f0d9b5';
+            ctx.fill();
+            ctx.strokeStyle = '#5d4037';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 棋子文字
+            ctx.font = `bold ${CELL_SIZE * 0.5}px KaiTi`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            if (isRed(code)) {
+                ctx.fillStyle = '#c00';
+            } else {
+                ctx.fillStyle = '#000';
+            }
+            
+            ctx.fillText(pieces[code], cx, cy);
+        }
+        
+        function isRed(code) {
+            return code === code.toUpperCase();
+        }
+        
+        function handleClick(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const gridX = Math.round((x - PADDING) / CELL_SIZE);
+            const gridY = Math.round((y - PADDING) / CELL_SIZE);
+            
+            if (gridX >= 0 && gridX < GRID_SIZE && gridY >= 0 && gridY < ROW_SIZE) {
+                const piece = board[gridY][gridX];
+                
+                if (selectedPiece) {
+                    // 尝试移动
+                    if (selectedPiece.x === gridX && selectedPiece.y === gridY) {
+                        selectedPiece = null; // 取消选择
+                    } else {
+                        // 移动逻辑
+                        if (isValidMove(selectedPiece.x, selectedPiece.y, gridX, gridY)) {
+                            movePiece(selectedPiece.x, selectedPiece.y, gridX, gridY);
+                            selectedPiece = null;
+                            turn = turn === 'red' ? 'black' : 'red';
+                            updateStatus();
+                        } else {
+                            // 如果点击的是己方棋子，切换选择
+                            if (piece && isMyPiece(piece)) {
+                                selectedPiece = {x: gridX, y: gridY};
+                            }
+                        }
+                    }
+                } else {
+                    // 选择棋子
+                    if (piece && isMyPiece(piece)) {
+                        selectedPiece = {x: gridX, y: gridY};
+                    }
+                }
+                
+                drawBoard();
+                drawPieces();
+            }
+        }
+        
+        function isMyPiece(piece) {
+            if (!piece) return false;
+            return turn === 'red' ? isRed(piece) : !isRed(piece);
+        }
+        
+        function movePiece(fromX, fromY, toX, toY) {
+            board[toY][toX] = board[fromY][fromX];
+            board[fromY][fromX] = '';
+        }
+        
+        function isValidMove(fromX, fromY, toX, toY) {
+            const targetPiece = board[toY][toX];
+            if (targetPiece && isMyPiece(targetPiece)) return false;
+            
+            // 简化版：沙盒模式，允许任意移动到非己方位置
+            // 完整的中国象棋规则验证比较复杂
+            return true;
+        }
+        
+        function updateStatus() {
+            statusText.innerText = turn === 'red' ? "红方回合" : "黑方回合";
+            statusText.style.color = turn === 'red' ? "#c00" : "#000";
+        }
+        
+        canvas.addEventListener('click', handleClick);
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('click', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, {passive: false});
+        
+        initGame();
+    </script>
+</body>
+</html>
