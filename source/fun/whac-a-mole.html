@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>打地鼠</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #8BC6EC;
+            background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            touch-action: manipulation;
+        }
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+        .score-board {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        .hole {
+            background: #8B4513;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            border: 5px solid #654321;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+        .mole {
+            width: 80%;
+            height: 80%;
+            background: #f1c40f;
+            border-radius: 40% 40% 10% 10%;
+            position: absolute;
+            bottom: -100%;
+            left: 10%;
+            transition: bottom 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .mole::before {
+            content: "🐹";
+            font-size: 3em;
+        }
+        .mole.up {
+            bottom: 0;
+        }
+        .controls {
+            margin-top: 30px;
+        }
+        button {
+            background: #2ecc71;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+            transition: transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            background: rgba(0,0,0,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            .game-grid {
+                gap: 10px;
+            }
+            .mole::before {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="back-btn">← 返回</a>
+    
+    <h1>打地鼠</h1>
+    <div class="score-board">得分: <span id="score">0</span></div>
+    
+    <div class="game-grid">
+        <div class="hole" id="hole1"><div class="mole"></div></div>
+        <div class="hole" id="hole2"><div class="mole"></div></div>
+        <div class="hole" id="hole3"><div class="mole"></div></div>
+        <div class="hole" id="hole4"><div class="mole"></div></div>
+        <div class="hole" id="hole5"><div class="mole"></div></div>
+        <div class="hole" id="hole6"><div class="mole"></div></div>
+        <div class="hole" id="hole7"><div class="mole"></div></div>
+        <div class="hole" id="hole8"><div class="mole"></div></div>
+        <div class="hole" id="hole9"><div class="mole"></div></div>
+    </div>
+    
+    <div class="controls">
+        <button id="startBtn" onclick="startGame()">开始游戏</button>
+    </div>
+
+    <script>
+        const holes = document.querySelectorAll('.hole');
+        const scoreBoard = document.getElementById('score');
+        const moles = document.querySelectorAll('.mole');
+        const startBtn = document.getElementById('startBtn');
+        
+        let lastHole;
+        let timeUp = false;
+        let score = 0;
+        let gameTimer;
+
+        function randomTime(min, max) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
+
+        function randomHole(holes) {
+            const idx = Math.floor(Math.random() * holes.length);
+            const hole = holes[idx];
+            if (hole === lastHole) {
+                return randomHole(holes);
+            }
+            lastHole = hole;
+            return hole;
+        }
+
+        function peep() {
+            const time = randomTime(400, 1000);
+            const hole = randomHole(holes);
+            const mole = hole.querySelector('.mole');
+            
+            mole.classList.add('up');
+            
+            setTimeout(() => {
+                mole.classList.remove('up');
+                if (!timeUp) peep();
+            }, time);
+        }
+
+        function startGame() {
+            if (startBtn.innerText === "游戏中...") return;
+            
+            scoreBoard.textContent = 0;
+            timeUp = false;
+            score = 0;
+            startBtn.innerText = "游戏中...";
+            startBtn.style.background = "#95a5a6";
+            
+            peep();
+            
+            setTimeout(() => {
+                timeUp = true;
+                startBtn.innerText = "开始游戏";
+                startBtn.style.background = "#2ecc71";
+                alert("游戏结束！你的得分是: " + score);
+            }, 15000); // 15秒游戏时间
+        }
+
+        function bonk(e) {
+            if(!e.isTrusted) return; // 防止脚本点击
+            if(!this.classList.contains('up')) return;
+            
+            score++;
+            this.classList.remove('up');
+            scoreBoard.textContent = score;
+            
+            // 视觉反馈
+            const originalContent = window.getComputedStyle(this, '::before').content;
+            // 简单的震动效果或颜色变化可以通过CSS类实现，这里简化处理
+        }
+
+        moles.forEach(mole => mole.addEventListener('click', bonk));
+        // 触摸支持
+        moles.forEach(mole => mole.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // 防止触发两次
+            bonk.call(this, e);
+        }));
+
+    </script>
+</body>
+</html>

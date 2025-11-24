@@ -44,6 +44,7 @@
             justify-content: center;
             margin: 20px 0;
             flex-wrap: wrap;
+            transform-origin: top center; /* 缩放原点 */
         }
         .puzzle-board {
             width: 400px;
@@ -56,6 +57,7 @@
             grid-template-rows: repeat(4, 1fr);
             gap: 2px;
             padding: 5px;
+            box-sizing: border-box; /* 确保padding不增加宽度 */
         }
         .puzzle-slot {
             background: rgba(52, 152, 219, 0.2);
@@ -71,6 +73,8 @@
         }
         .puzzle-pieces {
             width: 400px;
+            /* height: 400px;  移除固定高度，让其自适应内容，或者保持一致 */
+            min-height: 400px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(4, 1fr);
@@ -79,15 +83,25 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-sizing: border-box;
         }
         .puzzle-piece {
-            width: 95px;
+            width: 95px; /* 稍微减小一点以适应gap */
             height: 95px;
             background-size: 400px 400px;
             cursor: grab;
             border-radius: 5px;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 900px) {
+            .game-area {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
         }
         .puzzle-piece:hover {
             transform: scale(1.05);
@@ -212,8 +226,9 @@
         
         <div class="instructions">
             <h3>游戏说明</h3>
-            <p>将右侧的拼图碎片拖放到左侧的正确位置</p>
-            <p>碎片放置正确时会显示绿色边框</p>
+            <p>1. 点击右侧的拼图碎片选中它</p>
+            <p>2. 点击左侧的目标位置将其放置</p>
+            <p>3. 碎片放置正确时会显示绿色边框</p>
             <p>用最少的移动次数和最短时间完成拼图</p>
         </div>
     </div>
@@ -232,8 +247,9 @@
         const PIECE_SIZE = 100;
         
         const images = {
-            nature: 'https://t.alcy.cc/fj',
-            animals: 'https://t.alcy.cc/ai'
+            nature: 'https://picsum.photos/400/400?random=1',
+            animals: 'https://picsum.photos/400/400?random=2',
+            architecture: 'https://picsum.photos/400/400?random=3'
         }
         
         let puzzleState = [];
@@ -243,9 +259,35 @@
         let gameStarted = false;
         let correctPieces = 0;
         
-        function initializeGame() {
-            const selectedImage = images[imageSelect.value];
-            
+        async function initializeGame() {
+            // 显示加载中
+            puzzleBoard.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100%;width:100%;color:#3498db;">正在加载图片...</div>';
+            puzzlePieces.innerHTML = '';
+            startBtn.disabled = true;
+
+            try {
+                // 获取选中的图片URL，并添加时间戳防止缓存，确保每次都是新图片（如果需要）
+                // 这里我们使用 picsum 的 random 参数来获取随机图片
+                const baseType = imageSelect.value;
+                let imageUrl = images[baseType];
+                
+                // 如果是重新开始，我们可能想要一张新图片，或者保持原图？
+                // 简单起见，每次初始化都重新加载图片
+                // 为了确保所有切片使用同一张图，我们需要先加载图片并转换为 Blob URL
+                
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
+                const objectURL = URL.createObjectURL(blob);
+                
+                setupPuzzle(objectURL);
+            } catch (error) {
+                console.error("图片加载失败:", error);
+                puzzleBoard.innerHTML = '<div style="color:red;padding:20px;">图片加载失败，请重试</div>';
+                startBtn.disabled = false;
+            }
+        }
+
+        function setupPuzzle(imgUrl) {
             // 清空棋盘和碎片区
             puzzleBoard.innerHTML = '';
             puzzlePieces.innerHTML = '';
@@ -258,7 +300,7 @@
                     slot.dataset.x = x;
                     slot.dataset.y = y;
                     slot.style.position = 'relative';
-                    slot.innerHTML = `<div style="width:100%;height:100%;border:2px dashed #3498db;display:flex;align-items:center;justify-content:center;font-size:12px;color:#3498db;">(${x},${y})</div>`;
+                    slot.innerHTML = `<div style="width:100%;height:100%;border:2px dashed #3498db;display:flex;align-items:center;justify-content:center;font-size:12px;color:#3498db;opacity:0.5;"></div>`;
                     puzzleBoard.appendChild(slot);
                 }
             }
@@ -271,7 +313,7 @@
                     piece.className = 'puzzle-piece';
                     piece.dataset.x = x;
                     piece.dataset.y = y;
-                    piece.style.backgroundImage = `url(${selectedImage})`;
+                    piece.style.backgroundImage = `url(${imgUrl})`;
                     piece.style.backgroundPosition = `-${x * PIECE_SIZE}px -${y * PIECE_SIZE}px`;
                     piece.style.backgroundSize = '400px 400px';
                     piece.style.border = '1px solid #ccc';
@@ -299,12 +341,22 @@
             correctPieces = 0;
             movesElement.textContent = moves;
             timerElement.textContent = timer;
+            
+            // 启用开始按钮
+            startBtn.disabled = false;
+            
+            // 如果是自动开始（比如重置后），则直接开始计时
+            if (gameStarted) {
+                startTimer();
+                startBtn.disabled = true;
+                shuffleBtn.disabled = false;
+            }
         }
         
         let selectedPiece = null;
         
         function selectPiece(piece) {
-            if (!gameStarted || piece.style.opacity === '0.5') return;
+            if (!gameStarted || piece.style.opacity === '0.5' || piece.classList.contains('placed')) return;
             
             // 取消之前的选择
             if (selectedPiece) {
@@ -319,6 +371,9 @@
         function placePiece(slot) {
             if (!gameStarted || !selectedPiece) return;
             
+            // 如果槽位已经有拼图块了，不允许放置
+            if (slot.querySelector('.puzzle-piece')) return;
+
             const pieceX = parseInt(selectedPiece.dataset.x);
             const pieceY = parseInt(selectedPiece.dataset.y);
             const slotX = parseInt(slot.dataset.x);
@@ -337,6 +392,7 @@
                 selectedPiece.style.border = 'none';
                 selectedPiece.style.transform = 'scale(1)';
                 selectedPiece.style.opacity = '1';
+                selectedPiece.classList.add('placed'); // 标记为已放置
                 slot.style.border = '2px solid #27ae60';
                 slot.style.background = 'rgba(39, 174, 96, 0.1)';
                 
@@ -370,7 +426,7 @@
                 startTimer();
                 startBtn.disabled = true;
                 shuffleBtn.disabled = false;
-                initializeGame();
+                // initializeGame(); // 不需要重新初始化，因为加载时已经初始化了，或者在重置时初始化
             }
         }
         
@@ -415,7 +471,7 @@
             gameStarted = false;
             startBtn.disabled = false;
             shuffleBtn.disabled = true;
-            initializeGame();
+            initializeGame(); // 重新加载图片和重置
         }
         
         startBtn.addEventListener('click', startGame);
@@ -425,6 +481,31 @@
         
         // 初始化游戏
         initializeGame();
-    </script>
+        
+        // 响应式缩放
+        function resizeGame() {
+            const gameArea = document.querySelector('.game-area');
+            const containerWidth = document.querySelector('.container').offsetWidth;
+            const boardWidth = 420; // 400 + padding/border
+            
+            if (window.innerWidth < 450) {
+                const scale = (window.innerWidth - 40) / boardWidth;
+                gameArea.style.transform = `scale(${scale})`;
+                // 调整高度以适应缩放后的空间，避免下方留白过多
+                // 两个400px高的盒子加上gap 20px，总高820px
+                // 缩放后高度为 820 * scale
+                // 我们需要减少 margin-bottom 来抵消 transform 造成的视觉空白
+                const originalHeight = 850; // 估算高度
+                const newHeight = originalHeight * scale;
+                gameArea.style.marginBottom = `-${originalHeight - newHeight}px`;
+            } else {
+                gameArea.style.transform = 'none';
+                gameArea.style.marginBottom = '20px';
+            }
+        }
+        
+        window.addEventListener('resize', resizeGame);
+        // 初始化时调用一次
+        setTimeout(resizeGame, 100);
 </body>
 </html>
