@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoHuYeShan - 个人简历</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+            --text-light: #5a6c7d;
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --border: #e2e8f0;
+            --tag-bg: #f0f4ff;
+            --tag-text: #1e40af;
+            --shadow: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --radius: 12px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 2rem 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+        .header-left h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header-left .subtitle {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        .header-right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header-right a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .header-right a:hover {
+            background: #bfdbfe;
+            transform: translateY(-1px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .skill-tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+        .project-item {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+            background: #fafbfc;
+        }
+        .project-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .project-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .project-item h3 a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .project-item .desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+        .project-item .lang {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.4rem;
+        }
+        .experience-list {
+            list-style: none;
+            padding: 0;
+        }
+        .experience-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            border-left: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .experience-list li::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0.4rem;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .experience-list .title {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .experience-list .meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0.2rem 0 0.5rem;
+        }
+        .experience-list .detail {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        .repo-link {
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .repo-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="header-left">
+                <h1>BoHuYeShan</h1>
+                <div class="subtitle">生物信息学 × 人工智能 · 个人开源开发者</div>
+            </div>
+            <div class="header-right">
+                <a href="https://github.com/BOHUYESHAN-APB" target="_blank">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://bohuyeshan-apb.github.io" target="_blank">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    博客
+                </a>
+            </div>
+        </div>
+
+        <!-- 技术能力 -->
+        <div class="card">
+            <h2>🛠️ 技术能力</h2>
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Vue / JavaScript</span>
+                <span class="skill-tag">YOLO 系列</span>
+                <span class="skill-tag">CNN 图像分类</span>
+                <span class="skill-tag">多模态视觉</span>
+                <span class="skill-tag">大语言模型应用</span>
+                <span class="skill-tag">生物信息学</span>
+                <span class="skill-tag">AI Agent</span>
+                <span class="skill-tag">API 网关设计</span>
+                <span class="skill-tag">算力集群架构</span>
+                <span class="skill-tag">Linux (Debian/Arch)</span>
+                <span class="skill-tag">WSL2</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">MkDocs / mdspark</span>
+            </div>
+        </div>
+
+        <!-- 项目经历（竞赛+科研） -->
+        <div class="card">
+            <h2>🏆 竞赛与科研项目</h2>
+            <ul class="experience-list">
+                <li>
+                    <div class="title">2025 国际大学生创新创业大赛 & “挑战杯” 人工智能赛道
+                        <a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality" target="_blank" class="repo-link">Buckwheat-seed-quality</a>
+                        <a href="https://github.com/BOHUYESHAN-APB/MicroAGI-Agri" target="_blank" class="repo-link">MicroAGI-Agri</a>
+                    </div>
+                    <div class="meta">主持与核心研发</div>
+                    <div class="detail">
+                        主导“荞麦矮化鉴定”与“荞麦种子质量鉴定”两大 AI 视觉课题。通过多模态模型分析植株形态，并基于改进 YOLO 算法实现种子精准计数与纯度筛选。项目延伸至产业应用，参与“荞麦饮品书咖”设计，探索技术落地模式。
+                    </div>
+                </li>
+                <li>
+                    <div class="title">校内科研：基于 CNN 的菌落自动鉴定、分析与计数
+                        <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank" class="repo-link">CNN-MicroAI-Colony</a>
+                    </div>
+                    <div class="meta">核心算法研发</div>
+                    <div class="detail">
+                        设计并实现基于卷积神经网络（CNN）的微生物菌落自动分析系统，涵盖菌落检测与分类计数。在复杂背景下显著提升计数精度与效率，直接服务于实验室日常科研。
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 开源作品集 -->
+        <div class="card">
+            <h2>📦 开源项目精选</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/ABRIS" target="_blank">ABRIS</a></h3>
+                    <div class="desc">生物信息学自动化套件，整合 AI 技术简化生信分析流程，体现学科交叉能力。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/ai-gateway" target="_blank">ai-gateway</a></h3>
+                    <div class="desc">多平台 AI API 聚合器，统一接入 OpenAI、DeepSeek 等模型，内置负载均衡。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/AionUi" target="_blank">AionUi</a></h3>
+                    <div class="desc">免费开源的 24/7 协作 AI 应用，支持 Gemini CLI、Claude Code 等多种编程助手协同工作。</div>
+                    <span class="lang">Vue / Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/axonhub" target="_blank">axonhub</a></h3>
+                    <div class="desc">企业级 AI 网关，支持 100+ 大语言模型，故障转移、负载均衡、成本追踪。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio" target="_blank">VisionDeploy-Studio</a></h3>
+                    <div class="desc">视觉模型部署工作室，将竞赛中的 YOLO/CNN 模型快速转化为可用服务。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge" target="_blank">openagent-labforge</a></h3>
+                    <div class="desc">AI Agent 实验场，探索通用与垂直领域智能体的构建与编排。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio" target="_blank">openagent-labforge-bio</a></h3>
+                    <div class="desc">生物领域 AI Agent 实验分支，结合生信工具链的智能体探索。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/BLRH-LLM" target="_blank">BLRH-LLM</a></h3>
+                    <div class="desc">大语言模型应用探索，涉及模型微调、提示工程与垂直场景集成。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/N-T-AI" target="_blank">N-T-AI</a></h3>
+                    <div class="desc">另一个 LLM 应用项目，尝试新交互范式与任务自动化。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/CMYKE" target="_blank">CMYKE</a></h3>
+                    <div class="desc">工具向项目，可能涉及键盘映射或输入法相关（基于命名推测）。</div>
+                    <span class="lang">Python</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/mdspark" target="_blank">mdspark</a></h3>
+                    <div class="desc">Markdown 渲染或增强工具，与博客写作生态相关。</div>
+                    <span class="lang">JavaScript</span>
+                </div>
+                <div class="project-item">
+                    <h3><a href="https://github.com/BOHUYESHAN-APB/BOHUYESHAN-APB.github.io" target="_blank">BOHUYESHAN-APB.github.io</a></h3>
+                    <div class="desc">个人技术博客源码，基于静态网站生成器，持续输出技术文章。</div>
+                    <span class="lang">Vue / Markdown</span>
+                </div>
+            </div>
+            <!-- 剩余小型项目以标签形式列出，避免网格过于拥挤 -->
+            <div style="margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem;">
+                <p style="font-size:0.9rem; color: var(--text-light); margin-bottom:0.5rem;">更多仓库：</p>
+                <div class="skill-tags">
+                    <a href="https://github.com/BOHUYESHAN-APB/QiaoTime" target="_blank" class="skill-tag" style="text-decoration:none;">QiaoTime</a>
+                    <a href="https://github.com/BOHUYESHAN-APB/image_selector" target="_blank" class="skill-tag" style="text-decoration:none;">image_selector</a>
+                    <a href="https://github.com/BOHUYESHAN-APB/Primary-School-Math-Calculation-Generator" target="_blank" class="skill-tag" style="text-decoration:none;">MathGenerator</a>
+                    <a href="https://github.com/BOHUYESHAN-APB/qexo-image" target="_blank" class="skill-tag" style="text-decoration:none;">qexo-image</a>
+                    <a href="https://github.com/BOHUYESHAN-APB/mdspark" target="_blank" class="skill-tag" style="text-decoration:none;">mdspark</a>
+                    <a href="https://github.com/BOHUYESHAN-APB/CMYKE" target="_blank" class="skill-tag" style="text-decoration:none;">CMYKE</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 竞赛荣誉 -->
+        <div class="card">
+            <h2>🏅 荣誉与成就</h2>
+            <ul class="experience-list">
+                <li>
+                    <div class="title">2025 年国际大学生创新创业大赛</div>
+                    <div class="meta">主持人工智能赛道项目（荞麦矮化与种子鉴定）</div>
+                </li>
+                <li>
+                    <div class="title">2025 年“挑战杯”全国大学生课外学术科技作品竞赛</div>
+                    <div class="meta">人工智能赛道负责人（荞麦种子资源保护与产业延伸设计）</div>
+                </li>
+                <li>
+                    <div class="title">校内科研优秀项目表彰</div>
+                    <div class="meta">基于改进 YOLO 算法的菌落分析系统获评优秀项目</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 自我评价 -->
+        <div class="card">
+            <h2>💡 自我评价</h2>
+            <p style="font-size:0.95rem; color: var(--text-light);">
+                全栈式 AI 应用者，持续在视觉算法（YOLO/CNN）与 AI 网关、Agent 编排之间构建完整技术栈。
+                交叉学科实践者，将 AI 注入生物信息学与农业场景，所有项目均有可运行代码仓库支撑。
+                开放共建精神，15 个公开仓库覆盖多个方向，技术博客持续输出，具备扎实的工程习惯与分享精神。
+            </p>
+        </div>
+
+        <!-- 页脚 -->
+        <div style="text-align:center; color: #94a3b8; font-size:0.8rem; margin-top:1rem;">
+            © 2026 BoHuYeShan · 由 <a href="https://github.com/BOHUYESHAN-APB" style="color:#64748b;">GitHub Pages</a> 驱动
+        </div>
+    </div>
+</body>
+</html>
