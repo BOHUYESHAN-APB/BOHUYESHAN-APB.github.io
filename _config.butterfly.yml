@@ -21,6 +21,7 @@ menu:
     说说: /say/ || fas fa-comments 
   友链: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
+  简历: /resume/ || fas fa-file-alt
 
 # Code Blocks (代碼相關)
 # --------------------------------------
