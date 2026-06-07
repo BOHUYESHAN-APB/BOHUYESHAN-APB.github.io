@@ -95,7 +95,7 @@ type: resume
         <div class="r-name">云南农业大学</div>
         <div class="r-meta">本科在读</div>
       </div>
-      <div class="r-exp-detail">生物技术专业 · 计算机科学与技术辅修</div>
+      <div class="r-exp-detail">生物技术专业</div>
     </div>
   </div>
 
