@@ -1,544 +1,377 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoHuYeShan · 个人简历</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1e3a8a;
-            --primary-light: #3b82f6;
-            --primary-subtle: #eef2ff;
-            --accent: #0ea5e9;
-            --text: #1e293b;
-            --text-light: #475569;
-            --text-muted: #94a3b8;
-            --bg: #f1f5f9;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --tag-bg: #eef2ff;
-            --tag-text: #4338ca;
-            --radius: 8px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoHuYeShan · 简历</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e9e6df; font-family: 'Inter','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif; color:#1a1a1a; padding:32px 0; -webkit-font-smoothing:antialiased; }
 
-        body {
-            font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.55;
-            display: flex;
-            justify-content: center;
-            padding: 2rem 1rem;
-            -webkit-font-smoothing: antialiased;
-        }
+  /* A3 spread: two A4 pages side by side */
+  .a3-spread { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
 
-        /* ===== A3 Spread: screen = single column ===== */
-        .a3-spread {
-            max-width: 960px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        .page-left, .page-right {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+  .page { width:210mm; min-height:297mm; margin:0 auto; background:#fff; padding:16mm 14mm; box-shadow:0 30px 60px -20px rgba(0,0,0,0.18); }
+  .page + .page { margin-top: 32px; }
 
-        /* ===== Header ===== */
-        .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            padding: 1.6rem 2rem;
-            border-radius: var(--radius);
-            color: #fff;
-        }
-        .header-left h1 {
-            font-family: "Outfit", sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-        .header-left .subtitle {
-            font-size: 0.85rem;
-            opacity: 0.85;
-            margin-top: 0.2rem;
-            font-weight: 500;
-        }
-        .header-right {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .header-right a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            text-decoration: none;
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            padding: 0.35rem 0.85rem;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 0.8rem;
-            transition: background 0.2s;
-            backdrop-filter: blur(4px);
-        }
-        .header-right a:hover { background: rgba(255,255,255,0.25); }
+  .accent { color:#1f4d8f; }
+  .accent-bar { display:inline-block; width:20px; height:2px; background:#1f4d8f; vertical-align:middle; margin-right:8px; }
 
-        /* ===== Card ===== */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 1.2rem 1.5rem;
-            border: 1px solid var(--border);
-        }
+  /* Section headers - small caps */
+  .section { margin-bottom: 14px; }
+  .section h2 { font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#1f4d8f; margin:0 0 8px; }
 
-        .section-title {
-            font-family: "Outfit", sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.7rem;
-            padding-bottom: 0.35rem;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            letter-spacing: 0.3px;
-        }
-        .section-title .icon { font-size: 1rem; }
+  /* Header */
+  .resume-header { padding-bottom:14px; margin-bottom:18px; border-bottom:1px solid #e7e5e0; }
+  .resume-header h1 { font-size:36px; font-weight:700; letter-spacing:-0.5px; line-height:1.1; margin-bottom:4px; }
+  .resume-header .title-line { font-size:12px; color:#1f4d8f; font-weight:500; letter-spacing:0.3px; margin-bottom:6px; }
+  .resume-header .contact { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:11px; color:#5a564e; }
+  .contact a { color:#1f4d8f; text-decoration:none; }
+  .contact a:hover { text-decoration:underline; }
+  .contact .sep { opacity:0.25; }
 
-        /* ===== Skills ===== */
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-        }
-        .skill-tag {
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 0.15rem 0.65rem;
-            border-radius: 14px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-        .skill-group { margin-bottom: 0.55rem; }
-        .skill-group:last-child { margin-bottom: 0; }
-        .skill-group-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.25rem;
-        }
+  /* Two columns grid */
+  .two-col { display:grid; grid-template-columns: 1fr 1fr; gap:20px; }
 
-        /* ===== Experience ===== */
-        .exp-list { list-style: none; }
-        .exp-item {
-            margin-bottom: 0.9rem;
-            padding-left: 1.1rem;
-            position: relative;
-            border-left: 2px solid var(--border);
-        }
-        .exp-item:last-child { margin-bottom: 0; }
-        .exp-item::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 0.4rem;
-            width: 7px;
-            height: 7px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            border: 2px solid var(--card-bg);
-        }
-        .exp-title {
-            font-weight: 600;
-            font-size: 0.88rem;
-        }
-        .exp-title a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.75rem;
-            margin-left: 0.3rem;
-        }
-        .exp-title a:hover { text-decoration: underline; }
-        .exp-meta {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin: 0.05rem 0 0.2rem;
-        }
-        .exp-detail {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            line-height: 1.55;
-        }
-        .exp-detail .hl { color: var(--primary); font-weight: 500; }
+  /* Left column (main) */
+  .col-main { }
 
-        /* ===== Projects ===== */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
-        }
-        .project-item {
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 0.7rem 0.8rem;
-            background: #fafbfc;
-        }
-        .project-item h3 {
-            font-size: 0.82rem;
-            font-weight: 600;
-        }
-        .project-item h3 a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        .project-item h3 a:hover { text-decoration: underline; }
-        .project-desc {
-            font-size: 0.72rem;
-            color: var(--text-light);
-            margin: 0.2rem 0 0.3rem;
-            line-height: 1.45;
-        }
-        .project-lang {
-            font-size: 0.6rem;
-            background: #e0e7ff;
-            color: #3730a3;
-            padding: 0.05rem 0.4rem;
-            border-radius: 3px;
-            font-weight: 500;
-        }
+  /* Right column (sidebar) */
+  .col-side { }
 
-        .more-repos {
-            margin-top: 0.6rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid var(--border);
-        }
-        .more-repos-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-        .more-repos-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-        }
-        .more-repos-tags a {
-            font-size: 0.68rem;
-            background: #f1f5f9;
-            color: var(--text-light);
-            padding: 0.1rem 0.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-        }
-        .more-repos-tags a:hover { background: #e2e8f0; }
+  /* Experience items */
+  .exp { margin-bottom:12px; }
+  .exp:last-child { margin-bottom:0; }
+  .exp-head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+  .exp-head .name { font-size:13px; font-weight:600; color:#1a1a1a; line-height:1.4; }
+  .exp-head .name a { color:#1f4d8f; text-decoration:none; font-weight:500; font-size:11px; }
+  .exp-head .name a:hover { text-decoration:underline; }
+  .exp-head .meta { font-size:10.5px; color:#6b6760; white-space:nowrap; }
+  .exp-detail { font-size:11.5px; color:#262421; line-height:1.55; margin-top:2px; }
+  .exp-detail .hl { color:#1f4d8f; font-weight:500; }
 
-        /* ===== Self Eval ===== */
-        .self-eval {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            line-height: 1.65;
-        }
-        .self-eval strong { color: var(--text); }
+  /* Bullet list */
+  ul.bullets { list-style:none; padding:0; margin:4px 0 0; }
+  ul.bullets li { position:relative; padding-left:12px; font-size:11.5px; line-height:1.55; color:#262421; margin-bottom:2px; }
+  ul.bullets li::before { content:""; position:absolute; left:0; top:7px; width:4px; height:4px; background:#1f4d8f; border-radius:1px; }
 
-        /* ===== Footer ===== */
-        .footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.68rem;
-            padding: 0.3rem 0;
-        }
+  /* Skill tags */
+  .skill-wrap { display:flex; flex-wrap:wrap; gap:4px; }
+  .skill-tag { font-size:10.5px; background:#eef2f8; color:#1f4d8f; padding:1px 8px; border-radius:3px; line-height:1.8; }
 
-        /* ===== PRINT: A3 landscape, two pages side by side ===== */
-        @media print {
-            @page {
-                size: A3 landscape;
-                margin: 10mm 12mm;
-            }
-            body {
-                background: #fff;
-                padding: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .a3-spread {
-                max-width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10mm;
-                align-items: start;
-            }
-            .page-left, .page-right { gap: 0.7rem; }
-            .header { padding: 1.1rem 1.4rem; }
-            .card { padding: 0.8rem 1rem; border: 1px solid #ddd; break-inside: avoid; }
-            .card:hover { box-shadow: none; }
-            .project-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
-            .project-item { padding: 0.5rem 0.6rem; }
-            .skill-tag, .project-lang, .more-repos-tags a {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .exp-item { break-inside: avoid; }
-            .section-title { margin-bottom: 0.45rem; }
-            .exp-item { margin-bottom: 0.6rem; }
-            .skill-group { margin-bottom: 0.35rem; }
-            .self-eval { font-size: 0.75rem; }
-            .footer { display: none; }
-            .header-right a { background: rgba(255,255,255,0.2); }
-        }
+  /* Project grid (2 cols) */
+  .proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .proj-item { border:1px solid #eae8e3; border-radius:4px; padding:6px 8px; background:#fafaf8; }
+  .proj-item h3 { font-size:11.5px; font-weight:600; }
+  .proj-item h3 a { color:#1f4d8f; text-decoration:none; }
+  .proj-item h3 a:hover { text-decoration:underline; }
+  .proj-item .desc { font-size:10.5px; color:#5a564e; line-height:1.45; margin:2px 0 3px; }
+  .proj-item .lang { font-size:9px; color:#6b6760; font-weight:500; }
 
-        /* ===== Responsive ===== */
-        @media (max-width: 640px) {
-            body { padding: 0.8rem 0.4rem; }
-            .header { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1rem 1.2rem; }
-            .header-left h1 { font-size: 1.5rem; }
-            .card { padding: 0.8rem 1rem; }
-            .project-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+  /* More repos */
+  .more-repos { margin-top:6px; padding-top:5px; border-top:1px solid #eae8e3; }
+  .more-repos-label { font-size:9.5px; color:#8a8680; font-weight:500; margin-bottom:3px; }
+  .more-repos-tags { display:flex; flex-wrap:wrap; gap:3px; }
+  .more-repos-tags a { font-size:9.5px; background:#f1f0ec; color:#5a564e; padding:1px 7px; border-radius:3px; text-decoration:none; }
+  .more-repos-tags a:hover { background:#e7e5e0; }
+
+  /* Self eval */
+  .self-eval { font-size:11.5px; color:#262421; line-height:1.65; }
+
+  /* Honor list */
+  .honor-item { margin-bottom:6px; }
+  .honor-item:last-child { margin-bottom:0; }
+  .honor-item .name { font-size:12px; font-weight:500; line-height:1.4; }
+  .honor-item .detail { font-size:10.5px; color:#6b6760; }
+
+  /* Separator for sections in side column */
+  .side-section { margin-bottom:18px; }
+  .side-section:last-child { margin-bottom:0; }
+
+  /* ===== PRINT: A3 landscape ===== */
+  @media print {
+    @page { size: A3 landscape; margin: 10mm 12mm; }
+    body { background:#fff; padding:0; }
+    .a3-spread { max-width:100%; display:grid; grid-template-columns:1fr 1fr; gap:10mm; align-items:start; }
+    .page { width:auto; min-height:0; margin:0; padding:0; box-shadow:none; }
+    .page + .page { margin-top:0; }
+    .two-col { gap:14px; }
+    .skill-tag, .proj-item { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .exp, .proj-item { break-inside:avoid; }
+    section.section { break-inside:avoid; }
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    body { padding:12px 4px; }
+    .page { width:auto; min-height:auto; padding:10mm 8mm; }
+    .two-col { grid-template-columns:1fr; gap:14px; }
+    .proj-grid { grid-template-columns:1fr; }
+  }
+</style>
 </head>
 <body>
 <div class="a3-spread">
 
-    <!-- ============ PAGE 1 (LEFT) ============ -->
-    <div class="page-left">
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page">
 
-        <!-- Header -->
-        <div class="header">
-            <div class="header-left">
-                <h1>BoHuYeShan</h1>
-                <div class="subtitle">AI 工程 · 生物信息学 · 开源 Linux 发行版构建</div>
-            </div>
-            <div class="header-right">
-                <a href="https://github.com/BOHUYESHAN-APB" target="_blank">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://bohuyeshan.top" target="_blank">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                    博客
-                </a>
-            </div>
-        </div>
+    <!-- Header -->
+    <div class="resume-header">
+      <h1>BoHuYeShan</h1>
+      <div class="title-line">AI 工程 · 生物信息学 · 开源 Linux 发行版构建</div>
+      <div class="contact">
+        <a href="https://github.com/BOHUYESHAN-APB">github.com/BOHUYESHAN-APB</a>
+        <span class="sep">|</span>
+        <a href="https://github.com/BoHuYeShan">github.com/BoHuYeShan</a>
+        <span class="sep">|</span>
+        <a href="https://bohuyeshan.top">bohuyeshan.top</a>
+        <span class="sep">|</span>
+        <span>OpenI: bhys</span>
+      </div>
+    </div>
 
+    <div class="two-col">
+      <!-- === MAIN COL (P1) === -->
+      <div class="col-main">
         <!-- 技术能力 -->
-        <div class="card">
-            <div class="section-title"><span class="icon">⚡</span> 技术能力</div>
-
-            <div class="skill-group">
-                <div class="skill-group-label">编程语言</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">TypeScript/JS</span>
-                    <span class="skill-tag">Rust（学习中）</span>
-                    <span class="skill-tag">Go</span>
-                    <span class="skill-tag">Dart</span>
-                    <span class="skill-tag">Shell</span>
-                </div>
+        <section class="section">
+          <h2><span class="accent-bar"></span>技术能力</h2>
+          <div style="margin-bottom:6px">
+            <div style="font-size:9px; font-weight:600; color:#8a8680; letter-spacing:0.3px; margin-bottom:2px;">编程语言</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">TypeScript/JS</span>
+              <span class="skill-tag">Rust（学习中）</span>
+              <span class="skill-tag">Go</span>
+              <span class="skill-tag">Dart</span>
+              <span class="skill-tag">Shell</span>
             </div>
-
-            <div class="skill-group">
-                <div class="skill-group-label">AI 硬件与框架</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">华为 Ascend 910 (NPU)</span>
-                    <span class="skill-tag">NVIDIA CUDA</span>
-                    <span class="skill-tag">MindSpore</span>
-                    <span class="skill-tag">PaddlePaddle</span>
-                    <span class="skill-tag">PyTorch</span>
-                    <span class="skill-tag">ONNX</span>
-                </div>
+          </div>
+          <div style="margin-bottom:6px">
+            <div style="font-size:9px; font-weight:600; color:#8a8680; letter-spacing:0.3px; margin-bottom:2px;">AI 硬件与框架</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">华为 Ascend 910 (NPU)</span>
+              <span class="skill-tag">NVIDIA CUDA</span>
+              <span class="skill-tag">MindSpore</span>
+              <span class="skill-tag">PaddlePaddle</span>
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">ONNX</span>
             </div>
-
-            <div class="skill-group">
-                <div class="skill-group-label">模型与算法</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">LLM 训练</span>
-                    <span class="skill-tag">扩散模型</span>
-                    <span class="skill-tag">Transformer</span>
-                    <span class="skill-tag">PP-YOLO 系列</span>
-                    <span class="skill-tag">YOLOv5/v8</span>
-                    <span class="skill-tag">CNN 分类</span>
-                    <span class="skill-tag">多模态视觉</span>
-                    <span class="skill-tag">余弦退火 + Restart</span>
-                    <span class="skill-tag">分层动态学习率</span>
-                    <span class="skill-tag">模型微调</span>
-                </div>
+          </div>
+          <div style="margin-bottom:6px">
+            <div style="font-size:9px; font-weight:600; color:#8a8680; letter-spacing:0.3px; margin-bottom:2px;">模型与算法</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">LLM 训练</span>
+              <span class="skill-tag">扩散模型</span>
+              <span class="skill-tag">Transformer</span>
+              <span class="skill-tag">PP-YOLO 系列</span>
+              <span class="skill-tag">YOLOv5/v8</span>
+              <span class="skill-tag">CNN 分类</span>
+              <span class="skill-tag">多模态视觉</span>
+              <span class="skill-tag">余弦退火 + Restart</span>
+              <span class="skill-tag">分层动态学习率</span>
+              <span class="skill-tag">模型微调</span>
             </div>
-
-            <div class="skill-group">
-                <div class="skill-group-label">工程与生态</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">AI Agent 编排</span>
-                    <span class="skill-tag">API 网关</span>
-                    <span class="skill-tag">Linux 发行版构建</span>
-                    <span class="skill-tag">生物信息学</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">OpenI CloudBrain</span>
-                </div>
+          </div>
+          <div>
+            <div style="font-size:9px; font-weight:600; color:#8a8680; letter-spacing:0.3px; margin-bottom:2px;">工程与生态</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">AI Agent 编排</span>
+              <span class="skill-tag">API 网关</span>
+              <span class="skill-tag">Linux 发行版构建</span>
+              <span class="skill-tag">生物信息学</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">OpenI CloudBrain</span>
             </div>
+          </div>
+        </section>
+
+        <!-- 竞赛与科研 -->
+        <section class="section">
+          <h2><span class="accent-bar"></span>竞赛与科研项目</h2>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">2025 国际大学生创新创业大赛 · "挑战杯" <a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality" target="_blank">Buckwheat-seed-quality</a></div>
+              <div class="meta">主持</div>
+            </div>
+            <div class="exp-detail">
+              基于 <span class="hl">PP-YOLOE+ (L)</span> 实现荞麦种子精准计数与纯度筛选，引入 <span class="hl">余弦退火 + Restart</span> 自适应学习率。完成 <span class="hl">Paddle/CUDA → MindSpore/Ascend 910</span> 全流程迁移，开发 Android + 桌面端双平台推理。
+            </div>
+          </div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">CNN 菌落自动分析系统 <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank">CNN-MicroAI-Colony</a></div>
+              <div class="meta">核心研发</div>
+            </div>
+            <div class="exp-detail">
+              CNN 实现微生物菌落检测与分类计数，<span class="hl">Huawei Ascend NPU</span> 适配（MindSpore），<span class="hl">OpenI CloudBrain</span> 云端训推一体化。
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- === SIDE COL (P1) === -->
+      <div class="col-side">
+        <div class="side-section">
+          <section class="section">
+            <h2><span class="accent-bar"></span>荣誉</h2>
+            <div class="honor-item">
+              <div class="name">2025 国际大学生创新创业大赛</div>
+              <div class="detail">人工智能赛道主持</div>
+            </div>
+            <div class="honor-item">
+              <div class="name">2025 "挑战杯"全国竞赛</div>
+              <div class="detail">人工智能赛道负责人</div>
+            </div>
+            <div class="honor-item">
+              <div class="name">校内科研优秀项目表彰</div>
+              <div class="detail">YOLO 菌落分析系统</div>
+            </div>
+          </section>
         </div>
 
-        <!-- 竞赛与科研项目 -->
-        <div class="card">
-            <div class="section-title"><span class="icon">🏆</span> 竞赛与科研项目</div>
-            <ul class="exp-list">
-                <li class="exp-item">
-                    <div class="exp-title">
-                        2025 国际大学生创新创业大赛 · "挑战杯"
-                        <a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality" target="_blank">Buckwheat-seed-quality</a>
-                    </div>
-                    <div class="exp-meta">主持与核心研发</div>
-                    <div class="exp-detail">
-                        基于 <span class="hl">PP-YOLOE+ (L)</span> 实现荞麦种子精准计数与纯度筛选，引入 <span class="hl">余弦退火 + Restart</span> 自适应学习率策略，结合小目标检测优化与分层动态学习率调度。完成 <span class="hl">Paddle/CUDA → MindSpore/Ascend 910</span> 全流程模型迁移，适配华为 NPU 环境；同步开发 Android 与桌面端双平台推理应用。
-                    </div>
-                </li>
-                <li class="exp-item">
-                    <div class="exp-title">
-                        校内科研：CNN 菌落自动分析系统
-                        <a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank">CNN-MicroAI-Colony</a>
-                    </div>
-                    <div class="exp-meta">核心算法研发</div>
-                    <div class="exp-detail">
-                        基于 CNN 实现微生物菌落自动检测与分类计数，在复杂背景下提升计数精度。同步完成 <span class="hl">Huawei Ascend NPU</span> 适配（MindSpore 框架），支持 <span class="hl">OpenI CloudBrain</span> 云端训推一体化。
-                    </div>
-                </li>
-            </ul>
+        <div class="side-section">
+          <section class="section">
+            <h2><span class="accent-bar"></span>AI 训练经验</h2>
+            <div class="exp">
+              <div class="exp-head">
+                <div class="name">华为 Ascend 910 原生训练</div>
+              </div>
+              <div class="exp-detail">
+                在 Ascend 910 上原生训练 <span class="hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化，具备完整 Ascend 训练部署经验。
+              </div>
+            </div>
+            <div class="exp">
+              <div class="exp-head">
+                <div class="name">NVIDIA GPU 训练与微调</div>
+              </div>
+              <div class="exp-detail">
+                <span class="hl">PP-YOLO 系列</span>（PP-YOLOE+/PP-YOLOv2）及 <span class="hl">YOLOv5/v8</span> 训练与微调，结合迁移学习、余弦退火、分层学习率策略优化收敛。
+              </div>
+            </div>
+            <div class="exp">
+              <div class="exp-head">
+                <div class="name">学习率调度算法研究</div>
+              </div>
+              <div class="exp-detail">
+                Buckwheat 项目中系统研究 <span class="hl">余弦退火 + Restart</span>、分段式学习率表、小样本分层动态学习率，logs_analysis 可视化驱动调参。
+              </div>
+            </div>
+          </section>
         </div>
-
-        <!-- 荣誉与成就 -->
-        <div class="card">
-            <div class="section-title"><span class="icon">🏅</span> 荣誉与成就</div>
-            <ul class="exp-list">
-                <li class="exp-item">
-                    <div class="exp-title">2025 年国际大学生创新创业大赛</div>
-                    <div class="exp-meta">主持人工智能赛道项目（荞麦矮化与种子鉴定）</div>
-                </li>
-                <li class="exp-item">
-                    <div class="exp-title">2025 年"挑战杯"全国大学生课外学术科技作品竞赛</div>
-                    <div class="exp-meta">人工智能赛道负责人（荞麦种子资源保护与产业延伸设计）</div>
-                </li>
-                <li class="exp-item">
-                    <div class="exp-title">校内科研优秀项目表彰</div>
-                    <div class="exp-meta">基于改进 YOLO 算法的菌落分析系统获评优秀项目</div>
-                </li>
-            </ul>
-        </div>
-
+      </div>
     </div>
+  </div>
 
-    <!-- ============ PAGE 2 (RIGHT) ============ -->
-    <div class="page-right">
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page">
+    <div class="two-col">
+      <!-- === MAIN COL (P2) === -->
+      <div class="col-main">
+        <section class="section">
+          <h2><span class="accent-bar"></span>开源项目精选</h2>
+          <div class="proj-grid">
+            <div class="proj-item">
+              <h3><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio" target="_blank">openagent-labforge-bio</a></h3>
+              <div class="desc"><strong>主线项目。</strong> ExtendAI Lab——OpenCode 智能体编排框架：5 编排器 + 15 Agent + 617 生信技能 + 学术管线。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3><a href="https://github.com/Linxira-OS/linxira-os" target="_blank">Linxira OS</a></h3>
+              <div class="desc">面向理学的 Debian 衍生 Linux 发行版：Live-build、AI 助手 Pulse、多源镜像管理器。</div>
+              <span class="lang">Shell/Python</span>
+            </div>
+            <div class="proj-item">
+              <h3><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality" target="_blank">Buckwheat-seed-quality</a></h3>
+              <div class="desc">PP-YOLOE+ 荞麦质量检测，余弦退火调度 + Ascend 910 迁移。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3><a href="https://github.com/Linxira-OS/extendai-lab-cli" target="_blank">extendai-lab-cli</a></h3>
+              <div class="desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构，Go 实现。</div>
+              <span class="lang">Go</span>
+            </div>
+            <div class="proj-item">
+              <h3><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank">CNN-MicroAI-Colony</a></h3>
+              <div class="desc">CNN 菌落自动分析系统，华为 NPU + MindSpore 适配。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3><a href="https://github.com/BOHUYESHAN-APB/MicroAGI-Agri" target="_blank">MicroAGI-Agri</a></h3>
+              <div class="desc">农业 AI 应用，多模态视觉在农业场景的实践。</div>
+              <span class="lang">Python</span>
+            </div>
+          </div>
 
-        <!-- AI 训练与模型优化 -->
-        <div class="card">
-            <div class="section-title"><span class="icon">🧠</span> AI 训练与模型优化</div>
-            <ul class="exp-list">
-                <li class="exp-item">
-                    <div class="exp-title">华为昇腾 910 原生训练</div>
-                    <div class="exp-detail">
-                        在 <span class="hl">Huawei Ascend 910</span> 环境下完成大语言模型（LLM）、扩散模型（Diffusion Model）及传统 Transformer 模型的<span class="hl">原生训练</span>，涵盖混合精度、模型并行等适配优化。同时基于华为 NPU 架构训练目标检测模型（PP-YOLOE+），具备完整的 Ascend 训练与部署经验。
-                    </div>
-                </li>
-                <li class="exp-item">
-                    <div class="exp-title">英伟达 GPU 训练与微调</div>
-                    <div class="exp-detail">
-                        使用 NVIDIA CUDA 设备训练 <span class="hl">百度 PP-YOLO 系列</span>（PP-YOLOE+/PP-YOLOv2）及 <span class="hl">标准 YOLO 模型</span>（YOLOv5/v8），具备丰富的模型微调经验。结合迁移学习、余弦退火调度与分层学习率策略优化收敛效率。
-                    </div>
-                </li>
-                <li class="exp-item">
-                    <div class="exp-title">学习率调度算法研究</div>
-                    <div class="exp-detail">
-                        在 Buckwheat-seed-quality 项目中系统研究了<span class="hl">余弦退火（Cosine Annealing + Restart）</span>、分段式学习率表、<span class="hl">小样本分层动态学习率</span>等算法。通过 logs_analysis 工具将训练日志转化为可视化指标，数据驱动调参迭代。
-                    </div>
-                </li>
+          <div class="more-repos">
+            <div class="more-repos-label">更多仓库</div>
+            <div class="more-repos-tags">
+              <a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a>
+              <a href="https://github.com/YeShanBoYun-Studio/NeuroPlex-Nexus">NeuroPlex-Nexus</a>
+              <a href="https://github.com/BOHUYESHAN-APB/openagent-labforge">openagent-labforge</a>
+              <a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio">VisionDeploy-Studio</a>
+              <a href="https://github.com/BOHUYESHAN-APB/AionUi">AionUi</a>
+              <a href="https://github.com/BOHUYESHAN-APB/QiaoTime">QiaoTime (Java)</a>
+              <a href="https://github.com/BOHUYESHAN-APB/mdspark">mdspark</a>
+              <a href="https://github.com/BOHUYESHAN-APB/CMYKE">CMYKE</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- === SIDE COL (P2) === -->
+      <div class="col-side">
+        <div class="side-section">
+          <section class="section">
+            <h2><span class="accent-bar"></span>教育</h2>
+            <div class="exp">
+              <div class="exp-head">
+                <div class="name">在读本科</div>
+              </div>
+              <div class="exp-detail">计算机科学与技术 / 生物信息学方向</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="side-section">
+          <section class="section">
+            <h2><span class="accent-bar"></span>组织参与</h2>
+            <ul class="bullets">
+              <li><strong>Linxira OS</strong> — 发起并构建面向理学的 Debian 衍生发行版</li>
+              <li><strong>YeShanBoYun Studio</strong> — 组织成员，参与 NeuroPlex-Nexus 等项目</li>
+              <li><strong>openagent-labforge-bio</strong> — 主线项目，ExtendAI Lab 持续开发维护</li>
+              <li><strong>OpenI 启智社区</strong> — 活跃训练，公开发布 NPU/GPU 训练模型</li>
             </ul>
+          </section>
         </div>
 
-        <!-- 开源项目精选 -->
-        <div class="card">
-            <div class="section-title"><span class="icon">📦</span> 开源项目精选</div>
-            <div class="project-grid">
-                <div class="project-item">
-                    <h3><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio" target="_blank">openagent-labforge-bio</a></h3>
-                    <div class="project-desc"><strong>主线项目。</strong> ExtendAI Lab——OpenCode 智能体编排框架，5 编排器 + 15 专家 Agent + 617 生信技能 + 学术写作管线。</div>
-                    <span class="project-lang">Python</span>
-                </div>
-                <div class="project-item">
-                    <h3><a href="https://github.com/Linxira-OS/linxira-os" target="_blank">Linxira OS</a></h3>
-                    <div class="project-desc">面向理学的 <span class="hl">Debian 衍生 Linux 发行版</span>：Live-build 配置、AI 助手 Pulse、多源镜像管理器、系统级集成。</div>
-                    <span class="project-lang">Shell/Python</span>
-                </div>
-                <div class="project-item">
-                    <h3><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality" target="_blank">Buckwheat-seed-quality</a></h3>
-                    <div class="project-desc">PP-YOLOE+ 荞麦种子质量检测，余弦退火调度 + Ascend 910 迁移 + 双平台推理。</div>
-                    <span class="project-lang">Python</span>
-                </div>
-                <div class="project-item">
-                    <h3><a href="https://github.com/Linxira-OS/extendai-lab-cli" target="_blank">extendai-lab-cli</a></h3>
-                    <div class="project-desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构，纯 Go 实现。</div>
-                    <span class="project-lang">Go</span>
-                </div>
-                <div class="project-item">
-                    <h3><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank">CNN-MicroAI-Colony</a></h3>
-                    <div class="project-desc">CNN 菌落自动分析系统，华为 NPU + MindSpore 适配，OpenI 云端训练。</div>
-                    <span class="project-lang">Python</span>
-                </div>
-                <div class="project-item">
-                    <h3><a href="https://github.com/BOHUYESHAN-APB/MicroAGI-Agri" target="_blank">MicroAGI-Agri</a></h3>
-                    <div class="project-desc">农业 AI 应用，多模态视觉在农业场景的实践。</div>
-                    <span class="project-lang">Python</span>
-                </div>
-            </div>
-
-            <div class="more-repos">
-                <div class="more-repos-label">更多仓库</div>
-                <div class="more-repos-tags">
-                    <a href="https://github.com/Linxira-OS/extendai-lab-Studio" target="_blank">extendai-lab-Studio</a>
-                    <a href="https://github.com/YeShanBoYun-Studio/NeuroPlex-Nexus" target="_blank">NeuroPlex-Nexus</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/openagent-labforge" target="_blank">openagent-labforge</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio" target="_blank">VisionDeploy-Studio</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/AionUi" target="_blank">AionUi</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/QiaoTime" target="_blank">QiaoTime (Java)</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/mdspark" target="_blank">mdspark</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/CMYKE" target="_blank">CMYKE</a>
-                    <a href="https://github.com/BOHUYESHAN-APB/N-T-AI" target="_blank">N-T-AI</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 自我评价 -->
-        <div class="card">
-            <div class="section-title"><span class="icon">💡</span> 自我评价</div>
+        <div class="side-section">
+          <section class="section">
+            <h2><span class="accent-bar"></span>自我评价</h2>
             <div class="self-eval">
-                <strong>全栈 AI 工程化。</strong> 从底层硬件（Ascend 910 / NVIDIA CUDA）到框架（MindSpore / PaddlePaddle）再到应用层（AI Agent 编排、API 网关），构建完整 AI 工程闭环。<br>
-                <strong>交叉学科创新。</strong> 将 CV 与 Agent 注入生物信息学与农业场景，同时推进开源 Linux 发行版建设，系统级与算法级均有实质产出。<br>
-                <strong>开源共建。</strong> 30+ 公开仓库覆盖 AI、生信、系统软件、前端等方向，所有项目均有可运行代码支撑。
+              全栈 AI 工程化：从 Ascend 910 / NVIDIA 硬件到 MindSpore / Paddle 框架再到 Agent 编排，构建完整 AI 闭环。交叉学科创新者，将 CV 与 Agent 注入生物信息学与农业，同时推进开源 Linux 发行版建设。30+ 公开仓库，所有项目可运行代码支撑。
             </div>
+          </section>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">© 2026 BoHuYeShan · 打印：A3 横向，左右两页展开即为完整简历</div>
-
+        <div class="side-section">
+          <section class="section">
+            <h2><span class="accent-bar"></span>联系方式</h2>
+            <div class="self-eval" style="font-size:10.5px; color:#5a564e;">
+              GitHub: <a href="https://github.com/BOHUYESHAN-APB" class="accent" style="text-decoration:none;">BOHUYESHAN-APB</a><br>
+              博客: <a href="https://bohuyeshan.top" class="accent" style="text-decoration:none;">bohuyeshan.top</a><br>
+              OpenI: <a href="https://openi.pcl.ac.cn/bhys" class="accent" style="text-decoration:none;">openi.pcl.ac.cn/bhys</a>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
+  </div>
 
 </div>
 </body>
