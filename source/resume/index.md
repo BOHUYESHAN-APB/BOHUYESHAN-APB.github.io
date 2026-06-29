@@ -277,7 +277,7 @@ type: resume
         Lin Dai, Jinxiang Gao, Cheng Li, <span class="r-hl">韩涛 (Tao Han)</span>, Zhengshu Tian, Yunyun Zhang, Yusong Zhang, Yanqing Luo, Kaiqin Zhao, Xiaoyang Yuan, Canzhi Zhang, Tao Liu, Feng Zu*, Pei Qin*.
         <br><span class="r-hl">International Journal of Molecular Sciences</span>, 27(13), 5740.
         DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.3390/ijms27135740</a>
-        <br><span style="font-size:0.85rem; color:#64748b;">第四作者 · 参与转录组数据分析：BnYABBY 基因家族系统发育分析、CRC 缺失突变体 sd 的 RNA-seq 差异表达分析、BR 信号通路与糖转运相关基因的表达模式挖掘</span>
+        <br><span style="font-size:0.85rem; color:#64748b;">第四作者 · 贡献: software (生物信息分析流程与可视化工具开发)、data curation (基因组/转录组数据整理与质控)</span>
       </div>
     </div>
     <div class="r-exp-item">
@@ -319,7 +319,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，具备独立完成植物实验与分子生物学实验的能力，同时可独立开展全流程生物信息学分析。在 IJMS 期刊参与发表十字花科 YABBY 家族转录因子相关研究（第四作者），负责转录组数据分析与系统发育重建；以第一发明人申请发明专利 1 项（基于 CNN 的微生物培养综合识别系统）。全栈 AI 工程化：从 Ascend 910 / NVIDIA 硬件到 MindSpore / Paddle 框架再到 Agent 编排，构建完整 AI 闭环。交叉学科创新者，将 CV 与 Agent 注入生物信息学与农业场景，同时推进开源 Linux 发行版建设。30+ 公开仓库覆盖 AI、生信、系统软件等方向，所有项目均有可运行代码支撑。
+      生物技术专业本科在读，具备独立完成植物实验与分子生物学实验的能力，同时可独立开展全流程生物信息学分析。在 IJMS 期刊参与发表十字花科 YABBY 家族转录因子相关研究 (第四作者，负责 software 与 data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统)。全栈 AI 工程化：从 Ascend 910 / NVIDIA 硬件到 MindSpore / Paddle 框架再到 Agent 编排，构建完整 AI 闭环。交叉学科创新者，将 CV 与 Agent 注入生物信息学与农业场景，同时推进开源 Linux 发行版建设。30+ 公开仓库覆盖 AI、生信、系统软件等方向，所有项目均有可运行代码支撑。
     </p>
   </div>
 
