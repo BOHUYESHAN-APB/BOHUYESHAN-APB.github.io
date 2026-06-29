@@ -73,13 +73,14 @@ type: resume
 
   <!-- Hero -->
   <div class="r-hero">
-    <h1>BoHuYeShan</h1>
+    <h1>BoHuYeShan (韩涛)</h1>
     <div class="r-subtitle">AI 工程 · 生物信息学 · 开源 Linux 发行版构建</div>
     <div class="r-contact">
       <a href="https://github.com/BOHUYESHAN-APB">GitHub</a>
       <a href="https://github.com/BoHuYeShan">GitHub (个人)</a>
       <a href="https://bohuyeshan.top">博客</a>
       <a href="https://openi.pcl.ac.cn/bhys">OpenI</a>
+      <a href="https://orcid.org/0009-0002-8426-0610">ORCID</a>
     </div>
     <a class="r-print-btn" href="/HTML/jianli.html" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -243,6 +244,54 @@ type: resume
     </ul>
   </div>
 
+  <!-- 生物实验与生信分析 -->
+  <div class="r-section">
+    <div class="r-section-title">🔬 生物实验与生信分析</div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">独立实验能力</div>
+      </div>
+      <div class="r-exp-detail">
+        生物技术专业背景，独立完成<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">分子克隆</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>等分子生物学实验；熟悉<span class="r-hl">组织培养</span>、<span class="r-hl">基因组 DNA 提取</span>等植物实验操作。
+      </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">生信分析手段</div>
+      </div>
+      <div class="r-exp-detail">
+        独立完成从原始数据到发表级结果的全流程生信分析：RNA-seq 差异表达分析（<span class="r-hl">DESeq2 / edgeR</span>）、基因家族系统发育重建（<span class="r-hl">MEGA / IQ-TREE</span>）、转录组功能注释（<span class="r-hl">GO / KEGG 富集</span>）、<span class="r-hl">WGCNA</span>共表达网络分析、变异检测与基因组注释。掌握 <span class="r-hl">Python / R / Shell</span> 生信脚本编写，GitHub 仓库完整记录分析流程与可复现代码。
+      </div>
+    </div>
+  </div>
+
+  <!-- 发表论文与专利 -->
+  <div class="r-section">
+    <div class="r-section-title">📄 发表论文与专利</div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">The Phylogeny of Brassicaceae YABBYs and the CRC-Mediated Regulation of Stigma Development in <em>Brassica napus</em></div>
+        <div class="r-meta">2026</div>
+      </div>
+      <div class="r-exp-detail">
+        Lin Dai, Jinxiang Gao, Cheng Li, <span class="r-hl">韩涛 (Tao Han)</span>, Zhengshu Tian, Yunyun Zhang, Yusong Zhang, Yanqing Luo, Kaiqin Zhao, Xiaoyang Yuan, Canzhi Zhang, Tao Liu, Feng Zu*, Pei Qin*.
+        <br><span class="r-hl">International Journal of Molecular Sciences</span>, 27(13), 5740.
+        DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.3390/ijms27135740</a>
+        <br><span style="font-size:0.85rem; color:#64748b;">第四作者 · 参与转录组数据分析：BnYABBY 基因家族系统发育分析、CRC 缺失突变体 sd 的 RNA-seq 差异表达分析、BR 信号通路与糖转运相关基因的表达模式挖掘</span>
+      </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">一种基于卷积神经网络的多算法微生物培养综合识别方法及系统</div>
+        <div class="r-meta">发明专利 · 已公布</div>
+      </div>
+      <div class="r-exp-detail">
+        申请号：202510091154.4 · 云南农业大学 · 公布日期 2025-05-16
+        <br><span style="font-size:0.85rem; color:#64748b;">基于 CNN 的多算法微生物培养综合识别方法及系统，涉及微生物菌落检测、分类与计数的自动化流程</span>
+      </div>
+    </div>
+  </div>
+
   <!-- 荣誉 -->
   <div class="r-section">
     <div class="r-section-title">🏅 荣誉</div>
@@ -270,7 +319,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      全栈 AI 工程化：从 Ascend 910 / NVIDIA 硬件到 MindSpore / Paddle 框架再到 Agent 编排，构建完整 AI 闭环。交叉学科创新者，将 CV 与 Agent 注入生物信息学与农业场景，同时推进开源 Linux 发行版建设。30+ 公开仓库覆盖 AI、生信、系统软件等方向，所有项目均有可运行代码支撑。
+      生物技术专业本科在读，具备独立完成植物实验与分子生物学实验的能力，同时可独立开展全流程生物信息学分析。在 IJMS 期刊参与发表十字花科 YABBY 家族转录因子相关研究（第四作者），负责转录组数据分析与系统发育重建；以第一发明人申请发明专利 1 项（基于 CNN 的微生物培养综合识别系统）。全栈 AI 工程化：从 Ascend 910 / NVIDIA 硬件到 MindSpore / Paddle 框架再到 Agent 编排，构建完整 AI 闭环。交叉学科创新者，将 CV 与 Agent 注入生物信息学与农业场景，同时推进开源 Linux 发行版建设。30+ 公开仓库覆盖 AI、生信、系统软件等方向，所有项目均有可运行代码支撑。
     </p>
   </div>
 
