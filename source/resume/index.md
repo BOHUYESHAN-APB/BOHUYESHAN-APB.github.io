@@ -246,9 +246,9 @@ type: resume
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
-        <h4><a href="https://github.com/BOHUYESHAN-APB/bioSkills">bioSkills</a></h4>
-        <div class="r-desc">400+ 生信技能集: 覆盖基因组学、转录组学、蛋白组学、单细胞分析等，附评测报告。</div>
-        <span class="r-lang">Markdown / Python</span>
+        <h4><a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio">VisionDeploy-Studio</a></h4>
+        <div class="r-desc">CV 模型本地部署助手: YOLO 多硬件加速 (CUDA/XPU/ROCm)、按需环境管理。</div>
+        <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
