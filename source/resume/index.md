@@ -241,6 +241,11 @@ type: resume
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
+        <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
+        <div class="r-desc">AI 驱动科研编排与自动化层: 多模型协调、生信/化学分析管线规划、自主研究边界发现。</div>
+        <span class="r-lang">Python</span>
+      </div>
+      <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
         <div class="r-desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构，纯 Go 实现。</div>
         <span class="r-lang">Go</span>
