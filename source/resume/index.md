@@ -339,7 +339,19 @@ type: resume
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">2025 "挑战杯"全国竞赛</div>
-        <div class="r-meta">人工智能赛道负责人</div>
+        <div class="r-meta">人工智能赛道负责人 · 省级立项</div>
+      </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">大学生创新创业</div>
+        <div class="r-meta">省级立项</div>
+      </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">互联网+</div>
+        <div class="r-meta">省级立项</div>
       </div>
     </div>
     <div class="r-exp-item">
