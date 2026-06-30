@@ -246,6 +246,11 @@ type: resume
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
+        <h4><a href="https://github.com/BOHUYESHAN-APB/bioSkills">bioSkills</a></h4>
+        <div class="r-desc">400+ 生信技能集: 覆盖基因组学、转录组学、蛋白组学、单细胞分析等，附评测报告。</div>
+        <span class="r-lang">Markdown / Python</span>
+      </div>
+      <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
         <div class="r-desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构，纯 Go 实现。</div>
         <span class="r-lang">Go</span>
