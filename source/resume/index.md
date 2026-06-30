@@ -344,20 +344,20 @@ type: resume
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
-        <div class="r-name">大学生创新创业</div>
+        <div class="r-name">2025 大学生创新创业训练项目</div>
         <div class="r-meta">省级立项</div>
       </div>
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
-        <div class="r-name">互联网+</div>
+        <div class="r-name">2025 互联网+</div>
         <div class="r-meta">省级立项</div>
       </div>
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
-        <div class="r-name">校内科研优秀项目表彰</div>
-        <div class="r-meta">基于改进 YOLO 的菌落分析系统</div>
+        <div class="r-name">2025 创新创业挑战</div>
+        <div class="r-meta">校级立项</div>
       </div>
     </div>
   </div>
