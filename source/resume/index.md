@@ -308,11 +308,11 @@ type: resume
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">一种基于卷积神经网络的多算法微生物培养综合识别方法及系统</div>
-        <div class="r-meta">发明专利 · 已公布</div>
+        <div class="r-meta">发明专利 · 已公布 (13 个月)</div>
       </div>
       <div class="r-exp-detail">
         申请号：202510091154.4 · 云南农业大学 · 公布日期 2025-05-16
-        <br><span style="font-size:0.85rem; color:#64748b;">基于 CNN 的多算法微生物培养综合识别方法及系统，涉及微生物菌落检测、分类与计数的自动化流程</span>
+        <br><span style="font-size:0.85rem; color:#64748b;">基于 CNN 的多算法微生物培养综合识别方法及系统，涉及微生物菌落检测、分类与计数的自动化流程。专利已进入实审阶段。</span>
       </div>
     </div>
   </div>
