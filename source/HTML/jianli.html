@@ -18,336 +18,54 @@
     width: 420mm;
     overflow-x: hidden;
   }
-
-  /* Print button */
-  .print-btn-wrap {
-    text-align: center;
-    padding: 12px 0;
-    background: #e9e6df;
-  }
-  .print-btn {
-    display: inline-block;
-    padding: 10px 28px;
-    background: #1f4d8f;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-  }
+  .print-btn-wrap { text-align: center; padding: 12px 0; background: #e9e6df; }
+  .print-btn { display: inline-block; padding: 10px 28px; background: #1f4d8f; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
   .print-btn:hover { background: #2563eb; }
-
-  /* Print dialog */
-  .print-dialog {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-  }
-  .print-dialog.open { display: flex; }
-  .print-dialog-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 28px 32px;
-    max-width: 420px;
-    width: 90%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-  .print-dialog-box h3 {
-    font-size: 18px;
-    margin-bottom: 6px;
-    color: #1a1a1a;
-  }
-  .print-dialog-box p {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 18px;
-  }
-  .print-options {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .print-opt {
-    flex: 1;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 16px 12px;
-    cursor: pointer;
-    text-align: center;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .print-opt:hover { border-color: #1f4d8f; background: #f0f4ff; }
-  .print-opt.selected { border-color: #1f4d8f; background: #eef2ff; }
-  .print-opt .icon { font-size: 28px; margin-bottom: 6px; }
-  .print-opt .label { font-size: 14px; font-weight: 600; color: #1a1a1a; }
-  .print-opt .desc { font-size: 11px; color: #888; margin-top: 4px; }
-  .print-dialog-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-  .print-dialog-actions button {
-    padding: 8px 20px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    font-family: inherit;
-  }
-  .btn-cancel { background: #f0f0f0; color: #555; }
-  .btn-cancel:hover { background: #e0e0e0; }
-  .btn-confirm { background: #1f4d8f; color: #fff; }
-  .btn-confirm:hover { background: #2563eb; }
-
-  /* ===== A3 landscape sheet ===== */
-  .a3-sheet {
-    width: 420mm;
-    height: 297mm;
-    margin: 0 auto;
-    background: #fff;
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18);
-    display: grid;
-    grid-template-columns: 210mm 210mm;
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* ===== Each A4 page ===== */
-  .a4-page {
-    width: 210mm;
-    height: 297mm;
-    padding: 14mm 12mm;
-    overflow: hidden;
-    position: relative;
-  }
-  .a4-page:first-child {
-    border-right: 0.3mm solid #d9d5ce;
-  }
-
-  /* ===== Section & header ===== */
-  .accent { color: #1f4d8f; }
-  .accent-bar {
-    display: inline-block;
-    width: 5mm;
-    height: 0.5mm;
-    background: #1f4d8f;
-    vertical-align: middle;
-    margin-right: 2mm;
-  }
-
-  .section { margin-bottom: 3.5mm; }
+  .a3-sheet { width: 420mm; height: 297mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); display: grid; grid-template-columns: 210mm 210mm; overflow: hidden; position: relative; }
+  .a4-page { width: 210mm; height: 297mm; padding: 14mm 12mm; overflow: hidden; position: relative; }
+  .a4-page:first-child { border-right: 0.3mm solid #d9d5ce; }
+  .section { margin-bottom: 3mm; }
   .section:last-child { margin-bottom: 0; }
-  .section-title {
-    font-size: 8pt;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #1f4d8f;
-    margin: 0 0 2.5mm;
-  }
-
-  /* ----- Header ----- */
-  .resume-header {
-    padding-bottom: 3mm;
-    margin-bottom: 3.5mm;
-    border-bottom: 0.2mm solid #d9d5ce;
-  }
-  .resume-header h1 {
-    font-size: 26pt;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    line-height: 1.1;
-    margin-bottom: 1mm;
-    color: #1a1a1a;
-  }
-  .resume-header .subtitle {
-    font-size: 9pt;
-    color: #1f4d8f;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    margin-bottom: 1.5mm;
-  }
-  .resume-header .contact {
-    font-size: 7.5pt;
-    color: #5a564e;
-    line-height: 1.8;
-  }
+  .section-title { font-size: 8pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #1f4d8f; margin: 0 0 2mm; display: flex; align-items: center; gap: 2mm; }
+  .section-title::before { content: ''; display: inline-block; width: 5mm; height: 0.5mm; background: #1f4d8f; }
+  .resume-header { padding-bottom: 3mm; margin-bottom: 3mm; border-bottom: 0.2mm solid #d9d5ce; }
+  .resume-header h1 { font-size: 26pt; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 1mm; }
+  .resume-header .subtitle { font-size: 9pt; color: #1f4d8f; font-weight: 500; margin-bottom: 1.5mm; }
+  .resume-header .contact { font-size: 7.5pt; color: #5a564e; line-height: 1.8; }
   .resume-header .contact .sep { opacity: 0.3; margin: 0 1.5mm; }
-
-  /* ----- Two-column layout ----- */
-  .two-col {
-    display: grid;
-    grid-template-columns: 7fr 5fr;
-    gap: 4mm;
-    height: calc(297mm - 14mm - 14mm - 3mm - 3.5mm);
-  }
+  .two-col { display: grid; grid-template-columns: 7fr 5fr; gap: 4mm; height: calc(297mm - 14mm - 14mm - 3mm - 3mm); }
   .col-main, .col-side { overflow: hidden; }
-
-  /* ----- Experience items ----- */
-  .exp { margin-bottom: 2.5mm; }
+  .exp { margin-bottom: 2mm; }
   .exp:last-child { margin-bottom: 0; }
-  .exp-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 2mm;
-  }
-  .exp-head .name {
-    font-size: 9pt;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  .exp-head .meta {
-    font-size: 7.5pt;
-    color: #8a8680;
-    white-space: nowrap;
-    font-weight: 400;
-  }
-  .exp-detail {
-    font-size: 8.5pt;
-    color: #262421;
-    line-height: 1.45;
-    margin-top: 0.5mm;
-  }
+  .exp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .exp-head .name { font-size: 9pt; font-weight: 600; line-height: 1.3; }
+  .exp-head .meta { font-size: 7.5pt; color: #8a8680; white-space: nowrap; }
+  .exp-detail { font-size: 8.5pt; color: #262421; line-height: 1.4; margin-top: 0.3mm; }
   .exp-detail .hl { color: #1f4d8f; font-weight: 500; }
   .exp-detail .small { font-size: 7.5pt; color: #6b6760; }
-
-  /* ----- Bullet list ----- */
-  ul.bullets { list-style: none; padding: 0; margin: 0.8mm 0 0; }
-  ul.bullets li {
-    position: relative;
-    padding-left: 3.5mm;
-    font-size: 8.5pt;
-    line-height: 1.45;
-    color: #262421;
-    margin-bottom: 0.6mm;
-  }
-  ul.bullets li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 1.6mm;
-    width: 1mm;
-    height: 1mm;
-    background: #1f4d8f;
-    border-radius: 0.2mm;
-  }
-
-  /* ----- Skill tags ----- */
-  .skill-group { margin-bottom: 1.5mm; }
+  ul.bullets { list-style: none; padding: 0; margin: 0.5mm 0 0; }
+  ul.bullets li { position: relative; padding-left: 3.5mm; font-size: 8pt; line-height: 1.4; color: #262421; margin-bottom: 0.4mm; }
+  ul.bullets li::before { content: ""; position: absolute; left: 0; top: 1.5mm; width: 1mm; height: 1mm; background: #1f4d8f; border-radius: 0.2mm; }
+  .skill-group { margin-bottom: 1.2mm; }
   .skill-group:last-child { margin-bottom: 0; }
-  .skill-group-label {
-    font-size: 7pt;
-    font-weight: 600;
-    color: #8a8680;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    margin-bottom: 0.8mm;
-  }
-  .skill-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1mm;
-  }
-  .skill-tag {
-    font-size: 7.5pt;
-    background: #eef2f8;
-    color: #1f4d8f;
-    padding: 0.3mm 2mm;
-    border-radius: 0.6mm;
-    line-height: 1.6;
-  }
-
-  /* ----- Project grid (2x3) ----- */
-  .proj-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5mm;
-  }
-  .proj-item {
-    border: 0.2mm solid #e0ddd8;
-    border-radius: 0.8mm;
-    padding: 1.5mm 2mm;
-    background: #fafaf8;
-  }
-  .proj-item h3 {
-    font-size: 8pt;
-    font-weight: 600;
-    color: #1f4d8f;
-  }
-  .proj-item .desc {
-    font-size: 7.5pt;
-    color: #5a564e;
-    line-height: 1.35;
-    margin: 0.3mm 0 0.5mm;
-  }
-  .proj-item .lang {
-    font-size: 6.5pt;
-    color: #6b6760;
-    font-weight: 500;
-  }
-
-  /* ----- More repos ----- */
-  .more-repos {
-    margin-top: 1.5mm;
-    padding-top: 1mm;
-    border-top: 0.2mm solid #e0ddd8;
-  }
-  .more-repos-label {
-    font-size: 7pt;
-    color: #8a8680;
-    font-weight: 500;
-    margin-bottom: 0.5mm;
-  }
-  .more-repos-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8mm;
-  }
-  .more-repos-tags span {
-    font-size: 7pt;
-    background: #f1f0ec;
-    color: #5a564e;
-    padding: 0.2mm 1.5mm;
-    border-radius: 0.6mm;
-  }
-
-  /* ----- Honor list ----- */
-  .honor-item { margin-bottom: 1.5mm; }
+  .skill-group-label { font-size: 7pt; font-weight: 600; color: #8a8680; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 0.6mm; }
+  .skill-wrap { display: flex; flex-wrap: wrap; gap: 0.8mm; }
+  .skill-tag { font-size: 7.5pt; background: #eef2f8; color: #1f4d8f; padding: 0.3mm 2mm; border-radius: 0.6mm; line-height: 1.5; }
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; }
+  .proj-item { border: 0.2mm solid #e0ddd8; border-radius: 0.8mm; padding: 1.5mm 2mm; background: #fafaf8; }
+  .proj-item h3 { font-size: 8pt; font-weight: 600; color: #1f4d8f; }
+  .proj-item .desc { font-size: 7.5pt; color: #5a564e; line-height: 1.3; margin: 0.2mm 0 0.4mm; }
+  .proj-item .lang { font-size: 6.5pt; color: #6b6760; }
+  .more-repos { margin-top: 1.2mm; padding-top: 0.8mm; border-top: 0.2mm solid #e0ddd8; }
+  .more-repos-label { font-size: 7pt; color: #8a8680; margin-bottom: 0.4mm; }
+  .more-repos-tags { display: flex; flex-wrap: wrap; gap: 0.6mm; }
+  .more-repos-tags span { font-size: 7pt; background: #f1f0ec; color: #5a564e; padding: 0.2mm 1.5mm; border-radius: 0.6mm; }
+  .honor-item { margin-bottom: 1mm; }
   .honor-item:last-child { margin-bottom: 0; }
-  .honor-item .title {
-    font-size: 9pt;
-    font-weight: 500;
-    line-height: 1.3;
-  }
-  .honor-item .detail {
-    font-size: 8pt;
-    color: #6b6760;
-  }
-
-  /* ----- Self eval ----- */
-  .self-eval {
-    font-size: 8.5pt;
-    color: #262421;
-    line-height: 1.55;
-  }
-
-  /* ----- Contact info block ----- */
-  .contact-block {
-    font-size: 8pt;
-    color: #5a564e;
-    line-height: 1.8;
-  }
+  .honor-item .title { font-size: 8.5pt; font-weight: 500; line-height: 1.3; }
+  .self-eval { font-size: 8.5pt; color: #262421; line-height: 1.5; }
+  .contact-block { font-size: 8pt; color: #5a564e; line-height: 1.8; }
   .contact-block strong { color: #1f4d8f; font-weight: 600; }
-
-  /* ===== PRINT ===== */
   @media print {
     @page { size: A3 landscape; margin: 0; }
     html, body { width: 420mm; background: #fff; }
@@ -366,10 +84,8 @@
 
 <div class="a3-sheet">
 
-  <!-- ==================== LEFT A4 PAGE ==================== -->
+  <!-- ===== LEFT A4 PAGE ===== -->
   <div class="a4-page">
-
-    <!-- Header -->
     <div class="resume-header">
       <h1>BoHuYeShan (韩涛)</h1>
       <div class="subtitle">生物技术 · AI 训练 · 计算机视觉 · 科研工具工程</div>
@@ -379,12 +95,10 @@
     </div>
 
     <div class="two-col">
-      <!-- === Main column (7/12) === -->
       <div class="col-main">
 
-        <!-- 教育 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>教育</div>
+          <div class="section-title">教育</div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">云南农业大学</div>
@@ -394,9 +108,8 @@
           </div>
         </div>
 
-        <!-- 科研与实习经历 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>科研与实习经历</div>
+          <div class="section-title">科研与实习经历</div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">课题组研究助理</div>
@@ -419,9 +132,8 @@
           </div>
         </div>
 
-        <!-- 发表论文与专利 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>发表论文与专利</div>
+          <div class="section-title">发表论文与专利</div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">The Phylogeny of Brassicaceae YABBYs and the CRC-Mediated Regulation of Stigma Development in <em>Brassica napus</em></div>
@@ -443,50 +155,36 @@
           </div>
         </div>
 
-        <!-- 在研项目 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>在研项目</div>
+          <div class="section-title">在研项目</div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">荞麦矮化基因挖掘</div>
               <div class="meta">预计 2026.09 预印本</div>
             </div>
-            <div class="exp-detail">
-              转录组与基因组数据挖掘矮化候选基因，差异表达分析与功能注释。计划同步发布于生物学与 AI 预印本平台。
-            </div>
+            <div class="exp-detail">转录组与基因组数据挖掘矮化候选基因，差异表达分析与功能注释。计划同步发布于生物学与 AI 预印本平台。</div>
           </div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">微生物小目标检测算法改进</div>
               <div class="meta">预计 2026.09 预印本</div>
             </div>
-            <div class="exp-detail">
-              针对<span class="hl">小目标检测</span>行业难题，从特殊检测算法迭代至 <span class="hl">PP-YOLO</span> 系列，改进余弦退火与学习率曲线，完成<span class="hl">华为 Ascend 910</span> 适配训练。
-            </div>
+            <div class="exp-detail">针对<span class="hl">小目标检测</span>行业难题，从特殊检测算法迭代至 <span class="hl">PP-YOLO</span> 系列，改进余弦退火与学习率曲线，完成<span class="hl">华为 Ascend 910</span> 适配训练。</div>
           </div>
         </div>
 
-        <!-- 荣誉 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>荣誉</div>
-          <div class="honor-item">
-            <div class="title">2025 国际大学生创新创业大赛 · 人工智能赛道 主持</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">2025 "挑战杯"全国竞赛 · 人工智能赛道 负责人</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">校内科研优秀项目表彰 · 基于改进 YOLO 的菌落分析系统</div>
-          </div>
+          <div class="section-title">荣誉</div>
+          <div class="honor-item"><div class="title">2025 国际大学生创新创业大赛 · 人工智能赛道 主持</div></div>
+          <div class="honor-item"><div class="title">2025 "挑战杯"全国竞赛 · 人工智能赛道 负责人</div></div>
+          <div class="honor-item"><div class="title">校内科研优秀项目表彰 · 基于改进 YOLO 的菌落分析系统</div></div>
         </div>
 
       </div>
 
-      <!-- === Side column (5/12) === -->
       <div class="col-side">
-        <!-- 交叉主线 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>交叉主线</div>
+          <div class="section-title">交叉主线</div>
           <ul class="bullets">
             <li><strong>生物实验对象</strong>: 菌落计数、抑菌圈测量、种子质量筛选</li>
             <li><strong>农业视觉场景</strong>: 荞麦籽粒饱满度、杂质与小目标检测</li>
@@ -495,9 +193,8 @@
           </ul>
         </div>
 
-        <!-- 生物实验与生信分析 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>实验与生信能力</div>
+          <div class="section-title">实验与生信能力</div>
           <div class="exp">
             <div class="exp-detail">
               <span class="hl">实验</span>: 植物表型鉴定、分子克隆、RNA 提取与反转录、qRT-PCR、组织培养、基因组 DNA 提取
@@ -510,9 +207,8 @@
           </div>
         </div>
 
-        <!-- 组织参与 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>组织参与</div>
+          <div class="section-title">组织参与</div>
           <ul class="bullets">
             <li><strong>Linxira OS</strong> — 发起并构建 Debian 衍生发行版</li>
             <li><strong>YeShanBoYun Studio</strong> — 组织成员</li>
@@ -521,9 +217,8 @@
           </ul>
         </div>
 
-        <!-- 目标方向 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>求职意向</div>
+          <div class="section-title">求职意向</div>
           <ul class="bullets">
             <li>生物 / 农业 AI 视觉检测工程师</li>
             <li>生物信息学工程师、科研自动化方向</li>
@@ -531,9 +226,8 @@
           </ul>
         </div>
 
-        <!-- 联系方式 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>联系方式</div>
+          <div class="section-title">联系方式</div>
           <div class="contact-block">
             <strong>GitHub</strong> BOHUYESHAN-APB / BoHuYeShan<br>
             <strong>博客</strong> bohuyeshan.top<br>
@@ -543,71 +237,43 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- ==================== RIGHT A4 PAGE ==================== -->
+  <!-- ===== RIGHT A4 PAGE ===== -->
   <div class="a4-page">
     <div class="two-col">
-      <!-- === Main column (7/12) === -->
       <div class="col-main">
 
-        <!-- 技术能力 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>技术能力</div>
+          <div class="section-title">技术能力</div>
           <div class="skill-group">
             <div class="skill-group-label">编程语言</div>
             <div class="skill-wrap">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">TypeScript/JS</span>
-              <span class="skill-tag">Rust (学习中)</span>
-              <span class="skill-tag">Go</span>
-              <span class="skill-tag">Dart</span>
-              <span class="skill-tag">Shell</span>
+              <span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">TypeScript/JS</span><span class="skill-tag">Rust (学习中)</span><span class="skill-tag">Go</span><span class="skill-tag">Dart</span><span class="skill-tag">Shell</span>
             </div>
           </div>
           <div class="skill-group">
             <div class="skill-group-label">AI 硬件与框架</div>
             <div class="skill-wrap">
-              <span class="skill-tag">华为 Ascend 910</span>
-              <span class="skill-tag">NVIDIA CUDA</span>
-              <span class="skill-tag">MindSpore</span>
-              <span class="skill-tag">PaddlePaddle</span>
-              <span class="skill-tag">PyTorch</span>
-              <span class="skill-tag">ONNX</span>
+              <span class="skill-tag">华为 Ascend 910</span><span class="skill-tag">NVIDIA CUDA</span><span class="skill-tag">MindSpore</span><span class="skill-tag">PaddlePaddle</span><span class="skill-tag">PyTorch</span><span class="skill-tag">ONNX</span>
             </div>
           </div>
           <div class="skill-group">
             <div class="skill-group-label">模型与算法</div>
             <div class="skill-wrap">
-              <span class="skill-tag">LLM 训练</span>
-              <span class="skill-tag">扩散模型</span>
-              <span class="skill-tag">Transformer</span>
-              <span class="skill-tag">PP-YOLO 系列</span>
-              <span class="skill-tag">YOLOv5/v8</span>
-              <span class="skill-tag">CNN 分类</span>
-              <span class="skill-tag">余弦退火 + Restart</span>
-              <span class="skill-tag">分层动态学习率</span>
+              <span class="skill-tag">LLM 训练</span><span class="skill-tag">扩散模型</span><span class="skill-tag">Transformer</span><span class="skill-tag">PP-YOLO 系列</span><span class="skill-tag">YOLOv5/v8</span><span class="skill-tag">CNN 分类</span><span class="skill-tag">余弦退火 + Restart</span><span class="skill-tag">分层动态学习率</span>
             </div>
           </div>
           <div class="skill-group">
             <div class="skill-group-label">工程与生态</div>
             <div class="skill-wrap">
-              <span class="skill-tag">AI Agent 编排</span>
-              <span class="skill-tag">API 网关</span>
-              <span class="skill-tag">Linux 发行版构建</span>
-              <span class="skill-tag">生物信息学</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">OpenI CloudBrain</span>
+              <span class="skill-tag">AI Agent 编排</span><span class="skill-tag">API 网关</span><span class="skill-tag">Linux 发行版构建</span><span class="skill-tag">生物信息学</span><span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">OpenI CloudBrain</span>
             </div>
           </div>
         </div>
 
-        <!-- 开源项目 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>开源项目精选</div>
+          <div class="section-title">开源项目精选</div>
           <div class="proj-grid">
             <div class="proj-item">
               <h3>Buckwheat-seed-quality</h3>
@@ -640,25 +306,16 @@
               <span class="lang">Go</span>
             </div>
           </div>
-
           <div class="more-repos">
             <div class="more-repos-label">更多仓库</div>
             <div class="more-repos-tags">
-              <span>extendai-lab-Studio</span>
-              <span>NeuroPlex-Nexus</span>
-              <span>openagent-labforge</span>
-              <span>VisionDeploy-Studio</span>
-              <span>AionUi</span>
-              <span>QiaoTime</span>
-              <span>mdspark</span>
-              <span>CMYKE</span>
+              <span>extendai-lab-Studio</span><span>NeuroPlex-Nexus</span><span>openagent-labforge</span><span>VisionDeploy-Studio</span><span>AionUi</span><span>QiaoTime</span><span>mdspark</span><span>CMYKE</span>
             </div>
           </div>
         </div>
 
-        <!-- 自我评价 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>自我评价</div>
+          <div class="section-title">自我评价</div>
           <div class="self-eval">
             云南农业大学生物技术专业本科在读，具备独立完成植物实验与分子生物学实验的能力，同时可独立开展全流程生物信息学分析。在 IJMS 期刊参与发表十字花科 YABBY 家族转录因子相关研究 (第四作者，负责 software 与 data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统)。主要在 AI 训练、计算机视觉、生物信息学工具链与 Agent 工程之间做交叉实践。项目以公开仓库、训练记录和博客页面作为支撑，强调能运行、能复现、能继续迭代。
           </div>
@@ -666,35 +323,26 @@
 
       </div>
 
-      <!-- === Side column (5/12) === -->
       <div class="col-side">
 
-        <!-- AI 模型训练 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>AI 模型训练</div>
+          <div class="section-title">AI 模型训练</div>
           <div class="exp">
             <div class="exp-head"><div class="name">华为 Ascend 910 原生训练</div></div>
-            <div class="exp-detail">
-              Ascend 910 上原生训练 <span class="hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化。
-            </div>
+            <div class="exp-detail">Ascend 910 上原生训练 <span class="hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化。</div>
           </div>
           <div class="exp">
             <div class="exp-head"><div class="name">NVIDIA GPU 训练与微调</div></div>
-            <div class="exp-detail">
-              <span class="hl">PP-YOLO 系列</span> (PP-YOLOE+/v2) 及 <span class="hl">YOLOv5/v8</span> 训练与微调，结合迁移学习与余弦退火策略。
-            </div>
+            <div class="exp-detail"><span class="hl">PP-YOLO 系列</span> (PP-YOLOE+/v2) 及 <span class="hl">YOLOv5/v8</span> 训练与微调，结合迁移学习与余弦退火策略。</div>
           </div>
           <div class="exp">
             <div class="exp-head"><div class="name">学习率调度算法研究</div></div>
-            <div class="exp-detail">
-              Buckwheat 项目中研究 <span class="hl">余弦退火 + Restart</span>、分段式学习率表、小样本分层动态学习率，可视化驱动调参。
-            </div>
+            <div class="exp-detail">Buckwheat 项目中研究 <span class="hl">余弦退火 + Restart</span>、分段式学习率表、小样本分层动态学习率，可视化驱动调参。</div>
           </div>
         </div>
 
-        <!-- 技术栈概览 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>技术栈</div>
+          <div class="section-title">技术栈</div>
           <ul class="bullets">
             <li><strong>AI 训练</strong>: Ascend 910 / NVIDIA CUDA / MindSpore / PaddlePaddle / PyTorch</li>
             <li><strong>模型</strong>: LLM / Diffusion / Transformer / PP-YOLO / YOLOv5-v8 / CNN</li>
@@ -704,34 +352,17 @@
           </ul>
         </div>
 
-        <!-- 关键数据 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>关键数据</div>
-          <div class="honor-item">
-            <div class="title">30+</div>
-            <div class="detail">公开 GitHub 仓库</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">617</div>
-            <div class="detail">生物信息学技能 (ExtendAI Lab)</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">5 / 15</div>
-            <div class="detail">编排器 / 专家 Agent 数量</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">100+</div>
-            <div class="detail">AI 模型 API 网关支持</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">2</div>
-            <div class="detail">操作系统级项目 (Linxira OS + Pulse)</div>
-          </div>
+          <div class="section-title">关键数据</div>
+          <div class="honor-item"><div class="title">30+</div><div class="honor-item" style="font-size:8pt;color:#6b6760;">公开 GitHub 仓库</div></div>
+          <div class="honor-item"><div class="title">617</div><div class="honor-item" style="font-size:8pt;color:#6b6760;">生物信息学技能 (ExtendAI Lab)</div></div>
+          <div class="honor-item"><div class="title">5 / 15</div><div class="honor-item" style="font-size:8pt;color:#6b6760;">编排器 / 专家 Agent 数量</div></div>
+          <div class="honor-item"><div class="title">100+</div><div class="honor-item" style="font-size:8pt;color:#6b6760;">AI 模型 API 网关支持</div></div>
+          <div class="honor-item"><div class="title">2</div><div class="honor-item" style="font-size:8pt;color:#6b6760;">操作系统级项目 (Linxira OS + Pulse)</div></div>
         </div>
 
-        <!-- 现场可讲项目 -->
         <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>现场可讲项目</div>
+          <div class="section-title">现场可讲项目</div>
           <ul class="bullets">
             <li><strong>Buckwheat</strong>: 荞麦种子质检、PP-YOLOE+、学习率调度</li>
             <li><strong>CNN-MicroAI</strong>: 菌落计数、抑菌圈测量、移动端部署</li>
@@ -742,416 +373,6 @@
 
       </div>
     </div>
-
-  </div>
-    </div>
-
-    <div class="two-col">
-      <!-- === Main column (7/12) === -->
-      <div class="col-main">
-
-        <!-- 教育 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>教育</div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">云南农业大学</div>
-              <div class="meta">本科在读 · 预计 2027.09 毕业</div>
-            </div>
-            <div class="exp-detail">生物技术专业</div>
-          </div>
-        </div>
-
-        <!-- 科研与实习经历 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>科研与实习经历</div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">课题组研究助理</div>
-              <div class="meta">2025.01 — 2026.05</div>
-            </div>
-            <div class="exp-detail">
-              负责生物信息学数据分析与挖掘。参与十字花科 YABBY 家族基因鉴定、系统发育重建、顺式作用元件预测及转录组差异表达分析; 同期开发微生物菌落 CNN 检测与分类计数流程。
-              <br><span class="hl">成果</span>: IJMS 期刊论文第四作者 (software + data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统, 申请号 202510091154.4)
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">校内实习 — 荞麦矮化基因挖掘</div>
-              <div class="meta">2026.03 — 2026.06</div>
-            </div>
-            <div class="exp-detail">
-              开展荞麦矮化相关基因挖掘与功能分析，关联 <span class="hl">Buckwheat-seed-quality</span> 项目。负责从基因组/转录组数据中筛选矮化候选基因，完成差异表达分析与功能注释。
-              <br><span class="hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员
-            </div>
-          </div>
-        </div>
-
-        <!-- 发表论文与专利 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>发表论文与专利</div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">The Phylogeny of Brassicaceae YABBYs and the CRC-Mediated Regulation of Stigma Development in <em>Brassica napus</em></div>
-              <div class="meta">2026</div>
-            </div>
-            <div class="exp-detail">
-              Lin Dai, Jinxiang Gao, Cheng Li, <span class="hl">韩涛 (Tao Han)</span>, Zhengshu Tian, Yunyun Zhang, Yusong Zhang, Yanqing Luo, Kaiqin Zhao, Xiaoyang Yuan, Canzhi Zhang, Tao Liu, Feng Zu*, Pei Qin*.
-              <br><span class="hl">International Journal of Molecular Sciences</span>, 27(13), 5740. DOI: 10.3390/ijms27135740
-              <br>              <span class="small">第四作者 · 贡献: software (生物信息分析流程与可视化工具开发)、data curation (基因组/转录组数据整理与质控)</span>
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">一种基于卷积神经网络的多算法微生物培养综合识别方法及系统</div>
-              <div class="meta">发明专利 · 已公布 (13 个月)</div>
-            </div>
-            <div class="exp-detail">
-              申请号: 202510091154.4 · 云南农业大学 · 公布日期 2025-05-16
-              <br><span class="small">基于 CNN 的多算法微生物培养综合识别方法及系统，涉及微生物菌落检测、分类与计数的自动化流程。专利已进入实审阶段。</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 在研项目与预期成果 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>在研项目与预期成果</div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">荞麦矮化基因挖掘与功能分析</div>
-              <div class="meta">预计 2026.09 预印本</div>
-            </div>
-            <div class="exp-detail">
-              基于转录组与基因组数据挖掘荞麦矮化相关候选基因，完成差异表达分析与功能注释。计划同步发布于生物学与人工智能预印本平台。
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">微生物小目标检测算法改进</div>
-              <div class="meta">预计 2026.09 预印本</div>
-            </div>
-            <div class="exp-detail">
-              针对微生物菌落检测中<span class="hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="hl">华为 Ascend 910</span> 架构适配与训练。
-            </div>
-          </div>
-        </div>
-
-        <!-- 生物实验与生信分析 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>生物实验与生信分析</div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">独立实验能力</div></div>
-            <div class="exp-detail">
-              生物技术专业，独立完成<span class="hl">植物表型鉴定</span>、<span class="hl">分子克隆</span>、<span class="hl">RNA 提取与反转录</span>、<span class="hl">qRT-PCR</span> 等分子生物学实验；熟悉<span class="hl">组织培养</span>、<span class="hl">基因组 DNA 提取</span>等植物实验操作。
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">生信分析手段</div></div>
-            <div class="exp-detail">
-              独立完成从原始数据到发表级结果的全流程生信分析：RNA-seq 差异表达 (<span class="hl">DESeq2/edgeR</span>)、基因家族系统发育重建 (<span class="hl">MEGA/IQ-TREE</span>)、转录组功能注释 (<span class="hl">GO/KEGG 富集</span>)、<span class="hl">WGCNA</span> 共表达网络、变异检测与基因组注释。<span class="hl">Python/R/Shell</span> 脚本编写，GitHub 仓库完整记录分析流程。
-            </div>
-          </div>
-        </div>
-
-        <!-- 竞赛与科研 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>竞赛与科研项目</div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">国际大学生创新创业大赛 · "挑战杯"</div>
-              <div class="meta">主持</div>
-            </div>
-            <div class="exp-detail">
-              <span class="hl">Buckwheat-seed-quality</span> —— 基于 <span class="hl">PP-YOLOE+ (L)</span> 的荞麦种子质量检测系统。引入 <span class="hl">余弦退火 + Restart</span> 自适应学习率，完成 <span class="hl">Paddle/CUDA → MindSpore/Ascend 910</span> 全流程模型迁移，开发 Android + 桌面端双平台推理应用。
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head">
-              <div class="name">CNN 菌落自动分析系统</div>
-              <div class="meta">核心研发</div>
-            </div>
-            <div class="exp-detail">
-              <span class="hl">CNN-MicroAI-Colony</span> —— CNN 实现微生物菌落检测与分类计数。<span class="hl">Huawei Ascend NPU</span> 适配 (MindSpore)，<span class="hl">OpenI CloudBrain</span> 云端训推一体化。
-            </div>
-          </div>
-        </div>
-
-        <!-- 荣誉 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>荣誉</div>
-          <div class="honor-item">
-            <div class="title">2025 国际大学生创新创业大赛</div>
-            <div class="detail">人工智能赛道 主持</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">2025 "挑战杯"全国竞赛</div>
-            <div class="detail">人工智能赛道 负责人</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">校内科研优秀项目表彰</div>
-            <div class="detail">基于改进 YOLO 的菌落分析系统</div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- === Side column (5/12) === -->
-      <div class="col-side">
-        <!-- 交叉主线 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>交叉主线</div>
-          <ul class="bullets">
-            <li><strong>生物实验对象</strong>: 菌落计数、抑菌圈测量、种子质量筛选</li>
-            <li><strong>农业视觉场景</strong>: 荞麦籽粒饱满度、杂质与小目标检测</li>
-            <li><strong>生信工具链</strong>: Agent 辅助分析、技能系统、学术约束</li>
-            <li><strong>科研计算环境</strong>: Linux 发行版、云端训推、镜像源</li>
-          </ul>
-        </div>
-
-        <!-- 组织参与 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>组织参与</div>
-          <ul class="bullets">
-            <li><strong>Linxira OS</strong> — 发起并构建面向理学的 Debian 衍生发行版</li>
-            <li><strong>YeShanBoYun Studio</strong> — 组织成员，参与 NeuroPlex-Nexus 等项目</li>
-            <li><strong>openagent-labforge-bio</strong> — 主线项目，持续开发维护</li>
-            <li><strong>OpenI 启智社区</strong> — 公开保存 NPU/GPU 训练模型与任务记录</li>
-          </ul>
-        </div>
-
-        <!-- 目标方向 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>目标方向</div>
-          <ul class="bullets">
-            <li>生物 / 农业 AI 视觉检测相关实习</li>
-            <li>生物信息学工具链、科研自动化、Agent 工程方向</li>
-            <li>AI 模型训练、云端训推、工程化部署方向</li>
-          </ul>
-        </div>
-
-        <!-- 可验证材料 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>可验证材料</div>
-          <ul class="bullets">
-            <li>GitHub: 核心代码、文档、部署与工具链记录</li>
-            <li>OpenI: 昇腾 NPU / GPU 训练任务与模型保存记录</li>
-            <li>个人博客: 项目说明、专题页面与学习笔记</li>
-          </ul>
-        </div>
-
-        <!-- 联系方式 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>联系方式</div>
-          <div class="contact-block">
-            <strong>GitHub (组织)</strong> github.com/BOHUYESHAN-APB<br>
-            <strong>GitHub (个人)</strong> github.com/BoHuYeShan<br>
-            <strong>博客</strong> bohuyeshan.top<br>
-            <strong>OpenI</strong> openi.pcl.ac.cn/bhys<br>
-            <strong>ORCID</strong> orcid.org/0009-0002-8426-0610
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ==================== RIGHT A4 PAGE ==================== -->
-  <div class="a4-page">
-    <div class="two-col">
-      <!-- === Main column (7/12) === -->
-      <div class="col-main">
-
-        <!-- 技术能力 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>技术能力</div>
-          <div class="skill-group">
-            <div class="skill-group-label">编程语言</div>
-            <div class="skill-wrap">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">TypeScript/JS</span>
-              <span class="skill-tag">Rust (学习中)</span>
-              <span class="skill-tag">Go</span>
-              <span class="skill-tag">Dart</span>
-              <span class="skill-tag">Shell</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-label">AI 硬件与框架</div>
-            <div class="skill-wrap">
-              <span class="skill-tag">华为 Ascend 910</span>
-              <span class="skill-tag">NVIDIA CUDA</span>
-              <span class="skill-tag">MindSpore</span>
-              <span class="skill-tag">PaddlePaddle</span>
-              <span class="skill-tag">PyTorch</span>
-              <span class="skill-tag">ONNX</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-label">模型与算法</div>
-            <div class="skill-wrap">
-              <span class="skill-tag">LLM 训练</span>
-              <span class="skill-tag">扩散模型</span>
-              <span class="skill-tag">Transformer</span>
-              <span class="skill-tag">PP-YOLO 系列</span>
-              <span class="skill-tag">YOLOv5/v8</span>
-              <span class="skill-tag">CNN 分类</span>
-              <span class="skill-tag">余弦退火 + Restart</span>
-              <span class="skill-tag">分层动态学习率</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-label">工程与生态</div>
-            <div class="skill-wrap">
-              <span class="skill-tag">AI Agent 编排</span>
-              <span class="skill-tag">API 网关</span>
-              <span class="skill-tag">Linux 发行版构建</span>
-              <span class="skill-tag">生物信息学</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">OpenI CloudBrain</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 开源项目 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>开源项目精选</div>
-          <div class="proj-grid">
-            <div class="proj-item">
-              <h3>Buckwheat-seed-quality</h3>
-              <div class="desc">农业小目标检测: PP-YOLOE+ 荞麦质量检测，余弦退火调度 + Ascend 910 迁移。</div>
-              <span class="lang">Python</span>
-            </div>
-            <div class="proj-item">
-              <h3>CNN-MicroAI-Colony</h3>
-              <div class="desc">微生物实验图像: 菌落计数、抑菌圈测量、ONNX/Android/树莓派部署。</div>
-              <span class="lang">Python</span>
-            </div>
-            <div class="proj-item">
-              <h3>openagent-labforge-bio</h3>
-              <div class="desc"><strong>主线项目。</strong> 生信/学术工作流 Agent 编排: 5 编排器 + 15 Agent + 617 生信技能。</div>
-              <span class="lang">Python</span>
-            </div>
-            <div class="proj-item">
-              <h3>Linxira OS</h3>
-              <div class="desc">面向理学的 Debian 衍生 Linux 发行版: Live-build、科研环境与镜像源。</div>
-              <span class="lang">Shell / Python</span>
-            </div>
-            <div class="proj-item">
-              <h3>MicroAGI-Agri</h3>
-              <div class="desc">农业 AI 应用，多模态视觉在农业场景的实践探索。</div>
-              <span class="lang">Python</span>
-            </div>
-            <div class="proj-item">
-              <h3>extendai-lab-cli</h3>
-              <div class="desc">多 LLM 编码代理 CLI: TUI + 插件系统 + 缓存优先架构，Go 实现。</div>
-              <span class="lang">Go</span>
-            </div>
-          </div>
-
-          <div class="more-repos">
-            <div class="more-repos-label">更多仓库</div>
-            <div class="more-repos-tags">
-              <span>extendai-lab-Studio</span>
-              <span>NeuroPlex-Nexus</span>
-              <span>openagent-labforge</span>
-              <span>VisionDeploy-Studio</span>
-              <span>AionUi</span>
-              <span>QiaoTime</span>
-              <span>mdspark</span>
-              <span>CMYKE</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 自我评价 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>自我评价</div>
-          <div class="self-eval">
-            云南农业大学生物技术专业本科在读，具备独立完成植物实验与分子生物学实验的能力，同时可独立开展全流程生物信息学分析。在 IJMS 期刊参与发表十字花科 YABBY 家族转录因子相关研究 (第四作者，负责 software 与 data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统)。主要在 AI 训练、计算机视觉、生物信息学工具链与 Agent 工程之间做交叉实践。项目以公开仓库、训练记录和博客页面作为支撑，强调能运行、能复现、能继续迭代。
-          </div>
-        </div>
-
-      </div>
-
-      <!-- === Side column (5/12) === -->
-      <div class="col-side">
-
-        <!-- AI 模型训练 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>AI 模型训练</div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">华为 Ascend 910 原生训练</div></div>
-            <div class="exp-detail">
-              Ascend 910 上原生训练 <span class="hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化。
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">NVIDIA GPU 训练与微调</div></div>
-            <div class="exp-detail">
-              <span class="hl">PP-YOLO 系列</span> (PP-YOLOE+/v2) 及 <span class="hl">YOLOv5/v8</span> 训练与微调，结合迁移学习与余弦退火策略。
-            </div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">学习率调度算法研究</div></div>
-            <div class="exp-detail">
-              Buckwheat 项目中研究 <span class="hl">余弦退火 + Restart</span>、分段式学习率表、小样本分层动态学习率，可视化驱动调参。
-            </div>
-          </div>
-        </div>
-
-        <!-- 技术栈概览 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>技术栈</div>
-          <ul class="bullets">
-            <li><strong>AI 训练</strong>: Ascend 910 / NVIDIA CUDA / MindSpore / PaddlePaddle / PyTorch</li>
-            <li><strong>模型</strong>: LLM / Diffusion / Transformer / PP-YOLO / YOLOv5-v8 / CNN</li>
-            <li><strong>算法</strong>: 余弦退火 + Restart / 分层动态学习率 / 迁移学习 / 模型微调</li>
-            <li><strong>Agent</strong>: OpenCode 插件 / 多 Agent 编排 / 617 生信技能</li>
-            <li><strong>系统</strong>: Linux 发行版构建 / Docker / API 网关 / 云端训推</li>
-          </ul>
-        </div>
-
-        <!-- 核心数据 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>关键数据</div>
-          <div class="honor-item">
-            <div class="title">30+</div>
-            <div class="detail">公开 GitHub 仓库</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">617</div>
-            <div class="detail">生物信息学技能 (ExtendAI Lab)</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">5 / 15</div>
-            <div class="detail">编排器 / 专家 Agent 数量</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">100+</div>
-            <div class="detail">AI 模型 API 网关支持</div>
-          </div>
-          <div class="honor-item">
-            <div class="title">2</div>
-            <div class="detail">操作系统级项目 (Linxira OS + Pulse)</div>
-          </div>
-        </div>
-
-        <!-- 现场可讲项目 -->
-        <div class="section">
-          <div class="section-title"><span class="accent-bar"></span>现场可讲项目</div>
-          <ul class="bullets">
-            <li><strong>Buckwheat</strong>: 荞麦种子质检、PP-YOLOE+、学习率调度</li>
-            <li><strong>CNN-MicroAI</strong>: 菌落计数、抑菌圈测量、移动端部署</li>
-            <li><strong>openagent-labforge-bio</strong>: 生信技能系统、Agent 编排、学术约束</li>
-            <li><strong>Linxira OS</strong>: 科研 Linux 环境、Debian 衍生发行版</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 
 </div>
