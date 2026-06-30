@@ -94,9 +94,34 @@ type: resume
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">云南农业大学</div>
-        <div class="r-meta">本科在读</div>
+        <div class="r-meta">本科在读 · 预计 2027.09 毕业</div>
       </div>
       <div class="r-exp-detail">生物技术专业</div>
+    </div>
+  </div>
+
+  <!-- 科研与实习经历 -->
+  <div class="r-section">
+    <div class="r-section-title">🔬 科研与实习经历</div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">课题组研究助理</div>
+        <div class="r-meta">2025.01 — 2026.05</div>
+      </div>
+      <div class="r-exp-detail">
+        负责生物信息学数据分析与挖掘。参与十字花科 YABBY 家族基因鉴定、系统发育重建、顺式作用元件预测及转录组差异表达分析; 同期开发微生物菌落 CNN 检测与分类计数流程。
+        <br><span class="r-hl">成果</span>: IJMS 期刊论文第四作者 (software + data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统, 申请号 202510091154.4)
+      </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">校内实习 — 荞麦矮化基因挖掘</div>
+        <div class="r-meta">2026.03 — 2026.06</div>
+      </div>
+      <div class="r-exp-detail">
+        开展荞麦矮化相关基因挖掘与功能分析，关联 <span class="r-hl">Buckwheat-seed-quality</span> 项目。负责从基因组/转录组数据中筛选矮化候选基因，完成差异表达分析与功能注释。
+        <br><span class="r-hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员
+      </div>
     </div>
   </div>
 
@@ -330,6 +355,29 @@ type: resume
       获取印刷版简历 (A3)
     </a>
     <div class="r-print-hint">A3 横向打印 · 左右两页展开即完整简历 · 也可分页打印为两张 A4</div>
+    </div>
   </div>
 
-</div>
+  <!-- 在研项目与预期成果 -->
+  <div class="r-section">
+    <div class="r-section-title">📋 在研项目与预期成果</div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">荞麦矮化基因挖掘与功能分析</div>
+        <div class="r-meta">预计 2026.09 预印本</div>
+      </div>
+      <div class="r-exp-detail">
+        基于转录组与基因组数据挖掘荞麦矮化相关候选基因，完成差异表达分析与功能注释。计划同步发布于生物学与人工智能预印本平台。
+      </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">微生物小目标检测算法改进</div>
+        <div class="r-meta">预计 2026.09 预印本</div>
+      </div>
+      <div class="r-exp-detail">
+        针对微生物菌落检测中<span class="r-hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="r-hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="r-hl">华为 Ascend 910</span> 架构适配与训练。
+      </div>
+    </div>
+  </div>
+
