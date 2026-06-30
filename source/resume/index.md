@@ -133,10 +133,12 @@ type: resume
         <h4>编程语言</h4>
         <div class="r-skill-tags">
           <span class="r-skill-tag">Python</span>
+          <span class="r-skill-tag">R</span>
           <span class="r-skill-tag">Java</span>
           <span class="r-skill-tag">TypeScript/JS</span>
-          <span class="r-skill-tag">Rust（学习中）</span>
-          <span class="r-skill-tag">Go</span>
+          <span class="r-skill-tag">Julia (学习中)</span>
+          <span class="r-skill-tag">Rust (学习中)</span>
+          <span class="r-skill-tag">Go (学习中)</span>
           <span class="r-skill-tag">Dart</span>
           <span class="r-skill-tag">Shell</span>
         </div>
@@ -175,6 +177,7 @@ type: resume
           <span class="r-skill-tag">Docker</span>
           <span class="r-skill-tag">Git</span>
           <span class="r-skill-tag">OpenI CloudBrain</span>
+          <span class="r-skill-tag">高性能分析 (Rust/Go/Julia)</span>
         </div>
       </div>
     </div>
