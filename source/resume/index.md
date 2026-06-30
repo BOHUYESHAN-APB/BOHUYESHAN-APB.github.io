@@ -232,7 +232,7 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/linxira-os">Linxira OS</a></h4>
-        <div class="r-desc">面向理学的 Debian 衍生 Linux 发行版：Live-build、AI 助手 Pulse、多源镜像管理器。</div>
+        <div class="r-desc">基于 Arch/CachyOS 的科研发行版：Live-build、滚动更新稳定性调整、多内核支持。</div>
         <span class="r-lang">Shell / Python</span>
       </div>
       <div class="r-project-card">
@@ -272,7 +272,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">🤝 组织参与</div>
     <ul class="r-org-list">
-      <li class="r-org-item"><strong>Linxira OS</strong> — 发起并构建面向理学的 Debian 衍生发行版</li>
+      <li class="r-org-item"><strong>Linxira OS</strong> — 发起并构建基于 Arch/CachyOS 的科研发行版</li>
       <li class="r-org-item"><strong>YeShanBoYun Studio</strong> — 组织成员，参与 NeuroPlex-Nexus 等项目</li>
       <li class="r-org-item"><strong>openagent-labforge-bio</strong> — 主线项目，持续开发维护</li>
       <li class="r-org-item"><strong>OpenI 启智社区</strong> — 活跃训练，公开发布 NPU/GPU 模型</li>
@@ -354,7 +354,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，具备独立完成植物实验与分子生物学实验的能力，同时可独立开展全流程生物信息学分析。在 IJMS 期刊参与发表十字花科 YABBY 家族转录因子相关研究 (第四作者，负责 software 与 data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统)。全栈 AI 工程化：从 Ascend 910 / NVIDIA 硬件到 MindSpore / Paddle 框架再到 Agent 编排，构建完整 AI 闭环。交叉学科创新者，将 CV 与 Agent 注入生物信息学与农业场景，同时推进开源 Linux 发行版建设。30+ 公开仓库覆盖 AI、生信、系统软件等方向，所有项目均有可运行代码支撑。
+      生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统)。AI 训练、计算机视觉、生信工具链与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS 的科研发行版)。30+ 公开仓库覆盖 AI、生信、系统软件等方向。
     </p>
   </div>
 
