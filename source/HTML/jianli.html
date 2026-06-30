@@ -85,10 +85,11 @@
   <div class="print-status" id="printStatus"></div>
 </div>
 
-<script src="https://unpkg.com/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+<script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
 function exportPDF() {
-  if (typeof html2pdf === 'undefined') {
+  if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
     alert('PDF 库加载失败，请刷新页面重试。');
     return;
   }
@@ -106,30 +107,23 @@ function exportPDF() {
   var allCanvases = [];
 
   function renderPage(idx) {
-    if (idx >= pages.length) {
-      buildPDF();
-      return;
-    }
+    if (idx >= pages.length) { buildPDF(); return; }
     var clone = pages[idx].cloneNode(true);
     clone.style.cssText = 'width:210mm;height:297mm;overflow:hidden;position:relative;background:#fff;padding:14mm 12mm;box-sizing:border-box;';
     container.innerHTML = '';
     container.appendChild(clone);
-
-    html2pdf().set({
-      margin: 0,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, logging: false },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    }).from(clone).toContainer().toCanvas().then(function(res) {
-      allCanvases.push({ canvas: res.canvas, index: idx });
-      status.textContent = '已渲染 ' + allCanvases.length + '/' + pages.length + ' 页...';
-      renderPage(idx + 1);
-    });
+    setTimeout(function() {
+      html2canvas(clone, { scale: 2, useCORS: true, logging: false }).then(function(canvas) {
+        allCanvases.push({ canvas: canvas, index: idx });
+        status.textContent = '已渲染 ' + allCanvases.length + '/' + pages.length + ' 页...';
+        renderPage(idx + 1);
+      });
+    }, 200);
   }
 
   function buildPDF() {
     allCanvases.sort(function(a, b) { return a.index - b.index; });
-    var pdf = new html2pdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+    var pdf = new jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
     for (var j = 0; j < allCanvases.length; j++) {
       if (j > 0) pdf.addPage();
       pdf.addImage(allCanvases[j].canvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, 210, 297);
