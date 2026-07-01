@@ -135,9 +135,6 @@ type: resume
           <span class="r-skill-tag">Python</span>
           <span class="r-skill-tag">R</span>
           <span class="r-skill-tag">Shell</span>
-          <span class="r-skill-tag">Julia (学习中)</span>
-          <span class="r-skill-tag">Rust (学习中)</span>
-          <span class="r-skill-tag">Go (学习中)</span>
         </div>
       </div>
       <div class="r-skill-card">
@@ -174,7 +171,6 @@ type: resume
           <span class="r-skill-tag">Docker</span>
           <span class="r-skill-tag">Git</span>
           <span class="r-skill-tag">OpenI CloudBrain</span>
-          <span class="r-skill-tag">高性能分析 (Rust/Go/Julia)</span>
         </div>
       </div>
     </div>
@@ -237,8 +233,8 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality">Buckwheat-seed-quality</a></h4>
-        <div class="r-desc">PP-YOLOE+ 荞麦质量检测，余弦退火调度 + Ascend 910 迁移 + 双平台推理。</div>
-        <span class="r-lang">Python</span>
+        <div class="r-desc">PP-YOLOE+ 荞麦质量检测，余弦退火调度 + Ascend 910 迁移 + 双平台推理。探索 Julia 高性能计算。</div>
+        <span class="r-lang">Python / Julia</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
@@ -252,8 +248,8 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
-        <div class="r-desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构，纯 Go 实现。</div>
-        <span class="r-lang">Go</span>
+        <div class="r-desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构。探索 Rust 高性能重写。</div>
+        <span class="r-lang">Go / Rust</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony">CNN-MicroAI-Colony</a></h4>
