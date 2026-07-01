@@ -158,6 +158,9 @@ type: resume
           <span class="r-skill-tag">PP-YOLO 系列</span>
           <span class="r-skill-tag">YOLOv5/v8</span>
           <span class="r-skill-tag">CNN 分类</span>
+          <span class="r-skill-tag">网络药理学</span>
+          <span class="r-skill-tag">分子对接与动力学</span>
+          <span class="r-skill-tag">R/Bioconductor</span>
           <span class="r-skill-tag">余弦退火 + Restart</span>
           <span class="r-skill-tag">分层动态学习率</span>
         </div>
@@ -166,12 +169,12 @@ type: resume
         <h4>工程与生态</h4>
         <div class="r-skill-tags">
           <span class="r-skill-tag">AI Agent 编排</span>
-          <span class="r-skill-tag">API 网关</span>
           <span class="r-skill-tag">Linux 发行版构建</span>
+          <span class="r-skill-tag">Linux 运维</span>
           <span class="r-skill-tag">生物信息学</span>
           <span class="r-skill-tag">Docker</span>
+          <span class="r-skill-tag">系统编译</span>
           <span class="r-skill-tag">Git</span>
-          <span class="r-skill-tag">OpenI CloudBrain</span>
         </div>
       </div>
     </div>
@@ -238,7 +241,7 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
-        <div class="r-desc">科研工作流编排器：多模型协调生信/化学分析管线，自动化实验规划与研究流程。</div>
+        <div class="r-desc">科研工作流编排器：多模型协调生信/化学分析管线，集成网络药理学/分子对接/分子动力学等药物筛选自动化流程。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -379,6 +382,15 @@ type: resume
   <!-- 在研项目与预期成果 -->
   <div class="r-section">
     <div class="r-section-title">📋 在研项目与预期成果</div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">AI 驱动药物虚拟筛选自动化管线</div>
+        <div class="r-meta">2026.06 — 持续 · 前沿方法集成</div>
+      </div>
+      <div class="r-exp-detail">
+        Agent 自主完成全流程：靶点识别 → 网络药理学分析 → 分子对接 → 分子动力学模拟 → 专业报告生成。集成 <span class="r-hl">PBCNet2.0</span> 等变图神经网络蛋白-配体亲和力预测方法，实现零样本高精度筛选。
+      </div>
+    </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">荞麦矮化基因挖掘与功能分析</div>
