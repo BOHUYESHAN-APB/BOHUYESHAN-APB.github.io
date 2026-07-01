@@ -182,7 +182,7 @@ type: resume
     <div class="r-section-title">📊 关键数据</div>
     <div class="r-stats">
       <div class="r-stat"><div class="r-num">30+</div><div class="r-label">公开仓库</div></div>
-      <div class="r-stat"><div class="r-num">617</div><div class="r-label">自发生信模块</div></div>
+      <div class="r-stat"><div class="r-num">617</div><div class="r-label">生信技能 (论文/数据/多组学)</div></div>
       <div class="r-stat"><div class="r-num">2</div><div class="r-label">操作系统项目</div></div>
     </div>
   </div>
@@ -223,7 +223,7 @@ type: resume
     <div class="r-project-grid">
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio">openagent-labforge-bio</a> <span class="r-badge">主线</span></h4>
-        <div class="r-desc"><strong>主线。</strong> 生信分析自动化编排：多 Agent 协调多组学分析流程，集成学术写作管线，减少重复人工操作。</div>
+        <div class="r-desc"><strong>主线。</strong> ExtendAI Lab：617 生信技能 + 论文写作 + 数据搜集，5 编排器 15 子代理的 OpenCode 插件生态。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
