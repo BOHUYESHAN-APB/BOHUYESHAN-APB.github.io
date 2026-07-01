@@ -228,7 +228,7 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/linxira-os">Linxira OS</a></h4>
-        <div class="r-desc">基于 Arch/CachyOS 的科研发行版：Live-build、滚动更新稳定性调整、多内核支持。</div>
+        <div class="r-desc">自构建 Linux 发行版：精通系统编译/包管理/内核调优，深度掌握 Linux 运维与科研部署。</div>
         <span class="r-lang">Shell / Python</span>
       </div>
       <div class="r-project-card">
@@ -291,7 +291,7 @@ type: resume
         <div class="r-name">生信分析手段</div>
       </div>
       <div class="r-exp-detail">
-        独立完成从原始数据到发表级结果的全流程生信分析：RNA-seq 差异表达分析（<span class="r-hl">DESeq2 / edgeR</span>）、基因家族系统发育重建（<span class="r-hl">MEGA / IQ-TREE</span>）、转录组功能注释（<span class="r-hl">GO / KEGG 富集</span>）、<span class="r-hl">WGCNA</span>共表达网络分析、<span class="r-hl">TCGA / GEO</span> 公共数据库检索与挖掘、网络药理学分析与分子对接。掌握 <span class="r-hl">Python / R / Shell</span> 生信脚本编写，GitHub 仓库完整记录分析流程与可复现代码。
+        独立完成从原始数据到发表级结果的全流程生信分析：RNA-seq 差异表达分析（<span class="r-hl">DESeq2 / edgeR</span>）、基因家族系统发育重建（<span class="r-hl">MEGA / IQ-TREE</span>）、转录组功能注释（<span class="r-hl">GO / KEGG 富集</span>）、<span class="r-hl">WGCNA</span>共表达网络分析、<span class="r-hl">TCGA / GEO</span> 深度挖掘与可视化报告、网络药理学与**分子对接/分子动力学模拟**、多组学分析 (转录组/代谢组/蛋白组)。掌握 <span class="r-hl">Python / R (DESeq2/edgeR/ggplot2等) / Shell</span> 生信脚本编写，可独立撰写中英文分析报告。GitHub 仓库完整记录分析流程与可复现代码。
       </div>
     </div>
   </div>
@@ -362,7 +362,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq/多组学/基因家族/网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。30+ 公开仓库。
+      生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq/多组学/基因家族/网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (自构建 Linux 发行版)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。30+ 公开仓库。
     </p>
   </div>
 
