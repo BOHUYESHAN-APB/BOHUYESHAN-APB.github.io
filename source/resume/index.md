@@ -181,8 +181,8 @@ type: resume
     <div class="r-section-title">📊 关键数据</div>
     <div class="r-stats">
       <div class="r-stat"><div class="r-num">30+</div><div class="r-label">公开仓库</div></div>
-      <div class="r-stat"><div class="r-num">617</div><div class="r-label">生信技能</div></div>
-      <div class="r-stat"><div class="r-num">5/15</div><div class="r-label">编排器 / Agent</div></div>
+      <div class="r-stat"><div class="r-num">1</div><div class="r-label">SCI 论文 (IJMS)</div></div>
+      <div class="r-stat"><div class="r-num">1</div><div class="r-label">发明专利</div></div>
       <div class="r-stat"><div class="r-num">2</div><div class="r-label">操作系统项目</div></div>
     </div>
   </div>
@@ -223,7 +223,7 @@ type: resume
     <div class="r-project-grid">
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio">openagent-labforge-bio</a> <span class="r-badge">主线</span></h4>
-        <div class="r-desc">ExtendAI Lab——OpenCode 智能体编排框架：5 编排器 + 15 Agent + 617 生信技能 + 学术写作管线。</div>
+        <div class="r-desc"><strong>主线。</strong> 生信分析自动化编排：多 Agent 协调多组学分析流程，集成学术写作管线，减少重复人工操作。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -233,27 +233,27 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality">Buckwheat-seed-quality</a></h4>
-        <div class="r-desc">PP-YOLOE+ 荞麦质量检测，余弦退火调度 + Ascend 910 迁移 + 双平台推理。探索 Julia 高性能计算。</div>
+        <div class="r-desc">替代人工分拣：PP-YOLOE+ 自动检测荞麦饱满度与杂质，余弦退火优化 + Ascend 910 适配 + 双平台推理。</div>
         <span class="r-lang">Python / Julia</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
-        <div class="r-desc">AI 驱动科研编排与自动化层: 多模型协调、生信/化学分析管线规划、自主研究边界发现。</div>
+        <div class="r-desc">科研工作流编排器：多模型协调生信/化学分析管线，自动化实验规划与研究流程。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio">VisionDeploy-Studio</a></h4>
-        <div class="r-desc">CV 模型本地部署助手: YOLO 多硬件加速 (CUDA/XPU/ROCm)、按需环境管理。</div>
+        <div class="r-desc">CV 模型一键部署：YOLO 多硬件 (CUDA/XPU/ROCm) 自动适配，降低部署门槛。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
-        <div class="r-desc">多 LLM 编码代理 CLI：TUI + 插件系统 + 缓存优先架构。探索 Rust 高性能重写。</div>
+        <div class="r-desc">多模型编程助手：TUI 交互 + 插件扩展 + 智能缓存，提升日常编码效率。探索 Rust 重写。</div>
         <span class="r-lang">Go / Rust</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony">CNN-MicroAI-Colony</a></h4>
-        <div class="r-desc">CNN 菌落自动分析，华为 NPU + MindSpore 适配，OpenI 云端训练。</div>
+        <div class="r-desc">替代人工目测计数：CNN 分类+计数一体，华为 NPU + MindSpore 适配，OpenI 云端训练。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -362,7 +362,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统)。AI 训练、计算机视觉、生信工具链与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS 的科研发行版)。30+ 公开仓库覆盖 AI、生信、系统软件等方向。
+      生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq/多组学/基因家族/网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。30+ 公开仓库。
     </p>
   </div>
 
