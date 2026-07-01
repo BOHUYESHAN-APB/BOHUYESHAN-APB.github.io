@@ -294,7 +294,7 @@ type: resume
         <div class="r-name">生信分析手段</div>
       </div>
       <div class="r-exp-detail">
-        独立完成从原始数据到发表级结果的全流程生信分析：RNA-seq 差异表达分析（<span class="r-hl">DESeq2 / edgeR</span>）、基因家族系统发育重建（<span class="r-hl">MEGA / IQ-TREE</span>）、转录组功能注释（<span class="r-hl">GO / KEGG 富集</span>）、<span class="r-hl">WGCNA</span>共表达网络分析、<span class="r-hl">TCGA / GEO</span> 深度挖掘与可视化报告、网络药理学与**分子对接/分子动力学模拟**、多组学分析 (转录组/代谢组/蛋白组)。掌握 <span class="r-hl">Python / R (DESeq2/edgeR/ggplot2等) / Shell</span> 生信脚本编写，可独立撰写中英文分析报告。GitHub 仓库完整记录分析流程与可复现代码。
+        独立完成从原始数据到发表级结果的全流程生信分析：<strong>RNA-seq</strong>（DESeq2 / edgeR）、<strong>系统发育</strong>（MEGA / IQ-TREE）、<strong>GO / KEGG</strong> 富集、<strong>WGCNA</strong> 共表达网络、<strong>TCGA / GEO</strong> 深度挖掘与可视化、<strong>多组学</strong>（转录组/代谢组/蛋白组）、<strong>网络药理学+分子对接/动力学</strong>、<strong>AlphaFold</strong> 蛋白结构预测、<strong>BWA/Samtools</strong> 变异检测。掌握 <span class="r-hl">Python / R (DESeq2/edgeR/ggplot2) / Shell</span>，可独立撰写中英文分析报告。GitHub 仓库完整记录分析流程与可复现代码。
       </div>
     </div>
   </div>
