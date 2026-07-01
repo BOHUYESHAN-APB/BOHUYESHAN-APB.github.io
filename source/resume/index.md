@@ -182,8 +182,7 @@ type: resume
     <div class="r-section-title">📊 关键数据</div>
     <div class="r-stats">
       <div class="r-stat"><div class="r-num">30+</div><div class="r-label">公开仓库</div></div>
-      <div class="r-stat"><div class="r-num">1</div><div class="r-label">SCI 论文 (IJMS)</div></div>
-      <div class="r-stat"><div class="r-num">1</div><div class="r-label">发明专利</div></div>
+      <div class="r-stat"><div class="r-num">617</div><div class="r-label">自发生信模块</div></div>
       <div class="r-stat"><div class="r-num">2</div><div class="r-label">操作系统项目</div></div>
     </div>
   </div>
