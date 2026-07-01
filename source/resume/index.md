@@ -325,7 +325,7 @@ type: resume
 
   <!-- 荣誉 -->
   <div class="r-section">
-    <div class="r-section-title">🏅 荣誉</div>
+    <div class="r-section-title">🏅 竞赛项目经历</div>
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">2025 国际大学生创新创业大赛</div>
