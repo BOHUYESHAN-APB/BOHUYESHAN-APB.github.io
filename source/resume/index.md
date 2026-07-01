@@ -81,7 +81,7 @@ type: resume
       <a href="https://bohuyeshan.top">博客</a>
       <a href="https://openi.pcl.ac.cn/bhys">OpenI</a>
       <a href="https://orcid.org/0009-0002-8426-0610">ORCID</a>
-      <span>njys@gmail.com</span><span>bohuyeshan@gmail.com</span><span>bohuyeshan@163.com</span><span>bohuyeshan@126.com</span>
+      <span>bohuyeshan@gmail.com</span><span>bohuyeshan@163.com</span><span>bohuyeshan@126.com</span>
     </div>
     <a class="r-print-btn" href="/HTML/jianli.html" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
