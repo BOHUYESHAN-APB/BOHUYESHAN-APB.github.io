@@ -134,13 +134,10 @@ type: resume
         <div class="r-skill-tags">
           <span class="r-skill-tag">Python</span>
           <span class="r-skill-tag">R</span>
-          <span class="r-skill-tag">Java</span>
-          <span class="r-skill-tag">TypeScript/JS</span>
+          <span class="r-skill-tag">Shell</span>
           <span class="r-skill-tag">Julia (学习中)</span>
           <span class="r-skill-tag">Rust (学习中)</span>
           <span class="r-skill-tag">Go (学习中)</span>
-          <span class="r-skill-tag">Dart</span>
-          <span class="r-skill-tag">Shell</span>
         </div>
       </div>
       <div class="r-skill-card">
