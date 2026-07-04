@@ -30,7 +30,7 @@ type: resume
   .r-skill-tag { background: #eef2ff; color: #4338ca; padding: 0.2rem 0.7rem; border-radius: 16px; font-size: 0.82rem; font-weight: 500; }
 
   /* Projects */
-  .r-project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .r-project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
   .r-project-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.2rem; background: #fafbfc; transition: transform 0.15s, box-shadow 0.15s; }
   .r-project-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
   .r-project-card h4 { font-size: 1rem; margin-bottom: 0.3rem; }
@@ -395,32 +395,17 @@ type: resume
   <!-- 在研项目与预期成果 -->
   <div class="r-section">
     <div class="r-section-title">📋 在研项目与预期成果</div>
-    <div class="r-exp-item">
-      <div class="r-exp-head">
-        <div class="r-name">AI 驱动药物虚拟筛选自动化管线</div>
-        <div class="r-meta">2026.06 — 持续 · 前沿方法集成</div>
-      </div>
-      <div class="r-exp-detail">
-        Agent 自主完成全流程：靶点识别 → 网络药理学分析 → 分子对接 → 分子动力学模拟 → 专业报告生成。集成 <span class="r-hl">PBCNet2.0</span> 等变图神经网络蛋白-配体亲和力预测方法，实现零样本高精度筛选。
-      </div>
+    <div style="margin-bottom:1.2rem;">
+      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">AI 驱动药物虚拟筛选自动化管线 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">2026.06 — 持续 · 前沿方法集成</span></div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">Agent 自主完成全流程：靶点识别 → 网络药理学分析 → 分子对接 → 分子动力学模拟 → 专业报告生成。集成 <span class="r-hl">PBCNet2.0</span> 等变图神经网络蛋白-配体亲和力预测方法，实现零样本高精度筛选。</div>
     </div>
-    <div class="r-exp-item">
-      <div class="r-exp-head">
-        <div class="r-name">荞麦矮化基因挖掘与功能分析</div>
-        <div class="r-meta">预计 2026.09 预印本</div>
-      </div>
-      <div class="r-exp-detail">
-        基于转录组与基因组数据挖掘荞麦矮化相关候选基因，完成差异表达分析与功能注释。计划同步发布于生物学与人工智能预印本平台。
-      </div>
+    <div style="margin-bottom:1.2rem;">
+      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">荞麦矮化基因挖掘与功能分析 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">预计 2026.09 预印本</span></div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">基于转录组与基因组数据挖掘荞麦矮化相关候选基因，完成差异表达分析与功能注释。计划同步发布于生物学与人工智能预印本平台。</div>
     </div>
-    <div class="r-exp-item">
-      <div class="r-exp-head">
-        <div class="r-name">微生物小目标检测算法改进</div>
-        <div class="r-meta">预计 2026.09 预印本</div>
-      </div>
-      <div class="r-exp-detail">
-        针对微生物菌落检测中<span class="r-hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="r-hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="r-hl">华为 Ascend 910</span> 架构适配与训练。
-      </div>
+    <div style="margin-bottom:0;">
+      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">微生物小目标检测算法改进 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">预计 2026.09 预印本</span></div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">针对微生物菌落检测中<span class="r-hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="r-hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="r-hl">华为 Ascend 910</span> 架构适配与训练。</div>
     </div>
   </div>
 
