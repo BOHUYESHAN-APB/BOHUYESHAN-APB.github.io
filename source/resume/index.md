@@ -223,10 +223,15 @@ type: resume
   <!-- 开源项目 -->
   <div class="r-section">
     <div class="r-section-title">📦 开源项目精选</div>
+    <div style="font-size:0.85rem; line-height:1.7; color:#475569; margin-bottom:1.5rem; padding:1rem; background:#f8fafc; border-left:3px solid #3b82f6; border-radius:0 8px 8px 0;">
+      <strong style="color:#1e3a8a;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
+      <br><br>
+      <strong style="color:#1e3a8a;">持续追踪 AI for Science 前沿：</strong> 深入研究阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
+    </div>
     <div class="r-project-grid">
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio">openagent-labforge-bio</a> <span class="r-badge">主线</span></h4>
-        <div class="r-desc"><strong>主线。</strong> ExtendAI Lab：617 生信技能 + 论文写作 + 数据搜集，5 编排器 15 子代理的 OpenCode 插件生态。</div>
+        <div class="r-desc"><strong>主线。</strong> ExtendAI Lab：617 生信技能 + 论文写作 + 数据搜集，6 编排器 + 12 子代理的 OpenCode 插件生态。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -344,14 +349,22 @@ type: resume
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">2025 大学生创新创业训练项目</div>
-        <div class="r-meta">省级立项</div>
+        <div class="r-meta">省级立项 · 中期检查优秀</div>
       </div>
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">2025 互联网+</div>
-        <div class="r-meta">省级立项</div>
+        <div class="r-meta">省级立项 · 中期检查优秀</div>
       </div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">2025 创新创业挑战</div>
+        <div class="r-meta">院系资助 · 优秀结题</div>
+      </div>
+    </div>
+  </div>
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
