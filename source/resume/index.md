@@ -365,14 +365,6 @@ type: resume
       </div>
     </div>
   </div>
-    </div>
-    <div class="r-exp-item">
-      <div class="r-exp-head">
-        <div class="r-name">2025 创新创业挑战</div>
-        <div class="r-meta">校级立项</div>
-      </div>
-    </div>
-  </div>
 
   <!-- 自我评价 -->
   <div class="r-section">
@@ -380,16 +372,6 @@ type: resume
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
       生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq/多组学/基因家族/网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (自构建 Linux 发行版)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。30+ 公开仓库。
     </p>
-  </div>
-
-  <!-- 获取印刷版 -->
-  <div class="r-print-section">
-    <a href="/HTML/jianli.html" target="_blank">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      获取印刷版简历 (A3)
-    </a>
-    <div class="r-print-hint">A3 横向打印 · 左右两页展开即完整简历 · 也可分页打印为两张 A4</div>
-    </div>
   </div>
 
   <!-- 在研项目与预期成果 -->
@@ -408,4 +390,15 @@ type: resume
       <div style="font-size:0.9rem; color:#475569; line-height:1.6;">针对微生物菌落检测中<span class="r-hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="r-hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="r-hl">华为 Ascend 910</span> 架构适配与训练。</div>
     </div>
   </div>
+
+  <!-- 获取印刷版 -->
+  <div class="r-print-section">
+    <a href="/HTML/jianli.html" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      获取印刷版简历 (A3)
+    </a>
+    <div class="r-print-hint">A3 横向打印 · 左右两页展开即完整简历 · 也可分页打印为两张 A4</div>
+  </div>
+
+</div>
 
