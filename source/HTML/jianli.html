@@ -68,6 +68,8 @@
   .self-eval { font-size: 9pt; color: #262421; line-height: 1.6; }
   .contact-block { font-size: 8.5pt; color: #5a564e; line-height: 1.9; }
   .contact-block strong { color: #1f4d8f; font-weight: 600; }
+  .bottom-full { margin-top: 3mm; padding-top: 3mm; border-top: 0.2mm solid #d9d5ce; }
+  .bottom-full .section-title { margin-bottom: 2mm; }
   @media print {
     @page { size: A3 landscape; margin: 0; }
     html, body { width: 420mm; background: #fff; }
@@ -239,25 +241,6 @@ function exportPDF() {
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-title">竞赛项目经历</div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">国际大学生创新创业大赛 · 人工智能赛道</div><div class="meta">主持</div></div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">"挑战杯"全国竞赛 · 人工智能赛道</div><div class="meta">负责人 · 省级立项</div></div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">大学生创新创业训练项目</div><div class="meta">省级立项 · 中期检查优秀</div></div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">互联网+</div><div class="meta">省级立项 · 中期检查优秀</div></div>
-          </div>
-          <div class="exp">
-            <div class="exp-head"><div class="name">创新创业挑战</div><div class="meta">院系资助 · 优秀结题</div></div>
-          </div>
-        </div>
-
       </div>
 
       <div class="col-side">
@@ -313,19 +296,30 @@ function exportPDF() {
             <strong>ORCID</strong> 0009-0002-8426-0610<br>
             <strong>Email</strong> bohuyeshan@gmail.com / bohuyeshan@163.com / bohuyeshan@126.com
           </div>
-          </div>
-          <div class="more-repos">
-            <div class="more-repos-label">更多仓库</div>
-            <div class="more-repos-tags">
-              <span>NeuroPlex-Nexus</span><span>openagent-labforge</span><span>AionUi</span><span>QiaoTime</span><span>mdspark</span><span>CMYKE</span>
-            </div>
-            <div class="more-repos-label" style="margin-top:1mm;">涉及技术栈</div>
-            <div class="more-repos-tags">
-              <span>Julia</span><span>Rust</span><span>Go</span><span>Flutter</span><span>R</span>
-            </div>
-          </div>
+           </div>
         </div>
     </div>
+
+    <!-- 左页底部通栏：竞赛项目经历 -->
+    <div class="bottom-full">
+      <div class="section-title">竞赛项目经历</div>
+      <div class="exp">
+        <div class="exp-head"><div class="name">国际大学生创新创业大赛 · 人工智能赛道</div><div class="meta">主持</div></div>
+      </div>
+      <div class="exp">
+        <div class="exp-head"><div class="name">"挑战杯"全国竞赛 · 人工智能赛道</div><div class="meta">负责人 · 省级立项</div></div>
+      </div>
+      <div class="exp">
+        <div class="exp-head"><div class="name">大学生创新创业训练项目</div><div class="meta">省级立项 · 中期检查优秀</div></div>
+      </div>
+      <div class="exp">
+        <div class="exp-head"><div class="name">互联网+</div><div class="meta">省级立项 · 中期检查优秀</div></div>
+      </div>
+      <div class="exp">
+        <div class="exp-head"><div class="name">创新创业挑战</div><div class="meta">院系资助 · 优秀结题</div></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- ===== RIGHT A4 PAGE ===== -->
@@ -365,6 +359,8 @@ function exportPDF() {
           <div class="section-title">开源项目精选</div>
           <div class="proj-overview" style="font-size:7.5pt; line-height:1.65; color:#555; margin-bottom:4mm;">
             <strong style="color:#222;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
+            <br><br>
+            <strong style="color:#222;">持续追踪 AI for Science 前沿：</strong> 深入研究阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
           </div>
           <div class="proj-grid">
             <div class="proj-item">
@@ -406,6 +402,16 @@ function exportPDF() {
               <h3>VisionDeploy-Studio</h3>
               <div class="desc">CV 模型一键部署：YOLO 多硬件 (CUDA/XPU/ROCm) 自动适配，降低部署门槛。</div>
               <span class="lang">Python</span>
+            </div>
+          </div>
+          <div class="more-repos">
+            <div class="more-repos-label">更多仓库</div>
+            <div class="more-repos-tags">
+              <span>NeuroPlex-Nexus</span><span>openagent-labforge</span><span>AionUi</span><span>QiaoTime</span><span>mdspark</span><span>CMYKE</span>
+            </div>
+            <div class="more-repos-label" style="margin-top:1mm;">涉及技术栈</div>
+            <div class="more-repos-tags">
+              <span>Julia</span><span>Rust</span><span>Go</span><span>Flutter</span><span>R</span>
             </div>
           </div>
         </div>
@@ -472,15 +478,17 @@ function exportPDF() {
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-title">自我评价</div>
-          <div class="self-eval">
-            云南农业大学生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq / 多组学 / 基因家族 / 网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。
-          </div>
-        </div>
-
       </div>
     </div>
+
+    <!-- 右页底部通栏：自我评价 -->
+    <div class="bottom-full">
+      <div class="section-title">自我评价</div>
+      <div class="self-eval">
+        云南农业大学生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq / 多组学 / 基因家族 / 网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。
+      </div>
+    </div>
+
   </div>
 
 </div>
