@@ -241,8 +241,20 @@ function exportPDF() {
 
         <div class="section">
           <div class="section-title">竞赛项目经历</div>
-          <div class="exp-detail" style="font-size:8pt; line-height:1.6;">
-            2025 国际大学生创新创业大赛·人工智能赛道(主持) &nbsp;|&nbsp; "挑战杯"全国竞赛·省级立项(负责人) &nbsp;|&nbsp; 大创·省级立项 &nbsp;|&nbsp; 互联网+·省级立项 &nbsp;|&nbsp; 创新创业挑战·校级
+          <div class="exp">
+            <div class="exp-head"><div class="name">国际大学生创新创业大赛 · 人工智能赛道</div><div class="meta">主持</div></div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">"挑战杯"全国竞赛 · 人工智能赛道</div><div class="meta">负责人 · 省级立项</div></div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">大学生创新创业训练项目</div><div class="meta">省级立项 · 中期检查优秀</div></div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">互联网+</div><div class="meta">省级立项 · 中期检查优秀</div></div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">创新创业挑战</div><div class="meta">院系资助 · 优秀结题</div></div>
           </div>
         </div>
 
@@ -419,41 +431,51 @@ function exportPDF() {
         </div>
 
         <div class="section">
+          <div class="section-title">关键数据</div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">30+</div></div>
+            <div class="exp-detail" style="font-size:8pt;">公开 GitHub 仓库</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">617</div></div>
+            <div class="exp-detail" style="font-size:8pt;">生信技能库 (论文写作 / 数据搜集 / 多组学分析)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">6 / 12</div></div>
+            <div class="exp-detail" style="font-size:8pt;">编排器 + 子代理 (OpenCode 插件架构)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">2</div></div>
+            <div class="exp-detail" style="font-size:8pt;">操作系统级项目 (Linxira OS)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">1</div></div>
+            <div class="exp-detail" style="font-size:8pt;">SCI 期刊论文 (IJMS, 第四作者)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">1</div></div>
+            <div class="exp-detail" style="font-size:8pt;">发明专利 (已公布实审)</div>
+          </div>
+        </div>
+
+        <div class="section">
           <div class="section-title">技术栈</div>
           <ul class="bullets">
             <li><strong>AI 训练</strong>: Ascend 910 / NVIDIA CUDA / MindSpore / PaddlePaddle / PyTorch</li>
             <li><strong>模型</strong>: LLM / Diffusion / Transformer / PP-YOLO / YOLOv5-v8 / CNN</li>
             <li><strong>生信工具</strong>: DESeq2 / edgeR / MEGA / IQ-TREE / BWA / Samtools / GATK</li>
-            <li><strong>Agent 编排</strong>: OpenCode 插件 / 6 编排器 + 12 子代理 / 617 生信技能</li>
+            <li><strong>Agent 编排</strong>: 6 编排器 + 12 子代理 / 617 生信技能</li>
             <li><strong>系统</strong>: Linux (Arch/CachyOS) / Docker / Slurm / API 网关</li>
           </ul>
-        </div>
-
-        <div class="section">
-          <div class="section-title">更多仓库</div>
-          <div class="more-repos-tags">
-            <span>NeuroPlex-Nexus</span><span>openagent-labforge</span><span>AionUi</span><span>QiaoTime</span><span>mdspark</span><span>CMYKE</span>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-title">涉及技术栈</div>
-          <div class="more-repos-tags">
-            <span>Julia</span><span>Rust</span><span>Go</span><span>Flutter</span><span>R</span>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-title">竞赛项目经历</div>
-          <div class="exp-detail" style="font-size:8pt; line-height:1.6;">
-            2025 国际大学生创新创业大赛·人工智能赛道(主持) &nbsp;|&nbsp; "挑战杯"全国竞赛·省级立项(负责人) &nbsp;|&nbsp; 大创·省级立项 &nbsp;|&nbsp; 互联网+·省级立项 &nbsp;|&nbsp; 创新创业挑战·校级
+          <div class="skill-wrap" style="margin-top:2mm;">
+            <span class="skill-tag">Julia</span><span class="skill-tag">Rust</span><span class="skill-tag">Go</span><span class="skill-tag">Flutter</span><span class="skill-tag">R</span>
           </div>
         </div>
 
         <div class="section">
           <div class="section-title">自我评价</div>
           <div class="self-eval">
-            云南农业大学生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq/多组学/基因家族/网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。30+ 公开仓库。
+            云南农业大学生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq / 多组学 / 基因家族 / 网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。
           </div>
         </div>
 
