@@ -24,18 +24,18 @@
   .print-btn:disabled { background: #999; cursor: wait; }
   .print-status { font-size: 12px; color: #666; margin-top: 6px; min-height: 18px; }
   .a3-sheet { width: 420mm; height: 297mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); display: grid; grid-template-columns: 210mm 210mm; overflow: hidden; position: relative; }
-  .a4-page { width: 210mm; height: 297mm; padding: 14mm 12mm; overflow: hidden; position: relative; }
+  .a4-page { width: 210mm; height: 297mm; padding: 14mm 12mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
   .a4-page:first-child { border-right: 0.3mm solid #d9d5ce; }
   .section { margin-bottom: 5.5mm; }
   .section:last-child { margin-bottom: 0; }
   .section-title { font-size: 8.5pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #1f4d8f; margin: 0 0 3mm; display: flex; align-items: center; gap: 2mm; }
   .section-title::before { content: ''; display: inline-block; width: 5mm; height: 0.5mm; background: #1f4d8f; }
-  .resume-header { padding-bottom: 3mm; margin-bottom: 3mm; border-bottom: 0.2mm solid #d9d5ce; }
+  .resume-header { padding-bottom: 3mm; margin-bottom: 3mm; border-bottom: 0.2mm solid #d9d5ce; flex-shrink: 0; }
   .resume-header h1 { font-size: 26pt; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 1mm; }
   .resume-header .subtitle { font-size: 9pt; color: #1f4d8f; font-weight: 500; margin-bottom: 1.5mm; }
   .resume-header .contact { font-size: 7.5pt; color: #5a564e; line-height: 1.8; }
   .resume-header .contact .sep { opacity: 0.3; margin: 0 1.5mm; }
-  .two-col { display: grid; grid-template-columns: 7fr 5fr; gap: 4mm; height: calc(297mm - 14mm - 14mm - 3mm - 3mm); }
+  .two-col { display: grid; grid-template-columns: 7fr 5fr; gap: 4mm; flex: 1; min-height: 0; overflow: hidden; }
   .col-main, .col-side { overflow: hidden; }
   .exp { margin-bottom: 3.5mm; }
   .exp:last-child { margin-bottom: 0; }
@@ -68,7 +68,7 @@
   .self-eval { font-size: 9pt; color: #262421; line-height: 1.6; }
   .contact-block { font-size: 8.5pt; color: #5a564e; line-height: 1.9; }
   .contact-block strong { color: #1f4d8f; font-weight: 600; }
-  .bottom-full { margin-top: 3mm; padding-top: 3mm; border-top: 0.2mm solid #d9d5ce; }
+  .bottom-full { margin-top: 3mm; padding-top: 3mm; border-top: 0.2mm solid #d9d5ce; flex-shrink: 0; }
   .bottom-full .section-title { margin-bottom: 2mm; }
   @media print {
     @page { size: A3 landscape; margin: 0; }
