@@ -187,6 +187,13 @@ aside:
     last_push_date: true
     runtime_date: 8/8/2020 00:00:00
 
+# ===== 字数和阅读时间 =====
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+
 # ===== 统计 =====
 busuanzi:
   site_uv: true
@@ -206,6 +213,15 @@ darkmode:
 
 # ===== 阅读模式 =====
 readmode: true
+
+# ===== 搜索 =====
+search:
+  use: local_search
+  placeholder: 搜索文章...
+  local_search:
+    preload: true
+    top_n_per_article: 1
+    unescape: true
 
 # ===== 分享 =====
 share:
