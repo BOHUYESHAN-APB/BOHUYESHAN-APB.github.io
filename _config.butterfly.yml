@@ -36,7 +36,7 @@ social:
 # ===== 图片 =====
 favicon: /img/favicon.ico
 avatar:
-  img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+  img: /img/Avatar.jpg
   effect: false
 disable_top_img: false
 index_img: /img/banner/home-img.jpg
@@ -58,7 +58,7 @@ error_img:
 error_404:
   enable: true
   subtitle: 'Page Not Found'
-  background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
+  background: /img/error-page.png
 
 # ===== 文章元数据 =====
 post_meta:
