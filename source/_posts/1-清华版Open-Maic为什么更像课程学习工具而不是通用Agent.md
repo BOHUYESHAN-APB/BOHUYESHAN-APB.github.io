@@ -1,3 +1,13 @@
+---
+title: 清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent
+date: 2026-02-25 20:00:00
+tags:
+  - AI
+  - OpenMaic
+categories:
+  - 科研
+---
+
 # 清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent
 
 最近清华版 Open Maic 被讨论得越来越多，但这类项目最值得先讲清楚的，不是“高校也做了一个 AI”，而是它到底属于哪一类 AI。

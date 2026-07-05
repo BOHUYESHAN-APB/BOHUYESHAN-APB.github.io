@@ -1,3 +1,13 @@
+---
+title: QClaw、AutoClaw、OneClaw、JVS Claw、Kimi Claw、OpenClaw 怎么选：科研工作者的 Agent 平台比较
+date: 2026-03-15 20:00:00
+tags:
+  - Agent
+  - 平台对比
+categories:
+  - 科研
+---
+
 # QClaw、AutoClaw、OneClaw、JVS Claw、Kimi Claw、OpenClaw 怎么选：科研工作者的 Agent 平台比较
 
 ## 平台差异，决定的不是“能不能玩”，而是“能不能长期用”

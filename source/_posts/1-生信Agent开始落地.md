@@ -1,3 +1,13 @@
+---
+title: 生信 Agent 开始落地
+date: 2026-03-22 20:00:00
+tags:
+  - 生物信息学
+  - Agent
+categories:
+  - 科研
+---
+
 # 生信 Agent 开始落地
 
 > 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了

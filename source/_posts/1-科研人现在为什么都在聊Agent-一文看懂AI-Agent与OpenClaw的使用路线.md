@@ -1,3 +1,13 @@
+---
+title: 科研人现在为什么都在聊 Agent？一文看懂 AI、Agent 与 OpenClaw 的使用路线
+date: 2026-02-20 20:00:00
+tags:
+  - AI
+  - Agent
+categories:
+  - 科研
+---
+
 # 科研人现在为什么都在聊 Agent？一文看懂 AI、Agent 与 OpenClaw 的使用路线
 
 ## 这波热度，真正变的不是模型，而是“能不能用起来”
