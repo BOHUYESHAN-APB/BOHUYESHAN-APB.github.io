@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>国际象棋</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #E1F0FF 0%, #F2F2F7 100%);
+            margin: 0;
+            padding: 10px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1D1D1F;
+        }
+        h1 {
+            color: #1D1D1F;
+            margin: 10px 0;
+        }
+        .game-container {
+            position: relative;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1;
+            border: 2px solid #333;
+        }
+        .square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            cursor: pointer;
+            user-select: none;
+        }
+        .white {
+            background-color: #f0d9b5;
+        }
+        .black {
+            background-color: #b58863;
+        }
+        .selected {
+            background-color: #7b61ff !important;
+        }
+        .highlight {
+            position: relative;
+        }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 50%;
+        }
+        .status {
+            margin: 15px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1D1D1F;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.6);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #007AFF;
+            text-decoration: none;
+            font-weight: 500;
+            background: rgba(255,255,255,0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 480px) {
+            .square {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="back-btn">← 返回</a>
+    
+    <h1>国际象棋</h1>
+    
+    <div class="status">
+        <span id="statusText">白方回合</span>
+    </div>
+    
+    <div class="game-container">
+        <div id="board" class="board"></div>
+    </div>
+    
+    <div class="controls">
+        <button onclick="initGame()">重新开始</button>
+    </div>
+
+    <script>
+        const boardEl = document.getElementById('board');
+        const statusText = document.getElementById('statusText');
+        
+        const pieces = {
+            'r': '♜', 'n': '♞', 'b': '♝', 'q': '♛', 'k': '♚', 'p': '♟',
+            'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔', 'P': '♙'
+        };
+        
+        let board = [];
+        let turn = 'white'; // 'white' or 'black'
+        let selectedSquare = null;
+        
+        function initGame() {
+            // 初始化棋盘
+            // 大写为白棋，小写为黑棋
+            board = [
+                ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+                ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+                ['', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', ''],
+                ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+                ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+            ];
+            turn = 'white';
+            selectedSquare = null;
+            renderBoard();
+            updateStatus();
+        }
+        
+        function renderBoard() {
+            boardEl.innerHTML = '';
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    const square = document.createElement('div');
+                    square.className = `square ${(i + j) % 2 === 0 ? 'white' : 'black'}`;
+                    square.dataset.row = i;
+                    square.dataset.col = j;
+                    
+                    if (board[i][j]) {
+                        square.textContent = pieces[board[i][j]];
+                        // 简单的颜色区分，虽然unicode自带颜色，但为了保险
+                        square.style.color = isUpperCase(board[i][j]) ? '#fff' : '#000';
+                        // 给白棋加个阴影以便在浅色背景看清
+                        if (isUpperCase(board[i][j])) {
+                            square.style.textShadow = '0 0 2px #000';
+                        }
+                    }
+                    
+                    if (selectedSquare && selectedSquare.row === i && selectedSquare.col === j) {
+                        square.classList.add('selected');
+                    }
+                    
+                    square.addEventListener('click', handleClick);
+                    boardEl.appendChild(square);
+                }
+            }
+        }
+        
+        function handleClick(e) {
+            const row = parseInt(e.target.dataset.row);
+            const col = parseInt(e.target.dataset.col);
+            const piece = board[row][col];
+            
+            if (selectedSquare) {
+                // 尝试移动
+                if (selectedSquare.row === row && selectedSquare.col === col) {
+                    // 取消选择
+                    selectedSquare = null;
+                    renderBoard();
+                } else {
+                    // 移动逻辑
+                    if (isValidMove(selectedSquare.row, selectedSquare.col, row, col)) {
+                        movePiece(selectedSquare.row, selectedSquare.col, row, col);
+                        selectedSquare = null;
+                        turn = turn === 'white' ? 'black' : 'white';
+                        updateStatus();
+                        renderBoard();
+                    } else {
+                        // 如果点击的是己方棋子，则切换选择
+                        if (piece && isMyPiece(piece)) {
+                            selectedSquare = { row, col };
+                            renderBoard();
+                        }
+                    }
+                }
+            } else {
+                // 选择棋子
+                if (piece && isMyPiece(piece)) {
+                    selectedSquare = { row, col };
+                    renderBoard();
+                }
+            }
+        }
+        
+        function isMyPiece(piece) {
+            if (!piece) return false;
+            return turn === 'white' ? isUpperCase(piece) : !isUpperCase(piece);
+        }
+        
+        function isUpperCase(str) {
+            return str === str.toUpperCase();
+        }
+        
+        function movePiece(fromRow, fromCol, toRow, toCol) {
+            board[toRow][toCol] = board[fromRow][fromCol];
+            board[fromRow][fromCol] = '';
+        }
+        
+        function isValidMove(fromRow, fromCol, toRow, toCol) {
+            // 这是一个非常简化的验证，只检查是否吃掉己方棋子
+            // 完整的国际象棋规则非常复杂，这里仅作为演示
+            const targetPiece = board[toRow][toCol];
+            if (targetPiece && isMyPiece(targetPiece)) return false;
+            
+            // TODO: 添加具体的棋子移动规则验证
+            // 这里暂时允许任意移动到非己方格子上，作为"沙盒模式"
+            return true;
+        }
+        
+        function updateStatus() {
+            statusText.innerText = turn === 'white' ? "白方回合" : "黑方回合";
+        }
+        
+        initGame();
+    </script>
+</body>
+</html>

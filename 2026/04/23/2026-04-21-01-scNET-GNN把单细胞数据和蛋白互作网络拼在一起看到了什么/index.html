@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>一个基因表达量正常的孩子，功能为什么出了问题 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个基因表达量正常的孩子，功能为什么出了问题单细胞RNA测序（scRNA-seq）解决了生物学中一个长期问题：Bulk RNA-seq把一整块组织碾碎，测出来的是成千上万个细胞的平均值，每个细胞独特的基因表达模式被抹平了。scRNA-seq让我们第一次看清了每个细胞在说什么。 但scRNA-seq也有自己的盲区：它告诉你每个基因的表达量，却不告诉你这个基因在细胞里做什么。 比如，某个T细胞里某个炎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个基因表达量正常的孩子，功能为什么出了问题">
+<meta property="og:url" content="http://bohuyeshan.top/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="一个基因表达量正常的孩子，功能为什么出了问题单细胞RNA测序（scRNA-seq）解决了生物学中一个长期问题：Bulk RNA-seq把一整块组织碾碎，测出来的是成千上万个细胞的平均值，每个细胞独特的基因表达模式被抹平了。scRNA-seq让我们第一次看清了每个细胞在说什么。 但scRNA-seq也有自己的盲区：它告诉你每个基因的表达量，却不告诉你这个基因在细胞里做什么。 比如，某个T细胞里某个炎">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-04-23T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.158Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="单细胞">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "一个基因表达量正常的孩子，功能为什么出了问题",
+  "url": "http://bohuyeshan.top/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-04-23T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.158Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一个基因表达量正常的孩子，功能为什么出了问题',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">一个基因表达量正常的孩子，功能为什么出了问题</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">一个基因表达量正常的孩子，功能为什么出了问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-23T20:00:00.000Z" title="发表于 2026-04-23 20:00:00">2026-04-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.158Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="一个基因表达量正常的孩子，功能为什么出了问题"><a href="#一个基因表达量正常的孩子，功能为什么出了问题" class="headerlink" title="一个基因表达量正常的孩子，功能为什么出了问题"></a>一个基因表达量正常的孩子，功能为什么出了问题</h1><p>单细胞RNA测序（scRNA-seq）解决了生物学中一个长期问题：Bulk RNA-seq把一整块组织碾碎，测出来的是成千上万个细胞的平均值，每个细胞独特的基因表达模式被抹平了。scRNA-seq让我们第一次看清了每个细胞在说什么。</p>
+<p>但scRNA-seq也有自己的盲区：它告诉你每个基因的表达量，却不告诉你这个基因在细胞里做什么。</p>
+<p>比如，某个T细胞里某个炎症基因表达量升高了。这说明什么？是这个细胞本身被激活了，还是它被邻居细胞释放的信号影响了？是这个基因自己出了问题，还是它的某个互作蛋白失调，牵连了它？</p>
+<p>单靠scRNA-seq，无法回答这些问题。因为<strong>基因表达量是一个信号，但生物学功能来自于相互作用</strong>。</p>
+<hr>
+<h2 id="scNET：把两种数据拼成一个图"><a href="#scNET：把两种数据拼成一个图" class="headerlink" title="scNET：把两种数据拼成一个图"></a>scNET：把两种数据拼成一个图</h2><p>今年3月发表在《Nature Methods》上的一篇论文，提出了一个直接解决这个问题的方法：把scRNA-seq数据和蛋白互作网络（PPI）拼在一起，用图神经网络（GNN）同时学习两类信息。</p>
+<p>这个框架叫scNET。</p>
+<p>思路并不复杂。传统的scRNA-seq分析把细胞建模为矩阵（细胞×基因），分析的核心是找相似细胞、给细胞分类。但如果只看表达量，很多功能相关的生物学信号会被掩盖——两个表达谱完全不同的细胞，可能因为共享同一个互作蛋白而功能相关。</p>
+<p>scNET的做法是：给每个基因创建一个节点，把scRNA-seq数据中该基因在各细胞的表达量作为节点属性；同时，把蛋白互作网络中已知的互作关系作为边，连在对应的基因节点之间。</p>
+<p>这样，每个细胞就不再是孤立的表达向量，而是一个子图——这个细胞里表达的每个基因，都通过PPI网络和它的互作伙伴相连。边的权重由两个基因在当前细胞中的共表达程度决定。</p>
+<p>然后，在这个双视图的图上跑GNN。GNN的消息传递让每个基因节点聚合来自PPI邻居的信息，同时这些信息又通过共表达权重被当前细胞的表达量调制。最终，每个细胞的表示既包含了它自身的表达谱，又融合了它在蛋白互作网络中的结构位置——这两层信息是联合学习而非简单拼接的。</p>
+<hr>
+<h2 id="具体改进了什么"><a href="#具体改进了什么" class="headerlink" title="具体改进了什么"></a>具体改进了什么</h2><p>scNET在三个任务上验证了效果：</p>
+<p><strong>细胞聚类</strong>。把细胞按照功能相似性分组的准确性提升了——不是因为它们的表达谱更像，而是因为它们的互作网络拓扑更像。这对稀有多少细胞类型尤为重要，比如肿瘤浸润淋巴细胞中，不同分化状态的细胞表达谱差异细微但功能差异很大。</p>
+<p><strong>通路活性识别</strong>。识别哪些生物通路在某组细胞中被激活。这比单纯的差异表达分析更接近生物学机制——一条通路被激活，意味着多个蛋白协同执行某个功能，而不是某一个基因单独上调。</p>
+<p><strong>跨条件比较</strong>。比较疾病组和对照组的细胞时，PPI层的加入让差异更容易追溯到具体的蛋白互作模块，而不只是差异基因列表。</p>
+<hr>
+<h2 id="为什么这不只是”多加了数据”"><a href="#为什么这不只是”多加了数据”" class="headerlink" title="为什么这不只是”多加了数据”"></a>为什么这不只是”多加了数据”</h2><p>如果只是把scRNA-seq和PPI放在一起分析，传统的多组学整合方法也可以做。但scNET的关键在于：<strong>PPI网络不只是额外特征，同时是归纳偏置</strong>。</p>
+<p>归纳偏置的意思是，模型对世界的先验假设。CNN假设图像里相邻像素比远距离像素更重要，这是一种归纳偏置。Transformer假设任意两个token之间都可能相关，这也是一种归纳偏置。</p>
+<p>scNET的归纳偏置是：共享互作伙伴的基因，在功能上更可能相关。当你把这种先验编码进图结构，GNN的消息传递会自然地把功能相近的细胞聚在一起，而不需要更多的训练数据或更复杂的模型。</p>
+<p>这和昨天halicin故事里分子图的逻辑一样——当数据结构本身就是图，直接在图上建模比把它展平成别的形式再建模更有效。</p>
+<hr>
+<h2 id="局限"><a href="#局限" class="headerlink" title="局限"></a>局限</h2><p>PPI网络的覆盖率直接影响模型效果。人类蛋白互作网络的实验数据仍然不完备——很多互作只在特定组织、特定条件下存在，但在PPI数据库里可能没有记录。在这些”看不见的边”上，scNET也会犯错。</p>
+<p>另一个局限是scRNA-seq本身的技术噪声。Dropout（某些基因在某些细胞里没被测到）是单细胞数据的老问题，这个问题不会因为加了PPI层就消失。</p>
+<hr>
+<h2 id="对生物信息学的意义"><a href="#对生物信息学的意义" class="headerlink" title="对生物信息学的意义"></a>对生物信息学的意义</h2><p>回到开头的问题：基因表达量正常，功能为什么出了问题？</p>
+<p>一种可能是：这个基因的互作伙伴出了状况，把这个基因拖累了。另一种可能是：这个基因和它的互作网络之间形成了异常模块，而这个模块的表达模式刚好和正常细胞相似。</p>
+<p>scNET让研究者能看到这类问题。它把scRNA-seq从”告诉我哪个基因在说”升级到”告诉我哪个功能模块在说，以及这个模块和谁有关”。</p>
+<p>这种从”基因中心”到”网络中心”的视角转换，正是GNN在生物信息学里的核心价值之一——不是替代传统的组学分析，而是在它的基础上补一层结构信息。</p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>Jiang, R., Sun, T., Song, D. &amp; Li, J. J. A graph neural network that combines scRNA-seq and protein–protein interaction data. <em>Nature Methods</em> 22, 660–661 (2025). <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41592-025-02628-z">https://doi.org/10.1038/s41592-025-02628-z</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/">http://bohuyeshan.top/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a><a class="post-meta__tags" href="/tags/%E5%8D%95%E7%BB%86%E8%83%9E/">单细胞</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/23/2026-04-21-03-%E5%83%B5%E5%B0%B8%E5%85%8D%E7%96%AB%E7%BB%86%E8%83%9E%E4%B8%8D%E6%AD%A2%E8%AE%A9%E4%BD%A0%E5%8F%98%E8%80%81-%E8%BF%98%E5%8F%AF%E8%83%BD%E8%AE%A9%E4%BD%A0%E5%BE%97%E8%84%82%E8%82%AA%E8%82%9D/" title="僵尸免疫细胞不止让你变老，还可能让你得脂肪肝"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">僵尸免疫细胞不止让你变老，还可能让你得脂肪肝</div></div><div class="info-2"><div class="info-item-1">僵尸免疫细胞不止让你变老，还可能让你得脂肪肝“僵尸免疫细胞”不是科幻里的怪物，而是生物学里一个真实存在的东西。 它指的是衰老细胞（senescent cells）——一类退出了正常细胞周期、停止了分裂、但没有死去、还留在组织里的细胞。它们之所以被叫作僵尸，是因为它们”不死”：既不执行正常功能，也不自我清除，而是留在原地缓慢积累。 更麻烦的是，僵尸细胞会向周围释放一系列促炎信号分子——这被称为衰老相关分泌表型（SASP）。这些分子会引发局部炎症，扰乱周围正常细胞的环境，推动邻近细胞也进入衰老状态，像涟漪一样扩散开来。 长期以来，僵尸细胞被认为主要和衰老有关——关节炎、动脉粥样硬化、肌肉退化，都被怀疑有它们的参与。但4月16日发表的多项研究，把它们和另一个现代流行病联系了起来：非酒精性脂肪肝（NAFLD）——也就是我们常说的”脂肪肝”。  衰老细胞怎么影响造血干细胞先说第一个发现：一项新研究揭示了一种与细胞死亡相关的蛋白，在造血干细胞（hematopoietic stem cells）中驱动了衰老的另一种机制——不是杀死细胞本身，而是损伤了它们分裂的能力。 造血干细胞是骨髓里一群可以...</div></div></div></a><a class="pagination-related" href="/2026/04/20/2026-04-20-03-%E6%AF%81%E7%81%AD%E6%80%A7%E7%9A%84%E6%92%9E%E5%87%BB%E5%8F%AF%E8%83%BD%E5%88%9B%E9%80%A0%E4%BA%86%E7%94%9F%E5%91%BD/" title="小行星撞击产生的热液系统，可能是被忽视的生命摇篮"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">小行星撞击产生的热液系统，可能是被忽视的生命摇篮</div></div><div class="info-2"><div class="info-item-1">小行星撞击产生的热液系统，可能是被忽视的生命摇篮关于生命起源，最常见的叙事是原始汤假说：某片温暖的水池里，闪电击中了化学物质，有机分子诞生了。这个故事有一个问题——它太模糊了。原始汤在哪里？什么化学物质？什么条件？ 一个更具体的候选是深海热液喷口。1970年代末，科学家在海底发现了这些喷口，周围有完整的生态系统，完全不依赖阳光，靠化学能维持。这至少证明，生命可以在没有光合作用的环境中存在。 但深海热液喷口可能不是唯一选项。Rutgers大学的Shea Cinquemani和Richard Lutz今年发表在《Journal of Marine Science and Engineering》上的综述，提出了一个长期被忽视的候选者：小行星撞击产生的热液系统。 撞击如何制造热液系统当一颗大型小行星撞击地球，释放的巨大能量会瞬间融化周围的岩石。撞击坑冷却后，地下水渗入，被残留的热量加热，形成热液循环——热水通过裂缝流过被加热的岩石，溶解矿物质，再从坑底涌出。 这个过程和深海热液喷口的形成机制类似。区别在于：深海喷口的热量来自地球内部的火山活动，撞击热液系统的热量来自小行星撞击的动能转化...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/03/31/2026-03-31-01-STORM-%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E6%95%B0%E6%8D%AE%E7%9A%84%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94%E5%92%8C%E7%BC%BA%E5%A4%B1%E5%9F%BA%E5%9B%A0%E5%A1%AB%E8%A1%A5/" title="STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-31</div><div class="info-item-2">STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决</div></div><div class="info-2"><div class="info-item-1">STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决空间转录组技术解决了单细胞测序最大的缺陷：位置信息的丢失。 传统单细胞测序需要把组织打散成单个细胞，细胞在组织里的位置就没了。你知道这个细胞的基因表达谱，但不知道它在肿瘤边缘还是肿瘤中心，不知道它的邻居是什么细胞。空间转录组把基因表达和空间坐标绑在一起，让你可以在组织切片上直接看基因表达的分布。 但空间转录组数据用起来有三个问题，做过这类分析的人都遇到过。  第一个是批次效应。 空间转录组实验通常需要多个切片——同一个样本的不同切面，或者不同样本之间的比较。问题是，不同批次的切片之间存在系统性偏差。同一个细胞类型，在不同批次里测出来的基因表达值可能差很多，原因可能是组织处理方式、芯片批次、测序深度，甚至切片的厚度。 批次效应不处理，不同切片的数据就没法放在一起分析。 传统的批次校正方法（比如 ComBat、Harmony）是在基因层面做的：对每个基因，估计批次效应的大小，然后减掉。这个思路在单细胞数据上还算有效，但在空间转录组数据上有个额外的麻烦：不同切片的空间维度不一样。一张切片可能有 3000 个 spot，另一...</div></div></div></a><a class="pagination-related" href="/2026/03/24/2026-03-24-01-AI%E6%AD%A3%E5%9C%A8%E7%9C%9F%E6%AD%A3%E8%BF%9B%E5%85%A5%E5%8D%95%E7%BB%86%E8%83%9E%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%B5%81%E7%A8%8B/" title="AI 正在真正进入单细胞生物信息学流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-24</div><div class="info-item-2">AI 正在真正进入单细胞生物信息学流程</div></div><div class="info-2"><div class="info-item-1">AI 正在真正进入单细胞生物信息学流程这两年，很多人一提 AI for Bioinformatics，脑子里浮现出来的还是那种比较熟悉的形态：聊天、总结文献、解释概念、帮忙写几段分析代码，或者把某个常规流程包装得更顺手一点。 这些东西当然有价值，但如果只停留在这一步，其实还很难说 AI 已经真正进入了生物信息学的核心工作流。因为真正的生信分析，尤其是单细胞分析，从来不是“把答案说漂亮”这么简单。它牵涉到具体数据、分析链路、领域知识、解释方式，以及最后能不能支撑一个像样的生物学判断。 今天查到的几篇论文里，我觉得最值得放在一起看的是三篇：scPilot、ELISA 和 HarmonyCell。它们不完全是同一种工作，但放在一条线上看，会发现一个非常清楚的变化：AI 在单细胞生物信息学里，正在从外围辅助，慢慢往真正的分析、发现和建模流程里走。 一、第一步变化：AI 不只是解释单细胞分析，而是开始直接接触数据先看 scPilot。 这篇论文的标题很直接：scPilot: Large Language Model Reasoning Toward Automated Single-Cel...</div></div></div></a><a class="pagination-related" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-27</div><div class="info-item-2">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</div></div><div class="info-2"><div class="info-item-1">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么单细胞RNA测序（scRNA-seq）解决了一个长期问题：它让我们第一次看清了每个细胞在说什么。但它丢失了一个关键信息：这些细胞在组织中的位置。 空间转录组（spatial transcriptomics）补上了这块拼图：它保留了细胞的空间位置，但分辨率和基因覆盖度不如单细胞测序。 2026年，这两种技术的整合进入了新阶段。不再是”要么看得清细胞，要么看得清位置”，而是”既看得清细胞，又看得清位置，还能看清细胞在这个位置上做什么”。  问题：单细胞告诉你”是什么”，空间转录组告诉你”在哪里”scRNA-seq的优势：  单细胞分辨率 全转录组覆盖（数万个基因） 可以识别稀有细胞类型 可以做伪时序分析（推断细胞分化轨迹）  scRNA-seq的盲区：  细胞被打散了，空间信息丢失 不知道细胞在组织中的位置 不知道细胞的邻居是谁 不知道细胞在什么样的微环境中  空间转录组的优势：  保留空间位置 可以看到细胞在组织中的分布模式 可以识别空间结构（如肿瘤边界、免疫浸润区）  空间转录组的局限：  分辨率有限（传统10x Vi...</div></div></div></a><a class="pagination-related" href="/2026/03/30/2026-03-30-01-MIOFlow2-%E4%BB%8E%E5%8D%95%E7%BB%86%E8%83%9E%E5%92%8C%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E6%8E%A8%E6%96%AD%E7%BB%86%E8%83%9E%E9%9A%8F%E6%9C%BA%E5%8A%A8%E5%8A%9B%E5%AD%A6/" title="MIOFlow 2.0：从快照数据里推断细胞怎么走过来的"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-30</div><div class="info-item-2">MIOFlow 2.0：从快照数据里推断细胞怎么走过来的</div></div><div class="info-2"><div class="info-item-1">MIOFlow 2.0：从快照数据里推断细胞怎么走过来的单细胞转录组测序有一个根本性的限制：它是破坏性的。 你把细胞裂解，提取 RNA，测序。这个细胞就没了。你没办法追踪同一个细胞在不同时间点的状态变化。你能做的，是在某个时刻把一批细胞全部测完，得到一张”快照”——这批细胞在这个时刻各自长什么样。 这张快照里有很多信息，但缺少一个维度：时间。  细胞轨迹推断（trajectory inference）这个方向就是为了解决这个问题。核心假设是：一批细胞里，不同的细胞处于分化过程的不同阶段。有的刚开始分化，有的已经分化到一半，有的已经到了终态。如果你把这些细胞按照基因表达的相似性排列，就能大致还原出分化的路径。 Monocle 是这个方向最早的工具之一，用的是主成分分析加最小生成树，把细胞排成一条轨迹。后来的 PAGA、Slingshot 等方法在这个基础上做了各种改进，但基本思路类似：在高维基因表达空间里，找一条或几条路径，把细胞串起来。 这类方法有一个共同的问题：它们假设细胞的转变是确定性的。给定一个起始状态，细胞会沿着一条固定的路径走到终态。但真实的生物过程不是这样的。  细胞...</div></div></div></a><a class="pagination-related" href="/2026/04/20/2026-04-20-03-%E6%AF%81%E7%81%AD%E6%80%A7%E7%9A%84%E6%92%9E%E5%87%BB%E5%8F%AF%E8%83%BD%E5%88%9B%E9%80%A0%E4%BA%86%E7%94%9F%E5%91%BD/" title="小行星撞击产生的热液系统，可能是被忽视的生命摇篮"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-20</div><div class="info-item-2">小行星撞击产生的热液系统，可能是被忽视的生命摇篮</div></div><div class="info-2"><div class="info-item-1">小行星撞击产生的热液系统，可能是被忽视的生命摇篮关于生命起源，最常见的叙事是原始汤假说：某片温暖的水池里，闪电击中了化学物质，有机分子诞生了。这个故事有一个问题——它太模糊了。原始汤在哪里？什么化学物质？什么条件？ 一个更具体的候选是深海热液喷口。1970年代末，科学家在海底发现了这些喷口，周围有完整的生态系统，完全不依赖阳光，靠化学能维持。这至少证明，生命可以在没有光合作用的环境中存在。 但深海热液喷口可能不是唯一选项。Rutgers大学的Shea Cinquemani和Richard Lutz今年发表在《Journal of Marine Science and Engineering》上的综述，提出了一个长期被忽视的候选者：小行星撞击产生的热液系统。 撞击如何制造热液系统当一颗大型小行星撞击地球，释放的巨大能量会瞬间融化周围的岩石。撞击坑冷却后，地下水渗入，被残留的热量加热，形成热液循环——热水通过裂缝流过被加热的岩石，溶解矿物质，再从坑底涌出。 这个过程和深海热液喷口的形成机制类似。区别在于：深海喷口的热量来自地球内部的火山活动，撞击热液系统的热量来自小行星撞击的动能转化...</div></div></div></a><a class="pagination-related" href="/2026/04/01/2026-04-01-01-%E7%94%9F%E4%BF%A1%E7%A0%94%E7%A9%B6%E9%87%8C%E5%90%AC%E8%B5%B7%E6%9D%A5%E5%83%8F%E6%84%9A%E4%BA%BA%E8%8A%82%E7%8E%A9%E7%AC%91%E4%BD%86%E5%85%B6%E5%AE%9E%E6%98%AF%E7%9C%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" title="生信研究里听起来像愚人节玩笑，但其实是真的一些事"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-01</div><div class="info-item-2">生信研究里听起来像愚人节玩笑，但其实是真的一些事</div></div><div class="info-2"><div class="info-item-1">生信研究里听起来像愚人节玩笑，但其实是真的一些事每年愚人节都会看到很多假新闻。AI 通过了医学考试、室温超导成功了、某公司宣布实现了核聚变发电——这些一看就知道是开玩笑的。 但生物学这个领域有个特点：有时候真实的研究比玩笑还离谱。读这类论文的时候经常需要确认一下：这是正经发表的吗？ 以下八个都是。  一、用语言模型预测蛋白质会怎么进化先从一个听起来最像开玩笑的讲起。 有人训练了一个语言模型——就是那种读海量蛋白质序列、学会预测下一个氨基酸的模型——然后用它来指导抗体的定向进化。 具体做法是：给模型看一个抗体序列，问它”如果这个抗体要提高对目标抗原的亲和力，自然界可能会怎么突变它”。模型不需要知道任何关于抗原的结构信息，也不需要知道什么是”亲和力”。它只知道：在自然界见过的所有蛋白质里，什么样的突变是合理的、可能存在的。 用这个方法，做了七个人源抗体的亲和力成熟。每个抗体只测了不到 20 个突变变体，筛了两轮。四个临床上已经比较成熟的抗体，亲和力提高了最多 7 倍。还有三个还没成熟的抗体，亲和力提高了最多 160 倍。 这个数字听起来不真实。160 倍的提升，通常需要做很多轮耗时的...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%9B%A0%E8%A1%A8%E8%BE%BE%E9%87%8F%E6%AD%A3%E5%B8%B8%E7%9A%84%E5%AD%A9%E5%AD%90%EF%BC%8C%E5%8A%9F%E8%83%BD%E4%B8%BA%E4%BB%80%E4%B9%88%E5%87%BA%E4%BA%86%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">一个基因表达量正常的孩子，功能为什么出了问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#scNET%EF%BC%9A%E6%8A%8A%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%8B%BC%E6%88%90%E4%B8%80%E4%B8%AA%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">scNET：把两种数据拼成一个图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%94%B9%E8%BF%9B%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.</span> <span class="toc-text">具体改进了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B8%8D%E5%8F%AA%E6%98%AF%E2%80%9D%E5%A4%9A%E5%8A%A0%E4%BA%86%E6%95%B0%E6%8D%AE%E2%80%9D"><span class="toc-number">1.3.</span> <span class="toc-text">为什么这不只是”多加了数据”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%99%90"><span class="toc-number">1.4.</span> <span class="toc-text">局限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number">1.5.</span> <span class="toc-text">对生物信息学的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.6.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

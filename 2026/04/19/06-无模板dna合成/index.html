@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>蛋白质当模板合成 DNA：中心法则的边界被推开了 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="蛋白质当模板合成 DNA：中心法则的边界被推开了一个不依赖核酸模板的 DNA 合成机器在分子生物学的教科书里，DNA 合成有一条铁律：必须要有模板。无论是细胞内的 DNA 复制、PCR 扩增，还是逆转录，新链的序列都由已有的核酸链决定。 但 2026 年 4 月 16 日，斯坦福大学 Alex Gao 团队在《Science》发表的一项研究，打破了这个”铁律”。 他们在细菌中发现了一种聚合酶，完全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蛋白质当模板合成 DNA：中心法则的边界被推开了">
+<meta property="og:url" content="http://bohuyeshan.top/2026/04/19/06-%E6%97%A0%E6%A8%A1%E6%9D%BFdna%E5%90%88%E6%88%90/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="蛋白质当模板合成 DNA：中心法则的边界被推开了一个不依赖核酸模板的 DNA 合成机器在分子生物学的教科书里，DNA 合成有一条铁律：必须要有模板。无论是细胞内的 DNA 复制、PCR 扩增，还是逆转录，新链的序列都由已有的核酸链决定。 但 2026 年 4 月 16 日，斯坦福大学 Alex Gao 团队在《Science》发表的一项研究，打破了这个”铁律”。 他们在细菌中发现了一种聚合酶，完全">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-04-19T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.153Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "蛋白质当模板合成 DNA：中心法则的边界被推开了",
+  "url": "http://bohuyeshan.top/2026/04/19/06-%E6%97%A0%E6%A8%A1%E6%9D%BFdna%E5%90%88%E6%88%90/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-04-19T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.153Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/04/19/06-%E6%97%A0%E6%A8%A1%E6%9D%BFdna%E5%90%88%E6%88%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '蛋白质当模板合成 DNA：中心法则的边界被推开了',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">蛋白质当模板合成 DNA：中心法则的边界被推开了</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">蛋白质当模板合成 DNA：中心法则的边界被推开了</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-19T20:00:00.000Z" title="发表于 2026-04-19 20:00:00">2026-04-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.153Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="蛋白质当模板合成-DNA：中心法则的边界被推开了"><a href="#蛋白质当模板合成-DNA：中心法则的边界被推开了" class="headerlink" title="蛋白质当模板合成 DNA：中心法则的边界被推开了"></a>蛋白质当模板合成 DNA：中心法则的边界被推开了</h1><h2 id="一个不依赖核酸模板的-DNA-合成机器"><a href="#一个不依赖核酸模板的-DNA-合成机器" class="headerlink" title="一个不依赖核酸模板的 DNA 合成机器"></a>一个不依赖核酸模板的 DNA 合成机器</h2><p>在分子生物学的教科书里，DNA 合成有一条铁律：<strong>必须要有模板</strong>。无论是细胞内的 DNA 复制、PCR 扩增，还是逆转录，新链的序列都由已有的核酸链决定。</p>
+<p>但 2026 年 4 月 16 日，斯坦福大学 Alex Gao 团队在《Science》发表的一项研究，打破了这个”铁律”。</p>
+<p>他们在细菌中发现了一种聚合酶，<strong>完全不依赖任何核酸模板，仅凭蛋白质自身的三维结构，就能合成特定序列的 DNA</strong>。</p>
+<p>第一作者是华人博士后邓谱涓（Pujuan Deng）。</p>
+<h2 id="DRT：细菌抵抗噬菌体的”非常规武器”"><a href="#DRT：细菌抵抗噬菌体的”非常规武器”" class="headerlink" title="DRT：细菌抵抗噬菌体的”非常规武器”"></a>DRT：细菌抵抗噬菌体的”非常规武器”</h2><p>Defense-associated reverse transcriptases（DRTs）是一类广泛存在于细菌中的抗噬菌体系统。它们使用”非传统”的多核苷酸合成机制来防御病毒感染。</p>
+<p>研究聚焦于其中的 <strong>DRT3</strong> 系统。这个系统由三个部分组成：</p>
+<ul>
+<li><strong>Drt3a</strong>：一个逆转录酶</li>
+<li><strong>Drt3b</strong>：另一个逆转录酶</li>
+<li><strong>ncRNA</strong>：一段非编码 RNA</li>
+</ul>
+<p>三者组装在一起，能从头合成一条序列高度规则的双链 DNA——**交替的聚(GT&#x2F;AC)**。</p>
+<h2 id="两个酶，两种完全不同的工作方式"><a href="#两个酶，两种完全不同的工作方式" class="headerlink" title="两个酶，两种完全不同的工作方式"></a>两个酶，两种完全不同的工作方式</h2><p>冷冻电镜结构解析（2.6 Å 分辨率）揭示了这套系统的精巧分工：</p>
+<h3 id="Drt3a：传统的”照本宣科”"><a href="#Drt3a：传统的”照本宣科”" class="headerlink" title="Drt3a：传统的”照本宣科”"></a>Drt3a：传统的”照本宣科”</h3><p>Drt3a 的工作方式相对传统。它利用 ncRNA 上的一段<strong>保守 ACACAC 序列</strong>作为模板，按碱基互补配对原则，合成出与之互补的 <strong>poly(GT)</strong> 单链。</p>
+<p>这符合我们已知的所有规则——有模板，按模板配对。</p>
+<h3 id="Drt3b：颠覆性的”蛋白质引导合成”"><a href="#Drt3b：颠覆性的”蛋白质引导合成”" class="headerlink" title="Drt3b：颠覆性的”蛋白质引导合成”"></a>Drt3b：颠覆性的”蛋白质引导合成”</h3><p>真正的革命性发现在于 Drt3b。它的任务是合成与 poly(GT) 链互补的 <strong>poly(AC)</strong> 链。</p>
+<p>论文的表述是：**”Drt3b synthesizes a complementary, protein-primed poly(AC) strand in the complete absence of a nucleic acid template.”**</p>
+<p>关键词：</p>
+<ul>
+<li><strong>protein-primed</strong>：蛋白质引导的</li>
+<li><strong>complete absence of a nucleic acid template</strong>：完全不存在核酸模板</li>
+</ul>
+<p>Drt3b 的活性中心拥有一组<strong>Drt3b 特异的保守氨基酸残基</strong>。这些残基的精确三维排列，本身就像一张刻在蛋白质结构中的”分子模具”，强制核苷酸按照 A、C、A、C 的顺序交替聚合。</p>
+<p><strong>蛋白质结构本身就是模板。</strong></p>
+<h2 id="一个完美的分子六边形工厂"><a href="#一个完美的分子六边形工厂" class="headerlink" title="一个完美的分子六边形工厂"></a>一个完美的分子六边形工厂</h2><p>冷冻电镜结构显示，Drt3a、Drt3b 和 ncRNA 形成了一个具有<strong>完美 D3 对称性</strong>的 <strong>6:6:6 复合物</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    Drt3a × 6</span><br><span class="line">       ↕</span><br><span class="line">ncRNA × 6（中心）</span><br><span class="line">       ↕</span><br><span class="line">    Drt3b × 6</span><br></pre></td></tr></table></figure>
+
+<p>两个酶在空间上紧密协作：</p>
+<ul>
+<li>Drt3a 用传统模板合成 poly(GT)</li>
+<li>Drt3b 用蛋白质模板合成 poly(AC)</li>
+<li>两条链配对，产出规则的双链 DNA</li>
+</ul>
+<p>这不是一个”凑巧能跑”的化学反应，而是一个<strong>高度组织化的分子机器</strong>。</p>
+<h2 id="为什么说它”颠覆中心法则”"><a href="#为什么说它”颠覆中心法则”" class="headerlink" title="为什么说它”颠覆中心法则”"></a>为什么说它”颠覆中心法则”</h2><p>中心法则的核心叙事是：遗传信息的流动是有方向的、有模板的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DNA → RNA → 蛋白质</span><br><span class="line">  ↓</span><br><span class="line">DNA 自我复制（需要核酸模板）</span><br></pre></td></tr></table></figure>
+
+<p>传统上，所有 DNA 合成都遵循一个原则：新链的序列由模板链决定。这个模板必须是核酸（DNA 或 RNA）。</p>
+<p>但 Drt3b 展示了一种全新的可能：<strong>模板可以是蛋白质</strong>。蛋白质的三维结构可以”编码”核酸的序列。</p>
+<p>论文的结论是：**”These findings expand the functional landscape of nucleic acid polymerases, revealing a protein-templated mechanism for sequence-specific DNA synthesis.”**</p>
+<p>这不是说中心法则”错了”，而是说<strong>核酸聚合酶的功能边界被扩展了</strong>——除了核酸模板，蛋白质也可以作为模板指导序列特异的 DNA 合成。</p>
+<h2 id="这项发现的科学意义"><a href="#这项发现的科学意义" class="headerlink" title="这项发现的科学意义"></a>这项发现的科学意义</h2><p><strong>基础科学层面</strong>：</p>
+<ol>
+<li><strong>扩展了聚合酶的功能边界</strong>：核酸聚合酶不只依赖核酸模板，蛋白质也可以</li>
+<li><strong>为生命起源提供新思路</strong>：在生命起源早期，如果没有核酸模板，特定序列的核酸从哪来？这项研究提供了一个可能的答案——蛋白质可以先作为模板</li>
+<li>**重新定义”模板”**：模板不一定是链状的核酸分子，蛋白质的三维结构也可以编码序列信息</li>
+</ol>
+<p><strong>应用层面</strong>：</p>
+<ol>
+<li><strong>可编程分子机器</strong>：如果能设计出具有特定活性中心的蛋白质，理论上可以编程合成任意序列的 DNA</li>
+<li><strong>新型核酸合成工具</strong>：不依赖模板的合成方式，可能催生新的 DNA 合成技术</li>
+</ol>
+<h2 id="一个需要冷静看待的”颠覆”"><a href="#一个需要冷静看待的”颠覆”" class="headerlink" title="一个需要冷静看待的”颠覆”"></a>一个需要冷静看待的”颠覆”</h2><p>媒体喜欢用”颠覆中心法则”这样的标题。但仔细读论文，你会发现作者非常克制——他们说的是”expand the functional landscape”，扩展功能边界，而不是推翻。</p>
+<p>中心法则描述的是细胞内遗传信息流动的主要模式。这项发现展示的是细菌防御系统中的一种特殊机制。两者并不矛盾——就像量子力学不推翻牛顿力学，而是在特定边界下扩展了它。</p>
+<p>但这项发现确实打开了一扇门：**遗传信息可以不依赖核酸模板而存在，蛋白质也可以参与”写入”**。这个概念本身，就足够让分子生物学家重新思考一些基本问题。</p>
+<p>在生命的微观世界里，仍有大量未知的、颠覆常识的精密法则等待发现。</p>
+<hr>
+<p><strong>论文信息</strong>：</p>
+<ul>
+<li>标题：Protein-templated synthesis of dinucleotide repeat DNA by an antiphage reverse transcriptase</li>
+<li>作者：Pujuan Deng, Hyunbin Lee, Carlo Armijo, et al.</li>
+<li>通讯作者：Alex Gao（斯坦福大学生物化学系助理教授）</li>
+<li>期刊：Science</li>
+<li>发表日期：2026年4月16日</li>
+<li>DOI：10.1126&#x2F;science.aed1656</li>
+<li>PMID：41990131</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/04/19/06-%E6%97%A0%E6%A8%A1%E6%9D%BFdna%E5%90%88%E6%88%90/">http://bohuyeshan.top/2026/04/19/06-%E6%97%A0%E6%A8%A1%E6%9D%BFdna%E5%90%88%E6%88%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/19/02-b%E7%BB%86%E8%83%9E%E8%BF%90%E5%8A%A8/" title="你跑完步为什么觉得爽？B 细胞可能在偷偷帮你"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">你跑完步为什么觉得爽？B 细胞可能在偷偷帮你</div></div><div class="info-2"><div class="info-item-1">你跑完步为什么觉得爽？B 细胞可能在偷偷帮你免疫细胞不只是”打病毒”，它们还管你的运动表现你有没有想过，为什么有些人跑步跑到后半程会突然觉得”打开了”？不那么喘了，腿也没那么沉了？ 通常的解释是内啡肽——大脑释放的天然止痛剂。但清华大学免疫学家彭殷新（Peng Jiang）团队最近发表在《Cell》上的一项研究，给出了一个完全出乎意料的答案：你的 B 细胞可能在帮你跑。 B 细胞不只是”免疫卫士”B 细胞是免疫系统的”侦察兵”。它的经典工作是识别外来病原体、产生抗体、标记入侵者让其他免疫细胞来消灭。这个角色我们都很熟悉。 但彭殷新团队发现，B 细胞还有一个从未被描述过的功能——调节运动耐力和肌肉力量。 这不仅是 B 细胞的”非免疫功能”首次被发现，也是免疫系统和运动表现之间一条全新的连接通路。 实验是怎么做的研究团队用了两组小鼠： 一组是基因改造的低 B 细胞小鼠——天生 B 细胞数量少。另一组是用抗体疗法清除 B 细胞的小鼠——这种抗体疗法在人类中用于治疗 B 细胞癌症。 两组小鼠都和正常小鼠一起在跑步机上跑。速度每隔一段时间提升一次，直到小鼠跑不动为止。 结果很明确：B 细胞...</div></div></div></a><a class="pagination-related" href="/2026/04/19/05-%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E7%97%85%E5%8E%9F%E4%BD%93/" title="40% 的被交易野生动物携带能传人的病原体——不只&quot;野味&quot;，合法交易也一样"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">40% 的被交易野生动物携带能传人的病原体——不只"野味"，合法交易也一样</div></div><div class="info-2"><div class="info-item-1">40% 的被交易野生动物携带能传人的病原体——不只”野味”，合法交易也一样COVID-19 之后，”动物传人”不再是一个陌生的概念。但到底有多少动物携带能感染人的病原体？野生动物贸易在这个传播链条中扮演了什么角色？ 瑞士弗里堡大学生态学家 Jérôme Gippet 团队最近发表在《Science》上的一项研究，第一次给出了全球性的量化答案：在被交易的 2079 种野生哺乳动物中，约 41% 携带至少一种能感染人类的病原体。 对比组的数据更让人安心一点：在非交易的哺乳动物中，这个比例只有 **6.4%**。 不是”野味”的问题，是”交易”的问题研究团队综合了 40 年来三个主要野生动物贸易数据库的记录，和一个 2021 年建立的”物种-病原体关联”数据库。他们发现： 活体动物的交易比动物产品的交易更容易传播病原体。 活体动物在运输、圈养、市场交易的过程中，有更多机会和人类近距离接触，病原体跨物种传播的概率也就更高。 一个令人意外的发现是：合法交易和非法交易在病原体传播风险上没有显著差异。 这意味着，问题不只是”非法走私野生动物”——合法的、有监管的野生动物贸易同样存在风险。 还有...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/12/2026-04-12-02-%E8%82%BF%E7%98%A4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%A4%84%E7%90%86%E5%99%A8%E5%85%B3%E6%8E%89%E4%B9%8B%E5%90%8E-%E5%85%8D%E7%96%AB%E7%B3%BB%E7%BB%9F%E7%AA%81%E7%84%B6%E7%9C%8B%E5%88%B0%E4%BA%86%E5%AE%83/" title="肿瘤的&quot;垃圾处理器&quot;关掉之后，免疫系统突然看到了它"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-12</div><div class="info-item-2">肿瘤的&quot;垃圾处理器&quot;关掉之后，免疫系统突然看到了它</div></div><div class="info-2"><div class="info-item-1">肿瘤的”垃圾处理器”关掉之后，免疫系统突然看到了它免疫治疗能激活人体自身的免疫系统去攻击肿瘤，这已经不是新闻。但有一个基本问题始终卡在那里：免疫系统凭什么认出肿瘤？ 目前最主流的答案是”突变”——肿瘤细胞的 DNA 发生了突变，产生了一些正常细胞没有的异常蛋白片段（新抗原），免疫系统把这些片段当作”非我”来攻击。这个逻辑催生了”突变负荷”这个指标：突变越多的肿瘤，理论上越容易被免疫系统发现，免疫治疗也越可能有效。 但这个逻辑有个盲区：它默认只有突变才能产生新抗原。 2026 年 4 月发表在 Immunity 上的一项研究提出了一个不同的视角（Vendramin et al., 2026）。TRACERx 联盟的研究团队发现，细胞里有一套”垃圾处理器”——无义介导 mRNA 降解（Nonsense-Mediated mRNA Decay，简称 NMD）——它的状态可能比 DNA 突变更直接地决定了肿瘤能被免疫系统看到多少。  什么是 NMD先解释一下 NMD 是什么。 细胞在转录 DNA 为 mRNA 的过程中，偶尔会产生一些”有毛病”的转录本。最常见的毛病是提前终止密码子（pr...</div></div></div></a><a class="pagination-related" href="/2026/04/18/2026-04-18-02-%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%83%BD%E5%81%9A%E8%8D%AF%E7%89%A9%E5%8F%91%E7%8E%B0%E5%90%97/" title="大语言模型能做药物发现吗？一个基准测试说：别太乐观"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-18</div><div class="info-item-2">大语言模型能做药物发现吗？一个基准测试说：别太乐观</div></div><div class="info-2"><div class="info-item-1">大语言模型能做药物发现吗？一个基准测试说：别太乐观大语言模型（LLM）在文本理解、代码生成、数学推理等任务上的表现令人印象深刻。于是很自然地出现了一个问题：这些模型能不能用在药物发现上？ 药物发现是一个极其昂贵、极其缓慢的过程。一个新药从靶点发现到上市通常需要 10-15 年、数十亿美元。如果 AI 能加速其中任何一个环节，价值都是巨大的。 但”能写文章”和”能设计药物”之间，隔着一道巨大的鸿沟。  DrugPlayGround：一个系统的基准测试2026 年初，Liu 等人在 arXiv 上发表了 DrugPlayGround，一个专门评测 LLM 和 embedding 在药物发现任务上表现的基准测试。 这个基准涵盖了药物发现流程中的多个关键任务，包括：  分子性质预测（这个分子有没有毒性？溶解度好不好？） 药物-靶点相互作用预测（这个分子能不能和目标蛋白质结合？） 分子生成（设计一个具有特定性质的新分子） 反应预测（这个化学反应会生成什么产物？） 文献挖掘（从海量论文中提取药物相关信息）  测试的模型包括了主流的 LLM（GPT-4、Claude、Llama 等）以及专门为...</div></div></div></a><a class="pagination-related" href="/2026/03/24/2026-03-24-01-AI%E6%AD%A3%E5%9C%A8%E7%9C%9F%E6%AD%A3%E8%BF%9B%E5%85%A5%E5%8D%95%E7%BB%86%E8%83%9E%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%B5%81%E7%A8%8B/" title="AI 正在真正进入单细胞生物信息学流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-24</div><div class="info-item-2">AI 正在真正进入单细胞生物信息学流程</div></div><div class="info-2"><div class="info-item-1">AI 正在真正进入单细胞生物信息学流程这两年，很多人一提 AI for Bioinformatics，脑子里浮现出来的还是那种比较熟悉的形态：聊天、总结文献、解释概念、帮忙写几段分析代码，或者把某个常规流程包装得更顺手一点。 这些东西当然有价值，但如果只停留在这一步，其实还很难说 AI 已经真正进入了生物信息学的核心工作流。因为真正的生信分析，尤其是单细胞分析，从来不是“把答案说漂亮”这么简单。它牵涉到具体数据、分析链路、领域知识、解释方式，以及最后能不能支撑一个像样的生物学判断。 今天查到的几篇论文里，我觉得最值得放在一起看的是三篇：scPilot、ELISA 和 HarmonyCell。它们不完全是同一种工作，但放在一条线上看，会发现一个非常清楚的变化：AI 在单细胞生物信息学里，正在从外围辅助，慢慢往真正的分析、发现和建模流程里走。 一、第一步变化：AI 不只是解释单细胞分析，而是开始直接接触数据先看 scPilot。 这篇论文的标题很直接：scPilot: Large Language Model Reasoning Toward Automated Single-Cel...</div></div></div></a><a class="pagination-related" href="/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/" title="生信 Agent 开始落地"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-22</div><div class="info-item-2">生信 Agent 开始落地</div></div><div class="info-2"><div class="info-item-1">生信 Agent 开始落地 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了  今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话的界面，而是开始尝试接数据、调工具、跑标准步骤、吐中间结果，再把人留在真正关键的复核点上。这个变化听起来有点抽象，但如果你把它摊开看，就会发现它对应着一个很具体的迁移：过去很多分析是“人先打开 notebook，再决定做什么”；现在有些入口开始变成“先把任务和数据交给系统，系统先把标准动作跑起来，人再决定结论是否成立”。 今天看到的这些东西，更像一种结构性变化的早期样本，而不是几条零散热点。因为一旦入口变了，后面的组织方式、参数管理、人工审核、结果交接，都会跟着变。用一个尽量朴素的表达来说，以前很多分析默认的路径大致是 1数据 -&gt; notebook -&gt; 命令 -&gt; ...</div></div></div></a><a class="pagination-related" href="/2026/03/25/2026-03-25-01-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%B7%91AI-for-Bio%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%85%88%E5%88%AB%E6%80%A5%E7%9D%80%E8%BF%90%E8%A1%8C%E5%85%88%E7%9C%8B%E6%87%82ELISA/" title="第一次跑 AI for Bio 开源项目：先看懂 ELISA，再动手"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-25</div><div class="info-item-2">第一次跑 AI for Bio 开源项目：先看懂 ELISA，再动手</div></div><div class="info-2"><div class="info-item-1">第一次跑 AI for Bio 开源项目：先看懂 ELISA，再动手很多人第一次点进一个开源 AI 项目，第一反应是找安装命令。看见 README 就往下拖，看见 pip install 就复制，看见报错再去搜。最后花了两小时，项目没跑起来，自己也不知道到底卡在数据、环境、网络，还是项目本身就不是给普通人一键跑的。 这类问题往往不是因为不会敲命令，而是更前面那一步没做：你还没判断清楚自己在面对什么项目。 ELISA 很适合拿来示范这件事。它不是一个纯概念论文，也不是成熟产品，而是典型的研究型系统：有论文，有公开仓库，有比较清楚的模块描述，也有交互和报告生成能力。这样的项目最适合拿来练一种能力——你不一定今天就跑通它，但你应该先学会判断：它是什么、值不值得投入、第一步该准备什么。 30 秒仓库体检：先不碰代码，先看这几件事点进一个 GitHub 仓库，真正先看的不是 src/，而是页面最上面那一层公开信息。你需要在 30 秒里回答五个问题。 第一，它到底在解决什么问题。ELISA 的标题是 ELISA: An Interpretable Hybrid Generative AI A...</div></div></div></a><a class="pagination-related" href="/2026/03/29/2026-03-29-01-DNA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97/" title="DNA 基础模型的嵌入表示会不会泄露原始序列？"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-29</div><div class="info-item-2">DNA 基础模型的嵌入表示会不会泄露原始序列？</div></div><div class="info-2"><div class="info-item-1">DNA 基础模型的嵌入表示会不会泄露原始序列？DNA foundation model 正在变成生信分析的基础设施。从 GenSLM、DNABERT-2 到 Nucleotide Transformer，这些模型可以把任意 DNA 序列编码成固定维度的向量，用于变异检测、调控元件预测、物种分类等下游任务。 很多研究者认为嵌入表示是”安全”的——分享的是向量，不是序列本身。向量只是一组数字，看起来不包含可读的生物学信息。 这篇 2026-03-06 提交的论文 “How Private Are DNA Embeddings?” 挑战了这个假设。  DNA foundation model 的核心能力是把 DNA 序列编码成语义向量。这个过程类似于 NLP 里的 word embedding：把离散的 token 映射到连续向量空间，让语义相似的序列在向量空间里距离更近。 具体流程是先把 DNA 序列切分成 k-mer，用 Transformer 编码器处理，输出每个位置的向量表示或整个序列的聚合向量。这个向量捕获了序列的”语义”——调控模式、编码区域特征、物种特异性等。 嵌入表示即...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%9B%8B%E7%99%BD%E8%B4%A8%E5%BD%93%E6%A8%A1%E6%9D%BF%E5%90%88%E6%88%90-DNA%EF%BC%9A%E4%B8%AD%E5%BF%83%E6%B3%95%E5%88%99%E7%9A%84%E8%BE%B9%E7%95%8C%E8%A2%AB%E6%8E%A8%E5%BC%80%E4%BA%86"><span class="toc-number">1.</span> <span class="toc-text">蛋白质当模板合成 DNA：中心法则的边界被推开了</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%B8%8D%E4%BE%9D%E8%B5%96%E6%A0%B8%E9%85%B8%E6%A8%A1%E6%9D%BF%E7%9A%84-DNA-%E5%90%88%E6%88%90%E6%9C%BA%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">一个不依赖核酸模板的 DNA 合成机器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRT%EF%BC%9A%E7%BB%86%E8%8F%8C%E6%8A%B5%E6%8A%97%E5%99%AC%E8%8F%8C%E4%BD%93%E7%9A%84%E2%80%9D%E9%9D%9E%E5%B8%B8%E8%A7%84%E6%AD%A6%E5%99%A8%E2%80%9D"><span class="toc-number">1.2.</span> <span class="toc-text">DRT：细菌抵抗噬菌体的”非常规武器”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E9%85%B6%EF%BC%8C%E4%B8%A4%E7%A7%8D%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">两个酶，两种完全不同的工作方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Drt3a%EF%BC%9A%E4%BC%A0%E7%BB%9F%E7%9A%84%E2%80%9D%E7%85%A7%E6%9C%AC%E5%AE%A3%E7%A7%91%E2%80%9D"><span class="toc-number">1.3.1.</span> <span class="toc-text">Drt3a：传统的”照本宣科”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Drt3b%EF%BC%9A%E9%A2%A0%E8%A6%86%E6%80%A7%E7%9A%84%E2%80%9D%E8%9B%8B%E7%99%BD%E8%B4%A8%E5%BC%95%E5%AF%BC%E5%90%88%E6%88%90%E2%80%9D"><span class="toc-number">1.3.2.</span> <span class="toc-text">Drt3b：颠覆性的”蛋白质引导合成”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%AE%8C%E7%BE%8E%E7%9A%84%E5%88%86%E5%AD%90%E5%85%AD%E8%BE%B9%E5%BD%A2%E5%B7%A5%E5%8E%82"><span class="toc-number">1.4.</span> <span class="toc-text">一个完美的分子六边形工厂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%AE%83%E2%80%9D%E9%A2%A0%E8%A6%86%E4%B8%AD%E5%BF%83%E6%B3%95%E5%88%99%E2%80%9D"><span class="toc-number">1.5.</span> <span class="toc-text">为什么说它”颠覆中心法则”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E9%A1%B9%E5%8F%91%E7%8E%B0%E7%9A%84%E7%A7%91%E5%AD%A6%E6%84%8F%E4%B9%89"><span class="toc-number">1.6.</span> <span class="toc-text">这项发现的科学意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E9%9C%80%E8%A6%81%E5%86%B7%E9%9D%99%E7%9C%8B%E5%BE%85%E7%9A%84%E2%80%9D%E9%A2%A0%E8%A6%86%E2%80%9D"><span class="toc-number">1.7.</span> <span class="toc-text">一个需要冷静看待的”颠覆”</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

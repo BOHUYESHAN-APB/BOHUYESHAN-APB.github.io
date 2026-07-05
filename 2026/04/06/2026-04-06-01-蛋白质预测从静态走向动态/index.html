@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>蛋白质结构预测的下一步：从静态到动态 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="蛋白质结构预测的下一步：从静态到动态AlphaFold极大推进了蛋白质结构预测，但如果说它已经“解决了蛋白质预测问题”，这个说法还是太大了。更准确的表述是：它把“从序列到相对稳定结构”的预测能力，推进到了一个很高的水平。 这很重要，但还不够。 在真实生物环境里，蛋白质并不是一张静止的三维图片。它会发生构象变化，会与小分子、核酸或其他蛋白质相互作用，也会随着环境变化进入不同状态。很多时候，真正决定功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蛋白质结构预测的下一步：从静态到动态">
+<meta property="og:url" content="http://bohuyeshan.top/2026/04/06/2026-04-06-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%A2%84%E6%B5%8B%E4%BB%8E%E9%9D%99%E6%80%81%E8%B5%B0%E5%90%91%E5%8A%A8%E6%80%81/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="蛋白质结构预测的下一步：从静态到动态AlphaFold极大推进了蛋白质结构预测，但如果说它已经“解决了蛋白质预测问题”，这个说法还是太大了。更准确的表述是：它把“从序列到相对稳定结构”的预测能力，推进到了一个很高的水平。 这很重要，但还不够。 在真实生物环境里，蛋白质并不是一张静止的三维图片。它会发生构象变化，会与小分子、核酸或其他蛋白质相互作用，也会随着环境变化进入不同状态。很多时候，真正决定功">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-04-06T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.155Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="结构">
+<meta property="article:tag" content="蛋白质">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "蛋白质结构预测的下一步：从静态到动态",
+  "url": "http://bohuyeshan.top/2026/04/06/2026-04-06-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%A2%84%E6%B5%8B%E4%BB%8E%E9%9D%99%E6%80%81%E8%B5%B0%E5%90%91%E5%8A%A8%E6%80%81/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-04-06T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.155Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/04/06/2026-04-06-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%A2%84%E6%B5%8B%E4%BB%8E%E9%9D%99%E6%80%81%E8%B5%B0%E5%90%91%E5%8A%A8%E6%80%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '蛋白质结构预测的下一步：从静态到动态',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">蛋白质结构预测的下一步：从静态到动态</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">蛋白质结构预测的下一步：从静态到动态</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-06T20:00:00.000Z" title="发表于 2026-04-06 20:00:00">2026-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.155Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="蛋白质结构预测的下一步：从静态到动态"><a href="#蛋白质结构预测的下一步：从静态到动态" class="headerlink" title="蛋白质结构预测的下一步：从静态到动态"></a>蛋白质结构预测的下一步：从静态到动态</h1><p>AlphaFold极大推进了蛋白质结构预测，但如果说它已经“解决了蛋白质预测问题”，这个说法还是太大了。更准确的表述是：它把“从序列到相对稳定结构”的预测能力，推进到了一个很高的水平。</p>
+<p>这很重要，但还不够。</p>
+<p>在真实生物环境里，蛋白质并不是一张静止的三维图片。它会发生构象变化，会与小分子、核酸或其他蛋白质相互作用，也会随着环境变化进入不同状态。很多时候，真正决定功能的，不只是“长什么样”，而是“怎么动”“和谁结合”“在什么条件下转变”。</p>
+<p>所以，蛋白质预测的下一步，不是把静态结构再多算一遍，而是逐步走向对动态过程、相互作用和功能状态的联合建模。</p>
+<hr>
+<p>最近有一篇综述论文系统讨论了这个方向。论文标题是《From Snapshots to Symphonies: The Evolution of Protein Prediction from Static Structures to Generative Dynamics and Multimodal Interactions》，于 2026 年 3 月 19 日提交到 arXiv，作者是 Jingzhi Chen 和 Lijian Xu。</p>
+<p>这篇综述的核心观点可以概括成一句话：蛋白质预测正在从“静态结构预测”，扩展到“动态行为与多模态相互作用建模”。</p>
+<p>如果借用论文标题里的比喻，过去很多方法给出的更像是一张“快照”，而现在大家想逼近的是一段“过程”。</p>
+<hr>
+<p>这篇综述大致从五个方向梳理了近期进展。</p>
+<p>第一个方向是<strong>多模态表示</strong>。</p>
+<p>早期方法通常主要依赖氨基酸序列本身。现在越来越多模型开始同时整合多种信息来源，例如序列、几何结构、功能描述文本，以及部分实验上下文。这样做的意义在于，模型不再只是在“读序列”，而是在尝试把结构、功能和语义线索放进同一个表示空间里。对于非专业读者来说，可以把它理解成：以前模型只看一种证据，现在开始学习把多种证据拼起来看。</p>
+<p>第二个方向是<strong>静态结构预测本身仍在继续演进</strong>。</p>
+<p>这并不矛盾。一个领域迈向新阶段，并不意味着旧问题已经彻底结束。综述里提到的两类代表性方向，一类是减少对多序列比对（MSA）的依赖，尝试从单序列直接预测结构；另一类是把预测对象从单个蛋白进一步扩展到更复杂的体系，例如蛋白质复合物、蛋白质-配体结合状态，以及更细粒度的全原子层面建模。</p>
+<p>这一步对做实验的人尤其重要，因为很多实际问题并不是“这个蛋白单独折成什么样”，而是“它和谁结合”“结合后变成什么样”“这个状态是否与功能有关”。</p>
+<p>第三个方向是<strong>生成式建模开始进入蛋白质预测主舞台</strong>。</p>
+<p>这部分是整篇综述的重点。扩散模型（diffusion models）、流匹配（flow matching）等生成式方法被引入蛋白质结构与构象建模之后，一个明显变化是：模型不再只给出单一“最优答案”，而是开始尝试描述一组可能状态，或者说一个构象分布。</p>
+<p>从生物物理角度看，这个变化非常关键。蛋白质在溶液里往往不是唯一固定构象，而是处在多个状态之间的平衡中。也就是说，研究者真正关心的常常不是“唯一正确结构”，而是“哪些状态更可能出现”“不同状态之间如何转变”“在什么条件下偏向哪一种状态”。</p>
+<p>当然，这里也要说清边界：生成式模型能更好地表示“可能的构象空间”，不等于它已经完整还原了真实细胞环境中的全部动力学过程。它更像是在为后续解释和实验验证提供一个更丰富的候选集合，而不是自动替代生物物理实验。</p>
+<p>第四个方向是<strong>异质性相互作用预测</strong>。</p>
+<p>这包括蛋白质与小分子、蛋白质与核酸、蛋白质与其他蛋白之间的相互作用预测。对于药物研发、分子设计和功能机制研究，这一块都很关键。过去很多工作高度依赖已知结构和分子对接流程，而新一代方法试图把预测提前到更早阶段：从序列、局部结构或联合表示出发，直接给出结合模式、相容性或候选界面。</p>
+<p>这里最容易被误解的一点是：预测到“可能结合”，并不等于机制已经被证明，更不等于实验上一定成立。它的价值首先体现在缩小搜索范围、提高假设提出效率，而不是直接终结验证流程。</p>
+<p>第五个方向是<strong>从结构走向功能推断</strong>。</p>
+<p>比如突变效应预测、适应度景观建模、属性引导设计等。这些工作之所以受到关注，是因为它们更接近实际应用场景：如果研究目标是改造一个酶、提高一个蛋白的稳定性，或者筛选更优候选，那么研究者最终关心的通常不是“结构图漂不漂亮”，而是“哪个变体更值得做实验”。</p>
+<p>从这个角度看，蛋白质预测的发展方向正在发生一个很明显的变化：不再只回答“结构是什么”，而是越来越多地回答“结构变化意味着什么”“哪些候选更值得优先验证”。</p>
+<hr>
+<p>这篇综述也没有回避目前的难点。</p>
+<p>第一类难点是<strong>数据分布并不均衡</strong>。</p>
+<p>公开数据库里的蛋白质数据不是平均覆盖所有类型的分子。某些研究更充分、实验更容易做的体系，往往在训练数据里占得更多；而膜蛋白、瞬时复合物、条件依赖性很强的体系，往往更难获得高质量数据。这会直接影响模型的泛化表现。换句话说，模型在“常见题型”上成绩很好，不代表它在所有蛋白质问题上都同样可靠。</p>
+<p>第二类难点是<strong>可解释性仍然有限</strong>。</p>
+<p>很多模型能给出看起来不错的结果，但为什么它做出这个判断、它学到的是统计相关性还是更接近机制层面的规律，这些问题往往还没有被完全回答。对于更偏机制研究的读者来说，这一点尤其重要，因为预测结果最终还是要回到可验证的生物学问题上。</p>
+<p>第三类难点是<strong>评价指标与真实生物问题之间并不总是完全对齐</strong>。</p>
+<p>例如，一个模型在几何指标上更好，并不自动意味着它对功能状态、活性构象或实验可用性也更好。结构误差变小，只能说明它在某个定义下更接近参考答案；但真正的研究问题往往还包括环境依赖性、状态转换、实验条件差异等更复杂因素。</p>
+<p>这也是为什么，生物信息学和湿实验并不是谁替代谁的关系。前者更擅长从复杂数据中提出候选、组织线索、建立预测框架；后者负责把这些候选放回真实系统里验证，分辨哪些是统计信号，哪些是生物事实。</p>
+<hr>
+<p>如果把这篇综述放到更大的背景里看，它真正提示我们的，不是“静态结构预测已经过时”，而是蛋白质研究的计算问题正在继续外扩。</p>
+<p>过去大家更关注“能不能把结构预测对”；现在越来越多工作在追问：“能不能把状态变化描述出来”“能不能把结合过程建模出来”“能不能把结构和功能联系起来”。</p>
+<p>这类进展对不同读者的意义并不一样。</p>
+<p>对学生来说，它提示了一个学科趋势：结构预测只是起点，后面的动力学、相互作用和功能推断会越来越重要。</p>
+<p>对做湿实验的研究者来说，它的价值不在于“计算终于能替代实验”，而在于它可以更早筛掉一批低价值候选，把实验资源集中到更有希望的问题上。</p>
+<p>对做生物信息学或 AI 的人来说，这也提醒我们，模型指标做得更漂亮并不够，关键是它是否真正贴近了生物问题本身。</p>
+<p>所以，这篇综述值得关注，不是因为它宣布了一个终点，而是因为它比较清楚地描述了这个领域接下来会往哪里走。</p>
+<hr>
+<p>参考文献</p>
+<ul>
+<li>From Snapshots to Symphonies: The Evolution of Protein Prediction from Static Structures to Generative Dynamics and Multimodal Interactions. Jingzhi Chen, Lijian Xu. arXiv:2603.18505. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.18505">https://arxiv.org/abs/2603.18505</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/04/06/2026-04-06-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%A2%84%E6%B5%8B%E4%BB%8E%E9%9D%99%E6%80%81%E8%B5%B0%E5%90%91%E5%8A%A8%E6%80%81/">http://bohuyeshan.top/2026/04/06/2026-04-06-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%A2%84%E6%B5%8B%E4%BB%8E%E9%9D%99%E6%80%81%E8%B5%B0%E5%90%91%E5%8A%A8%E6%80%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%9B%8B%E7%99%BD%E8%B4%A8/">蛋白质</a><a class="post-meta__tags" href="/tags/%E7%BB%93%E6%9E%84/">结构</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/06/2026-04-06-02-%E5%91%A8%E6%8A%A5-GitHub-AI-%E6%A8%A1%E5%9E%8B/" title="周报｜GitHub、AI 技术与模型更新"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">周报｜GitHub、AI 技术与模型更新</div></div><div class="info-2"><div class="info-item-1">周报｜GitHub、AI 技术与模型更新 本文信息由 AI 爬取+整理，经人工核验后发布。AI 爬取可能会有遗漏，欢迎在评论区补充。如有偏差，也欢迎指正。  本期覆盖时间：2026-03-30 ～ 2026-04-05（含）  上周的 GitHub 和 AI 圈，最明显的变化不是“又多了几个 Agent 项目”，而是这些工具开始更像正式的开发基础设施：可扩展、可治理、能落到真实工程流程里。相比前几周那种“谁更会造概念”的热闹，上周更值得看的，是一些已经开始进入 IDE、工作流和平台治理层面的更新。 这也是为什么，这期周报我会把重点放在“真正进入工作流的能力变化”上，而不是再机械罗列一串热门项目名。  一、GitHub 本周值得看的内容1. GitHub Copilot 在 Visual Studio 的三月更新，开始把 Agent 真正带进 IDE 工作流这条更新发布于 2026 年 4 月 2 日，来自 GitHub 官方 changelog。它最值得注意的地方，不是“Copilot 又更强了”，而是 Agent 能力开始更明确地进入团队级开发环境。 这次更新里有几个很关键的点...</div></div></div></a><a class="pagination-related" href="/2026/04/05/2026-04-05-01-TurboESM-%E8%9B%8B%E7%99%BD%E8%B4%A8%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%843bit%E9%87%8F%E5%8C%96%E5%8E%8B%E7%BC%A9/" title="蛋白质语言模型太大？用3-bit量化把它缩小7倍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">蛋白质语言模型太大？用3-bit量化把它缩小7倍</div></div><div class="info-2"><div class="info-item-1">蛋白质语言模型太大？用3-bit量化把它缩小7倍蛋白质语言模型在最近几年变得越来越大。ESM-2有650M参数，如果是更大的版本，参数量可以达到几十亿。这些大模型在蛋白质结构预测、功能注释、药物发现等任务上效果确实好，但有一个实际问题：它们太大了，大到几乎不可能在单个GPU上部署。 更大的模型意味着更大的KV cache——在推理过程中，需要存储attention机制里Key和Value矩阵的缓存。这个缓存的大小和序列长度的平方成正比。处理一个几百个氨基酸的蛋白质序列，KV cache可能就已经是几百MB甚至几个GB。对于想要在笔记本电脑上跑模型的人来说，这显然不现实。 解决这个问题的一个常见方法是量化——把原本用32位浮点数存储的参数压缩到更少的位数。但这个方向有一个难点：3-bit量化（在每个参数上用3个比特表示）一直很难做成功。 这篇论文解决了这个问题。  论文标题是 “TurboESM: Ultra-Efficient 3-Bit KV Cache Quantization for Protein Language Models with Orthogonal Rotat...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/08/2026-04-08-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%83%8F%E5%A4%A7%E6%A8%A1%E5%9E%8B-%E4%BD%86%E5%AE%83%E5%92%8C%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E5%B7%AE%E5%9C%A8%E5%93%AA/" title="蛋白质语言模型越来越像大模型，但它和自然语言模型到底差在哪"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-08</div><div class="info-item-2">蛋白质语言模型越来越像大模型，但它和自然语言模型到底差在哪</div></div><div class="info-2"><div class="info-item-1">蛋白质语言模型越来越像大模型，但它和自然语言模型到底差在哪这两年，蛋白质语言模型越来越容易被拿来和自然语言大模型类比。 这种类比不是完全没有道理。两者都用 Transformer，都做预训练，也都在尝试从大规模序列中学习规律。很多文章也喜欢顺手把蛋白质序列称为“生命语言”，于是读者很容易得到一个直觉：蛋白质语言模型，差不多就是把做 NLP 的那一套搬到了生物里。 但如果把这个理解停在这里，问题就会变大。 因为蛋白质序列和自然语言虽然表面上都像“字符串”，它们背后的生成机制、约束条件、评价方式和验证链条，其实都不一样。也正因为这些差异，蛋白质语言模型并不是简单照搬自然语言模型就能成立，它有一套更贴近生物问题本身的难点。 最近有一篇论文正好把这个问题讲得比较具体。论文标题是《Protein Language Models Diverge from Natural Language: Comparative Analysis and Improved Inference》，于 2026 年 2 月 24 日提交到 arXiv，作者包括 Anna Hart、Chi Han、Jeonghw...</div></div></div></a><a class="pagination-related" href="/2026/04/05/2026-04-05-01-TurboESM-%E8%9B%8B%E7%99%BD%E8%B4%A8%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%843bit%E9%87%8F%E5%8C%96%E5%8E%8B%E7%BC%A9/" title="蛋白质语言模型太大？用3-bit量化把它缩小7倍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-05</div><div class="info-item-2">蛋白质语言模型太大？用3-bit量化把它缩小7倍</div></div><div class="info-2"><div class="info-item-1">蛋白质语言模型太大？用3-bit量化把它缩小7倍蛋白质语言模型在最近几年变得越来越大。ESM-2有650M参数，如果是更大的版本，参数量可以达到几十亿。这些大模型在蛋白质结构预测、功能注释、药物发现等任务上效果确实好，但有一个实际问题：它们太大了，大到几乎不可能在单个GPU上部署。 更大的模型意味着更大的KV cache——在推理过程中，需要存储attention机制里Key和Value矩阵的缓存。这个缓存的大小和序列长度的平方成正比。处理一个几百个氨基酸的蛋白质序列，KV cache可能就已经是几百MB甚至几个GB。对于想要在笔记本电脑上跑模型的人来说，这显然不现实。 解决这个问题的一个常见方法是量化——把原本用32位浮点数存储的参数压缩到更少的位数。但这个方向有一个难点：3-bit量化（在每个参数上用3个比特表示）一直很难做成功。 这篇论文解决了这个问题。  论文标题是 “TurboESM: Ultra-Efficient 3-Bit KV Cache Quantization for Protein Language Models with Orthogonal Rotat...</div></div></div></a><a class="pagination-related" href="/2026/04/04/2026-04-04-01-%E8%9B%8B%E7%99%BD%E8%B4%A8%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C/" title="蛋白质语言模型真的和语言模型一样吗？"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-04</div><div class="info-item-2">蛋白质语言模型真的和语言模型一样吗？</div></div><div class="info-2"><div class="info-item-1">蛋白质语言模型真的和语言模型一样吗？这个问题看起来有点奇怪。蛋白质语言模型（Protein Language Model，PLM）本身就是从自然语言处理里的Transformer架构借过来的——BERT、GPT 这些模型被用来处理氨基酸序列。所以如果有人问”它们有什么不同”，听起来像是在问”一把钥匙和另一把钥匙有什么不同”。 但最近有一篇论文系统地研究了这个问题，发现答案没那么简单。  这篇论文叫 “Protein Language Models Diverge from Natural Language: Comparative Analysis and Improved Inference”，2026年2月23日提交到arXiv，作者是Anna Hart、Chi Han等人，来自伊利诺伊大学厄本那-香槟分校和俄勒冈大学。 研究的核心问题是：把一个为自然语言设计的Transformer架构直接拿来处理蛋白质序列，这个过程中有什么东西悄悄改变了？  先说一个背景。蛋白质由20种氨基酸组成，氨基酸序列本质上也是一个”句子”——每个位置有一个token（氨基酸），整个序列有语法结构（...</div></div></div></a><a class="pagination-related" href="/2026/04/07/2026-04-07-01-%E5%B0%91%E6%A0%B7%E6%9C%AC%E6%9D%A1%E4%BB%B6%E4%B8%8B-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%80%82%E5%BA%94%E5%BA%A6%E8%BF%98%E8%83%BD%E4%B8%8D%E8%83%BD%E9%A2%84%E6%B5%8B/" title="少样本条件下，蛋白质适应度还能不能预测"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-07</div><div class="info-item-2">少样本条件下，蛋白质适应度还能不能预测</div></div><div class="info-2"><div class="info-item-1">少样本条件下，蛋白质适应度还能不能预测蛋白质工程里有一个很实际的问题：如果只拿到一个蛋白质序列，以及极少量实验测量结果，能不能尽早判断哪些变体更值得继续做下去？ 这背后对应的是蛋白质适应度预测问题。这里的“适应度”，不是一个抽象概念，而是某个具体任务下的表现，例如酶活性、结合能力、稳定性，或者某种筛选条件下的存活与富集结果。 这个问题之所以难，并不是因为没有模型，而是因为真正昂贵的部分通常在数据上。很多监督学习方法都依赖较大规模的标注数据，但在真实实验里，一套高质量测量往往意味着时间、成本和反复优化。对于一个刚开始研究的新蛋白或新任务，研究者经常拿不到那么多可直接训练的数据。 所以，少样本条件下还能不能做预测，一直是蛋白质工程里很核心的问题。  这篇论文提出的思路，是把自然语言处理中已经很熟悉的 in-context learning（上下文学习）迁移到蛋白质问题上。论文标题是《Few-shot Protein Fitness Prediction via In-context Learning and Test-time Training》，作者包括 Felix Teufel、...</div></div></div></a><a class="pagination-related" href="/2026/04/27/2026-04-27-04-AlphaFold%E4%B9%8B%E5%90%8E%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%93%E6%9E%84%E9%A2%84%E6%B5%8B%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AD%A5/" title="AlphaFold之后：蛋白质结构预测的下一步是什么"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-27</div><div class="info-item-2">AlphaFold之后：蛋白质结构预测的下一步是什么</div></div><div class="info-2"><div class="info-item-1">AlphaFold之后：蛋白质结构预测的下一步是什么2021年，AlphaFold2横空出世，在CASP14（蛋白质结构预测竞赛）中达到了接近实验精度的预测水平。《Science》将其评为年度科学突破，《Nature》称其为”改变生物学的AI”。 但AlphaFold2不是终点。 它在单体蛋白质结构预测上表现出色，但在侧链堆积、条件依赖的构象变化、生物分子相互作用等方面仍然存在局限。更重要的是，蛋白质不是静态的——它们在细胞中不断运动、折叠、相互作用，而AlphaFold2只能预测一个”静态快照”。 2026年4月，多篇论文展示了蛋白质结构预测的新方向：  ROCKET：把实验数据（cryo-EM、cryo-ET、X-ray）整合进AlphaFold2 RosettaSearch：用大语言模型在推理时优化蛋白质序列设计 FlexRibbon：联合序列-结构预训练，不依赖MSA ProteinVista：全原子3D CNN，在结构依赖任务上超越序列transformer  蛋白质结构预测，正在从”预测静态结构”走向”整合实验数据、优化动态构象、设计新蛋白质”。  AlphaFold...</div></div></div></a><a class="pagination-related" href="/2026/04/09/2026-04-09-01-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%9B%8B%E7%99%BD%E8%B4%A8%E6%A8%A1%E5%9E%8B%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%BC%BA-%E4%BD%86%E5%BE%88%E5%A4%9A%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%9A%84%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%B9%B6%E6%B2%A1%E6%9C%89%E5%9B%A0%E6%AD%A4%E5%8F%98%E7%AE%80%E5%8D%95/" title="为什么蛋白质模型越来越强，但很多实验室的日常工作并没有因此变简单"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-09</div><div class="info-item-2">为什么蛋白质模型越来越强，但很多实验室的日常工作并没有因此变简单</div></div><div class="info-2"><div class="info-item-1">为什么蛋白质模型越来越强，但很多实验室的日常工作并没有因此变简单如果只看这两年的标题，很容易产生一种印象：蛋白质模型越来越强，结构预测越来越准，适应度预测越来越灵活，生成式方法也越来越会“设计”分子。照这个趋势看，实验室的日常研究似乎应该同步变得轻松很多。 但真实情况往往没这么直接。 至少在很多实验室里，大家的工作并没有因为模型更强就突然变简单。实验依旧贵，验证依旧慢，数据依旧不均匀，很多关键问题依旧要靠一轮一轮地排除和确认。 这并不说明这些模型没价值。恰恰相反，它说明我们需要把一个问题讲得更清楚：模型能力的提升，和真实科研流程的简化，并不是一回事。 如果把这几天看的几篇文章放在一起，这件事会更明显。 一篇综述告诉我们，蛋白质预测正在从静态结构走向动态行为、相互作用和功能建模；一篇少样本工作告诉我们，模型可以在实验数据很少的时候帮助做更快的候选排序；另一篇关于蛋白质语言模型的分析则提醒我们，蛋白质序列建模并不是把自然语言方法平移过来那么简单。 这里也要把来源性质说清楚：这篇文章本身是总结文，主要基于前几天已经讨论过的几篇预印本与方法论文来收束问题。因此它的重点不是再宣布一个“新结...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%93%E6%9E%84%E9%A2%84%E6%B5%8B%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%BB%8E%E9%9D%99%E6%80%81%E5%88%B0%E5%8A%A8%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">蛋白质结构预测的下一步：从静态到动态</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

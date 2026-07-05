@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>这 7 篇 Bioinformatics 论文，各自的看点在哪里 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这 7 篇 Bioinformatics 论文，各自的看点在哪里这类”热点论文日报”最大的风险，是把人带进一种错觉：今天又多了 7 篇新论文，于是好像 AI for Bio 又同时在七八个方向上全面推进了一步。 但如果真这样读，最后通常什么都记不住。 更有用的读法不是把 7 篇都平均扫一遍，而是问一句更硬的话：今天这批新论文里，哪些信号值得记住，甚至会影响你接下来怎么判断一个方向值不值得继续追？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这 7 篇 Bioinformatics 论文，各自的看点在哪里">
+<meta property="og:url" content="http://bohuyeshan.top/2026/03/25/2026-03-25-03-%E8%BF%997%E7%AF%87Bioinformatics%E8%AE%BA%E6%96%87%E5%90%84%E8%87%AA%E7%9C%8B%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="这 7 篇 Bioinformatics 论文，各自的看点在哪里这类”热点论文日报”最大的风险，是把人带进一种错觉：今天又多了 7 篇新论文，于是好像 AI for Bio 又同时在七八个方向上全面推进了一步。 但如果真这样读，最后通常什么都记不住。 更有用的读法不是把 7 篇都平均扫一遍，而是问一句更硬的话：今天这批新论文里，哪些信号值得记住，甚至会影响你接下来怎么判断一个方向值不值得继续追？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-03-25T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.154Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "这 7 篇 Bioinformatics 论文，各自的看点在哪里",
+  "url": "http://bohuyeshan.top/2026/03/25/2026-03-25-03-%E8%BF%997%E7%AF%87Bioinformatics%E8%AE%BA%E6%96%87%E5%90%84%E8%87%AA%E7%9C%8B%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-03-25T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.154Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/03/25/2026-03-25-03-%E8%BF%997%E7%AF%87Bioinformatics%E8%AE%BA%E6%96%87%E5%90%84%E8%87%AA%E7%9C%8B%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '这 7 篇 Bioinformatics 论文，各自的看点在哪里',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">这 7 篇 Bioinformatics 论文，各自的看点在哪里</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">这 7 篇 Bioinformatics 论文，各自的看点在哪里</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-25T20:00:00.000Z" title="发表于 2026-03-25 20:00:00">2026-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.154Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="这-7-篇-Bioinformatics-论文，各自的看点在哪里"><a href="#这-7-篇-Bioinformatics-论文，各自的看点在哪里" class="headerlink" title="这 7 篇 Bioinformatics 论文，各自的看点在哪里"></a>这 7 篇 Bioinformatics 论文，各自的看点在哪里</h1><p>这类”热点论文日报”最大的风险，是把人带进一种错觉：今天又多了 7 篇新论文，于是好像 AI for Bio 又同时在七八个方向上全面推进了一步。</p>
+<p>但如果真这样读，最后通常什么都记不住。</p>
+<p>更有用的读法不是把 7 篇都平均扫一遍，而是问一句更硬的话：<strong>今天这批新论文里，哪些信号值得记住，甚至会影响你接下来怎么判断一个方向值不值得继续追？</strong></p>
+<p>如果只抓最重要的，我觉得今天真正值得单独成篇的，不是 7 篇论文本身，而是下面这 <strong>3 个信号</strong>。</p>
+<h2 id="信号一：虚拟细胞开始从”像”走向”有生物学约束”"><a href="#信号一：虚拟细胞开始从”像”走向”有生物学约束”" class="headerlink" title="信号一：虚拟细胞开始从”像”走向”有生物学约束”"></a>信号一：虚拟细胞开始从”像”走向”有生物学约束”</h2><p>今天最强的一条线，其实不是单篇论文，而是 <strong>CDT-III</strong> 和 <strong>CellFluxRL</strong> 放在一起之后呈现出来的方向变化。</p>
+<h3 id="先看-CDT-III"><a href="#先看-CDT-III" class="headerlink" title="先看 CDT-III"></a>先看 CDT-III</h3><p>这篇工作的名字已经很说明问题：<strong>Central Dogma Transformer III</strong>。</p>
+<p>它不是只做一个局部任务，而是试图把 <strong>DNA → RNA → 蛋白质</strong> 这条更完整的中心法则链路拉进一个可解释 AI 框架里。日报里给出的信息也很关键：</p>
+<ul>
+<li>它有双阶段虚拟细胞嵌入架构</li>
+<li>一阶段模拟转录</li>
+<li>一阶段模拟翻译</li>
+<li>不只是追求预测精度，还强调可解释性</li>
+<li>甚至已经碰到了药物副作用预测这种更接近下游应用的问题</li>
+</ul>
+<p>这意味着什么？</p>
+<p>意味着 AI 生物学里有一条很明显的推进，不再只是”拿一个模型去拟合一类生物数据”，而是开始更主动地尝试：<strong>把生物过程本身组织成一个可以被建模、被追踪、被解释的系统。</strong></p>
+<h3 id="再看-CellFluxRL"><a href="#再看-CellFluxRL" class="headerlink" title="再看 CellFluxRL"></a>再看 CellFluxRL</h3><p>CellFluxRL 则把这条线又往前推了一步。</p>
+<p>它最关键的地方不只是引入了强化学习，而是引入了<strong>生物学约束</strong>。日报里提到它用了覆盖生物功能、结构有效性和形态正确性的 7 个奖励函数，把虚拟细胞生成从”视觉真实”推进到”生物学意义”。</p>
+<p>这句话非常重要。</p>
+<p>因为过去很多生成式工作最容易停留在”看起来像”。但在生物学里，”像”远远不够。你可以生成一个很像细胞的东西，却不代表它在功能、结构或扰动响应上真的合理。</p>
+<p>所以 CellFluxRL 的价值，不只是”RL 也能用在生物学里”，而是它提醒我们：<strong>虚拟细胞这条线，开始从表面逼真，转向受生物规则约束的有效生成。</strong></p>
+<h3 id="这条线为什么值得特别记住"><a href="#这条线为什么值得特别记住" class="headerlink" title="这条线为什么值得特别记住"></a>这条线为什么值得特别记住</h3><p>如果把 CDT-III 和 CellFluxRL 放在一起看，一个很强的趋势就出来了：</p>
+<ul>
+<li>一边是在做更完整的过程建模</li>
+<li>一边是在给生成结果加更硬的生物学约束</li>
+</ul>
+<p>也就是说，AI for Bio 里最值得继续追的一条主线，已经不只是”模型会不会看懂组学数据”，而是：</p>
+<p><strong>它能不能逐步逼近一个可操作、可解释、受约束的虚拟生物系统。</strong></p>
+<p>这个信号，比单纯看到某个 benchmark 又涨了几个点，要重要得多。</p>
+<h2 id="信号二：空间转录组里，可解释的结构方法依然很强"><a href="#信号二：空间转录组里，可解释的结构方法依然很强" class="headerlink" title="信号二：空间转录组里，可解释的结构方法依然很强"></a>信号二：空间转录组里，可解释的结构方法依然很强</h2><p>今天第二个值得记住的信号，来自 <strong>STORM</strong>。</p>
+<p>这篇文章的价值不只是任务做得多，而是它给出了一种在今天很容易被低估的判断：<strong>在生物信息学里，可解释、结构明确的方法并没有过时。</strong></p>
+<p>日报里给出的描述很清楚：</p>
+<ul>
+<li>它处理的是多切片空间转录组对齐</li>
+<li>方法核心是不规则张量分解</li>
+<li>目标包括批次效应消除、细胞类型解卷积、未测基因补全</li>
+<li>而且强调相比黑盒深度学习方法，它天然更可解释</li>
+</ul>
+<p>这点为什么重要？</p>
+<p>因为过去几年大家在 AI 话语里太容易形成一个自动直觉：参数更多、结构更黑盒、端到端更深，就更先进。</p>
+<p>但到了生物信息学，尤其是空间组学这种噪声复杂、批次效应强、数据结构本身很重要的场景里，这个直觉并不总成立。</p>
+<p>很多时候，研究者真正需要的不是一个”反正很强”的模型，而是：</p>
+<ul>
+<li>模型为什么这样对齐</li>
+<li>模型为什么这样分解信号</li>
+<li>模型为什么认定某些差异是批次效应而不是生物差异</li>
+</ul>
+<p>这些问题如果没有结构和可解释性支撑，模型再强，外部也不容易信。</p>
+<p>所以 STORM 值得记住的，不只是”它又在空间转录组上做到了 SOTA”，而是它再次提醒我们：</p>
+<p><strong>AI for Bio 不是简单地把黑盒模型搬进来，而是要找到既能做事、又能让人相信的结构。</strong></p>
+<p>这件事，在接下来很多空间组学工作里都还会反复出现。</p>
+<h2 id="信号三：benchmark-正在变严，领域开始更认真地问”泛化到底行不行”"><a href="#信号三：benchmark-正在变严，领域开始更认真地问”泛化到底行不行”" class="headerlink" title="信号三：benchmark 正在变严，领域开始更认真地问”泛化到底行不行”"></a>信号三：benchmark 正在变严，领域开始更认真地问”泛化到底行不行”</h2><p>第三个信号，来自今天这批论文里最”没那么炫”、但其实特别重要的一组：<strong>CHANRG</strong> 和 <strong>46 个 PRS 工具 benchmark</strong>。</p>
+<p>表面上看，这类论文最容易被忽略。因为它们不像虚拟细胞、药物设计、生成模型那样一眼就显得”新”。</p>
+<p>但从领域成熟度来说，这一类工作反而往往最关键。</p>
+<h3 id="CHANRG-在提醒什么"><a href="#CHANRG-在提醒什么" class="headerlink" title="CHANRG 在提醒什么"></a>CHANRG 在提醒什么</h3><p>CHANRG 这篇文章的核心不是发明了一个更强的新模型，而是做了更严格的 benchmark，并且得出了一个很多人不一定爱听的结论：</p>
+<p><strong>RNA 结构预测的泛化能力，可能没有大家以为的那么强。</strong></p>
+<p>日报里提到它做了结构感知去重和基因组感知分割，对 29 个工具做评估，结果是：</p>
+<ul>
+<li>基础模型在分布内表现最好</li>
+<li>但到了分布外，优势明显下降</li>
+<li>反而有些结构解码器和直接神经预测器更稳</li>
+</ul>
+<p>这说明什么？</p>
+<p>说明这个领域开始越来越认真地区分两件事：</p>
+<ul>
+<li>你在熟悉分布上是不是很强</li>
+<li>你换个分布、换个数据条件后，是不是还站得住</li>
+</ul>
+<p>这其实是一个非常”变硬”的信号。</p>
+<h3 id="46-个-PRS-工具-benchmark-又在提醒什么"><a href="#46-个-PRS-工具-benchmark-又在提醒什么" class="headerlink" title="46 个 PRS 工具 benchmark 又在提醒什么"></a>46 个 PRS 工具 benchmark 又在提醒什么</h3><p>PRS 那篇同样值得注意。它对 46 个工具在多个表型上做标准化 benchmarking，最后得到的不是”某个方法天下无敌”，而是：</p>
+<p><strong>没有任何单一方法在所有场景下都普遍最优。</strong></p>
+<p>这句话很朴素，但它非常重要。</p>
+<p>因为它打掉了很多读者最容易形成的幻觉：只要看到一个方法 headline 更好，就以为以后都该用它。</p>
+<p>实际上，工具选择往往高度依赖：</p>
+<ul>
+<li>数据条件</li>
+<li>表型类型</li>
+<li>实现细节</li>
+<li>benchmark 设计</li>
+<li>评估口径</li>
+</ul>
+<p>这类论文的真正价值，不是在”又做了一次排名”，而是在告诉大家：</p>
+<p><strong>领域开始从追 SOTA 口号，转向追更严的比较条件。</strong></p>
+<h3 id="这条线为什么和前面的主线连得上"><a href="#这条线为什么和前面的主线连得上" class="headerlink" title="这条线为什么和前面的主线连得上"></a>这条线为什么和前面的主线连得上</h3><p>如果最近一直在看 BioAgent Bench、工具评测、开源项目成熟度这些东西，就会发现这不是孤立现象。</p>
+<p>今天这两篇 benchmark 工作其实在说明同一件事：</p>
+<p><strong>AI for Bio 正在越来越少满足于”它好像很强”，而越来越多地追问”它到底在什么条件下成立”。</strong></p>
+<p>这件事对领域是好消息。</p>
+<p>因为真正让一个方向成熟的，往往不是模型第一次冲上去，而是评测、泛化、实现差异这些更硬的问题开始被系统地追问。</p>
+<h2 id="那今天剩下几篇怎么理解？"><a href="#那今天剩下几篇怎么理解？" class="headerlink" title="那今天剩下几篇怎么理解？"></a>那今天剩下几篇怎么理解？</h2><p>这不代表其他论文不重要。</p>
+<p>像 <strong>SynLeaF</strong>、药物设计里的量子 GAN、以及其他当天热点，本身都有各自的价值。但如果今天这篇文章要保持短、硬、可记忆，那就不能把所有方向平铺展开。</p>
+<p>真正该留下来的，是最能改变判断框架的那几条主线。</p>
+<p>而今天最强的判断框架，就是这三个：</p>
+<ol>
+<li><strong>虚拟细胞开始走向生物学约束，而不只是表面生成</strong></li>
+<li><strong>空间组学里，可解释结构方法仍然有很强位置</strong></li>
+<li><strong>benchmark 正在变严，泛化与实现差异开始被更认真地追问</strong></li>
+</ol>
+<h2 id="最后一句"><a href="#最后一句" class="headerlink" title="最后一句"></a>最后一句</h2><p>如果只把今天这 7 篇论文当作”又一批新工作”，那读完之后很快就会忘干净。</p>
+<p>但如果把它们当成方向信号来看，今天真正值得记住的其实是：</p>
+<p><strong>AI for Bio 正在变硬。</strong></p>
+<p>它一边往更完整的生物学过程建模走，一边往更可解释的结构方法走，同时也在往更严格的 benchmark 和泛化检验走。</p>
+<p>而这些也正好回答了一个更实际的问题：</p>
+<p>为什么今天值得学的，不只是怎么 clone 一个项目、怎么配好环境。</p>
+<p>因为在真正动手之前，你越来越需要先判断：</p>
+<ul>
+<li>这个方向是不是在变真</li>
+<li>这个项目是不是在变硬</li>
+<li>这条技术线是不是值得你投入时间</li>
+</ul>
+<p>这大概才是今天这批 Bioinformatics 热点里，最值得单独展开来讲的东西。</p>
+<hr>
+<h2 id="本文涉及论文"><a href="#本文涉及论文" class="headerlink" title="本文涉及论文"></a>本文涉及论文</h2><ul>
+<li>Central Dogma Transformer III: Interpretable AI Across DNA, RNA, and Protein<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.23361">https://arxiv.org/abs/2603.23361</a></li>
+<li>CellFluxRL: Biologically-Constrained Virtual Cell Modeling via Reinforcement Learning<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.21743">https://arxiv.org/abs/2603.21743</a></li>
+<li>STORM: Subspace Tensor Orthogonal Rotation Model for Spatial Transcriptomics<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.22477">https://arxiv.org/abs/2603.22477</a></li>
+<li>CHANRG: Fair Benchmarking Reveals Limited Generalization in RNA Structure Prediction<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.22330">https://arxiv.org/abs/2603.22330</a></li>
+<li>Polygenic Risk Score Benchmarking: 46 Tools Across Binary and Continuous Phenotypes<br><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.21201">https://arxiv.org/abs/2603.21201</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/03/25/2026-03-25-03-%E8%BF%997%E7%AF%87Bioinformatics%E8%AE%BA%E6%96%87%E5%90%84%E8%87%AA%E7%9C%8B%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/">http://bohuyeshan.top/2026/03/25/2026-03-25-03-%E8%BF%997%E7%AF%87Bioinformatics%E8%AE%BA%E6%96%87%E5%90%84%E8%87%AA%E7%9C%8B%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/03/26/2026-03-26-01-%E6%8A%8AGeneclaw%E8%B7%91%E8%B5%B7%E6%9D%A5%E5%8F%AA%E8%A6%81%E4%B8%83%E6%AD%A5/" title="把 Geneclaw 跑起来，只要七步"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">把 Geneclaw 跑起来，只要七步</div></div><div class="info-2"><div class="info-item-1">把 Geneclaw 跑起来，只要七步昨天那篇解决的是“Geneclaw 到底是什么”。今天这篇不再谈谱系，只做一件更硬的事：把它真正跑起来，而且不是“命令敲完就算”，而是确认你装对了、命令走通了、失败时知道该往哪查。 这篇文章默认你已经知道两件事。第一，Geneclaw 不是基因分析工具，而是一个基于 nanobot 的自演化 Agent 框架。第二，我们今天的目标不是把它研究透，而是完成一次可信的本地首跑：环境对、依赖对、CLI 对、第一条流程能走。 很多人卡死，不是因为 Geneclaw 太难，而是因为一上来就 pip install，根本没先确认自己正在用哪个 Python、pip 是不是同一个解释器、网络能不能拉依赖、后面要不要 API key。这篇就按这个思路来。 而且这篇会优先按 Windows 用户来写。原因很现实：今天最常见的失败场景，本来就集中在 Windows——Microsoft Store Python、python 和 py 混用、PowerShell 激活脚本被拦、PATH 混乱、pip 装进了另一个解释器里。你如果是 macOS 或 Linux 用...</div></div></div></a><a class="pagination-related" href="/2026/03/25/2026-03-25-03-%E4%BB%8A%E5%A4%A9%E8%BF%997%E7%AF%87Bioinformatics%E7%83%AD%E7%82%B9%E9%87%8C%E7%9C%9F%E6%AD%A3%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E6%98%AF%E8%BF%993%E4%B8%AA%E4%BF%A1%E5%8F%B7/" title="这 7 篇 Bioinformatics 论文，各自的看点在哪里"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">这 7 篇 Bioinformatics 论文，各自的看点在哪里</div></div><div class="info-2"><div class="info-item-1">这 7 篇 Bioinformatics 论文，各自的看点在哪里这类”热点论文日报”最大的风险，是把人带进一种错觉：今天又多了 7 篇新论文，于是好像 AI for Bio 又同时在七八个方向上全面推进了一步。 但如果真这样读，最后通常什么都记不住。 更有用的读法不是把 7 篇都平均扫一遍，而是问一句更硬的话：今天这批新论文里，哪些信号值得记住，甚至会影响你接下来怎么判断一个方向值不值得继续追？ 如果只抓最重要的，我觉得今天真正值得单独成篇的，不是 7 篇论文本身，而是下面这 3 个信号。 信号一：虚拟细胞开始从”像”走向”有生物学约束”今天最强的一条线，其实不是单篇论文，而是 CDT-III 和 CellFluxRL 放在一起之后呈现出来的方向变化。 先看 CDT-III这篇工作的名字已经很说明问题：Central Dogma Transformer III。 它不是只做一个局部任务，而是试图把 DNA → RNA → 蛋白质 这条更完整的中心法则链路拉进一个可解释 AI 框架里。日报里给出的信息也很关键：  它有双阶段虚拟细胞嵌入架构 一阶段模拟转录 一阶段模拟翻译 不只是追...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/" title="生信 Agent 开始落地"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-22</div><div class="info-item-2">生信 Agent 开始落地</div></div><div class="info-2"><div class="info-item-1">生信 Agent 开始落地 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了  今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话的界面，而是开始尝试接数据、调工具、跑标准步骤、吐中间结果，再把人留在真正关键的复核点上。这个变化听起来有点抽象，但如果你把它摊开看，就会发现它对应着一个很具体的迁移：过去很多分析是“人先打开 notebook，再决定做什么”；现在有些入口开始变成“先把任务和数据交给系统，系统先把标准动作跑起来，人再决定结论是否成立”。 今天看到的这些东西，更像一种结构性变化的早期样本，而不是几条零散热点。因为一旦入口变了，后面的组织方式、参数管理、人工审核、结果交接，都会跟着变。用一个尽量朴素的表达来说，以前很多分析默认的路径大致是 1数据 -&gt; notebook -&gt; 命令 -&gt; ...</div></div></div></a><a class="pagination-related" href="/2026/03/25/2026-03-25-03-%E4%BB%8A%E5%A4%A9%E8%BF%997%E7%AF%87Bioinformatics%E7%83%AD%E7%82%B9%E9%87%8C%E7%9C%9F%E6%AD%A3%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E6%98%AF%E8%BF%993%E4%B8%AA%E4%BF%A1%E5%8F%B7/" title="这 7 篇 Bioinformatics 论文，各自的看点在哪里"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-25</div><div class="info-item-2">这 7 篇 Bioinformatics 论文，各自的看点在哪里</div></div><div class="info-2"><div class="info-item-1">这 7 篇 Bioinformatics 论文，各自的看点在哪里这类”热点论文日报”最大的风险，是把人带进一种错觉：今天又多了 7 篇新论文，于是好像 AI for Bio 又同时在七八个方向上全面推进了一步。 但如果真这样读，最后通常什么都记不住。 更有用的读法不是把 7 篇都平均扫一遍，而是问一句更硬的话：今天这批新论文里，哪些信号值得记住，甚至会影响你接下来怎么判断一个方向值不值得继续追？ 如果只抓最重要的，我觉得今天真正值得单独成篇的，不是 7 篇论文本身，而是下面这 3 个信号。 信号一：虚拟细胞开始从”像”走向”有生物学约束”今天最强的一条线，其实不是单篇论文，而是 CDT-III 和 CellFluxRL 放在一起之后呈现出来的方向变化。 先看 CDT-III这篇工作的名字已经很说明问题：Central Dogma Transformer III。 它不是只做一个局部任务，而是试图把 DNA → RNA → 蛋白质 这条更完整的中心法则链路拉进一个可解释 AI 框架里。日报里给出的信息也很关键：  它有双阶段虚拟细胞嵌入架构 一阶段模拟转录 一阶段模拟翻译 不只是追...</div></div></div></a><a class="pagination-related" href="/2026/04/15/2026-04-15-02-%E4%BD%A0%E6%8B%8D%E4%BA%86%E4%B8%80%E5%BC%A0%E7%85%A7%E7%89%87%E4%BD%86%E5%85%B6%E5%AE%9E%E8%83%BD%E7%9C%8B%E5%88%B0%E6%95%B4%E6%9D%A1%E6%97%B6%E9%97%B4%E7%BA%BF/" title="你拍了一张照片，但其实能看到整条时间线"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-15</div><div class="info-item-2">你拍了一张照片，但其实能看到整条时间线</div></div><div class="info-2"><div class="info-item-1">你拍了一张照片，但其实能看到整条时间线假设你走进一家幼儿园，只拍了一张照片。照片里有正在哭的、在玩积木的、在排队等午饭的、在午睡的。你没见过这些孩子从早到晚的完整日程，但你能从每个人正在做的事情来推断：哭的那个可能刚被送来，午睡的那个可能已经在幼儿园待了大半天。 单细胞生物学家面对的困境，和这差不多。  问题出在哪单细胞 RNA 测序是最近十年最有力的生物学工具之一。它的能力很惊人：一次实验可以同时测量一万个细胞的基因表达状态，让你看到一个组织中所有细胞的全景。 但它有一个根本性的限制：测序会杀死细胞。 你没法对同一个细胞测两次。所以你拿到的永远是一张”快照”——所有细胞在某一时刻的状态。而你想知道的是：干细胞是怎么变成血细胞的？皮肤细胞在受伤后怎么重新编程回祖细胞状态的？肿瘤细胞怎么一步步获得转移能力的？ 这些”怎么变”的问题，本质上是时间问题。但你的数据里没有时间。 2019 年的一项研究为此提供了一个思路。 Schiebinger 等人在 Cell 上发表了 Waddington-OT，用一种叫”最优传输”的数学工具来推断细胞分化路径。它的基本想法是：如果你有早期和晚期两个...</div></div></div></a><a class="pagination-related" href="/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/" title="为什么生物信息学也开始需要 AI agent 的评测体系"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-24</div><div class="info-item-2">为什么生物信息学也开始需要 AI agent 的评测体系</div></div><div class="info-2"><div class="info-item-1">为什么生物信息学也开始需要 AI agent 的评测体系过去一段时间里，大家讨论 AI agent，很多时候重点都放在“又做出了什么能力”上。 比如它能不能自己拆任务、能不能调工具、能不能跑一个 workflow、能不能生成完整报告，或者能不能在某个专业场景里把原本需要人工串起来的步骤自动接过去。生物信息学当然也不例外。随着越来越多 agent 开始进入 RNA-seq、变异检测、宏基因组分析、单细胞分析这些任务，很多人最关心的问题自然会变成：它到底能不能做事？ 但如果这个方向继续往前走，迟早会撞到另一个更关键的问题：它到底靠不靠谱？ 这也是为什么我觉得今天查到的 BioAgent Bench 很值得单独写一篇。因为它做的不是再造一个新 agent，而是在补一个以前很容易被忽略、但其实越来越重要的东西：评测体系。 一、为什么 AI 进入生物信息学之后，光看“能跑通流程”已经不够了很多 AI agent 的演示都很吸引人。给它一个任务，它能自己拆解步骤、调用命令、生成结果文件，甚至最后还给你一份像模像样的总结。第一次看这些系统的时候，很容易觉得它们已经快接近“自动化研究助手”了。 ...</div></div></div></a><a class="pagination-related" href="/2026/03/31/2026-03-31-01-STORM-%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E6%95%B0%E6%8D%AE%E7%9A%84%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94%E5%92%8C%E7%BC%BA%E5%A4%B1%E5%9F%BA%E5%9B%A0%E5%A1%AB%E8%A1%A5/" title="STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-31</div><div class="info-item-2">STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决</div></div><div class="info-2"><div class="info-item-1">STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决空间转录组技术解决了单细胞测序最大的缺陷：位置信息的丢失。 传统单细胞测序需要把组织打散成单个细胞，细胞在组织里的位置就没了。你知道这个细胞的基因表达谱，但不知道它在肿瘤边缘还是肿瘤中心，不知道它的邻居是什么细胞。空间转录组把基因表达和空间坐标绑在一起，让你可以在组织切片上直接看基因表达的分布。 但空间转录组数据用起来有三个问题，做过这类分析的人都遇到过。  第一个是批次效应。 空间转录组实验通常需要多个切片——同一个样本的不同切面，或者不同样本之间的比较。问题是，不同批次的切片之间存在系统性偏差。同一个细胞类型，在不同批次里测出来的基因表达值可能差很多，原因可能是组织处理方式、芯片批次、测序深度，甚至切片的厚度。 批次效应不处理，不同切片的数据就没法放在一起分析。 传统的批次校正方法（比如 ComBat、Harmony）是在基因层面做的：对每个基因，估计批次效应的大小，然后减掉。这个思路在单细胞数据上还算有效，但在空间转录组数据上有个额外的麻烦：不同切片的空间维度不一样。一张切片可能有 3000 个 spot，另一...</div></div></div></a><a class="pagination-related" href="/2026/04/03/2026-04-03-01-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%94%9F%E5%91%BD%E7%A7%91%E5%AD%A6%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%9E%8D%E5%90%88-%E4%B8%93%E9%A2%98%E5%BC%80%E7%AF%87/" title="神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-03</div><div class="info-item-2">神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路</div></div><div class="info-2"><div class="info-item-1">神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路生物学正在变成一门数据科学。 人类基因组有30亿个碱基对，一次单细胞RNA测序可以同时测量上万个基因的表达水平，蛋白质结构数据库里的分子数量已经超过20万个。这些数据量的增长速度远超人类手动分析的能力极限。 处理这些数据的工具，正在从传统的统计模型和物理模拟，转向深度学习。 这不是一个突然的转变。从上世纪80年代的感知机开始，神经网络经过了几十年的演进，发展出了多种不同的架构——CNN、RNN、Transformer、GAN、GNN、SSM……每一种架构在处理特定类型的数据时有各自的优势。 而生物数据恰好是多种类型数据的集合：一维序列、三维结构、基因调控网络、细胞图谱、分子图……没有一种神经网络架构能够包打一切。 这就是本专题的出发点：系统梳理各类神经网络架构在生物信息学中的应用，让研究者能够根据自己面对的数据类型和科学问题，选择合适的计算工具。  生物学为什么需要多种神经网络生物数据有几个基本特性，每一种特性对应着不同的计算需求。 序列性。 DNA、RNA、蛋白质都是一维序列。序列建模需要捕捉长程依赖关系——比如DN...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%99-7-%E7%AF%87-Bioinformatics-%E8%AE%BA%E6%96%87%EF%BC%8C%E5%90%84%E8%87%AA%E7%9A%84%E7%9C%8B%E7%82%B9%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-number">1.</span> <span class="toc-text">这 7 篇 Bioinformatics 论文，各自的看点在哪里</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E4%B8%80%EF%BC%9A%E8%99%9A%E6%8B%9F%E7%BB%86%E8%83%9E%E5%BC%80%E5%A7%8B%E4%BB%8E%E2%80%9D%E5%83%8F%E2%80%9D%E8%B5%B0%E5%90%91%E2%80%9D%E6%9C%89%E7%94%9F%E7%89%A9%E5%AD%A6%E7%BA%A6%E6%9D%9F%E2%80%9D"><span class="toc-number">1.1.</span> <span class="toc-text">信号一：虚拟细胞开始从”像”走向”有生物学约束”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B-CDT-III"><span class="toc-number">1.1.1.</span> <span class="toc-text">先看 CDT-III</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E7%9C%8B-CellFluxRL"><span class="toc-number">1.1.2.</span> <span class="toc-text">再看 CellFluxRL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E6%9D%A1%E7%BA%BF%E4%B8%BA%E4%BB%80%E4%B9%88%E5%80%BC%E5%BE%97%E7%89%B9%E5%88%AB%E8%AE%B0%E4%BD%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">这条线为什么值得特别记住</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E4%BA%8C%EF%BC%9A%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E9%87%8C%EF%BC%8C%E5%8F%AF%E8%A7%A3%E9%87%8A%E7%9A%84%E7%BB%93%E6%9E%84%E6%96%B9%E6%B3%95%E4%BE%9D%E7%84%B6%E5%BE%88%E5%BC%BA"><span class="toc-number">1.2.</span> <span class="toc-text">信号二：空间转录组里，可解释的结构方法依然很强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E4%B8%89%EF%BC%9Abenchmark-%E6%AD%A3%E5%9C%A8%E5%8F%98%E4%B8%A5%EF%BC%8C%E9%A2%86%E5%9F%9F%E5%BC%80%E5%A7%8B%E6%9B%B4%E8%AE%A4%E7%9C%9F%E5%9C%B0%E9%97%AE%E2%80%9D%E6%B3%9B%E5%8C%96%E5%88%B0%E5%BA%95%E8%A1%8C%E4%B8%8D%E8%A1%8C%E2%80%9D"><span class="toc-number">1.3.</span> <span class="toc-text">信号三：benchmark 正在变严，领域开始更认真地问”泛化到底行不行”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CHANRG-%E5%9C%A8%E6%8F%90%E9%86%92%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.1.</span> <span class="toc-text">CHANRG 在提醒什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46-%E4%B8%AA-PRS-%E5%B7%A5%E5%85%B7-benchmark-%E5%8F%88%E5%9C%A8%E6%8F%90%E9%86%92%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.2.</span> <span class="toc-text">46 个 PRS 工具 benchmark 又在提醒什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E6%9D%A1%E7%BA%BF%E4%B8%BA%E4%BB%80%E4%B9%88%E5%92%8C%E5%89%8D%E9%9D%A2%E7%9A%84%E4%B8%BB%E7%BA%BF%E8%BF%9E%E5%BE%97%E4%B8%8A"><span class="toc-number">1.3.3.</span> <span class="toc-text">这条线为什么和前面的主线连得上</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%BB%8A%E5%A4%A9%E5%89%A9%E4%B8%8B%E5%87%A0%E7%AF%87%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">那今天剩下几篇怎么理解？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E5%8F%A5"><span class="toc-number">1.5.</span> <span class="toc-text">最后一句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E6%B6%89%E5%8F%8A%E8%AE%BA%E6%96%87"><span class="toc-number">1.6.</span> <span class="toc-text">本文涉及论文</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

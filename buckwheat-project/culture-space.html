@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能书苑 - 智荟荞缘</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .culture-header {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/buckwheat-project/img/home-pg (1).png');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 text-emerald-700;
+        }
+        .section-subtitle {
+            @apply text-sm sm:text-base text-center text-gray-600 mb-8 sm:mb-12 max-w-xl sm:max-w-2xl mx-auto;
+        }
+        .space-card {
+            @apply bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50;
+        }
+        .space-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-card {
+            @apply bg-emerald-50/70 backdrop-blur-sm p-4 sm:p-6 rounded-lg border border-emerald-200/50 hover:shadow-md transition-shadow;
+        }
+        .event-card {
+            @apply bg-white p-4 sm:p-6 rounded-lg shadow-md mb-4;
+        }
+        .product-card {
+            @apply relative overflow-hidden rounded-lg shadow-lg;
+        }
+        .product-card img {
+            @apply w-full h-64 object-cover transition-transform duration-300;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        .product-overlay {
+            @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 text-white opacity-0 transition-opacity duration-300;
+        }
+        .product-card:hover .product-overlay {
+            @apply opacity-100;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/buckwheat-project/" class="text-xl sm:text-2xl font-bold text-emerald-600">
+                    智荟荞缘
+                </a>
+                <div class="hidden md:flex space-x-1 lg:space-x-4">
+                    <a href="/buckwheat-project/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">首页</a>
+                    <a href="/buckwheat-project/tech.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">技术展示</a>
+                    <a href="/buckwheat-project/culture.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">文化传播</a>
+                    <a href="/buckwheat-project/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">关于我们</a>
+                </div>
+                <button class="md:hidden text-gray-500 hover:text-emerald-600 focus:outline-none" id="menuButtonSpace">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobileMenuSpace">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/buckwheat-project/">首页</a>
+                <a href="/buckwheat-project/tech.html">技术展示</a>
+                <a href="/buckwheat-project/culture.html">文化传播</a>
+                <a href="/buckwheat-project/about.html">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 智能书苑头部 -->
+    <header class="culture-header text-white pt-28 pb-16 md:pt-36 md:pb-24">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">荞麦花开 · 醇香书苑</h1>
+            <p class="text-base sm:text-lg md:text-xl">一个融合科技、文化、健康与休闲的复合型体验中心</p>
+        </div>
+    </header>
+
+    <main class="py-10 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 空间概览 -->
+            <section class="mb-16">
+                <h2 class="section-title">空间概览</h2>
+                <p class="section-subtitle">
+                    让大众沉浸式感受荞麦的独特魅力，体验科技与传统的完美融合。
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+                    <div class="relative rounded-xl overflow-hidden shadow-xl">
+                        <img src="https://source.unsplash.com/600x450/?modern,cafe" alt="智能书苑概念图" class="w-full h-auto md:h-[450px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4 sm:p-6">
+                            <h3 class="text-xl sm:text-2xl font-semibold text-white">"智荟荞缘"体验空间</h3>
+                        </div>
+                    </div>
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="feature-card flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-vr-cardboard text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">科技互动体验</h4>
+                                <p class="text-gray-600">通过AR/VR、触摸屏等互动装置，生动展示荞麦全生命周期。</p>
+                            </div>
+                        </div>
+                        <div class="feature-card flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">文化交流空间</h4>
+                                <p class="text-gray-600">定期举办荞麦文化讲座、手工艺体验、健康饮食分享会。</p>
+                            </div>
+                        </div>
+                        <div class="feature-card flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-mug-hot text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">特色餐饮体验</h4>
+                                <p class="text-gray-600">提供创意荞麦饮品、健康轻食，传递雅致生活美学。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 数字展示 -->
+            <section class="mb-16">
+                <h2 class="section-title">数字化展示</h2>
+                <p class="section-subtitle">
+                    运用现代科技手段，让荞麦文化展示更加生动直观。
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="space-card">
+                        <img src="https://source.unsplash.com/400x300/?virtual,reality" alt="AR/VR体验" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">AR/VR互动</h3>
+                        <p class="text-gray-600">通过虚拟现实技术，体验荞麦从种植到收获的全过程，了解智能农业技术应用。</p>
+                    </div>
+                    <div class="space-card">
+                        <img src="https://source.unsplash.com/400x300/?3d,model" alt="3D展示" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">3D数字展示</h3>
+                        <p class="text-gray-600">利用3D建模技术，展示荞麦植株生长过程和形态特征，实现知识的可视化呈现。</p>
+                    </div>
+                    <div class="space-card">
+                        <img src="https://source.unsplash.com/400x300/?interactive,screen" alt="互动装置" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-3">智能互动装置</h3>
+                        <p class="text-gray-600">通过触摸屏、体感设备等交互方式，让参观者主动探索荞麦知识。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 文化活动 -->
+            <section class="mb-16">
+                <h2 class="section-title">特色活动</h2>
+                <p class="section-subtitle">
+                    定期举办丰富多彩的文化活动，构建活跃的荞麦文化社群。
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-card">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-4">近期活动</h3>
+                        <div class="space-y-4">
+                            <div class="event-card">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-lg font-semibold text-emerald-700">荞麦茶艺工作坊</h4>
+                                    <span class="text-xs bg-emerald-500 text-white px-2 py-1 rounded-full">每周六</span>
+                                </div>
+                                <p class="text-gray-600 mb-2">体验传统荞麦茶的冲泡技艺，品味茶道文化。</p>
+                                <button class="px-4 py-2 text-sm font-medium text-emerald-600 border border-emerald-600 rounded-lg hover:bg-emerald-50">预约参与</button>
+                            </div>
+                            <div class="event-card">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="text-lg font-semibold text-emerald-700">健康饮食讲座</h4>
+                                    <span class="text-xs bg-emerald-500 text-white px-2 py-1 rounded-full">每月首周</span>
+                                </div>
+                                <p class="text-gray-600 mb-2">邀请营养专家分享荞麦的养生之道。</p>
+                                <button class="px-4 py-2 text-sm font-medium text-emerald-600 border border-emerald-600 rounded-lg hover:bg-emerald-50">预约参与</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-card">
+                        <h3 class="text-xl font-semibold text-emerald-600 mb-4">会员活动</h3>
+                        <img src="https://source.unsplash.com/600x300/?workshop,culture" alt="会员活动" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <p class="text-gray-600 mb-4">加入我们的会员计划，享受更多专属权益：</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-gift text-emerald-500 mr-2"></i>
+                                <span class="text-gray-600">活动优先报名权</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-percentage text-emerald-500 mr-2"></i>
+                                <span class="text-gray-600">特色产品会员折扣</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-star text-emerald-500 mr-2"></i>
+                                <span class="text-gray-600">专属文化体验活动</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 特色产品 -->
+            <section>
+                <h2 class="section-title">特色产品</h2>
+                <p class="section-subtitle">
+                    精心打造的荞麦主题产品，让您体验传统与现代的完美融合。
+                </p>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="product-card">
+                        <img src="https://source.unsplash.com/400x300/?tea,drink" alt="特色饮品">
+                        <div class="product-overlay">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">创意荞麦饮品</h4>
+                                <p class="text-sm">荞麦茶、荞麦拿铁等特色饮品</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://source.unsplash.com/400x300/?healthy,food" alt="轻食餐点">
+                        <div class="product-overlay">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">健康轻食</h4>
+                                <p class="text-sm">荞麦沙拉、荞麦面等美食</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://source.unsplash.com/400x300/?art,craft" alt="文创产品">
+                        <div class="product-overlay">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">文创产品</h4>
+                                <p class="text-sm">3D打印荞麦艺术品、文具</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://source.unsplash.com/400x300/?gift,package" alt="伴手礼">
+                        <div class="product-overlay">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-1">精选礼盒</h4>
+                                <p class="text-sm">荞麦主题文创礼盒</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 sm:py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-1 sm:mb-2 text-sm sm:text-base">&copy; <span id="current-year-space"></span> 云南农业大学智荟荞缘科技工作室. 保留所有权利.</p>
+            <p class="text-xs sm:text-sm text-gray-400">技术支持：云南农业大学创新创业中心</p>
+        </div>
+    </footer>
+
+    <script>
+        // 设置年份
+        document.getElementById('current-year-space').textContent = new Date().getFullYear();
+        
+        // 移动端菜单
+        const menuButtonSpace = document.getElementById('menuButtonSpace');
+        const mobileMenuSpace = document.getElementById('mobileMenuSpace');
+        
+        if(menuButtonSpace && mobileMenuSpace) {
+            menuButtonSpace.addEventListener('click', () => {
+                mobileMenuSpace.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于&quot;智能&quot;的参数考古 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古当你和 ChatGPT 对话时，你可能不会意识到：这个模型的”大脑”在某种意义上比一只果蝇大了 15 倍——但果蝇能飞、能找食物、能求偶、能学习避开危险，而 15 倍大的 GPT-2 在 2019 年连一句连贯的话都说不出来。 这个看似矛盾的现象背后，藏着一个关于”智能”的深刻问题：参数多就等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于&quot;智能&quot;的参数考古">
+<meta property="og:url" content="http://bohuyeshan.top/2026/04/18/2026-04-18-05-%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89100%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6gpt%E6%9C%89%E5%A4%9A%E5%B0%91/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古当你和 ChatGPT 对话时，你可能不会意识到：这个模型的”大脑”在某种意义上比一只果蝇大了 15 倍——但果蝇能飞、能找食物、能求偶、能学习避开危险，而 15 倍大的 GPT-2 在 2019 年连一句连贯的话都说不出来。 这个看似矛盾的现象背后，藏着一个关于”智能”的深刻问题：参数多就等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-04-18T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.158Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于\"智能\"的参数考古",
+  "url": "http://bohuyeshan.top/2026/04/18/2026-04-18-05-%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89100%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6gpt%E6%9C%89%E5%A4%9A%E5%B0%91/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-04-18T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.158Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/04/18/2026-04-18-05-%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89100%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6gpt%E6%9C%89%E5%A4%9A%E5%B0%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于"智能"的参数考古',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于&quot;智能&quot;的参数考古</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于&quot;智能&quot;的参数考古</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-18T20:00:00.000Z" title="发表于 2026-04-18 20:00:00">2026-04-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.158Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="你的大脑有-100-万亿个突触，GPT-有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古"><a href="#你的大脑有-100-万亿个突触，GPT-有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古" class="headerlink" title="你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古"></a>你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古</h1><p>当你和 ChatGPT 对话时，你可能不会意识到：这个模型的”大脑”在某种意义上比一只果蝇大了 15 倍——但果蝇能飞、能找食物、能求偶、能学习避开危险，而 15 倍大的 GPT-2 在 2019 年连一句连贯的话都说不出来。</p>
+<p>这个看似矛盾的现象背后，藏着一个关于”智能”的深刻问题：<strong>参数多就等于聪明吗？如果不是，那到底什么才是智能的关键？</strong></p>
+<p>这篇文章试图用一组对比数据、一个令人兴奋的虚拟果蝇实验，以及一个关于”涌现”的参数阶梯，来重新审视这个问题。</p>
+<hr>
+<h2 id="第一章：先搞清楚一件事——大模型的”参数”到底是什么"><a href="#第一章：先搞清楚一件事——大模型的”参数”到底是什么" class="headerlink" title="第一章：先搞清楚一件事——大模型的”参数”到底是什么"></a>第一章：先搞清楚一件事——大模型的”参数”到底是什么</h2><h3 id="参数约等于突触，不是神经元"><a href="#参数约等于突触，不是神经元" class="headerlink" title="参数约等于突触，不是神经元"></a>参数约等于突触，不是神经元</h3><p>当我们说 GPT-3 有 1750 亿个参数时，这些参数到底是什么？</p>
+<p>在人工神经网络中，参数是连接两个”神经元”的<strong>权重值</strong>。每次计算时，一个神经元的输出会乘以这个权重值，再传递给下一个神经元。训练过程就是调整这些权重值，让网络的输出越来越接近目标。</p>
+<p>在生物大脑中，对应这个角色的是<strong>突触</strong>——两个神经元之间的连接点。突触不是一个简单的开关，而是一个复杂的生化结构：当上游神经元的电信号到达突触时，它触发神经递质的释放，神经递质穿过突触间隙，与下游神经元的受体结合，改变下游神经元的电位。突触的”强度”（即信号传递的效率）是可调节的，这被称为<strong>突触可塑性</strong>。学习的本质，就是突触强度的调整。</p>
+<p>所以，<strong>大模型的参数约等于生物大脑的突触，而不是神经元。</strong></p>
+<p>这是一个重要的区分。当你听到”ChatGPT 有上千亿个参数”时，不要把它想象成”上千亿个神经元”——要把它想象成”上千亿个突触”。神经元是处理信息的节点，突触是连接它们的可调通道。大模型的”神经元”只是简单的数学函数（比如 ReLU），而生物神经元是极其复杂的电化学计算单元。真正携带”知识”和”能力”的，是连接方式和连接强度——也就是突触。</p>
+<h3 id="“可调节”这三个字是关键"><a href="#“可调节”这三个字是关键" class="headerlink" title="“可调节”这三个字是关键"></a>“可调节”这三个字是关键</h3><p>但这里有一个至关重要的区别：<strong>生物突触是实时动态变化的，而大模型的参数在训练结束后就被固定了。</strong></p>
+<p>生物大脑中的突触可塑性是一种持续的过程。你读这句话的几秒钟内，你的大脑中已经有数千个突触的强度发生了微调。当你学习一项新技能时，相关的突触被强化；当你遗忘一件事时，相关的突触被弱化。这种变化发生在毫秒到小时的时间尺度上。</p>
+<p>更重要的是，生物大脑有多种不同类型的突触可塑性：</p>
+<p><strong>短期可塑性：</strong> 突触强度在几百毫秒内因前一次信号而暂时增强或减弱。这就像一个短暂的”记忆”——刚才发生了什么，会影响接下来几百毫秒内的信号传递效率。</p>
+<p><strong>长期增强（LTP）：</strong> 反复同时激活的两个神经元之间的突触被永久性地加强。这就是赫布定律的核心——“一起放电的细胞连在一起”。这是长期记忆的神经基础。</p>
+<p><strong>长期抑制（LTD）：</strong> 不常同时激活的神经元之间的突触被弱化。这是一种”用进废退”的机制——不常用的连接逐渐退化。</p>
+<p><strong>神经调控：</strong> 多巴胺、血清素、乙酰胆碱等化学物质可以大范围地调制突触强度，实现全局性的学习信号。多巴胺尤其关键——它在”奖励预测”中起核心作用，告诉大脑”刚才的行为是好是坏”。</p>
+<p><strong>大模型呢？</strong></p>
+<p>训练期间，参数通过反向传播算法被调整——这是一种全局性的”学习”，所有参数根据损失函数的梯度同时更新。但一旦训练结束，参数就被冻住了。模型在推理时（即你和它对话时），所有的参数保持不变。它不会因为你问了一个好问题而”学到”任何东西。</p>
+<p><strong>这就像一个人的大脑被麻醉了——所有的突触都固定在训练结束时的状态，不再发生任何变化。</strong> 你今天和 ChatGPT 聊天学到的东西，ChatGPT 自己一点也没学到。</p>
+<p>一些补救措施确实存在——比如微调、RLHF、RAG。但这些都是”外科手术式”的干预，需要专门的训练流程和数据，而不是像生物大脑那样在日常运行中自然发生。</p>
+<hr>
+<h2 id="第二章：一个令人尴尬的对比表"><a href="#第二章：一个令人尴尬的对比表" class="headerlink" title="第二章：一个令人尴尬的对比表"></a>第二章：一个令人尴尬的对比表</h2><p>让我们把不同生物的神经元和突触数量与大模型的参数量放在一起，看看会发生什么。</p>
+<h3 id="生物大脑的规模"><a href="#生物大脑的规模" class="headerlink" title="生物大脑的规模"></a>生物大脑的规模</h3><table>
+<thead>
+<tr>
+<th>生物</th>
+<th>神经元数量</th>
+<th>突触数量（估计）</th>
+<th>能做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秀丽隐杆线虫</td>
+<td>302</td>
+<td>~7,000</td>
+<td>觅食、交配、学习、感知温度和化学物质</td>
+</tr>
+<tr>
+<td>果蝇</td>
+<td>~100,000</td>
+<td>~50M-100M</td>
+<td>飞行导航、觅食、求偶舞蹈、长期记忆、视觉避障</td>
+</tr>
+<tr>
+<td>蜜蜂</td>
+<td>~100万</td>
+<td>—</td>
+<td>舞蹈语言、空间导航、面部识别、数数</td>
+</tr>
+<tr>
+<td>小鼠</td>
+<td>~7,500万</td>
+<td>~1000亿（100B）</td>
+<td>复杂学习、空间记忆、社交行为、情绪</td>
+</tr>
+<tr>
+<td>猫</td>
+<td>~7.6亿</td>
+<td>—</td>
+<td>精细运动、视觉处理、捕猎策略</td>
+</tr>
+<tr>
+<td>人类</td>
+<td>~860亿</td>
+<td>~100万亿（100T）</td>
+<td>语言、数学、艺术、科学、自我意识</td>
+</tr>
+</tbody></table>
+<h3 id="大语言模型的规模"><a href="#大语言模型的规模" class="headerlink" title="大语言模型的规模"></a>大语言模型的规模</h3><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>参数量</th>
+<th>发布时间</th>
+<th>架构</th>
+<th>能做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPT-2</td>
+<td>15亿（1.5B）</td>
+<td>2019</td>
+<td>Dense</td>
+<td>能生成连贯的短文本，但对话不稳定</td>
+</tr>
+<tr>
+<td>GPT-3</td>
+<td>1,750亿（175B）</td>
+<td>2020</td>
+<td>Dense</td>
+<td>能进行多轮对话、写文章、翻译、写代码</td>
+</tr>
+<tr>
+<td>GPT-4</td>
+<td><del>1.8万亿（</del>1.8T）</td>
+<td>2023</td>
+<td>MoE</td>
+<td>多模态理解、复杂推理、专业考试通过</td>
+</tr>
+<tr>
+<td>GPT-5</td>
+<td>未公开</td>
+<td>2025</td>
+<td>—</td>
+<td>跨模态推理、长程规划、复杂代码生成</td>
+</tr>
+<tr>
+<td>GPT-5.4</td>
+<td>同GPT-5</td>
+<td>2026</td>
+<td>后训练迭代</td>
+<td>补充时事知识、优化推理链、微调偏好</td>
+</tr>
+<tr>
+<td>GLM-5</td>
+<td><del>7,000亿（</del>700B+）</td>
+<td>2025</td>
+<td>—</td>
+<td>推理能力大幅提升，中文理解优秀</td>
+</tr>
+<tr>
+<td>GLM-5.1（开源）</td>
+<td>~700B+</td>
+<td>2025</td>
+<td>—</td>
+<td>开源版本，社区可微调</td>
+</tr>
+<tr>
+<td>DeepSeek-V3</td>
+<td>6,710亿（671B）</td>
+<td>2024.12</td>
+<td>MoE（37B活跃）</td>
+<td>开源最强之一，中文能力突出</td>
+</tr>
+<tr>
+<td>DeepSeek-V3.2</td>
+<td>同V3架构</td>
+<td>2026</td>
+<td>后训练迭代</td>
+<td>推理能力增强，新增reasoner模式</td>
+</tr>
+<tr>
+<td>DeepSeek-R1</td>
+<td>基于V3</td>
+<td>2025</td>
+<td>后训练+RL</td>
+<td>深度推理，思维链显式化</td>
+</tr>
+<tr>
+<td>GLM-4</td>
+<td><del>1,300亿（</del>130B）</td>
+<td>2024</td>
+<td>Dense</td>
+<td>中文理解优秀，多模态</td>
+</tr>
+<tr>
+<td>Kimi k2.5</td>
+<td>~1万亿（1T）</td>
+<td>2025</td>
+<td>—</td>
+<td>长上下文，推理能力强</td>
+</tr>
+<tr>
+<td>Qwen3.5</td>
+<td>公开</td>
+<td>2025</td>
+<td>—</td>
+<td>开源，中英双语，thinking模式</td>
+</tr>
+<tr>
+<td>Qwen3.6</td>
+<td>暂未公开</td>
+<td>2025-2026</td>
+<td>—</td>
+<td>最新迭代，参数量待公布</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意：</strong> GPT-5 到 GPT-5.4 的迭代，以及 DeepSeek-V3 到 V3.2 的迭代，都不是从头训练一个新模型，而是<strong>在同一个基础模型上做后训练（post-training）调整</strong>——包括微调（fine-tuning）、补充时事类知识、优化推理策略、调整对齐偏好等。这就像一个人的大脑结构没变，但通过读新书、做新练习、调整思维方式来”升级”。这种迭代方式成本远低于从头训练，但改进幅度也相对有限——它无法突破基础模型的架构瓶颈。</p>
+</blockquote>
+<h3 id="一个”尴尬”的对比"><a href="#一个”尴尬”的对比" class="headerlink" title="一个”尴尬”的对比"></a>一个”尴尬”的对比</h3><p><strong>GPT-2 有 15 亿个参数——比果蝇的约 1 亿个突触多了 15 倍。</strong></p>
+<p>但 GPT-2 连稳定的对话都很难维持。而果蝇呢？它能：</p>
+<ul>
+<li>在三维空间中以每秒数米的速度飞行并精确控制方向</li>
+<li>识别并追踪移动的猎物或潜在配偶</li>
+<li>学习哪些气味意味着食物、哪些意味着危险</li>
+<li>在复杂的环境中导航回到巢穴</li>
+<li>进行精心设计的求偶舞蹈并评估潜在配偶的质量</li>
+<li>形成长期记忆——一次电击就能让它记住一种气味好几天</li>
+<li>甚至能”数数”——区分不同数量的物体</li>
+</ul>
+<p><strong>15 倍的参数量，但果蝇能做的事情 GPT-2 做不了。</strong></p>
+<p>再看另一个对比：<strong>GPT-4 大约有 1.8 万亿个参数——约为人类突触（100 万亿）的 1&#x2F;55。</strong> GPT-4 能写诗、能做数学题、能通过律师资格考试。但它不能像一个 3 岁的孩子那样在真实世界中走路、拿东西、理解因果关系、对父母产生依恋。</p>
+<p>而到 GPT-5&#x2F;GLM-5 时代，GLM-5 约 700B 参数，GPT-5 参数量未公开但效果同样出色。<strong>从 GPT-5 到 GPT-5.4 的迭代，以及从 DeepSeek-V3 到 V3.2 的迭代，都不是从头训练一个新模型，而是同一个基础模型上做后训练调整</strong>——更好的推理链、更丰富的时事知识、更细致的人类偏好对齐。<strong>架构没变，但”使用方式”变了。</strong> 这和生物大脑的”突触可塑性”有某种呼应——结构不变，但连接强度在持续调整。</p>
+<p><strong>参数多不等于聪明。那什么才是？</strong></p>
+<hr>
+<h2 id="第三章：虚拟果蝇——用-1-亿个”突触”重建一只会飞的苍蝇"><a href="#第三章：虚拟果蝇——用-1-亿个”突触”重建一只会飞的苍蝇" class="headerlink" title="第三章：虚拟果蝇——用 1 亿个”突触”重建一只会飞的苍蝇"></a>第三章：虚拟果蝇——用 1 亿个”突触”重建一只会飞的苍蝇</h2><p>就在我们思考这个问题的同时，一群科学家正在做一件令人惊叹的事情：<strong>在计算机里重建一只完整的果蝇——不只是它的大脑，还有它的身体——然后看它能不能”活过来”。</strong></p>
+<h3 id="第一步：画出果蝇大脑的完整电路图"><a href="#第一步：画出果蝇大脑的完整电路图" class="headerlink" title="第一步：画出果蝇大脑的完整电路图"></a>第一步：画出果蝇大脑的完整电路图</h3><p>2024 年，FlyWire Consortium 在 Nature 上发表了一项里程碑式的工作：<strong>人类历史上第一个完整成年动物大脑的接线图（connectome）。</strong></p>
+<p>他们对一只雌性果蝇的大脑进行了电子显微镜成像，逐层扫描，然后手动和半自动地追踪了 <strong>139,255 个神经元和 5,450 万个突触连接</strong>。</p>
+<p>这不是一个粗略的估计。这是每一个神经元的完整形态、每一个突触的具体位置和连接方向。他们还标注了 <strong>8,400 多种不同的细胞类型</strong>，预测了每个神经元使用的神经递质，并将所有数据公开发布在 FlyWire Codex 平台上。</p>
+<p>在此之前，最完整的果蝇大脑重建是 2020 年的”半脑”项目——包含约 20,000 个神经元和 1,400 万个突触。FlyWire 将这个数字扩大了约 7 倍——从半脑到全脑。</p>
+<p><strong>这意味着我们第一次知道了”一只果蝇的大脑到底是怎么连的”——每一个神经元连接到哪些下游神经元，连接强度如何，使用什么类型的神经递质。</strong></p>
+<p>这就像得到了一栋大楼的完整电路图——不只是知道”有灯、有插座”，而是知道每一根电线从哪里接到哪里、用的什么规格的线、承载多大的电流。</p>
+<h3 id="第二步：在计算机里”通电”"><a href="#第二步：在计算机里”通电”" class="headerlink" title="第二步：在计算机里”通电”"></a>第二步：在计算机里”通电”</h3><p>有了完整的接线图之后，自然的问题是：<strong>如果把这个接线图”通电”——让神经元按照它们的连接方式放电——会发生什么？</strong></p>
+<p>2024 年，Shiu 等人在 Nature 上发表了一项激动人心的尝试。他们用 FlyWire 的完整接线图构建了一个计算模型——每个神经元被建模为一个”漏积分放电”（leaky integrate-and-fire）单元，突触连接权重来自 FlyWire 数据，神经递质类型来自预测标注。</p>
+<p><strong>这个模型只有一个自由参数</strong>——一个控制突触信号强度的全局系数 Wsyn。除此之外，所有的连接方式、连接强度、兴奋&#x2F;抑制类型都来自 FlyWire 的数据，没有做任何额外的调整。</p>
+<p>他们测试了这个模型在两个已知回路上的表现：</p>
+<p><strong>进食启动回路：</strong> 当果蝇嘴部的甜味感受神经元被激活时——比如你给果蝇的腿上涂了一滴糖水——模型预测哪些下游神经元会被激活，以及最终是否会导致喙的伸展（”张嘴吃东西”的行为）。</p>
+<p>结果：<strong>模型的预测与真实实验结果高度吻合。</strong> 模型正确地预测了哪些神经元会对甜味刺激做出响应，预测了响应的强度与刺激频率的关系，甚至预测了一侧的糖水刺激会导致同侧而非对侧的喙伸展。</p>
+<p>更令人惊讶的是，当研究者逐一”关闭”模型中对甜味刺激响应最强烈的 200 个神经元时，他们发现其中一些神经元的关闭会导致喙伸展反应显著下降。<strong>这些”关键”神经元中有许多是此前不知道与进食有关的。</strong> 后续的实验验证了这些预测——这些神经元确实在进食行为中扮演关键角色。</p>
+<p><strong>触角梳理回路：</strong> 当触角上的机械感受器被激活时——模拟有灰尘落在触角上——模型预测哪些神经元会驱动果蝇抬起前腿梳理触角。<strong>模型再次给出了与实验一致的预测。</strong></p>
+<p><strong>这是一个”啊哈”时刻：你把果蝇大脑的接线图放进一个最简单的计算模型（只有一个自由参数），它就能产生真实的行为预测。</strong> 不需要训练，不需要调参，连接方式本身就包含了大部分功能信息。</p>
+<p>这暗示了一个深刻的道理：<strong>智能可能不在”参数值”里，而在”连接方式”里。</strong> 果蝇的 5000 万个突触之所以能产生复杂的行为，不是因为每个突触存储了大量信息，而是因为这些突触的连接方式——谁连谁、连多少、兴奋还是抑制——是正确的。</p>
+<h3 id="第三步：给它一个身体"><a href="#第三步：给它一个身体" class="headerlink" title="第三步：给它一个身体"></a>第三步：给它一个身体</h3><p>但大脑不是孤立工作的。果蝇的行为是从大脑、身体和环境之间的感觉-运动反馈循环中涌现出来的。大脑发出运动指令，身体执行运动，身体产生的感觉反馈回到大脑，大脑据此调整下一步指令。</p>
+<p>2025 年，Vaxenburg 等人在 Nature 上发表了下一步工作：<strong>构建了一只虚拟果蝇的完整身体模型。</strong></p>
+<p>他们用高分辨率共聚焦显微镜扫描了一只雌性果蝇的全身——头、胸、腹、翅膀、六条腿——然后将这些数据转化为一个约 20,000 个面的三维网格模型。这个模型被放入 MuJoCo 物理引擎中，精确模拟了：</p>
+<p><strong>翅膀拍动产生的空气动力。</strong> 果蝇的翅膀每秒拍动约 200 次——人类肉眼只能看到一片模糊。研究者设计了一个高效的唯象流体力学模型来近似翅膀拍动产生的升力和推力，不需要真正求解复杂的纳维-斯托克斯方程。</p>
+<p><strong>脚与表面的粘附力。</strong> 果蝇的脚上有特殊的粘附垫，可以让它们在墙壁上行走甚至在天花板上倒挂。模型中加入了粘附执行器来模拟这种能力。</p>
+<p><strong>关节的自由度。</strong> 每条腿有多个关节——股节、胫节、跗节——每个关节有多个旋转自由度。六条腿加上翅膀、腹部、头部，虚拟果蝇全身有数十个自由度。</p>
+<p>然后，他们用<strong>深度强化学习</strong>训练了一个控制器，让这只虚拟果蝇学会了：</p>
+<p><strong>行走。</strong> 六条腿协调交替移动——不是预编程的步态，而是 RL 自己发现的最优行走模式。训练数据来自真实果蝇的高速运动追踪数据——RL 的目标是让虚拟果蝇的运动尽可能接近真实果蝇。</p>
+<p><strong>飞行。</strong> 翅膀拍动配合身体姿态调整，实现稳定的飞行和急转弯（saccade 机动）。虚拟果蝇的转弯动力学——滚转角速度、偏航角速度、俯仰角速度——与真实果蝇的数据高度匹配。</p>
+<p><strong>行走和飞行之间的切换。</strong> 起飞时收起腿以减少空气阻力，降落时伸出腿准备接触地面。这种协调也是 RL 自己学出来的。</p>
+<p>关键的是，<strong>控制器只接收高级转向指令</strong>——比如”向左转 30 度”、”飞到那个位置”。具体的腿部协调模式、翅膀拍动的相位和幅度，是 RL 在物理约束下自己”发现”的。</p>
+<p><strong>虚拟果蝇不需要被编程如何走路——它自己”发现”了走路的方法，就像真实的果蝇幼虫在发育过程中自己学会走路一样。</strong></p>
+<h3 id="第四步：让它在芯片上”活”起来"><a href="#第四步：让它在芯片上”活”起来" class="headerlink" title="第四步：让它在芯片上”活”起来"></a>第四步：让它在芯片上”活”起来</h3><p>前面三步都是在传统的数字计算机上完成的——用软件模拟神经元和突触。但生物大脑不是这样工作的。生物大脑是模拟的、事件驱动的、高度并行的、超低功耗的。人类大脑的功耗大约是 20 瓦——和一个 LED 灯泡差不多。而模拟同样规模的神经网络在 GPU 上可能需要数千瓦。</p>
+<p>2025 年 8 月，Felix Wang 等人迈出了新的一步：<strong>他们首次在 Intel Loihi 2 神经形态芯片上运行了完整的果蝇大脑连接组。</strong></p>
+<p>神经形态芯片是一种专门设计来模拟生物神经网络的硬件。与传统 CPU&#x2F;GPU 不同，它：</p>
+<p><strong>事件驱动。</strong> 神经元只在被激活时才消耗能量，空闲时几乎不耗电。这模拟了生物神经元的”脉冲”特性——要么放电，要么安静，不存在中间状态。</p>
+<p><strong>模拟计算。</strong> 信号是连续的模拟值，而不是离散的数字值。这更接近生物突触的工作方式——突触强度不是一个精确的浮点数，而是一个受温度、化学环境等因素影响的连续变量。</p>
+<p><strong>高度并行。</strong> 每个神经元独立运行，不需要中央处理器逐个计算。这模拟了生物大脑的”大规模并行”特性——你的 860 亿个神经元是同时工作的，不是轮流工作的。</p>
+<p>Wang 等人在 Loihi 2 上实现了 FlyWire 的 14 万个神经元和 5,000 万个突触。这是<strong>第一次在神经形态硬件上运行一个完整的、有生物学意义的大脑连接组</strong>。</p>
+<p>虽然目前还没有在 Loihi 2 上展示完整的”虚拟果蝇行为”（比如行走或飞行），但这一步的意义在于：<strong>它证明了用类脑硬件模拟一个真实大脑在技术上是可行的。</strong> 下一步就是把这个”芯片大脑”接上一个虚拟身体或真实机器人，看它能不能”活过来”。</p>
+<h3 id="第五步：行为从连接中涌现"><a href="#第五步：行为从连接中涌现" class="headerlink" title="第五步：行为从连接中涌现"></a>第五步：行为从连接中涌现</h3><p>还有几项关键研究帮助我们理解<strong>为什么这些简单的神经元连接能产生复杂的行为。</strong></p>
+<p><strong>Cowley 等人（Nature, 2024）</strong> 用一种叫”knockout training”的方法来研究果蝇的视觉引导社交行为——雄蝇追求雌蝇的过程。果蝇的视觉系统中有 57 种不同类型的视叶柱状神经元，每种神经元检测不同的视觉特征——运动方向、物体大小、颜色等。</p>
+<p>研究者训练了一个深度神经网络来模拟这 57 种神经元的功能，然后逐一”敲除”每种神经元，观察对求偶行为的影响。结果发现：<strong>求偶行为不是由少数几种”关键”神经元驱动的，而是由整个 LC 群体的分布式编码支持的。</strong> 有些神经元负责追踪雌蝇的位置，有些负责检测雌蝇的运动方向，有些负责驱动转向动作——它们合在一起才能产生完整的求偶行为。</p>
+<p>这与深度学习中的”分布式表示”有异曲同工之妙——信息不是存储在某个特定的神经元中，而是分布在大量神经元的集体活动模式中。</p>
+<p><strong>Zhang 等人（2024）</strong> 利用 FlyWire 连接组数据构建了大规模计算模型，发现<strong>网络结构本身就能解释果蝇大脑的大部分功能</strong>——也就是说，你把连接方式搞对了，功能就会自然涌现。即使你不设置任何”功能目标”，纯粹根据连接图运行网络，它也会产生与真实大脑相似的活动模式。</p>
+<p><strong>Pospisil 等人（Nature, 2024）</strong> 分析了完整连接组的动力学特性，发现了一个出人意料的结构：果蝇大脑中存在<strong>大量独立运行的小型回路</strong>，每个回路负责一个特定的功能子任务（比如检测某种气味、控制某条腿的运动），这些回路之间通过少量连接协调工作。</p>
+<p>这种”分布式模块化”的架构——不是一两个大型中央处理器，而是成千上万个小型专用处理器——可能是小体积大脑实现复杂功能的关键策略。它也可能解释了为什么果蝇的大脑损伤容忍度很高：即使失去一部分神经元（比如被寄生蜂幼虫吃掉一部分大脑），它仍然能保持大部分功能。因为每个回路是独立的，一个回路的损坏不会拖垮整个系统。</p>
+<hr>
+<h2 id="第四章：泛化的参数阶梯——从-0-5B-到-1T-的涌现"><a href="#第四章：泛化的参数阶梯——从-0-5B-到-1T-的涌现" class="headerlink" title="第四章：泛化的参数阶梯——从 0.5B 到 1T 的涌现"></a>第四章：泛化的参数阶梯——从 0.5B 到 1T 的涌现</h2><p>现在让我们回到大模型的世界，看看参数数量与能力之间的关系。</p>
+<p>有一个有趣的经验观察：<strong>大模型的能力在不同的参数规模上呈现出明显的”涌现”现象。</strong> 这不是平滑的线性提升，而是在某些临界点上”跳跃”出现。</p>
+<h3 id="约-0-5B（5-亿）参数：稳定对话的门槛"><a href="#约-0-5B（5-亿）参数：稳定对话的门槛" class="headerlink" title="约 0.5B（5 亿）参数：稳定对话的门槛"></a>约 0.5B（5 亿）参数：稳定对话的门槛</h3><p>在这个参数量级，模型开始能够维持基本的对话连贯性。它能理解简单的问答，记住几轮对话之前说过的话，给出语法正确的回应。</p>
+<p>但如果对话稍微复杂一点——比如需要多步推理、需要理解言外之意、需要在多个主题之间切换——模型就会”崩溃”：要么开始重复自己，要么给出前后矛盾的回答，要么完全偏离主题。</p>
+<h3 id="约-1-3B-参数：基础智能出现"><a href="#约-1-3B-参数：基础智能出现" class="headerlink" title="约 1-3B 参数：基础智能出现"></a>约 1-3B 参数：基础智能出现</h3><p>在这个量级，模型开始表现出一些”智能”的迹象：能处理更复杂的指令，有一定的常识推理能力，能完成简单的文本摘要和信息提取。但它的知识面很窄，推理链很短，容易被”绕进去”。</p>
+<h3 id="约-30B-参数：特殊能力涌现"><a href="#约-30B-参数：特殊能力涌现" class="headerlink" title="约 30B 参数：特殊能力涌现"></a>约 30B 参数：特殊能力涌现</h3><p><strong>这是一个关键的门槛。</strong> 在 30B 参数量级附近，一些此前不存在的能力开始”突然出现”：</p>
+<ul>
+<li><strong>思维链推理：</strong> 模型开始能在回答问题之前先”想一想”——列出推理步骤，逐步得出结论。</li>
+<li><strong>跨语言迁移：</strong> 模型开始能在不同语言之间迁移知识——用英语学到的概念可以应用到中文问题上。</li>
+<li><strong>代码生成：</strong> 模型开始能写出简单的程序。</li>
+<li><strong>零样本学习：</strong> 模型开始能在没有示例的情况下理解并执行新任务。</li>
+</ul>
+<p>这些能力不是逐渐积累的——在 10B 参数时完全没有，在 20B 参数时刚刚萌芽，在 30B 参数时突然变得可靠。</p>
+<h3 id="约-100B-参数：能力非常稳定"><a href="#约-100B-参数：能力非常稳定" class="headerlink" title="约 100B+ 参数：能力非常稳定"></a>约 100B+ 参数：能力非常稳定</h3><p>在 100B 参数以上，模型在各种任务上的表现变得非常稳定。它不容易在长对话中”崩溃”，不容易被陷阱问题”绕进去”，不容易给出明显的事实错误。每条知识有多个冗余的编码路径，即使一部分路径出错，其他路径也能补偿。</p>
+<h3 id="约-1T-参数：主动发现新东西"><a href="#约-1T-参数：主动发现新东西" class="headerlink" title="约 1T+ 参数：主动发现新东西"></a>约 1T+ 参数：主动发现新东西</h3><p>在万亿参数量级（GPT-4、Kimi k2.5 等），一些更微妙的现象开始出现。模型在代码生成任务中不仅仅复述训练数据中见过的代码模式，而是能组合出训练数据中不存在的新写法——发现新的算法思路、找到新的优化方式。</p>
+<p>而有意思的是，GLM-5 约 700B 参数就达到了很强的效果，GPT-5 的参数量虽然未公开但也在同一量级。这说明参数量不是决定性因素，架构设计和训练方式同样关键。</p>
+<h3 id="涌现是真的吗？"><a href="#涌现是真的吗？" class="headerlink" title="涌现是真的吗？"></a>涌现是真的吗？</h3><p>这个涌现阶梯有一个重要的开放问题：<strong>涌现是参数数量本身带来的，还是参数数量恰好是其他因素（训练数据量、计算量、架构设计）的代理指标？</strong></p>
+<p>一种观点认为，涌现只是一种”指标选择的假象”——如果你选择的评估指标是离散的（比如”能不能做对这道题”），那么即使模型能力是连续提升的，看起来也会像是”突然涌现”。</p>
+<p>另一种观点认为，涌现是真实的——在某些参数量级，模型内部的表示能力跨越了一个临界点。这类似于物理学中的相变——水在 100 度时突然从液态变成气态，不是因为温度连续升高导致性质连续变化，而是因为系统跨越了一个相变临界点。</p>
+<p>目前没有定论。但无论涌现是”真”还是”假”，它的实际效果是真实的——<strong>30B 参数的模型确实能做 10B 参数的模型做不到的事情。</strong></p>
+<hr>
+<h2 id="第五章：有人在做”实时可变突触”的模型吗"><a href="#第五章：有人在做”实时可变突触”的模型吗" class="headerlink" title="第五章：有人在做”实时可变突触”的模型吗"></a>第五章：有人在做”实时可变突触”的模型吗</h2><p>如果生物突触的实时可塑性是智能的关键之一，那么有没有人在尝试做出”训练完了还在变”的神经网络？</p>
+<h3 id="持续学习"><a href="#持续学习" class="headerlink" title="持续学习"></a>持续学习</h3><p>目标是让模型在不忘记旧知识的前提下持续学习新知识。核心挑战是”灾难性遗忘”——学了新东西就忘了旧东西。生物大脑通过海马体的”回放”机制在睡眠中巩固新记忆、保护旧记忆，但目前的持续学习方法还没有很好地模拟这种机制。</p>
+<h3 id="在线学习"><a href="#在线学习" class="headerlink" title="在线学习"></a>在线学习</h3><p>模型在每次接收新数据时都更新参数。更接近生物大脑的工作方式，但计算成本很高。</p>
+<h3 id="神经调控突触可塑性"><a href="#神经调控突触可塑性" class="headerlink" title="神经调控突触可塑性"></a>神经调控突触可塑性</h3><p>受多巴胺等神经调控物质启发——根据”奖励信号”有选择性地更新特定的突触，而不是对所有参数做均匀更新。这在小规模模型上有进展，但还没有在大语言模型上成功应用。</p>
+<h3 id="元学习"><a href="#元学习" class="headerlink" title="元学习"></a>元学习</h3><p>模型学习”如何学习”——即学习调整参数的策略本身。MAML 是经典方法——训练一个模型使其在面对新任务时只需要少量样本就能快速适应。</p>
+<h3 id="核心障碍"><a href="#核心障碍" class="headerlink" title="核心障碍"></a>核心障碍</h3><p><strong>大模型的参数量太大了。</strong> 生物突触是模拟的、化学的、并行的——每个突触的变化只需要极少的能量。而大模型的参数是数字的、电子的、串行更新的。在 1 万亿个参数的模型上实现每个 token 都更新所有参数，需要的计算量是天文数字。</p>
+<p>这正是神经形态芯片的意义所在——如果硬件本身就支持”模拟突触的实时变化”，就不需要在软件层面做昂贵的参数更新了。</p>
+<hr>
+<h2 id="第六章：进化比我们想象的更聪明"><a href="#第六章：进化比我们想象的更聪明" class="headerlink" title="第六章：进化比我们想象的更聪明"></a>第六章：进化比我们想象的更聪明</h2><p>果蝇的 1 亿个突触之所以能产生复杂的行为，还有一个被忽视的因素：<strong>这些突触的连接方式是经过 4 亿年进化精心设计的。</strong></p>
+<p>进化是一种极其缓慢但极其高效的”训练算法”。它不需要反向传播，不需要梯度计算，不需要标签数据。它只需要一个简单的目标：活到繁殖年龄并留下后代。但经过 4 亿年、数万亿代的迭代，它”训练”出了一个只有 10 万个神经元、1 亿个突触却能飞、能学、能导航、能求偶的完整大脑。</p>
+<p>相比之下，大模型的”训练”——梯度下降——只用了几年时间、几万亿个 token 的数据。它产出的”架构”（Transformer）不是进化设计的，而是人类工程师设计的。</p>
+<p><strong>一个有意思的思想实验：</strong> 如果我们给进化 4 亿年的时间来”训练”一个有 1 万亿参数的人工神经网络——不是用梯度下降，而是用变异和选择——它会设计出什么样的架构？也许它会发明一种我们从未想象过的计算方式——比 Transformer 更高效，比反向传播更自然。</p>
+<p>当然，我们不可能真的等 4 亿年。但这个思想实验提醒我们：<strong>我们当前的 AI 范式——大规模参数 + 梯度下降 + 冻结推理——可能只是智能的一种实现方式，而不是唯一的实现方式。</strong></p>
+<hr>
+<h2 id="结语：更聪明的参数"><a href="#结语：更聪明的参数" class="headerlink" title="结语：更聪明的参数"></a>结语：更聪明的参数</h2><p>也许最值得思考的问题是：<strong>如果有人做出了一种”训练完了还在变”的大模型——一种真正具有实时突触可塑性的 AI——它会比现在的模型强多少？</strong></p>
+<p>一只果蝇的大脑只有 10 万个神经元和 1 亿个突触——比 GPT-2 还少 15 倍。但这 1 亿个突触是经过 4 亿年进化优化的，而且在果蝇活着的每一秒都在实时调整。它们的连接方式不是随机的——每一个连接的位置、强度、类型都经过了自然选择的筛选。它们也不是静态的——每一次飞行、每一次觅食、每一次交配都会导致数千个突触的微调。</p>
+<p><strong>大模型有更多参数，但果蝇有更聪明的参数。</strong></p>
+<p>也许未来的 AI 不需要 100 万亿个参数——也许它需要的是一种能让 10 亿个参数像果蝇的大脑一样实时变化的架构和硬件。</p>
+<p>虚拟果蝇正在告诉我们：<strong>当你把正确的连接方式、正确的动态特性和正确的物理环境放在一起时，智能会自己涌现出来——不需要任何人教它如何”思考”。</strong></p>
+<hr>
+<h2 id="附：配图建议"><a href="#附：配图建议" class="headerlink" title="附：配图建议"></a>附：配图建议</h2><ol>
+<li><strong>参数-突触对比图</strong>——用圆形面积表示不同生物和模型的规模</li>
+<li><strong>生物突触 vs 大模型参数</strong>——左边是突触的生化结构，右边是一个浮点数</li>
+<li><strong>FlyWire 全脑连接组</strong>——139,255 个神经元的三维重建</li>
+<li><strong>虚拟果蝇身体模型</strong>——MuJoCo 中的 20,000 面网格</li>
+<li><strong>涌现阶梯图</strong>——从 0.5B 到 1T 的能力跃迁</li>
+<li><strong>进化时间线</strong>——4 亿年果蝇进化 vs 8 年大模型发展</li>
+</ol>
+<hr>
+<h3 id="关于模型参数数据的说明"><a href="#关于模型参数数据的说明" class="headerlink" title="关于模型参数数据的说明"></a>关于模型参数数据的说明</h3><blockquote>
+<p>上表中的参数量数据来源各异：GPT-2 和 GPT-3 的参数量由 OpenAI 官方论文公布；GPT-4 的参数量为业界估计值；GPT-5 参数量未公开；GLM-5 约 700B+，GLM-5.1 开源约 700B+；DeepSeek-V3 由官方技术报告确认（671B 总量&#x2F;37B 活跃）；Kimi k2.5 约 1T（月之暗面公开）；Qwen3.5 参数已公开，Qwen3.6 暂未公开。如果你发现表中某个数字不准确，欢迎指正——这篇文章的核心论点不依赖于某个具体模型的精确参数量，而依赖于”参数规模与生物突触规模的数量级对比”。</p>
+</blockquote>
+<hr>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>Dorkenwald, S. et al. (2024). Neuronal wiring diagram of an adult brain. Nature.</li>
+<li>Shiu, P.K. et al. (2024). A Drosophila computational brain model reveals sensorimotor processing. Nature.</li>
+<li>Vaxenburg, R. et al. (2025). Whole-body physics simulation of fruit fly locomotion. Nature.</li>
+<li>Wang, F. et al. (2025). Neuromorphic Simulation of Drosophila Melanogaster Brain Connectome on Loihi 2. arXiv preprint.</li>
+<li>Cowley, B.R. et al. (2024). Mapping model units to visual neurons reveals population code for social behaviour. Nature.</li>
+<li>Zhang, X. et al. (2024). Network Structure Governs Drosophila Brain Functionality. arXiv preprint.</li>
+<li>Pospisil, D.A. et al. (2024). The fly connectome reveals a path to the effectome. Nature.</li>
+<li>DeepSeek-AI. (2024). DeepSeek-V3 Technical Report. arXiv preprint.</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/04/18/2026-04-18-05-%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89100%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6gpt%E6%9C%89%E5%A4%9A%E5%B0%91/">http://bohuyeshan.top/2026/04/18/2026-04-18-05-%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89100%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6gpt%E6%9C%89%E5%A4%9A%E5%B0%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/18/article_2026-04-18-01/" title="一个 AI 同时学会了&quot;造蛋白质&quot;和&quot;骗蛋白质&quot;——蛋白质结合物设计的新范式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">一个 AI 同时学会了"造蛋白质"和"骗蛋白质"——蛋白质结合物设计的新范式</div></div><div class="info-2"><div class="info-item-1">一个 AI 同时学会了”造蛋白质”和”骗蛋白质”——蛋白质结合物设计的新范式在前面三篇文章中，我们分别讨论了 GAN 和扩散模型在生物分子设计中的概况、蛋白质结构预测从静态到动态的转变，以及它们与前面 Transformer、CNN、RNN 三个批次的关系。 今天这篇文章聚焦一个具体的代表工作：如何用生成式模型设计能与目标蛋白质结合的新蛋白质。 这是一个有直接药物设计价值的任务——很多药物的作用机制就是”一个蛋白质分子与另一个蛋白质分子结合，阻断或激活它的功能”。  蛋白质结合物设计：两种路线的对峙在蛋白质结合物（binder）设计领域，过去存在两种截然不同的技术路线： 第一种是生成式方法。 用扩散模型或 Flow Matching，学习”什么样的蛋白质结构是合理的”，然后直接从噪声中生成新的蛋白质骨架。这类方法的优点是能产生结构多样化的候选分子，缺点是生成的分子不一定能与特定靶点有效结合。 第二种是”幻觉”方法（hallucination）。 不从零生成，而是用 AlphaFold2 这样的结构预测模型作为”评分器”，通过优化序列让预测出的结合结构越来越好。这类方法的优点是与靶...</div></div></div></a><a class="pagination-related" href="/2026/04/18/2026-04-18-04-%E7%BB%99%E7%99%8C%E7%97%87%E7%97%85%E4%BA%BA%E7%94%A8%E4%B8%8D%E5%AF%B9%E7%97%87%E7%9A%84%E8%8D%AF%E5%8F%8D%E8%80%8C%E6%95%88%E6%9E%9C%E6%9B%B4%E5%A5%BD/" title="给癌症病人用&quot;不对症&quot;的药，反而效果更好？"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">给癌症病人用"不对症"的药，反而效果更好？</div></div><div class="info-2"><div class="info-item-1">给癌症病人用”不对症”的药，反而效果更好？在传统肿瘤治疗中，药物选择遵循一个基本逻辑：一种药对应一种癌。 乳腺癌用乳腺癌的药，肺癌用肺癌的药，每种药都有明确的”适应症”——即经过临床试验证明有效的癌症类型。 但在临床实践中，医生有时会给病人开”超适应症”（off-label）的药物——也就是说，用一种被批准用于 A 癌症的药来治疗 B 癌症。这种做法一直存在争议：有的医生认为这是”必要的灵活”，有的则认为这是”没有证据的冒险”。 2026 年 4 月 15 日，Nature 报道了一项大规模临床试验的结果：在基因组指导下，超适应症治疗对相当一部分患者是有效的。  什么是”超适应症”治疗一个药物在上市之前，需要在特定类型的癌症患者中进行临床试验，证明它有效且安全。获批之后，它的”适应症”就被限定在这些特定的癌症类型上。 但在实际临床中，情况常常更复杂。一个患者的肿瘤可能具有某种特定的基因突变——比如 BRAF V600E 突变——而这种突变不仅出现在黑色素瘤中，也出现在结直肠癌、甲状腺癌、肺癌等多种癌症中。如果有一种针对 BRAF V600E 突变的药物（比如 vemurafeni...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/03/25/2026-03-25-03-%E4%BB%8A%E5%A4%A9%E8%BF%997%E7%AF%87Bioinformatics%E7%83%AD%E7%82%B9%E9%87%8C%E7%9C%9F%E6%AD%A3%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E6%98%AF%E8%BF%993%E4%B8%AA%E4%BF%A1%E5%8F%B7/" title="这 7 篇 Bioinformatics 论文，各自的看点在哪里"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-25</div><div class="info-item-2">这 7 篇 Bioinformatics 论文，各自的看点在哪里</div></div><div class="info-2"><div class="info-item-1">这 7 篇 Bioinformatics 论文，各自的看点在哪里这类”热点论文日报”最大的风险，是把人带进一种错觉：今天又多了 7 篇新论文，于是好像 AI for Bio 又同时在七八个方向上全面推进了一步。 但如果真这样读，最后通常什么都记不住。 更有用的读法不是把 7 篇都平均扫一遍，而是问一句更硬的话：今天这批新论文里，哪些信号值得记住，甚至会影响你接下来怎么判断一个方向值不值得继续追？ 如果只抓最重要的，我觉得今天真正值得单独成篇的，不是 7 篇论文本身，而是下面这 3 个信号。 信号一：虚拟细胞开始从”像”走向”有生物学约束”今天最强的一条线，其实不是单篇论文，而是 CDT-III 和 CellFluxRL 放在一起之后呈现出来的方向变化。 先看 CDT-III这篇工作的名字已经很说明问题：Central Dogma Transformer III。 它不是只做一个局部任务，而是试图把 DNA → RNA → 蛋白质 这条更完整的中心法则链路拉进一个可解释 AI 框架里。日报里给出的信息也很关键：  它有双阶段虚拟细胞嵌入架构 一阶段模拟转录 一阶段模拟翻译 不只是追...</div></div></div></a><a class="pagination-related" href="/2026/04/11/2026-04-11-01-%E5%8E%BB%E9%9B%84%E8%AE%A1%E5%88%92-%E4%BB%8E%E5%AF%84%E7%94%9F%E8%99%AB%E5%8A%AB%E6%8C%81%E6%80%A7%E5%88%AB%E5%88%B0%E6%96%87%E6%98%8E%E7%9A%84%E5%86%85%E5%88%86%E6%B3%8C%E4%BB%A3%E4%BB%B7/" title="去雄计划：从寄生虫劫持性别到文明的内分泌代价"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-11</div><div class="info-item-2">去雄计划：从寄生虫劫持性别到文明的内分泌代价</div></div><div class="info-2"><div class="info-item-1">去雄计划：从寄生虫劫持性别到文明的内分泌代价在自然界，”去雄”不是阴谋，而是一种被反复发明的生存策略。 一种细菌可以系统性地把雄性昆虫变成雌性。一种寄生藤壶可以让公蟹心甘情愿地替它孵卵。而人类自己的工业文明，在过去半个世纪里，让工业化国家的男性精子数量下降了超过50%。 这篇文章要讲的是一个跨越三条线的故事：自然界的性别操控是真实的、有硬证据的；人类社会中”去雄”的叙事是存在的、值得观察的；但真正值得警惕的，不是某个国家设计的计划，而是我们整个文明正在无意识地制造一种全球性的内分泌干扰环境。 在开始之前，说清楚一件事： 这篇文章讨论的是生物学意义上的性别分化影响，以及这些影响在自然界和人类社会中的表现。它不是阴谋论，也不是性别审美的价值判断。下面的事实来自经过同行评审的研究，我会标注来源。  一、Wolbachia：最精准的自然”去雄武器”在所有已知的生物性别操控案例中，Wolbachia 是最系统、最精确的一种。 Wolbachia 是一种胞内共生菌，专门感染节肢动物——全球估计有40%到60%的昆虫物种携带这种细菌。它的”操控策略”有四种：细胞质不亲和、雌性化、杀雄、诱导孤雌...</div></div></div></a><a class="pagination-related" href="/2026/04/20/2026-04-20-01-%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%BA%8F%E5%88%97-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" title="一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-20</div><div class="info-item-2">一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学</div></div><div class="info-2"><div class="info-item-1">一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学2019年，MIT的Collins实验室做了一件后来被认为是里程碑的事：用深度学习从已有的药物分子库里筛出了一个全新的抗生素，他们给它取名halicin。 halicin的结构和所有已知抗生素都不一样。它杀细菌的方式也不是阻断细胞壁合成或干扰DNA复制——这是过去几十年新药研发几乎唯一的思路。halicin干扰的是细菌的质子动力，一种完全不同的机制。 在实验中，halicin杀死了多种耐药菌株，包括对已知所有抗生素都耐药的超级细菌。在感染了耐甲氧西林金黄色葡萄球菌（MRSA）的小鼠身上，halicin的清除效果优于现有的最后一道防线万古霉素。 而找到halicin的那个模型，用的不是Transformer，也不是CNN，是图神经网络（Graph Neural Network, GNN）。 这个模型的输入不是序列，不是图像，而是分子图——原子是节点，化学键是边。它遍历了一个包含6000多个分子的数据库，最终挑出了halicin，以及另外几个有潜力的候选分子。 这是图神经网络在生物信息学中最有名的成功案例之...</div></div></div></a><a class="pagination-related" href="/2026/04/14/2026-04-14-01-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E5%BA%8F%E5%88%97%E6%95%B0%E6%8D%AE%E5%A4%A9%E7%84%B6%E9%80%82%E5%90%88%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C%E6%9D%A5%E8%AF%BB/" title="为什么生物序列数据天然适合循环网络来读"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-14</div><div class="info-item-2">为什么生物序列数据天然适合循环网络来读</div></div><div class="info-2"><div class="info-item-1">为什么生物序列数据天然适合循环网络来读在深度学习进入生物信息学之前，处理生物序列数据的主要方法是位置权重矩阵、隐马尔可夫模型和条件随机场。这些方法各有优势，但有一个共同的局限：它们对序列中元素之间依赖关系的建模能力有限。 20世纪90年代，循环神经网络（RNN）开始被引入生物序列分析。和之前的方法不同，RNN 天然地按顺序处理输入——它一个一个地读取序列中的元素，每读一步就更新一次内部状态，这个状态就相当于对”到目前为止读过的内容”的记忆。 需要先说明一个前提：RNN 和 LSTM 并没有”过时”。 Transformer 的热度让很多人觉得循环网络已经是被淘汰的技术。但在生物信息学的实际工作中，RNN&#x2F;LSTM 到今天仍然在特定场景下有不可替代的价值——不是因为怀旧，而是因为有些生物问题的计算特性恰好就是 RNN 最擅长的那一种。这篇文章要解释的是：为什么 RNN 适合处理生物序列，它的核心能力是什么，以及这个逻辑在今天还成不成立。  生物序列的”顺序性”DNA、RNA、蛋白质都是一维序列。但它们和一段随机的字符串不同——序列中元素的排列顺序本身就携带了重要的生物学信...</div></div></div></a><a class="pagination-related" href="/2026/04/01/2026-04-01-01-%E7%94%9F%E4%BF%A1%E7%A0%94%E7%A9%B6%E9%87%8C%E5%90%AC%E8%B5%B7%E6%9D%A5%E5%83%8F%E6%84%9A%E4%BA%BA%E8%8A%82%E7%8E%A9%E7%AC%91%E4%BD%86%E5%85%B6%E5%AE%9E%E6%98%AF%E7%9C%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" title="生信研究里听起来像愚人节玩笑，但其实是真的一些事"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-01</div><div class="info-item-2">生信研究里听起来像愚人节玩笑，但其实是真的一些事</div></div><div class="info-2"><div class="info-item-1">生信研究里听起来像愚人节玩笑，但其实是真的一些事每年愚人节都会看到很多假新闻。AI 通过了医学考试、室温超导成功了、某公司宣布实现了核聚变发电——这些一看就知道是开玩笑的。 但生物学这个领域有个特点：有时候真实的研究比玩笑还离谱。读这类论文的时候经常需要确认一下：这是正经发表的吗？ 以下八个都是。  一、用语言模型预测蛋白质会怎么进化先从一个听起来最像开玩笑的讲起。 有人训练了一个语言模型——就是那种读海量蛋白质序列、学会预测下一个氨基酸的模型——然后用它来指导抗体的定向进化。 具体做法是：给模型看一个抗体序列，问它”如果这个抗体要提高对目标抗原的亲和力，自然界可能会怎么突变它”。模型不需要知道任何关于抗原的结构信息，也不需要知道什么是”亲和力”。它只知道：在自然界见过的所有蛋白质里，什么样的突变是合理的、可能存在的。 用这个方法，做了七个人源抗体的亲和力成熟。每个抗体只测了不到 20 个突变变体，筛了两轮。四个临床上已经比较成熟的抗体，亲和力提高了最多 7 倍。还有三个还没成熟的抗体，亲和力提高了最多 160 倍。 这个数字听起来不真实。160 倍的提升，通常需要做很多轮耗时的...</div></div></div></a><a class="pagination-related" href="/2026/02/15/1-%E5%BD%93AI%E8%BF%9B%E5%85%A5%E6%B2%B9%E8%8F%9C%E6%80%A7%E7%8A%B6%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%BB%8E%E8%8A%B1%E5%8F%91%E8%82%B2%E5%88%B0%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BD%91%E7%BB%9C%E7%9A%84%E7%A7%91%E7%A0%94%E5%89%AF%E9%A9%BE%E9%A9%B6/" title="当 AI 进入油菜性状分析流程：从花发育到转录组网络的科研副驾驶"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-15</div><div class="info-item-2">当 AI 进入油菜性状分析流程：从花发育到转录组网络的科研副驾驶</div></div><div class="info-2"><div class="info-item-1">当 AI 进入油菜性状分析流程：从花发育到转录组网络的科研副驾驶为什么想写这篇很多人一提到 AI 进实验室，脑子里想到的还是“帮我润色一下摘要”或者“帮我写几句代码”。但真正做过项目的人都知道，科研里最耗时间的，往往不是某一个脚本，而是整条链路：样本信息乱、测序公司回来的文件不统一、公共数据库字段各不相同、分析步骤断断续续、脚本报错来回修、最后结果出来以后还得反复确认这一步到底有没有跑偏。 如果把 AI 只当聊天工具，它能帮的很有限；但如果把它当成一个真正进入流程的“科研副驾驶”，它开始有价值的地方就不是一句答案，而是帮你把一个本来容易断掉的分析流程，尽量串成一条可追踪、可解释、可复核的工作链。 这篇文章合并了两个油菜相关的真实使用场景：  一个偏花发育 &#x2F; CRC-YABBY 基因家族； 一个偏转录组 &#x2F; WGCNA &#x2F; 候选基因筛选。  它们表面看是两件事，但底层问题其实很像：都不是单纯“让 AI 给答案”，而是让 AI 参与整理数据、搭脚本、补逻辑、查资料、校验输出。 场景一：从花发育问题出发，AI 先帮你把流程搭起来第一个场景来自油菜花发育相...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89-100-%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6%EF%BC%8CGPT-%E6%9C%89%E5%A4%9A%E5%B0%91%EF%BC%9F%E2%80%94%E2%80%94%E4%BB%8E%E6%9E%9C%E8%9D%87%E5%85%A8%E8%84%91%E6%A8%A1%E6%8B%9F%E5%88%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%B6%8C%E7%8E%B0%EF%BC%8C%E4%B8%80%E5%9C%BA%E5%85%B3%E4%BA%8E%E2%80%9D%E6%99%BA%E8%83%BD%E2%80%9D%E7%9A%84%E5%8F%82%E6%95%B0%E8%80%83%E5%8F%A4"><span class="toc-number">1.</span> <span class="toc-text">你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E5%85%88%E6%90%9E%E6%B8%85%E6%A5%9A%E4%B8%80%E4%BB%B6%E4%BA%8B%E2%80%94%E2%80%94%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E2%80%9D%E5%8F%82%E6%95%B0%E2%80%9D%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">第一章：先搞清楚一件事——大模型的”参数”到底是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E7%BA%A6%E7%AD%89%E4%BA%8E%E7%AA%81%E8%A7%A6%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%A5%9E%E7%BB%8F%E5%85%83"><span class="toc-number">1.1.1.</span> <span class="toc-text">参数约等于突触，不是神经元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E5%8F%AF%E8%B0%83%E8%8A%82%E2%80%9D%E8%BF%99%E4%B8%89%E4%B8%AA%E5%AD%97%E6%98%AF%E5%85%B3%E9%94%AE"><span class="toc-number">1.1.2.</span> <span class="toc-text">“可调节”这三个字是关键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E4%B8%80%E4%B8%AA%E4%BB%A4%E4%BA%BA%E5%B0%B4%E5%B0%AC%E7%9A%84%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">第二章：一个令人尴尬的对比表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E7%89%A9%E5%A4%A7%E8%84%91%E7%9A%84%E8%A7%84%E6%A8%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">生物大脑的规模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A7%84%E6%A8%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">大语言模型的规模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E2%80%9D%E5%B0%B4%E5%B0%AC%E2%80%9D%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.3.</span> <span class="toc-text">一个”尴尬”的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%99%9A%E6%8B%9F%E6%9E%9C%E8%9D%87%E2%80%94%E2%80%94%E7%94%A8-1-%E4%BA%BF%E4%B8%AA%E2%80%9D%E7%AA%81%E8%A7%A6%E2%80%9D%E9%87%8D%E5%BB%BA%E4%B8%80%E5%8F%AA%E4%BC%9A%E9%A3%9E%E7%9A%84%E8%8B%8D%E8%9D%87"><span class="toc-number">1.3.</span> <span class="toc-text">第三章：虚拟果蝇——用 1 亿个”突触”重建一只会飞的苍蝇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%94%BB%E5%87%BA%E6%9E%9C%E8%9D%87%E5%A4%A7%E8%84%91%E7%9A%84%E5%AE%8C%E6%95%B4%E7%94%B5%E8%B7%AF%E5%9B%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">第一步：画出果蝇大脑的完整电路图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%87%8C%E2%80%9D%E9%80%9A%E7%94%B5%E2%80%9D"><span class="toc-number">1.3.2.</span> <span class="toc-text">第二步：在计算机里”通电”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%BB%99%E5%AE%83%E4%B8%80%E4%B8%AA%E8%BA%AB%E4%BD%93"><span class="toc-number">1.3.3.</span> <span class="toc-text">第三步：给它一个身体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%AE%A9%E5%AE%83%E5%9C%A8%E8%8A%AF%E7%89%87%E4%B8%8A%E2%80%9D%E6%B4%BB%E2%80%9D%E8%B5%B7%E6%9D%A5"><span class="toc-number">1.3.4.</span> <span class="toc-text">第四步：让它在芯片上”活”起来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E8%A1%8C%E4%B8%BA%E4%BB%8E%E8%BF%9E%E6%8E%A5%E4%B8%AD%E6%B6%8C%E7%8E%B0"><span class="toc-number">1.3.5.</span> <span class="toc-text">第五步：行为从连接中涌现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9A%E6%B3%9B%E5%8C%96%E7%9A%84%E5%8F%82%E6%95%B0%E9%98%B6%E6%A2%AF%E2%80%94%E2%80%94%E4%BB%8E-0-5B-%E5%88%B0-1T-%E7%9A%84%E6%B6%8C%E7%8E%B0"><span class="toc-number">1.4.</span> <span class="toc-text">第四章：泛化的参数阶梯——从 0.5B 到 1T 的涌现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6-0-5B%EF%BC%885-%E4%BA%BF%EF%BC%89%E5%8F%82%E6%95%B0%EF%BC%9A%E7%A8%B3%E5%AE%9A%E5%AF%B9%E8%AF%9D%E7%9A%84%E9%97%A8%E6%A7%9B"><span class="toc-number">1.4.1.</span> <span class="toc-text">约 0.5B（5 亿）参数：稳定对话的门槛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6-1-3B-%E5%8F%82%E6%95%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%99%BA%E8%83%BD%E5%87%BA%E7%8E%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">约 1-3B 参数：基础智能出现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6-30B-%E5%8F%82%E6%95%B0%EF%BC%9A%E7%89%B9%E6%AE%8A%E8%83%BD%E5%8A%9B%E6%B6%8C%E7%8E%B0"><span class="toc-number">1.4.3.</span> <span class="toc-text">约 30B 参数：特殊能力涌现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6-100B-%E5%8F%82%E6%95%B0%EF%BC%9A%E8%83%BD%E5%8A%9B%E9%9D%9E%E5%B8%B8%E7%A8%B3%E5%AE%9A"><span class="toc-number">1.4.4.</span> <span class="toc-text">约 100B+ 参数：能力非常稳定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6-1T-%E5%8F%82%E6%95%B0%EF%BC%9A%E4%B8%BB%E5%8A%A8%E5%8F%91%E7%8E%B0%E6%96%B0%E4%B8%9C%E8%A5%BF"><span class="toc-number">1.4.5.</span> <span class="toc-text">约 1T+ 参数：主动发现新东西</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%8C%E7%8E%B0%E6%98%AF%E7%9C%9F%E7%9A%84%E5%90%97%EF%BC%9F"><span class="toc-number">1.4.6.</span> <span class="toc-text">涌现是真的吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%81%9A%E2%80%9D%E5%AE%9E%E6%97%B6%E5%8F%AF%E5%8F%98%E7%AA%81%E8%A7%A6%E2%80%9D%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%90%97"><span class="toc-number">1.5.</span> <span class="toc-text">第五章：有人在做”实时可变突触”的模型吗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.5.1.</span> <span class="toc-text">持续学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.5.2.</span> <span class="toc-text">在线学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E8%B0%83%E6%8E%A7%E7%AA%81%E8%A7%A6%E5%8F%AF%E5%A1%91%E6%80%A7"><span class="toc-number">1.5.3.</span> <span class="toc-text">神经调控突触可塑性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.5.4.</span> <span class="toc-text">元学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.5.5.</span> <span class="toc-text">核心障碍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9A%E8%BF%9B%E5%8C%96%E6%AF%94%E6%88%91%E4%BB%AC%E6%83%B3%E8%B1%A1%E7%9A%84%E6%9B%B4%E8%81%AA%E6%98%8E"><span class="toc-number">1.6.</span> <span class="toc-text">第六章：进化比我们想象的更聪明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD%EF%BC%9A%E6%9B%B4%E8%81%AA%E6%98%8E%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.</span> <span class="toc-text">结语：更聪明的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E9%85%8D%E5%9B%BE%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.8.</span> <span class="toc-text">附：配图建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="toc-number">1.8.1.</span> <span class="toc-text">关于模型参数数据的说明</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

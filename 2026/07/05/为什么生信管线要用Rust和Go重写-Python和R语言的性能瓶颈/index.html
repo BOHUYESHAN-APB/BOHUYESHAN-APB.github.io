@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python/R 太慢了？用 Rust 和 Go 重写生信分析管线 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生信分析为什么越跑越慢如果你做过真正的大规模生物信息学分析，一定遇到过这种情况：数据量从几个 GB 涨到几十个 GB，脚本的运行时间从几分钟涨到几小时，甚至直接跑崩。 这不是你的代码写得不好。这是 Python 和 R 本身的限制。 解释型语言的代价Python 和 R 的核心问题不在语言本身好不好用，而在每一次循环执行时，解释器都要做大量额外工作： 1234# 一段看似简单的循环total &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python&#x2F;R 太慢了？用 Rust 和 Go 重写生信分析管线">
+<meta property="og:url" content="http://bohuyeshan.top/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="生信分析为什么越跑越慢如果你做过真正的大规模生物信息学分析，一定遇到过这种情况：数据量从几个 GB 涨到几十个 GB，脚本的运行时间从几分钟涨到几小时，甚至直接跑崩。 这不是你的代码写得不好。这是 Python 和 R 本身的限制。 解释型语言的代价Python 和 R 的核心问题不在语言本身好不好用，而在每一次循环执行时，解释器都要做大量额外工作： 1234# 一段看似简单的循环total &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-07-05T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.160Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="Go">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Python/R 太慢了？用 Rust 和 Go 重写生信分析管线",
+  "url": "http://bohuyeshan.top/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-07-05T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.160Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python/R 太慢了？用 Rust 和 Go 重写生信分析管线',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.160Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h2 id="生信分析为什么越跑越慢"><a href="#生信分析为什么越跑越慢" class="headerlink" title="生信分析为什么越跑越慢"></a>生信分析为什么越跑越慢</h2><p>如果你做过真正的大规模生物信息学分析，一定遇到过这种情况：数据量从几个 GB 涨到几十个 GB，脚本的运行时间从几分钟涨到几小时，甚至直接跑崩。</p>
+<p>这不是你的代码写得不好。这是 Python 和 R 本身的限制。</p>
+<h3 id="解释型语言的代价"><a href="#解释型语言的代价" class="headerlink" title="解释型语言的代价"></a>解释型语言的代价</h3><p>Python 和 R 的核心问题不在语言本身好不好用，而在<strong>每一次循环执行时，解释器都要做大量额外工作</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一段看似简单的循环</span></span><br><span class="line">total = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10_000_000</span>):</span><br><span class="line">    total += i * <span class="number">0.5</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Python 里，每一次 <code>total += i * 0.5</code> 都要经历：</p>
+<ol>
+<li>从对象池取出 <code>i</code> → 检查类型</li>
+<li>从对象池取出 <code>total</code> → 检查类型</li>
+<li>执行乘法 → 创建新的 float 对象</li>
+<li>执行加法 → 创建新的 float 对象</li>
+<li>引用计数更新 → 垃圾回收潜在触发</li>
+</ol>
+<p>同样的逻辑在 Rust 里：直接编译成 <code>addss</code> 指令操作 CPU 寄存器，零开销。</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>Python</th>
+<th>R</th>
+<th>Rust</th>
+<th>Go</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 亿次整数加法</td>
+<td>~15s</td>
+<td>~20s</td>
+<td><em>0.05s</em></td>
+<td><em>0.15s</em></td>
+</tr>
+<tr>
+<td>100 万次空循环</td>
+<td>~50ms</td>
+<td>~40ms</td>
+<td><em>~0.3ms</em></td>
+<td><em>~1ms</em></td>
+</tr>
+<tr>
+<td>GIL 并行限制</td>
+<td>❌ 有</td>
+<td>✅ 无</td>
+<td>✅ 无</td>
+<td>✅ 无</td>
+</tr>
+<tr>
+<td>SIMD 自动向量化</td>
+<td>❌ 无</td>
+<td>❌ 无</td>
+<td>✅ <strong>原生</strong></td>
+<td>⚠️ 有限</td>
+</tr>
+</tbody></table>
+<h3 id="Python-R-其实靠-C-撑着"><a href="#Python-R-其实靠-C-撑着" class="headerlink" title="Python&#x2F;R 其实靠 C 撑着"></a>Python&#x2F;R 其实靠 C 撑着</h3><p>很多人会说：”但 NumPy&#x2F;Pandas 底层是 C 写的啊，很快的。”</p>
+<p>这句话只对了一半。向量化操作确实快——但一旦你需要在行与行之间做条件判断、逐元素处理、或者自定义统计逻辑，你就回到了 Python&#x2F;R 循环，性能立刻断崖下跌。</p>
+<p>真实案例：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">处理 300 万条 BAM 比对记录：</span><br><span class="line"></span><br><span class="line">  R 逐行处理    →  2.5 小时</span><br><span class="line">  Python 逐行   →  1.8 小时</span><br><span class="line">  Go 并发流水线 →  8 分钟</span><br><span class="line">  Rust + rayon  →  4 分钟</span><br></pre></td></tr></table></figure>
+
+<h2 id="生信管线中性能瓶颈最大的环节"><a href="#生信管线中性能瓶颈最大的环节" class="headerlink" title="生信管线中性能瓶颈最大的环节"></a>生信管线中性能瓶颈最大的环节</h2><h3 id="1-BAM-VCF-文件解析与后处理"><a href="#1-BAM-VCF-文件解析与后处理" class="headerlink" title="1. BAM&#x2F;VCF 文件解析与后处理"></a>1. BAM&#x2F;VCF 文件解析与后处理</h3><p>BAM 文件动辄几十 GB，Python&#x2F;R 逐行解析是最常见的性能陷阱。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Rust 方案: rust-htslib + bio crate</span><br><span class="line">             → 流式读取 + 零拷贝解析 + 并行过滤</span><br><span class="line">Go 方案:   biogo + goroutine pipeline</span><br><span class="line">             → 并发 reader + channel 流水线</span><br></pre></td></tr></table></figure>
+
+<p>实测：10GB BAM 文件的覆盖率统计，Python 用 pysam 耗时 12 分钟，Rust 用 rust-htslib 耗时 45 秒。</p>
+<h3 id="2-批量序列比对后处理"><a href="#2-批量序列比对后处理" class="headerlink" title="2. 批量序列比对后处理"></a>2. 批量序列比对后处理</h3><p>BLAST 或 DIAMOND 的输出文件通常包含数百万条比对记录。后处理（过滤、统计、格式转换）是纯 CPU 密集型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python 处理 BLAST 输出</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> blast_output:</span><br><span class="line">    fields = line.split()</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">float</span>(fields[<span class="number">2</span>]) &lt; <span class="number">30</span>:  <span class="comment"># bit-score 过滤</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="comment"># 每行都要做字符串分割、类型转换、条件判断</span></span><br></pre></td></tr></table></figure>
+
+<p>Rust 替代方案：用 <code>rayon</code> 并行迭代器 + <code>csv</code>&#x2F;<code>tsv</code> crate 处理，20 倍以上提速。</p>
+<h3 id="3-分子描述符计算"><a href="#3-分子描述符计算" class="headerlink" title="3. 分子描述符计算"></a>3. 分子描述符计算</h3><p>网络药理学中，SMILES 到分子描述符的计算是典型的”串行密集型”：</p>
+<ul>
+<li>Python RDKit：走一步解释一步</li>
+<li>Rust 替代：编译为机器码 + SIMD 向量化 + 多核并行</li>
+</ul>
+<p>单次分子对接预处理的数据量就够 Python 跑几分钟，而 Rust 可以在秒级完成同样的计算量。</p>
+<h3 id="4-多组学矩阵归约与统计检验"><a href="#4-多组学矩阵归约与统计检验" class="headerlink" title="4. 多组学矩阵归约与统计检验"></a>4. 多组学矩阵归约与统计检验</h3><p>R 的 DESeq2&#x2F;edgeR 核心计算是 C 写的所以快，但<strong>自写统计检验</strong>（置换检验、自助法）完全是另一回事：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10000 次置换 × 20000 个基因 = 2 亿次循环</span><br><span class="line"></span><br><span class="line">Python：   跑不动（需 Numba 加速）</span><br><span class="line">R：        跑不动（需 Rcpp 重写）</span><br><span class="line">Rust+rayon：~8 秒（全核满载 + SIMD）</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rust-和-Go-怎么分工"><a href="#Rust-和-Go-怎么分工" class="headerlink" title="Rust 和 Go 怎么分工"></a>Rust 和 Go 怎么分工</h2><p>这两个语言不是竞争关系，而是互补：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用 Rust</th>
+<th>用 Go</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件 I&#x2F;O + 解析</td>
+<td>✅ <code>rust-htslib</code> 零拷贝</td>
+<td>⚠️ 一般</td>
+</tr>
+<tr>
+<td>密集数值计算</td>
+<td>✅ SIMD + rayon</td>
+<td>⚠️ 有限</td>
+</tr>
+<tr>
+<td>并发流水线</td>
+<td>✅ 但开发成本高</td>
+<td>✅ goroutine 原生</td>
+</tr>
+<tr>
+<td>API&#x2F;Web 服务</td>
+<td>⚠️ 成本高</td>
+<td>✅ 标准库最强</td>
+</tr>
+<tr>
+<td>数据爬取&#x2F;清洗</td>
+<td>❌ 不值得</td>
+<td>✅ 并发请求轻松</td>
+</tr>
+<tr>
+<td>与 Python 互调用</td>
+<td>✅ PyO3&#x2F;maturin</td>
+<td>❌ 需 cgo</td>
+</tr>
+</tbody></table>
+<p><strong>简单的分工原则：</strong></p>
+<ul>
+<li><strong>算得多的</strong> → Rust（序列比对、文件解析、描述符计算）</li>
+<li><strong>等得多的</strong> → Go（网络请求、数据爬取、工作流调度、API 网关）</li>
+</ul>
+<h2 id="Java-去哪里了"><a href="#Java-去哪里了" class="headerlink" title="Java 去哪里了"></a>Java 去哪里了</h2><p>Java 理论上能接近 C 的速度，但在生信场景里它有几个实际问题：</p>
+<ol>
+<li><strong>GC 停顿</strong>——分析几百 GB 的基因组数据时，GC 的 Stop-The-World 可达十几秒</li>
+<li><strong>对象头开销</strong>——每个 Integer&#x2F;Double 多占 16-24 字节，而 Rust 的原始数组是连续 8 字节&#x2F;元素</li>
+<li><strong>JVM 预热</strong>——批量生信任务跑几分钟就结束，JIT 还没来得及优化就退出了</li>
+<li><strong>生态老化</strong>——GATK 用 Java 写，但新一代工具（如 DeepVariant、WhatsHap）几乎全是 C++&#x2F;Rust</li>
+</ol>
+<p>结论：<strong>新工具选 Rust&#x2F;Go，Java 生态只会越来越冷。</strong></p>
+<h2 id="一种可行的迁移路径"><a href="#一种可行的迁移路径" class="headerlink" title="一种可行的迁移路径"></a>一种可行的迁移路径</h2><p>不用一次性把整个管线都重写。更务实的做法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">阶段 1（P0）：BAM/VCF 文件解析后处理 → Rust rust-htslib</span><br><span class="line">              预期提速 10-50x</span><br><span class="line">阶段 2（P1）：BLAST/DIAMOND 后处理 → Rust rayon + csv crate</span><br><span class="line">              预期提速 10-20x</span><br><span class="line">阶段 3（P1）：分子描述符计算 → Rust PyO3 替代 Python RDKit 热循环</span><br><span class="line">              预期提速 15-30x</span><br><span class="line">阶段 4（P2）：数据抓取与 API 调度 → Go goroutine 流水线</span><br><span class="line">              预期提速 3-8x</span><br></pre></td></tr></table></figure>
+
+<p>每一步都可以用 PyO3 封装成 Python 可调用的模块，<strong>不改动上层调用逻辑</strong>，只替换热循环。</p>
+<hr>
+<h2 id="为什么值得做"><a href="#为什么值得做" class="headerlink" title="为什么值得做"></a>为什么值得做</h2><p>生物信息学目前的最大瓶颈已经不是”算法不够好”，而是<strong>同样的数据量，Python&#x2F;R 要到明天才能给结果，而 Rust&#x2F;Go 只要一杯咖啡的时间</strong>。</p>
+<p>当数据量从 TB 级往 PB 级走，这种差距会从”不方便”变成”不可行”。现在开始把管线里的热路径用 Rust&#x2F;Go 重写，不是在换技术栈，而是在为下一个数量级的数据做准备。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/">http://bohuyeshan.top/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a><a class="post-meta__tags" href="/tags/Rust/">Rust</a><a class="post-meta__tags" href="/tags/Go/">Go</a><a class="post-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">两条路进入生物信息学，然后在 AI 时代交汇</div></div><div class="info-2"><div class="info-item-1">生物信息学有一个少被明说但每个人都心知肚明的现实：这个领域的人来自两个截然不同的起点。 有人是从计算机科学、软件工程、数学物理”跨”过来的——会写代码、懂算法，但在第一次拿到 RNA-seq 数据时，连”什么是文库、什么是接头、为什么要去重”都要从头学起。 有人是从生物学、医学、农学”转”过来的——做过 PCR、跑过胶、养过细胞，但在第一次面对终端窗口时，连 ls 和 cd 的区别都要查半天。 这两类人最终都在做同一件事——从生物数据里找答案。但他们走的路径、用的工具、面对的困难，完全不一样。 而 2026 年，AI 的介入让这两条路开始交汇了。但交汇的方式可能和大多数人想的不一样。   第一条路：从代码出发程序员转入生信的典型路径是：因为某个课题或项目需要分析生物数据，发现自己能写脚本、能调包、能搭环境，于是自然而然地接手了组里的计算任务。 这条路的人对以下场景不会陌生：  写 Python 脚本处理 FASTQ，用 Biopython 解析序列 搭 Snakemake 或 Nextflow 管线，把比对→定量→差异表达串起来 用 Docker&#x2F;Singularity...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/14/2026-04-14-04-%E4%B8%80%E4%B8%AA%E8%BD%AC%E5%BA%A7%E5%AD%90%E7%9A%84%E8%B7%B3%E8%B7%83-%E7%BB%99%E7%8C%95%E7%8C%B4%E6%A1%83%E8%A3%85%E4%B8%8A%E4%BA%86%E6%8A%97%E7%97%85%E6%AD%A6%E5%99%A8/" title="一个转座子的跳跃，给猕猴桃装上了抗病武器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-14</div><div class="info-item-2">一个转座子的跳跃，给猕猴桃装上了抗病武器</div></div><div class="info-2"><div class="info-item-1">一个转座子的跳跃，给猕猴桃装上了抗病武器猕猴桃溃疡病是全球猕猴桃产业面临的最严重威胁之一。这种由丁香假单胞菌猕猴桃致病变种（Pseudomonas syringae pv. actinidiae，简称 Psa）引起的细菌性溃疡病，可以在几年内摧毁整片果园。自2008年以来，Psa 在意大利、新西兰、韩国、日本等主要猕猴桃产区引发了大规模疫情，造成了数十亿美元的经济损失。 栽培猕猴桃对 Psa 的抗性普遍较弱。但猕猴桃的野生近缘种——特别是毛花猕猴桃（Actinidia eriantha）——对 Psa 表现出明显更强的抗性。 问题是：这种抗性是怎么来的？ 2026年4月发表在 Genome Biology 上的一项研究给出了一个有趣的答案：一个转座子的”跳跃”，给抗病基因装上了一个新的开关。  泛基因组：不只看一个参考基因组传统基因组研究通常依赖一个”参考基因组”——选择一个代表性个体进行测序，作为后续分析的基准。但这种方法有一个根本性的局限：任何一个个体的基因组都无法代表整个物种的遗传多样性。 泛基因组（pangenome）方法试图弥补这一不足。它对一个物种的多个个体进行基因组...</div></div></div></a><a class="pagination-related" href="/2026/04/03/2026-04-03-01-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%94%9F%E5%91%BD%E7%A7%91%E5%AD%A6%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%9E%8D%E5%90%88-%E4%B8%93%E9%A2%98%E5%BC%80%E7%AF%87/" title="神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-03</div><div class="info-item-2">神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路</div></div><div class="info-2"><div class="info-item-1">神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路生物学正在变成一门数据科学。 人类基因组有30亿个碱基对，一次单细胞RNA测序可以同时测量上万个基因的表达水平，蛋白质结构数据库里的分子数量已经超过20万个。这些数据量的增长速度远超人类手动分析的能力极限。 处理这些数据的工具，正在从传统的统计模型和物理模拟，转向深度学习。 这不是一个突然的转变。从上世纪80年代的感知机开始，神经网络经过了几十年的演进，发展出了多种不同的架构——CNN、RNN、Transformer、GAN、GNN、SSM……每一种架构在处理特定类型的数据时有各自的优势。 而生物数据恰好是多种类型数据的集合：一维序列、三维结构、基因调控网络、细胞图谱、分子图……没有一种神经网络架构能够包打一切。 这就是本专题的出发点：系统梳理各类神经网络架构在生物信息学中的应用，让研究者能够根据自己面对的数据类型和科学问题，选择合适的计算工具。  生物学为什么需要多种神经网络生物数据有几个基本特性，每一种特性对应着不同的计算需求。 序列性。 DNA、RNA、蛋白质都是一维序列。序列建模需要捕捉长程依赖关系——比如DN...</div></div></div></a><a class="pagination-related" href="/2026/04/19/01-gan%E6%89%A9%E6%95%A3%E6%94%B6%E6%9D%9F/" title="论文里的 FID 降了，实验室里的试管空着——生成式生物设计的真实距离"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-19</div><div class="info-item-2">论文里的 FID 降了，实验室里的试管空着——生成式生物设计的真实距离</div></div><div class="info-2"><div class="info-item-1">论文里的 FID 降了，实验室里的试管空着——生成式生物设计的真实距离生成式 AI 造出了上百万个分子，但没有一个走进湿实验过去一年，GAN 可以生成全新的小分子，扩散模型可以设计蛋白质骨架。benchmark 成绩亮眼，FID 分数一降再降，结合亲和力一升再升。ICLR 2026 有 oral，NVIDIA、Oxford、Bengio 都在做。 但一个回避不了的问题是：这些模型造出来的东西，有多少真的进了实验室验证？ 答案可能让你失望。 生成式 AI 在生物设计上做了什么先看这条路线最新的进展。 小分子生成：以 CAGenMol 为代表的扩散语言模型，可以根据靶点蛋白的特征，生成具有特定性质的小分子。EvoFlows 则用 Flow Matching 做蛋白质工程，从蛋白质序列空间中采样，生成具有功能潜力的新序列。这些方法的共同特点是：不再是从已知分子库中搜索，而是从”无”到”有”地创造。 蛋白质设计：Proteina-Complexa（ICLR 2026 Oral，NVIDIA+Oxford+Mila+首尔大学团队）统一了”生成式建模”和”幻觉优化”两条路线。它先用 Flow...</div></div></div></a><a class="pagination-related" href="/2026/04/11/2026-04-11-01-%E5%8E%BB%E9%9B%84%E8%AE%A1%E5%88%92-%E4%BB%8E%E5%AF%84%E7%94%9F%E8%99%AB%E5%8A%AB%E6%8C%81%E6%80%A7%E5%88%AB%E5%88%B0%E6%96%87%E6%98%8E%E7%9A%84%E5%86%85%E5%88%86%E6%B3%8C%E4%BB%A3%E4%BB%B7/" title="去雄计划：从寄生虫劫持性别到文明的内分泌代价"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-11</div><div class="info-item-2">去雄计划：从寄生虫劫持性别到文明的内分泌代价</div></div><div class="info-2"><div class="info-item-1">去雄计划：从寄生虫劫持性别到文明的内分泌代价在自然界，”去雄”不是阴谋，而是一种被反复发明的生存策略。 一种细菌可以系统性地把雄性昆虫变成雌性。一种寄生藤壶可以让公蟹心甘情愿地替它孵卵。而人类自己的工业文明，在过去半个世纪里，让工业化国家的男性精子数量下降了超过50%。 这篇文章要讲的是一个跨越三条线的故事：自然界的性别操控是真实的、有硬证据的；人类社会中”去雄”的叙事是存在的、值得观察的；但真正值得警惕的，不是某个国家设计的计划，而是我们整个文明正在无意识地制造一种全球性的内分泌干扰环境。 在开始之前，说清楚一件事： 这篇文章讨论的是生物学意义上的性别分化影响，以及这些影响在自然界和人类社会中的表现。它不是阴谋论，也不是性别审美的价值判断。下面的事实来自经过同行评审的研究，我会标注来源。  一、Wolbachia：最精准的自然”去雄武器”在所有已知的生物性别操控案例中，Wolbachia 是最系统、最精确的一种。 Wolbachia 是一种胞内共生菌，专门感染节肢动物——全球估计有40%到60%的昆虫物种携带这种细菌。它的”操控策略”有四种：细胞质不亲和、雌性化、杀雄、诱导孤雌...</div></div></div></a><a class="pagination-related" href="/2026/04/12/2026-04-12-01-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8A%E5%A4%A9%E5%BE%88%E5%A4%9A%E7%94%9F%E4%BF%A1%E6%A8%A1%E5%9E%8B%E9%87%8C%E8%BF%98%E6%9C%89%E5%8D%B7%E7%A7%AF%E5%B1%82/" title="为什么今天很多生信模型里还有卷积层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-12</div><div class="info-item-2">为什么今天很多生信模型里还有卷积层</div></div><div class="info-2"><div class="info-item-1">为什么今天很多生信模型里还有卷积层前两篇我们聊了卷积网络为什么最早在生物信息学里跑出来，以及从 DeepBind 到 Basset 它们是怎么进入基因调控问题的。一个自然的问题是：现在大家聊的都是 Transformer、蛋白质语言模型、大模型，卷积网络是不是已经退出了？ 答案是没有。 更准确地说，卷积层作为一个模块，仍然广泛存在于今天很多主流的生信模型架构里。它不是作为”主力”出现，而是作为”局部特征提取器”嵌在更复杂的结构中。这个现象本身值得说清楚，因为它反映的不是技术保守，而是不同架构在解决不同层级的问题。  一个常见的误解：”新架构替代旧架构”在深度学习领域，架构更替的叙事很容易简化为”旧的被淘汰，新的取而代之”。从 CNN 到 RNN 到 Transformer，好像每一代架构都在”证明”前一代不行了。 这个叙事在自然语言处理里有一定道理——Transformer 的自注意力机制确实比 RNN 能更高效地捕捉长程依赖，而且天然适合并行训练。但在生物信息学里，情况更复杂。不同的架构不是在争夺同一个任务的主导权，而是在处理同一个问题的不同层面。 生物序列有一个基本特征：局部...</div></div></div></a><a class="pagination-related" href="/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/" title="一个基因表达量正常的孩子，功能为什么出了问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-23</div><div class="info-item-2">一个基因表达量正常的孩子，功能为什么出了问题</div></div><div class="info-2"><div class="info-item-1">一个基因表达量正常的孩子，功能为什么出了问题单细胞RNA测序（scRNA-seq）解决了生物学中一个长期问题：Bulk RNA-seq把一整块组织碾碎，测出来的是成千上万个细胞的平均值，每个细胞独特的基因表达模式被抹平了。scRNA-seq让我们第一次看清了每个细胞在说什么。 但scRNA-seq也有自己的盲区：它告诉你每个基因的表达量，却不告诉你这个基因在细胞里做什么。 比如，某个T细胞里某个炎症基因表达量升高了。这说明什么？是这个细胞本身被激活了，还是它被邻居细胞释放的信号影响了？是这个基因自己出了问题，还是它的某个互作蛋白失调，牵连了它？ 单靠scRNA-seq，无法回答这些问题。因为基因表达量是一个信号，但生物学功能来自于相互作用。  scNET：把两种数据拼成一个图今年3月发表在《Nature Methods》上的一篇论文，提出了一个直接解决这个问题的方法：把scRNA-seq数据和蛋白互作网络（PPI）拼在一起，用图神经网络（GNN）同时学习两类信息。 这个框架叫scNET。 思路并不复杂。传统的scRNA-seq分析把细胞建模为矩阵（细胞×基因），分析的核心是找相似...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%8A%E8%B7%91%E8%B6%8A%E6%85%A2"><span class="toc-number">1.</span> <span class="toc-text">生信分析为什么越跑越慢</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BB%A3%E4%BB%B7"><span class="toc-number">1.1.</span> <span class="toc-text">解释型语言的代价</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-R-%E5%85%B6%E5%AE%9E%E9%9D%A0-C-%E6%92%91%E7%9D%80"><span class="toc-number">1.2.</span> <span class="toc-text">Python&#x2F;R 其实靠 C 撑着</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E4%B8%AD%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88%E6%9C%80%E5%A4%A7%E7%9A%84%E7%8E%AF%E8%8A%82"><span class="toc-number">2.</span> <span class="toc-text">生信管线中性能瓶颈最大的环节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-BAM-VCF-%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">1. BAM&#x2F;VCF 文件解析与后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%B9%E9%87%8F%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">2. 批量序列比对后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%86%E5%AD%90%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">3. 分子描述符计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%9F%A9%E9%98%B5%E5%BD%92%E7%BA%A6%E4%B8%8E%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C"><span class="toc-number">2.4.</span> <span class="toc-text">4. 多组学矩阵归约与统计检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust-%E5%92%8C-Go-%E6%80%8E%E4%B9%88%E5%88%86%E5%B7%A5"><span class="toc-number">3.</span> <span class="toc-text">Rust 和 Go 怎么分工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%8E%BB%E5%93%AA%E9%87%8C%E4%BA%86"><span class="toc-number">4.</span> <span class="toc-text">Java 去哪里了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%A7%8D%E5%8F%AF%E8%A1%8C%E7%9A%84%E8%BF%81%E7%A7%BB%E8%B7%AF%E5%BE%84"><span class="toc-number">5.</span> <span class="toc-text">一种可行的迁移路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%80%BC%E5%BE%97%E5%81%9A"><span class="toc-number">6.</span> <span class="toc-text">为什么值得做</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

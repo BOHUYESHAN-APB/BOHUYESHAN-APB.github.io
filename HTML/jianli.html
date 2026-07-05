@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=420">
+<title>BoHuYeShan · 简历</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { width: 420mm; overflow-x: hidden; }
+  body {
+    background: #e9e6df;
+    font-family: 'Inter','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+    color: #1a1a1a;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    width: 420mm;
+    overflow-x: hidden;
+  }
+  .print-btn-wrap { text-align: center; padding: 12px 0; background: #e9e6df; }
+  .print-btn { display: inline-block; padding: 10px 28px; background: #1f4d8f; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .print-btn:hover { background: #2563eb; }
+  .print-btn:disabled { background: #999; cursor: wait; }
+  .print-status { font-size: 12px; color: #666; margin-top: 6px; min-height: 18px; }
+  .a3-sheet { width: 420mm; height: 297mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); display: grid; grid-template-columns: 210mm 210mm; overflow: hidden; position: relative; }
+  .a4-page { width: 210mm; height: 297mm; padding: 12mm 10mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .a4-page:first-child { border-right: 0.3mm solid #d9d5ce; }
+  .section { margin-bottom: 4mm; }
+  .section:last-child { margin-bottom: 0; }
+  .section-title { font-size: 8.5pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #1f4d8f; margin: 0 0 2.5mm; display: flex; align-items: center; gap: 2mm; }
+  .section-title::before { content: ''; display: inline-block; width: 5mm; height: 0.5mm; background: #1f4d8f; }
+  .resume-header { padding-bottom: 2mm; margin-bottom: 2mm; border-bottom: 0.2mm solid #d9d5ce; flex-shrink: 0; }
+  .resume-header h1 { font-size: 26pt; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 1mm; }
+  .resume-header .subtitle { font-size: 9pt; color: #1f4d8f; font-weight: 500; margin-bottom: 1.5mm; }
+  .resume-header .contact { font-size: 7.5pt; color: #5a564e; line-height: 1.8; }
+  .resume-header .contact .sep { opacity: 0.3; margin: 0 1.5mm; }
+  .two-col { display: grid; grid-template-columns: 7fr 5fr; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col-main, .col-side { overflow: hidden; }
+  .exp { margin-bottom: 3mm; }
+  .exp:last-child { margin-bottom: 0; }
+  .exp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .exp-head .name { font-size: 9.5pt; font-weight: 600; line-height: 1.35; }
+  .exp-head .meta { font-size: 8pt; color: #8a8680; white-space: nowrap; }
+  .exp-detail { font-size: 9pt; color: #262421; line-height: 1.45; margin-top: 0.5mm; }
+  .exp-detail .hl { color: #1f4d8f; font-weight: 500; }
+  .exp-detail .small { font-size: 7.5pt; color: #6b6760; }
+  ul.bullets { list-style: none; padding: 0; margin: 0.5mm 0 0; }
+  ul.bullets li { position: relative; padding-left: 3.5mm; font-size: 8.5pt; line-height: 1.45; color: #262421; margin-bottom: 0.6mm; }
+  ul.bullets li::before { content: ""; position: absolute; left: 0; top: 1.5mm; width: 1mm; height: 1mm; background: #1f4d8f; border-radius: 0.2mm; }
+  .skill-group { margin-bottom: 1.8mm; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group-label { font-size: 7.5pt; font-weight: 600; color: #8a8680; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 0.8mm; }
+  .skill-wrap { display: flex; flex-wrap: wrap; gap: 1mm; }
+  .skill-tag { font-size: 8pt; background: #f0f4fa; color: #1f4d8f; padding: 0.3mm 1.8mm; border-radius: 0.6mm; line-height: 1.4; }
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; }
+  .proj-item { border-radius: 0.8mm; padding: 1.5mm 2mm; background: #fafbfc; }
+  .proj-item h3 { font-size: 8.5pt; font-weight: 600; color: #1f4d8f; }
+  .proj-item .desc { font-size: 8pt; color: #5a564e; line-height: 1.35; margin: 0.3mm 0 0.5mm; }
+  .proj-item .lang { font-size: 7pt; color: #6b6760; }
+  .more-repos { margin-top: 1mm; padding-top: 0.6mm; border-top: 0.2mm solid #e0ddd8; }
+  .more-repos-label { font-size: 7pt; color: #8a8680; margin-bottom: 0.4mm; }
+  .more-repos-tags { display: flex; flex-wrap: wrap; gap: 0.6mm; }
+  .more-repos-tags span { font-size: 7pt; background: #f1f0ec; color: #5a564e; padding: 0.2mm 1.5mm; border-radius: 0.6mm; }
+  .honor-item { margin-bottom: 2mm; }
+  .honor-item:last-child { margin-bottom: 0; }
+  .honor-item .title { font-size: 9pt; font-weight: 500; line-height: 1.35; }
+  .self-eval { font-size: 9pt; color: #262421; line-height: 1.45; }
+  .contact-block { font-size: 8.5pt; color: #5a564e; line-height: 1.7; }
+  .contact-block strong { color: #1f4d8f; font-weight: 600; }
+  .bottom-full { margin-top: 2mm; padding-top: 2mm; border-top: 0.2mm solid #d9d5ce; flex-shrink: 0; }
+  .bottom-full .section-title { margin-bottom: 2mm; }
+  @media print {
+    @page { size: A3 landscape; margin: 0; }
+    html, body { width: 420mm; background: #fff; }
+    .a3-sheet { box-shadow: none; }
+    .print-btn-wrap { display: none !important; }
+    .skill-tag, .proj-item, .more-repos-tags span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .exp, .proj-item, .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-btn-wrap">
+  <button class="print-btn" id="exportBtn" onclick="exportPDF()">导出 PDF (A4 双面打印)</button>
+  <div class="print-status" id="printStatus"></div>
+</div>
+
+<script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+function exportPDF() {
+  if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
+    alert('PDF 库加载失败，请刷新页面重试。');
+    return;
+  }
+  var btn = document.getElementById('exportBtn');
+  var status = document.getElementById('printStatus');
+  btn.disabled = true;
+  btn.textContent = '正在生成 PDF...';
+  status.textContent = '请稍候...';
+
+  var pages = document.querySelectorAll('.a4-page');
+  var container = document.createElement('div');
+  container.style.cssText = 'position:absolute;left:-9999px;top:0;width:210mm;background:#fff;';
+  document.body.appendChild(container);
+
+  var allCanvases = [];
+
+  function renderPage(idx) {
+    if (idx >= pages.length) { buildPDF(); return; }
+    var clone = pages[idx].cloneNode(true);
+    clone.style.cssText = 'width:210mm;height:297mm;overflow:hidden;position:relative;background:#fff;padding:14mm 12mm;box-sizing:border-box;';
+    container.innerHTML = '';
+    container.appendChild(clone);
+    setTimeout(function() {
+      html2canvas(clone, { scale: 2, useCORS: true, logging: false }).then(function(canvas) {
+        allCanvases.push({ canvas: canvas, index: idx });
+        status.textContent = '已渲染 ' + allCanvases.length + '/' + pages.length + ' 页...';
+        renderPage(idx + 1);
+      });
+    }, 200);
+  }
+
+  function buildPDF() {
+    allCanvases.sort(function(a, b) { return a.index - b.index; });
+    var pdf = new jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+    for (var j = 0; j < allCanvases.length; j++) {
+      if (j > 0) pdf.addPage();
+      pdf.addImage(allCanvases[j].canvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, 210, 297);
+    }
+    pdf.save('BoHuYeShan_Resume_A4.pdf');
+    document.body.removeChild(container);
+    btn.disabled = false;
+    btn.textContent = '导出 PDF (A4 双面打印)';
+    status.textContent = 'PDF 已下载！共 ' + allCanvases.length + ' 页 A4。';
+  }
+
+  renderPage(0);
+}
+</script>
+
+<div class="a3-sheet">
+
+  <!-- ===== LEFT A4 PAGE ===== -->
+  <div class="a4-page">
+    <div class="resume-header">
+      <h1>BoHuYeShan (韩涛)</h1>
+      <div class="subtitle">生物技术 · AI 训练 · 计算机视觉 · 科研工具工程</div>
+      <div class="contact">
+        GitHub: BOHUYESHAN-APB (组织) / BoHuYeShan (个人)<span class="sep">|</span>博客: bohuyeshan.top<span class="sep">|</span>OpenI: openi.pcl.ac.cn/bhys<span class="sep">|</span>ORCID: 0009-0002-8426-0610<span class="sep">|</span>Email: bohuyeshan@gmail.com / bohuyeshan@163.com / bohuyeshan@126.com
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="col-main">
+
+        <div class="section">
+          <div class="section-title">教育</div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">云南农业大学</div>
+              <div class="meta">本科在读 · 预计 2027.09 毕业</div>
+            </div>
+            <div class="exp-detail">生物技术专业</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">科研与实习经历</div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">课题组研究助理 · 项目负责人</div>
+              <div class="meta">2025.01 — 2026.05</div>
+            </div>
+            <div class="exp-detail">
+              负责生物信息学数据分析与挖掘，<span class="hl">跨学科协调</span>生物技术、智慧农业、种子科学等多专业团队。独立完成从田间种植、矮化育种到分子生物学实验的全流程：引物设计/构建/扩增、基因克隆与鉴定，完成甜荞、苦荞、金荞麦等多物种基因组比较分析 (数据量超 1TB)。同期开发微生物菌落 CNN 检测与分类计数流程。
+              <br><span class="hl">成果</span>: IJMS 论文第四作者 (software + data curation); 第一发明人申请发明专利 1 项; 互联网+/挑战杯/大创项目组织人与协调人
+            </div>
+          </div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">校内实习 — 荞麦矮化基因挖掘</div>
+              <div class="meta">2026.03 — 2026.06</div>
+            </div>
+            <div class="exp-detail">
+              荞麦矮化相关基因挖掘与功能分析，关联 <span class="hl">Buckwheat-seed-quality</span> 项目。从基因组/转录组数据中筛选矮化候选基因，完成差异表达分析与功能注释。
+              <br><span class="hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">发表论文与专利</div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">The Phylogeny of Brassicaceae YABBYs and the CRC-Mediated Regulation of Stigma Development in <em>Brassica napus</em></div>
+              <div class="meta">2026</div>
+            </div>
+            <div class="exp-detail">
+              Lin Dai, Jinxiang Gao, Cheng Li, <span class="hl">韩涛 (Tao Han)</span>, et al. <span class="hl">IJMS</span>, 27(13), 5740. DOI: 10.3390/ijms27135740
+              <br><span class="small">第四作者 · software (分析流程开发) + data curation (数据整理质控)</span>
+            </div>
+          </div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">基于 CNN 的多算法微生物培养综合识别方法及系统</div>
+              <div class="meta">发明专利 · 已公布 13 个月</div>
+            </div>
+            <div class="exp-detail">
+              申请号: 202510091154.4 · 云南农业大学 · 2025-05-16 公布 · 已进入实审
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">在研项目</div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">AI 驱动药物虚拟筛选自动化管线</div>
+              <div class="meta">2026.06 — 持续 · 前沿方法集成</div>
+            </div>
+            <div class="exp-detail">
+              Agent 自主完成全流程：靶点识别 → 网络药理学分析 → 分子对接 → 分子动力学模拟 → 专业报告生成。集成 <span class="hl">PBCNet2.0</span> 等变图神经网络蛋白-配体亲和力预测方法，实现零样本高精度筛选。
+            </div>
+          </div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">荞麦矮化基因挖掘</div>
+              <div class="meta">预计 2026.09 预印本</div>
+            </div>
+            <div class="exp-detail">转录组与基因组数据挖掘矮化候选基因，差异表达分析与功能注释。计划同步发布于生物学与 AI 预印本平台。</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head">
+              <div class="name">微生物小目标检测算法改进</div>
+              <div class="meta">预计 2026.09 预印本</div>
+            </div>
+            <div class="exp-detail">针对<span class="hl">小目标检测</span>行业难题，从特殊检测算法迭代至 <span class="hl">PP-YOLO</span> 系列，改进余弦退火与学习率曲线，完成<span class="hl">华为 Ascend 910</span> 适配训练。</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-side">
+        <div class="section">
+          <div class="section-title">交叉主线</div>
+          <ul class="bullets">
+            <li><strong>微生物实验</strong>: 菌落计数、抑菌圈测量、培养基质筛选</li>
+            <li><strong>作物表型分析</strong>: 荞麦籽粒饱满度检测、杂质分拣、小目标缺陷识别</li>
+            <li><strong>生信分析</strong>: 多组学数据挖掘、TCGA/GEO 数据库分析、图表报告撰写</li>
+            <li><strong>科研计算</strong>: Linux 发行版构建、云端训推、Docker 容器化</li>
+            <li><strong>高性能计算</strong>: Python/R 大规模分析管线迁移至 Rust/Go，提升多核利用与 IO 吞吐</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-title">实验与生信能力</div>
+          <div class="exp">
+            <div class="exp-detail">
+              <span class="hl">实验</span>: 植物表型鉴定、分子克隆、RNA 提取与反转录、qRT-PCR、组织培养、基因组 DNA 提取
+            </div>
+          </div>
+          <div class="exp">
+            <div class="exp-detail">
+              <span class="hl">生信</span>: <strong>RNA-seq</strong> (DESeq2/edgeR) · <strong>系统发育</strong> (MEGA/IQ-TREE) · <strong>GO/KEGG</strong> · <strong>WGCNA</strong> · <strong>TCGA/GEO 深度挖掘与可视化</strong> · <strong>多组学</strong> (转录组/代谢组/蛋白组) · <strong>网络药理学+分子对接/动力学</strong> · <strong>R</strong> (DESeq2/edgeR/ggplot2) · <strong>AlphaFold</strong> 蛋白结构预测 · BWA/Samtools 变异检测 · 数据可视化 (ggplot2/pheatmap)
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">组织参与</div>
+          <ul class="bullets">
+            <li><strong>Linxira OS</strong> — 发起并构建基于 Arch/CachyOS 的发行版</li>
+            <li><strong>YeShanBoYun Studio</strong> — 组织成员</li>
+            <li><strong>openagent-labforge-bio</strong> — 主线项目，持续维护</li>
+            <li><strong>OpenI 启智社区</strong> — 公开 NPU/GPU 训练记录</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-title">求职意向</div>
+          <ul class="bullets">
+            <li><strong>生物信息学分析员</strong>（多组学 / 网络药理学 / 分子对接 / TCGA-GEO 挖掘）</li>
+            <li>生物 / 农业 AI 视觉检测、Linux 科研环境部署</li>
+            <li>AI 模型训练、云端训推、工程化部署</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-title">联系方式</div>
+          <div class="contact-block">
+            <strong>GitHub</strong> BOHUYESHAN-APB / BoHuYeShan<br>
+            <strong>博客</strong> bohuyeshan.top<br>
+            <strong>OpenI</strong> openi.pcl.ac.cn/bhys<br>
+            <strong>ORCID</strong> 0009-0002-8426-0610<br>
+            <strong>Email</strong> bohuyeshan@gmail.com / bohuyeshan@163.com / bohuyeshan@126.com
+          </div>
+           </div>
+        </div>
+    </div>
+
+    <!-- 左页底部通栏：竞赛项目经历 -->
+    <div class="bottom-full" style="margin-top:1.5mm; padding-top:2mm;">
+      <div class="section-title" style="margin-bottom:1.5mm;">竞赛项目经历</div>
+      <div class="exp-detail" style="font-size:8pt; line-height:1.6;">
+        2025 国际大学生创新创业大赛·人工智能赛道(主持) &nbsp;|&nbsp; "挑战杯"全国竞赛·省级立项(负责人) &nbsp;|&nbsp; 大创·省级立项 &nbsp;|&nbsp; 互联网+·省级立项 &nbsp;|&nbsp; 创新创业挑战·校级
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== RIGHT A4 PAGE ===== -->
+  <div class="a4-page">
+    <div class="two-col">
+      <div class="col-main">
+
+        <div class="section">
+          <div class="section-title">技术能力</div>
+          <div class="skill-group">
+            <div class="skill-group-label">编程语言</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">Python</span><span class="skill-tag">R</span><span class="skill-tag">Rust</span><span class="skill-tag">Go</span><span class="skill-tag">Shell</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">AI 硬件与框架</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">华为 Ascend 910</span><span class="skill-tag">NVIDIA CUDA</span><span class="skill-tag">MindSpore</span><span class="skill-tag">PaddlePaddle</span><span class="skill-tag">PyTorch</span><span class="skill-tag">ONNX</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">模型与算法</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">LLM 训练</span><span class="skill-tag">扩散模型</span><span class="skill-tag">Transformer</span><span class="skill-tag">PP-YOLO 系列</span><span class="skill-tag">YOLOv5/v8</span><span class="skill-tag">CNN 分类</span><span class="skill-tag">网络药理学</span><span class="skill-tag">分子对接与动力学</span><span class="skill-tag">R/Bioconductor</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">工程与生态</div>
+            <div class="skill-wrap">
+              <span class="skill-tag">AI Agent 编排</span><span class="skill-tag">高性能计算</span><span class="skill-tag">Linux 发行版构建</span><span class="skill-tag">Linux 运维</span><span class="skill-tag">生物信息学</span><span class="skill-tag">Docker</span><span class="skill-tag">系统编译</span><span class="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">开源项目精选</div>
+          <div class="proj-overview" style="font-size:7.5pt; line-height:1.55; color:#555; margin-bottom:3mm;">
+            <strong style="color:#222;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
+            <br><br>
+            <strong style="color:#222;">持续追踪 AI for Science 前沿：</strong> 深入研究阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
+          </div>
+          <div class="proj-grid">
+            <div class="proj-item">
+              <h3>Buckwheat-seed-quality</h3>
+              <div class="desc">替代人工分拣：PP-YOLOE+ 自动检测荞麦饱满度与杂质，余弦退火优化 + Ascend 910 适配。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3>CNN-MicroAI-Colony</h3>
+              <div class="desc">替代人工目测计数：CNN 分类+计数一体，支持 ONNX/Android/树莓派多端部署。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3>openagent-labforge-bio</h3>
+              <div class="desc"><strong>主线。</strong> ExtendAI Lab：617 生信技能 + 论文写作 + 数据搜集，6 编排器 + 12 子代理的 OpenCode 插件生态。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3>Linxira OS</h3>
+              <div class="desc">自构建 Linux 发行版：精通系统编译/包管理/内核调优，深度掌握 Linux 运维与科研部署。</div>
+              <span class="lang">Shell / Python</span>
+            </div>
+            <div class="proj-item">
+              <h3>MicroAGI-Agri</h3>
+              <div class="desc">多模态视觉分析作物表型（籽粒饱满度、缺陷识别），探索大模型辅助农业识别。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3>extendai-lab-Studio</h3>
+              <div class="desc">科研工作流编排器：多模型协调生信/化学分析管线，集成网络药理学/分子对接/分子动力学等药物筛选自动化流程。</div>
+              <span class="lang">Python</span>
+            </div>
+            <div class="proj-item">
+              <h3>extendai-lab-cli</h3>
+              <div class="desc">多模型编程助手：TUI 交互 + 插件扩展 + 智能缓存，提升日常编码效率。</div>
+              <span class="lang">Go</span>
+            </div>
+            <div class="proj-item">
+              <h3>VisionDeploy-Studio</h3>
+              <div class="desc">CV 模型一键部署：YOLO 多硬件 (CUDA/XPU/ROCm) 自动适配，降低部署门槛。</div>
+              <span class="lang">Python</span>
+            </div>
+          </div>
+          <div class="more-repos">
+            <div class="more-repos-label">更多仓库</div>
+            <div class="more-repos-tags">
+              <span>NeuroPlex-Nexus</span><span>openagent-labforge</span><span>AionUi</span><span>QiaoTime</span><span>mdspark</span><span>CMYKE</span>
+            </div>
+            <div class="more-repos-label" style="margin-top:1mm;">涉及技术栈</div>
+            <div class="more-repos-tags">
+              <span>Julia</span><span>Rust</span><span>Go</span><span>Flutter</span><span>R</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-side">
+
+        <div class="section">
+          <div class="section-title">AI 模型训练</div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">华为 Ascend 910 原生训练</div></div>
+            <div class="exp-detail">Ascend 910 上原生训练 <span class="hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化。</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">NVIDIA GPU 训练与微调</div></div>
+            <div class="exp-detail"><span class="hl">PP-YOLO 系列</span> (PP-YOLOE+/v2) 及 <span class="hl">YOLOv5/v8</span> 训练与微调，结合迁移学习与余弦退火策略。</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name">学习率调度算法研究</div></div>
+            <div class="exp-detail">Buckwheat 项目中研究 <span class="hl">余弦退火 + Restart</span>、分段式学习率表、小样本分层动态学习率，可视化驱动调参。</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">关键数据</div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">30+</div></div>
+            <div class="exp-detail" style="font-size:8pt;">公开 GitHub 仓库</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">617</div></div>
+            <div class="exp-detail" style="font-size:8pt;">生信技能库 (论文写作 / 数据搜集 / 多组学分析)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">6 / 12</div></div>
+            <div class="exp-detail" style="font-size:8pt;">编排器 + 子代理 (OpenCode 插件架构)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">2</div></div>
+            <div class="exp-detail" style="font-size:8pt;">操作系统级项目 (Linxira OS)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">1</div></div>
+            <div class="exp-detail" style="font-size:8pt;">SCI 期刊论文 (IJMS, 第四作者)</div>
+          </div>
+          <div class="exp">
+            <div class="exp-head"><div class="name" style="font-size:11pt; color:#1f4d8f;">1</div></div>
+            <div class="exp-detail" style="font-size:8pt;">发明专利 (已公布实审)</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">技术栈</div>
+          <ul class="bullets">
+            <li><strong>AI 训练</strong>: Ascend 910 / NVIDIA CUDA / MindSpore / PaddlePaddle / PyTorch</li>
+            <li><strong>模型</strong>: LLM / Diffusion / Transformer / PP-YOLO / YOLOv5-v8 / CNN</li>
+            <li><strong>生信工具</strong>: DESeq2 / edgeR / MEGA / IQ-TREE / BWA / Samtools / GATK</li>
+            <li><strong>Agent 编排</strong>: 6 编排器 + 12 子代理 / 617 生信技能</li>
+            <li><strong>系统</strong>: Linux (Arch/CachyOS) / Docker / Slurm / API 网关</li>
+          </ul>
+          <div class="skill-wrap" style="margin-top:2mm;">
+            <span class="skill-tag">Julia</span><span class="skill-tag">Rust</span><span class="skill-tag">Go</span><span class="skill-tag">Flutter</span><span class="skill-tag">R</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">自我评价</div>
+          <div class="self-eval">
+            云南农业大学生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq / 多组学 / 基因家族 / 网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (基于 Arch/CachyOS)。正推进 Python/R 大规模分析管线向 Rust/Go 迁移，解决多核利用率低、IO 吞吐瓶颈问题，提升生信和科研计算性能。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

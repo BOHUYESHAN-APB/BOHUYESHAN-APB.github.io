@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>生信 Agent 开始落地 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生信 Agent 开始落地 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了  今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生信 Agent 开始落地">
+<meta property="og:url" content="http://bohuyeshan.top/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="生信 Agent 开始落地 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了  今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-03-22T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.153Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "生信 Agent 开始落地",
+  "url": "http://bohuyeshan.top/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-03-22T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.153Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '生信 Agent 开始落地',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">生信 Agent 开始落地</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">生信 Agent 开始落地</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-22T20:00:00.000Z" title="发表于 2026-03-22 20:00:00">2026-03-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.153Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="生信-Agent-开始落地"><a href="#生信-Agent-开始落地" class="headerlink" title="生信 Agent 开始落地"></a>生信 Agent 开始落地</h1><blockquote>
+<p>从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了</p>
+</blockquote>
+<p>今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话的界面，而是开始尝试接数据、调工具、跑标准步骤、吐中间结果，再把人留在真正关键的复核点上。这个变化听起来有点抽象，但如果你把它摊开看，就会发现它对应着一个很具体的迁移：过去很多分析是“人先打开 notebook，再决定做什么”；现在有些入口开始变成“先把任务和数据交给系统，系统先把标准动作跑起来，人再决定结论是否成立”。</p>
+<p>今天看到的这些东西，更像一种结构性变化的早期样本，而不是几条零散热点。因为一旦入口变了，后面的组织方式、参数管理、人工审核、结果交接，都会跟着变。用一个尽量朴素的表达来说，以前很多分析默认的路径大致是</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据 -&gt; notebook -&gt; 命令 -&gt; 图和表 -&gt; 人解释结果</span><br></pre></td></tr></table></figure>
+
+<p>现在开始出现的另一条路径更像是</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据 + 任务 -&gt; agent -&gt; 工具调用 -&gt; 中间结果 -&gt; 人工复核 -&gt; 结论</span><br></pre></td></tr></table></figure>
+
+<p>这两条路径的差别，不在于“有没有 AI”，而在于工具调用是否真正接入了 workflow。顺着这条线往下看，今天最值得展开的有三个对象：一个是今天新建并持续更新的 <code>scAgent</code>，一个是今天有实质更新的 <code>OmicVerse / J.A.R.V.I.S.</code>，最后再补一个观察位 <code>Tula</code>。文末，再把昨天周报里漏掉、但今天必须补一句的几个点收在附录里。</p>
+<p>先看 <code>scAgent</code>。它面向的数据对象是 <code>.h5ad</code>，说明它盯住的是一个非常具体的分析上下文。更关键的是，它把处理流程拆成了三个阶段：<code>decide -&gt; investigate -&gt; respond</code>。翻译成人话就是：先判断用户到底要干什么，再调起合适的分析动作，最后把结果和下一步建议回给用户。这个拆法看起来简单，但它确实在把单细胞的标准动作变成一个可编排的流程。如果把它写成最实用的形式，大概可以理解成下面这个伪代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">input_data = h5ad_file</span><br><span class="line">task = user_request  <span class="comment"># QC / clustering / marker / recluster / export</span></span><br><span class="line"></span><br><span class="line">plan = agent.decide(task, input_data)</span><br><span class="line">intermediate = agent.investigate(plan, input_data)</span><br><span class="line">result = agent.respond(intermediate)</span><br><span class="line"></span><br><span class="line">human_review(result)</span><br></pre></td></tr></table></figure>
+
+<p>真正值得看的是这段伪代码背后隐含的分析组织方式。输入不再是一句模糊的“帮我看看这个数据”，而是一个可计算对象 <code>.h5ad</code> 加一个较明确的任务；中间步骤不再全靠人手工决定先 PCA 还是先 neighbors，先 UMAP 还是先 subset，而是由系统先给出动作顺序；输出也不只是“这里可能有几个 cluster”，而是包括 QC、降维、聚类、marker、导出对象这些能被继续接下去的结果；最后结论并没有被自动化，而是明确落回人工审核。也就是说，它最有价值的地方，不是“它会不会替你解释生物学意义”，而是它开始把单细胞里那些高度重复、可以标准化的动作先做掉。这里有一个我认为可以直接写进未来判断框架里的式子：</p>
+<p>$$<br>\text{可用的 Agent 输出} &#x3D; \text{标准步骤可执行} \times \text{中间结果可见} \times \text{人工复核可插入}<br>$$</p>
+<p>如果这三项有一项缺失，系统就很容易重新退回“看起来聪明，但难以交付”的聊天工具。<code>scAgent</code> 今天最值得写，恰恰因为它至少在结构上朝这三个条件同时靠拢了。</p>
+<p>这也解释了为什么它比“让大模型帮你写一段 Scanpy 代码”更值得关注。后者当然有用，但本质上仍然是代码辅助；你拿到代码以后，仍然要自己决定先做什么、后做什么、图对不对、参数是否合理。<code>scAgent</code> 则在尝试把这些“先做什么”的判断前置进系统。说得再直接一点，代码辅助只是把分析写出来，agent workflow 开始尝试把分析跑起来。它不等于自动得到结论，更不等于你可以不看 marker 就下生物学解释，但它确实意味着单细胞的一个新入口正在长出来：也许未来很多用户的第一步不是打开 notebook，而是先把数据和任务交进去，让系统先跑完第一轮标准动作，再由人决定往哪里深挖。</p>
+<p>如果说 <code>scAgent</code> 更像一个刚长出来的新入口，那今天同样值得写的 <code>OmicVerse / J.A.R.V.I.S.</code> 则代表另一种更成熟的方向：不是新建一个对话壳，而是把多组学分析里的工具层和消息入口层组织起来。它今天的意义不在于“又更新了一个版本号”，而在于 2026-03-22 这次更新继续补强了一条已经很清楚的路线：让 omics 工具通过 agent workflow 和 MCP 风格的方式暴露出去，让用户不是只对着聊天窗口提问，而是真正让系统去调分析能力。</p>
+<p>这条路线为什么重要？因为生信里最难扩展的，往往不是“我能不能把一个步骤写出来”，而是“我能不能把一个步骤稳定地交给别的入口调用”。如果一个系统只是会回答“肺部 scRNA-seq 可以这样注释”，那它仍停留在建议层；但如果它能把 <code>annotate lung scrna-seq</code> 这种任务落到具体工具链上，把标准动作调起来，把结果回传给用户，再允许人继续接管，那么它才真正进入 workflow 层。<code>OmicVerse / J.A.R.V.I.S.</code> 今天给人的感觉，恰恰是后者。它不像 <code>scAgent</code> 那样聚焦单一场景，而更像在搭一个可以让多组学任务被持续调用的底座。换句话说，<code>scAgent</code> 更像一个“新入口”，而 <code>OmicVerse / J.A.R.V.I.S.</code> 更像一个“底层操作层”。用一个同样尽量简洁的伪代码来表达，它做的事情更像是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">task = user_request  <span class="comment"># &quot;annotate lung scrna-seq&quot; / &quot;run DEG + GSEA&quot; / &quot;spatial deconvolution&quot;</span></span><br><span class="line"></span><br><span class="line">tool_plan = agent.route(task)            <span class="comment"># 决定用哪些工具、什么顺序</span></span><br><span class="line">result = tool_layer.execute(tool_plan)   <span class="comment"># 执行工具调用</span></span><br><span class="line">output = agent.summarize(result)         <span class="comment"># 整理为可交接输出</span></span><br><span class="line"></span><br><span class="line">human_review(output)</span><br></pre></td></tr></table></figure>
+
+<p>如果也用输入—步骤—输出—校验的方式来拆它，可以这样理解。输入是一个明确的 omics 任务，比如你要做一个 lung scRNA-seq 的注释，或者要跑一个 bulk RNA-seq &#x2F; spatial &#x2F; multi-omics 的标准分析。系统拿到任务以后，不是停在“建议你这么做”，而是路由到后面的工具调用层，调用具体分析工具，执行流程，再把结果通过界面或者消息端回传出来。输出不是一段聊天记录，而是注释结果、图、workflow 产物、后续建议这些真正能继续向下走的东西。最后的校验也很关键：到底调用了什么工具、参数是否清楚、流程是否可复现、结果能不能交给人继续解释。如果这些问题回答不清楚，系统就还是一个高配聊天工具；如果回答得清楚，它才更像生信工作流的一部分。</p>
+<p>因此，今天 <code>OmicVerse / J.A.R.V.I.S.</code> 最值得看的，不是“AI 也能管多组学了”这种空洞判断，而是一个更具体的转变：AI 在生信里开始从 chat 入口，变成标准化工具调用层。这种变化会直接影响团队怎么组织分析动作。过去很多团队的痛点是，流程藏在某几个人的 notebook、脚本目录、环境配置和个人习惯里；而一旦有标准化调用层，至少那些重复出现的分析动作开始可以被描述、被调起、被追踪、被交接。对真正做项目的人来说，这种变化比“它今天又会了一个新概念”重要得多。</p>
+<p><code>Tula</code> 更适合放在今天的观察位。它也是 2026-03-22 当天出现的项目，而且 topic 明显往 genomics、EHR、FHIR、biomarkers、oncology 这些 health&#x2F;genomics 方向靠，但目前公开细节太少，不足以支撑一整节“它到底怎么用”。这恰好说明一件事：不是每个今天新出现的 repo 都值得立刻写成主角。真正适合放进正文核心段落的，不是“方向看起来很对”，而是“已经长出了足够清楚的使用结构”。从这个意义上讲，今天把 <code>Tula</code> 放在观察位，本身就是一种更严格的筛选。</p>
+<p>如果把今天这几个东西并排看，真正变的其实不是某个模型的参数，而是生信工作流里最靠前的几层。第一层变化是数据入口在变。以前很多分析的第一步，是研究者自己打开环境、读对象、手工决定下一步；现在开始有系统尝试把“任务定义 + 数据接入”变成入口。第二层变化是标准分析动作在被封装。PCA、neighbors、UMAP、clustering、marker、annotation 这些过去属于命令级的动作，正在被往技能层、工具层、workflow 层推。第三层变化是人的位置在后移，但责任没有变轻。人不再需要从第一步就手工点每一个动作，但必须在任务边界、参数合理性、中间结果是否可接受、最终结论是否过度推断这些地方继续把关。也就是说，Agent 并不是替你做结论，而是先把标准动作做完，把人留在真正的判断点上。最稳妥的姿势不是“把人拿掉”，而是四步：人定义边界，agent 跑标准动作，人检查中间结果，人决定是否继续推进。写起来很朴素，但几乎可以当成生信 Agent 落地的默认模板。</p>
+<p>文末再补三句昨天漏掉、但今天最好写清楚的热点。第一句是小米 MiMo-V2-Pro：更值得注意的，不是它之前能不能试，而是官方这周第一次把测试版本、正式发布和 API 开放这几层状态说清楚了，这直接影响外界对它成熟度的判断。第二句是腾讯混元 T1 正式版：真正值得记的是 preview 到正式版这个阶段变化，因为它对应的是更明确的产品承诺、接口稳定性和生态信号。第三句是 Trivy GitHub Actions 供应链事件：这看起来像安全圈的事，但对用 GitHub Actions 跑 nightly pipeline、数据更新、容器构建的科研团队一样是硬风险；如果工作流里还在只 pin tag，不 pin commit SHA，那这次事件就不是旁观新闻，而是该立刻回去排查的基线问题。把这三条补进来，不是为了把文末变成新闻杂烩，而是因为它们都对应着一个现实问题：工具到底有没有进入可交付、可托管、可持续维护的阶段。</p>
+<p>所以，今天这篇文章真正想说的，绝不是“AI 又进步了”。更准确一点说，今天最值得看的，是生信里有几条非常具体的线索开始同时指向同一个方向：分析入口在变化，工具调用在标准化，workflow 在从人脑里的隐性经验变成可执行的显性结构。真正决定下一阶段差距的，可能也不是谁更会聊天，而是谁先把那些本来就重复、可检查、可交接的生信动作，做成了稳定的 Agent workflow。</p>
+<hr>
+<h2 id="附：今天文中提到的原始入口"><a href="#附：今天文中提到的原始入口" class="headerlink" title="附：今天文中提到的原始入口"></a>附：今天文中提到的原始入口</h2><p><code>scAgent</code>：<a target="_blank" rel="noopener" href="https://github.com/xuzhougeng/scAgent">https://github.com/xuzhougeng/scAgent</a></p>
+<p><code>OmicVerse</code>：<a target="_blank" rel="noopener" href="https://github.com/Starlitnightly/omicverse">https://github.com/Starlitnightly/omicverse</a></p>
+<p>MiMo-V2-Pro：<a target="_blank" rel="noopener" href="https://mimo.xiaomi.com/mimo-v2-pro">https://mimo.xiaomi.com/mimo-v2-pro</a></p>
+<p>腾讯混元 T1 正式版：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/b4UcF7-4IKYSttOk_OAfIw">https://mp.weixin.qq.com/s/b4UcF7-4IKYSttOk_OAfIw</a></p>
+<p>Trivy 事件官方讨论：<a target="_blank" rel="noopener" href="https://github.com/aquasecurity/trivy/discussions/10425">https://github.com/aquasecurity/trivy/discussions/10425</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/">http://bohuyeshan.top/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/03/23/5-%E7%BC%96%E8%BE%91%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%AA%8C%E8%AF%81-SVG%E4%B8%8EMermaid%E6%B5%8B%E8%AF%95/" title="第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）</div></div><div class="info-2"><div class="info-item-1">第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）Brain，这一篇不是正式发布稿，只是给你做编辑器兼容性验证用的。 我这次先做两件事：  放一个标准的生物学科研流程 SVG 放一个Mermaid 思维导图  你的目标很简单：看看它们在你的编辑器里导入 Markdown 之后，能不能正常识别、显示，并在导出富文本后继续在其他平台正常渲染。 如果可以，我们后面就可以把 SVG &#x2F; Mermaid 更系统地放进 1 到 4 篇文章里。如果不可以，那后面就统一走另一条路线：  先保留结构化 SVG &#x2F; Mermaid 源文件 再转成 PNG 或其他更稳的图片格式 最后把图片插入 1 到 4 篇正式文章  另外，我也去核了一下 OpenMAIC 项目原文。根据项目页可确认的几点，后面写正式稿时表述上要更严谨：  它确实是一个 Open Multi-Agent Interactive Classroom 项目 项目说明里明确写了 built-in OpenClaw integration 官方给了 线上体验入口 也提供了 pnpm 本地启动、Vercel 部署...</div></div></div></a><a class="pagination-related" href="/2026/03/21/4-%E5%91%A8%E6%8A%A5-%E7%94%9F%E7%89%A9%E7%A7%91%E6%8A%80-%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" title="2026-03-21 周报｜生物科技、生物信息学与新技术"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">2026-03-21 周报｜生物科技、生物信息学与新技术</div></div><div class="info-2"><div class="info-item-1">2026-03-21 周报｜生物科技、生物信息学与新技术 本文信息由 AI 爬取+整理，经人工核验后发布。AI 爬取可能会有遗漏，欢迎在评论区补充。如有偏差，也欢迎指正。  本期覆盖时间：2026-03-15 ～ 2026-03-21（含）  这周生物科技和生信这边，没有”一篇顶刊引爆全网”的单点大新闻。但有几件对做实际研究的人来说影响更长的事：数据库基础规范升级、资源平台化趋势、以及两篇方向性值得关注的论文。  一、生物科技资讯1. NCBI 采纳了 INSDC 关于 GenBank 和 SRA 的最小规范要求这是本周最值得认真看的一条。简单说：以后往 GenBank 和 SRA 提交数据，需要满足更明确的最低元数据标准。 对长期依赖公开数据库做分析的生信用户来说，这意味着：  提交的数据会更规范，复用时遇到”缺字段””格式不统一”的概率会降低 元数据缺失导致的自动化处理障碍会逐步减少 可追溯性和可复现性会变得更好  这类变化不像新模型发布那样有即时热度，但对你的工作流程影响是持续的。如果你的日常有”从公开数据库下载→标准化→分析”这一环，这条比大多数”某模型又升级了”更值得记...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/" title="为什么生物信息学也开始需要 AI agent 的评测体系"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-24</div><div class="info-item-2">为什么生物信息学也开始需要 AI agent 的评测体系</div></div><div class="info-2"><div class="info-item-1">为什么生物信息学也开始需要 AI agent 的评测体系过去一段时间里，大家讨论 AI agent，很多时候重点都放在“又做出了什么能力”上。 比如它能不能自己拆任务、能不能调工具、能不能跑一个 workflow、能不能生成完整报告，或者能不能在某个专业场景里把原本需要人工串起来的步骤自动接过去。生物信息学当然也不例外。随着越来越多 agent 开始进入 RNA-seq、变异检测、宏基因组分析、单细胞分析这些任务，很多人最关心的问题自然会变成：它到底能不能做事？ 但如果这个方向继续往前走，迟早会撞到另一个更关键的问题：它到底靠不靠谱？ 这也是为什么我觉得今天查到的 BioAgent Bench 很值得单独写一篇。因为它做的不是再造一个新 agent，而是在补一个以前很容易被忽略、但其实越来越重要的东西：评测体系。 一、为什么 AI 进入生物信息学之后，光看“能跑通流程”已经不够了很多 AI agent 的演示都很吸引人。给它一个任务，它能自己拆解步骤、调用命令、生成结果文件，甚至最后还给你一份像模像样的总结。第一次看这些系统的时候，很容易觉得它们已经快接近“自动化研究助手”了。 ...</div></div></div></a><a class="pagination-related" href="/2026/04/20/2026-04-20-02-%E6%B5%B7%E6%B4%8B%E9%87%8C%E6%9C%80%E5%BF%AB%E7%9A%84%E6%8E%A0%E9%A3%9F%E8%80%85%E6%AD%A3%E5%9C%A8%E8%BF%87%E7%83%AD/" title="海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-20</div><div class="info-item-2">海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境</div></div><div class="info-2"><div class="info-item-1">海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境大白鲨和蓝鳍金枪鱼是海洋里最让人敬畏的掠食者。它们游得快、耐力强、追猎凶猛。这背后有一个很少被提及的生理特征：它们的体温比海水高。 大多数鱼类是冷血的，体温随环境变化。但鲨鱼和金枪鱼中不到0.1%的物种进化出了一种中间状态——中温性（mesothermy）。它们能保留体内产生的热量，让肌肉、眼睛或内脏比周围海水高出几度甚至十几度。这让它们在冷水中保持高速游动和敏锐视觉，成为远洋追猎的高手。 但这种能力有代价。都柏林三一学院和比勒陀利亚大学团队4月17日发表在《Science》上的研究，第一次系统量化了这个代价：在控制了体型和水温因素后，中温性鱼类的日常代谢率约为同等体型冷血鱼类的3.8倍。 体温越高，胃口越大研究团队开发了一种新方法来估算野生鱼类在自由游动时的代谢率。他们在鱼身上安装小型传感器，记录体温和水温的实时数据，由此推算鱼体产生和散失的热量。团队还结合了数百个实验室测量数据，覆盖范围从小型鱼类到3.5吨重的巨型姥鲨。 结果是：体温每升高10°C，代谢率翻一倍以上。一只1吨重的温血鲨鱼，每天需要的食物量远超同等体...</div></div></div></a><a class="pagination-related" href="/2026/04/14/2026-04-14-04-%E4%B8%80%E4%B8%AA%E8%BD%AC%E5%BA%A7%E5%AD%90%E7%9A%84%E8%B7%B3%E8%B7%83-%E7%BB%99%E7%8C%95%E7%8C%B4%E6%A1%83%E8%A3%85%E4%B8%8A%E4%BA%86%E6%8A%97%E7%97%85%E6%AD%A6%E5%99%A8/" title="一个转座子的跳跃，给猕猴桃装上了抗病武器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-14</div><div class="info-item-2">一个转座子的跳跃，给猕猴桃装上了抗病武器</div></div><div class="info-2"><div class="info-item-1">一个转座子的跳跃，给猕猴桃装上了抗病武器猕猴桃溃疡病是全球猕猴桃产业面临的最严重威胁之一。这种由丁香假单胞菌猕猴桃致病变种（Pseudomonas syringae pv. actinidiae，简称 Psa）引起的细菌性溃疡病，可以在几年内摧毁整片果园。自2008年以来，Psa 在意大利、新西兰、韩国、日本等主要猕猴桃产区引发了大规模疫情，造成了数十亿美元的经济损失。 栽培猕猴桃对 Psa 的抗性普遍较弱。但猕猴桃的野生近缘种——特别是毛花猕猴桃（Actinidia eriantha）——对 Psa 表现出明显更强的抗性。 问题是：这种抗性是怎么来的？ 2026年4月发表在 Genome Biology 上的一项研究给出了一个有趣的答案：一个转座子的”跳跃”，给抗病基因装上了一个新的开关。  泛基因组：不只看一个参考基因组传统基因组研究通常依赖一个”参考基因组”——选择一个代表性个体进行测序，作为后续分析的基准。但这种方法有一个根本性的局限：任何一个个体的基因组都无法代表整个物种的遗传多样性。 泛基因组（pangenome）方法试图弥补这一不足。它对一个物种的多个个体进行基因组...</div></div></div></a><a class="pagination-related" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-27</div><div class="info-item-2">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</div></div><div class="info-2"><div class="info-item-1">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么单细胞RNA测序（scRNA-seq）解决了一个长期问题：它让我们第一次看清了每个细胞在说什么。但它丢失了一个关键信息：这些细胞在组织中的位置。 空间转录组（spatial transcriptomics）补上了这块拼图：它保留了细胞的空间位置，但分辨率和基因覆盖度不如单细胞测序。 2026年，这两种技术的整合进入了新阶段。不再是”要么看得清细胞，要么看得清位置”，而是”既看得清细胞，又看得清位置，还能看清细胞在这个位置上做什么”。  问题：单细胞告诉你”是什么”，空间转录组告诉你”在哪里”scRNA-seq的优势：  单细胞分辨率 全转录组覆盖（数万个基因） 可以识别稀有细胞类型 可以做伪时序分析（推断细胞分化轨迹）  scRNA-seq的盲区：  细胞被打散了，空间信息丢失 不知道细胞在组织中的位置 不知道细胞的邻居是谁 不知道细胞在什么样的微环境中  空间转录组的优势：  保留空间位置 可以看到细胞在组织中的分布模式 可以识别空间结构（如肿瘤边界、免疫浸润区）  空间转录组的局限：  分辨率有限（传统10x Vi...</div></div></div></a><a class="pagination-related" href="/2026/04/20/2026-04-20-03-%E6%AF%81%E7%81%AD%E6%80%A7%E7%9A%84%E6%92%9E%E5%87%BB%E5%8F%AF%E8%83%BD%E5%88%9B%E9%80%A0%E4%BA%86%E7%94%9F%E5%91%BD/" title="小行星撞击产生的热液系统，可能是被忽视的生命摇篮"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-20</div><div class="info-item-2">小行星撞击产生的热液系统，可能是被忽视的生命摇篮</div></div><div class="info-2"><div class="info-item-1">小行星撞击产生的热液系统，可能是被忽视的生命摇篮关于生命起源，最常见的叙事是原始汤假说：某片温暖的水池里，闪电击中了化学物质，有机分子诞生了。这个故事有一个问题——它太模糊了。原始汤在哪里？什么化学物质？什么条件？ 一个更具体的候选是深海热液喷口。1970年代末，科学家在海底发现了这些喷口，周围有完整的生态系统，完全不依赖阳光，靠化学能维持。这至少证明，生命可以在没有光合作用的环境中存在。 但深海热液喷口可能不是唯一选项。Rutgers大学的Shea Cinquemani和Richard Lutz今年发表在《Journal of Marine Science and Engineering》上的综述，提出了一个长期被忽视的候选者：小行星撞击产生的热液系统。 撞击如何制造热液系统当一颗大型小行星撞击地球，释放的巨大能量会瞬间融化周围的岩石。撞击坑冷却后，地下水渗入，被残留的热量加热，形成热液循环——热水通过裂缝流过被加热的岩石，溶解矿物质，再从坑底涌出。 这个过程和深海热液喷口的形成机制类似。区别在于：深海喷口的热量来自地球内部的火山活动，撞击热液系统的热量来自小行星撞击的动能转化...</div></div></div></a><a class="pagination-related" href="/2026/03/23/5-%E7%BC%96%E8%BE%91%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%AA%8C%E8%AF%81-SVG%E4%B8%8EMermaid%E6%B5%8B%E8%AF%95/" title="第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-23</div><div class="info-item-2">第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）</div></div><div class="info-2"><div class="info-item-1">第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）Brain，这一篇不是正式发布稿，只是给你做编辑器兼容性验证用的。 我这次先做两件事：  放一个标准的生物学科研流程 SVG 放一个Mermaid 思维导图  你的目标很简单：看看它们在你的编辑器里导入 Markdown 之后，能不能正常识别、显示，并在导出富文本后继续在其他平台正常渲染。 如果可以，我们后面就可以把 SVG &#x2F; Mermaid 更系统地放进 1 到 4 篇文章里。如果不可以，那后面就统一走另一条路线：  先保留结构化 SVG &#x2F; Mermaid 源文件 再转成 PNG 或其他更稳的图片格式 最后把图片插入 1 到 4 篇正式文章  另外，我也去核了一下 OpenMAIC 项目原文。根据项目页可确认的几点，后面写正式稿时表述上要更严谨：  它确实是一个 Open Multi-Agent Interactive Classroom 项目 项目说明里明确写了 built-in OpenClaw integration 官方给了 线上体验入口 也提供了 pnpm 本地启动、Vercel 部署...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E4%BF%A1-Agent-%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0"><span class="toc-number">1.</span> <span class="toc-text">生信 Agent 开始落地</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E4%BB%8A%E5%A4%A9%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E5%8E%9F%E5%A7%8B%E5%85%A5%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">附：今天文中提到的原始入口</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

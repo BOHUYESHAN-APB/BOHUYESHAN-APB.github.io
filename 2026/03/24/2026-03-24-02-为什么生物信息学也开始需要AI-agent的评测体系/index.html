@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>为什么生物信息学也开始需要 AI agent 的评测体系 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="为什么生物信息学也开始需要 AI agent 的评测体系过去一段时间里，大家讨论 AI agent，很多时候重点都放在“又做出了什么能力”上。 比如它能不能自己拆任务、能不能调工具、能不能跑一个 workflow、能不能生成完整报告，或者能不能在某个专业场景里把原本需要人工串起来的步骤自动接过去。生物信息学当然也不例外。随着越来越多 agent 开始进入 RNA-seq、变异检测、宏基因组分析、单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么生物信息学也开始需要 AI agent 的评测体系">
+<meta property="og:url" content="http://bohuyeshan.top/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="为什么生物信息学也开始需要 AI agent 的评测体系过去一段时间里，大家讨论 AI agent，很多时候重点都放在“又做出了什么能力”上。 比如它能不能自己拆任务、能不能调工具、能不能跑一个 workflow、能不能生成完整报告，或者能不能在某个专业场景里把原本需要人工串起来的步骤自动接过去。生物信息学当然也不例外。随着越来越多 agent 开始进入 RNA-seq、变异检测、宏基因组分析、单">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-03-24T22:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.153Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="生物信息学">
+<meta property="article:tag" content="评测">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "为什么生物信息学也开始需要 AI agent 的评测体系",
+  "url": "http://bohuyeshan.top/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-03-24T22:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.153Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '为什么生物信息学也开始需要 AI agent 的评测体系',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">为什么生物信息学也开始需要 AI agent 的评测体系</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">为什么生物信息学也开始需要 AI agent 的评测体系</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-24T22:00:00.000Z" title="发表于 2026-03-24 22:00:00">2026-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.153Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="为什么生物信息学也开始需要-AI-agent-的评测体系"><a href="#为什么生物信息学也开始需要-AI-agent-的评测体系" class="headerlink" title="为什么生物信息学也开始需要 AI agent 的评测体系"></a>为什么生物信息学也开始需要 AI agent 的评测体系</h1><p>过去一段时间里，大家讨论 AI agent，很多时候重点都放在“又做出了什么能力”上。</p>
+<p>比如它能不能自己拆任务、能不能调工具、能不能跑一个 workflow、能不能生成完整报告，或者能不能在某个专业场景里把原本需要人工串起来的步骤自动接过去。生物信息学当然也不例外。随着越来越多 agent 开始进入 RNA-seq、变异检测、宏基因组分析、单细胞分析这些任务，很多人最关心的问题自然会变成：<strong>它到底能不能做事？</strong></p>
+<p>但如果这个方向继续往前走，迟早会撞到另一个更关键的问题：<strong>它到底靠不靠谱？</strong></p>
+<p>这也是为什么我觉得今天查到的 <strong>BioAgent Bench</strong> 很值得单独写一篇。因为它做的不是再造一个新 agent，而是在补一个以前很容易被忽略、但其实越来越重要的东西：<strong>评测体系。</strong></p>
+<h2 id="一、为什么-AI-进入生物信息学之后，光看“能跑通流程”已经不够了"><a href="#一、为什么-AI-进入生物信息学之后，光看“能跑通流程”已经不够了" class="headerlink" title="一、为什么 AI 进入生物信息学之后，光看“能跑通流程”已经不够了"></a>一、为什么 AI 进入生物信息学之后，光看“能跑通流程”已经不够了</h2><p>很多 AI agent 的演示都很吸引人。给它一个任务，它能自己拆解步骤、调用命令、生成结果文件，甚至最后还给你一份像模像样的总结。第一次看这些系统的时候，很容易觉得它们已经快接近“自动化研究助手”了。</p>
+<p>但真正做过生物信息学工作的人都知道，事情没有这么简单。</p>
+<p>因为生信任务和很多轻量级自动化任务不一样，它往往同时具备几个特点：</p>
+<ul>
+<li><strong>流程长</strong>：不是一步到位，而是一串依赖关系很强的步骤</li>
+<li><strong>中间状态多</strong>：每一步输出都可能影响下一步</li>
+<li><strong>错误代价高</strong>：一个中间环节错了，后面所有结果都可能跟着偏掉</li>
+<li><strong>输入复杂</strong>：原始数据、参考文件、配置参数、样本说明、元数据，任何一处出错都可能影响整体</li>
+</ul>
+<p>所以在这种场景里，判断一个 agent 是否有价值，不能只看它最后是不是“像样地跑完了”。更重要的是，它是不是在每一步都理解对了任务，是不是能在复杂和扰动条件下保持稳定，是不是在遇到噪音时还能做出合理选择。</p>
+<p>换句话说，<strong>高层流程看起来跑通，不等于它真的可靠。</strong></p>
+<p>而 BioAgent Bench 最重要的价值，就是把这个问题正式摆到了台面上。</p>
+<h2 id="二、BioAgent-Bench-在做的，不是“做一个更强-agent”，而是建立一套更严肃的评价标准"><a href="#二、BioAgent-Bench-在做的，不是“做一个更强-agent”，而是建立一套更严肃的评价标准" class="headerlink" title="二、BioAgent Bench 在做的，不是“做一个更强 agent”，而是建立一套更严肃的评价标准"></a>二、BioAgent Bench 在做的，不是“做一个更强 agent”，而是建立一套更严肃的评价标准</h2><p>BioAgent Bench 的标题很明确：<strong>BioAgent Bench: An AI Agent Evaluation Suite for Bioinformatics</strong>。</p>
+<p>从论文摘要看，它要解决的是一个很具体的问题：如何系统地衡量 AI agent 在常见生物信息学任务中的表现与鲁棒性。</p>
+<p>它覆盖的任务不是特别虚的概念题，而是比较典型的生信工作流，比如：</p>
+<ul>
+<li><strong>RNA-seq</strong></li>
+<li><strong>variant calling</strong></li>
+<li><strong>metagenomics</strong></li>
+</ul>
+<p>这几个任务本身就很有代表性。因为它们都不是一句话能答完的问题，而是需要多步流程、多文件输入、多种工具或分析步骤协作的典型场景。</p>
+<p>BioAgent Bench 的一个重要设计，是它给出了<strong>端到端任务</strong>，而且提示里会明确要求具体输出产物，这样就更方便做自动评估。它不是只问模型“你懂不懂这个概念”，而是更贴近“你到底能不能把这件事做出来”。</p>
+<p>更重要的是，它不只看标准条件下能不能完成任务，还加入了<strong>受控扰动下的压力测试</strong>。比如：</p>
+<ul>
+<li>输入被破坏</li>
+<li>混入诱饵文件</li>
+<li>prompt 变得冗长和臃肿</li>
+</ul>
+<p>这些设计的意义非常大。因为真实世界里的工作环境，从来不是一个干净、理想、完全按预期给你准备好的实验箱。真正的 agent 如果要进生信流程，它面对的就应该是这种更接近现实的条件。</p>
+<h2 id="三、这篇论文最值得记住的一句话，其实是一个有点“泼冷水”的发现"><a href="#三、这篇论文最值得记住的一句话，其实是一个有点“泼冷水”的发现" class="headerlink" title="三、这篇论文最值得记住的一句话，其实是一个有点“泼冷水”的发现"></a>三、这篇论文最值得记住的一句话，其实是一个有点“泼冷水”的发现</h2><p>BioAgent Bench 在摘要里给出的一个结论，我觉得特别值得反复强调：</p>
+<p><strong>frontier agents 往往可以把高层 pipeline 搭出来，也常常能产出要求的最终文件；但一旦进入鲁棒性测试，就会暴露出步骤级推理上的失败模式。</strong></p>
+<p>这句话表面上看有点技术，实际上说得非常直白。</p>
+<p>它的意思差不多是：</p>
+<ul>
+<li>agent 可能知道这个任务大概要怎么做</li>
+<li>它也可能会把一个看起来完整的流程搭起来</li>
+<li>甚至最后还真的交出一个结果文件</li>
+<li>但这并不代表它在每一个关键节点都理解对了</li>
+</ul>
+<p>而一旦你开始加入一些更真实的扰动，它的问题就会暴露出来。</p>
+<p>这几乎是在提醒所有人：<strong>“看起来会做”和“真的可靠”是两回事。</strong></p>
+<p>如果把这件事放到生物信息学里看，它的重要性会被进一步放大。因为生信流程本来就特别依赖中间步骤的正确性。你不是说最后生成了一个表格、一个文件、一个目录，就能说明整个任务完成得没有问题。相反，很多时候真正的错误，恰恰是被包在“看起来像完成了”的外壳里。</p>
+<p>所以我觉得 BioAgent Bench 最有价值的地方，不只是它做了一个 benchmark，而是它把一个很多人心里隐约知道、但不一定会明说的事实，讲得更正式了：</p>
+<blockquote>
+<p><strong>agent 在生信里，最大的问题可能不是“不会开始做”，而是“做着做着会悄悄偏掉”。</strong></p>
+</blockquote>
+<h2 id="四、为什么生物信息学特别需要这种-benchmark，而不是等通用-benchmark-来顺带覆盖"><a href="#四、为什么生物信息学特别需要这种-benchmark，而不是等通用-benchmark-来顺带覆盖" class="headerlink" title="四、为什么生物信息学特别需要这种 benchmark，而不是等通用 benchmark 来顺带覆盖"></a>四、为什么生物信息学特别需要这种 benchmark，而不是等通用 benchmark 来顺带覆盖</h2><p>有人可能会说，通用 agent benchmark 已经很多了，为什么还需要专门做一个生物信息学方向的？</p>
+<p>原因很简单，因为生物信息学不是一个可以被通用 benchmark 轻易替代的场景。</p>
+<p>首先，<strong>工具链和任务结构非常专业化</strong>。RNA-seq、variant calling、metagenomics 这些任务，不只是“多步任务”这么简单，它们涉及的数据格式、软件惯例、参数逻辑、质量控制方式，都是高度领域化的。一个在通用 benchmark 上表现很好的 agent，放进这些任务里未必还能一样顺手。</p>
+<p>其次，<strong>错误容忍度很低</strong>。在很多消费级应用里，一个 agent 稍微有点偏差，最多就是结果不够好看，或者需要人手动改一改。但在生物信息学里，错误可能意味着错误解读样本、错误调用变异、错误判断差异表达，甚至进一步影响后续实验设计和研究判断。</p>
+<p>再次，<strong>数据与隐私约束比很多普通场景更严格</strong>。BioAgent Bench 摘要里提到的一点也非常重要：生信流程经常会碰到敏感患者数据、专有参考库、尚未公开的知识产权。这意味着很多闭源模型在现实使用中并不总是合适。哪怕它们在能力上更强一些，在某些场景下也未必能被放心使用。</p>
+<p>这就把问题变得比“哪个模型更聪明”复杂得多。你需要考虑的，不只是完成率，还包括：</p>
+<ul>
+<li>可靠性</li>
+<li>鲁棒性</li>
+<li>可控性</li>
+<li>隐私适配性</li>
+<li>是否适合真实部署环境</li>
+</ul>
+<p>而这些，恰恰都不是通用 benchmark 能轻易替你回答的。</p>
+<h2 id="五、BioAgent-Bench-的意义，不只是评别人，也是在给这个方向立规矩"><a href="#五、BioAgent-Bench-的意义，不只是评别人，也是在给这个方向立规矩" class="headerlink" title="五、BioAgent Bench 的意义，不只是评别人，也是在给这个方向立规矩"></a>五、BioAgent Bench 的意义，不只是评别人，也是在给这个方向立规矩</h2><p>一个技术方向开始走向成熟时，通常会出现一种变化：</p>
+<p>最开始大家都在拼能力展示；<br>接着大家开始拼落地场景；<br>再往后，真正重要的事情会变成——<strong>如何建立一套大家都承认的评价标准。</strong></p>
+<p>BioAgent Bench 的位置，大概就在这里。</p>
+<p>它说明 AI for Bioinformatics 已经不是一个只需要不断出 demo 的阶段了。现在这个方向里，已经开始有人认真问：</p>
+<ul>
+<li>什么算完成任务？</li>
+<li>什么算可靠完成？</li>
+<li>怎么区分“高层策略对了”和“步骤执行也真的对了”？</li>
+<li>面对扰动时，系统会不会崩？</li>
+<li>开源和闭源模型分别适合什么场景？</li>
+</ul>
+<p>这些问题一旦被系统化，整个方向就会跟着变得更严肃。</p>
+<p>从这个角度看，BioAgent Bench 不是一个附属项目，而很可能是未来这类系统能不能真正进入研究工作流的关键基础设施之一。因为没有可靠 benchmark，大家就很容易停留在“谁 demo 更惊艳”这种比较表层的竞争里；有了 benchmark，才有机会真正往“谁更稳定、谁更可信、谁更适合真实使用”走。</p>
+<h2 id="六、这篇论文其实也在提醒大家，不要太快把-agent-神化"><a href="#六、这篇论文其实也在提醒大家，不要太快把-agent-神化" class="headerlink" title="六、这篇论文其实也在提醒大家，不要太快把 agent 神化"></a>六、这篇论文其实也在提醒大家，不要太快把 agent 神化</h2><p>我觉得这篇论文还有一个额外价值，就是它天然带着一种“去神话”的效果。</p>
+<p>这两年 agent 很容易被讲成一种几乎无所不能的新范式。只要能调工具、能自己拆任务、能长链路执行，很多人就会自然地往“快要接近全自动科研助手”那边去想。</p>
+<p>但 BioAgent Bench 给出的信号刚好很克制。它告诉你：</p>
+<ul>
+<li>是的，这些 agent 已经能做不少事</li>
+<li>是的，它们确实能把一些多步流程串起来</li>
+<li>但这不代表它们已经可靠到可以不经审查地丢进真实生信工作流里</li>
+</ul>
+<p>尤其在有扰动、有复杂输入、有隐私约束的情况下，它们的问题会变得很具体、很现实，而不是一个模糊的“偶尔会幻觉”。</p>
+<p>这反而是一种好事。因为一个方向真正有前途，不是靠反复神化自己，而是靠尽早把自己的边界和失败模式讲清楚。越早开始认真做这件事，越说明这个领域在走向成熟。</p>
+<h2 id="七、如果把今天这篇和其他能力型论文放在一起看，会更清楚-BioAgent-Bench-的位置"><a href="#七、如果把今天这篇和其他能力型论文放在一起看，会更清楚-BioAgent-Bench-的位置" class="headerlink" title="七、如果把今天这篇和其他能力型论文放在一起看，会更清楚 BioAgent Bench 的位置"></a>七、如果把今天这篇和其他能力型论文放在一起看，会更清楚 BioAgent Bench 的位置</h2><p>今天看的其他几篇论文，比如 scPilot、ELISA、HarmonyCell，更像是在往前推能力边界：</p>
+<ul>
+<li>怎么让 AI 直接进入单细胞分析链路</li>
+<li>怎么让它做表达锚定的发现</li>
+<li>怎么让它处理真实数据里的漂移问题</li>
+</ul>
+<p>而 BioAgent Bench 的角色不一样。它不只是再往能力上叠一层，而是在问：</p>
+<p><strong>这些能力到底该怎么被检验？</strong></p>
+<p>所以如果说那些论文是在造更像样的“车”，那 BioAgent Bench 更像是在修“路标、测速系统和碰撞测试标准”。没有这些东西，你当然也能把车开起来，但你很难知道它到底适不适合上路。</p>
+<p>这也是为什么我会觉得它值得单独成篇。它不是热闹程度最高的那种论文，但它解决的是一个非常底层、非常关键的问题：AI 一旦进入生物信息学，评测体系本身就会变成这个方向不可回避的一部分。</p>
+<h2 id="八、最后想说的是：AI-在生物信息学里，接下来比“更强”更重要的，也许是“更可评估”"><a href="#八、最后想说的是：AI-在生物信息学里，接下来比“更强”更重要的，也许是“更可评估”" class="headerlink" title="八、最后想说的是：AI 在生物信息学里，接下来比“更强”更重要的，也许是“更可评估”"></a>八、最后想说的是：AI 在生物信息学里，接下来比“更强”更重要的，也许是“更可评估”</h2><p>今天大家当然还是会继续关心模型更强了没有、agent 更会调工具了没有、哪个系统又把哪条流程自动化了。</p>
+<p>这些都重要。</p>
+<p>但如果站在更长一点的时间尺度看，我反而觉得 BioAgent Bench 这样的问题会越来越关键。因为一个技术方向真正能不能进入实际科研流程，不取决于它最惊艳的时候能做到什么，而更取决于：</p>
+<ul>
+<li>它能不能被稳定评估</li>
+<li>它的失败模式能不能被看见</li>
+<li>它在扰动下是不是还能维持基本可靠</li>
+<li>它能不能在隐私和部署约束下找到现实可行的使用方式</li>
+</ul>
+<p>从这个意义上说，生物信息学开始需要 AI agent 的评测体系，不是什么附带现象，而是这个方向正在进入下一阶段的一个标志。</p>
+<p>以前我们更关心 agent 能不能做事；<br>现在，至少在生物信息学里，我们恐怕要越来越认真地问：</p>
+<p><strong>它是不是值得信。</strong></p>
+<p>而这，可能才是这个领域接下来真正决定上限的问题。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/">http://bohuyeshan.top/2026/03/24/2026-03-24-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81AI-agent%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/%E8%AF%84%E6%B5%8B/">评测</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/03/25/2026-03-25-02-%E6%83%B3%E8%B7%91%E5%BC%80%E6%BA%90AI%E9%A1%B9%E7%9B%AE%E4%BD%A0%E8%87%B3%E5%B0%91%E5%85%88%E5%BE%97%E7%9C%8B%E6%87%82GitGitHubREADME%E5%92%8C%E7%8E%AF%E5%A2%83/" title="想跑开源 AI 项目，你至少先得看懂 Git、GitHub、README 和环境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">想跑开源 AI 项目，你至少先得看懂 Git、GitHub、README 和环境</div></div><div class="info-2"><div class="info-item-1">想跑开源 AI 项目，你至少先得看懂 Git、GitHub、README 和环境很多人以为自己不会跑开源项目，是因为”技术还不够”。这话只对一半。更多时候，问题不是不会，而是把几层完全不同的东西混在了一起：Git 和 GitHub 没分开，README 和安装命令没分开，requirements 和环境变量没分开，数据文件和代码文件没分开，最后一报错就觉得自己”果然不适合搞开源”。 这篇不打算把 Git 从头讲到尾。目标更直接：把你第一次跑开源 AI 项目前必须分清的几个关键概念讲硬一点，顺便说清楚 AI 可以帮上什么忙。 一句话版本Git 是版本管理工具，GitHub 是托管仓库的平台。仓库不是压缩包，clone 不是单纯下载，README 不是装饰，环境也不等于”装了 Python 就行”。 如果这几句话你脑子里是糊的，那你后面碰到的很多报错，根本不是技术问题，而是理解层次错位。 仓库不是一包代码，而是一个工程现场很多新手第一次进 GitHub，会把它当作”代码下载站”。其实仓库最有价值的部分，经常不是代码文件本身，而是上下文。 一个仓库至少包含这些东西：项目当前在维护什么版...</div></div></div></a><a class="pagination-related" href="/2026/03/24/2026-03-24-01-AI%E6%AD%A3%E5%9C%A8%E7%9C%9F%E6%AD%A3%E8%BF%9B%E5%85%A5%E5%8D%95%E7%BB%86%E8%83%9E%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E6%B5%81%E7%A8%8B/" title="AI 正在真正进入单细胞生物信息学流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">AI 正在真正进入单细胞生物信息学流程</div></div><div class="info-2"><div class="info-item-1">AI 正在真正进入单细胞生物信息学流程这两年，很多人一提 AI for Bioinformatics，脑子里浮现出来的还是那种比较熟悉的形态：聊天、总结文献、解释概念、帮忙写几段分析代码，或者把某个常规流程包装得更顺手一点。 这些东西当然有价值，但如果只停留在这一步，其实还很难说 AI 已经真正进入了生物信息学的核心工作流。因为真正的生信分析，尤其是单细胞分析，从来不是“把答案说漂亮”这么简单。它牵涉到具体数据、分析链路、领域知识、解释方式，以及最后能不能支撑一个像样的生物学判断。 今天查到的几篇论文里，我觉得最值得放在一起看的是三篇：scPilot、ELISA 和 HarmonyCell。它们不完全是同一种工作，但放在一条线上看，会发现一个非常清楚的变化：AI 在单细胞生物信息学里，正在从外围辅助，慢慢往真正的分析、发现和建模流程里走。 一、第一步变化：AI 不只是解释单细胞分析，而是开始直接接触数据先看 scPilot。 这篇论文的标题很直接：scPilot: Large Language Model Reasoning Toward Automated Single-Cel...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/" title="生信 Agent 开始落地"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-22</div><div class="info-item-2">生信 Agent 开始落地</div></div><div class="info-2"><div class="info-item-1">生信 Agent 开始落地 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了  今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话的界面，而是开始尝试接数据、调工具、跑标准步骤、吐中间结果，再把人留在真正关键的复核点上。这个变化听起来有点抽象，但如果你把它摊开看，就会发现它对应着一个很具体的迁移：过去很多分析是“人先打开 notebook，再决定做什么”；现在有些入口开始变成“先把任务和数据交给系统，系统先把标准动作跑起来，人再决定结论是否成立”。 今天看到的这些东西，更像一种结构性变化的早期样本，而不是几条零散热点。因为一旦入口变了，后面的组织方式、参数管理、人工审核、结果交接，都会跟着变。用一个尽量朴素的表达来说，以前很多分析默认的路径大致是 1数据 -&gt; notebook -&gt; 命令 -&gt; ...</div></div></div></a><a class="pagination-related" href="/2026/04/02/2026-04-02/" title="Transformer架构在生物信息学中的基础应用与前瞻"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-02</div><div class="info-item-2">Transformer架构在生物信息学中的基础应用与前瞻</div></div><div class="info-2"><div class="info-item-1">Transformer架构在生物信息学中的基础应用与前瞻在过去数年中，深度学习技术在计算生物学领域取得了显著进展。其中，2017年提出的Transformer架构凭借其核心的自注意力机制，不仅在自然语言处理（NLP）领域引发了范式转变，更因其对序列数据强大的建模能力，迅速成为生物信息学研究的底层基础设施。生物学本质上是一门研究信息存储、传递与表达的学科。从DNA中四个碱基的线性排列，到RNA的转录加工，再到蛋白质中氨基酸的折叠与组装，生命系统遵循着一套复杂的“编码规则”。这种将离散单元组合成具有高级功能序列的特性，与人类自然语言存在高度的结构相似性。本文旨在从宏观视角剖析Transformer架构契合生物序列建模的底层逻辑，梳理其在当前生物信息学核心场景中的基础应用，并客观探讨该技术面临的瓶颈与未来演进方向。  一、 序列到结构的映射：Transformer的底层逻辑优势在Transformer被广泛应用之前，生物信息学处理一维序列数据（如DNA、蛋白质序列）主要依赖隐马尔可夫模型（HMM）、循环神经网络（RNN）或卷积神经网络（CNN）。然而，生物大分子序列具有两个固有的计算挑...</div></div></div></a><a class="pagination-related" href="/2026/04/23/2026-04-21-01-scNET-GNN%E6%8A%8A%E5%8D%95%E7%BB%86%E8%83%9E%E6%95%B0%E6%8D%AE%E5%92%8C%E8%9B%8B%E7%99%BD%E4%BA%92%E4%BD%9C%E7%BD%91%E7%BB%9C%E6%8B%BC%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/" title="一个基因表达量正常的孩子，功能为什么出了问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-23</div><div class="info-item-2">一个基因表达量正常的孩子，功能为什么出了问题</div></div><div class="info-2"><div class="info-item-1">一个基因表达量正常的孩子，功能为什么出了问题单细胞RNA测序（scRNA-seq）解决了生物学中一个长期问题：Bulk RNA-seq把一整块组织碾碎，测出来的是成千上万个细胞的平均值，每个细胞独特的基因表达模式被抹平了。scRNA-seq让我们第一次看清了每个细胞在说什么。 但scRNA-seq也有自己的盲区：它告诉你每个基因的表达量，却不告诉你这个基因在细胞里做什么。 比如，某个T细胞里某个炎症基因表达量升高了。这说明什么？是这个细胞本身被激活了，还是它被邻居细胞释放的信号影响了？是这个基因自己出了问题，还是它的某个互作蛋白失调，牵连了它？ 单靠scRNA-seq，无法回答这些问题。因为基因表达量是一个信号，但生物学功能来自于相互作用。  scNET：把两种数据拼成一个图今年3月发表在《Nature Methods》上的一篇论文，提出了一个直接解决这个问题的方法：把scRNA-seq数据和蛋白互作网络（PPI）拼在一起，用图神经网络（GNN）同时学习两类信息。 这个框架叫scNET。 思路并不复杂。传统的scRNA-seq分析把细胞建模为矩阵（细胞×基因），分析的核心是找相似...</div></div></div></a><a class="pagination-related" href="/2026/03/08/3-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E4%BA%9BAI%E8%B7%91%E5%88%86%E5%BE%88%E9%AB%98%E4%BD%86%E5%AE%9E%E9%99%85%E5%B9%B6%E4%B8%8D%E5%A5%BD%E7%94%A8/" title="为什么有些 AI 跑分很高，但实际并不好用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-08</div><div class="info-item-2">为什么有些 AI 跑分很高，但实际并不好用</div></div><div class="info-2"><div class="info-item-1">为什么有些 AI 跑分很高，但实际并不好用很多人聊 AI，最容易陷入的一种讨论方式，就是把所有问题都压缩成一句：到底哪个模型更强。 这个问题当然重要，但它经常只说对了一小半。 因为用户最后真实感受到的 AI 效果，从来都不只是模型参数本身决定的。决定结果的，通常至少有三件事：第一，模型自身能力到底够不够强；第二，它手里有没有工具、有没有流程、会不会多轮工作；第三，用户是不是把任务说清楚了。 这三件事缺一块，最后的使用体感都可能完全变样。这其实也和我们今天前两篇文章是连在一起的：学习型 AI 能不能好用，要看高质量资料和学习流程；科研绘图能不能好用，要看结构设计和中间工作流。离开这些，单看模型名字，往往看不出真实差距。更早之前发过的几篇技术文章，其实也一直在围绕同一个问题打转：AI 最终的可用性，从来不是单一维度能解释完的。 一、跑分当然重要，但跑分不等于体感先把最容易引起争议的话放在前面：模型榜单和用户体感，从来不是一回事。 跑分当然有意义。它至少能告诉你一个模型在某些标准化任务上的上限，也能帮你快速判断底座能力够不够强。但问题在于，很多榜单测到的，只是模型在一套特定测试集上的表...</div></div></div></a><a class="pagination-related" href="/2026/03/31/2026-03-31-01-STORM-%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E6%95%B0%E6%8D%AE%E7%9A%84%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94%E5%92%8C%E7%BC%BA%E5%A4%B1%E5%9F%BA%E5%9B%A0%E5%A1%AB%E8%A1%A5/" title="STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-31</div><div class="info-item-2">STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决</div></div><div class="info-2"><div class="info-item-1">STORM：空间转录组数据里的三个老问题，一个框架能不能一起解决空间转录组技术解决了单细胞测序最大的缺陷：位置信息的丢失。 传统单细胞测序需要把组织打散成单个细胞，细胞在组织里的位置就没了。你知道这个细胞的基因表达谱，但不知道它在肿瘤边缘还是肿瘤中心，不知道它的邻居是什么细胞。空间转录组把基因表达和空间坐标绑在一起，让你可以在组织切片上直接看基因表达的分布。 但空间转录组数据用起来有三个问题，做过这类分析的人都遇到过。  第一个是批次效应。 空间转录组实验通常需要多个切片——同一个样本的不同切面，或者不同样本之间的比较。问题是，不同批次的切片之间存在系统性偏差。同一个细胞类型，在不同批次里测出来的基因表达值可能差很多，原因可能是组织处理方式、芯片批次、测序深度，甚至切片的厚度。 批次效应不处理，不同切片的数据就没法放在一起分析。 传统的批次校正方法（比如 ComBat、Harmony）是在基因层面做的：对每个基因，估计批次效应的大小，然后减掉。这个思路在单细胞数据上还算有效，但在空间转录组数据上有个额外的麻烦：不同切片的空间维度不一样。一张切片可能有 3000 个 spot，另一...</div></div></div></a><a class="pagination-related" href="/2026/03/21/4-%E5%91%A8%E6%8A%A5-%E7%94%9F%E7%89%A9%E7%A7%91%E6%8A%80-%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" title="2026-03-21 周报｜生物科技、生物信息学与新技术"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-21</div><div class="info-item-2">2026-03-21 周报｜生物科技、生物信息学与新技术</div></div><div class="info-2"><div class="info-item-1">2026-03-21 周报｜生物科技、生物信息学与新技术 本文信息由 AI 爬取+整理，经人工核验后发布。AI 爬取可能会有遗漏，欢迎在评论区补充。如有偏差，也欢迎指正。  本期覆盖时间：2026-03-15 ～ 2026-03-21（含）  这周生物科技和生信这边，没有”一篇顶刊引爆全网”的单点大新闻。但有几件对做实际研究的人来说影响更长的事：数据库基础规范升级、资源平台化趋势、以及两篇方向性值得关注的论文。  一、生物科技资讯1. NCBI 采纳了 INSDC 关于 GenBank 和 SRA 的最小规范要求这是本周最值得认真看的一条。简单说：以后往 GenBank 和 SRA 提交数据，需要满足更明确的最低元数据标准。 对长期依赖公开数据库做分析的生信用户来说，这意味着：  提交的数据会更规范，复用时遇到”缺字段””格式不统一”的概率会降低 元数据缺失导致的自动化处理障碍会逐步减少 可追溯性和可复现性会变得更好  这类变化不像新模型发布那样有即时热度，但对你的工作流程影响是持续的。如果你的日常有”从公开数据库下载→标准化→分析”这一环，这条比大多数”某模型又升级了”更值得记...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%9F%E5%BC%80%E5%A7%8B%E9%9C%80%E8%A6%81-AI-agent-%E7%9A%84%E8%AF%84%E6%B5%8B%E4%BD%93%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">为什么生物信息学也开始需要 AI agent 的评测体系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88-AI-%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%85%89%E7%9C%8B%E2%80%9C%E8%83%BD%E8%B7%91%E9%80%9A%E6%B5%81%E7%A8%8B%E2%80%9D%E5%B7%B2%E7%BB%8F%E4%B8%8D%E5%A4%9F%E4%BA%86"><span class="toc-number">1.1.</span> <span class="toc-text">一、为什么 AI 进入生物信息学之后，光看“能跑通流程”已经不够了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81BioAgent-Bench-%E5%9C%A8%E5%81%9A%E7%9A%84%EF%BC%8C%E4%B8%8D%E6%98%AF%E2%80%9C%E5%81%9A%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%BC%BA-agent%E2%80%9D%EF%BC%8C%E8%80%8C%E6%98%AF%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%A5%97%E6%9B%B4%E4%B8%A5%E8%82%83%E7%9A%84%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86"><span class="toc-number">1.2.</span> <span class="toc-text">二、BioAgent Bench 在做的，不是“做一个更强 agent”，而是建立一套更严肃的评价标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E6%9C%80%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%EF%BC%8C%E5%85%B6%E5%AE%9E%E6%98%AF%E4%B8%80%E4%B8%AA%E6%9C%89%E7%82%B9%E2%80%9C%E6%B3%BC%E5%86%B7%E6%B0%B4%E2%80%9D%E7%9A%84%E5%8F%91%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">三、这篇论文最值得记住的一句话，其实是一个有点“泼冷水”的发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%89%B9%E5%88%AB%E9%9C%80%E8%A6%81%E8%BF%99%E7%A7%8D-benchmark%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E7%AD%89%E9%80%9A%E7%94%A8-benchmark-%E6%9D%A5%E9%A1%BA%E5%B8%A6%E8%A6%86%E7%9B%96"><span class="toc-number">1.4.</span> <span class="toc-text">四、为什么生物信息学特别需要这种 benchmark，而不是等通用 benchmark 来顺带覆盖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81BioAgent-Bench-%E7%9A%84%E6%84%8F%E4%B9%89%EF%BC%8C%E4%B8%8D%E5%8F%AA%E6%98%AF%E8%AF%84%E5%88%AB%E4%BA%BA%EF%BC%8C%E4%B9%9F%E6%98%AF%E5%9C%A8%E7%BB%99%E8%BF%99%E4%B8%AA%E6%96%B9%E5%90%91%E7%AB%8B%E8%A7%84%E7%9F%A9"><span class="toc-number">1.5.</span> <span class="toc-text">五、BioAgent Bench 的意义，不只是评别人，也是在给这个方向立规矩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E5%85%B6%E5%AE%9E%E4%B9%9F%E5%9C%A8%E6%8F%90%E9%86%92%E5%A4%A7%E5%AE%B6%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%A4%AA%E5%BF%AB%E6%8A%8A-agent-%E7%A5%9E%E5%8C%96"><span class="toc-number">1.6.</span> <span class="toc-text">六、这篇论文其实也在提醒大家，不要太快把 agent 神化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%A6%82%E6%9E%9C%E6%8A%8A%E4%BB%8A%E5%A4%A9%E8%BF%99%E7%AF%87%E5%92%8C%E5%85%B6%E4%BB%96%E8%83%BD%E5%8A%9B%E5%9E%8B%E8%AE%BA%E6%96%87%E6%94%BE%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%EF%BC%8C%E4%BC%9A%E6%9B%B4%E6%B8%85%E6%A5%9A-BioAgent-Bench-%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.7.</span> <span class="toc-text">七、如果把今天这篇和其他能力型论文放在一起看，会更清楚 BioAgent Bench 的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%9C%80%E5%90%8E%E6%83%B3%E8%AF%B4%E7%9A%84%E6%98%AF%EF%BC%9AAI-%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%87%8C%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AF%94%E2%80%9C%E6%9B%B4%E5%BC%BA%E2%80%9D%E6%9B%B4%E9%87%8D%E8%A6%81%E7%9A%84%EF%BC%8C%E4%B9%9F%E8%AE%B8%E6%98%AF%E2%80%9C%E6%9B%B4%E5%8F%AF%E8%AF%84%E4%BC%B0%E2%80%9D"><span class="toc-number">1.8.</span> <span class="toc-text">八、最后想说的是：AI 在生物信息学里，接下来比“更强”更重要的，也许是“更可评估”</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

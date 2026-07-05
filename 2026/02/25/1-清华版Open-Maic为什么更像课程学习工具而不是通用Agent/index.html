@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent最近清华版 Open Maic 被讨论得越来越多，但这类项目最值得先讲清楚的，不是“高校也做了一个 AI”，而是它到底属于哪一类 AI。 我的判断很明确：它更像一个围绕课程、教材和学习流程做过定制的系统，而不是一个面向开放世界任务的通用 Agent。它要解决的核心问题，不是替你处理各种杂乱任务，而是把一门课怎么学、按什么顺序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent">
+<meta property="og:url" content="http://bohuyeshan.top/2026/02/25/1-%E6%B8%85%E5%8D%8E%E7%89%88Open-Maic%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%83%8F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8Agent/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent最近清华版 Open Maic 被讨论得越来越多，但这类项目最值得先讲清楚的，不是“高校也做了一个 AI”，而是它到底属于哪一类 AI。 我的判断很明确：它更像一个围绕课程、教材和学习流程做过定制的系统，而不是一个面向开放世界任务的通用 Agent。它要解决的核心问题，不是替你处理各种杂乱任务，而是把一门课怎么学、按什么顺序">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-02-25T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.153Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="OpenMaic">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent",
+  "url": "http://bohuyeshan.top/2026/02/25/1-%E6%B8%85%E5%8D%8E%E7%89%88Open-Maic%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%83%8F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8Agent/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-02-25T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.153Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/02/25/1-%E6%B8%85%E5%8D%8E%E7%89%88Open-Maic%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%83%8F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8Agent/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-25T20:00:00.000Z" title="发表于 2026-02-25 20:00:00">2026-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.153Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="清华版-Open-Maic-为什么更像课程学习工具，而不是通用-Agent"><a href="#清华版-Open-Maic-为什么更像课程学习工具，而不是通用-Agent" class="headerlink" title="清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent"></a>清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent</h1><p>最近清华版 Open Maic 被讨论得越来越多，但这类项目最值得先讲清楚的，不是“高校也做了一个 AI”，而是它到底属于哪一类 AI。</p>
+<p>我的判断很明确：它更像一个围绕课程、教材和学习流程做过定制的系统，而不是一个面向开放世界任务的通用 Agent。它要解决的核心问题，不是替你处理各种杂乱任务，而是把一门课怎么学、按什么顺序学、学完之后怎么复习和自测，组织成一条更连续、更自动的链路。</p>
+<p>这也是为什么我更愿意把它理解成一种课程学习工具，而不是一个面向通用工作流的原生 Agent。这个判断，也和我们之前反复强调的一点一致：真正决定效果的，往往不是模型名字本身，而是它被放进了什么场景、围绕什么流程来组织。</p>
+<h2 id="一、这类学习型-AI-不能脱离“高质量资料”单独讨论"><a href="#一、这类学习型-AI-不能脱离“高质量资料”单独讨论" class="headerlink" title="一、这类学习型 AI 不能脱离“高质量资料”单独讨论"></a>一、这类学习型 AI 不能脱离“高质量资料”单独讨论</h2><p>很多人一谈学习型 AI，就会很自然地把重点放在模型本身，好像只要模型足够强，它就能把任何课程讲清楚、把任何知识点教明白。</p>
+<p>但真实情况往往不是这样。</p>
+<p>这类工具真正能不能好用，前提通常不是模型自己有多聪明，而是你有没有给它一套足够好的输入材料。更理想的做法，不是让 AI 自己去网上现找资料，而是先给它相对完整、相对可靠、结构清楚的教材、讲义、课件和章节电子版。只有这样，它后面生成的章节梳理、重点总结、复习提纲和练习题，才会更稳定，也更贴近课程本身。</p>
+<p>如果输入不稳，后面的问题会立刻出现。互联网知识天然碎片化、版本混杂、表达口径不一致。大模型参数里记住的内容，也不等于一门课真正需要的教材结构。学习场景最怕的，不是它一句话答不出来，而是它讲得很顺、很像那么回事，但概念边界已经滑掉了，章节逻辑也偏离了课程原本的节奏。</p>
+<p>所以学习型 AI 最核心的底座，不是“让模型自己生成知识”，而是“先给它一套高质量的知识源”。</p>
+<p>这件事看起来不够炫，但它其实决定了后面一切体验。</p>
+<h2 id="二、普通用户最大的问题，往往不是不会问，而是不会校验"><a href="#二、普通用户最大的问题，往往不是不会问，而是不会校验" class="headerlink" title="二、普通用户最大的问题，往往不是不会问，而是不会校验"></a>二、普通用户最大的问题，往往不是不会问，而是不会校验</h2><p>这也是为什么我会觉得，学习型 AI 这类产品的价值一定要和“资料来源”放在一起讲。</p>
+<p>因为很多普通用户在使用这类工具时，最脆弱的地方，不是他们问不出问题，而是他们缺少校验能力。只要 AI 的语气够顺、解释够流畅、结构够像老师讲课，很多人就会天然把它当成“已经学明白了”。</p>
+<p>但学习这件事最怕的恰恰是这种错觉。</p>
+<p>如果没有教材本身做参照，没有课件、原始章节、标准答案或老师讲过的框架去对照，普通学习者其实很难判断哪里是 AI 帮你整理得更清楚了，哪里又只是它把不够准的内容说得更顺了。</p>
+<p>换句话说，学习型 AI 最危险的时候，不是它回答得慢，而是它回答得很像那么回事，但用户没有能力发现它哪里已经偏了。</p>
+<p>这也是为什么这类工具越往课程学习方向走，就越离不开高质量资料输入。不是因为模型不够强，而是因为学习场景本来就比泛问答更讲究结构、边界和准确性。</p>
+<h2 id="三、其实很多人以前已经在用普通-AI-手动做这件事了"><a href="#三、其实很多人以前已经在用普通-AI-手动做这件事了" class="headerlink" title="三、其实很多人以前已经在用普通 AI 手动做这件事了"></a>三、其实很多人以前已经在用普通 AI 手动做这件事了</h2><p>如果只从能力表面来看，清华版 Open Maic 这类产品做的事情，并不是今天才第一次出现。</p>
+<p>在这类产品流行之前，很多人就已经在用普通 AI 一步一步辅助学习了。最常见的做法其实很朴素：把教材按章节拆开，一段一段发给模型，让它总结重点、提炼概念、列提纲、出几道练习题，再继续让它解释错题或补充理解框架。</p>
+<p>也就是说，用普通 AI 做课程学习辅助，这件事本来就不是新鲜事。</p>
+<p>真正的问题在于，这套旧方法虽然能用，但并不好坚持。你要自己拆章节、自己控制上下文、自己决定每一步该问什么、自己再把提纲、复习、自测、错题回看一段段拼起来。做一两次可能还行，做久了就会很累，而且每一步的风格、质量和连贯性都不稳定。</p>
+<p>很多人不是不会用，而是用到一半就断了。</p>
+<p>所以新一代学习型工具真正值得写的地方，不是它突然发明了什么全新的能力，而是它开始把这些原来靠人手工拼接的步骤，变成一个更连续、更自动的流程。</p>
+<h2 id="四、清华版-Open-Maic-更像“课程学习容器”，不是通用工作流工具"><a href="#四、清华版-Open-Maic-更像“课程学习容器”，不是通用工作流工具" class="headerlink" title="四、清华版 Open Maic 更像“课程学习容器”，不是通用工作流工具"></a>四、清华版 Open Maic 更像“课程学习容器”，不是通用工作流工具</h2><p>从这个角度看，清华版 Open Maic 最值得注意的地方，并不是它能不能像通用 Agent 一样处理开放任务，而是它更像一个围绕课程学习组织起来的容器。</p>
+<p>它更适合做的，往往是这样的事情：围绕一门已有课程，把教材、课件、讲义、章节内容统一纳入一个相对稳定的资料边界里；再在这个边界里，按章节整理内容，生成复习提纲、学习讲解和练习题，把一门课从“资料堆在那里”变成“有路径地学下去”。</p>
+<p>这和通用型 Agent 的目标其实不是一回事。</p>
+<p>通用 Agent 更强调的是开放世界任务：开网页、搜资料、调工具、跑流程、处理各种不确定任务。它追求的是广泛适配，是把尽可能多的事情串起来。</p>
+<p>而课程学习型工具追求的不是“什么都能做”，而是“把一类任务做得更顺”。它的重点是课程边界、学习节奏、资料组织和复习链路，而不是替代一个通用工作流平台。</p>
+<p>所以如果你拿它和原生通用工具硬比较，很容易会觉得它“不够开放”或者“不够万能”；但如果你把它放回课程学习这个场景里看，它这种收窄边界的做法，反而可能正是它最有价值的地方。</p>
+<p>因为学习这件事很多时候并不需要一个什么都能做的系统，而需要一个知道怎么把课程资料、章节逻辑和复习流程组织起来的系统。</p>
+<h2 id="五、真正的升级，不是-AI-更神了，而是学习流程被工作流化了"><a href="#五、真正的升级，不是-AI-更神了，而是学习流程被工作流化了" class="headerlink" title="五、真正的升级，不是 AI 更神了，而是学习流程被工作流化了"></a>五、真正的升级，不是 AI 更神了，而是学习流程被工作流化了</h2><p>所以我更愿意把清华版 Open Maic 这类工具的价值，理解成一种学习工作流的升级。</p>
+<p>过去如果你想让普通 AI 帮你学一门课，往往要自己做很多中间步骤：</p>
+<ul>
+<li>自己找资料</li>
+<li>自己拆章节</li>
+<li>自己一轮轮问总结</li>
+<li>自己让它补题目</li>
+<li>自己再去整理复习提纲</li>
+<li>自己决定下一轮该怎么继续</li>
+</ul>
+<p>现在更有意思的变化是，这些步骤开始可以在一个更连贯的流程里完成。你不再每一步都要重新搭架子，而是可以把“输入教材—按章节梳理—生成讲解—提炼重点—出题自测—回看复习”这条链自然接起来。</p>
+<p>这就是为什么我会说，这类产品真正升级的不是“AI 自己更会教书了”，而是它开始把“怎么学”这件事工作流化了。</p>
+<p>对学习场景来说，这比单纯多一个更会聊天的模型重要得多。</p>
+<p>顺着这条线再往外看，也能理解为什么最近 NotebookLM 这类工具又重新被很多人提起。它火起来，不只是因为大家突然需要一个更会聊天的模型，而是因为大家越来越在意：能不能把资料导入、梳理、总结、问答、复习这些动作连起来。如果你手里已经有 OpenClaw、AutoClaw、OneClaw 这类 claw 系产品，也就是我们平时统称的“小龙虾”，那么装上相应的 NotebookLM skill，本质上也是在做同一件事——把原本偏封闭的学习工具，接进你自己的助理工作流，让现有的小龙虾直接承担学习任务。</p>
+<p>这个判断，其实也和今天另外两篇文章能互相对上：一篇讲科研绘图时，我们会看到工作流同样比单点生成更重要；另一篇讲模型体验时，我们也会回到同一个问题——模型最终能不能好用，不只看参数，还要看工具和流程。</p>
+<h2 id="六、这类工具最适合什么人，也最不适合什么人"><a href="#六、这类工具最适合什么人，也最不适合什么人" class="headerlink" title="六、这类工具最适合什么人，也最不适合什么人"></a>六、这类工具最适合什么人，也最不适合什么人</h2><p>如果把边界说得更清楚一点，这类工具最适合的，往往是已经有明确课程资料的人。</p>
+<p>比如你手上已经有：</p>
+<ul>
+<li>教材电子版</li>
+<li>老师课件</li>
+<li>章节讲义</li>
+<li>标准课程结构</li>
+</ul>
+<p>这时它很适合帮你做的，是搭建知识框架、整理章节重点、生成复习材料、辅助你更快进入一门课的节奏。</p>
+<p>它尤其适合那些不是完全没有资料，而是“资料已经有了，但组织和复习成本很高”的场景。</p>
+<p>相反，如果你期待的是让 AI 在没有可靠教材的前提下，光靠网络碎片和模型记忆，直接把一门课完整、稳定、精准地教给你，那它大概率并不会像想象中那么靠谱。</p>
+<p>同样，如果你想把它当作一个通用 Agent，用来处理各种开放任务、科研工作流、浏览器自动化、多工具协作，那它也不是最合适的路线。因为它的边界本来就更偏课程学习，而不是通用执行。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>清华版 Open Maic 值得关注，不是因为它又证明了 AI 能做更多事，而是因为它把学习场景里最实际的一件事重新摆到了台面上：学习效果首先依赖资料质量，其次才是模型输出；真正有价值的，也不是让 AI 凭空生成知识，而是让它把课程学习里那些原本零散、重复、容易中断的步骤组织起来。</p>
+<p>如果只用一句话总结，那我会这样说：</p>
+<blockquote>
+<p>学习型 AI 最有价值的时候，不是它替你学，而是它帮你把“怎么学”这件事组织得更好。</p>
+</blockquote>
+<p>如果你想继续看这个专题，今天另外两篇也可以连着读：一篇讲科研绘图为什么越来越像工作流问题，另一篇讲为什么有些 AI 跑分很高，实际却并不好用。更早之前发过的历史文章，也可以一起翻回去看，会更容易把这几篇的判断串起来。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/02/25/1-%E6%B8%85%E5%8D%8E%E7%89%88Open-Maic%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%83%8F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8Agent/">http://bohuyeshan.top/2026/02/25/1-%E6%B8%85%E5%8D%8E%E7%89%88Open-Maic%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%83%8F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8Agent/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/OpenMaic/">OpenMaic</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/02/28/2-AI%E7%A7%91%E7%A0%94%E7%BB%98%E5%9B%BE%E7%9C%9F%E6%AD%A3%E5%8D%87%E7%BA%A7%E7%9A%84%E4%B8%8D%E6%98%AF%E6%A8%A1%E5%9E%8B%E8%80%8C%E6%98%AF%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="AI 科研绘图真正升级的，不是模型，而是工作流"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">AI 科研绘图真正升级的，不是模型，而是工作流</div></div><div class="info-2"><div class="info-item-1">AI 科研绘图真正升级的，不是模型，而是工作流这几年只要一提 AI 绘画，很多人的第一反应还是海报、插画、概念图，或者一句提示词换一张“看起来很厉害”的图。 但如果把场景换成科研绘图，事情就完全不是同一套逻辑了。 科研图首先不是审美作品，而是信息表达工具。它要解决的不是“够不够好看”，而是结构有没有讲清楚、箭头方向对不对、流程关系是否合理、哪个部分是核心、哪些元素需要被突出。也正因为如此，科研绘图和传统意义上的 AI 绘画，本来就不是同一件事。 所以现在真正值得重写的，不是“某个模型已经会画科研图了”，而是：随着模型对自然语言理解越来越强，我们终于有机会把科研绘图拆成一条更稳妥的工作链——先做结构，再做风格；先校验几何关系，再交给模型去优化视觉表达。 如果说前一篇讨论的是学习型 AI 如何把课程学习工作流化，那么科研绘图这一篇讨论的，其实是另一种同样重要的工作流：怎么让图先对，再让它变得更好看。 一、科研绘图和普通 AI 绘画，本来就不是一回事普通 AI 绘画更强调的是风格和视觉冲击力。无论是插画、封面图、海报还是概念艺术，很多时候首先追求的是氛围、质感和画面想象力。 但科研绘图...</div></div></div></a><a class="pagination-related" href="/2026/02/22/2-%E7%A7%91%E7%A0%94%E4%BA%BA%E5%91%98%E6%80%8E%E4%B9%88%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8AI-%E5%93%AA%E4%BA%9B%E8%83%BD%E7%94%A8%E5%93%AA%E4%BA%9B%E4%B8%8D%E8%83%BD%E7%A2%B0/" title="科研人员怎么正确使用 AI：哪些能用，哪些不能碰"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">科研人员怎么正确使用 AI：哪些能用，哪些不能碰</div></div><div class="info-2"><div class="info-item-1">科研人员怎么正确使用 AI：哪些能用，哪些不能碰真正的问题不是“能不能用”，而是“放在哪个位置用”现在高校和科研环境对 AI 的态度，已经越来越少是简单的“全面禁止”或“全面放开”。更常见的真实口径是： 允许辅助，但不能替代；允许提效，但不能逃避责任。 如果把这个边界讲得再直白一点：  你可以让 AI 帮你查资料、做初步整理、润色语言； 但不能让它代写核心学术内容，不能让它替你做本应由人负责的判断； 更不能把它产出的未经核验内容直接当成事实、数据或引用交出去。  这篇文章不打算泛泛地说“大家要谨慎”，而是直接点名几个已经公开可核验的学校和规范，看看今天比较稳妥的边界到底在哪里。  一、当前公开规则的共同趋势：允许辅助，严禁代写和伪造1. 清华大学：AI 是辅助工具，不能替代学术训练清华大学公开发布了《清华大学人工智能教育应用指导原则》。从公开解读能提炼出几个非常清晰的方向：  AI 可以作为辅助工具使用； 不能代写、不能伪造、不能剽窃； 不能用 AI 去替代本应由学生或研究者本人完成的学术训练； 涉及实质性使用时，需要披露； 敏感、涉密、未授权数据不能随便送入外部模型。  这意味...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-05</div><div class="info-item-2">两条路进入生物信息学，然后在 AI 时代交汇</div></div><div class="info-2"><div class="info-item-1">生物信息学有一个少被明说但每个人都心知肚明的现实：这个领域的人来自两个截然不同的起点。 有人是从计算机科学、软件工程、数学物理”跨”过来的——会写代码、懂算法，但在第一次拿到 RNA-seq 数据时，连”什么是文库、什么是接头、为什么要去重”都要从头学起。 有人是从生物学、医学、农学”转”过来的——做过 PCR、跑过胶、养过细胞，但在第一次面对终端窗口时，连 ls 和 cd 的区别都要查半天。 这两类人最终都在做同一件事——从生物数据里找答案。但他们走的路径、用的工具、面对的困难，完全不一样。 而 2026 年，AI 的介入让这两条路开始交汇了。但交汇的方式可能和大多数人想的不一样。   第一条路：从代码出发程序员转入生信的典型路径是：因为某个课题或项目需要分析生物数据，发现自己能写脚本、能调包、能搭环境，于是自然而然地接手了组里的计算任务。 这条路的人对以下场景不会陌生：  写 Python 脚本处理 FASTQ，用 Biopython 解析序列 搭 Snakemake 或 Nextflow 管线，把比对→定量→差异表达串起来 用 Docker&#x2F;Singularity...</div></div></div></a><a class="pagination-related" href="/2026/03/21/3-%E5%91%A8%E6%8A%A5-GitHub-AI-%E6%A8%A1%E5%9E%8B/" title="2026-03-21 周报｜GitHub、AI 技术与新模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-21</div><div class="info-item-2">2026-03-21 周报｜GitHub、AI 技术与新模型</div></div><div class="info-2"><div class="info-item-1">2026-03-21 周报｜GitHub、AI 技术与新模型 本文信息由 AI 爬取+整理，经人工核验后发布。AI 爬取可能会有遗漏，欢迎在评论区补充。如有偏差，也欢迎指正。  本期覆盖时间：2026-03-15 ～ 2026-03-21（含）  这周如果你只刷英文源，大概率会觉得没什么大事。GitHub 上没有一夜涨几十万 star 的项目，也没有哪个模型一发布就刷屏。但小米一口气发了三个模型，腾讯混元正式版上线，GitHub Copilot 一周连出六个动作——这周其实挺忙的。  一、GitHub 每周热门内容1. openai&#x2F;codex 0.115.0：重点从”写得快”转向”不出事”这周 OpenAI 对 Codex 的表述明显转向 behavior-first validation——更强调行为验证和安全可控，而不是只比 benchmark 分数。coding agent 的比拼已经从”谁写代码快”进入”谁写的东西在真实工程里不会翻车”的阶段。 2. GitHub Copilot 一周六连击这不是一条孤立新闻，而是 GitHub 一周之内连着做了好几件事：  ...</div></div></div></a><a class="pagination-related" href="/2026/02/18/2-%E5%BD%93AI%E8%BF%9B%E5%85%A5%E8%8D%9E%E9%BA%A6%E7%9F%AE%E5%8C%96%E8%82%B2%E7%A7%8D%E9%AA%8C%E8%AF%81%E6%B5%81%E7%A8%8B-%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86%E5%88%B0%E5%AE%9E%E9%AA%8C%E4%BA%A4%E6%8E%A5%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91/" title="当 AI 进入荞麦矮化育种验证流程：从数据整理到实验交接的第二大脑"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-18</div><div class="info-item-2">当 AI 进入荞麦矮化育种验证流程：从数据整理到实验交接的第二大脑</div></div><div class="info-2"><div class="info-item-1">当 AI 进入荞麦矮化育种验证流程：从数据整理到实验交接的第二大脑这类项目为什么特别适合谈 AI如果说一般的数据分析项目，AI 更像一个能帮忙写脚本和查资料的助手，那么在荞麦矮化育种这类带有明确育种目标、候选基因筛选和功能验证需求的项目里，AI 更接近很多科研人会直观感受到的那个角色：第二大脑。 原因很简单。这样的项目通常横跨多层任务：  前面要查资料、找基因、看公开数据； 中间要整理测序、比对、变异、注释和候选筛选流程； 后面还要考虑怎么把结果整理成实验同事能接得住的验证线索。  真正难的地方，不只是某一段代码，而是这整条链路里有太多环节会断：前面的文献没有接到后面的候选基因，前面的比对结果没有顺利进入后面的变异筛选，最后分析报告和实验验证又脱了节。 所以这篇文章想讲的不是“AI 能不能做某一步”，而是：在荞麦矮化育种这种真实项目里，AI 怎么帮你把从数据到实验的整条路径连起来。 从问题出发：不是只找一个基因，而是要把线索变成流程荞麦矮化育种相关项目，往往起点看起来很明确：  想找和株高、节间、矮化性状相关的候选基因； 想把公开资料和本地数据结合起来； 想把分析结果尽快转成可验...</div></div></div></a><a class="pagination-related" href="/2026/02/20/1-%E7%A7%91%E7%A0%94%E4%BA%BA%E7%8E%B0%E5%9C%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E9%83%BD%E5%9C%A8%E8%81%8AAgent-%E4%B8%80%E6%96%87%E7%9C%8B%E6%87%82AI-Agent%E4%B8%8EOpenClaw%E7%9A%84%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%BA%BF/" title="科研人现在为什么都在聊 Agent？一文看懂 AI、Agent 与 OpenClaw 的使用路线"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-20</div><div class="info-item-2">科研人现在为什么都在聊 Agent？一文看懂 AI、Agent 与 OpenClaw 的使用路线</div></div><div class="info-2"><div class="info-item-1">科研人现在为什么都在聊 Agent？一文看懂 AI、Agent 与 OpenClaw 的使用路线这波热度，真正变的不是模型，而是“能不能用起来”过去很多科研人已经习惯了和聊天型 AI 对话：问问题、改语句、润色摘要、翻译段落。但 OpenClaw 类 Agent 让讨论突然升温，不是因为它比普通聊天框“更会说话”，而是因为它开始把 浏览网页、查论文、下载资料、整理文件、持续跟踪任务 串成一条工作链。 对科研工作者来说，这件事的意义非常直接：你需要的往往不是一段“看起来很聪明”的回答，而是一套 能去正确网站找东西、能把 DOI&#x2F;链接&#x2F;PDF 留下来、能重复执行 的流程。 这也是为什么现在大家讨论的不只是 OpenClaw 原始开源版，还包括 QClaw、AutoClaw（智谱）、OneClaw、JVS Claw、Kimi Claw 这些产品化路线。它们本质上都在回答同一个问题：怎样把原本只有会折腾的人才能用的 Agent，变成更多科研用户也能真正上手的工具。  一、为什么 OpenClaw 类 Agent 会火1. 原生能力很强，但门槛太高OpenClaw 原始...</div></div></div></a><a class="pagination-related" href="/2026/04/18/article_2026-04-18-01/" title="一个 AI 同时学会了&quot;造蛋白质&quot;和&quot;骗蛋白质&quot;——蛋白质结合物设计的新范式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-18</div><div class="info-item-2">一个 AI 同时学会了&quot;造蛋白质&quot;和&quot;骗蛋白质&quot;——蛋白质结合物设计的新范式</div></div><div class="info-2"><div class="info-item-1">一个 AI 同时学会了”造蛋白质”和”骗蛋白质”——蛋白质结合物设计的新范式在前面三篇文章中，我们分别讨论了 GAN 和扩散模型在生物分子设计中的概况、蛋白质结构预测从静态到动态的转变，以及它们与前面 Transformer、CNN、RNN 三个批次的关系。 今天这篇文章聚焦一个具体的代表工作：如何用生成式模型设计能与目标蛋白质结合的新蛋白质。 这是一个有直接药物设计价值的任务——很多药物的作用机制就是”一个蛋白质分子与另一个蛋白质分子结合，阻断或激活它的功能”。  蛋白质结合物设计：两种路线的对峙在蛋白质结合物（binder）设计领域，过去存在两种截然不同的技术路线： 第一种是生成式方法。 用扩散模型或 Flow Matching，学习”什么样的蛋白质结构是合理的”，然后直接从噪声中生成新的蛋白质骨架。这类方法的优点是能产生结构多样化的候选分子，缺点是生成的分子不一定能与特定靶点有效结合。 第二种是”幻觉”方法（hallucination）。 不从零生成，而是用 AlphaFold2 这样的结构预测模型作为”评分器”，通过优化序列让预测出的结合结构越来越好。这类方法的优点是与靶...</div></div></div></a><a class="pagination-related" href="/2026/02/15/1-%E5%BD%93AI%E8%BF%9B%E5%85%A5%E6%B2%B9%E8%8F%9C%E6%80%A7%E7%8A%B6%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%BB%8E%E8%8A%B1%E5%8F%91%E8%82%B2%E5%88%B0%E8%BD%AC%E5%BD%95%E7%BB%84%E7%BD%91%E7%BB%9C%E7%9A%84%E7%A7%91%E7%A0%94%E5%89%AF%E9%A9%BE%E9%A9%B6/" title="当 AI 进入油菜性状分析流程：从花发育到转录组网络的科研副驾驶"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-15</div><div class="info-item-2">当 AI 进入油菜性状分析流程：从花发育到转录组网络的科研副驾驶</div></div><div class="info-2"><div class="info-item-1">当 AI 进入油菜性状分析流程：从花发育到转录组网络的科研副驾驶为什么想写这篇很多人一提到 AI 进实验室，脑子里想到的还是“帮我润色一下摘要”或者“帮我写几句代码”。但真正做过项目的人都知道，科研里最耗时间的，往往不是某一个脚本，而是整条链路：样本信息乱、测序公司回来的文件不统一、公共数据库字段各不相同、分析步骤断断续续、脚本报错来回修、最后结果出来以后还得反复确认这一步到底有没有跑偏。 如果把 AI 只当聊天工具，它能帮的很有限；但如果把它当成一个真正进入流程的“科研副驾驶”，它开始有价值的地方就不是一句答案，而是帮你把一个本来容易断掉的分析流程，尽量串成一条可追踪、可解释、可复核的工作链。 这篇文章合并了两个油菜相关的真实使用场景：  一个偏花发育 &#x2F; CRC-YABBY 基因家族； 一个偏转录组 &#x2F; WGCNA &#x2F; 候选基因筛选。  它们表面看是两件事，但底层问题其实很像：都不是单纯“让 AI 给答案”，而是让 AI 参与整理数据、搭脚本、补逻辑、查资料、校验输出。 场景一：从花发育问题出发，AI 先帮你把流程搭起来第一个场景来自油菜花发育相...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%85%E5%8D%8E%E7%89%88-Open-Maic-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E5%83%8F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8-Agent"><span class="toc-number">1.</span> <span class="toc-text">清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E7%B1%BB%E5%AD%A6%E4%B9%A0%E5%9E%8B-AI-%E4%B8%8D%E8%83%BD%E8%84%B1%E7%A6%BB%E2%80%9C%E9%AB%98%E8%B4%A8%E9%87%8F%E8%B5%84%E6%96%99%E2%80%9D%E5%8D%95%E7%8B%AC%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">一、这类学习型 AI 不能脱离“高质量资料”单独讨论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%9C%80%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E5%BE%80%E5%BE%80%E4%B8%8D%E6%98%AF%E4%B8%8D%E4%BC%9A%E9%97%AE%EF%BC%8C%E8%80%8C%E6%98%AF%E4%B8%8D%E4%BC%9A%E6%A0%A1%E9%AA%8C"><span class="toc-number">1.2.</span> <span class="toc-text">二、普通用户最大的问题，往往不是不会问，而是不会校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E5%AE%9E%E5%BE%88%E5%A4%9A%E4%BA%BA%E4%BB%A5%E5%89%8D%E5%B7%B2%E7%BB%8F%E5%9C%A8%E7%94%A8%E6%99%AE%E9%80%9A-AI-%E6%89%8B%E5%8A%A8%E5%81%9A%E8%BF%99%E4%BB%B6%E4%BA%8B%E4%BA%86"><span class="toc-number">1.3.</span> <span class="toc-text">三、其实很多人以前已经在用普通 AI 手动做这件事了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%B8%85%E5%8D%8E%E7%89%88-Open-Maic-%E6%9B%B4%E5%83%8F%E2%80%9C%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%AE%B9%E5%99%A8%E2%80%9D%EF%BC%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E7%94%A8%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7"><span class="toc-number">1.4.</span> <span class="toc-text">四、清华版 Open Maic 更像“课程学习容器”，不是通用工作流工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%8D%87%E7%BA%A7%EF%BC%8C%E4%B8%8D%E6%98%AF-AI-%E6%9B%B4%E7%A5%9E%E4%BA%86%EF%BC%8C%E8%80%8C%E6%98%AF%E5%AD%A6%E4%B9%A0%E6%B5%81%E7%A8%8B%E8%A2%AB%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%8C%96%E4%BA%86"><span class="toc-number">1.5.</span> <span class="toc-text">五、真正的升级，不是 AI 更神了，而是学习流程被工作流化了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%BF%99%E7%B1%BB%E5%B7%A5%E5%85%B7%E6%9C%80%E9%80%82%E5%90%88%E4%BB%80%E4%B9%88%E4%BA%BA%EF%BC%8C%E4%B9%9F%E6%9C%80%E4%B8%8D%E9%80%82%E5%90%88%E4%BB%80%E4%B9%88%E4%BA%BA"><span class="toc-number">1.6.</span> <span class="toc-text">六、这类工具最适合什么人，也最不适合什么人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-number">1.7.</span> <span class="toc-text">结尾</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

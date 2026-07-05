@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学2019年，MIT的Collins实验室做了一件后来被认为是里程碑的事：用深度学习从已有的药物分子库里筛出了一个全新的抗生素，他们给它取名halicin。 halicin的结构和所有已知抗生素都不一样。它杀细菌的方式也不是阻断细胞壁合成或干扰DNA复制——这是过去几十年新药研发几乎唯一的思路。halicin干扰的是细菌的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学">
+<meta property="og:url" content="http://bohuyeshan.top/2026/04/20/2026-04-20-01-%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%BA%8F%E5%88%97-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学2019年，MIT的Collins实验室做了一件后来被认为是里程碑的事：用深度学习从已有的药物分子库里筛出了一个全新的抗生素，他们给它取名halicin。 halicin的结构和所有已知抗生素都不一样。它杀细菌的方式也不是阻断细胞壁合成或干扰DNA复制——这是过去几十年新药研发几乎唯一的思路。halicin干扰的是细菌的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-04-20T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.158Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学",
+  "url": "http://bohuyeshan.top/2026/04/20/2026-04-20-01-%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%BA%8F%E5%88%97-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-04-20T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.158Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/04/20/2026-04-20-01-%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%BA%8F%E5%88%97-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-20T20:00:00.000Z" title="发表于 2026-04-20 20:00:00">2026-04-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.158Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学"><a href="#一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学" class="headerlink" title="一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学"></a>一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学</h1><p>2019年，MIT的Collins实验室做了一件后来被认为是里程碑的事：用深度学习从已有的药物分子库里筛出了一个全新的抗生素，他们给它取名halicin。</p>
+<p>halicin的结构和所有已知抗生素都不一样。它杀细菌的方式也不是阻断细胞壁合成或干扰DNA复制——这是过去几十年新药研发几乎唯一的思路。halicin干扰的是细菌的质子动力，一种完全不同的机制。</p>
+<p>在实验中，halicin杀死了多种耐药菌株，包括对已知所有抗生素都耐药的超级细菌。在感染了耐甲氧西林金黄色葡萄球菌（MRSA）的小鼠身上，halicin的清除效果优于现有的最后一道防线万古霉素。</p>
+<p>而找到halicin的那个模型，用的不是Transformer，也不是CNN，是<strong>图神经网络</strong>（Graph Neural Network, GNN）。</p>
+<p>这个模型的输入不是序列，不是图像，而是分子图——原子是节点，化学键是边。它遍历了一个包含6000多个分子的数据库，最终挑出了halicin，以及另外几个有潜力的候选分子。</p>
+<p>这是图神经网络在生物信息学中最有名的成功案例之一。但它之所以能成功，不只是因为算法好——而是因为<strong>分子天然就是图</strong>，图是它的本征表达形式。</p>
+<hr>
+<h2 id="图是什么，为什么要用它"><a href="#图是什么，为什么要用它" class="headerlink" title="图是什么，为什么要用它"></a>图是什么，为什么要用它</h2><p>一个图由节点和边组成。</p>
+<p>在分子图里，节点是原子（碳、氮、氧……），边是化学键（单键、双键、芳香键）。每个原子有自己的属性（原子类型、杂化方式、电荷），每条边也有属性（键类型、键长）。</p>
+<p>这种表示方式看起来简单，但它有一个CNN和RNN都做不到的事：<strong>直接表达分子中任意两个原子之间的关系</strong>。CNN要求输入是规则的网格（像素阵列），RNN要求输入是序列（从头读到尾）。但分子不是网格也不是序列——一个苯环上的六个碳原子彼此之间是平等的，没有谁先谁后的顺序。</p>
+<p>图神经网络的核心操作叫<strong>消息传递</strong>。每一轮，每个节点做三件事：</p>
+<ol>
+<li>收集邻居节点发来的信息</li>
+<li>聚合这些信息（求和、取平均或取最大值）</li>
+<li>用聚合结果更新自己的表示</li>
+</ol>
+<p>一轮之后，每个节点”看到”了直接邻居的信息。两轮之后，看到了邻居的邻居。N轮之后，每个节点融合了N步范围内所有节点的信息。</p>
+<p>这个过程和卷积核在图像上局部滑动提取特征的思路类似，但不需要规则网格——图可以是不规则的、稀疏的、动态的。</p>
+<hr>
+<h2 id="生物里的图数据有多普遍"><a href="#生物里的图数据有多普遍" class="headerlink" title="生物里的图数据有多普遍"></a>生物里的图数据有多普遍</h2><p>分子图只是开始。生物系统中到处都是图：</p>
+<p><strong>蛋白互作网络</strong>是系统生物学的经典数据。酵母双杂交、亲和纯化质谱等实验产出大量蛋白-蛋白互作数据，天然构成图。节点是蛋白质，边是它们之间的物理相互作用。预测未知互作、识别功能模块、推断疾病相关基因，都是在图上做预测。</p>
+<p><strong>基因调控网络</strong>描述转录因子和靶基因之间的调控关系。这种图通常是有向的——A激活或抑制B。Zitnik等人2018年在Bioinformatics上发表的工作，用图卷积网络预测了药物组合的副作用，就是建立在药物-靶点-疾病的多层图上。</p>
+<p><strong>蛋白质结构图</strong>把三维坐标转成图：氨基酸残基是节点，空间距离小于某个阈值的残基之间连边。AlphaFold2的后处理步骤中就用了图结构推理来精修侧链和评估模型置信度。</p>
+<p><strong>单细胞数据</strong>的原始输出虽然是矩阵（细胞×基因），但越来越多方法把它转成图——用K近邻图连接转录组相似的细胞，然后在图上做聚类、轨迹推断、细胞类型标注。scGNN、GraphSC等工具走的就是这条路。</p>
+<p>这些数据有一个共同特征：<strong>实体之间的关系才是关键信息，而不是实体自身的属性</strong>。蛋白A是什么并不重要，重要的是它和谁互作、调控了谁、在哪个通路里。图是这种关系信息的天然载体。</p>
+<hr>
+<h2 id="GNN在生物信息学中做了什么"><a href="#GNN在生物信息学中做了什么" class="headerlink" title="GNN在生物信息学中做了什么"></a>GNN在生物信息学中做了什么</h2><p><strong>分子性质预测</strong>是GNN最早也最成熟的应用方向。从D-MPNN到SchNet、PaiNN、Equiformer，GNN在MoleculeNet等benchmark上持续刷新记录。核心思路：把分子建模为图，用消息传递学习原子和键的表示，然后聚合整个图的表示来预测溶解度、毒性、血脑屏障透过性等性质。</p>
+<p><strong>药物-靶点互作预测</strong>同时建模药物（小图）和蛋白质（序列或结构图）。Graph-in-Graph等方法把两边各自建模为图，再在更高层连接做联合预测，判断某个药物是否能和某个靶点蛋白结合。</p>
+<p><strong>蛋白质功能预测</strong>利用互作网络的结构信息。同一网络中距离较近的蛋白质往往功能相关——这被称为”功能模块”假说。GNN从已知功能标注的蛋白质出发，沿网络传播标签信息，预测未标注蛋白质的功能。</p>
+<p><strong>单细胞图分析</strong>用GNN学习细胞的低维表示，用于聚类和注释。这个方向和RNN批次聊的轨迹推断有交叉——RNN擅长沿伪时间建模时序变化，GNN擅长在细胞相似性图上传播空间信息。</p>
+<hr>
+<h2 id="GNN的局限"><a href="#GNN的局限" class="headerlink" title="GNN的局限"></a>GNN的局限</h2><p><strong>过度平滑</strong>是最常见的问题。消息传递轮数太多，所有节点的表示趋向相同，失去了自己的特征。这限制了GNN的感受野——通常只能做2-4轮。</p>
+<p><strong>图结构的不确定性</strong>在生物学中很常见。蛋白互作网络的实验数据有假阳性和假阴性，基因调控网络的边大多是计算预测而非实验验证。错误会沿着边传播和放大。</p>
+<p><strong>动态图</strong>建模能力不足。细胞信号传导是动态的——同一个蛋白在不同条件下可能和不同的伙伴互作。标准GNN处理静态图，对动态变化的图结构缺乏有效方法。</p>
+<p><strong>和Transformer的竞争</strong>。Transformer的自注意力本质上可以在任意节点对之间建立连接，不需要显式的图结构。在分子性质预测上，Transformer已能达到甚至超过GNN的效果。但GNN的归纳偏置——只沿边传递信息——在小数据场景下仍有优势：它不需要从数据中学习图结构。</p>
+<hr>
+<h2 id="为什么GNN对生物信息学重要"><a href="#为什么GNN对生物信息学重要" class="headerlink" title="为什么GNN对生物信息学重要"></a>为什么GNN对生物信息学重要</h2><p>不是因为它是最新的架构。而是因为<strong>生物系统本身就是网络</strong>。</p>
+<p>从分子到细胞到组织到种群，每一层都是网络：分子网络、细胞互作网络、组织结构网络、生态网络。理解这些网络的结构和功能，是现代生物学的核心任务。</p>
+<p>前面的几个批次聊了Transformer、CNN、RNN、GAN和扩散模型。它们各自擅长处理特定形态的数据——序列、网格、时序。GNN补上了最后一块拼图：<strong>关系型数据</strong>。你不需要先把网络展平成序列，再交给一个只认序列的模型。你可以直接在图上计算，让信息沿着真实的生物学连接流动。</p>
+<p>每种架构都在回答同一个问题的不同侧面：面对不同形态的生物数据，最自然的计算方式是什么？</p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><p>Stokes, J. M. et al. (2020). A deep learning approach to antibiotic discovery. Cell, 180(4), 688-702. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cell.2020.01.021">https://doi.org/10.1016/j.cell.2020.01.021</a></p>
+</li>
+<li><p>Gilmer, J., Schoenholz, S. S., Riley, P. F., Vinyals, O., &amp; Dahl, G. E. (2017). Neural message passing for quantum chemistry. ICML 2017. arXiv:1704.01212</p>
+</li>
+<li><p>Zitnik, M., Agrawal, M., &amp; Leskovec, J. (2018). Modeling polypharmacy side effects with graph convolutional networks. Bioinformatics, 34(13), i457-i466. <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/bty294">https://doi.org/10.1093/bioinformatics/bty294</a></p>
+</li>
+<li><p>Zhang, O. et al. (2025). Graph Neural Networks in Modern AI-aided Drug Discovery. arXiv:2506.05568</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/04/20/2026-04-20-01-%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%BA%8F%E5%88%97-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">http://bohuyeshan.top/2026/04/20/2026-04-20-01-%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%BA%8F%E5%88%97-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a><a class="post-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/20/2026-04-20-02-%E6%B5%B7%E6%B4%8B%E9%87%8C%E6%9C%80%E5%BF%AB%E7%9A%84%E6%8E%A0%E9%A3%9F%E8%80%85%E6%AD%A3%E5%9C%A8%E8%BF%87%E7%83%AD/" title="海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境</div></div><div class="info-2"><div class="info-item-1">海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境大白鲨和蓝鳍金枪鱼是海洋里最让人敬畏的掠食者。它们游得快、耐力强、追猎凶猛。这背后有一个很少被提及的生理特征：它们的体温比海水高。 大多数鱼类是冷血的，体温随环境变化。但鲨鱼和金枪鱼中不到0.1%的物种进化出了一种中间状态——中温性（mesothermy）。它们能保留体内产生的热量，让肌肉、眼睛或内脏比周围海水高出几度甚至十几度。这让它们在冷水中保持高速游动和敏锐视觉，成为远洋追猎的高手。 但这种能力有代价。都柏林三一学院和比勒陀利亚大学团队4月17日发表在《Science》上的研究，第一次系统量化了这个代价：在控制了体型和水温因素后，中温性鱼类的日常代谢率约为同等体型冷血鱼类的3.8倍。 体温越高，胃口越大研究团队开发了一种新方法来估算野生鱼类在自由游动时的代谢率。他们在鱼身上安装小型传感器，记录体温和水温的实时数据，由此推算鱼体产生和散失的热量。团队还结合了数百个实验室测量数据，覆盖范围从小型鱼类到3.5吨重的巨型姥鲨。 结果是：体温每升高10°C，代谢率翻一倍以上。一只1吨重的温血鲨鱼，每天需要的食物量远超同等体...</div></div></div></a><a class="pagination-related" href="/2026/04/19/02-b%E7%BB%86%E8%83%9E%E8%BF%90%E5%8A%A8/" title="你跑完步为什么觉得爽？B 细胞可能在偷偷帮你"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">你跑完步为什么觉得爽？B 细胞可能在偷偷帮你</div></div><div class="info-2"><div class="info-item-1">你跑完步为什么觉得爽？B 细胞可能在偷偷帮你免疫细胞不只是”打病毒”，它们还管你的运动表现你有没有想过，为什么有些人跑步跑到后半程会突然觉得”打开了”？不那么喘了，腿也没那么沉了？ 通常的解释是内啡肽——大脑释放的天然止痛剂。但清华大学免疫学家彭殷新（Peng Jiang）团队最近发表在《Cell》上的一项研究，给出了一个完全出乎意料的答案：你的 B 细胞可能在帮你跑。 B 细胞不只是”免疫卫士”B 细胞是免疫系统的”侦察兵”。它的经典工作是识别外来病原体、产生抗体、标记入侵者让其他免疫细胞来消灭。这个角色我们都很熟悉。 但彭殷新团队发现，B 细胞还有一个从未被描述过的功能——调节运动耐力和肌肉力量。 这不仅是 B 细胞的”非免疫功能”首次被发现，也是免疫系统和运动表现之间一条全新的连接通路。 实验是怎么做的研究团队用了两组小鼠： 一组是基因改造的低 B 细胞小鼠——天生 B 细胞数量少。另一组是用抗体疗法清除 B 细胞的小鼠——这种抗体疗法在人类中用于治疗 B 细胞癌症。 两组小鼠都和正常小鼠一起在跑步机上跑。速度每隔一段时间提升一次，直到小鼠跑不动为止。 结果很明确：B 细胞...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/03/2026-04-03-01-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%94%9F%E5%91%BD%E7%A7%91%E5%AD%A6%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%9E%8D%E5%90%88-%E4%B8%93%E9%A2%98%E5%BC%80%E7%AF%87/" title="神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-03</div><div class="info-item-2">神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路</div></div><div class="info-2"><div class="info-item-1">神经网络与生命科学的深度融合——从感知机到生成式AI的演进之路生物学正在变成一门数据科学。 人类基因组有30亿个碱基对，一次单细胞RNA测序可以同时测量上万个基因的表达水平，蛋白质结构数据库里的分子数量已经超过20万个。这些数据量的增长速度远超人类手动分析的能力极限。 处理这些数据的工具，正在从传统的统计模型和物理模拟，转向深度学习。 这不是一个突然的转变。从上世纪80年代的感知机开始，神经网络经过了几十年的演进，发展出了多种不同的架构——CNN、RNN、Transformer、GAN、GNN、SSM……每一种架构在处理特定类型的数据时有各自的优势。 而生物数据恰好是多种类型数据的集合：一维序列、三维结构、基因调控网络、细胞图谱、分子图……没有一种神经网络架构能够包打一切。 这就是本专题的出发点：系统梳理各类神经网络架构在生物信息学中的应用，让研究者能够根据自己面对的数据类型和科学问题，选择合适的计算工具。  生物学为什么需要多种神经网络生物数据有几个基本特性，每一种特性对应着不同的计算需求。 序列性。 DNA、RNA、蛋白质都是一维序列。序列建模需要捕捉长程依赖关系——比如DN...</div></div></div></a><a class="pagination-related" href="/2026/04/12/2026-04-12-01-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8A%E5%A4%A9%E5%BE%88%E5%A4%9A%E7%94%9F%E4%BF%A1%E6%A8%A1%E5%9E%8B%E9%87%8C%E8%BF%98%E6%9C%89%E5%8D%B7%E7%A7%AF%E5%B1%82/" title="为什么今天很多生信模型里还有卷积层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-12</div><div class="info-item-2">为什么今天很多生信模型里还有卷积层</div></div><div class="info-2"><div class="info-item-1">为什么今天很多生信模型里还有卷积层前两篇我们聊了卷积网络为什么最早在生物信息学里跑出来，以及从 DeepBind 到 Basset 它们是怎么进入基因调控问题的。一个自然的问题是：现在大家聊的都是 Transformer、蛋白质语言模型、大模型，卷积网络是不是已经退出了？ 答案是没有。 更准确地说，卷积层作为一个模块，仍然广泛存在于今天很多主流的生信模型架构里。它不是作为”主力”出现，而是作为”局部特征提取器”嵌在更复杂的结构中。这个现象本身值得说清楚，因为它反映的不是技术保守，而是不同架构在解决不同层级的问题。  一个常见的误解：”新架构替代旧架构”在深度学习领域，架构更替的叙事很容易简化为”旧的被淘汰，新的取而代之”。从 CNN 到 RNN 到 Transformer，好像每一代架构都在”证明”前一代不行了。 这个叙事在自然语言处理里有一定道理——Transformer 的自注意力机制确实比 RNN 能更高效地捕捉长程依赖，而且天然适合并行训练。但在生物信息学里，情况更复杂。不同的架构不是在争夺同一个任务的主导权，而是在处理同一个问题的不同层面。 生物序列有一个基本特征：局部...</div></div></div></a><a class="pagination-related" href="/2026/04/10/2026-04-10-02-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%E6%9C%80%E6%97%A9%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%87%8C%E8%B7%91%E5%87%BA%E6%9D%A5%E4%BA%86/" title="为什么卷积网络最早在生物信息学里跑出来了"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-10</div><div class="info-item-2">为什么卷积网络最早在生物信息学里跑出来了</div></div><div class="info-2"><div class="info-item-1">为什么卷积网络最早在生物信息学里跑出来了在深度学习进入生物信息学的早期，卷积神经网络（CNN）是最先取得突破的架构。2015年的DeepBind、2016年的Basset，这些工具在转录因子结合位点预测、染色质可及性分析等任务上，迅速超越了传统方法。 先说一个容易被误解的前提：CNN没有”过时”。 Transformer和大语言模型的热度让很多人以为CNN是旧时代的产物，已经被取代了。但在生物信息学的实际工作中，CNN到今天仍然是很多任务的主力——不是因为怀旧，而是因为很多生物问题的核心计算挑战恰好就是CNN最擅长的那个。这篇文章要回答的是：为什么是CNN先跑出来，以及这个逻辑今天还成不成立。 这不是偶然。CNN的核心能力——局部模式识别——恰好对应了生物序列数据的一个基本特征：功能往往由局部序列决定。  生物序列的局部性DNA、RNA、蛋白质都是一维序列，但它们的生物学功能往往不是由整条序列决定的，而是由其中的局部片段决定。 DNA上的转录因子结合位点通常只有6-20个碱基对。这些短序列被称为motif，是转录因子识别和结合的目标。一个转录因子可能只认其中几个关键位置的碱基，其...</div></div></div></a><a class="pagination-related" href="/2026/04/14/2026-04-14-01-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E7%89%A9%E5%BA%8F%E5%88%97%E6%95%B0%E6%8D%AE%E5%A4%A9%E7%84%B6%E9%80%82%E5%90%88%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C%E6%9D%A5%E8%AF%BB/" title="为什么生物序列数据天然适合循环网络来读"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-14</div><div class="info-item-2">为什么生物序列数据天然适合循环网络来读</div></div><div class="info-2"><div class="info-item-1">为什么生物序列数据天然适合循环网络来读在深度学习进入生物信息学之前，处理生物序列数据的主要方法是位置权重矩阵、隐马尔可夫模型和条件随机场。这些方法各有优势，但有一个共同的局限：它们对序列中元素之间依赖关系的建模能力有限。 20世纪90年代，循环神经网络（RNN）开始被引入生物序列分析。和之前的方法不同，RNN 天然地按顺序处理输入——它一个一个地读取序列中的元素，每读一步就更新一次内部状态，这个状态就相当于对”到目前为止读过的内容”的记忆。 需要先说明一个前提：RNN 和 LSTM 并没有”过时”。 Transformer 的热度让很多人觉得循环网络已经是被淘汰的技术。但在生物信息学的实际工作中，RNN&#x2F;LSTM 到今天仍然在特定场景下有不可替代的价值——不是因为怀旧，而是因为有些生物问题的计算特性恰好就是 RNN 最擅长的那一种。这篇文章要解释的是：为什么 RNN 适合处理生物序列，它的核心能力是什么，以及这个逻辑在今天还成不成立。  生物序列的”顺序性”DNA、RNA、蛋白质都是一维序列。但它们和一段随机的字符串不同——序列中元素的排列顺序本身就携带了重要的生物学信...</div></div></div></a><a class="pagination-related" href="/2026/03/21/4-%E5%91%A8%E6%8A%A5-%E7%94%9F%E7%89%A9%E7%A7%91%E6%8A%80-%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" title="2026-03-21 周报｜生物科技、生物信息学与新技术"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-21</div><div class="info-item-2">2026-03-21 周报｜生物科技、生物信息学与新技术</div></div><div class="info-2"><div class="info-item-1">2026-03-21 周报｜生物科技、生物信息学与新技术 本文信息由 AI 爬取+整理，经人工核验后发布。AI 爬取可能会有遗漏，欢迎在评论区补充。如有偏差，也欢迎指正。  本期覆盖时间：2026-03-15 ～ 2026-03-21（含）  这周生物科技和生信这边，没有”一篇顶刊引爆全网”的单点大新闻。但有几件对做实际研究的人来说影响更长的事：数据库基础规范升级、资源平台化趋势、以及两篇方向性值得关注的论文。  一、生物科技资讯1. NCBI 采纳了 INSDC 关于 GenBank 和 SRA 的最小规范要求这是本周最值得认真看的一条。简单说：以后往 GenBank 和 SRA 提交数据，需要满足更明确的最低元数据标准。 对长期依赖公开数据库做分析的生信用户来说，这意味着：  提交的数据会更规范，复用时遇到”缺字段””格式不统一”的概率会降低 元数据缺失导致的自动化处理障碍会逐步减少 可追溯性和可复现性会变得更好  这类变化不像新模型发布那样有即时热度，但对你的工作流程影响是持续的。如果你的日常有”从公开数据库下载→标准化→分析”这一环，这条比大多数”某模型又升级了”更值得记...</div></div></div></a><a class="pagination-related" href="/2026/04/12/2026-04-12-02-%E8%82%BF%E7%98%A4%E7%9A%84%E5%9E%83%E5%9C%BE%E5%A4%84%E7%90%86%E5%99%A8%E5%85%B3%E6%8E%89%E4%B9%8B%E5%90%8E-%E5%85%8D%E7%96%AB%E7%B3%BB%E7%BB%9F%E7%AA%81%E7%84%B6%E7%9C%8B%E5%88%B0%E4%BA%86%E5%AE%83/" title="肿瘤的&quot;垃圾处理器&quot;关掉之后，免疫系统突然看到了它"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-12</div><div class="info-item-2">肿瘤的&quot;垃圾处理器&quot;关掉之后，免疫系统突然看到了它</div></div><div class="info-2"><div class="info-item-1">肿瘤的”垃圾处理器”关掉之后，免疫系统突然看到了它免疫治疗能激活人体自身的免疫系统去攻击肿瘤，这已经不是新闻。但有一个基本问题始终卡在那里：免疫系统凭什么认出肿瘤？ 目前最主流的答案是”突变”——肿瘤细胞的 DNA 发生了突变，产生了一些正常细胞没有的异常蛋白片段（新抗原），免疫系统把这些片段当作”非我”来攻击。这个逻辑催生了”突变负荷”这个指标：突变越多的肿瘤，理论上越容易被免疫系统发现，免疫治疗也越可能有效。 但这个逻辑有个盲区：它默认只有突变才能产生新抗原。 2026 年 4 月发表在 Immunity 上的一项研究提出了一个不同的视角（Vendramin et al., 2026）。TRACERx 联盟的研究团队发现，细胞里有一套”垃圾处理器”——无义介导 mRNA 降解（Nonsense-Mediated mRNA Decay，简称 NMD）——它的状态可能比 DNA 突变更直接地决定了肿瘤能被免疫系统看到多少。  什么是 NMD先解释一下 NMD 是什么。 细胞在转录 DNA 为 mRNA 的过程中，偶尔会产生一些”有毛病”的转录本。最常见的毛病是提前终止密码子（pr...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%B8%AAAI%E6%B2%A1%E6%9C%89%E8%A7%81%E8%BF%87%E7%9A%84%E6%96%B0%E6%8A%97%E7%94%9F%E7%B4%A0%EF%BC%8C%E6%98%AF%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%89%BE%E5%88%B0%E7%9A%84%E2%80%94%E2%80%94%E4%B8%BA%E4%BB%80%E4%B9%88GNN%E8%BF%9B%E5%85%A5%E4%BA%86%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6"><span class="toc-number">1.</span> <span class="toc-text">一个AI没有见过的新抗生素，是图神经网络找到的——为什么GNN进入了生物信息学</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E5%AE%83"><span class="toc-number">1.1.</span> <span class="toc-text">图是什么，为什么要用它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E7%89%A9%E9%87%8C%E7%9A%84%E5%9B%BE%E6%95%B0%E6%8D%AE%E6%9C%89%E5%A4%9A%E6%99%AE%E9%81%8D"><span class="toc-number">1.2.</span> <span class="toc-text">生物里的图数据有多普遍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNN%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B8%AD%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.</span> <span class="toc-text">GNN在生物信息学中做了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNN%E7%9A%84%E5%B1%80%E9%99%90"><span class="toc-number">1.4.</span> <span class="toc-text">GNN的局限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88GNN%E5%AF%B9%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%87%8D%E8%A6%81"><span class="toc-number">1.5.</span> <span class="toc-text">为什么GNN对生物信息学重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.6.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DNA 基础模型的嵌入表示会不会泄露原始序列？ | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DNA 基础模型的嵌入表示会不会泄露原始序列？DNA foundation model 正在变成生信分析的基础设施。从 GenSLM、DNABERT-2 到 Nucleotide Transformer，这些模型可以把任意 DNA 序列编码成固定维度的向量，用于变异检测、调控元件预测、物种分类等下游任务。 很多研究者认为嵌入表示是”安全”的——分享的是向量，不是序列本身。向量只是一组数字，看起来不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNA 基础模型的嵌入表示会不会泄露原始序列？">
+<meta property="og:url" content="http://bohuyeshan.top/2026/03/29/2026-03-29-01-DNA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="DNA 基础模型的嵌入表示会不会泄露原始序列？DNA foundation model 正在变成生信分析的基础设施。从 GenSLM、DNABERT-2 到 Nucleotide Transformer，这些模型可以把任意 DNA 序列编码成固定维度的向量，用于变异检测、调控元件预测、物种分类等下游任务。 很多研究者认为嵌入表示是”安全”的——分享的是向量，不是序列本身。向量只是一组数字，看起来不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-03-29T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.154Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DNA 基础模型的嵌入表示会不会泄露原始序列？",
+  "url": "http://bohuyeshan.top/2026/03/29/2026-03-29-01-DNA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-03-29T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.154Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/03/29/2026-03-29-01-DNA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DNA 基础模型的嵌入表示会不会泄露原始序列？',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">DNA 基础模型的嵌入表示会不会泄露原始序列？</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DNA 基础模型的嵌入表示会不会泄露原始序列？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-29T20:00:00.000Z" title="发表于 2026-03-29 20:00:00">2026-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.154Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E4%BF%A1%E6%8A%80%E6%9C%AF/">生信技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="DNA-基础模型的嵌入表示会不会泄露原始序列？"><a href="#DNA-基础模型的嵌入表示会不会泄露原始序列？" class="headerlink" title="DNA 基础模型的嵌入表示会不会泄露原始序列？"></a>DNA 基础模型的嵌入表示会不会泄露原始序列？</h1><p>DNA foundation model 正在变成生信分析的基础设施。从 GenSLM、DNABERT-2 到 Nucleotide Transformer，这些模型可以把任意 DNA 序列编码成固定维度的向量，用于变异检测、调控元件预测、物种分类等下游任务。</p>
+<p>很多研究者认为嵌入表示是”安全”的——分享的是向量，不是序列本身。向量只是一组数字，看起来不包含可读的生物学信息。</p>
+<p>这篇 2026-03-06 提交的论文 “How Private Are DNA Embeddings?” 挑战了这个假设。</p>
+<hr>
+<p>DNA foundation model 的核心能力是把 DNA 序列编码成语义向量。这个过程类似于 NLP 里的 word embedding：把离散的 token 映射到连续向量空间，让语义相似的序列在向量空间里距离更近。</p>
+<p>具体流程是先把 DNA 序列切分成 k-mer，用 Transformer 编码器处理，输出每个位置的向量表示或整个序列的聚合向量。这个向量捕获了序列的”语义”——调控模式、编码区域特征、物种特异性等。</p>
+<p>嵌入表示即服务（Embeddings-as-a-Service，EaaS）正在变成常见的商业模式：服务提供商部署 DNA foundation model，用户提交序列获得嵌入表示，在本地做下游任务。用户不需要部署大模型，只需要调用 API。</p>
+<p>但问题是：你把序列发给服务提供商，服务提供商获得什么信息？如果是原始序列，隐私风险显而易见。但如果只分享嵌入表示呢？</p>
+<hr>
+<p>嵌入表示是一个高维向量，比如 768 维或 1024 维。从信息论角度，一个固定维度的向量能表示的信息量是有限的。DNA 序列的长度可以是任意的——短序列几十 bp，长序列几百万 bp。直觉上，把一个长序列压缩成固定维度的向量，必然会有信息损失。</p>
+<p>但这篇论文指出：关键不是”能不能完全重建”，而是”能重建多少”。即使只能重建部分序列，也可能泄露敏感信息。</p>
+<p>论文的实验分三个层次。第一，给定一个嵌入表示，训练反向模型预测原始序列，评估重建序列与原始序列的匹配度。第二，测试多种 DNA foundation model，比较它们嵌入表示的可逆程度。第三，研究序列长度、模型架构、训练数据对泄露风险的影响。</p>
+<p>结果有几个值得注意的发现。短序列的嵌入表示更容易被逆向——对于 100-500 bp 的序列，反向模型可以重建相当比例的正确序列。不同模型的信息泄露程度不同，某些 DNA foundation model 的嵌入表示包含更多可逆信息，这与模型的架构设计和训练方式有关。即使无法完全重建原始序列，嵌入表示也可能泄露序列的关键特征：GC 含量、重复模式、特定 motif 的存在。</p>
+<hr>
+<p>DNA 数据与其他类型数据有一个本质区别：DNA 序列是个体的唯一标识。一个人有 30 亿 bp 的基因组，每个人的基因组都是唯一的（除了同卵双胞胎），基因组信息与疾病风险、家族关系、身份识别直接相关。这意味着 DNA 数据的隐私泄露后果比其他数据更严重。你的密码泄露了可以改，你的 DNA 泄露了无法更改。</p>
+<p>如果你的研究涉及敏感基因组数据，比如患者样本或法医样本，使用第三方嵌入服务时需要考虑几个问题。</p>
+<p>服务提供商能从嵌入表示推断什么？即使你只发送嵌入表示，服务提供商也可能通过反向模型推断原始序列的部分内容。嵌入表示本身是否可以匿名化？这篇论文表明，嵌入表示可能包含足够的信息来识别个体，”只分享向量”不等于”匿名化”。如果你的数据受 GDPR、HIPAA 等法规保护，分享嵌入表示是否被视为分享受保护的健康信息？这个问题目前尚无明确法律界定。</p>
+<p>这篇论文研究的是”嵌入表示逆向攻击”，但这只是基因组隐私攻击的一种。其他类型的攻击包括成员推断攻击（判断某个个体是否在训练数据中）、属性推断攻击（从基因组数据推断个体的敏感属性）、重建攻击（从聚合统计数据重建个体基因型）。嵌入表示逆向攻击与这些攻击形成了一个完整的威胁模型：基因组数据在不同处理阶段都有隐私风险。</p>
+<hr>
+<p>对研究者来说，嵌入表示不是匿名化手段。不要以为”只分享向量，不分享序列”就安全。选择 DNA foundation model 时，除了看下游任务性能，还要考虑嵌入表示的信息泄露风险。如果处理的是敏感基因组数据，需要评估是否应该在本地部署模型，而不是使用云端 EaaS 服务。</p>
+<p>对模型开发者来说，可以考虑在模型架构和训练过程中添加隐私保护机制，比如差分隐私训练、嵌入表示的扰动或噪声注入。在发布模型时，可以提供嵌入表示可逆性的评估报告，帮助用户了解隐私风险。</p>
+<hr>
+<p>这篇论文有几个局限。它没有提出防御机制，如何设计”不可逆”的嵌入表示、如何在保护隐私的同时保留语义信息，这些问题留待后续研究。论文主要研究”白盒攻击”——攻击者知道模型的架构和参数，现实中更常见的是”灰盒攻击”——攻击者只能调用模型 API，不知道内部参数。论文研究的是单个序列的嵌入表示，如果攻击者获得大量嵌入表示，是否可以通过聚合分析推断更多信息，这个问题没有涉及。</p>
+<p>上周的 BioShield（arXiv:2603.22612）解决的是另一个方向的问题：如何防止 Bio-LLM 被恶意使用。那篇论文提出的是”防御恶意用户”的框架。今天这篇解决的是”防御恶意服务提供商”的问题：当用户把数据发给模型时，模型或其运营者是否能推断用户的敏感信息。</p>
+<p>两个问题指向同一个结论：Bio-AI 的安全性需要成为设计和部署时的核心考量，而不是事后补救。</p>
+<hr>
+<p>参考文献</p>
+<ul>
+<li>How Private Are DNA Embeddings? Inverting Foundation Model Representations of Genomic Sequences. Sofiane Ouaari, Jules Kreuer, Nico Pfeifer. 2026-03-06. arXiv 搜索：<a target="_blank" rel="noopener" href="https://arxiv.org/search/?searchtype=all&query=%22How+Private+Are+DNA+Embeddings%22">https://arxiv.org/search/?searchtype=all&amp;query=%22How+Private+Are+DNA+Embeddings%22</a></li>
+<li>BioShield: A Context-Aware Firewall for Securing Bio-LLMs. arXiv:2603.22612. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.22612">https://arxiv.org/abs/2603.22612</a></li>
+<li>Lingshu-Cell: A generative cellular world model for transcriptome modeling toward virtual cells. arXiv:2603.25240. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.25240">https://arxiv.org/abs/2603.25240</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/03/29/2026-03-29-01-DNA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97/">http://bohuyeshan.top/2026/03/29/2026-03-29-01-DNA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/03/30/2026-03-30-01-MIOFlow2-%E4%BB%8E%E5%8D%95%E7%BB%86%E8%83%9E%E5%92%8C%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E6%8E%A8%E6%96%AD%E7%BB%86%E8%83%9E%E9%9A%8F%E6%9C%BA%E5%8A%A8%E5%8A%9B%E5%AD%A6/" title="MIOFlow 2.0：从快照数据里推断细胞怎么走过来的"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">MIOFlow 2.0：从快照数据里推断细胞怎么走过来的</div></div><div class="info-2"><div class="info-item-1">MIOFlow 2.0：从快照数据里推断细胞怎么走过来的单细胞转录组测序有一个根本性的限制：它是破坏性的。 你把细胞裂解，提取 RNA，测序。这个细胞就没了。你没办法追踪同一个细胞在不同时间点的状态变化。你能做的，是在某个时刻把一批细胞全部测完，得到一张”快照”——这批细胞在这个时刻各自长什么样。 这张快照里有很多信息，但缺少一个维度：时间。  细胞轨迹推断（trajectory inference）这个方向就是为了解决这个问题。核心假设是：一批细胞里，不同的细胞处于分化过程的不同阶段。有的刚开始分化，有的已经分化到一半，有的已经到了终态。如果你把这些细胞按照基因表达的相似性排列，就能大致还原出分化的路径。 Monocle 是这个方向最早的工具之一，用的是主成分分析加最小生成树，把细胞排成一条轨迹。后来的 PAGA、Slingshot 等方法在这个基础上做了各种改进，但基本思路类似：在高维基因表达空间里，找一条或几条路径，把细胞串起来。 这类方法有一个共同的问题：它们假设细胞的转变是确定性的。给定一个起始状态，细胞会沿着一条固定的路径走到终态。但真实的生物过程不是这样的。  细胞...</div></div></div></a><a class="pagination-related" href="/2026/03/28/2026-03-28-01-%E5%91%A8%E6%8A%A5-GitHub-AI-%E6%A8%A1%E5%9E%8B/" title="周报｜GitHub、AI 技术与新模型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">周报｜GitHub、AI 技术与新模型</div></div><div class="info-2"><div class="info-item-1">周报｜GitHub、AI 技术与新模型 本文信息由 AI 爬取+整理，经人工核验后发布。AI 爬取可能会有遗漏，欢迎在评论区补充。如有偏差，也欢迎指正。  本期覆盖时间：2026-03-22 ～ 2026-03-28（含）  这周 GitHub 上的 Agent 框架项目爆发式增长，Trending 榜单有一半是 Agent 工具类。但不能只看热闹——这背后有三条明确的技术分化方向在同时推进：工具层的完善、方法论层的积累、以及记忆层的突破。同时 Agent 安全协议方向出现了值得关注的新进展。  一、GitHub 每周热门内容1. everything-claude-code：Agent Harness 的工程化实践范本GitHub: affaan-m&#x2F;everything-claude-code本周新增 stars：约 22,000 | 总 stars：约 113,000 | 贡献者：30 人 everything-claude-code 这周 Star 增速极快。它不是某个具体工具，而是一套经过 10 个月真实产品开发打磨出来的 Agent Harness 性能优化...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/15/2026-04-15-02-%E4%BD%A0%E6%8B%8D%E4%BA%86%E4%B8%80%E5%BC%A0%E7%85%A7%E7%89%87%E4%BD%86%E5%85%B6%E5%AE%9E%E8%83%BD%E7%9C%8B%E5%88%B0%E6%95%B4%E6%9D%A1%E6%97%B6%E9%97%B4%E7%BA%BF/" title="你拍了一张照片，但其实能看到整条时间线"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-15</div><div class="info-item-2">你拍了一张照片，但其实能看到整条时间线</div></div><div class="info-2"><div class="info-item-1">你拍了一张照片，但其实能看到整条时间线假设你走进一家幼儿园，只拍了一张照片。照片里有正在哭的、在玩积木的、在排队等午饭的、在午睡的。你没见过这些孩子从早到晚的完整日程，但你能从每个人正在做的事情来推断：哭的那个可能刚被送来，午睡的那个可能已经在幼儿园待了大半天。 单细胞生物学家面对的困境，和这差不多。  问题出在哪单细胞 RNA 测序是最近十年最有力的生物学工具之一。它的能力很惊人：一次实验可以同时测量一万个细胞的基因表达状态，让你看到一个组织中所有细胞的全景。 但它有一个根本性的限制：测序会杀死细胞。 你没法对同一个细胞测两次。所以你拿到的永远是一张”快照”——所有细胞在某一时刻的状态。而你想知道的是：干细胞是怎么变成血细胞的？皮肤细胞在受伤后怎么重新编程回祖细胞状态的？肿瘤细胞怎么一步步获得转移能力的？ 这些”怎么变”的问题，本质上是时间问题。但你的数据里没有时间。 2019 年的一项研究为此提供了一个思路。 Schiebinger 等人在 Cell 上发表了 Waddington-OT，用一种叫”最优传输”的数学工具来推断细胞分化路径。它的基本想法是：如果你有早期和晚期两个...</div></div></div></a><a class="pagination-related" href="/2026/04/20/2026-04-20-02-%E6%B5%B7%E6%B4%8B%E9%87%8C%E6%9C%80%E5%BF%AB%E7%9A%84%E6%8E%A0%E9%A3%9F%E8%80%85%E6%AD%A3%E5%9C%A8%E8%BF%87%E7%83%AD/" title="海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-20</div><div class="info-item-2">海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境</div></div><div class="info-2"><div class="info-item-1">海洋里最快的掠食者正在被自己的体温困住——温血鱼类的热力学困境大白鲨和蓝鳍金枪鱼是海洋里最让人敬畏的掠食者。它们游得快、耐力强、追猎凶猛。这背后有一个很少被提及的生理特征：它们的体温比海水高。 大多数鱼类是冷血的，体温随环境变化。但鲨鱼和金枪鱼中不到0.1%的物种进化出了一种中间状态——中温性（mesothermy）。它们能保留体内产生的热量，让肌肉、眼睛或内脏比周围海水高出几度甚至十几度。这让它们在冷水中保持高速游动和敏锐视觉，成为远洋追猎的高手。 但这种能力有代价。都柏林三一学院和比勒陀利亚大学团队4月17日发表在《Science》上的研究，第一次系统量化了这个代价：在控制了体型和水温因素后，中温性鱼类的日常代谢率约为同等体型冷血鱼类的3.8倍。 体温越高，胃口越大研究团队开发了一种新方法来估算野生鱼类在自由游动时的代谢率。他们在鱼身上安装小型传感器，记录体温和水温的实时数据，由此推算鱼体产生和散失的热量。团队还结合了数百个实验室测量数据，覆盖范围从小型鱼类到3.5吨重的巨型姥鲨。 结果是：体温每升高10°C，代谢率翻一倍以上。一只1吨重的温血鲨鱼，每天需要的食物量远超同等体...</div></div></div></a><a class="pagination-related" href="/2026/04/16/2026-04-16-01-rnn%E9%80%80%E5%BD%B9%E4%BA%86%E5%90%97-%E5%AE%83%E5%92%8Ctransformer%E5%9C%A8%E7%94%9F%E4%BF%A1%E4%B8%AD%E7%9A%84%E7%9C%9F%E5%AE%9E%E5%88%86%E5%B7%A5/" title="RNN 退役了吗——它和 Transformer 在生信中的真实分工"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-16</div><div class="info-item-2">RNN 退役了吗——它和 Transformer 在生信中的真实分工</div></div><div class="info-2"><div class="info-item-1">RNN 退役了吗——它和 Transformer 在生信中的真实分工在前面两篇文章中，我们分别讨论了 RNN&#x2F;LSTM 为什么适合生物序列数据（开篇），以及它们在细胞轨迹推断中的角色（代表工作）。 这个批次的最后一节要回答一个很多人心里其实一直在想的问题：Transformer 不是已经赢了吗？RNN 还有存在的必要吗？ 这个问题之所以值得认真回答，是因为它背后藏着一个更一般性的思考：在生物信息学中，技术演进的逻辑到底是什么——是”新的替代旧的”，还是”不同的解决不同的”？  先看 Transformer 做到了什么Transformer 在生物信息学中的影响是真实的，不需要回避。 蛋白质语言模型是最成功的案例。ESM-2、ProtTrans 等模型在大规模蛋白质序列数据库上预训练后，可以在零样本条件下预测残基接触图、蛋白质功能、突变效应。这些模型不需要多序列比对（MSA），不需要标注数据，只靠一条氨基酸序列就能给出有生物学意义的预测。 DNA 语言模型——DNABERT、Nucleotide Transformer——在转录因子结合位点预测、剪接位点识别等任务上展示了...</div></div></div></a><a class="pagination-related" href="/2026/03/22/1-%E7%94%9F%E4%BF%A1Agent%E5%BC%80%E5%A7%8B%E8%90%BD%E5%9C%B0/" title="生信 Agent 开始落地"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-22</div><div class="info-item-2">生信 Agent 开始落地</div></div><div class="info-2"><div class="info-item-1">生信 Agent 开始落地 从 scAgent 到 OmicVerse，今天新冒出来的生信 Agent 工作流，已经不只是“帮你聊两句”了  今天这篇不按周报写，也不想再重复“AI 正在改变科研”那类话。更值得写的，是 2026-03-22 这一天能看到的几个新信号：生信里的 Agent，开始不再满足于解释概念、补几段代码、顺手查两篇论文，它们正在往真正的执行层靠近。换句话说，这些系统不只是会说话的界面，而是开始尝试接数据、调工具、跑标准步骤、吐中间结果，再把人留在真正关键的复核点上。这个变化听起来有点抽象，但如果你把它摊开看，就会发现它对应着一个很具体的迁移：过去很多分析是“人先打开 notebook，再决定做什么”；现在有些入口开始变成“先把任务和数据交给系统，系统先把标准动作跑起来，人再决定结论是否成立”。 今天看到的这些东西，更像一种结构性变化的早期样本，而不是几条零散热点。因为一旦入口变了，后面的组织方式、参数管理、人工审核、结果交接，都会跟着变。用一个尽量朴素的表达来说，以前很多分析默认的路径大致是 1数据 -&gt; notebook -&gt; 命令 -&gt; ...</div></div></div></a><a class="pagination-related" href="/2026/04/02/2026-04-02/" title="Transformer架构在生物信息学中的基础应用与前瞻"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-02</div><div class="info-item-2">Transformer架构在生物信息学中的基础应用与前瞻</div></div><div class="info-2"><div class="info-item-1">Transformer架构在生物信息学中的基础应用与前瞻在过去数年中，深度学习技术在计算生物学领域取得了显著进展。其中，2017年提出的Transformer架构凭借其核心的自注意力机制，不仅在自然语言处理（NLP）领域引发了范式转变，更因其对序列数据强大的建模能力，迅速成为生物信息学研究的底层基础设施。生物学本质上是一门研究信息存储、传递与表达的学科。从DNA中四个碱基的线性排列，到RNA的转录加工，再到蛋白质中氨基酸的折叠与组装，生命系统遵循着一套复杂的“编码规则”。这种将离散单元组合成具有高级功能序列的特性，与人类自然语言存在高度的结构相似性。本文旨在从宏观视角剖析Transformer架构契合生物序列建模的底层逻辑，梳理其在当前生物信息学核心场景中的基础应用，并客观探讨该技术面临的瓶颈与未来演进方向。  一、 序列到结构的映射：Transformer的底层逻辑优势在Transformer被广泛应用之前，生物信息学处理一维序列数据（如DNA、蛋白质序列）主要依赖隐马尔可夫模型（HMM）、循环神经网络（RNN）或卷积神经网络（CNN）。然而，生物大分子序列具有两个固有的计算挑...</div></div></div></a><a class="pagination-related" href="/2026/04/18/2026-04-18-05-%E4%BD%A0%E7%9A%84%E5%A4%A7%E8%84%91%E6%9C%89100%E4%B8%87%E4%BA%BF%E4%B8%AA%E7%AA%81%E8%A7%A6gpt%E6%9C%89%E5%A4%9A%E5%B0%91/" title="你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于&quot;智能&quot;的参数考古"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-18</div><div class="info-item-2">你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于&quot;智能&quot;的参数考古</div></div><div class="info-2"><div class="info-item-1">你的大脑有 100 万亿个突触，GPT 有多少？——从果蝇全脑模拟到大模型涌现，一场关于”智能”的参数考古当你和 ChatGPT 对话时，你可能不会意识到：这个模型的”大脑”在某种意义上比一只果蝇大了 15 倍——但果蝇能飞、能找食物、能求偶、能学习避开危险，而 15 倍大的 GPT-2 在 2019 年连一句连贯的话都说不出来。 这个看似矛盾的现象背后，藏着一个关于”智能”的深刻问题：参数多就等于聪明吗？如果不是，那到底什么才是智能的关键？ 这篇文章试图用一组对比数据、一个令人兴奋的虚拟果蝇实验，以及一个关于”涌现”的参数阶梯，来重新审视这个问题。  第一章：先搞清楚一件事——大模型的”参数”到底是什么参数约等于突触，不是神经元当我们说 GPT-3 有 1750 亿个参数时，这些参数到底是什么？ 在人工神经网络中，参数是连接两个”神经元”的权重值。每次计算时，一个神经元的输出会乘以这个权重值，再传递给下一个神经元。训练过程就是调整这些权重值，让网络的输出越来越接近目标。 在生物大脑中，对应这个角色的是突触——两个神经元之间的连接点。突触不是一个简单的开关，而是一个复杂的生化结构...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DNA-%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B5%8C%E5%85%A5%E8%A1%A8%E7%A4%BA%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%A7%8B%E5%BA%8F%E5%88%97%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">DNA 基础模型的嵌入表示会不会泄露原始序列？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

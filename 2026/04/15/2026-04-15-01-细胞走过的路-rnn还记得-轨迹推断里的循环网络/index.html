@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>细胞走过的路，RNN 还记得——轨迹推断里的循环网络 | BoHuYeShan</title><meta name="author" content="BoHuYeShan"><meta name="copyright" content="BoHuYeShan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="细胞走过的路，RNN 还记得——轨迹推断里的循环网络在上一篇文章中，我们讨论了为什么生物序列数据天然适合用循环网络来处理。DNA、RNA、蛋白质都是一维序列，碱基和氨基酸的排列顺序本身就携带信息，而 RNN 的设计恰好对应了这个特征：按顺序读取、维护上下文状态、逐步积累信息。 这篇文章要讨论一个更具体的问题：在单细胞生物学中，有一类任务的核心挑战恰好是”顺序”——这就是细胞轨迹推断。  问题：我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="细胞走过的路，RNN 还记得——轨迹推断里的循环网络">
+<meta property="og:url" content="http://bohuyeshan.top/2026/04/15/2026-04-15-01-%E7%BB%86%E8%83%9E%E8%B5%B0%E8%BF%87%E7%9A%84%E8%B7%AF-rnn%E8%BF%98%E8%AE%B0%E5%BE%97-%E8%BD%A8%E8%BF%B9%E6%8E%A8%E6%96%AD%E9%87%8C%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="BoHuYeShan">
+<meta property="og:description" content="细胞走过的路，RNN 还记得——轨迹推断里的循环网络在上一篇文章中，我们讨论了为什么生物序列数据天然适合用循环网络来处理。DNA、RNA、蛋白质都是一维序列，碱基和氨基酸的排列顺序本身就携带信息，而 RNN 的设计恰好对应了这个特征：按顺序读取、维护上下文状态、逐步积累信息。 这篇文章要讨论一个更具体的问题：在单细胞生物学中，有一类任务的核心挑战恰好是”顺序”——这就是细胞轨迹推断。  问题：我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg">
+<meta property="article:published_time" content="2026-04-15T20:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-05T07:11:57.157Z">
+<meta property="article:author" content="BoHuYeShan">
+<meta property="article:tag" content="科普">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "细胞走过的路，RNN 还记得——轨迹推断里的循环网络",
+  "url": "http://bohuyeshan.top/2026/04/15/2026-04-15-01-%E7%BB%86%E8%83%9E%E8%B5%B0%E8%BF%87%E7%9A%84%E8%B7%AF-rnn%E8%BF%98%E8%AE%B0%E5%BE%97-%E8%BD%A8%E8%BF%B9%E6%8E%A8%E6%96%AD%E9%87%8C%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C/",
+  "image": "https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg",
+  "datePublished": "2026-04-15T20:00:00.000Z",
+  "dateModified": "2026-07-05T07:11:57.157Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BoHuYeShan",
+      "url": "http://bohuyeshan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://bohuyeshan.top/2026/04/15/2026-04-15-01-%E7%BB%86%E8%83%9E%E8%B5%B0%E8%BF%87%E7%9A%84%E8%B7%AF-rnn%E8%BF%98%E8%AE%B0%E5%BE%97-%E8%BD%A8%E8%BF%B9%E6%8E%A8%E6%96%AD%E9%87%8C%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '细胞走过的路，RNN 还记得——轨迹推断里的循环网络',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BoHuYeShan</span></a><a class="nav-page-title" href="/"><span class="site-name">细胞走过的路，RNN 还记得——轨迹推断里的循环网络</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/resume/"><i class="fa-fw fas fa-file-alt"></i><span> 简历</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">细胞走过的路，RNN 还记得——轨迹推断里的循环网络</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-15T20:00:00.000Z" title="发表于 2026-04-15 20:00:00">2026-04-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-05T07:11:57.157Z" title="更新于 2026-07-05 07:11:57">2026-07-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E6%99%AE/">科普</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-07-05 07:11:57&quot;}" hidden></div><h1 id="细胞走过的路，RNN-还记得——轨迹推断里的循环网络"><a href="#细胞走过的路，RNN-还记得——轨迹推断里的循环网络" class="headerlink" title="细胞走过的路，RNN 还记得——轨迹推断里的循环网络"></a>细胞走过的路，RNN 还记得——轨迹推断里的循环网络</h1><p>在上一篇文章中，我们讨论了为什么生物序列数据天然适合用循环网络来处理。DNA、RNA、蛋白质都是一维序列，碱基和氨基酸的排列顺序本身就携带信息，而 RNN 的设计恰好对应了这个特征：按顺序读取、维护上下文状态、逐步积累信息。</p>
+<p>这篇文章要讨论一个更具体的问题：在单细胞生物学中，有一类任务的核心挑战恰好是”顺序”——这就是<strong>细胞轨迹推断</strong>。</p>
+<hr>
+<h2 id="问题：我们只看到了”快照”"><a href="#问题：我们只看到了”快照”" class="headerlink" title="问题：我们只看到了”快照”"></a>问题：我们只看到了”快照”</h2><p>单细胞 RNA 测序（scRNA-seq）是一项改变了生物学研究方式的技术。它可以在一次实验中同时测量数千个甚至数万个细胞的基因表达状态，让我们看到一个组织中所有细胞的”全景图”。</p>
+<p>但这项技术有一个根本性的限制：<strong>它是破坏性的。</strong> 测序过程会裂解细胞，所以我们没办法对同一个细胞在不同时间点重复测量。我们拿到的是一张”快照”——所有细胞在某一时刻的状态，而不是每个细胞从出生到现在的完整记录。</p>
+<p>这就带来了一个核心问题：<strong>从一张快照中，能不能推断出细胞走过什么路？</strong></p>
+<p>比如，我们拿到一批造血干细胞和各种成熟血细胞的混合样本。我们知道这些细胞处于不同的分化阶段，但不知道哪些细胞正在分化成什么，也不知道分化的路径是什么样的。这种从静态数据推断动态过程的任务，就是”轨迹推断”（trajectory inference）。</p>
+<hr>
+<h2 id="RNA-velocity：从”未完成的转录本”推断方向"><a href="#RNA-velocity：从”未完成的转录本”推断方向" class="headerlink" title="RNA velocity：从”未完成的转录本”推断方向"></a>RNA velocity：从”未完成的转录本”推断方向</h2><p>2018 年，La Manno 等人在 <em>Nature</em> 上发表了 RNA velocity 方法，为轨迹推断提供了一个巧妙的思路。</p>
+<p><strong>核心逻辑是这样的：</strong> 基因转录是一个过程——先转录出前体 mRNA（unspliced），再经过剪接变成成熟 mRNA（spliced）。如果一个基因正在被激活，那么在任何给定时刻，细胞中会同时存在较多的未剪接转录本和正在增长的已剪接转录本。反过来，如果一个基因正在被关闭，未剪接转录本会很少，而已剪接转录本还在衰减过程中。</p>
+<p>通过同时测量 unspliced 和 spliced RNA 的比例，可以估计每个基因在每个细胞中的”速度”——它是在被激活还是在被关闭。把这些基因层面的速度汇总起来，就能推断出每个细胞整体上在往哪个方向走。</p>
+<p><strong>这是一个重要的突破，但需要准确理解它的适用范围。</strong> RNA velocity 依赖一个简化的动力学模型：假设每个基因的转录和剪接可以用一个常微分方程（ODE）描述。这个假设在很多情况下成立，但不是所有情况下都成立。当基因的转录速率随时间变化、或者存在多个调控机制时，这个简化模型可能不够准确。</p>
+<p>2020 年，Bergen 等人在 <em>Nature Biotechnology</em> 上发表了 scVelo，用更灵活的动力学模型替代了原来的稳态假设，改进了 RNA velocity 在复杂场景下的表现。但即便如此，RNA velocity 仍然是一个基于模型假设的估计方法，不是对真实细胞运动的直接观测。</p>
+<hr>
+<h2 id="神经网络介入：NARVI-补上缺失的基因"><a href="#神经网络介入：NARVI-补上缺失的基因" class="headerlink" title="神经网络介入：NARVI 补上缺失的基因"></a>神经网络介入：NARVI 补上缺失的基因</h2><p>RNA velocity 在实际应用中遇到的一个常见问题是：<strong>很多基因的速度算不出来。</strong></p>
+<p>原因可能是这些基因的表达量太低、unspliced 和 spliced 的比例不够稳定、或者不符合模型的假设条件。在典型的数据集中，可能有 30% 到 50% 的基因无法计算 velocity，这些基因就被称为”dropped genes”。</p>
+<p>2026 年，Egami 等人在 <em>iScience</em> 上发表了 NARVI（Neural Network-Assisted RNA Velocity Imputation），提出用深度学习来填补这些缺失的速度值。</p>
+<p><strong>NARVI 的思路是：</strong> 先用现有的工具（比如 scVelo 或 UniTVelo）对能算的基因计算速度，然后训练一个神经网络来学习”基因表达模式”和”RNA velocity”之间的关系。训练好之后，用这个模型去预测那些原来算不出来的基因的速度。</p>
+<p>在造血细胞和肺上皮细胞的数据集上，NARVI 成功恢复了数千个原本无法计算速度的基因的 velocity 估计值。这些补充的速度信息改善了下游的轨迹推断和标志基因分析。</p>
+<p><strong>需要明确的是，NARVI 是一种插值&#x2F;预测方法，不是一种新的测量方法。</strong> 它通过学习可计算基因的模式来估计不可计算基因的速度，这意味着它的预测质量取决于可计算基因是否提供了足够的信息。如果可计算基因本身代表性不足，插值结果的可靠性也会下降。</p>
+<hr>
+<h2 id="RNN-在时间序列建模中的角色"><a href="#RNN-在时间序列建模中的角色" class="headerlink" title="RNN 在时间序列建模中的角色"></a>RNN 在时间序列建模中的角色</h2><p>除了 RNA velocity 这条技术路线，RNN&#x2F;LSTM 在细胞动态研究中还有另一个直接的应用场景：<strong>时间序列数据的建模。</strong></p>
+<p>在一些实验设计中，研究者可以在多个时间点对细胞群体进行采样——比如在药物处理后的 0h、6h、12h、24h 分别取样测序。虽然每次测序仍然是破坏性的（不同时间点测的是不同的细胞），但我们可以获得群体层面的时间序列数据。</p>
+<p>LSTM 在这类任务上有天然的优势：它按时间步处理输入，维护一个累积的内部状态，可以学习时间序列中的模式和依赖关系。一些研究用 LSTM 来预测基因表达的动态变化——给定前面几个时间点的表达数据，预测后续时间点的表达趋势。</p>
+<p>2026 年，Jiang 等人在 <em>PLoS Computational Biology</em> 上发表了 scIMF（single-cell Interacting Mean Field model），用 McKean-Vlasov 随机微分方程框架来建模多细胞系统的集体动力学。scIMF 引入了细胞间的注意力机制来捕获非局部的、非对称的细胞间相互作用，在多个时间序列 scRNA-seq 数据集上展示了比现有方法更好的预测表现。</p>
+<p><strong>但这里有一个重要的边界：</strong> 这些方法学习的是群体层面的统计规律，不是单个细胞的命运轨迹。从时间序列数据推断”某个细胞会变成什么”和从单张快照推断”某个细胞从哪里来”，是两个不同类型的问题。前者有时间维度的约束，后者需要从空间结构中反推时间。</p>
+<hr>
+<h2 id="最优传输：另一条技术路线"><a href="#最优传输：另一条技术路线" class="headerlink" title="最优传输：另一条技术路线"></a>最优传输：另一条技术路线</h2><p>值得一提的是，轨迹推断并不只有”基于速度”这一种思路。另一条重要的技术路线是<strong>最优传输</strong>（optimal transport）。</p>
+<p>2019 年，Schiebinger 等人在 <em>Cell</em> 上发表了 Waddington-OT，用最优传输理论来推断细胞分化的路径。它的核心思想是：给定两个时间点的细胞群体快照，用最优传输算法找到从早期细胞到晚期细胞的最优”运输方案”，这个方案就对应了分化的概率路径。</p>
+<p>2025 年底，Tronstad 等人在 <em>PNAS</em> 上发表了 MultistageOT，将最优传输方法推广到多阶段的场景——即使只有单个时间点的快照，也能通过数学建模推断出分化的轨迹。</p>
+<p><strong>最优传输和 RNA velocity 是互补的方法。</strong> RNA velocity 关注的是”每个细胞的瞬时方向”，最优传输关注的是”群体之间的全局映射”。前者更精细但依赖模型假设，后者更全局但依赖数据中不同状态的充分采样。</p>
+<p>RNN&#x2F;LSTM 在这条路线中不是核心工具——最优传输主要依赖数学优化，而不是序列建模。但在一些混合方法中，深度学习（包括 RNN）被用来预处理数据、提取特征或辅助速度估计，与最优传输方法形成配合。</p>
+<hr>
+<h2 id="这些方法各自的适用边界"><a href="#这些方法各自的适用边界" class="headerlink" title="这些方法各自的适用边界"></a>这些方法各自的适用边界</h2><p>理解不同方法的适用范围，比知道哪个方法”更强”更重要。</p>
+<p><strong>RNA velocity 类方法适合：</strong> 数据中有明确的未剪接&#x2F;已剪转录本信息、细胞状态之间有清晰的方向性、关注的是短期的动态变化。它的局限在于依赖简化的动力学模型，且对低表达基因的估计不够稳定。</p>
+<p><strong>最优传输方法适合：</strong> 有多个时间点的数据（或数据中有足够多的不同分化阶段）、关注的是全局的分化路径和命运概率。它的局限在于对”距离”的定义敏感，且难以捕捉快速的瞬态变化。</p>
+<p><strong>RNN&#x2F;LSTM 适合：</strong> 有时间序列数据、需要建模序列中的时间依赖关系、计算资源受限或需要在线学习的场景。它的局限在于顺序处理效率低、长程依赖有衰减。</p>
+<p><strong>没有一种方法能解决所有轨迹推断问题。</strong> 实际研究中，研究者往往会同时使用多种方法，比较它们的结果，寻找一致性高的结论。当不同方法给出不同答案时，这本身就提示了数据或模型中可能存在需要进一步探究的问题。</p>
+<hr>
+<h2 id="对不同读者意味着什么"><a href="#对不同读者意味着什么" class="headerlink" title="对不同读者意味着什么"></a>对不同读者意味着什么</h2><p><strong>如果你是生信方向的研究者：</strong> 这些方法的演进提供了一个很好的案例——理解问题的数学本质比追逐技术框架更重要。RNA velocity 的核心洞察是利用未剪接&#x2F;已剪接转录本的比例来估计动态，这是一个生物学启发的思路，不依赖于任何特定的神经网络架构。最优传输的核心是将分化过程建模为概率分布之间的最优映射，这是一个数学启发的思路。RNN 的核心是利用序列的顺序结构来维护上下文状态。选择哪种方法，取决于你的数据特性和问题需求。</p>
+<p><strong>如果你是湿实验方向的研究者：</strong> 这些计算方法可以帮助你从单细胞数据中提取动态信息，但它们给出的是”估计”和”推断”，不是直接观测。计算推断的结果需要与已知的生物学知识一致，需要通过实验来验证。比如，RNA velocity 预测某个基因在某个细胞群中正在被激活，这个预测可以通过时序 qPCR 或 reporter 实验来检验。计算方法的价值在于缩小需要实验验证的范围，而不是替代实验验证。</p>
+<p><strong>如果你是非专业读者：</strong> 想象你在动物园拍了一张照片，照片里有大象、小象、成年象和老年象。你没见过它们从小长到大的过程，但你可以根据体型大小、皮肤褶皱程度等特征来推测它们的年龄顺序和大致的生活轨迹。这些计算方法做的事情类似——从一张”照片”（单细胞快照）中推断出细胞”从小长到大”的过程。它们是聪明的推测工具，不是时间机器。</p>
+<hr>
+<h2 id="回扣系列主线"><a href="#回扣系列主线" class="headerlink" title="回扣系列主线"></a>回扣系列主线</h2><p>在上一篇中，我们讲了 RNN 为什么适合处理生物序列数据——因为生物序列的”顺序性”是 RNN 最擅长处理的计算特征。</p>
+<p>在轨迹推断这个问题中，”顺序”以另一种形式出现：不是碱基或氨基酸的排列顺序，而是细胞状态变化的时间顺序。虽然核心的轨迹推断方法（RNA velocity、最优传输）并不主要依赖 RNN，但 RNN&#x2F;LSTM 在时间序列建模、序列数据预处理、混合架构的组件等环节中持续发挥作用。</p>
+<p>这印证了上一篇的结论：<strong>在生物信息学中，方法的选择应该从问题的计算特性出发。</strong> 当问题的核心是”顺序”时，RNN 是自然的选择之一。当问题的核心是”全局映射”时，最优传输更合适。当问题是”局部模式识别”时，CNN 可能更有效。好的研究者不会被技术潮流裹挟，而是会冷静地分析问题的本质，选择最匹配的工具。</p>
+<p>下一篇我们将收束这个批次，讨论 RNN 与 Transformer 在生物信息学中的对比与分工——这两种架构分别擅长什么，在今天的实际工作中各自处于什么位置。</p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><p>La Manno, G., et al. (2018). RNA velocity of single cells. <em>Nature</em>, 560(7719), 494-498. <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41586-018-0480-x">https://doi.org/10.1038/s41586-018-0480-x</a></p>
+</li>
+<li><p>Bergen, V., et al. (2020). Generalizing RNA velocity to transient cell states through dynamical modeling. <em>Nature Biotechnology</em>, 38(12), 1408-1414. <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41587-020-0591-3">https://doi.org/10.1038/s41587-020-0591-3</a></p>
+</li>
+<li><p>Schiebinger, G., et al. (2019). Optimal-transport analysis of single-cell gene expression identifies developmental trajectories in reprogramming. <em>Cell</em>, 176(4), 928-943. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cell.2019.01.006">https://doi.org/10.1016/j.cell.2019.01.006</a></p>
+</li>
+<li><p>Egami, R., et al. (2026). Neural network-assisted RNA velocity imputation for empowering transcript dynamics-based analyses. <em>iScience</em>, 29(3), 114909. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.isci.2026.114909">https://doi.org/10.1016/j.isci.2026.114909</a></p>
+</li>
+<li><p>Jiang, Q., et al. (2026). Learning collective multicellular dynamics with an interacting mean field neural SDE model. <em>PLoS Computational Biology</em>, 22(1), e1013916. <a target="_blank" rel="noopener" href="https://doi.org/10.1371/journal.pcbi.1013916">https://doi.org/10.1371/journal.pcbi.1013916</a></p>
+</li>
+<li><p>Tronstad, M., et al. (2025). MultistageOT: Multistage optimal transport infers trajectories from a snapshot of single-cell data. <em>Proceedings of the National Academy of Sciences</em>, 122(50), e2516046122. <a target="_blank" rel="noopener" href="https://doi.org/10.1073/pnas.2516046122">https://doi.org/10.1073/pnas.2516046122</a></p>
+</li>
+<li><p>Lange, M., et al. (2022). CellRank for directed single-cell fate mapping. <em>Nature Methods</em>, 19(2), 159-170. <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41592-021-01346-6">https://doi.org/10.1038/s41592-021-01346-6</a></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top">BoHuYeShan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://bohuyeshan.top/2026/04/15/2026-04-15-01-%E7%BB%86%E8%83%9E%E8%B5%B0%E8%BF%87%E7%9A%84%E8%B7%AF-rnn%E8%BF%98%E8%AE%B0%E5%BE%97-%E8%BD%A8%E8%BF%B9%E6%8E%A8%E6%96%AD%E9%87%8C%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C/">http://bohuyeshan.top/2026/04/15/2026-04-15-01-%E7%BB%86%E8%83%9E%E8%B5%B0%E8%BF%87%E7%9A%84%E8%B7%AF-rnn%E8%BF%98%E8%AE%B0%E5%BE%97-%E8%BD%A8%E8%BF%B9%E6%8E%A8%E6%96%AD%E9%87%8C%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://bohuyeshan.top" target="_blank">BoHuYeShan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%91%E6%99%AE/">科普</a></div><div class="post-share"><div class="social-share" data-image="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/15/2026-04-15-02-%E4%BD%A0%E6%8B%8D%E4%BA%86%E4%B8%80%E5%BC%A0%E7%85%A7%E7%89%87%E4%BD%86%E5%85%B6%E5%AE%9E%E8%83%BD%E7%9C%8B%E5%88%B0%E6%95%B4%E6%9D%A1%E6%97%B6%E9%97%B4%E7%BA%BF/" title="你拍了一张照片，但其实能看到整条时间线"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">你拍了一张照片，但其实能看到整条时间线</div></div><div class="info-2"><div class="info-item-1">你拍了一张照片，但其实能看到整条时间线假设你走进一家幼儿园，只拍了一张照片。照片里有正在哭的、在玩积木的、在排队等午饭的、在午睡的。你没见过这些孩子从早到晚的完整日程，但你能从每个人正在做的事情来推断：哭的那个可能刚被送来，午睡的那个可能已经在幼儿园待了大半天。 单细胞生物学家面对的困境，和这差不多。  问题出在哪单细胞 RNA 测序是最近十年最有力的生物学工具之一。它的能力很惊人：一次实验可以同时测量一万个细胞的基因表达状态，让你看到一个组织中所有细胞的全景。 但它有一个根本性的限制：测序会杀死细胞。 你没法对同一个细胞测两次。所以你拿到的永远是一张”快照”——所有细胞在某一时刻的状态。而你想知道的是：干细胞是怎么变成血细胞的？皮肤细胞在受伤后怎么重新编程回祖细胞状态的？肿瘤细胞怎么一步步获得转移能力的？ 这些”怎么变”的问题，本质上是时间问题。但你的数据里没有时间。 2019 年的一项研究为此提供了一个思路。 Schiebinger 等人在 Cell 上发表了 Waddington-OT，用一种叫”最优传输”的数学工具来推断细胞分化路径。它的基本想法是：如果你有早期和晚期两个...</div></div></div></a><a class="pagination-related" href="/2026/04/14/2026-04-14-04-%E4%B8%80%E4%B8%AA%E8%BD%AC%E5%BA%A7%E5%AD%90%E7%9A%84%E8%B7%B3%E8%B7%83-%E7%BB%99%E7%8C%95%E7%8C%B4%E6%A1%83%E8%A3%85%E4%B8%8A%E4%BA%86%E6%8A%97%E7%97%85%E6%AD%A6%E5%99%A8/" title="一个转座子的跳跃，给猕猴桃装上了抗病武器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">一个转座子的跳跃，给猕猴桃装上了抗病武器</div></div><div class="info-2"><div class="info-item-1">一个转座子的跳跃，给猕猴桃装上了抗病武器猕猴桃溃疡病是全球猕猴桃产业面临的最严重威胁之一。这种由丁香假单胞菌猕猴桃致病变种（Pseudomonas syringae pv. actinidiae，简称 Psa）引起的细菌性溃疡病，可以在几年内摧毁整片果园。自2008年以来，Psa 在意大利、新西兰、韩国、日本等主要猕猴桃产区引发了大规模疫情，造成了数十亿美元的经济损失。 栽培猕猴桃对 Psa 的抗性普遍较弱。但猕猴桃的野生近缘种——特别是毛花猕猴桃（Actinidia eriantha）——对 Psa 表现出明显更强的抗性。 问题是：这种抗性是怎么来的？ 2026年4月发表在 Genome Biology 上的一项研究给出了一个有趣的答案：一个转座子的”跳跃”，给抗病基因装上了一个新的开关。  泛基因组：不只看一个参考基因组传统基因组研究通常依赖一个”参考基因组”——选择一个代表性个体进行测序，作为后续分析的基准。但这种方法有一个根本性的局限：任何一个个体的基因组都无法代表整个物种的遗传多样性。 泛基因组（pangenome）方法试图弥补这一不足。它对一个物种的多个个体进行基因组...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/07/2026-04-07-02-%E5%9F%8E%E5%B8%82%E9%AB%98%E6%A5%BC%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%8F%98%E6%88%90%E4%B8%80%E4%BA%9B%E9%B8%9F%E7%B1%BB%E7%9A%84%E6%96%B0%E6%82%AC%E5%B4%96/" title="城市高楼，为什么会变成一些鸟类的新悬崖？"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-07</div><div class="info-item-2">城市高楼，为什么会变成一些鸟类的新悬崖？</div></div><div class="info-2"><div class="info-item-1">城市高楼，为什么会变成一些鸟类的新悬崖？我们通常会觉得，高楼越多，鸟类的生存空间就越少。 这个判断当然不算错。玻璃幕墙、噪音、夜间照明和密集人流，确实让许多鸟类更难在城市中停留、觅食和繁殖。但如果把问题看得更细一点，会发现另一面：对一些原本就习惯在高处、岩壁、缝隙、桥洞或陡峭边缘附近筑巢的鸟来说，城市里的高楼并不只是障碍，有时反而像是“新的悬崖”。 尤其像上海这样高层建筑密集、垂直空间高度发达的大城市，这种现象其实很值得认真看一看。 对人类来说，高楼是住宅、写字楼、酒店和地标；对某些鸟类来说，高楼的立面、檐口、凹槽、设备平台和桥梁结构，可能意味着另一套完全不同的生态含义： 高度、边缘、隐蔽点、开阔视野，以及不容易被地面捕食者接近的巢位。 换句话说，人类不断向上建造的城市，也在无意中复制出了一部分类似天然悬崖的空间结构。  一、城市没有悬崖，但造出了“功能上相似的悬崖”从鸟类生态学的角度看，适合筑巢的地方，并不一定非得长得像自然悬崖。更重要的是，它是否具备几个关键条件：  足够高 结构稳定 有边缘、凹槽或缝隙 视野开阔 不容易被捕食者或人类直接接近  天然岩壁、崖缝、陡坡和高处平台...</div></div></div></a><a class="pagination-related" href="/2026/03/27/2026-03-27-01-Bio-LLM%E5%AE%89%E5%85%A8%E8%AE%BA%E6%96%87%E4%BB%A3%E7%A0%81%E4%B8%8D%E4%B8%80%E8%87%B4%E8%99%9A%E6%8B%9F%E7%BB%86%E8%83%9E%E6%A8%A1%E5%9E%8B-%E6%9C%AC%E5%91%A8arXiv%E4%B8%89%E7%AF%87%E7%94%9F%E4%BF%A1%E8%AE%BA%E6%96%87/" title="本周 arXiv 生信论文三则：虚拟细胞、论文代码一致性、Bio-LLM 安全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-27</div><div class="info-item-2">本周 arXiv 生信论文三则：虚拟细胞、论文代码一致性、Bio-LLM 安全</div></div><div class="info-2"><div class="info-item-1">本周 arXiv 生信论文三则：虚拟细胞、论文代码一致性、Bio-LLM 安全明天（03-28）会出两篇周报，覆盖 03-22～03-28。周报出来之前，先看三篇本周 arXiv 上刚出现的生信论文。 按重要程度排序，从虚拟细胞模型讲起。 一、Lingshu-Cell：覆盖 18,000 个基因的虚拟细胞生成模型arXiv:2603.25240 | Submitted 26 March, 2026 它做了什么Lingshu-Cell 提出了一个”细胞世界模型”的概念。它的方法是用掩码离散扩散模型（masked discrete diffusion model），直接在离散 token 空间中建模转录组的状态分布，并支持条件扰动模拟。 这个模型覆盖了大约 18,000 个基因的转录组范围，不需要事先做高变基因筛选，也不需要按表达量排序来选基因。这意味着它保留了完整的转录组信息，而不是只关注那些”变化最大的基因”。 在多种组织和物种上的测试结果显示，Lingshu-Cell 能够准确再现转录组分布、标记基因的表达模式和细胞亚型比例。也就是说，给定一个条件（比如某种细胞类型或某个扰动）...</div></div></div></a><a class="pagination-related" href="/2026/04/13/2026-04-13-04-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%9A%82%E8%9A%81%E4%BB%8E%E9%AB%98%E5%A4%84%E6%8E%89%E4%B8%8B%E6%9D%A5%E6%B2%A1%E4%BA%8B-%E4%BA%BA%E4%B8%8D%E8%A1%8C/" title="为什么蚂蚁从高处掉下来没事，人不行？"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-13</div><div class="info-item-2">为什么蚂蚁从高处掉下来没事，人不行？</div></div><div class="info-2"><div class="info-item-1">为什么蚂蚁从高处掉下来没事，人不行？一个思想实验：你把一只蚂蚁从十楼窗户扔出去，再想象一个成年人从同样高度掉下去。 蚂蚁毫发无损地走了。人不用试都知道结果。 为什么同样的高度、同样的重力加速度，结局完全不同？  先算一笔物理账所有物体在空气中下落时，都会受到两个力的对抗：重力向下拽，空气阻力向上推。当这两个力达到平衡，物体就不再加速，而是以一个恒定速度下落——这个速度叫终末速度（terminal velocity）。 终末速度取决于一个核心比值：质量与迎风面积的比。 一个成年人（70 公斤、站立截面积约 0.5 平方米）的终末速度大约是 53 m&#x2F;s（约 190 km&#x2F;h）。这是一个足以致命的速度。 一只蚂蚁（约 1-2 毫克、身体截面积约 0.01 平方毫米）的终末速度大约是 2-6 m&#x2F;s（约 7-20 km&#x2F;h）。这基本上和你用手轻轻扔一个纸团的速度差不多。 蚂蚁从十楼掉下来，相当于被一阵微风轻轻放到地上。  为什么体型越小，空气阻力越”够用”？这就涉及到一个经典原理：平方-立方定律。 简单来说：当一个物体等比例放大时——  它的表面...</div></div></div></a><a class="pagination-related" href="/2026/04/15/2026-04-15-03-%E4%BD%A0%E6%AF%8F%E4%B8%AA%E7%BB%86%E8%83%9E%E9%87%8C%E6%9C%89%E5%87%A0%E5%8D%83%E4%B8%AA%E6%A0%B8%E7%B3%96%E4%BD%93%E5%B7%A5%E5%8E%82-%E6%9C%89%E4%B8%AA%E4%B8%9C%E8%A5%BF%E4%B8%93%E6%8C%91%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E6%8F%92%E5%85%A5/" title="你每个细胞里有几千个核糖体工厂，有个东西专挑其中一个位置插入"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-15</div><div class="info-item-2">你每个细胞里有几千个核糖体工厂，有个东西专挑其中一个位置插入</div></div><div class="info-2"><div class="info-item-1">你每个细胞里有几千个核糖体工厂，有个东西专挑其中一个位置插入你身体里的每个细胞都含有数千个核糖体基因的拷贝。它们串联排列在染色体上，像一排排相同的工厂，日夜不停地生产蛋白质合成的核心机器。这些工厂几乎一模一样，只有一个微小的位置——大约在 28S 核糖体 RNA 基因的第 2384 个碱基附近——在数十亿年的演化中被同一种东西反复瞄准。 这种东西叫 R2 逆转录转座子。它不是随机跳跃的，而是精确地、固执地、在所有拷贝中找到同一个位置，然后把自己插进去。 2026 年 4 月 14 日，Hassan 等人在 Genome Biology 上发表了一项研究，对动物界的 R2 做了迄今最大范围的调查。他们发现，这种看似简单的”寄生虫”的故事，比任何人预想的都要复杂。  一个精明的定居者大多数转座子在基因组中的行为像是流浪汉——随机找一个位置插入，有时候中断了重要基因，有时候插在无所谓的区域，一切都是运气。 R2 不是这样。 它专门插入 28S rRNA 基因中的一个高度保守位点。28S rRNA 是核糖体大亚基的核心组分，而核糖体是所有细胞制造蛋白质的工厂。在大多数动物中，28S 基因...</div></div></div></a><a class="pagination-related" href="/2026/03/25/2026-03-25-04-Geneclaw%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%9B%A0%E5%B7%A5%E5%85%B7%E8%80%8C%E6%98%AF%E4%B8%80%E4%B8%AA%E8%87%AA%E6%BC%94%E5%8C%96Agent%E6%A1%86%E6%9E%B6%E5%AE%83%E5%88%B0%E5%BA%95%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88/" title="Geneclaw 不是基因工具，是一个自演化 Agent 框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-25</div><div class="info-item-2">Geneclaw 不是基因工具，是一个自演化 Agent 框架</div></div><div class="info-2"><div class="info-item-1">Geneclaw 不是基因工具，是一个自演化 Agent 框架很多人第一眼看到 Geneclaw 这个名字，会直觉地把它归到”Bio &#x2F; 基因研究工具”那一类。毕竟名字里带了个 gene，做 AI for Bio 的人很容易觉得又来了一个单细胞或者组学相关的开源项目。 但如果真的去看它的 README 和官网，会发现它和基因研究没什么关系。 先把定位说清楚Geneclaw 官方给自己的定义是：Self-Evolving AI Agent Framework，中文来说就是一个自演化的 AI Agent 框架。官网首页的第一句话就直接写的是 “Safe, Auditable Self-Evolving Agent Framework”——安全、可审计的自演化 Agent 框架。 它和单细胞分析、基因序列处理、表达矩阵这些生物信息学任务完全无关。它的核心目标是：让 AI Agent 改代码这件事变得可追踪、可回滚、可审计。 三代演化脉络把 Geneclaw 放进它该在的技术谱系里，故事其实很清楚： 第一代：OpenClaw（也就是本工具所在的底层框架）最初始的系统，用的是 N...</div></div></div></a><a class="pagination-related" href="/2026/04/15/2026-04-15-04-%E7%97%85%E6%AF%92%E4%B8%80%E5%A4%8D%E5%88%B6%E8%87%AA%E5%B7%B1%E5%B0%B1%E6%9A%B4%E9%9C%B2%E4%BA%86%E9%9D%B6%E5%BF%83/" title="病毒一复制自己，就暴露了靶心"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-15</div><div class="info-item-2">病毒一复制自己，就暴露了靶心</div></div><div class="info-2"><div class="info-item-1">病毒一复制自己，就暴露了靶心你的细胞有一套抗病毒系统，但它不是简单地抓住病毒然后消灭——它更像一个狙击手，等病毒开始干活的时候，在病毒基因组最关键的位置精确制造损伤。 2026 年 4 月 14 日，Miskei 等人在 Genome Biology 上描述了这个机制的细节。他们发现，当单纯疱疹病毒 1 型（HSV-1）在细胞核里转录自己的基因时，会在 DNA 上形成一种叫 R-loop 的特殊结构。这些 R-loop 不是意外，它们是转录过程不可避免的副产品。但正是这些不可避免的结构，被一种叫 APOBEC3 的宿主蛋白精准利用，在病毒基因组上制造大量突变。 病毒要复制就必须转录，转录就一定产生 R-loop，R-loop 暴露的单链 DNA 恰好是 APOBEC3 的完美靶点。 这是一个结构性的陷阱——病毒的生存策略本身就包含了自我暴露的环节。  先说说 R-loop 是什么DNA 在正常情况下是双螺旋——两条链缠在一起。但在基因转录的过程中，其中一条 DNA 链会和正在合成的 RNA 短暂配对，形成一个 DNA-RNA 杂交体。这时另一条 DNA 链就被迫”晾”在外面，变成...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BoHuYeShan</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">59</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/316318805"><i class="fab fa-bilibili"></i><span>去哔哩哔哩找到我！</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BOHUYESHAN-APB" target="_blank" title="Github博客仓库"><i class="fab fa-github-square" style="color: #525252;"></i></a><a class="social-icon" href="https://github.com/BoHuYeShan" target="_blank" title="Github个人仓库"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/316318805" target="_blank" title="bilibili个人主页"><i class="fab fa-bilibili" style="color: #FB7299;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是一个公告！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%86%E8%83%9E%E8%B5%B0%E8%BF%87%E7%9A%84%E8%B7%AF%EF%BC%8CRNN-%E8%BF%98%E8%AE%B0%E5%BE%97%E2%80%94%E2%80%94%E8%BD%A8%E8%BF%B9%E6%8E%A8%E6%96%AD%E9%87%8C%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">细胞走过的路，RNN 还记得——轨迹推断里的循环网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A%E6%88%91%E4%BB%AC%E5%8F%AA%E7%9C%8B%E5%88%B0%E4%BA%86%E2%80%9D%E5%BF%AB%E7%85%A7%E2%80%9D"><span class="toc-number">1.1.</span> <span class="toc-text">问题：我们只看到了”快照”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RNA-velocity%EF%BC%9A%E4%BB%8E%E2%80%9D%E6%9C%AA%E5%AE%8C%E6%88%90%E7%9A%84%E8%BD%AC%E5%BD%95%E6%9C%AC%E2%80%9D%E6%8E%A8%E6%96%AD%E6%96%B9%E5%90%91"><span class="toc-number">1.2.</span> <span class="toc-text">RNA velocity：从”未完成的转录本”推断方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BB%8B%E5%85%A5%EF%BC%9ANARVI-%E8%A1%A5%E4%B8%8A%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%9F%BA%E5%9B%A0"><span class="toc-number">1.3.</span> <span class="toc-text">神经网络介入：NARVI 补上缺失的基因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN-%E5%9C%A8%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%BB%BA%E6%A8%A1%E4%B8%AD%E7%9A%84%E8%A7%92%E8%89%B2"><span class="toc-number">1.4.</span> <span class="toc-text">RNN 在时间序列建模中的角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E4%BC%A0%E8%BE%93%EF%BC%9A%E5%8F%A6%E4%B8%80%E6%9D%A1%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF"><span class="toc-number">1.5.</span> <span class="toc-text">最优传输：另一条技术路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E4%BA%9B%E6%96%B9%E6%B3%95%E5%90%84%E8%87%AA%E7%9A%84%E9%80%82%E7%94%A8%E8%BE%B9%E7%95%8C"><span class="toc-number">1.6.</span> <span class="toc-text">这些方法各自的适用边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%B8%8D%E5%90%8C%E8%AF%BB%E8%80%85%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88"><span class="toc-number">1.7.</span> <span class="toc-text">对不同读者意味着什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%89%A3%E7%B3%BB%E5%88%97%E4%B8%BB%E7%BA%BF"><span class="toc-number">1.8.</span> <span class="toc-text">回扣系列主线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.9.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%9F%E4%BF%A1%E7%AE%A1%E7%BA%BF%E8%A6%81%E7%94%A8Rust%E5%92%8CGo%E9%87%8D%E5%86%99-Python%E5%92%8CR%E8%AF%AD%E8%A8%80%E7%9A%84%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/" title="Python/R 太慢了？用 Rust 和 Go 重写生信分析管线">Python/R 太慢了？用 Rust 和 Go 重写生信分析管线</a><time datetime="2026-07-05T20:00:00.000Z" title="发表于 2026-07-05 20:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/2026-07-05-%E4%B8%A4%E6%9D%A1%E8%B7%AF%E8%BF%9B%E5%85%A5%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%84%B6%E5%90%8E%E5%9C%A8AI%E6%97%B6%E4%BB%A3%E4%BA%A4%E6%B1%87/" title="两条路进入生物信息学，然后在 AI 时代交汇">两条路进入生物信息学，然后在 AI 时代交汇</a><time datetime="2026-07-05T00:00:00.000Z" title="发表于 2026-07-05 00:00:00">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-01-%E4%B8%8D%E5%88%87DNA%E4%B9%9F%E8%83%BD%E6%94%B9%E5%9F%BA%E5%9B%A0-Prime-Editing%E8%BF%9B%E5%85%A5%E4%B8%B4%E5%BA%8A/" title="不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了">不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-02-CAR-T%E7%BB%88%E4%BA%8E%E5%9C%A8%E5%AE%9E%E4%BD%93%E7%98%A4%E9%87%8C%E7%AB%99%E7%A8%B3%E4%BA%86/" title="CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;">CAR-T终于在实体瘤里站稳了：KIR-CAR让T细胞不再&quot;累&quot;</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/27/2026-04-27-03-%E5%8D%95%E7%BB%86%E8%83%9E%E5%8A%A0%E7%A9%BA%E9%97%B4%E8%BD%AC%E5%BD%95%E7%BB%84%E7%9A%842026/" title="单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么">单细胞+空间转录组的2026：从看见细胞到看见细胞在哪里做什么</a><time datetime="2026-04-27T20:00:00.000Z" title="发表于 2026-04-27 20:00:00">2026-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By BoHuYeShan</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

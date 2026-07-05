@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>石头剪刀布</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .choice-btn {
+            width: 100px;
+            height: 100px;
+            border: none;
+            border-radius: 50%;
+            background: #3498db;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .choice-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+        .choice-btn:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+        
+        .choice-btn.rock {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .choice-btn.paper {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .choice-btn.scissors {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+        
+        .choice-btn.selected {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.5);
+        }
+        
+        .battle-area {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .player-area, .computer-area {
+            text-align: center;
+        }
+        
+        .area-label {
+            color: #7f8c8d;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .choice-display {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            background: #ecf0f1;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .choice-display.rock {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        
+        .choice-display.paper {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+        
+        .choice-display.scissors {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+        }
+        
+        .vs {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        
+        .result {
+            min-height: 60px;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .result.win {
+            background: #27ae60;
+            color: white;
+            animation: celebrate 1s ease-in-out;
+        }
+        
+        .result.lose {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .result.draw {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .result.waiting {
+            background: #bdc3c7;
+            color: white;
+        }
+        
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-play {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .btn-play:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        
+        .btn-play:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-auto {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-auto:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-reset {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .btn-back {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn-back:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        
+        .history {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .history-title {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .history-list {
+            list-style: none;
+        }
+        
+        .history-item {
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .history-item.win {
+            border-left: 4px solid #27ae60;
+        }
+        
+        .history-item.lose {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .history-item.draw {
+            border-left: 4px solid #f39c12;
+        }
+        
+        .history-emoji {
+            font-size: 1.2rem;
+            margin: 0 5px;
+        }
+        
+        .history-result {
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .choices {
+                gap: 15px;
+            }
+            
+            .choice-btn {
+                width: 80px;
+                height: 80px;
+                font-size: 2.5rem;
+            }
+            
+            .choice-display {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .info-item {
+                flex-direction: row;
+                gap: 10px;
+            }
+            
+            .info-label {
+                margin-bottom: 0;
+            }
+            
+            .battle-area {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .vs {
+                margin: 10px 0;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .choice-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .choice-display {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
+            
+            .result {
+                font-size: 1.1rem;
+                min-height: 50px;
+            }
+            
+            .info-value {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✊✋✌️ 石头剪刀布</h1>
+            <p>经典的对战游戏，看看你能不能战胜电脑！</p>
+        </div>
+        
+        <div class="game-info">
+            <div class="info-item">
+                <span class="info-label">🏆 胜利</span>
+                <span class="info-value" id="wins">0</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">😞 失败</span>
+                <span class="info-value" id="losses">0</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">🤝 平局</span>
+                <span class="info-value" id="draws">0</span>
+            </div>
+        </div>
+        
+        <div class="choices">
+            <button class="choice-btn rock" onclick="selectChoice('rock')">✊</button>
+            <button class="choice-btn paper" onclick="selectChoice('paper')">✋</button>
+            <button class="choice-btn scissors" onclick="selectChoice('scissors')">✌️</button>
+        </div>
+        
+        <div class="battle-area">
+            <div class="player-area">
+                <div class="area-label">你</div>
+                <div class="choice-display" id="playerChoice">❓</div>
+            </div>
+            
+            <div class="vs">VS</div>
+            
+            <div class="computer-area">
+                <div class="area-label">电脑</div>
+                <div class="choice-display" id="computerChoice">❓</div>
+            </div>
+        </div>
+        
+        <div class="result waiting" id="result">
+            请选择你的出拳！
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-play" id="playBtn" onclick="playGame()" disabled>🎮 出拳！</button>
+            <button class="btn btn-auto" onclick="autoPlay()">⚡ 自动对战</button>
+            <button class="btn btn-reset" onclick="resetGame()">🔄 重置游戏</button>
+            <button class="btn btn-back" onclick="window.location.href='home.html'">🏠 返回主页</button>
+        </div>
+        
+        <div class="history">
+            <div class="history-title">📋 对战历史</div>
+            <ul class="history-list" id="historyList"></ul>
+        </div>
+    </div>
+
+    <script>
+        let playerChoice = null;
+        let computerChoice = null;
+        let wins = 0;
+        let losses = 0;
+        let draws = 0;
+        let gameHistory = [];
+        
+        const choices = ['rock', 'paper', 'scissors'];
+        const choiceEmojis = {
+            rock: '✊',
+            paper: '✋', 
+            scissors: '✌️'
+        };
+        
+        const choiceNames = {
+            rock: '石头',
+            paper: '布',
+            scissors: '剪刀'
+        };
+        
+        function selectChoice(choice) {
+            playerChoice = choice;
+            
+            // 更新UI显示
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.querySelector(`.choice-btn.${choice}`).classList.add('selected');
+            
+            document.getElementById('playerChoice').textContent = choiceEmojis[choice];
+            document.getElementById('playerChoice').className = `choice-display ${choice}`;
+            
+            document.getElementById('playBtn').disabled = false;
+            document.getElementById('result').textContent = '准备好了！点击出拳！';
+            document.getElementById('result').className = 'result waiting';
+        }
+        
+        function playGame() {
+            if (!playerChoice) return;
+            
+            // 电脑随机选择
+            computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            
+            // 更新电脑选择显示
+            document.getElementById('computerChoice').textContent = choiceEmojis[computerChoice];
+            document.getElementById('computerChoice').className = `choice-display ${computerChoice}`;
+            
+            // 判断胜负
+            const result = determineWinner(playerChoice, computerChoice);
+            
+            // 更新结果
+            updateScore(result);
+            updateResultDisplay(result);
+            addToHistory(result);
+            
+            // 重置选择
+            playerChoice = null;
+            document.getElementById('playBtn').disabled = true;
+            
+            // 3秒后清空选择
+            setTimeout(() => {
+                document.getElementById('playerChoice').textContent = '❓';
+                document.getElementById('playerChoice').className = 'choice-display';
+                document.getElementById('computerChoice').textContent = '❓';
+                document.getElementById('computerChoice').className = 'choice-display';
+                document.getElementById('result').textContent = '请选择你的出拳！';
+                document.getElementById('result').className = 'result waiting';
+                
+                document.querySelectorAll('.choice-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+            }, 3000);
+        }
+        
+        function determineWinner(player, computer) {
+            if (player === computer) return 'draw';
+            
+            if (
+                (player === 'rock' && computer === 'scissors') ||
+                (player === 'paper' && computer === 'rock') ||
+                (player === 'scissors' && computer === 'paper')
+            ) {
+                return 'win';
+            }
+            
+            return 'lose';
+        }
+        
+        function updateScore(result) {
+            if (result === 'win') wins++;
+            else if (result === 'lose') losses++;
+            else draws++;
+            
+            document.getElementById('wins').textContent = wins;
+            document.getElementById('losses').textContent = losses;
+            document.getElementById('draws').textContent = draws;
+        }
+        
+        function updateResultDisplay(result) {
+            const resultDiv = document.getElementById('result');
+            
+            if (result === 'win') {
+                resultDiv.textContent = '🎉 你赢了！';
+                resultDiv.className = 'result win';
+            } else if (result === 'lose') {
+                resultDiv.textContent = '😞 你输了！';
+                resultDiv.className = 'result lose';
+            } else {
+                resultDiv.textContent = '🤝 平局！';
+                resultDiv.className = 'result draw';
+            }
+        }
+        
+        function addToHistory(result) {
+            const historyItem = {
+                player: playerChoice,
+                computer: computerChoice,
+                result: result,
+                timestamp: new Date().toLocaleTimeString()
+            };
+            
+            gameHistory.unshift(historyItem);
+            
+            // 只保留最近10条记录
+            if (gameHistory.length > 10) {
+                gameHistory.pop();
+            }
+            
+            renderHistory();
+        }
+        
+        function renderHistory() {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = '';
+            
+            gameHistory.forEach(item => {
+                const li = document.createElement('li');
+                li.className = `history-item ${item.result}`;
+                
+                li.innerHTML = `
+                    <span>
+                        <span class="history-emoji">${choiceEmojis[item.player]}</span>
+                        vs
+                        <span class="history-emoji">${choiceEmojis[item.computer]}</span>
+                    </span>
+                    <span class="history-result">
+                        ${item.result === 'win' ? '🎉' : item.result === 'lose' ? '😞' : '🤝'}
+                        ${item.timestamp}
+                    </span>
+                `;
+                
+                historyList.appendChild(li);
+            });
+        }
+        
+        function autoPlay() {
+            // 自动进行10场对战
+            let count = 0;
+            const maxGames = 10;
+            
+            const autoPlayInterval = setInterval(() => {
+                if (count >= maxGames) {
+                    clearInterval(autoPlayInterval);
+                    return;
+                }
+                
+                // 随机选择
+                const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+                selectChoice(randomChoice);
+                
+                setTimeout(() => {
+                    playGame();
+                }, 500);
+                
+                count++;
+            }, 1500);
+        }
+        
+        function resetGame() {
+            wins = 0;
+            losses = 0;
+            draws = 0;
+            gameHistory = [];
+            playerChoice = null;
+            
+            document.getElementById('wins').textContent = '0';
+            document.getElementById('losses').textContent = '0';
+            document.getElementById('draws').textContent = '0';
+            
+            document.getElementById('playerChoice').textContent = '❓';
+            document.getElementById('playerChoice').className = 'choice-display';
+            document.getElementById('computerChoice').textContent = '❓';
+            document.getElementById('computerChoice').className = 'choice-display';
+            
+            document.getElementById('result').textContent = '请选择你的出拳！';
+            document.getElementById('result').className = 'result waiting';
+            
+            document.getElementById('playBtn').disabled = true;
+            
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            renderHistory();
+        }
+        
+        // 初始化游戏
+        resetGame();
+    </script>
+</body>
+</html>

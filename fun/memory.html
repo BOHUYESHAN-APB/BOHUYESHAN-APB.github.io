@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记忆翻牌游戏</title>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-light: #E1F0FF;
+            --secondary: #5856D6;
+            --success: #34C759;
+            --warning: #FF9500;
+            --danger: #FF3B30;
+            --background: #F2F2F7;
+            --surface: rgba(255, 255, 255, 0.8);
+            --glass-effect: rgba(255, 255, 255, 0.6);
+            --border: #C5C6D0;
+            --text-primary: #1D1D1F;
+            --text-secondary: #8E8E93;
+            --elevation-1: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+            --elevation-2: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+            --elevation-3: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.1);
+            --section-radius: 16px;
+            --card-radius: 12px;
+            --animation-speed: 0.3s;
+        }
+        /* 主题变量 */
+        :root.pink-theme {
+            --primary: #FF2D55;
+            --primary-light: #FFE6EA;
+            --secondary: #AF52DE;
+            --background: #FFF5F7;
+        }
+        :root.green-theme {
+            --primary: #34C759;
+            --primary-light: #E6FFEA;
+            --secondary: #32ADE6;
+            --background: #F0FFF4;
+        }
+        :root.yellow-theme {
+            --primary: #FFCC00;
+            --primary-light: #FFF9C4;
+            --secondary: #FF9500;
+            --background: #FFFDF5;
+        }
+        :root.orange-theme {
+            --primary: #FF9500;
+            --primary-light: #FFE7CC;
+            --secondary: #FF3B30;
+            --background: #FFFBF0;
+        }
+        :root.dark-theme {
+            --primary: #0A84FF;
+            --primary-light: #003767;
+            --secondary: #5E5CE6;
+            --success: #32D74B;
+            --warning: #FF9F0A;
+            --danger: #FF453A;
+            --background: #1A1A1A;
+            --surface: rgba(30, 30, 30, 0.8);
+            --glass-effect: rgba(30, 30, 30, 0.6);
+            --border: #3A3A3C;
+            --text-primary: #F5F5F7;
+            --text-secondary: #AEAEB2;
+            --elevation-1: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+            --elevation-2: 0 4px 6px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+            --elevation-3: 0 10px 15px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #E1F0FF 0%, #F2F2F7 100%);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+        }
+        .header-card {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            padding: 22px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--elevation-1);
+        }
+        .app-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        .game-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            flex-wrap: wrap;
+        }
+        .moves, .timer, .pairs {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            padding: 8px 15px;
+            box-shadow: var(--elevation-1);
+            border: 1px solid var(--border);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .memory-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin: 0 auto 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .card {
+            aspect-ratio: 1;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            transform-style: preserve-3d;
+            transition: transform 0.6s, background var(--animation-speed) ease;
+            box-shadow: var(--elevation-1);
+            border: 1px solid var(--border);
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+            overflow: hidden;
+            color: transparent;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .card.flipped {
+            transform: rotateY(180deg);
+            color: var(--text-primary);
+            background: var(--surface);
+        }
+        .card.matched {
+            background: rgba(52, 199, 89, 0.3);
+            color: var(--text-primary);
+            transform: rotateY(180deg) scale(0.95);
+            cursor: default;
+        }
+        .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--glass-effect);
+            border-radius: var(--card-radius);
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        .card.flipped .card-back {
+            opacity: 0;
+        }
+        .theme-selector {
+            display: flex;
+            background-color: var(--background);
+            border-radius: 100px;
+            padding: 5px;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+        .theme-option {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all var(--animation-speed) ease;
+            touch-action: manipulation;
+        }
+        .theme-option.active {
+            background-color: var(--surface);
+            box-shadow: var(--elevation-1);
+            color: var(--primary);
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        button {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 12px 25px;
+            border-radius: var(--card-radius);
+            color: var(--text-primary);
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            cursor: pointer;
+            transition: all var(--animation-speed) ease;
+            box-shadow: var(--elevation-1);
+            border: 1px solid var(--border);
+        }
+        button:hover, button:active {
+            transform: scale(0.95);
+            background: var(--surface);
+        }
+        .instructions {
+            margin-top: 20px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            padding: 15px;
+            box-shadow: var(--elevation-1);
+            border: 1px solid var(--border);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .instructions h3 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        .instructions p {
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--card-radius);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all var(--animation-speed) ease;
+            z-index: 1000;
+            box-shadow: var(--elevation-1);
+            border: 1px solid var(--border);
+        }
+        .win-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: var(--elevation-3);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .theme-selector {
+                max-width: 250px;
+            }
+            .theme-option {
+                padding: 6px 4px;
+                font-size: 0.75rem;
+            }
+            .memory-board {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 350px;
+            }
+            .card {
+                border-radius: var(--card-radius);
+            }
+        }
+        @media (max-width: 480px) {
+            .memory-board {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="back-btn">← 返回主页</a>
+    
+    <div class="container">
+        <div class="header-card">
+            <h1 class="app-title">🎴 记忆翻牌</h1>
+        </div>
+        
+        <div class="theme-selector">
+            <div class="theme-option active" data-theme="default">默认</div>
+            <div class="theme-option" data-theme="pink">粉色</div>
+            <div class="theme-option" data-theme="green">绿色</div>
+            <div class="theme-option" data-theme="yellow">黄色</div>
+            <div class="theme-option" data-theme="orange">橙色</div>
+            <div class="theme-option" data-theme="dark">夜间</div>
+        </div>
+        
+        <div class="game-info">
+            <div class="moves">步数: <span id="moves">0</span></div>
+            <div class="timer">时间: <span id="timer">0</span>秒</div>
+            <div class="pairs">已匹配: <span id="pairs">0</span>/8</div>
+        </div>
+        
+        <div class="memory-board" id="memoryBoard"></div>
+        
+        <div class="controls">
+            <button id="startBtn">开始游戏</button>
+            <button id="resetBtn">重新开始</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>游戏规则</h3>
+            <p>点击卡片翻开，找出所有匹配的卡片对</p>
+            <p>每次只能翻开两张卡片，匹配成功则保持翻开状态</p>
+            <p>用最少的步数和时间完成所有匹配</p>
+        </div>
+    </div>
+
+    <script>
+        const memoryBoard = document.getElementById('memoryBoard');
+        const movesElement = document.getElementById('moves');
+        const timerElement = document.getElementById('timer');
+        const pairsElement = document.getElementById('pairs');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        const emojis = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+        let timer = 0;
+        let timerInterval;
+        let gameStarted = false;
+        
+        function initializeGame() {
+            // 创建卡片对
+            cards = [...emojis, ...emojis];
+            // 随机打乱顺序
+            cards.sort(() => Math.random() - 0.5);
+            
+            memoryBoard.innerHTML = '';
+            flippedCards = [];
+            matchedPairs = 0;
+            moves = 0;
+            timer = 0;
+            
+            movesElement.textContent = moves;
+            timerElement.textContent = timer;
+            pairsElement.textContent = `${matchedPairs}/8`;
+            
+            // 创建卡片元素
+            cards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.index = index;
+                card.dataset.emoji = emoji;
+                card.textContent = emoji;
+                
+                const cardBack = document.createElement('div');
+                cardBack.className = 'card-back';
+                card.appendChild(cardBack);
+                
+                card.addEventListener('click', () => flipCard(card));
+                memoryBoard.appendChild(card);
+            });
+        }
+        
+        function flipCard(card) {
+            if (!gameStarted || card.classList.contains('flipped') || card.classList.contains('matched') || flippedCards.length >= 2) {
+                return;
+            }
+            
+            card.classList.add('flipped');
+            flippedCards.push(card);
+            
+            if (flippedCards.length === 2) {
+                moves++;
+                movesElement.textContent = moves;
+                
+                setTimeout(checkMatch, 600);
+            }
+        }
+        
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            
+            if (card1.dataset.emoji === card2.dataset.emoji) {
+                // 匹配成功
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                pairsElement.textContent = `${matchedPairs}/8`;
+                
+                if (matchedPairs === 8) {
+                    endGame();
+                }
+            } else {
+                // 匹配失败，翻回
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+            }
+            
+            flippedCards = [];
+        }
+        
+        function startGame() {
+            if (!gameStarted) {
+                gameStarted = true;
+                startTimer();
+                startBtn.textContent = '游戏进行中';
+                startBtn.disabled = true;
+            }
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timer++;
+                timerElement.textContent = timer;
+            }, 1000);
+        }
+        
+        function endGame() {
+            clearInterval(timerInterval);
+            gameStarted = false;
+            
+            setTimeout(() => {
+                const winMessage = document.createElement('div');
+                winMessage.className = 'win-message';
+                winMessage.innerHTML = `
+                    <h2>🎉 恭喜你赢了！</h2>
+                    <p>用时: ${timer} 秒</p>
+                    <p>步数: ${moves}</p>
+                    <button onclick="this.parentElement.remove()">继续游戏</button>
+                `;
+                document.body.appendChild(winMessage);
+            }, 500);
+        }
+        
+        function resetGame() {
+            clearInterval(timerInterval);
+            gameStarted = false;
+            startBtn.textContent = '开始游戏';
+            startBtn.disabled = false;
+            initializeGame();
+        }
+        
+        // 主题切换功能
+        function initThemeSystem() {
+            const savedTheme = localStorage.getItem('memory-theme') || 'default';
+            applyTheme(savedTheme);
+            
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    const theme = e.target.dataset.theme;
+                    applyTheme(theme);
+                    localStorage.setItem('memory-theme', theme);
+                });
+            });
+        }
+        
+        function applyTheme(theme) {
+            document.documentElement.className = theme === 'default' ? '' : `${theme}-theme`;
+            
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.classList.toggle('active', option.dataset.theme === theme);
+            });
+        }
+        
+        startBtn.addEventListener('click', startGame);
+        resetBtn.addEventListener('click', resetGame);
+        
+        // 初始化
+        initThemeSystem();
+        initializeGame();
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+/* 主题颜色变量 */
+:root {
+    /* 亮色主题 */
+    --light-primary: #38BDF8;
+    --light-secondary: #818CF8;
+    --light-accent: #34D399;
+    --light-background: #ffffff;
+    --light-surface: #f8fafc;
+    --light-text: #1f2937;
+    --light-text-secondary: #4b5563;
+    --light-border: #e2e8f0;
+    
+    /* 暗色主题 */
+    --dark-primary: #1f2937;
+    --dark-secondary: #1E40AF;
+    --dark-accent: #059669;
+    --dark-background: #0f172a;
+    --dark-surface: #1e293b;
+    --dark-text: #f1f5f9;
+    --dark-text-secondary: #cbd5e1;
+    --dark-border: #334155;
+
+    /* 新拟态效果阴影 */
+    --light-shadow-1: #ffffff;
+    --light-shadow-2: rgba(148, 163, 184, 0.1);
+    --dark-shadow-1: rgba(17, 24, 39, 0.7);
+    --dark-shadow-2: rgba(2, 6, 23, 0.5);
+}
+
+/* 亮色主题默认样式 */
+.theme-light {
+    --primary: var(--light-primary);
+    --secondary: var(--light-secondary);
+    --accent: var(--light-accent);
+    --background: var(--light-background);
+    --surface: var(--light-surface);
+    --text: var(--light-text);
+    --text-secondary: var(--light-text-secondary);
+    --border: var(--light-border);
+    --shadow-1: var(--light-shadow-1);
+    --shadow-2: var(--light-shadow-2);
+
+    background: linear-gradient(135deg, var(--light-primary), var(--light-secondary));
+    color: var(--text);
+}
+
+/* 暗色主题样式 */
+.theme-dark {
+    --primary: var(--dark-primary);
+    --secondary: var(--dark-secondary);
+    --accent: var(--dark-accent);
+    --background: var(--dark-background);
+    --surface: var(--dark-surface);
+    --text: var(--dark-text);
+    --text-secondary: var(--dark-text-secondary);
+    --border: var(--dark-border);
+    --shadow-1: var(--dark-shadow-1);
+    --shadow-2: var(--dark-shadow-2);
+
+    background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary));
+    color: var(--text);
+}
+
+/* 新拟态效果 */
+.neumorphic {
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 
+        20px 20px 60px var(--shadow-2),
+        -20px -20px 60px var(--shadow-1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neumorphic:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        25px 25px 75px var(--shadow-2),
+        -25px -25px 75px var(--shadow-1);
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--light-text);
+}
+
+.btn-secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-dark .theme-toggle .sun-icon {
+    display: block;
+}
+
+.theme-dark .theme-toggle .moon-icon {
+    display: none;
+}
+
+/* 过渡效果 */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 故障文字效果 */
+.glitch-text {
+    position: relative;
+    animation: glitch 1s linear infinite;
+    color: var(--text);
+    text-shadow: 
+        2px 2px var(--accent),
+        -2px -2px var(--primary);
+}
+
+@keyframes glitch {
+    2%, 64% {
+        transform: translate(2px, 0) skew(0deg);
+    }
+    4%, 60% {
+        transform: translate(-2px, 0) skew(0deg);
+    }
+    62% {
+        transform: translate(0, 0) skew(5deg);
+    }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}

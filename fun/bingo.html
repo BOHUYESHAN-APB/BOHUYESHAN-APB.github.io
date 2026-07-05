@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园生活Bingo游戏</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-light: #E1F0FF;
+            --secondary: #5856D6;
+            --success: #34C759;
+            --warning: #FF9500;
+            --danger: #FF3B30;
+            --background: #F2F2F7;
+            --surface: rgba(255, 255, 255, 0.8);
+            --glass-effect: rgba(255, 255, 255, 0.6);
+            --border: #C5C6D0;
+            --text-primary: #1D1D1F;
+            --text-secondary: #8E8E93;
+            --elevation-1: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+            --elevation-2: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+            --elevation-3: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.1);
+            --section-radius: 16px;
+            --card-radius: 12px;
+            --animation-speed: 0.3s;
+        }
+        /* 粉色主题 */
+        :root.pink-theme {
+            --primary: #FF2D55;
+            --primary-light: #FFE6EA;
+            --secondary: #AF52DE;
+            --background: #FFF5F7;
+        }
+        /* 绿色主题 */
+        :root.green-theme {
+            --primary: #34C759;
+            --primary-light: #E6FFEA;
+            --secondary: #32ADE6;
+            --background: #F0FFF4;
+        }
+        /* 黄色主题 */
+        :root.yellow-theme {
+            --primary: #FFCC00;
+            --primary-light: #FFF9C4;
+            --secondary: #FF9500;
+            --background: #FFFDF5;
+        }
+        /* 橙色主题 */
+        :root.orange-theme {
+            --primary: #FF9500;
+            --primary-light: #FFE7CC;
+            --secondary: #FF3B30;
+            --background: #FFFBF0;
+        }
+        /* 夜间模式 */
+        :root.dark-theme {
+            --primary: #0A84FF;
+            --primary-light: #003767;
+            --secondary: #5E5CE6;
+            --success: #32D74B;
+            --warning: #FF9F0A;
+            --danger: #FF453A;
+            --background: #1A1A1A;
+            --surface: rgba(30, 30, 30, 0.8);
+            --glass-effect: rgba(30, 30, 30, 0.6);
+            --border: #3A3A3C;
+            --text-primary: #F5F5F7;
+            --text-secondary: #AEAEB2;
+            --elevation-1: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+            --elevation-2: 0 4px 6px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+            --elevation-3: 0 10px 15px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #E1F0FF 0%, #F2F2F7 100%);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            box-shadow: var(--elevation-1);
+        }
+        .navbar-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .navbar-icons {
+            display: flex;
+            gap: 18px;
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: all var(--animation-speed) ease;
+        }
+        .icon-btn:hover, .icon-btn:active {
+            background-color: rgba(0,0,0,0.05);
+            color: var(--text-primary);
+        }
+        .header-card {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            padding: 22px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--elevation-1);
+        }
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        .app-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .theme-selector {
+            display: flex;
+            background-color: var(--background);
+            border-radius: 100px;
+            padding: 5px;
+            max-width: 90%;
+            margin: 0 auto 20px;
+        }
+        .theme-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--animation-speed) ease;
+            touch-action: manipulation;
+        }
+        .theme-option.active {
+            background-color: var(--surface);
+            box-shadow: var(--elevation-1);
+            color: var(--primary);
+        }
+        .bingo-container {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            box-shadow: var(--elevation-2);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bingo-header {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .header-cell {
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 10px 5px;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        .bingo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+        .bingo-cell {
+            aspect-ratio: 1;
+            background-color: var(--surface);
+            border-radius: var(--card-radius);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: var(--elevation-1);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+        .bingo-cell .content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-bottom: 8px;
+        }
+        .bingo-cell.free {
+            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(142, 142, 147, 0.1) 100%);
+            border-color: var(--primary);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .bingo-cell.completed {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-color: var(--primary);
+            color: white;
+            transform: scale(0.98);
+        }
+        .bingo-cell.completed::after {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        .bingo-cell.completed .content {
+            text-decoration: line-through;
+            opacity: 0.9;
+        }
+        .bingo-cell:not(.free):not(.completed):active {
+            background-color: rgba(0,0,0,0.03);
+            transform: scale(0.97);
+        }
+        .evaluation {
+            position: absolute;
+            bottom: 3px;
+            left: 0;
+            right: 0;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 5px;
+            text-align: center;
+        }
+        .bingo-cell.completed .evaluation {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .action-bar {
+            display: flex;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 10px 15px;
+            box-shadow: var(--elevation-2);
+            margin-bottom: 20px;
+        }
+        .action-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            gap: 5px;
+            transition: all var(--animation-speed) ease;
+            touch-action: manipulation;
+        }
+        .action-btn i {
+            font-size: 1.2rem;
+        }
+        .action-btn:hover, .action-btn:active {
+            background-color: rgba(0,0,0,0.05);
+            color: var(--primary);
+        }
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 122, 255, 0.3);
+        }
+        .stats-container {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            box-shadow: var(--elevation-1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title i {
+            color: var(--primary);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: var(--glass-effect);
+            border-radius: var(--card-radius);
+            padding: 15px 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--elevation-2);
+        }
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+        .badge.disabled {
+            background: var(--background);
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-content {
+            width: 100%;
+            max-width: 400px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            box-shadow: var(--elevation-3);
+            overflow: hidden;
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #EFEFF4;
+            text-align: center;
+        }
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .textarea-eval {
+            width: 100%;
+            padding: 15px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border);
+            background: var(--background);
+            min-height: 120px;
+            margin-bottom: 15px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: none;
+            transition: all 0.2s ease;
+        }
+        .modal-footer {
+            display: flex;
+            border-top: 1px solid #EFEFF4;
+        }
+        .modal-footer button {
+            flex: 1;
+            padding: 18px;
+            border: none;
+            background: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        .modal-footer button:first-child {
+            color: var(--text-secondary);
+        }
+        .modal-footer button:last-child {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .export-preview {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border-radius: var(--section-radius);
+            padding: 20px;
+            margin: 0 0 20px;
+            box-shadow: var(--elevation-1);
+        }
+        .export-preview img {
+            width: 100%;
+            border-radius: var(--card-radius);
+            box-shadow: var(--elevation-1);
+        }
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 999;
+            display: none;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti 3s ease-in-out forwards;
+        }
+        @keyframes confetti {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        @media (max-width: 768px) {
+            .bingo-cell { font-size: 0.75rem; padding: 8px 5px; }
+            .header-cell { font-size: 1rem; padding: 8px 3px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .bingo-cell { 
+                font-size: 0.6rem; 
+                padding: 8px 6px; 
+                min-height: 140px;
+                aspect-ratio: auto;
+            }
+            .bingo-cell .content {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+                line-clamp: 4;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 0.6rem;
+                line-height: 1.4;
+                word-break: break-word;
+            }
+            .action-btn span { display: none; }
+            .action-btn { padding: 16px 10px; }
+            .modal-content { max-width: 90%; }
+        }
+        @media (max-width: 360px) {
+            .bingo-cell { 
+                font-size: 0.58rem; 
+                min-height: 150px;
+            }
+            .bingo-cell .content {
+                font-size: 0.58rem;
+                -webkit-line-clamp: 5;
+                line-clamp: 5;
+                line-height: 1.4;
+                word-break: break-word;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="home.html" class="icon-btn" title="返回主页" style="text-decoration: none; color: var(--text-secondary);">
+                <i class="fas fa-home"></i>
+            </a>
+            <div class="navbar-title">校园生活 Bingo</div>
+            <div class="navbar-icons">
+                <button class="icon-btn" id="shareBtn"><i class="fas fa-share-nodes"></i></button>
+                <button class="icon-btn" id="settingsBtn"><i class="fas fa-cog"></i></button>
+            </div>
+        </div>
+        <div class="header-card">
+            <h1 class="app-title">校园生活 Bingo</h1>
+            <p class="app-subtitle">探索不同领域的校园精彩瞬间</p>
+            <div class="theme-selector">
+                <div class="theme-option active" data-theme="tech">技术宅</div>
+                <div class="theme-option" data-theme="bio">生物技术</div>
+                <div class="theme-option" data-theme="anime">二次元</div>
+                <div class="theme-option" data-theme="food">美食探索</div>
+                <div class="theme-option" data-theme="sports">运动健身</div>
+            </div>
+            <div class="theme-selector" id="colorThemeSelector" style="margin-top: 15px;">
+                <div class="theme-option active" data-color-theme="default">默认</div>
+                <div class="theme-option" data-color-theme="pink">粉色</div>
+                <div class="theme-option" data-color-theme="green">绿色</div>
+                <div class="theme-option" data-color-theme="yellow">黄色</div>
+                <div class="theme-option" data-color-theme="orange">橙色</div>
+                <div class="theme-option" data-color-theme="dark">夜间</div>
+            </div>
+        </div>
+        <div class="bingo-container" id="bingoContainer">
+            <div class="bingo-header">
+                <div class="header-cell">B</div>
+                <div class="header-cell">I</div>
+                <div class="header-cell">N</div>
+                <div class="header-cell">G</div>
+                <div class="header-cell">O</div>
+            </div>
+            <div class="bingo-grid" id="bingoGrid"></div>
+        </div>
+        <div class="action-bar">
+            <button class="action-btn" id="resetBtn">
+                <i class="fas fa-rotate-left"></i>
+                <span>重置</span>
+            </button>
+            <button class="action-btn" id="randomizeBtn">
+                <i class="fas fa-shuffle"></i>
+                <span>重新随机</span>
+            </button>
+            <button class="action-btn" id="editBtn">
+                <i class="fas fa-pen"></i>
+                <span>编辑</span>
+            </button>
+            <button class="action-btn primary" id="exportBtn">
+                <i class="fas fa-camera"></i>
+                <span>导出图片</span>
+            </button>
+        </div>
+        <div class="stats-container">
+            <h3 class="section-title"><i class="fas fa-chart-line"></i> 活动数据</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="completedCount">0</div>
+                    <div class="stat-label">完成项目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="percentComplete">0%</div>
+                    <div class="stat-label">完成率</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="bingoCount">0</div>
+                    <div class="stat-label">达成Bingo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="evalCount">0</div>
+                    <div class="stat-label">评价项目</div>
+                </div>
+            </div>
+            <h3 class="section-title"><i class="fas fa-trophy"></i> 个人成就</h3>
+            <div class="achievements">
+                <div class="badge disabled" data-achievement="campus-guru">
+                    <i class="fas fa-user-graduate"></i> 校园大佬
+                </div>
+                <div class="badge disabled" data-achievement="code-superman">
+                    <i class="fas fa-laptop-code"></i> 代码超人
+                </div>
+                <div class="badge disabled" data-achievement="bio-wizard">
+                    <i class="fas fa-flask"></i> 生物奇才
+                </div>
+                <div class="badge disabled" data-achievement="anime-master">
+                    <i class="fas fa-paint-brush"></i> 二次元大师
+                </div>
+                <div class="badge disabled" data-achievement="single-king">
+                    <i class="fas fa-heart-crack"></i> 单身王者
+                </div>
+                <div class="badge disabled" data-achievement="persistent-player">
+                    <i class="fas fa-hourglass-half"></i> 坚持不懈
+                </div>
+                <div class="badge disabled" data-achievement="perfectionist">
+                    <i class="fas fa-star"></i> 完美主义者
+                </div>
+                <div class="badge disabled" data-achievement="critic">
+                    <i class="fas fa-comment-dots"></i> 评论家
+                </div>
+                <div class="badge disabled" data-achievement="theme-collector">
+                    <i class="fas fa-palette"></i> 主题收藏家
+                </div>
+                <div class="badge disabled" data-achievement="bingo-master">
+                    <i class="fas fa-trophy"></i> Bingo大师
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="evaluationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">添加评价</h2>
+            </div>
+            <div class="modal-body">
+                <div id="evaluationTarget" style="font-weight:500; margin-bottom:10px; text-align:center;">项目名称</div>
+                <textarea class="textarea-eval" id="evaluationText" placeholder="写下你的感想或评价..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelEvaluation">取消</button>
+                <button id="saveEvaluation">保存</button>
+            </div>
+        </div>
+    </div>
+    <div class="celebration" id="celebration"></div>
+    <div id="exportPreview"></div>
+    <script>
+        // 不同主题的卡片数据 - 每个主题扩展为35个选项，随机选择25个
+        const cardData = {
+            tech: [
+                "通宵写代码到凌晨三点", "GitHub连续日更超过30天", "收集三款以上机械键盘", "一周内学习一门新编程语言", "每天关注AI领域最新动态",
+                "食堂抢饭失败三次以上", "体测800/1000米代跑被抓包", "寝室夜聊到凌晨一点", "500元内淘到二手高性能显卡", "共享单车扫码失败五次以上",
+                "写Python脚本自动抢选修课", "自制Arduino宿舍智能灯", "成功维修损坏的笔记本电脑", "开发Bot自动回复消息", "用Excel制作个人财务管理系统",
+                "没有谈恋爱", "觉得嗑CP比自己谈恋爱更香", "母胎单身至今", "二次元角色比真人更有吸引力", "用AI机器人进行情感咨询",
+                "给机械键盘更换不同轴体", "一个月内氪金超过生活费1/3", "装机过程中多次翻车", "剪辑Vlog到凌晨导致翘课", "熬夜追科技发布会直播",
+                "用树莓派搭建个人服务器", "参加黑客马拉松获得奖项", "在Stack Overflow解决技术难题", "成功破解校园WiFi密码", "用深度学习训练猫狗识别模型",
+                "自制机械键盘键帽", "参与开源项目贡献代码", "用爬虫获取学校选课数据", "搭建个人博客网站", "参加技术社团成为骨干"
+            ],
+            bio: [
+                "第一次使用显微镜观察洋葱表皮细胞", "独立完成DNA提取实验", "学会正确使用移液枪", "制作完美的琼脂糖凝胶电泳", "成功接种大肠杆菌菌落",
+                "解剖青蛙实验不敢下刀", "植物学野外实习采集10种标本", "参与项目答辩", "生物化学考试前通宵复习", "参与小组课堂展示获得优秀",
+                "忘记给离心管贴标签", "培养皿被污染长出霉菌", "显微镜下找到目标细胞激动拍照", "染色剂染色双手", "不小心打碎玻璃仪器",
+                "参观校史馆了解DNA双螺旋发现史", "参加辩论赛", "观看《工作细胞》动画学知识", "用Python处理实验数据", "读《自私的基因》深受启发",
+                "自制酸奶体验发酵过程", "学会用PCR检测", "用显微镜观察家中自来水微生物", "制作植物叶脉书签", "尝试培养多肉植物成功",
+                "参与基因测序实验", "制作植物组织切片", "观察线粒体细胞器", "参加生物竞赛获奖", "用生物信息学分析数据",
+                "培养细胞系成功", "参与动物行为观察实验", "制作昆虫标本", "参观生物科技公司", "用显微镜观察血细胞"
+            ],
+            anime: [
+                "连续追新番熬夜超一周", "买手办花超一个月生活费", "尝试角色扮演(COS)", "参加大型动漫展会", "收集超50件动漫周边",
+                "日常交流用日语口头禅", "学习并表演宅舞", "成为虚拟偶像粉丝", "被同学称为'中二病晚期'", "将一切事物'萌化'解读",
+                "补完三部经典老番", "一周内看完24集热血番", "少女心被某部动漫点燃", "沉迷推理烧脑番无法自拔", "被治愈系动漫感动流泪",
+                "安利动漫失败超10次", "在真实世界找到二次元同好", "看视频依赖弹幕护体", "听声优声线认出角色", "使用字幕组特有梗交流",
+                "绘制超10张动漫同人图", "撰写5000字以上同人文", "剪辑高质量AMV上传B站", "翻唱动漫歌曲并发布", "深度体验二次元游戏写攻略",
+                "参加动漫社团活动", "收藏限量版动漫周边", "用日语配音动漫角色", "制作动漫角色表情包", "参加漫展志愿者"
+            ],
+            food: [
+                "发现校园隐藏美食小店", "连续一周吃同一家食堂窗口", "成功抢到网红餐厅打卡", "自己做饭失败引发烟雾报警", "用外卖凑满减凑到凌晨",
+                "尝试黑暗料理成功", "参加校园美食节", "为吃美食排队超过2小时", "成功安利美食给同学", "发现食堂阿姨多给菜的秘密",
+                "用学生证享受美食折扣", "参加美食社团活动", "学会做3道拿手菜", "用优惠券省下一顿饭钱", "深夜食堂吃到热干面",
+                "发现24小时营业的夜宵店", "成功制作网红奶茶", "参加校园厨艺大赛", "用学生证享受学生优惠", "发现学校附近最好吃的烧烤",
+                "尝试各国美食", "学会做甜品", "参加美食探店活动", "用美食治愈坏心情", "发现隐藏的美食街",
+                "学会做家乡菜", "参加美食分享会", "用美食交朋友", "发现学校食堂的新品", "用美食庆祝好成绩"
+            ],
+            sports: [
+                "参加校园马拉松", "每天跑步5公里坚持一个月", "成功减肥10斤", "参加篮球比赛获奖", "学会游泳",
+                "体测成绩达到优秀", "参加瑜伽课程", "成功完成引体向上", "参加羽毛球社团", "学会打网球",
+                "参加健身打卡活动", "成功完成平板支撑2分钟", "参加校园运动会", "学会跳健美操", "参加骑行活动",
+                "成功完成马拉松", "参加足球比赛", "学会打乒乓球", "参加健身比赛", "成功完成深蹲100个",
+                "参加校园健身活动", "学会打排球", "参加徒步活动", "成功完成仰卧起坐50个", "参加游泳比赛",
+                "参加校园体育节", "学会打棒球", "参加攀岩活动", "成功完成俯卧撑50个", "参加校园体育社团",
+                "参加校园体育比赛", "学会打高尔夫球", "参加校园体育训练营", "成功完成铁人三项", "参加校园体育嘉年华"
+            ]
+        };
+        // 成就定义 - 扩展为更多有趣的成就
+        const achievements = {
+            // 基础成就
+            "campus-guru": { name: "校园大佬", condition: (c, b, t) => c >= 20 && b >= 3 },
+            "code-superman": { name: "代码超人", condition: (c, b, t) => t === 'tech' && c >= 15 },
+            "bio-wizard": { name: "生物奇才", condition: (c, b, t) => t === 'bio' && c >= 15 },
+            "anime-master": { name: "二次元大师", condition: (c, b, t) => t === 'anime' && c >= 15 },
+            "food-expert": { name: "美食达人", condition: (c, b, t) => t === 'food' && c >= 15 },
+            "sports-champion": { name: "运动健将", condition: (c, b, t) => t === 'sports' && c >= 15 },
+            
+            // 进度成就
+            "persistent-player": { name: "坚持不懈", condition: (c, b, t, s) => s.saveCount >= 10 },
+            "perfectionist": { name: "完美主义者", condition: (c, b, t) => c === 25 },
+            "bingo-master": { name: "Bingo大师", condition: (c, b, t) => b >= 5 },
+            "bingo-beginner": { name: "新手入门", condition: (c, b, t) => c >= 1 },
+            "half-way": { name: "半程达成", condition: (c, b, t) => c >= 12 },
+            "almost-there": { name: "即将完成", condition: (c, b, t) => c >= 20 },
+            
+            // 主题收集成就
+            "theme-collector": { name: "主题收藏家", condition: (c, b, t, s) => {
+                const themesPlayed = JSON.parse(localStorage.getItem('themesPlayed') || '[]');
+                return themesPlayed.length >= 5;
+            }},
+            "theme-explorer": { name: "主题探索者", condition: (c, b, t, s) => {
+                const themesPlayed = JSON.parse(localStorage.getItem('themesPlayed') || '[]');
+                return themesPlayed.length >= 2;
+            }},
+            "theme-master": { name: "主题大师", condition: (c, b, t, s) => {
+                const themesPlayed = JSON.parse(localStorage.getItem('themesPlayed') || '[]');
+                return themesPlayed.length >= 3;
+            }},
+            
+            // 社交成就
+            "single-king": { name: "单身王者", condition: (c, b, t) => c >= 10 && !gameState.evaluations.some(e => e.includes('恋爱') || e.includes('约会') || e.includes('女朋友') || e.includes('男朋友')) },
+            "social-butterfly": { name: "社交达人", condition: (c, b, t, s) => c >= 8 && gameState.evaluations.filter(e => e.includes('同学') || e.includes('朋友') || e.includes('室友')).length >= 3 },
+            "story-teller": { name: "故事讲述者", condition: (c, b, t, s) => gameState.evaluations.filter(e => e.trim().length > 50).length >= 5 },
+            "critic": { name: "评论家", condition: (c, b, t, s) => s.evaluations.filter(e => e.trim() !== '').length >= 10 },
+            "quick-note": { name: "速记达人", condition: (c, b, t, s) => s.evaluations.filter(e => e.trim().length > 0 && e.trim().length <= 20).length >= 5 },
+            
+            // 特殊主题成就
+            "night-owl": { name: "夜猫子", condition: (c, b, t) => c >= 8 && gameState.cells.slice(0, c).some(cell => cell.text.includes('熬夜') || cell.text.includes('凌晨')) },
+            "food-lover": { name: "吃货本色", condition: (c, b, t) => t === 'food' && gameState.evaluations.filter(e => e.includes('好吃') || e.includes('美味')).length >= 3 },
+            "tech-geek": { name: "极客精神", condition: (c, b, t) => t === 'tech' && gameState.evaluations.filter(e => e.includes('成功') || e.includes('搞定')).length >= 3 },
+            "anime-fan": { name: "真爱粉", condition: (c, b, t) => t === 'anime' && gameState.evaluations.filter(e => e.includes('感动') || e.includes('泪目')).length >= 3 },
+            "lab-rat": { name: "实验室常客", condition: (c, b, t) => t === 'bio' && gameState.evaluations.filter(e => e.includes('有趣') || e.includes('神奇')).length >= 3 },
+            "gym-rat": { name: "健身狂人", condition: (c, b, t) => t === 'sports' && gameState.evaluations.filter(e => e.includes('累') || e.includes('爽')).length >= 3 },
+            
+            // 特殊挑战成就
+            "speed-runner": { name: "速通玩家", condition: (c, b, t) => c >= 10 && new Date() - new Date(gameState.lastSaved || Date.now()) < 24 * 60 * 60 * 1000 },
+            "slow-and-steady": { name: "稳扎稳打", condition: (c, b, t, s) => c >= 15 && s.saveCount >= 5 },
+            "lucky-star": { name: "幸运星", condition: (c, b, t) => b >= 1 && c <= 10 },
+            "bingo-streak": { name: "连击达人", condition: (c, b, t) => b >= 2 },
+            "completionist": { name: "收集控", condition: (c, b, t, s) => Object.values(gameState.achievements).filter(Boolean).length >= 10 },
+            "dedication": { name: "持之以恒", condition: (c, b, t, s) => c >= 5 && new Date() - new Date(gameState.lastSaved || Date.now()) > 7 * 24 * 60 * 60 * 1000 },
+            
+            // 趣味成就
+            "first-bingo": { name: "首次Bingo", condition: (c, b, t) => b >= 1 },
+            "lucky-start": { name: "开门红", condition: (c, b, t) => c === 5 && b >= 1 },
+            "corner-master": { name: "角落大师", condition: (c, b, t) => [0, 4, 20, 24].every(i => gameState.cells[i]?.selected) },
+            "edge-walker": { name: "边缘行者", condition: (c, b, t) => [0,1,2,3,4,5,9,10,14,15,19,20,21,22,23,24].filter(i => gameState.cells[i]?.selected).length >= 10 },
+            "center-stage": { name: "舞台中央", condition: (c, b, t) => gameState.cells[12]?.selected && c >= 5 },
+            "diagonal-king": { name: "对角线之王", condition: (c, b, t) => [0,6,12,18,24].every(i => gameState.cells[i]?.selected) || [4,8,12,16,20].every(i => gameState.cells[i]?.selected) }
+        };
+        // 游戏状态对象
+        const gameState = {
+            cells: [],
+            completedCount: 0,
+            theme: 'tech',
+            comment: '',
+            lastSaved: localStorage.getItem('lastSaved') || new Date().toISOString(),
+            streakCount: 0,
+            bingoCount: 0,
+            saveCount: 0,
+            evaluations: new Array(25).fill(""),
+            achievements: {},
+            startTime: Date.now()
+        };
+        // 应用颜色主题
+        function applyColorTheme(theme) {
+            // 移除所有主题类
+            document.documentElement.className = document.documentElement.className
+                .split(' ')
+                .filter(cls => !cls.endsWith('-theme'))
+                .join(' ');
+            // 应用新主题
+            if (theme !== 'default') {
+                document.documentElement.classList.add(`${theme}-theme`);
+            }
+            // 更新选中状态
+            document.querySelectorAll('#colorThemeSelector .theme-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.colorTheme === theme);
+            });
+        }
+        // 初始化游戏
+        function initGame() {
+            console.log('开始初始化游戏');
+            loadGameState();
+            console.log('加载游戏状态完成', gameState);
+            // 加载颜色主题
+            const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+            applyColorTheme(savedColorTheme);
+            if (gameState.cells.length === 0) {
+                console.log('游戏状态为空，初始化新游戏');
+                initializeNewGame();
+            }
+            console.log('渲染Bingo网格');
+            renderGrid();
+            console.log('更新统计信息');
+            updateStats();
+            console.log('设置事件监听器');
+            setupEventListeners();
+            console.log('游戏初始化完成');
+        }
+        // 从数组中随机选择n个不重复的元素
+        function getRandomItems(array, n) {
+            const shuffled = [...array].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, n);
+        }
+
+        // 初始化新游戏
+        function initializeNewGame() {
+            console.log('初始化新游戏');
+            const initialTheme = gameState.theme || 'tech';
+            const allItems = cardData[initialTheme];
+            const selectedItems = getRandomItems(allItems, 25);
+            gameState.cells = selectedItems.map((item, index) => ({
+                id: index,
+                text: item,
+                selected: false, // 移除中央格子默认选中
+                comment: ''
+            }));
+            gameState.completedCount = gameState.cells.filter(c => c.selected).length;
+            gameState.streakCount = 0;
+            gameState.bingoCount = 0;
+            gameState.comment = '';
+            gameState.lastSaved = new Date().toISOString();
+            gameState.saveCount = 0;
+            gameState.evaluations = new Array(25).fill("");
+            saveGameState();
+        }
+        // 渲染Bingo网格
+        function renderGrid() {
+            console.log('开始渲染Bingo网格', gameState.cells);
+            const bingoGrid = document.getElementById('bingoGrid');
+            if (!bingoGrid) {
+                console.error('未找到bingoGrid元素');
+                return;
+            }
+            bingoGrid.innerHTML = '';
+            gameState.cells.forEach((cell, index) => {
+                const cellEl = document.createElement('div');
+                cellEl.className = `bingo-cell ${cell.selected ? 'completed' : ''} ${index === 12 ? 'free' : ''}`;
+                cellEl.dataset.index = index;
+                cellEl.innerHTML = `
+                    <div class="content">${cell.text}</div>
+                    ${gameState.evaluations[index] ? `<div class="evaluation">${gameState.evaluations[index]}</div>` : ''}
+                `;
+                cellEl.addEventListener('click', () => toggleCell(index));
+                cellEl.addEventListener('dblclick', () => openEvaluationModal(index));
+                bingoGrid.appendChild(cellEl);
+            });
+            console.log('Bingo网格渲染完成');
+        }
+        // 切换格子状态
+        function toggleCell(index) {
+            const cell = gameState.cells[index];
+            if (!cell) return;
+            cell.selected = !cell.selected;
+            gameState.completedCount = gameState.cells.filter(c => c.selected).length;
+            renderGrid();
+            updateStats();
+            checkBingo();
+            saveGameState();
+        }
+        // 检查Bingo
+        function checkBingo() {
+            let bingoCount = 0;
+            const grid = gameState.cells.map(c => c.selected);
+            // 检查行
+            for (let i = 0; i < 5; i++) {
+                if (grid[i*5] && grid[i*5+1] && grid[i*5+2] && grid[i*5+3] && grid[i*5+4]) bingoCount++;
+            }
+            // 检查列
+            for (let i = 0; i < 5; i++) {
+                if (grid[i] && grid[i+5] && grid[i+10] && grid[i+15] && grid[i+20]) bingoCount++;
+            }
+            // 检查对角线
+            if (grid[0] && grid[6] && grid[12] && grid[18] && grid[24]) bingoCount++;
+            if (grid[4] && grid[8] && grid[12] && grid[16] && grid[20]) bingoCount++;
+            const newBingo = bingoCount > gameState.bingoCount;
+            gameState.bingoCount = bingoCount;
+            if (newBingo) showCelebration();
+            return newBingo;
+        }
+        // 显示庆祝动画
+        function showCelebration() {
+            const celebration = document.getElementById('celebration');
+            celebration.style.display = 'block';
+            celebration.innerHTML = '';
+            const colors = ['#007AFF', '#5856D6', '#34C759', '#FF9500', '#FF3B30'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = `${Math.random() * 10 + 5}px`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.style.animationDelay = `${Math.random() * 2}s`;
+                celebration.appendChild(confetti);
+            }
+            setTimeout(() => celebration.style.display = 'none', 5000);
+        }
+        // 打开评价模态框
+        function openEvaluationModal(index) {
+            currentCellIndex = index;
+            const cell = gameState.cells[index];
+            document.getElementById('evaluationTarget').textContent = cell.text;
+            document.getElementById('evaluationText').value = gameState.evaluations[index] || '';
+            document.getElementById('evaluationModal').classList.add('active');
+            document.getElementById('evaluationText').focus();
+        }
+        // 保存评价
+        function saveEvaluation() {
+            if (currentCellIndex !== -1) {
+                gameState.evaluations[currentCellIndex] = document.getElementById('evaluationText').value.trim();
+                renderGrid();
+                updateStats();
+                saveGameState();
+                closeModal();
+            }
+        }
+        // 关闭模态框
+        function closeModal() {
+            const modal = document.getElementById('evaluationModal');
+            if (modal) {
+                modal.classList.remove('active');
+                currentCellIndex = -1;
+            }
+        }
+        // 导出为图片
+        function exportAsImage() {
+            // 创建一个临时容器用于组合所有要导出的元素
+            const exportContainer = document.createElement('div');
+            exportContainer.style.width = '800px';
+            exportContainer.style.padding = '20px';
+            exportContainer.style.backgroundColor = 'white';
+            exportContainer.style.position = 'absolute';
+            exportContainer.style.top = '-9999px';
+            exportContainer.style.left = '-9999px';
+            document.body.appendChild(exportContainer);
+
+            // 复制bingo容器
+            const bingoContainer = document.getElementById('bingoContainer').cloneNode(true);
+            bingoContainer.style.width = '100%';
+            exportContainer.appendChild(bingoContainer);
+
+            // 添加标题
+            const title = document.createElement('h2');
+            title.textContent = '校园生活Bingo - 成就与统计';
+            title.style.textAlign = 'center';
+            title.style.margin = '20px 0';
+            exportContainer.appendChild(title);
+
+            // 复制统计信息
+            const statsContainer = document.querySelector('.stats-container').cloneNode(true);
+            exportContainer.appendChild(statsContainer);
+
+            // 执行导出
+            html2canvas(exportContainer, { scale: 2 }).then(canvas => {
+                const previewImg = document.createElement('img');
+                previewImg.src = canvas.toDataURL('image/png');
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'action-btn primary';
+                downloadBtn.innerHTML = '<i class="fas fa-download"></i><span>下载图片</span>';
+                downloadBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.download = `校园Bingo_${gameState.theme}_${new Date().toISOString().slice(0,10)}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                };
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'action-btn';
+                closeBtn.innerHTML = '<i class="fas fa-times"></i><span>关闭预览</span>';
+                closeBtn.onclick = () => exportPreview.innerHTML = '';
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'export-preview';
+                previewDiv.appendChild(previewImg);
+                previewDiv.appendChild(downloadBtn);
+                previewDiv.appendChild(closeBtn);
+                exportPreview.appendChild(previewDiv);
+                exportPreview.scrollIntoView({ behavior: 'smooth' });
+                document.body.removeChild(exportContainer);
+            });
+        }
+        // 更新统计和成就
+        function updateStats() {
+            const completedCount = gameState.completedCount;
+            const percentComplete = Math.round((completedCount / 25) * 100);
+            const evalCount = gameState.evaluations.filter(e => e.trim() !== '').length;
+            const bingoCount = gameState.bingoCount;
+            document.getElementById('completedCount').textContent = completedCount;
+            document.getElementById('percentComplete').textContent = `${percentComplete}%`;
+            document.getElementById('bingoCount').textContent = bingoCount;
+            document.getElementById('evalCount').textContent = evalCount;
+            // 更新成就
+            Object.keys(achievements).forEach(id => {
+                const achievement = achievements[id];
+                const badge = document.querySelector(`.badge[data-achievement="${id}"]`);
+                if (badge) { // 检查元素是否存在
+                    const unlocked = achievement.condition(completedCount, bingoCount, gameState.theme, gameState);
+                    // 更新徽章状态
+                    if (unlocked) {
+                        badge.classList.remove('disabled');
+                        // 添加解锁动画
+                        badge.classList.add('unlocked');
+                        setTimeout(() => badge.classList.remove('unlocked'), 1500);
+                    } else {
+                        badge.classList.add('disabled');
+                    }
+                    // 保存成就状态
+                    gameState.achievements[id] = unlocked;
+                }
+            });
+            saveGameState();
+        }
+        // 切换主题
+        function switchTheme(theme) {
+            if (theme !== gameState.theme) {
+                gameState.theme = theme;
+                // 记录已玩过的主题
+                const themesPlayed = JSON.parse(localStorage.getItem('themesPlayed') || '[]');
+                if (!themesPlayed.includes(theme)) {
+                    themesPlayed.push(theme);
+                    localStorage.setItem('themesPlayed', JSON.stringify(themesPlayed));
+                }
+                document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
+                document.querySelector(`.theme-option[data-theme="${theme}"]`).classList.add('active');
+                
+                // 使用随机选择的25个选项
+                const allItems = cardData[theme];
+                const selectedItems = getRandomItems(allItems, 25);
+                gameState.cells = selectedItems.map((text, index) => ({
+                    id: index,
+                    text: text,
+                    selected: false, // 移除中央格子默认选中
+                    comment: ''
+                }));
+                gameState.completedCount = 0;
+                gameState.evaluations = new Array(25).fill("");
+                renderGrid();
+                updateStats();
+                saveGameState();
+            }
+        }
+        // 设置事件监听
+        function setupEventListeners() {
+            // 重置游戏
+            function resetGame() {
+                if (confirm('确定要重置当前游戏进度吗？这将清除所有已完成的格子和成就记录。')) {
+                    // 清除本地存储
+                    localStorage.removeItem('bingoGameState');
+                    localStorage.removeItem('themesPlayed');
+                    // 重置游戏状态
+                    gameState.theme = 'tech';
+                    gameState.cells = [];
+                    gameState.completedCount = 0;
+                    gameState.bingoCount = 0;
+                    gameState.saveCount = 0;
+                    gameState.evaluations = new Array(25).fill('');
+                    gameState.achievements = {};
+                    // 初始化新游戏
+                    initializeNewGame();
+                    // 重新渲染和更新
+                    renderGrid();
+                    updateStats();
+                    alert('游戏已重置为初始状态');
+                }
+            }
+            // 主题切换
+            document.querySelectorAll('.theme-option[data-theme]').forEach(option => {
+                option.addEventListener('pointerup', () => switchTheme(option.dataset.theme));
+            });
+            // 颜色主题切换
+            document.querySelectorAll('#colorThemeSelector .theme-option').forEach(option => {
+                option.addEventListener('pointerup', function() {
+                    const colorTheme = this.dataset.colorTheme;
+                    applyColorTheme(colorTheme);
+                    localStorage.setItem('colorTheme', colorTheme);
+                });
+            });
+            // 重置按钮
+            const resetButton = document.getElementById('resetBtn');
+            if (resetButton) {
+                resetButton.addEventListener('pointerup', resetGame);
+            }
+            // 重新随机按钮
+            const randomizeButton = document.getElementById('randomizeBtn');
+            if (randomizeButton) {
+                randomizeButton.addEventListener('pointerup', function randomizeCard() {
+                    if (confirm('确定要重新随机生成卡片吗？当前进度将被重置。')) {
+                        initializeNewGame();
+                        renderGrid();
+                        updateStats();
+                    }
+                });
+            }
+            // 导出按钮
+            const exportButton = document.getElementById('exportBtn');
+            if (exportButton) {
+                exportButton.addEventListener('pointerup', exportAsImage);
+            }
+            // 取消评价按钮
+            const cancelEvaluation = document.getElementById('cancelEvaluation');
+            if (cancelEvaluation) {
+                cancelEvaluation.addEventListener('pointerup', closeModal);
+            }
+            // 保存评价按钮
+            const saveEvaluationBtn = document.getElementById('saveEvaluation');
+            if (saveEvaluationBtn) {
+                saveEvaluationBtn.addEventListener('pointerup', saveEvaluation);
+            }
+            // 点击模态框外部关闭
+            const modal = document.getElementById('evaluationModal');
+            if (modal) {
+                modal.addEventListener('pointerup', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+            // 移动端输入框聚焦时滚动到可见区域
+            const evalTextarea = document.getElementById('evaluationText');
+            if (evalTextarea) {
+                evalTextarea.addEventListener('focus', function() {
+                    setTimeout(() => {
+                        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                });
+            }
+        }
+        // 数据持久化 - 保存游戏状态
+        function saveGameState() {
+            gameState.lastSaved = new Date().toISOString();
+            gameState.saveCount++;
+            localStorage.setItem('campusBingoState', JSON.stringify(gameState));
+            localStorage.setItem('lastSaved', gameState.lastSaved);
+        }
+        // 数据持久化 - 加载游戏状态
+        function loadGameState() {
+            const savedState = localStorage.getItem('campusBingoState');
+            if (savedState) {
+                try {
+                    const parsedState = JSON.parse(savedState);
+                    Object.assign(gameState, parsedState);
+                } catch (e) {
+                    console.error('Failed to parse saved game state', e);
+                    initializeNewGame();
+                }
+            }
+        }
+        // 当前编辑的格子索引
+        let currentCellIndex = -1;
+        // 页面加载完成后初始化游戏
+        document.addEventListener('DOMContentLoaded', initGame);
+    </script>
+</body>

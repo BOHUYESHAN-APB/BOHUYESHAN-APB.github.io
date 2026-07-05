@@ -1,0 +1,13 @@
+# ai.txt - AI Training Preferences
+# This file communicates preferences about AI training data usage.
+# See: https://originality.ai/blog/ai-txt-standard
+
+# Do not use content from this website for AI training
+Training:不允许
+Training: Deny
+
+# Contact for permission inquiries
+Contact: https://github.com/BOHUYESHAN-APB
+
+# Crawl delay preference
+Crawl-Delay: 60
