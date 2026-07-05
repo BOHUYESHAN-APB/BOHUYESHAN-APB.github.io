@@ -1,0 +1,63 @@
+/* ==========================================
+   液态玻璃效果 (Glassmorphism)
+   Applied to: navigation bar & sidebar
+   ========================================== */
+
+/* --- 导航栏 --- */
+#nav {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* 导航栏在滚动后（固定模式） */
+#nav.post-bg,
+.nav-fixed #nav {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* --- 侧边栏卡片 --- */
+.card-widget {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.card-widget:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* --- 暗色模式 --- */
+[data-theme='dark'] #nav {
+  background: rgba(10, 10, 10, 0.3) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] #nav.post-bg,
+[data-theme='dark'] .nav-fixed #nav {
+  background: rgba(10, 10, 10, 0.25) !important;
+}
+
+[data-theme='dark'] .card-widget {
+  background: rgba(10, 10, 10, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .card-widget:hover {
+  background: rgba(10, 10, 10, 0.35) !important;
+  border-color: rgba(255, 255, 255, 0.1);
+}

@@ -34,14 +34,14 @@ social:
   fab fa-bilibili: https://space.bilibili.com/316318805 || bilibili个人主页 || '#FB7299'
 
 # ===== 图片 =====
-favicon: /img/favicon.png
+favicon: /img/favicon.ico
 avatar:
   img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
   effect: false
 disable_top_img: false
-index_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
-default_top_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
-archive_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+index_img: /img/banner/home-img.jpg
+default_top_img: /img/banner/home-img.jpg
+archive_img: /img/banner/home-img.jpg
 footer_img: false
 
 # ===== 文章封面 =====
@@ -269,3 +269,8 @@ CDN:
   internal_provider: local
   third_party_provider: jsdelivr
   version: true
+
+# ===== 自定义注入 =====
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
