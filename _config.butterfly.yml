@@ -1,13 +1,9 @@
-# Navigation bar settings (導航欄設置)
-# see https://butterfly.js.org/posts/4aa8abbe/##導航欄設置-Navigation-bar-settings
-# --------------------------------------
-
+# ===== 导航栏 =====
 nav:
-  logo: /img/Avatar.jpg # logo image
   display_title: true
-  fixed: false # fixed navigation bar
+  display_post_title: true
+  fixed: false
 
-# Menu 目錄
 menu:
   首页: / || fas fa-home
   时间轴: /archives/ || fas fa-archive
@@ -15,354 +11,245 @@ menu:
   分类: /categories/ || fas fa-folder-open
   清单||fa fa-heartbeat:
     音乐: /music/ || fas fa-music
-    照片: /Gallery/ || fas fa-images
-    影视: /movies/ || fas fa-video
-    书单: /books/ || fas fa-book
-    说说: /say/ || fas fa-comments 
+    摄影: /Gallery/ || fas fa-images
+    番剧: /movies/ || fas fa-video
   友链: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
   简历: /resume/ || fas fa-file-alt
 
-# Code Blocks (代碼相關)
-# --------------------------------------
+# ===== 代码块 =====
+code_blocks:
+  theme: darker
+  macStyle: false
+  height_limit: false
+  word_wrap: false
+  copy: true
+  language: true
+  shrink: false
 
-highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
-highlight_copy: true # copy button
-highlight_lang: true # show the code language
-highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
-highlight_height_limit: false # unit: px
-code_word_wrap: false
-
-# Social Settings (社交圖標設置)
-# formal:
-#   icon: link || the description || color
+# ===== 社交链接 =====
 social:
   fab fa-github-square: https://github.com/BOHUYESHAN-APB || Github博客仓库 || '#525252'
   fab fa-github: https://github.com/BoHuYeShan || Github个人仓库 || '#24292e'
   fab fa-bilibili: https://space.bilibili.com/316318805 || bilibili个人主页 || '#FB7299'
-  
-# Image (圖片設置)
-# --------------------------------------
 
-# Favicon（網站圖標）
-favicon: /img/Avatar.jpg
-
-# Avatar (頭像)
+# ===== 图片 =====
+favicon: /img/favicon.png
 avatar:
-  img: /img/Avatar.jpg
-  effect: false # true: small to large on hover
-
-# Disable all banner image
+  img: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+  effect: false
 disable_top_img: false
+index_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+default_top_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+archive_img: https://img.picui.cn/free/2024/09/24/66f29ff7af8ae.jpg
+footer_img: false
 
-# The banner image of home page
-index_img: /img/banner/home-img.jpg
-
-# If the banner of page not setting, it will show the top_img
-default_top_img: /img/banner/home-img.jpg
-
-# The banner image of archive page
-archive_img: /img/banner/home-img.jpg
-
-# If the banner of tag page not setting, it will show the top_img
-tag_img: /img/banner/home-img.jpg
-
-# The banner image of tag page
-tag_per_img:
-
-# If the banner of category page not setting, it will show the top_img
-category_img: /img/banner/home-img.jpg
-
-# The banner image of category page
-category_per_img:
-
+# ===== 文章封面 =====
 cover:
-  # display the cover or not (是否顯示cover)
   index_enable: true
   aside_enable: true
   archives_enable: true
-  # the position of cover to show (cover顯示的位置)
-  # left: left on the post (文章左側)
-  # right: right on the post (文章右側)
-  # both: both left and right (兩側都顯示)
   position: both
-  # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的cover)
-  default_cover:
-    # - https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
 
-# Replace Broken Images (替換無法顯示的圖片)
+# ===== 错误页 =====
 error_img:
   flink: /img/friend_404.gif
   post_page: /img/404.jpg
-  tag_page: /img/404.jpg
-  category_page: /img/404.jpg
-  archive_page: /img/404.jpg
-  404: /img/404.jpg
-
-# A simple 404 page
 error_404:
   enable: true
-  subtitle: '页面未找到'
-  background: https://s2.loli.net/2024/09/21/xdWqH5JRsYzvGAC.jpg
+  subtitle: 'Page Not Found'
+  background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
 
-# post
-# --------------------------------------
+# ===== 文章元数据 =====
+post_meta:
+  page:
+    date_type: created
+    date_format: date
+    categories: true
+    tags: false
+    label: true
+  post:
+    position: left
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
 
-# toc (目錄)
+# ===== 首页 =====
+index_layout: 3
+index_post_content:
+  method: 3
+  length: 500
+
+# ===== 目录 =====
 toc:
   post: true
   page: false
   number: true
   expand: false
-  style_simple: false # for post
+  style_simple: false
   scroll_percent: true
 
-# post_copyright (版權)
+# ===== 版权 =====
 post_copyright:
   enable: true
   decode: false
-  author_href:
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-# Post settings
-# --------------------------------------
-# Advertisement
-google_adsense:
-  enable: false
-  auto_ads: false
-  js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client:
-  enable_page_level_ads: true
-
-# Insert ads manually (手動插入廣告)
-# ad:
-#   index:
-#   aside:
-#   post:
-#   - class_name: sticky
-#     position: 1
-#   - class_name: sticky
-#     position: 2
-
-# site_verification (站長驗證)
-site_verification:
-  # - name: google-site-verification
-  #   content: xxxxxx
-  # - name: baidu-site-verification
-  #   content: xxxxxxx
-
-# Beautify/Effect (美化/效果)
-# --------------------------------------
-
-# Theme color for customize (主題色)
-# Notice: color value must in double quotes like "#000" or may cause error!
-theme_color:
+# ===== 相关文章 =====
+related_post:
   enable: true
-  main: "#49B1F5"
-  paginator: "#00c4b6"
-  button_hover: "#FF7242"
-  text_selection: "#00c4b6"
-  link_color: "#99a9bf"
-  meta_theme_color_light: "#ffffff"
-  meta_theme_color_dark: "#0d0d0d"
+  limit: 6
+  date_type: created
 
-# Footer Background
-footer_bg: true
+post_pagination: 1
 
-# Mouse click effects: fireworks (鼠標點擊效果: 煙火)
-fireworks:
-  enable: false
-  zIndex: 9999 # -1 or 9999
-  mobile: false
-
-# Mouse click effects: Heart symbol (鼠標點擊效果: 愛心)
-click_heart:
-  enable: false
-  mobile: false
-
-# Mouse click effects: words (鼠標點擊效果: 文字)
-clickShowText:
-  enable: false
-  text:
-    # - I
-    # - LOVE
-    # - YOU
-  fontSize: 15px
-  random: false
-  mobile: false
-
-# Default display mode (默認顯示模式)
-# light (default) / dark / auto (follow system)
-display_mode: light
-
-# Beautify (美化)
-beautify:
+# ===== 过期提醒 =====
+noticeOutdate:
   enable: true
-  field: post # site/post
-  title-prefix-icon: '\f0c1'
-  title-prefix-icon-color: '#F47466'
+  style: flat
+  limit_day: 500
+  position: top
+  message_prev: It has been
+  message_next: days since the last update, the content of the article may be outdated.
 
-# Global font settings
-# Don't modify the following settings unless you know how they work (非必要不要修改)
-# 全局字體設置
-# 字體優先使用順序：'自定義字體', '系統字體', 'Microsoft YaHei'
-# 自定義字體會自動載入，系統字體無需載入
-font:
-  global-font-size:
-  code-font-size:
-  font-family:
-  code-font-family:
-
-# Font settings for the site title and site subtitle
-# 針對網站標題和網站副標題的字體設置
-blog_title_font:
-  font_link:
-  font-family:
-
-# Font settings for the article title
-# 針對文章標題的字體設置
-post_title_font:
-  font_link:
-  font-family:
-
-# Font settings for the article content
-# 針對文章內容的字體設置
-post_content_font:
-  font_link:
-  font-family:
-
-# Font settings for the site subtitle
-# 針對網站副標題的字體設置
-site_subtitle_font:
-  font_link:
-  font-family:
-
-# Font settings for the navigation bar
-# 針對導航欄的字體設置
-nav_font:
-  font_link:
-  font-family:
-
-# Font settings for the code
-# 針對代碼的字體設置
-code_font:
-  font_link:
-  font-family:
-
-# The setting of code copy (代碼複製)
-# --------------------------------------
-# copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)
-copy:
-  enable: true
+# ===== 页脚 =====
+footer:
+  owner:
+    enable: true
+    since: 2020
   copyright:
     enable: true
-    limit_count: 50
+    version: true
+  custom_text:
 
-# Open graph meta tags (社交卡片)
-# https://developers.facebook.com/docs/sharing/webmasters/
-open_graph:
+# ===== 副标题 =====
+subtitle:
   enable: true
-  option:
-    # twitter_card:
-    # twitter_image:
-    # twitter_id:
-    # twitter_site:
-    # google_plus:
-    # fb_admins:
-    # fb_app_id:
+  effect: true
+  source: false
+  sub:
+    - Per Aspera Ad Astra
+    - 愿此行终抵群星
 
-# Add the vendor prefixes to ensure compatibility (添加供應商前綴)
-# Don't modify the following settings unless you know how they work (非必要不要修改)
-# 非必要請不要修改
-prefix:
-  avatar: /img/
-  link: /img/
-  cover: /img/
-  # - /img/
-  # - /img/
+# ===== 侧边栏 =====
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description:
+    button:
+      enable: true
+      icon: fab fa-bilibili
+      text: 去哔哩哔哩找到我！
+      link: https://space.bilibili.com/316318805
+  card_announcement:
+    enable: true
+    content: 这是一个公告！
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    orderby: random
+    order: 1
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+  card_post_series:
+    enable: true
+    series_title: false
+    orderBy: 'date'
+    order: -1
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+    runtime_date: 8/8/2020 00:00:00
 
-# Math (數學)
-# --------------------------------------
-# About the per_page
-# if you set it to true, it will load mathjax/katex script in each page (true 表示每一頁都加載js)
-# if you set it to false, it will load mathjax/katex script in the page that has 'mathjax: true' or 'katex: true' (default)
-# if you set it to false, and you want to use mathjax/katex, you need to add 'mathjax: true' or 'katex: true' in the front-matter
-# --------------------------------------
+# ===== 统计 =====
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
 
-# MathJax
-mathjax:
-  enable: false
-  per_page: false
-  cdn:
+# ===== 右下角按钮 =====
+rightside_bottom:
+rightside_scroll_percent: false
+rightside_config_animation: true
 
-# KaTeX
-katex:
-  enable: false
-  per_page: false
-  hide_scrollbar: true
-  cdn:
-  copy:
-    enable: false
-    show_button: false
+# ===== 暗色模式 =====
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: false
 
-# Search (搜索)
-# --------------------------------------
+# ===== 阅读模式 =====
+readmode: true
 
-# Algolia search
-algolia_search:
-  enable: false
-  hits:
-    per_page: 6
-  labels:
-    input_placeholder: Search for Posts
-    hits_empty: 'We did not find any results for the search: ${query}'
-    hits_stats: '${hits} results found in ${time} ms'
+# ===== 分享 =====
+share:
+  use: sharejs
+  sharejs:
+    sites: facebook,x,wechat,weibo,qq
 
-# Local search
-local_search:
-  enable: false
-  preload: false
-  CDN:
-  # Local search files
-  # If you set the CDN, the files will be loaded from the CDN
-  # local_search: /js/search/local-search.js
-  # Local search config
-  # If you don't set the CDN, the files will be loaded from the local
-  # local_search_config: /js/search/config.js
+# ===== 亮色盒 =====
+lightbox: fancybox
 
-# Docsearch
-# https://docsearch.algolia.com/
-docsearch:
-  enable: false
-  # apiKey:
-  # indexName:
-  # appId:
-  # option:
+# ===== 标签外挂 =====
+series:
+  enable: true
+  orderBy: 'title'
+  order: 1
+  number: true
 
-# Comments (評論)
-# --------------------------------------
-# There are 3 ways to use comments in the theme
-# 1. Set comments to true (開啟評論)
-# 2. Set use to a specific comment system (使用特定評論系統)
-# 3. Set use to an array of comment systems (使用多個評論系統)
-# --------------------------------------
+# ===== Note =====
+note:
+  style: flat
+  icons: true
+  border_radius: 3
+  light_bg_offset: 0
 
-comments:
-  # Up to two comments system, the first will be shown as default
-  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
-  use: # Valine,Disqus
-  text: true # Display the comment name next to the button
-  # lazyload: The comment system will be load when comment element enters the browser's viewport.
-  # If you set it to true, the comments will be loaded when the comment element enters the browser's viewport
-  lazyload: false
-  count: false # Display comment count in post's top_img
-  card_post_count: false # Display comment count in Home Page
+# ===== 效果 =====
+fireworks:
+  enable: true
+  zIndex: 9999
+  mobile: false
 
-# disqus
-# https://disqus.com/
-disqus:
-  shortname:
+display_mode: light
+enter_transitions: true
 
-# Alternative Disqus - Render comments with Disqus API
-# https://github
+# ===== 加载动画 =====
+preloader:
+  enable: true
+  source: 1
+
+# ===== Open Graph =====
+Open_Graph_meta:
+  enable: true
+
+# ===== CDN =====
+CDN:
+  internal_provider: local
+  third_party_provider: jsdelivr
+  version: true
