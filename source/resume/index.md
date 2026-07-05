@@ -169,6 +169,7 @@ type: resume
         <h4>工程与生态</h4>
         <div class="r-skill-tags">
           <span class="r-skill-tag">AI Agent 编排</span>
+          <span class="r-skill-tag">Proto (生物 eDSL)</span>
           <span class="r-skill-tag">Linux 发行版构建</span>
           <span class="r-skill-tag">Linux 运维</span>
           <span class="r-skill-tag">生物信息学</span>
@@ -226,7 +227,7 @@ type: resume
     <div style="font-size:0.85rem; line-height:1.7; color:#475569; margin-bottom:1.5rem; padding:1rem; background:#f8fafc; border-left:3px solid #3b82f6; border-radius:0 8px 8px 0;">
       <strong style="color:#1e3a8a;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
       <br><br>
-      <strong style="color:#1e3a8a;">持续追踪 AI for Science 前沿：</strong> 深入研究阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
+      <strong style="color:#1e3a8a;">持续追踪 AI for Science 前沿：</strong> 深入研究 Stanford Proto（2026.06，MIT 开源生成式生物编程语言，MCP 原生集成 120+ 生信工具）、阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
     </div>
     <div class="r-project-grid">
       <div class="r-project-card">
