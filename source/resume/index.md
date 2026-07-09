@@ -133,7 +133,7 @@ type: resume
         <div class="r-meta">2025.01 — 2026.05</div>
       </div>
       <div class="r-exp-detail">
-        围绕十字花科 YABBY 家族完成基因家族鉴定、系统发育树构建、顺式元件扫描与转录组差异表达分析，配套整理图件与分析脚本；同期独立搭建微生物菌落 CNN 检测与分类计数流程。
+        在油菜 YABBY 课题中完成十字花科 YABBY 家族鉴定、系统发育树构建、顺式元件扫描与转录组差异表达分析，配套整理图件与分析脚本；同期独立搭建微生物菌落 CNN 检测与分类计数流程。
         <br><span class="r-hl">成果</span>: IJMS 期刊论文第四作者 (software + data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统, 申请号 202510091154.4)
       </div>
     </div>
@@ -143,8 +143,8 @@ type: resume
         <div class="r-meta">2026.03 — 2026.06</div>
       </div>
       <div class="r-exp-detail">
-        围绕荞麦 DWF4 主线，串联 BLASTP/RBH 共线性验证、24 样本 RNA-seq 差异表达、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构保守性分析，完成 RNAi 克隆设计与证据整合。
-        <br><span class="r-hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员；形成候选基因七维证据链与后续湿实验设计口径
+        围绕荞麦 DWF4 主线，串联 BLASTP/RBH 共线性验证、24 样本 RNA-seq 差异表达、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构保守性分析，并完成 RNAi 靶片段、酶切位点与克隆路线设计。
+        <br><span class="r-hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员；形成候选基因七维证据链、RNAi 设计方案与后续湿实验设计口径
       </div>
     </div>
   </div>
