@@ -27,6 +27,7 @@ type: resume
   .r-skill-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
   .r-skill-card h4 { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
   .r-skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .r-skill-copy { font-size: 0.86rem; color: #475569; line-height: 1.6; margin-bottom: 0.6rem; }
   .r-skill-tag { background: #eef2ff; color: #4338ca; padding: 0.2rem 0.7rem; border-radius: 16px; font-size: 0.82rem; font-weight: 500; }
 
   /* Projects */
@@ -74,7 +75,7 @@ type: resume
   <!-- Hero -->
   <div class="r-hero">
     <h1>BoHuYeShan (韩涛)</h1>
-    <div class="r-subtitle">AI 工程 · 生物信息学 · 开源 Linux 发行版构建</div>
+    <div class="r-subtitle">生物信息学 · AI Agent 工程 · 科研系统构建</div>
     <div class="r-contact">
       <a href="https://github.com/BOHUYESHAN-APB">GitHub</a>
       <a href="https://github.com/BoHuYeShan">GitHub (个人)</a>
@@ -87,6 +88,28 @@ type: resume
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       获取印刷版简历 (A3)
     </a>
+  </div>
+
+  <div class="r-section">
+    <div class="r-section-title">⭐ 核心亮点</div>
+    <div class="r-skills-grid">
+      <div class="r-skill-card">
+        <h4>研究交付</h4>
+        <div class="r-skill-copy">IJMS 第四作者（software + data curation），第一发明人申请发明专利 1 项。</div>
+      </div>
+      <div class="r-skill-card">
+        <h4>候选基因主线</h4>
+        <div class="r-skill-copy">围绕荞麦 DWF4 建立 BLASTP/RBH、DESeq2/WGCNA、GSEA/Mfuzz、motif、系统树、AlphaFold 与 RNAi 设计的七维证据链。</div>
+      </div>
+      <div class="r-skill-card">
+        <h4>科研 Agent 平台</h4>
+        <div class="r-skill-copy">构建 6 编排器 + 12 子代理 + 617 生信技能的科研 Agent 执行层，覆盖文献、数据、多组学与报告流程。</div>
+      </div>
+      <div class="r-skill-card">
+        <h4>Linux 发行版工程</h4>
+        <div class="r-skill-copy">发起 Linxira OS，多仓库推进 ISO 构建、Pacman hooks、配置中心、官网与文档体系。</div>
+      </div>
+    </div>
   </div>
 
   <!-- 教育 -->
@@ -110,7 +133,7 @@ type: resume
         <div class="r-meta">2025.01 — 2026.05</div>
       </div>
       <div class="r-exp-detail">
-        负责生物信息学数据分析与挖掘。参与十字花科 YABBY 家族基因鉴定、系统发育重建、顺式作用元件预测及转录组差异表达分析; 同期开发微生物菌落 CNN 检测与分类计数流程。
+        围绕十字花科 YABBY 家族完成基因家族鉴定、系统发育树构建、顺式元件扫描与转录组差异表达分析，配套整理图件与分析脚本；同期独立搭建微生物菌落 CNN 检测与分类计数流程。
         <br><span class="r-hl">成果</span>: IJMS 期刊论文第四作者 (software + data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统, 申请号 202510091154.4)
       </div>
     </div>
@@ -120,8 +143,8 @@ type: resume
         <div class="r-meta">2026.03 — 2026.06</div>
       </div>
       <div class="r-exp-detail">
-        开展荞麦矮化相关基因挖掘与功能分析，关联 <span class="r-hl">Buckwheat-seed-quality</span> 项目。负责从基因组/转录组数据中筛选矮化候选基因，完成差异表达分析与功能注释。
-        <br><span class="r-hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员
+        围绕荞麦 DWF4 主线，串联 BLASTP/RBH 共线性验证、24 样本 RNA-seq 差异表达、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构保守性分析，完成 RNAi 克隆设计与证据整合。
+        <br><span class="r-hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员；形成候选基因七维证据链与后续湿实验设计口径
       </div>
     </div>
   </div>
@@ -131,15 +154,19 @@ type: resume
     <div class="r-section-title">⚡ 技术能力</div>
     <div class="r-skills-grid">
       <div class="r-skill-card">
-        <h4>编程语言</h4>
+        <h4>主要工作语言与交付</h4>
+        <div class="r-skill-copy">以 Python / R / Shell 独立完成 RNA-seq、系统发育、结构分析、自动化报告与 Agent 编排；用 Go / Rust 推进 CLI 与高性能科研工具链重构。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">Python</span>
           <span class="r-skill-tag">R</span>
+          <span class="r-skill-tag">Go</span>
+          <span class="r-skill-tag">Rust</span>
           <span class="r-skill-tag">Shell</span>
         </div>
       </div>
       <div class="r-skill-card">
-        <h4>AI 硬件与框架</h4>
+        <h4>AI 训练与模型迁移</h4>
+        <div class="r-skill-copy">围绕 Ascend 910 与 NVIDIA CUDA 完成模型训练、Paddle → MindSpore 迁移、多端推理与实验部署。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">华为 Ascend 910</span>
           <span class="r-skill-tag">NVIDIA CUDA</span>
@@ -150,31 +177,26 @@ type: resume
         </div>
       </div>
       <div class="r-skill-card">
-        <h4>模型与算法</h4>
+        <h4>生信分析与结构解释</h4>
+        <div class="r-skill-copy">能够把 BLASTP/RBH、DESeq2、WGCNA、GSEA/Mfuzz、motif、系统发育和 AlphaFold 串成候选基因证据链，并完成结构结果解释。</div>
         <div class="r-skill-tags">
-          <span class="r-skill-tag">LLM 训练</span>
-          <span class="r-skill-tag">扩散模型</span>
-          <span class="r-skill-tag">Transformer</span>
-          <span class="r-skill-tag">PP-YOLO 系列</span>
-          <span class="r-skill-tag">YOLOv5/v8</span>
-          <span class="r-skill-tag">CNN 分类</span>
-          <span class="r-skill-tag">网络药理学</span>
-          <span class="r-skill-tag">分子对接与动力学</span>
-          <span class="r-skill-tag">R/Bioconductor</span>
-          <span class="r-skill-tag">余弦退火 + Restart</span>
-          <span class="r-skill-tag">分层动态学习率</span>
+          <span class="r-skill-tag">BLASTP/RBH</span>
+          <span class="r-skill-tag">DESeq2</span>
+          <span class="r-skill-tag">WGCNA</span>
+          <span class="r-skill-tag">GSEA/Mfuzz</span>
+          <span class="r-skill-tag">Phylogeny</span>
+          <span class="r-skill-tag">AlphaFold</span>
         </div>
       </div>
       <div class="r-skill-card">
-        <h4>工程与生态</h4>
+        <h4>系统与平台工程</h4>
+        <div class="r-skill-copy">从 Linux 发行版组织到科研 Agent 平台，具备发行版架构、容器化、CLI、文档与工作流整合能力。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">AI Agent 编排</span>
-          <span class="r-skill-tag">Proto (生物 eDSL)</span>
           <span class="r-skill-tag">Linux 发行版构建</span>
-          <span class="r-skill-tag">Linux 运维</span>
-          <span class="r-skill-tag">生物信息学</span>
+          <span class="r-skill-tag">Pacman Hooks</span>
+          <span class="r-skill-tag">Config Hub</span>
           <span class="r-skill-tag">Docker</span>
-          <span class="r-skill-tag">系统编译</span>
           <span class="r-skill-tag">Git</span>
         </div>
       </div>
@@ -227,17 +249,17 @@ type: resume
     <div style="font-size:0.85rem; line-height:1.7; color:#475569; margin-bottom:1.5rem; padding:1rem; background:#f8fafc; border-left:3px solid #3b82f6; border-radius:0 8px 8px 0;">
       <strong style="color:#1e3a8a;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
       <br><br>
-      <strong style="color:#1e3a8a;">持续追踪 AI for Science 前沿：</strong> 深入研究 Stanford Proto（2026.06，MIT 开源生成式生物编程语言，MCP 原生集成 120+ 生信工具）、阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
+      <strong style="color:#1e3a8a;">持续追踪 AI for Science 前沿：</strong> 跟进 Stanford Proto（2026.06，面向生物序列设计的 Python eDSL / MCP 工具体系，已评估其接入自建 Agent 工作站的集成路线）、阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
     </div>
     <div class="r-project-grid">
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio">openagent-labforge-bio</a> <span class="r-badge">主线</span></h4>
-        <div class="r-desc"><strong>主线。</strong> ExtendAI Lab：617 生信技能 + 论文写作 + 数据搜集，6 编排器 + 12 子代理的 OpenCode 插件生态。</div>
+        <div class="r-desc"><strong>主线。</strong> 科研 Agent 执行层：6 编排器 + 12 子代理 + 617 生信技能，覆盖文献获取、数据搜集、多组学分析与报告生成。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/linxira-os">Linxira OS</a></h4>
-        <div class="r-desc">自构建 Linux 发行版：精通系统编译/包管理/内核调优，深度掌握 Linux 运维与科研部署。</div>
+        <div class="r-desc">面向科研与 AI 的 Linux 发行版组织：推进 ISO 构建、Pacman hooks、配置中心、官网与文档多仓库协同。</div>
         <span class="r-lang">Shell / Python</span>
       </div>
       <div class="r-project-card">
@@ -247,7 +269,7 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
-        <div class="r-desc">科研工作流编排器：多模型协调生信/化学分析管线，集成网络药理学/分子对接/分子动力学等药物筛选自动化流程。</div>
+        <div class="r-desc">科研工作流控制中枢：协调多模型完成生信/化学分析、药筛流程与报告生成。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -257,7 +279,7 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
-        <div class="r-desc">多模型编程助手：TUI 交互 + 插件扩展 + 智能缓存，提升日常编码效率。探索 Rust 重写。</div>
+        <div class="r-desc">多模型 CLI：TUI 交互、缓存与插件扩展，面向科研场景推进 Go / Rust 重构。</div>
         <span class="r-lang">Go / Rust</span>
       </div>
       <div class="r-project-card">
@@ -300,7 +322,7 @@ type: resume
         <div class="r-name">生信分析手段</div>
       </div>
       <div class="r-exp-detail">
-        独立完成从原始数据到发表级结果的全流程生信分析：<strong>RNA-seq</strong>（DESeq2 / edgeR）、<strong>系统发育</strong>（MEGA / IQ-TREE）、<strong>GO / KEGG</strong> 富集、<strong>WGCNA</strong> 共表达网络、<strong>TCGA / GEO</strong> 深度挖掘与可视化、<strong>多组学</strong>（转录组/代谢组/蛋白组）、<strong>网络药理学+分子对接/动力学</strong>、<strong>AlphaFold</strong> 蛋白结构预测、<strong>BWA/Samtools</strong> 变异检测。掌握 <span class="r-hl">Python / R (DESeq2/edgeR/ggplot2) / Shell</span>，可独立撰写中英文分析报告。GitHub 仓库完整记录分析流程与可复现代码。
+        独立完成从原始数据到发表级结果的全流程生信分析：<strong>BLASTP / RBH</strong> 同源筛选、<strong>系统发育</strong>（MAFFT / IQ-TREE / ggtree）、<strong>RNA-seq</strong>（HISAT2 / featureCounts / DESeq2 / pydeseq2）、<strong>WGCNA</strong> 共表达网络、<strong>GSEA / Mfuzz</strong> 时间序列分析、<strong>启动子 motif / JASPAR</strong> 验证、<strong>AlphaFold</strong> 结构解释、<strong>TCGA / GEO</strong> 深度挖掘、多组学整合与<strong>网络药理学+分子对接/动力学</strong>。可独立撰写中英文分析报告，GitHub 仓库完整记录分析流程与可复现代码。
       </div>
     </div>
   </div>
@@ -371,7 +393,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，独立完成植物实验与分子生物学实验，可独立开展全流程生物信息学分析 (RNA-seq/多组学/基因家族/网络药理学)。IJMS 期刊第四作者 (software + data curation); 第一发明人申请发明专利 1 项。AI 训练、计算机视觉、生信分析与 Agent 工程交叉实践，发起 Linxira OS (自构建 Linux 发行版)。可独立撰写中英文分析报告，熟练 Linux 系统部署与运维。30+ 公开仓库。
+      生物技术专业本科在读，长期在植物实验、生物信息学、AI Agent 平台与 Linux 系统构建的交叉地带工作。已在发表论文中承担 software + data curation 贡献，并围绕荞麦 DWF4 建立七维候选基因证据链；同时发起 Linxira OS 与 openagent-labforge-bio，将分析方法、工作流编排和系统环境建设整合为可复用的科研基础设施。
     </p>
   </div>
 
@@ -402,4 +424,3 @@ type: resume
   </div>
 
 </div>
-
