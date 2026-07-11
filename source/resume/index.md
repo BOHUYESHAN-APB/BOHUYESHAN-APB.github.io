@@ -82,7 +82,7 @@ type: resume
       <a href="https://bohuyeshan.top">博客</a>
       <a href="https://openi.pcl.ac.cn/bhys">OpenI</a>
       <a href="https://orcid.org/0009-0002-8426-0610">ORCID</a>
-      <span>bohuyeshan@gmail.com</span><span>bohuyeshan@163.com</span><span>bohuyeshan@126.com</span>
+      <span>bohuyeshan@gmail.com</span>
     </div>
     <a class="r-print-btn" href="/HTML/jianli.html" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -99,15 +99,15 @@ type: resume
       </div>
       <div class="r-skill-card">
         <h4>候选基因主线</h4>
-        <div class="r-skill-copy">围绕荞麦 DWF4 建立 BLASTP/RBH、DESeq2/WGCNA、GSEA/Mfuzz、motif、系统树、AlphaFold 与 RNAi 设计的七维证据链。</div>
+        <div class="r-skill-copy">围绕苦荞 DWF4 整合同源与局部共线性、表达/共表达、启动子、系统发育和结构预测等多层计算证据，并完成 RNAi 方案的 in-silico 设计。</div>
       </div>
       <div class="r-skill-card">
         <h4>科研 Agent 平台</h4>
-        <div class="r-skill-copy">构建 6 编排器 + 12 子代理 + 617 生信技能的科研 Agent 执行层，覆盖文献、数据、多组学与报告流程。</div>
+        <div class="r-skill-copy">开发 6 个主要编排角色 + 11 个内置子代理的 OpenCode 插件，集成并索引 617 个生物信息与科学技能条目。</div>
       </div>
       <div class="r-skill-card">
         <h4>Linux 发行版工程</h4>
-        <div class="r-skill-copy">发起 Linxira OS，多仓库推进 ISO 构建、Pacman hooks、配置中心、官网与文档体系。</div>
+        <div class="r-skill-copy">发起在研的 Linxira OS，已建立 ISO 构建仓库、Pacman hooks、配置中心、官网与文档体系。</div>
       </div>
     </div>
   </div>
@@ -143,8 +143,8 @@ type: resume
         <div class="r-meta">2026.03 — 2026.06</div>
       </div>
       <div class="r-exp-detail">
-        围绕荞麦 DWF4 主线，串联 BLASTP/RBH 共线性验证、24 样本 RNA-seq 差异表达、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构保守性分析，并完成 RNAi 靶片段、酶切位点与克隆路线设计。
-        <br><span class="r-hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员；形成候选基因七维证据链、RNAi 设计方案与后续湿实验设计口径
+        通过 BLASTP/RBH 筛选 DWF4 直系同源候选，并比较上下游 ±3 基因的局部共线性；整合 24 样本 RNA-seq、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构预测。
+        <br><span class="r-hl">成果</span>: 形成多层计算证据，完成 350 bp RNAi 靶片段、发卡表达盒与限制性酶切方案的 in-silico 设计；遗传转化和功能验证待完成
       </div>
     </div>
   </div>
@@ -155,7 +155,7 @@ type: resume
     <div class="r-skills-grid">
       <div class="r-skill-card">
         <h4>主要工作语言与交付</h4>
-        <div class="r-skill-copy">以 Python / R / Shell 独立完成 RNA-seq、系统发育、结构分析、自动化报告与 Agent 编排；用 Go / Rust 推进 CLI 与高性能科研工具链重构。</div>
+        <div class="r-skill-copy">以 Python / R / Shell 完成 RNA-seq、系统发育、结构分析与自动化报告；使用 Go / Rust 开展 CLI 与科研工具链重构。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">Python</span>
           <span class="r-skill-tag">R</span>
@@ -166,7 +166,7 @@ type: resume
       </div>
       <div class="r-skill-card">
         <h4>AI 训练与模型迁移</h4>
-        <div class="r-skill-copy">围绕 Ascend 910 与 NVIDIA CUDA 完成模型训练、Paddle → MindSpore 迁移、多端推理与实验部署。</div>
+        <div class="r-skill-copy">在 Ascend 910 与 NVIDIA CUDA 环境开展目标检测及 Transformer/生成模型训练实验，主要可核验交付为 PP-YOLOE+ 的 MindSpore/Ascend 适配。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">华为 Ascend 910</span>
           <span class="r-skill-tag">NVIDIA CUDA</span>
@@ -190,7 +190,7 @@ type: resume
       </div>
       <div class="r-skill-card">
         <h4>系统与平台工程</h4>
-        <div class="r-skill-copy">从 Linux 发行版组织到科研 Agent 平台，具备发行版架构、容器化、CLI、文档与工作流整合能力。</div>
+        <div class="r-skill-copy">围绕在研 Linux 发行版与科研 Agent 原型，开展 ISO 构建链路、容器化、CLI、文档和工作流整合。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">AI Agent 编排</span>
           <span class="r-skill-tag">Linux 发行版构建</span>
@@ -207,9 +207,10 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">📊 关键数据</div>
     <div class="r-stats">
-      <div class="r-stat"><div class="r-num">30+</div><div class="r-label">公开仓库</div></div>
-      <div class="r-stat"><div class="r-num">617</div><div class="r-label">生信技能 (论文/数据/多组学)</div></div>
-      <div class="r-stat"><div class="r-num">2</div><div class="r-label">操作系统项目</div></div>
+      <div class="r-stat"><div class="r-num">30+</div><div class="r-label">公开仓库（含 fork）</div></div>
+      <div class="r-stat"><div class="r-num">617</div><div class="r-label">集成索引的技能条目</div></div>
+      <div class="r-stat"><div class="r-num">6 / 11</div><div class="r-label">主要编排角色 / 内置子代理</div></div>
+      <div class="r-stat"><div class="r-num">1</div><div class="r-label">在研 Linux 发行版项目</div></div>
     </div>
   </div>
 
@@ -221,7 +222,7 @@ type: resume
         <div class="r-name">华为 Ascend 910 原生训练</div>
       </div>
       <div class="r-exp-detail">
-        Ascend 910 上原生训练 <span class="r-hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化。
+        在 Ascend 910 环境完成目标检测及若干 Transformer/生成模型训练实验，涉及混合精度与多卡配置。
       </div>
     </div>
     <div class="r-exp-item">
@@ -238,7 +239,7 @@ type: resume
         <div class="r-meta">主持</div>
       </div>
       <div class="r-exp-detail">
-        2025 国际大学生创新创业大赛 · "挑战杯" —— 基于 <span class="r-hl">PP-YOLOE+ (L)</span> 的荞麦种子质量检测系统，完成 <span class="r-hl">Paddle/CUDA → MindSpore/Ascend 910</span> 全流程迁移。
+        荞麦种子质量检测项目参加 2025 中国国际大学生创新大赛及“挑战杯”相关申报；负责 <span class="r-hl">PP-YOLOE+</span> 训练与 MindSpore/Ascend 适配。
       </div>
     </div>
   </div>
@@ -247,34 +248,34 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">📦 开源项目精选</div>
     <div style="font-size:0.85rem; line-height:1.7; color:#475569; margin-bottom:1.5rem; padding:1rem; background:#f8fafc; border-left:3px solid #3b82f6; border-radius:0 8px 8px 0;">
-      <strong style="color:#1e3a8a;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
+      <strong style="color:#1e3a8a;">项目主线：</strong> 开发基于 OpenCode 的 Agent 编排插件与科研工作流控制面原型，面向文献获取、数据整理、多组学分析和报告生成提供编排支持；领域工具适配器持续开发。
       <br><br>
-      <strong style="color:#1e3a8a;">持续追踪 AI for Science 前沿：</strong> 跟进 Stanford Proto（2026.06，面向生物序列设计的 Python eDSL / MCP 工具体系，已评估其接入自建 Agent 工作站的集成路线）、阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
+      <strong style="color:#1e3a8a;">前沿评估：</strong> 跟踪 Proto、PBCNet2.0 等 AI for Science 工具，形成 MCP/Agent 接入评估与技术笔记，不将第三方基准视为自身系统性能。
     </div>
     <div class="r-project-grid">
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio">openagent-labforge-bio</a> <span class="r-badge">主线</span></h4>
-        <div class="r-desc"><strong>主线。</strong> 科研 Agent 执行层：6 编排器 + 12 子代理 + 617 生信技能，覆盖文献获取、数据搜集、多组学分析与报告生成。</div>
+        <div class="r-desc"><strong>主线。</strong> OpenCode Agent 编排插件：6 个主要编排角色、11 个内置子代理，集成索引 617 个技能条目。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/linxira-os">Linxira OS</a></h4>
-        <div class="r-desc">面向科研与 AI 的 Linux 发行版组织：推进 ISO 构建、Pacman hooks、配置中心、官网与文档多仓库协同。</div>
+        <div class="r-desc">在研科研 Linux 发行版：已建立 ISO 构建仓库、Pacman hooks、配置中心、官网与文档体系。</div>
         <span class="r-lang">Shell / Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality">Buckwheat-seed-quality</a></h4>
-        <div class="r-desc">替代人工分拣：PP-YOLOE+ 自动检测荞麦饱满度与杂质，余弦退火优化 + Ascend 910 适配 + 双平台推理。</div>
+        <div class="r-desc">基于 PP-YOLOE+ 的荞麦籽粒检测项目，包含训练记录、桌面推理与 MindSpore/Ascend 适配实验。</div>
         <span class="r-lang">Python / Julia</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
-        <div class="r-desc">科研工作流控制中枢：协调多模型完成生信/化学分析、药筛流程与报告生成。</div>
+        <div class="r-desc">科研工作流控制面原型：实现基础编排与安全校验，领域工具适配持续开发。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio">VisionDeploy-Studio</a></h4>
-        <div class="r-desc">CV 模型一键部署：YOLO 多硬件 (CUDA/XPU/ROCm) 自动适配，降低部署门槛。</div>
+        <div class="r-desc">探索 YOLO 多硬件部署与按需环境管理的原型项目。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -284,7 +285,7 @@ type: resume
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony">CNN-MicroAI-Colony</a></h4>
-        <div class="r-desc">替代人工目测计数：CNN 分类+计数一体，华为 NPU + MindSpore 适配，OpenI 云端训练。</div>
+        <div class="r-desc">微生物菌落检测与计数原型，围绕 PP-YOLO、ONNX 及边缘端部署开展实践。</div>
         <span class="r-lang">Python</span>
       </div>
       <div class="r-project-card">
@@ -299,7 +300,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">🤝 组织参与</div>
     <ul class="r-org-list">
-      <li class="r-org-item"><strong>Linxira OS</strong> — 发起并构建基于 Arch/CachyOS 的科研发行版</li>
+      <li class="r-org-item"><strong>Linxira OS</strong> — 发起并推进基于 Arch/CachyOS 的在研科研发行版</li>
       <li class="r-org-item"><strong>YeShanBoYun Studio</strong> — 组织成员，参与 NeuroPlex-Nexus 等项目</li>
       <li class="r-org-item"><strong>openagent-labforge-bio</strong> — 主线项目，持续开发维护</li>
       <li class="r-org-item"><strong>OpenI 启智社区</strong> — 活跃训练，公开发布 NPU/GPU 模型</li>
@@ -314,7 +315,7 @@ type: resume
         <div class="r-name">独立实验能力</div>
       </div>
       <div class="r-exp-detail">
-        生物技术专业背景，独立完成<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">分子克隆</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>等分子生物学实验；熟悉<span class="r-hl">组织培养</span>、<span class="r-hl">基因组 DNA 提取</span>等植物实验操作。
+        接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、分子克隆和组织培养训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
       </div>
     </div>
     <div class="r-exp-item">
@@ -322,7 +323,7 @@ type: resume
         <div class="r-name">生信分析手段</div>
       </div>
       <div class="r-exp-detail">
-        独立完成从原始数据到发表级结果的全流程生信分析：<strong>BLASTP / RBH</strong> 同源筛选、<strong>系统发育</strong>（MAFFT / IQ-TREE / ggtree）、<strong>RNA-seq</strong>（HISAT2 / featureCounts / DESeq2 / pydeseq2）、<strong>WGCNA</strong> 共表达网络、<strong>GSEA / Mfuzz</strong> 时间序列分析、<strong>启动子 motif / JASPAR</strong> 验证、<strong>AlphaFold</strong> 结构解释、<strong>TCGA / GEO</strong> 深度挖掘、多组学整合与<strong>网络药理学+分子对接/动力学</strong>。可独立撰写中英文分析报告，GitHub 仓库完整记录分析流程与可复现代码。
+        可独立完成植物 <strong>RNA-seq</strong>、候选基因筛选、<strong>系统发育</strong>与结构预测的可复现分析，覆盖 BLASTP/RBH、MAFFT/IQ-TREE、HISAT2/featureCounts/DESeq2、WGCNA、GSEA/Mfuzz、motif/JASPAR 与 AlphaFold；正在扩展 TCGA/GEO、网络药理学和分子模拟工作流。
       </div>
     </div>
   </div>
@@ -336,20 +337,20 @@ type: resume
         <div class="r-meta">2026</div>
       </div>
       <div class="r-exp-detail">
-        Lin Dai, Jinxiang Gao, Cheng Li, <span class="r-hl">韩涛 (Tao Han)</span>, Zhengshu Tian, Yunyun Zhang, Yusong Zhang, Yanqing Luo, Kaiqin Zhao, Xiaoyang Yuan, Canzhi Zhang, Tao Liu, Feng Zu*, Pei Qin*.
+        Lin Dai, Jinxiang Gao, Cheng Li, <span class="r-hl">韩涛 (Tao Han)</span>, Zhengshu Tian, Yunyun Zhang, Yusong Zhang, Yanqing Luo, Kaiqin Zhao, Xiaoyan Yuan, Canzhi Zhang, Tao Liu, Feng Zu*, Pei Qin*.
         <br><span class="r-hl">International Journal of Molecular Sciences</span>, 27(13), 5740.
         DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.3390/ijms27135740</a>
-        <br><span style="font-size:0.85rem; color:#64748b;">第四作者 · 贡献: software (生物信息分析流程与可视化工具开发)、data curation (基因组/转录组数据整理与质控)</span>
+        <br><span style="font-size:0.85rem; color:#64748b;">第四作者；CRediT：Software, Data curation（以论文作者贡献声明为准）</span>
       </div>
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
         <div class="r-name">一种基于卷积神经网络的多算法微生物培养综合识别方法及系统</div>
-        <div class="r-meta">发明专利 · 已公布 (13 个月)</div>
+        <div class="r-meta">发明专利申请 · 第一发明人</div>
       </div>
       <div class="r-exp-detail">
         申请号：202510091154.4 · 云南农业大学 · 公布日期 2025-05-16
-        <br><span style="font-size:0.85rem; color:#64748b;">基于 CNN 的多算法微生物培养综合识别方法及系统，涉及微生物菌落检测、分类与计数的自动化流程。专利已进入实审阶段。</span>
+        <br><span style="font-size:0.85rem; color:#64748b;">2025-05-16 公布；法律状态以 CNIPA 最新记录为准。</span>
       </div>
     </div>
   </div>
@@ -393,7 +394,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，长期在植物实验、生物信息学、AI Agent 平台与 Linux 系统构建的交叉地带工作。已在发表论文中承担 software + data curation 贡献，并围绕荞麦 DWF4 建立七维候选基因证据链；同时发起 Linxira OS 与 openagent-labforge-bio，将分析方法、工作流编排和系统环境建设整合为可复用的科研基础设施。
+      生物技术专业本科在读，聚焦植物生物信息学、科研 Agent 与 Linux 工程。已在发表论文中承担 Software 和 Data curation 贡献；完成苦荞 DWF4 多层计算证据整合与 RNAi in-silico 设计，并推进 OpenCode Agent 插件和在研科研 Linux 发行版项目。
     </p>
   </div>
 
@@ -402,14 +403,14 @@ type: resume
     <div class="r-section-title">📋 在研项目与预期成果</div>
     <div style="margin-bottom:1.2rem;">
       <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">AI 驱动药物虚拟筛选自动化管线 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">2026.06 — 持续 · 前沿方法集成</span></div>
-      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">Agent 自主完成全流程：靶点识别 → 网络药理学分析 → 分子对接 → 分子动力学模拟 → 专业报告生成。集成 <span class="r-hl">PBCNet2.0</span> 等变图神经网络蛋白-配体亲和力预测方法，实现零样本高精度筛选。</div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">设计靶点检索、网络药理学、分子对接、分子动力学与报告生成的 Agent 工作流；正在评估 <span class="r-hl">PBCNet2.0</span> 等亲和力预测方法的接入可行性，尚未形成实验验证或性能结论。</div>
     </div>
     <div style="margin-bottom:1.2rem;">
-      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">荞麦矮化基因挖掘与功能分析 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">预计 2026.09 预印本</span></div>
-      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">基于转录组与基因组数据挖掘荞麦矮化相关候选基因，完成差异表达分析与功能注释。计划同步发布于生物学与人工智能预印本平台。</div>
+      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">荞麦矮化基因挖掘与功能分析 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">在研 · 拟整理为预印本</span></div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">整合 24 样本 RNA-seq、同源与局部共线性、共表达、启动子、系统发育和结构预测证据；功能验证待完成。</div>
     </div>
     <div style="margin-bottom:0;">
-      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">微生物小目标检测算法改进 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">预计 2026.09 预印本</span></div>
+      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">微生物小目标检测算法改进 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">在研 · 拟整理为预印本</span></div>
       <div style="font-size:0.9rem; color:#475569; line-height:1.6;">针对微生物菌落检测中<span class="r-hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="r-hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="r-hl">华为 Ascend 910</span> 架构适配与训练。</div>
     </div>
   </div>

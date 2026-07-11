@@ -57,11 +57,11 @@
   .proj-item { border-radius: 0.8mm; padding: 1.5mm 2mm; background: #fafbfc; }
   .proj-item h3 { font-size: 8.8pt; font-weight: 600; color: #1f4d8f; }
   .proj-item .desc { font-size: 8.2pt; color: #5a564e; line-height: 1.38; margin: 0.3mm 0 0.5mm; }
-  .proj-item .lang { font-size: 7pt; color: #6b6760; }
+  .proj-item .lang { font-size: 8pt; color: #6b6760; }
   .more-repos { margin-top: 1mm; padding-top: 0.6mm; border-top: 0.2mm solid #e0ddd8; }
-  .more-repos-label { font-size: 7.1pt; color: #8a8680; margin-bottom: 0.4mm; }
+  .more-repos-label { font-size: 8pt; color: #8a8680; margin-bottom: 0.4mm; }
   .more-repos-tags { display: flex; flex-wrap: wrap; gap: 0.6mm; }
-  .more-repos-tags span { font-size: 7.1pt; background: #f1f0ec; color: #5a564e; padding: 0.2mm 1.5mm; border-radius: 0.6mm; }
+  .more-repos-tags span { font-size: 8pt; background: #f1f0ec; color: #5a564e; padding: 0.2mm 1.5mm; border-radius: 0.6mm; }
   .honor-item { margin-bottom: 2mm; }
   .honor-item:last-child { margin-bottom: 0; }
   .honor-item .title { font-size: 9pt; font-weight: 500; line-height: 1.35; }
@@ -111,7 +111,7 @@ function exportPDF() {
   function renderPage(idx) {
     if (idx >= pages.length) { buildPDF(); return; }
     var clone = pages[idx].cloneNode(true);
-    clone.style.cssText = 'width:210mm;height:297mm;overflow:hidden;position:relative;background:#fff;padding:14mm 12mm;box-sizing:border-box;';
+    clone.style.cssText = 'width:210mm;height:297mm;overflow:hidden;position:relative;background:#fff;padding:12mm 10mm;box-sizing:border-box;';
     container.innerHTML = '';
     container.appendChild(clone);
     setTimeout(function() {
@@ -149,7 +149,7 @@ function exportPDF() {
       <h1>BoHuYeShan (韩涛)</h1>
       <div class="subtitle">生物信息学 · AI Agent 工程 · 科研系统构建</div>
       <div class="contact">
-        GitHub: BOHUYESHAN-APB (组织) / BoHuYeShan (个人)<span class="sep">|</span>博客: bohuyeshan.top<span class="sep">|</span>OpenI: openi.pcl.ac.cn/bhys<span class="sep">|</span>ORCID: 0009-0002-8426-0610<span class="sep">|</span>Email: bohuyeshan@gmail.com / bohuyeshan@163.com / bohuyeshan@126.com
+        GitHub: BOHUYESHAN-APB / BoHuYeShan<span class="sep">|</span>博客: bohuyeshan.top<span class="sep">|</span>OpenI: openi.pcl.ac.cn/bhys<span class="sep">|</span>ORCID: 0009-0002-8426-0610<span class="sep">|</span>Email: bohuyeshan@gmail.com
       </div>
     </div>
 
@@ -171,12 +171,12 @@ function exportPDF() {
           <div class="section-title">科研与实习经历</div>
           <div class="exp">
             <div class="exp-head">
-              <div class="name">课题组研究助理 · 项目负责人</div>
+              <div class="name">课题组研究助理</div>
               <div class="meta">2025.01 — 2026.05</div>
             </div>
             <div class="exp-detail">
-              在油菜 YABBY 课题中完成十字花科 YABBY 家族鉴定、系统发育树构建、顺式元件扫描与转录组差异表达分析，配套整理图件与分析脚本；同期独立搭建微生物菌落 CNN 检测与分类计数流程，并承担跨学科团队沟通与交付协调。
-              <br><span class="hl">成果</span>: IJMS 论文第四作者 (software + data curation); 第一发明人申请发明专利 1 项; 互联网+/挑战杯/大创项目组织人与协调人
+              在油菜 YABBY 课题中完成家族鉴定、系统发育、顺式元件与转录组分析，负责本人承担的图件、脚本和数据交付；同期搭建微生物菌落检测与计数流程。
+              <br><span class="hl">成果</span>: IJMS 第四作者（Software, Data curation）；发明专利申请第一发明人
             </div>
           </div>
           <div class="exp">
@@ -185,8 +185,8 @@ function exportPDF() {
               <div class="meta">2026.03 — 2026.06</div>
             </div>
             <div class="exp-detail">
-              围绕荞麦 DWF4 主线，串联 BLASTP/RBH 共线性验证、24 样本 RNA-seq 差异表达、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构保守性分析，并完成 RNAi 靶片段、酶切位点与克隆路线设计。
-              <br><span class="hl">成果</span>: 互联网+ 比赛荞麦推广项目核心成员；形成候选基因七维证据链、RNAi 设计方案与后续湿实验设计口径
+              通过 BLASTP/RBH 筛选 DWF4 直系同源候选，并比较上下游 ±3 基因的局部共线性；整合 24 样本 RNA-seq、WGCNA、GSEA/Mfuzz、启动子、系统发育和 AlphaFold 结构预测。
+              <br><span class="hl">成果</span>: 完成 350 bp RNAi 靶片段、发卡表达盒与酶切方案的 in-silico 设计；遗传转化和功能验证待完成
             </div>
           </div>
         </div>
@@ -200,16 +200,16 @@ function exportPDF() {
             </div>
             <div class="exp-detail">
               Lin Dai, Jinxiang Gao, Cheng Li, <span class="hl">韩涛 (Tao Han)</span>, et al. <span class="hl">IJMS</span>, 27(13), 5740. DOI: 10.3390/ijms27135740
-              <br><span class="small">第四作者 · software (分析流程开发) + data curation (数据整理质控)</span>
+              <br><span class="small">第四作者；CRediT：Software, Data curation（以论文作者贡献声明为准）</span>
             </div>
           </div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">基于 CNN 的多算法微生物培养综合识别方法及系统</div>
-              <div class="meta">发明专利 · 已公布 13 个月</div>
+              <div class="meta">发明专利申请 · 第一发明人</div>
             </div>
             <div class="exp-detail">
-              申请号: 202510091154.4 · 云南农业大学 · 2025-05-16 公布 · 已进入实审
+              申请号: 202510091154.4 · 云南农业大学 · 2025-05-16 公布
             </div>
           </div>
         </div>
@@ -222,20 +222,20 @@ function exportPDF() {
               <div class="meta">2026.06 — 持续 · 前沿方法集成</div>
             </div>
             <div class="exp-detail">
-              Agent 自主完成全流程：靶点识别 → 网络药理学分析 → 分子对接 → 分子动力学模拟 → 专业报告生成。集成 <span class="hl">PBCNet2.0</span> 等变图神经网络蛋白-配体亲和力预测方法，实现零样本高精度筛选。
+              设计靶点检索、网络药理学、分子对接、分子动力学与报告生成的 Agent 工作流；正在评估 <span class="hl">PBCNet2.0</span> 等方法的接入可行性。
             </div>
           </div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">荞麦矮化基因挖掘</div>
-              <div class="meta">预计 2026.09 预印本</div>
+              <div class="meta">在研 · 拟整理为预印本</div>
             </div>
-            <div class="exp-detail">转录组与基因组数据挖掘矮化候选基因，差异表达分析与功能注释。计划同步发布于生物学与 AI 预印本平台。</div>
+            <div class="exp-detail">整合同源、局部共线性、24 样本表达、共表达、启动子、系统发育和结构预测证据；功能验证待完成。</div>
           </div>
           <div class="exp">
             <div class="exp-head">
               <div class="name">微生物小目标检测算法改进</div>
-              <div class="meta">预计 2026.09 预印本</div>
+              <div class="meta">在研 · 拟整理为预印本</div>
             </div>
             <div class="exp-detail">针对<span class="hl">小目标检测</span>行业难题，从特殊检测算法迭代至 <span class="hl">PP-YOLO</span> 系列，改进余弦退火与学习率曲线，完成<span class="hl">华为 Ascend 910</span> 适配训练。</div>
           </div>
@@ -248,19 +248,19 @@ function exportPDF() {
           <div class="section-title">核心亮点</div>
           <ul class="bullets">
             <li><strong>研究交付</strong>: IJMS 第四作者（software + data curation）+ 发明专利第一发明人</li>
-            <li><strong>DWF4 主线</strong>: BLASTP/RBH、DESeq2/WGCNA、GSEA/Mfuzz、motif、系统树、AlphaFold、RNAi 设计七维证据链</li>
-            <li><strong>科研 Agent 平台</strong>: 6 编排器 + 12 子代理 + 617 生信技能的执行层</li>
-            <li><strong>Linxira OS</strong>: ISO 构建、Pacman hooks、配置中心、官网/文档多仓库体系</li>
+            <li><strong>DWF4 主线</strong>: 多层计算证据 + RNAi in-silico 设计，功能验证待完成</li>
+            <li><strong>科研 Agent</strong>: 6 个主要编排角色 + 11 个内置子代理，集成索引 617 个技能条目</li>
+            <li><strong>Linxira OS</strong>: 在研发行版，已建立 ISO、hooks、配置中心与文档仓库</li>
           </ul>
         </div>
 
         <div class="section">
           <div class="section-title">关键数据</div>
           <ul class="bullets">
-            <li><strong>30+</strong> 公开 GitHub 仓库</li>
-            <li><strong>617</strong> 生信技能库（论文写作 / 数据搜集 / 多组学分析）</li>
-            <li><strong>6 / 12</strong> 编排器 + 子代理（科研 Agent 执行层）</li>
-            <li><strong>2</strong> 操作系统级项目（Linxira OS）</li>
+            <li><strong>30+</strong> 公开 GitHub 仓库（含 fork）</li>
+            <li><strong>617</strong> 集成索引的科学技能条目</li>
+            <li><strong>6 / 11</strong> 主要编排角色 / 内置子代理</li>
+            <li><strong>1</strong> 在研 Linux 发行版项目</li>
             <li><strong>1 + 1</strong> SCI 期刊论文 + 发明专利</li>
           </ul>
         </div>
@@ -278,7 +278,7 @@ function exportPDF() {
         <div class="section">
           <div class="section-title">实验与分析</div>
           <ul class="bullets">
-            <li><strong>实验</strong>：植物表型鉴定、分子克隆、RNA 提取与反转录、qRT-PCR、组织培养</li>
+            <li><strong>实验</strong>：接受植物表型、RNA 提取/反转录、qRT-PCR、分子克隆和组织培养训练，可按 SOP 完成已掌握步骤</li>
             <li><strong>分析</strong>：RNA-seq、多组学整合、系统发育、结构解释、网络药理学</li>
             <li><strong>交付</strong>：中英文分析报告、图件整理、脚本化复现流程</li>
           </ul>
@@ -290,8 +290,8 @@ function exportPDF() {
     <!-- 左页底部通栏：竞赛项目经历 -->
     <div class="bottom-full" style="margin-top:1.5mm; padding-top:2mm;">
       <div class="section-title" style="margin-bottom:1.5mm;">竞赛项目经历</div>
-      <div class="exp-detail" style="font-size:8pt; line-height:1.6;">
-        2025 国际大学生创新创业大赛·人工智能赛道(主持) &nbsp;|&nbsp; "挑战杯"全国竞赛·省级立项(负责人) &nbsp;|&nbsp; 大创·省级立项 &nbsp;|&nbsp; 互联网+·省级立项 &nbsp;|&nbsp; 创新创业挑战·校级
+      <div class="exp-detail" style="font-size:8.5pt; line-height:1.55;">
+        中国国际大学生创新大赛·人工智能赛道(主持) &nbsp;|&nbsp; “挑战杯”相关项目·省级立项(负责人) &nbsp;|&nbsp; 大创·省级立项 &nbsp;|&nbsp; 互联网+·省级立项 &nbsp;|&nbsp; 创新创业挑战·校级
       </div>
     </div>
 
@@ -303,51 +303,29 @@ function exportPDF() {
       <div class="col-main">
 
         <div class="section">
-          <div class="section-title">技术能力</div>
-          <div class="skill-group">
-            <div class="skill-group-label">主要工作语言与交付</div>
-            <div class="exp-detail" style="font-size:8pt; margin-top:0;">Python/R/Shell 用于 RNA-seq、系统发育、结构分析与自动化报告；Go/Rust 推进 CLI 与高性能工具链重构。</div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-label">AI 训练与模型迁移</div>
-            <div class="exp-detail" style="font-size:8pt; margin-top:0;">Ascend 910 / CUDA / MindSpore / Paddle / PyTorch：完成训练、迁移、多端部署与实验环境适配。</div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-label">生信分析与结构解释</div>
-            <div class="exp-detail" style="font-size:8pt; margin-top:0;">BLASTP/RBH、DESeq2、WGCNA、GSEA/Mfuzz、motif、系统树、AlphaFold 串成候选基因证据链。</div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-label">系统与平台工程</div>
-            <div class="exp-detail" style="font-size:8pt; margin-top:0;">围绕 Linxira OS、容器与 Agent 编排，推进 ISO 构建、Pacman hooks、配置中心与文档体系。</div>
-          </div>
-        </div>
-
-        <div class="section">
           <div class="section-title">开源项目精选</div>
-          <div class="proj-overview" style="font-size:7.5pt; line-height:1.55; color:#555; margin-bottom:3mm;">
-            <strong style="color:#222;">以下仓库围绕同一目标：搭建 AI Agent 驱动的科研自动化平台。</strong> 以自构建的 Linxira OS 科研 Linux 发行版为系统基底，extendai-lab-Studio 作为编排控制中枢，openagent-labforge-bio（6 编排器 + 12 子代理）为 Agent 执行核心，辅以自训练模型与 CV 检测应用——实现从自动爬取论文文献、挖掘前人尚未系统分析的数据（TCGA/GEO 公共数据库、多组学原始数据），到自主完成网络药理学分析、分子对接、分子动力学模拟、药物靶点筛选等全流程自动化，最终输出专业级分析报告。
-            <br><br>
-            <strong style="color:#222;">持续追踪 AI for Science 前沿：</strong> 跟进 Stanford Proto（2026.06，面向生物序列设计的 Python eDSL / MCP 工具体系，已评估其接入自建 Agent 工作站的集成路线）、阿里达摩院 ElementsClaw（AI 智能体自主发现超导材料，2026.07）、中科院上海药物所 PBCNet2.0（等变图神经网络蛋白-配体亲和力预测，2026.06）、FutureHouse Robin（多智能体生物科研系统，Nature 2026.05，半小时消化数百篇文献自主发现候选新药）、Latent-Y（自主抗体设计 Agent，9 靶点 67% 成功率，比人类快 56 倍，2026.03）、MolClaw（自主药物分子评估筛选，70+ 技能三层架构，2026.04）、英矽智能 PandaClaw/LabClaw（生物靶点发现智能体，140+ 科学技能 / 5 智能体协同，2026.03-05）、IDEA 研究院 Mozi/墨子（受控自主药物发现框架，2026.03）等代表性工作，将其设计思想融入自身编排架构的迭代。
+          <div class="proj-overview" style="font-size:8.5pt; line-height:1.48; color:#555; margin-bottom:3mm;">
+            <strong style="color:#222;">项目主线：</strong> 开发 OpenCode Agent 编排插件与科研工作流控制面原型，面向文献、数据、多组学和报告流程提供编排支持；领域适配器持续开发。跟踪 Proto、PBCNet2.0 等工具并形成 MCP/Agent 接入评估。
           </div>
           <div class="proj-grid">
             <div class="proj-item">
               <h3>Buckwheat-seed-quality</h3>
-              <div class="desc">替代人工分拣：PP-YOLOE+ 自动检测荞麦饱满度与杂质，余弦退火优化 + Ascend 910 适配。</div>
+              <div class="desc">PP-YOLOE+ 荞麦籽粒检测项目，包含训练记录、桌面推理与 MindSpore/Ascend 适配实验。</div>
               <span class="lang">Python</span>
             </div>
             <div class="proj-item">
               <h3>CNN-MicroAI-Colony</h3>
-              <div class="desc">替代人工目测计数：CNN 分类+计数一体，支持 ONNX/Android/树莓派多端部署。</div>
+              <div class="desc">微生物菌落检测与计数原型，围绕 PP-YOLO、ONNX 和边缘端部署开展实践。</div>
               <span class="lang">Python</span>
             </div>
             <div class="proj-item">
               <h3>openagent-labforge-bio</h3>
-              <div class="desc"><strong>主线。</strong> 科研 Agent 执行层：6 编排器 + 12 子代理 + 617 生信技能，覆盖文献、数据、多组学与报告流程。</div>
+              <div class="desc"><strong>主线。</strong> 6 个主要编排角色、11 个子代理，集成索引 617 个科学技能条目。</div>
               <span class="lang">Python</span>
             </div>
             <div class="proj-item">
               <h3>Linxira OS</h3>
-              <div class="desc">面向科研与 AI 的 Linux 发行版组织：推进 ISO 构建、Pacman hooks、配置中心及官网/文档多仓库协同。</div>
+              <div class="desc">在研科研 Linux 发行版：已建立 ISO、hooks、配置中心、官网与文档仓库。</div>
               <span class="lang">Shell / Python</span>
             </div>
             <div class="proj-item">
@@ -357,7 +335,7 @@ function exportPDF() {
             </div>
             <div class="proj-item">
               <h3>extendai-lab-Studio</h3>
-              <div class="desc">科研工作流控制中枢：多模型编排生信/化学分析与药筛报告生成。</div>
+              <div class="desc">科研工作流控制面原型：实现基础编排与安全校验。</div>
               <span class="lang">Python</span>
             </div>
             <div class="proj-item">
@@ -367,7 +345,7 @@ function exportPDF() {
             </div>
             <div class="proj-item">
               <h3>VisionDeploy-Studio</h3>
-              <div class="desc">CV 模型一键部署：YOLO 多硬件 (CUDA/XPU/ROCm) 自动适配，降低部署门槛。</div>
+              <div class="desc">探索 YOLO 多硬件部署与按需环境管理的原型。</div>
               <span class="lang">Python</span>
             </div>
           </div>
@@ -375,10 +353,6 @@ function exportPDF() {
             <div class="more-repos-label">更多仓库</div>
             <div class="more-repos-tags">
               <span>NeuroPlex-Nexus</span><span>openagent-labforge</span><span>AionUi</span><span>QiaoTime</span><span>mdspark</span><span>CMYKE</span>
-            </div>
-            <div class="more-repos-label" style="margin-top:1mm;">涉及技术栈</div>
-            <div class="more-repos-tags">
-              <span>Julia</span><span>Rust</span><span>Go</span><span>Flutter</span><span>R</span>
             </div>
           </div>
         </div>
@@ -391,7 +365,7 @@ function exportPDF() {
           <div class="section-title">AI 模型训练</div>
           <div class="exp">
             <div class="exp-head"><div class="name">华为 Ascend 910 原生训练</div></div>
-            <div class="exp-detail">Ascend 910 上原生训练 <span class="hl">LLM、扩散模型、Transformer</span> 及目标检测模型，涵盖混合精度与模型并行优化。</div>
+            <div class="exp-detail">在 Ascend 910 环境开展目标检测及 Transformer/生成模型训练实验，涉及混合精度与多卡配置。</div>
           </div>
           <div class="exp">
             <div class="exp-head"><div class="name">NVIDIA GPU 训练与微调</div></div>
@@ -406,7 +380,7 @@ function exportPDF() {
         <div class="section">
           <div class="section-title">组织参与</div>
           <ul class="bullets">
-            <li><strong>Linxira OS</strong> — 发起并构建基于 Arch/CachyOS 的发行版</li>
+            <li><strong>Linxira OS</strong> — 发起并推进基于 Arch/CachyOS 的在研发行版</li>
             <li><strong>YeShanBoYun Studio</strong> — 组织成员</li>
             <li><strong>openagent-labforge-bio</strong> — 主线项目，持续维护</li>
             <li><strong>OpenI 启智社区</strong> — 公开 NPU/GPU 训练记录</li>
@@ -422,18 +396,9 @@ function exportPDF() {
         </div>
 
         <div class="section">
-          <div class="section-title">技术栈</div>
-          <ul class="bullets">
-            <li><strong>AI / 部署</strong>: Ascend 910 / CUDA / MindSpore / Paddle / PyTorch</li>
-            <li><strong>生信 / 分析</strong>: DESeq2 / WGCNA / IQ-TREE / BWA/Samtools / AlphaFold</li>
-            <li><strong>系统 / 工程</strong>: Linux / Docker / Slurm / Rust / Go / Flutter</li>
-          </ul>
-        </div>
-
-        <div class="section">
           <div class="section-title">自我评价</div>
           <div class="self-eval">
-            生物实验、生信分析与 Agent/系统工程交叉实践者。已在发表论文中承担 software + data curation 贡献，并围绕荞麦 DWF4 建立七维候选基因证据链；同时发起 Linxira OS 与 openagent-labforge-bio，将分析方法、工作流编排和系统环境建设整合为可复用科研基础设施。
+            生物技术本科在读，聚焦植物生物信息学、科研 Agent 与 Linux 工程。已承担论文 Software/Data curation 贡献，完成苦荞 DWF4 多层计算证据整合与 RNAi in-silico 设计，并推进 Agent 插件和在研科研 Linux 发行版项目。
           </div>
         </div>
 
