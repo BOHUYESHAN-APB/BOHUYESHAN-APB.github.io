@@ -103,11 +103,11 @@ type: resume
       </div>
       <div class="r-skill-card">
         <h4>科研 Agent 平台</h4>
-        <div class="r-skill-copy">开发 6 个主要编排角色 + 11 个内置子代理的 OpenCode 插件，集成并索引 617 个生物信息与科学技能条目。</div>
+        <div class="r-skill-copy">开发 TypeScript/Bun OpenCode 插件，以 6 个用户工作流主代理为核心；当前代码注册 19 个内置 Agent 定义，按需索引 617 个集成技能指令包。</div>
       </div>
       <div class="r-skill-card">
         <h4>Linux 发行版工程</h4>
-        <div class="r-skill-copy">发起在研的 Linxira OS，已建立 ISO 构建仓库、Pacman hooks、配置中心、官网与文档体系。</div>
+        <div class="r-skill-copy">发起在研的 Linxira OS，规划基于 Arch/CachyOS 的科研工作站发行版边界、双内核策略与路线图；ISO 构建和兼容性验证待完成。</div>
       </div>
     </div>
   </div>
@@ -149,24 +149,47 @@ type: resume
     </div>
   </div>
 
+  <!-- 求职信息 -->
+  <div class="r-section">
+    <div class="r-section-title">📌 求职信息</div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">科研数据分析 / 生物信息学分析</div>
+      </div>
+      <div class="r-exp-detail">面向科研数据清洗、统计与可视化、生物信息学分析及自动化报告等工作。</div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">实验室助理 / 科研助理</div>
+      </div>
+      <div class="r-exp-detail">可按 SOP 完成已掌握的实验步骤，并承担实验记录、样本与数据整理及结果分析。</div>
+    </div>
+    <div class="r-exp-item">
+      <div class="r-exp-head">
+        <div class="r-name">求职地点与到岗时间</div>
+      </div>
+      <div class="r-exp-detail">昆明优先，其他省会城市可考虑；面试通过后两周内到岗。</div>
+    </div>
+  </div>
+
   <!-- 技术能力 -->
   <div class="r-section">
     <div class="r-section-title">⚡ 技术能力</div>
     <div class="r-skills-grid">
       <div class="r-skill-card">
         <h4>主要工作语言与交付</h4>
-        <div class="r-skill-copy">以 Python / R / Shell 完成 RNA-seq、系统发育、结构分析与自动化报告；使用 Go / Rust 开展 CLI 与科研工具链重构。</div>
+        <div class="r-skill-copy">以 Python / R / Shell 完成 RNA-seq、系统发育、结构分析与自动化报告；借助 AI 编程辅助，尝试将性能热点迁移至 Rust/C++，目前处于自学与原型验证阶段。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">Python</span>
           <span class="r-skill-tag">R</span>
-          <span class="r-skill-tag">Go</span>
-          <span class="r-skill-tag">Rust</span>
           <span class="r-skill-tag">Shell</span>
+          <span class="r-skill-tag">Rust（自学）</span>
+          <span class="r-skill-tag">C++（自学）</span>
         </div>
       </div>
       <div class="r-skill-card">
         <h4>AI 训练与模型迁移</h4>
-        <div class="r-skill-copy">在 Ascend 910 与 NVIDIA CUDA 环境开展目标检测及 Transformer/生成模型训练实验，主要可核验交付为 PP-YOLOE+ 的 MindSpore/Ascend 适配。</div>
+        <div class="r-skill-copy">围绕 PP-YOLOE+、PP-YOLO 和 YOLOv5/v8 开展训练、微调、ONNX 导出与边缘推理；搭建 Ascend/OpenI/MindSpore 数据准备和 dry-run 调度脚手架。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">华为 Ascend 910</span>
           <span class="r-skill-tag">NVIDIA CUDA</span>
@@ -190,12 +213,10 @@ type: resume
       </div>
       <div class="r-skill-card">
         <h4>系统与平台工程</h4>
-        <div class="r-skill-copy">围绕在研 Linux 发行版与科研 Agent 原型，开展 ISO 构建链路、容器化、CLI、文档和工作流整合。</div>
+        <div class="r-skill-copy">围绕科研 Agent 原型和在研 Linux 发行版开展权限与流程编排、容器化、环境检查、文档和工作流整合。</div>
         <div class="r-skill-tags">
           <span class="r-skill-tag">AI Agent 编排</span>
-          <span class="r-skill-tag">Linux 发行版构建</span>
-          <span class="r-skill-tag">Pacman Hooks</span>
-          <span class="r-skill-tag">Config Hub</span>
+          <span class="r-skill-tag">Linux 发行版规划</span>
           <span class="r-skill-tag">Docker</span>
           <span class="r-skill-tag">Git</span>
         </div>
@@ -207,30 +228,30 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">📊 关键数据</div>
     <div class="r-stats">
-      <div class="r-stat"><div class="r-num">30+</div><div class="r-label">公开仓库（含 fork）</div></div>
-      <div class="r-stat"><div class="r-num">617</div><div class="r-label">集成索引的技能条目</div></div>
-      <div class="r-stat"><div class="r-num">6 / 11</div><div class="r-label">主要编排角色 / 内置子代理</div></div>
-      <div class="r-stat"><div class="r-num">1</div><div class="r-label">在研 Linux 发行版项目</div></div>
+      <div class="r-stat"><div class="r-num">1</div><div class="r-label">IJMS 期刊论文</div></div>
+      <div class="r-stat"><div class="r-num">1</div><div class="r-label">第一发明人专利申请</div></div>
+      <div class="r-stat"><div class="r-num">24</div><div class="r-label">DWF4 分析样本</div></div>
+      <div class="r-stat"><div class="r-num">617</div><div class="r-label">集成索引的技能指令包</div></div>
     </div>
   </div>
 
   <!-- AI 训练 -->
   <div class="r-section">
-    <div class="r-section-title">🧠 AI 训练与模型优化</div>
+    <div class="r-section-title">🧠 模型训练与部署实践</div>
     <div class="r-exp-item">
       <div class="r-exp-head">
-        <div class="r-name">华为 Ascend 910 原生训练</div>
+        <div class="r-name">目标检测训练与边缘推理</div>
       </div>
       <div class="r-exp-detail">
-        在 Ascend 910 环境完成目标检测及若干 Transformer/生成模型训练实验，涉及混合精度与多卡配置。
+        围绕 PP-YOLOE+、PP-YOLO 和 YOLOv5/v8 开展训练、微调、ONNX 导出及 Android/树莓派推理实践。
       </div>
     </div>
     <div class="r-exp-item">
       <div class="r-exp-head">
-        <div class="r-name">NVIDIA GPU 训练与微调</div>
+        <div class="r-name">异构硬件迁移</div>
       </div>
       <div class="r-exp-detail">
-        <span class="r-hl">PP-YOLO 系列</span>（PP-YOLOE+/v2）及 <span class="r-hl">YOLOv5/v8</span> 训练与微调，结合迁移学习与余弦退火策略。
+        使用 CUDA/Paddle/PyTorch 开展实验；搭建 Ascend/OpenI/MindSpore 数据准备、参数解析与 dry-run 调度脚手架，完整训练指标待补齐。
       </div>
     </div>
     <div class="r-exp-item">
@@ -239,7 +260,7 @@ type: resume
         <div class="r-meta">主持</div>
       </div>
       <div class="r-exp-detail">
-        荞麦种子质量检测项目参加 2025 中国国际大学生创新大赛及“挑战杯”相关申报；负责 <span class="r-hl">PP-YOLOE+</span> 训练与 MindSpore/Ascend 适配。
+        荞麦种子质量检测项目参加 2025 中国国际大学生创新大赛及“挑战杯”相关申报；负责 <span class="r-hl">PP-YOLOE+</span> 训练、推理工具和迁移脚手架实践。
       </div>
     </div>
   </div>
@@ -255,42 +276,27 @@ type: resume
     <div class="r-project-grid">
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/openagent-labforge-bio">openagent-labforge-bio</a> <span class="r-badge">主线</span></h4>
-        <div class="r-desc"><strong>主线。</strong> OpenCode Agent 编排插件：6 个主要编排角色、11 个内置子代理，集成索引 617 个技能条目。</div>
-        <span class="r-lang">Python</span>
+        <div class="r-desc"><strong>主线。</strong> OpenCode 科研编排插件：实现权限分层、计划执行、续跑/审查、会话检查点与 MCP；按需索引 617 个集成技能指令包。</div>
+        <span class="r-lang">TypeScript / Bun</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/linxira-os">Linxira OS</a></h4>
-        <div class="r-desc">在研科研 Linux 发行版：已建立 ISO 构建仓库、Pacman hooks、配置中心、官网与文档体系。</div>
-        <span class="r-lang">Shell / Python</span>
+        <div class="r-desc">在研科研工作站发行版：已形成仓库边界、双内核策略、科研环境架构与路线图；ISO 构建和兼容性验证待完成。</div>
+        <span class="r-lang">Architecture / Roadmap</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality">Buckwheat-seed-quality</a></h4>
-        <div class="r-desc">基于 PP-YOLOE+ 的荞麦籽粒检测项目，包含训练记录、桌面推理与 MindSpore/Ascend 适配实验。</div>
-        <span class="r-lang">Python / Julia</span>
+        <div class="r-desc">PP-YOLOE+ 荞麦籽粒检测与桌面/批量推理；树莓派 5 的 20 图同机测试中，NCNN CPU 延迟约为 ONNX Runtime CPU 的 1/1.83。</div>
+        <span class="r-lang">Python / Kotlin</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/Linxira-OS/extendai-lab-Studio">extendai-lab-Studio</a></h4>
-        <div class="r-desc">科研工作流控制面原型：实现基础编排与安全校验，领域工具适配持续开发。</div>
-        <span class="r-lang">Python</span>
-      </div>
-      <div class="r-project-card">
-        <h4><a href="https://github.com/BOHUYESHAN-APB/VisionDeploy-Studio">VisionDeploy-Studio</a></h4>
-        <div class="r-desc">探索 YOLO 多硬件部署与按需环境管理的原型项目。</div>
-        <span class="r-lang">Python</span>
-      </div>
-      <div class="r-project-card">
-        <h4><a href="https://github.com/Linxira-OS/extendai-lab-cli">extendai-lab-cli</a></h4>
-        <div class="r-desc">多模型 CLI：TUI 交互、缓存与插件扩展，面向科研场景推进 Go / Rust 重构。</div>
-        <span class="r-lang">Go / Rust</span>
+        <div class="r-desc">科研控制面原型：实现 OpenCode 生命周期桥、安全检查、日志和本地认证，并完成受限规模 count-matrix 统计原型。</div>
+        <span class="r-lang">Python / TypeScript</span>
       </div>
       <div class="r-project-card">
         <h4><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony">CNN-MicroAI-Colony</a></h4>
-        <div class="r-desc">微生物菌落检测与计数原型，围绕 PP-YOLO、ONNX 及边缘端部署开展实践。</div>
-        <span class="r-lang">Python</span>
-      </div>
-      <div class="r-project-card">
-        <h4><a href="https://github.com/BOHUYESHAN-APB/MicroAGI-Agri">MicroAGI-Agri</a></h4>
-        <div class="r-desc">农业 AI 应用，多模态视觉在农业场景的实践探索。</div>
+        <div class="r-desc">菌落检测、抑菌圈分析和多端推理原型；5 图小样本工程测试中，平衡版 CPU 延迟由 2539 ms 降至 1884 ms。</div>
         <span class="r-lang">Python</span>
       </div>
     </div>
@@ -300,10 +306,10 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">🤝 组织参与</div>
     <ul class="r-org-list">
-      <li class="r-org-item"><strong>Linxira OS</strong> — 发起并推进基于 Arch/CachyOS 的在研科研发行版</li>
+      <li class="r-org-item"><strong>Linxira OS</strong> — 发起并推进基于 Arch/CachyOS 的科研工作站发行版规划</li>
       <li class="r-org-item"><strong>YeShanBoYun Studio</strong> — 组织成员，参与 NeuroPlex-Nexus 等项目</li>
       <li class="r-org-item"><strong>openagent-labforge-bio</strong> — 主线项目，持续开发维护</li>
-      <li class="r-org-item"><strong>OpenI 启智社区</strong> — 活跃训练，公开发布 NPU/GPU 模型</li>
+      <li class="r-org-item"><strong>OpenI 启智社区</strong> — 公开保存部分 NPU/GPU 任务与模型记录</li>
     </ul>
   </div>
 
@@ -394,7 +400,7 @@ type: resume
   <div class="r-section">
     <div class="r-section-title">💡 自我评价</div>
     <p style="font-size:0.95rem; color:#475569; line-height:1.8;">
-      生物技术专业本科在读，聚焦植物生物信息学、科研 Agent 与 Linux 工程。已在发表论文中承担 Software 和 Data curation 贡献；完成苦荞 DWF4 多层计算证据整合与 RNAi in-silico 设计，并推进 OpenCode Agent 插件和在研科研 Linux 发行版项目。
+      生物技术专业本科在读，能够衔接实验执行、数据整理和生物信息学分析。已在发表论文中承担 Software 和 Data curation 贡献，并持续开发科研 Agent；正在借助 AI 编程辅助探索将 Python/R 性能热点迁移到 Rust/C++，目前处于自学与原型验证阶段。
     </p>
   </div>
 
@@ -411,7 +417,11 @@ type: resume
     </div>
     <div style="margin-bottom:0;">
       <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">微生物小目标检测算法改进 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">在研 · 拟整理为预印本</span></div>
-      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">针对微生物菌落检测中<span class="r-hl">小目标检测</span>这一行业惯性难题，从特殊检测算法出发，后续替换为 <span class="r-hl">PP-YOLO</span> 系列并引入改进余弦退火调度与学习率曲线优化，完成<span class="r-hl">华为 Ascend 910</span> 架构适配与训练。</div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">围绕微生物菌落小目标检测，持续比较 <span class="r-hl">PP-YOLO</span> 系列训练与学习率策略；已搭建 Ascend/OpenI/MindSpore 迁移脚手架，完整训练与评测结果待补齐。</div>
+    </div>
+    <div style="margin-top:1.2rem;">
+      <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.2rem;">Python / R 性能热点跨语言迁移 <span style="font-weight:400; font-size:0.8rem; color:#94a3b8;">自学 · 原型验证</span></div>
+      <div style="font-size:0.9rem; color:#475569; line-height:1.6;">借助 AI 编程辅助梳理文件解析、表格处理和计算热点，尝试以 Rust/C++ 重写受解释器与单线程限制的模块；目前不声明统一性能结论。</div>
     </div>
   </div>
 
