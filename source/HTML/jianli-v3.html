@@ -12,7 +12,7 @@
   html { width: 210mm; overflow-x: hidden; }
   body {
     background: #eef0f4;
-    font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+    font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei','Source Han Sans SC','WenQuanYi Micro Hei',sans-serif;
     color: #1a2233;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -39,14 +39,16 @@
   .a4-page + .a4-page { border-top: 0.3mm solid #d9d5ce; }
 
   /* ---- Hero ---- */
-  .hero { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 4mm; border-bottom: 0.35mm solid #1e3a8a; margin-bottom: 5mm; flex-shrink: 0; }
-  .hero-left h1 { font-family: 'Noto Serif SC',serif; font-size: 24pt; font-weight: 700; color: #101a33; letter-spacing: 0.5px; line-height: 1.15; }
-  .hero-left .tagline { font-size: 9pt; color: #1e3a8a; font-weight: 600; letter-spacing: 0.05em; margin-top: 1.2mm; }
-  .hero-right { text-align: right; font-size: 8pt; color: #5a6478; line-height: 1.75; }
+  .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm; padding-bottom: 3mm; border-bottom: 0.35mm solid #1e3a8a; margin-bottom: 4mm; flex-shrink: 0; }
+  .hero-left { flex-shrink: 0; min-width: 0; }
+  .hero-left h1 { font-family: 'Noto Serif SC','Songti SC','SimSun',serif; font-size: 21pt; font-weight: 700; color: #101a33; letter-spacing: 0.5px; line-height: 1.15; }
+  .hero-left .tagline { font-size: 8.6pt; color: #1e3a8a; font-weight: 600; letter-spacing: 0.05em; margin-top: 1mm; }
+  .hero-right { text-align: right; font-size: 7.6pt; color: #4a5468; line-height: 1.65; flex-shrink: 0; white-space: nowrap; background: #f4f7fd; border: 0.25mm solid #e2e7f0; border-radius: 1.2mm; padding: 1.5mm 2.2mm; }
+  .hero-right b { color: #1e3a8a; }
   .hero-right b { color: #1e3a8a; }
 
   /* ---- Section ---- */
-  .section { margin-bottom: 4.2mm; }
+  .section { margin-bottom: 3.6mm; }
   .section:last-child { margin-bottom: 0; }
   .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.6mm; }
   .section-label .en { font-size: 6.8pt; letter-spacing: 0.22em; color: #9aa3b5; font-weight: 600; text-transform: uppercase; }
@@ -55,7 +57,7 @@
 
   /* ---- Core assets (3 cards) ---- */
   .asset-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
-  .asset-card { border: 0.3mm solid #dbe2ef; border-top: 1.2mm solid #1e3a8a; border-radius: 1.2mm; padding: 2.8mm 3mm 2.4mm; background: #fafbff; position: relative; }
+  .asset-card { border: 0.3mm solid #dbe2ef; border-top: 1.2mm solid #1e3a8a; border-radius: 1.2mm; padding: 2.2mm 2.6mm 2mm; background: #fafbff; position: relative; }
   .asset-card .asset-tag { display: inline-block; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.08em; color: #1e3a8a; background: #e6ecf9; padding: 0.4mm 2mm; border-radius: 1mm; margin-bottom: 1.8mm; }
   .asset-card .asset-title { font-size: 9.5pt; font-weight: 700; color: #101a33; line-height: 1.35; margin-bottom: 0.8mm; }
   .asset-card .asset-sub { font-size: 7.2pt; color: #1e3a8a; font-weight: 600; margin-bottom: 1.2mm; }
@@ -74,7 +76,7 @@
   .cap-tag { font-size: 6.9pt; background: #eef2fa; color: #33415e; padding: 0.3mm 1.6mm; border-radius: 0.6mm; }
 
   /* ---- Timeline ---- */
-  .tl-item { position: relative; padding: 0 0 3.2mm 5mm; border-left: 0.3mm solid #c9d3e6; margin-left: 1.5mm; }
+  .tl-item { position: relative; padding: 0 0 2.6mm 5mm; border-left: 0.3mm solid #c9d3e6; margin-left: 1.5mm; }
   .tl-item:last-child { padding-bottom: 0; }
   .tl-item::before { content: ''; position: absolute; left: -1.35mm; top: 0.6mm; width: 2.4mm; height: 2.4mm; background: #1e3a8a; border-radius: 50%; border: 0.5mm solid #fff; box-shadow: 0 0 0 0.3mm #1e3a8a; }
   .tl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
@@ -112,7 +114,7 @@
 
   /* ---- Job block ---- */
   .job-block { background: #fafbff; border: 0.25mm solid #dbe2ef; border-radius: 1.2mm; padding: 2.6mm 3mm; }
-  .job-row { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; padding: 1.4mm 0; border-bottom: 0.2mm dashed #e2e7f0; }
+  .job-row { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; padding: 1mm 0; border-bottom: 0.2mm dashed #e2e7f0; }
   .job-row:last-child { border-bottom: none; }
   .job-row .j-name { font-size: 8.6pt; font-weight: 700; color: #101a33; }
   .job-row .j-desc { font-size: 7.4pt; color: #4a5468; text-align: right; }
@@ -254,13 +256,13 @@ function exportPDF() {
       <div class="cap-grid">
         <div class="cap-card">
           <div class="cap-title"><span class="dot"></span>生物信息学分析</div>
-          <div class="cap-text">可独立完成植物 <b>RNA-seq</b>、候选基因筛选、系统发育与结构预测的可复现分析，把多层计算证据串成候选基因证据链。</div>
-          <div class="cap-tags"><span class="cap-tag">HISAT2</span><span class="cap-tag">DESeq2</span><span class="cap-tag">WGCNA</span><span class="cap-tag">GSEA/Mfuzz</span><span class="cap-tag">BLASTP/RBH</span><span class="cap-tag">IQ-TREE</span><span class="cap-tag">AlphaFold</span><span class="cap-tag">Python/R</span></div>
+          <div class="cap-text">可独立完成植物 <b>RNA-seq</b>、候选基因筛选、系统发育与结构预测的可复现分析，把多层计算证据串成候选基因证据链；正在扩展单细胞与公共数据库工作流。</div>
+          <div class="cap-tags"><span class="cap-tag">HISAT2</span><span class="cap-tag">DESeq2</span><span class="cap-tag">WGCNA</span><span class="cap-tag">GSEA/Mfuzz</span><span class="cap-tag">BLASTP/RBH</span><span class="cap-tag">IQ-TREE</span><span class="cap-tag">AlphaFold</span><span class="cap-tag">单细胞</span><span class="cap-tag">空间转录组</span><span class="cap-tag">TCGA/GEO</span></div>
         </div>
         <div class="cap-card">
           <div class="cap-title"><span class="dot"></span>AI 模型训练与部署</div>
-          <div class="cap-text">PP-YOLOE+、YOLOv5/v8 训练微调与 <b>ONNX 边缘部署</b>；树莓派 5 实测 NCNN 307ms vs ONNX 561ms。</div>
-          <div class="cap-tags"><span class="cap-tag">PaddlePaddle</span><span class="cap-tag">PyTorch</span><span class="cap-tag">ONNX</span><span class="cap-tag">NCNN</span><span class="cap-tag">CUDA</span><span class="cap-tag">MindSpore</span></div>
+          <div class="cap-text">PP-YOLOE+、YOLOv5/v8 训练微调与 <b>ONNX 边缘部署</b>；树莓派 5 实测 NCNN 307ms vs ONNX 561ms；比较多种学习率策略。</div>
+          <div class="cap-tags"><span class="cap-tag">Fine-tuning</span><span class="cap-tag">模型量化</span><span class="cap-tag">PaddlePaddle</span><span class="cap-tag">PyTorch</span><span class="cap-tag">ONNX</span><span class="cap-tag">NCNN</span><span class="cap-tag">CUDA</span><span class="cap-tag">MindSpore</span></div>
         </div>
         <div class="cap-card">
           <div class="cap-title"><span class="dot"></span>分子生物学实验</div>
@@ -269,8 +271,8 @@ function exportPDF() {
         </div>
         <div class="cap-card">
           <div class="cap-title"><span class="dot"></span>Linux 与系统工程</div>
-          <div class="cap-text">发起在研 <b>Linxira OS</b> 科研发行版（Arch 基线、双内核、签名仓库）；Git/Docker 日常交付。</div>
-          <div class="cap-tags"><span class="cap-tag">Linux/Arch</span><span class="cap-tag">Shell</span><span class="cap-tag">Git</span><span class="cap-tag">Docker</span><span class="cap-tag">Rust(自学)</span></div>
+          <div class="cap-text">发起在研 <b>Linxira OS</b> 科研发行版（Arch 基线、双内核、签名仓库）；开发科研 Agent 编排插件；Git/Docker 日常交付。</div>
+          <div class="cap-tags"><span class="cap-tag">Linux/Arch</span><span class="cap-tag">Shell</span><span class="cap-tag">Git</span><span class="cap-tag">Docker</span><span class="cap-tag">TypeScript</span><span class="cap-tag">Kotlin</span><span class="cap-tag">Java</span><span class="cap-tag">Rust(自学)</span><span class="cap-tag">Agent 编排</span><span class="cap-tag">MCP</span></div>
         </div>
       </div>
     </div>
