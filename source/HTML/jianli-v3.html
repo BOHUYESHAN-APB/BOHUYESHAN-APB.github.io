@@ -46,7 +46,7 @@
   .hero-right b { color: #1e3a8a; }
 
   /* ---- Section ---- */
-  .section { margin-bottom: 5mm; }
+  .section { margin-bottom: 4.2mm; }
   .section:last-child { margin-bottom: 0; }
   .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.6mm; }
   .section-label .en { font-size: 6.8pt; letter-spacing: 0.22em; color: #9aa3b5; font-weight: 600; text-transform: uppercase; }
@@ -103,6 +103,31 @@
 
   .page-footer { position: absolute; left: 13mm; right: 13mm; bottom: 5mm; padding-top: 1.5mm; border-top: 0.2mm solid #e2e7f0; font-size: 7.2pt; color: #9aa3b5; display: flex; justify-content: space-between; }
   .footer-note { font-size: 6.8pt; color: #b0b8c8; }
+
+  /* ---- Stats bar ---- */
+  .stat-bar { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2mm; }
+  .stat-item { text-align: center; padding: 2mm 1mm; background: #f4f7fd; border-radius: 1.2mm; border: 0.25mm solid #e2e7f0; }
+  .stat-item .num { font-family: 'Noto Serif SC',serif; font-size: 12pt; font-weight: 700; color: #1e3a8a; line-height: 1.2; }
+  .stat-item .lab { font-size: 6.4pt; color: #8a94a8; margin-top: 0.5mm; line-height: 1.3; }
+
+  /* ---- Job block ---- */
+  .job-block { background: #fafbff; border: 0.25mm solid #dbe2ef; border-radius: 1.2mm; padding: 2.6mm 3mm; }
+  .job-row { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; padding: 1.4mm 0; border-bottom: 0.2mm dashed #e2e7f0; }
+  .job-row:last-child { border-bottom: none; }
+  .job-row .j-name { font-size: 8.6pt; font-weight: 700; color: #101a33; }
+  .job-row .j-desc { font-size: 7.4pt; color: #4a5468; text-align: right; }
+
+  /* ---- WIP ---- */
+  .wip-item { margin-bottom: 1.8mm; }
+  .wip-item:last-child { margin-bottom: 0; }
+  .wip-head { font-size: 8.4pt; font-weight: 700; color: #101a33; margin-bottom: 0.4mm; }
+  .wip-meta { font-size: 6.6pt; color: #8a94a8; font-weight: 400; margin-left: 1.5mm; }
+  .wip-body { font-size: 7.4pt; color: #4a5468; line-height: 1.52; }
+  .wip-body .hl { color: #1e3a8a; font-weight: 600; }
+
+  /* ---- Self eval ---- */
+  .self-eval { font-size: 7.8pt; color: #4a5468; line-height: 1.65; background: #fafbff; border-left: 1mm solid #1e3a8a; border-radius: 0 1.2mm 1.2mm 0; padding: 2.4mm 3mm; }
+  .self-eval b { color: #1e3a8a; }
 
   @media print {
     @page { size: A4 portrait; margin: 0; }
@@ -273,6 +298,22 @@ function exportPDF() {
         </div>
         <div class="tl-body">设计并实现本地优先生信分析平台：Rust 引擎、94 个分析能力、28 个 agent skills、CI 验证门禁与 AGPL 开源发布。</div>
       </div>
+      <div class="tl-item">
+        <div class="tl-head">
+          <div class="tl-name">竞赛 · 荞麦种子质量检测（AI 赛道主持）</div>
+          <div class="tl-meta">2025</div>
+        </div>
+        <div class="tl-body">负责 <span class="hl">PP-YOLOE+</span> 训练、推理工具与迁移脚手架实践；项目获大学生创新大赛、挑战杯等省级立项。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">求职信息</span><span class="en">JOB TARGET</span></div>
+      <div class="job-block">
+        <div class="job-row"><div class="j-name">科研数据分析 / 生物信息学分析</div><div class="j-desc">数据清洗、统计与可视化、生信分析及自动化报告</div></div>
+        <div class="job-row"><div class="j-name">实验室助理 / 科研助理</div><div class="j-desc">按 SOP 完成实验，负责记录、样本与数据整理及结果分析</div></div>
+        <div class="job-row"><div class="j-name">地点与到岗</div><div class="j-desc">昆明优先，其他省会可考虑；面试通过后两周内到岗</div></div>
+      </div>
     </div>
 
     <div class="page-footer"><span>韩涛 · 简历 v3</span><span>1 / 2</span></div>
@@ -337,7 +378,23 @@ function exportPDF() {
       </div>
     </div>
 
-    <div class="section" style="flex:1;">
+    <div class="section">
+      <div class="section-label"><span class="zh">在研项目</span><span class="en">ONGOING</span></div>
+      <div class="wip-item">
+        <div class="wip-head">AI 驱动药物虚拟筛选自动化管线<span class="wip-meta">2026.06 至今 · 前沿方法集成</span></div>
+        <div class="wip-body">设计靶点检索、网络药理学、分子对接、分子动力学与报告生成的 Agent 工作流；正在评估 <span class="hl">PBCNet2.0</span> 等亲和力预测方法接入可行性。</div>
+      </div>
+      <div class="wip-item">
+        <div class="wip-head">微生物小目标检测算法改进<span class="wip-meta">在研 · 拟整理为预印本</span></div>
+        <div class="wip-body">比较 <span class="hl">PP-YOLO</span> 系列训练与学习率策略；已搭建 Ascend/OpenI/MindSpore 迁移脚手架，完整评测结果待补齐。</div>
+      </div>
+      <div class="wip-item">
+        <div class="wip-head">Python / R 性能热点跨语言迁移<span class="wip-meta">自学 · 原型验证</span></div>
+        <div class="wip-body">借助 AI 编程辅助梳理文件解析、表格处理与计算热点，尝试以 Rust/C++ 重写受解释器限制的模块；不声明统一性能结论。</div>
+      </div>
+    </div>
+
+    <div class="section">
       <div class="section-label"><span class="zh">竞赛 · 组织 · 核验</span><span class="en">MORE</span></div>
       <div class="mini-grid">
         <div class="mini-col">
@@ -362,6 +419,11 @@ function exportPDF() {
           <div class="mini-item"><b>ORCID</b> · 0009-0002-8426-0610</div>
         </div>
       </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">自我评价</span><span class="en">SUMMARY</span></div>
+      <div class="self-eval">生物技术专业本科在读，能衔接<b>实验执行 → 数据整理 → 生物信息学分析 → 工程化交付</b>的完整链路；已在发表论文中承担 Software 与 Data curation 贡献，主导开发 Bio SDK 开源项目，并持续训练与部署视觉模型；借助 AI 编程辅助探索 Rust/C++ 热点迁移，处于自学与原型验证阶段。</div>
     </div>
 
     <div class="page-footer"><span>韩涛 · 简历 v3 · 2026-08-15 重构</span><span>2 / 2</span></div>
