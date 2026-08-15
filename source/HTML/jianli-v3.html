@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=210">
+<title>韩涛 (Tao Han) · 简历 v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { width: 210mm; overflow-x: hidden; }
+  body {
+    background: #eef0f4;
+    font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+    color: #1a2233;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    width: 210mm;
+    overflow-x: hidden;
+  }
+  .print-btn-wrap { text-align: center; padding: 12px 0; background: #eef0f4; }
+  .print-btn { display: inline-block; padding: 10px 28px; background: #1e3a8a; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .print-btn:hover { background: #2563eb; }
+  .print-btn:disabled { background: #999; cursor: wait; }
+  .print-status { font-size: 12px; color: #666; margin-top: 6px; min-height: 18px; }
+  .ver-bar { display: flex; justify-content: center; gap: 8px; margin: 10px 0 0; flex-wrap: wrap; }
+  .ver-bar a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border: 1px solid #c9c3b8; border-radius: 6px; font-size: 13px; font-weight: 600; color: #5a564e; background: #f5f3ee; text-decoration: none; }
+  .ver-bar a:hover { border-color: #1e3a8a; color: #1e3a8a; }
+  .ver-bar a.active { border-color: #1e3a8a; background: #1e3a8a; color: #fff; }
+  .ver-bar .ver-tag { font-size: 11px; padding: 1px 7px; border-radius: 4px; background: #e0dcd4; color: #5a564e; }
+  .ver-bar a.active .ver-tag { background: rgba(255,255,255,0.2); color: #fff; }
+  .ver-bar .ver-date { font-size: 11px; color: #9a9488; font-weight: 400; }
+  .ver-bar a.active .ver-date { color: rgba(255,255,255,0.85); }
+  .ver-note { font-size: 11px; color: #8a8680; margin-top: 6px; }
+
+  .a4-sheet { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); overflow: hidden; }
+  .a4-page { width: 210mm; height: 297mm; padding: 13mm 13mm 12mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .a4-page + .a4-page { border-top: 0.3mm solid #d9d5ce; }
+
+  /* ---- Hero ---- */
+  .hero { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 4mm; border-bottom: 0.35mm solid #1e3a8a; margin-bottom: 5mm; flex-shrink: 0; }
+  .hero-left h1 { font-family: 'Noto Serif SC',serif; font-size: 24pt; font-weight: 700; color: #101a33; letter-spacing: 0.5px; line-height: 1.15; }
+  .hero-left .tagline { font-size: 9pt; color: #1e3a8a; font-weight: 600; letter-spacing: 0.05em; margin-top: 1.2mm; }
+  .hero-right { text-align: right; font-size: 8pt; color: #5a6478; line-height: 1.75; }
+  .hero-right b { color: #1e3a8a; }
+
+  /* ---- Section ---- */
+  .section { margin-bottom: 5mm; }
+  .section:last-child { margin-bottom: 0; }
+  .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.6mm; }
+  .section-label .en { font-size: 6.8pt; letter-spacing: 0.22em; color: #9aa3b5; font-weight: 600; text-transform: uppercase; }
+  .section-label .zh { font-family: 'Noto Serif SC',serif; font-size: 11.5pt; font-weight: 700; color: #101a33; letter-spacing: 0.02em; }
+  .section-label::after { content: ''; flex: 1; height: 0.2mm; background: #dfe3ec; }
+
+  /* ---- Core assets (3 cards) ---- */
+  .asset-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+  .asset-card { border: 0.3mm solid #dbe2ef; border-top: 1.2mm solid #1e3a8a; border-radius: 1.2mm; padding: 2.8mm 3mm 2.4mm; background: #fafbff; position: relative; }
+  .asset-card .asset-tag { display: inline-block; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.08em; color: #1e3a8a; background: #e6ecf9; padding: 0.4mm 2mm; border-radius: 1mm; margin-bottom: 1.8mm; }
+  .asset-card .asset-title { font-size: 9.5pt; font-weight: 700; color: #101a33; line-height: 1.35; margin-bottom: 0.8mm; }
+  .asset-card .asset-sub { font-size: 7.2pt; color: #1e3a8a; font-weight: 600; margin-bottom: 1.2mm; }
+  .asset-card .asset-desc { font-size: 7.6pt; color: #4a5468; line-height: 1.5; margin-bottom: 1.6mm; }
+  .asset-card .asset-proof { font-size: 7pt; color: #8a94a8; line-height: 1.45; }
+  .asset-card .asset-proof b { color: #1e3a8a; font-weight: 600; }
+
+  /* ---- Capability matrix (2x2) ---- */
+  .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .cap-card { border: 0.25mm solid #e2e7f0; border-radius: 1.2mm; padding: 2.6mm 3mm; background: #fff; }
+  .cap-card .cap-title { font-size: 9pt; font-weight: 700; color: #101a33; margin-bottom: 1.4mm; display: flex; align-items: center; gap: 1.6mm; }
+  .cap-card .cap-title .dot { width: 1.6mm; height: 1.6mm; background: #1e3a8a; border-radius: 50%; flex-shrink: 0; }
+  .cap-card .cap-text { font-size: 7.4pt; color: #4a5468; line-height: 1.52; margin-bottom: 1.3mm; }
+  .cap-card .cap-text b { color: #101a33; }
+  .cap-tags { display: flex; flex-wrap: wrap; gap: 0.9mm; }
+  .cap-tag { font-size: 6.9pt; background: #eef2fa; color: #33415e; padding: 0.3mm 1.6mm; border-radius: 0.6mm; }
+
+  /* ---- Timeline ---- */
+  .tl-item { position: relative; padding: 0 0 3.2mm 5mm; border-left: 0.3mm solid #c9d3e6; margin-left: 1.5mm; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before { content: ''; position: absolute; left: -1.35mm; top: 0.6mm; width: 2.4mm; height: 2.4mm; background: #1e3a8a; border-radius: 50%; border: 0.5mm solid #fff; box-shadow: 0 0 0 0.3mm #1e3a8a; }
+  .tl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .tl-head .tl-name { font-size: 9.5pt; font-weight: 700; color: #101a33; }
+  .tl-head .tl-meta { font-size: 7.6pt; color: #8a94a8; white-space: nowrap; }
+  .tl-body { font-size: 7.8pt; color: #4a5468; line-height: 1.52; margin-top: 0.8mm; }
+  .tl-body .hl { color: #1e3a8a; font-weight: 600; }
+  .tl-body .small { font-size: 7pt; color: #8a94a8; }
+
+  /* ---- Project cards ---- */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .proj-card { border: 0.25mm solid #e2e7f0; border-radius: 1.2mm; padding: 2.4mm 2.8mm; background: #fff; }
+  .proj-card.main { border: 0.3mm solid #b8cbf0; background: #f4f8ff; }
+  .proj-card .proj-head { display: flex; align-items: center; gap: 1.6mm; margin-bottom: 1mm; }
+  .proj-card .proj-name { font-size: 8.6pt; font-weight: 700; color: #101a33; }
+  .proj-card .proj-badge { font-size: 6.4pt; font-weight: 700; color: #1e3a8a; background: #dce7fa; padding: 0.2mm 1.5mm; border-radius: 0.8mm; }
+  .proj-card .proj-desc { font-size: 7.3pt; color: #4a5468; line-height: 1.5; margin-bottom: 1mm; }
+  .proj-card .proj-lang { font-size: 6.8pt; color: #8a94a8; }
+
+  /* ---- Mini grid (3 col) ---- */
+  .mini-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3mm; }
+  .mini-col .mini-title { font-size: 8pt; font-weight: 700; color: #101a33; margin-bottom: 1.6mm; letter-spacing: 0.04em; }
+  .mini-item { font-size: 7.4pt; color: #4a5468; line-height: 1.5; margin-bottom: 1.1mm; padding-left: 3mm; position: relative; }
+  .mini-item::before { content: ''; position: absolute; left: 0; top: 1.2mm; width: 1mm; height: 1mm; background: #9fb4dd; border-radius: 0.2mm; }
+  .mini-item b { color: #101a33; }
+
+  .page-footer { position: absolute; left: 13mm; right: 13mm; bottom: 5mm; padding-top: 1.5mm; border-top: 0.2mm solid #e2e7f0; font-size: 7.2pt; color: #9aa3b5; display: flex; justify-content: space-between; }
+  .footer-note { font-size: 6.8pt; color: #b0b8c8; }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    html, body { width: 210mm; background: #fff; }
+    .a4-sheet { box-shadow: none; }
+    .print-btn-wrap { display: none !important; }
+    .asset-card, .cap-card, .proj-card, .cap-tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tl-item, .asset-card, .cap-card, .proj-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-btn-wrap">
+  <button class="print-btn" id="exportBtn" onclick="exportPDF()">导出 PDF (A4 双面打印)</button>
+  <div class="print-status" id="printStatus"></div>
+  <div class="ver-bar">
+    <a class="active" href="/HTML/jianli-v3.html">v3 当前版 (A4)<span class="ver-date">2026-08-15 重构</span></a>
+    <a href="/HTML/jianli-v2.html">v2<span class="ver-date">2026-08-15</span></a>
+    <a href="/HTML/jianli.html">v1<span class="ver-date">2026-08-15 最后修订</span></a>
+  </div>
+  <div class="ver-note">v3 · 2026-08-15 重构 · 学术现代风 · A4 纵向</div>
+</div>
+
+<script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+function exportPDF() {
+  if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
+    alert('PDF 库加载失败，请刷新页面重试。');
+    return;
+  }
+  var btn = document.getElementById('exportBtn');
+  var status = document.getElementById('printStatus');
+  btn.disabled = true;
+  btn.textContent = '正在生成 PDF...';
+  status.textContent = '请稍候...';
+
+  var pages = document.querySelectorAll('.a4-page');
+  var container = document.createElement('div');
+  container.style.cssText = 'position:absolute;left:-9999px;top:0;width:210mm;background:#fff;';
+  document.body.appendChild(container);
+
+  var allCanvases = [];
+
+  function renderPage(idx) {
+    if (idx >= pages.length) { buildPDF(); return; }
+    var clone = pages[idx].cloneNode(true);
+    clone.style.cssText = 'width:210mm;height:297mm;overflow:hidden;position:relative;background:#fff;padding:13mm 13mm 12mm;box-sizing:border-box;';
+    container.innerHTML = '';
+    container.appendChild(clone);
+    setTimeout(function() {
+      html2canvas(clone, { scale: 2, useCORS: true, logging: false }).then(function(canvas) {
+        allCanvases.push({ canvas: canvas, index: idx });
+        status.textContent = '已渲染 ' + allCanvases.length + '/' + pages.length + ' 页...';
+        renderPage(idx + 1);
+      });
+    }, 200);
+  }
+
+  function buildPDF() {
+    allCanvases.sort(function(a, b) { return a.index - b.index; });
+    var pdf = new jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+    for (var j = 0; j < allCanvases.length; j++) {
+      if (j > 0) pdf.addPage();
+      pdf.addImage(allCanvases[j].canvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, 210, 297);
+    }
+    pdf.save('Tao_Han_Resume_v3_A4.pdf');
+    document.body.removeChild(container);
+    btn.disabled = false;
+    btn.textContent = '导出 PDF (A4 双面打印)';
+    status.textContent = 'PDF 已下载！共 ' + allCanvases.length + ' 页 A4。';
+  }
+
+  renderPage(0);
+}
+</script>
+
+<div class="a4-sheet">
+
+  <!-- ===== PAGE 1 ===== -->
+  <div class="a4-page">
+    <div class="hero">
+      <div class="hero-left">
+        <h1>韩涛 · Tao Han</h1>
+        <div class="tagline">AI 模型训练 · 生物信息学分析 · 分子实验 · 科研工程</div>
+      </div>
+      <div class="hero-right">
+        <b>Email</b> bohuyeshan@gmail.com<br>
+        <b>GitHub</b> BOHUYESHAN-APB · <b>博客</b> bohuyeshan.top<br>
+        <b>地点</b> 昆明优先，其他省会可考虑 · <b>到岗</b> 面试通过后两周内
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">核心资产</span><span class="en">CORE ASSETS</span></div>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-tag">论文 · 第四作者</div>
+          <div class="asset-title">IJMS 期刊论文</div>
+          <div class="asset-sub">Brassicaceae YABBY 系统发育与 CRC 介导柱头发育调控</div>
+          <div class="asset-desc">International Journal of Molecular Sciences, 27(13):5740 · CRediT: Software, Data curation · DOI: 10.3390/ijms27135740</div>
+          <div class="asset-proof"><b>能力证明：</b>完整跑通家族鉴定 → 系统发育 → 转录组差异表达的生物信息学分析闭环</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-tag">开源 · 主导开发</div>
+          <div class="asset-title">Linxira Bio SDK</div>
+          <div class="asset-sub">本地优先生物信息学分析平台</div>
+          <div class="asset-desc">Rust 原生引擎 + GUI/CLI + agent skills · 94 个分析能力 · 28 个 skills · AGPL-3.0</div>
+          <div class="asset-proof"><b>能力证明：</b>系统级代码工程：Rust 引擎、CLI 工具链、Linux 打包与开源仓库全链路运维</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-tag">专利 · 第一发明人</div>
+          <div class="asset-title">发明专利</div>
+          <div class="asset-sub">基于 CNN 的多算法微生物培养综合识别方法及系统</div>
+          <div class="asset-desc">申请号 202510091154.4 · 云南农业大学 · 2025-05-16 公布</div>
+          <div class="asset-proof"><b>能力证明：</b>从数据准备到模型训练、边缘部署的完整 AI 建模能力</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">能力矩阵</span><span class="en">CAPABILITIES</span></div>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-title"><span class="dot"></span>生物信息学分析</div>
+          <div class="cap-text">可独立完成植物 <b>RNA-seq</b>、候选基因筛选、系统发育与结构预测的可复现分析，把多层计算证据串成候选基因证据链。</div>
+          <div class="cap-tags"><span class="cap-tag">HISAT2</span><span class="cap-tag">DESeq2</span><span class="cap-tag">WGCNA</span><span class="cap-tag">GSEA/Mfuzz</span><span class="cap-tag">BLASTP/RBH</span><span class="cap-tag">IQ-TREE</span><span class="cap-tag">AlphaFold</span><span class="cap-tag">Python/R</span></div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title"><span class="dot"></span>AI 模型训练与部署</div>
+          <div class="cap-text">PP-YOLOE+、YOLOv5/v8 训练微调与 <b>ONNX 边缘部署</b>；树莓派 5 实测 NCNN 307ms vs ONNX 561ms。</div>
+          <div class="cap-tags"><span class="cap-tag">PaddlePaddle</span><span class="cap-tag">PyTorch</span><span class="cap-tag">ONNX</span><span class="cap-tag">NCNN</span><span class="cap-tag">CUDA</span><span class="cap-tag">MindSpore</span></div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title"><span class="dot"></span>分子生物学实验</div>
+          <div class="cap-text">受过系统训练，可按 <b>SOP 独立完成</b>已掌握步骤，规范记录并衔接后续数据分析。</div>
+          <div class="cap-tags"><span class="cap-tag">表型鉴定</span><span class="cap-tag">RNA 提取</span><span class="cap-tag">qRT-PCR</span><span class="cap-tag">分子克隆</span><span class="cap-tag">组织培养</span></div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title"><span class="dot"></span>Linux 与系统工程</div>
+          <div class="cap-text">发起在研 <b>Linxira OS</b> 科研发行版（Arch 基线、双内核、签名仓库）；Git/Docker 日常交付。</div>
+          <div class="cap-tags"><span class="cap-tag">Linux/Arch</span><span class="cap-tag">Shell</span><span class="cap-tag">Git</span><span class="cap-tag">Docker</span><span class="cap-tag">Rust(自学)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="flex:1;">
+      <div class="section-label"><span class="zh">科研与工程经历</span><span class="en">EXPERIENCE</span></div>
+      <div class="tl-item">
+        <div class="tl-head">
+          <div class="tl-name">课题组研究助理</div>
+          <div class="tl-meta">2025.01 — 2026.05</div>
+        </div>
+        <div class="tl-body">十字花科 YABBY 家族鉴定、系统发育、顺式元件扫描与转录组差异表达分析；独立搭建微生物菌落 CNN 检测与分类计数流程。<span class="hl">交付：</span>IJMS 第四作者；发明专利第一发明人。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head">
+          <div class="tl-name">校内实习 · 荞麦矮化基因挖掘</div>
+          <div class="tl-meta">2026.03 — 2026.06</div>
+        </div>
+        <div class="tl-body">BLASTP/RBH 筛选 DWF4 直系同源 + 局部共线性；整合 24 样本 RNA-seq、WGCNA、GSEA/Mfuzz、启动子、系统发育与 AlphaFold。<span class="hl">交付：</span>350 bp RNAi 靶片段与发卡表达盒的 in-silico 设计。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head">
+          <div class="tl-name">开源项目 · Linxira Bio SDK 主导开发</div>
+          <div class="tl-meta">2026.07 至今</div>
+        </div>
+        <div class="tl-body">设计并实现本地优先生信分析平台：Rust 引擎、94 个分析能力、28 个 agent skills、CI 验证门禁与 AGPL 开源发布。</div>
+      </div>
+    </div>
+
+    <div class="page-footer"><span>韩涛 · 简历 v3</span><span>1 / 2</span></div>
+  </div>
+
+  <!-- ===== PAGE 2 ===== -->
+  <div class="a4-page">
+    <div class="hero" style="margin-bottom:4mm;">
+      <div class="hero-left">
+        <h1 style="font-size:16pt;">韩涛 · 项目与工程实践</h1>
+      </div>
+      <div class="hero-right">
+        <b>GitHub</b> github.com/BOHUYESHAN-APB · <b>博客</b> bohuyeshan.top · <b>ORCID</b> 0009-0002-8426-0610
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">开源项目</span><span class="en">OPEN SOURCE</span></div>
+      <div class="proj-grid">
+        <div class="proj-card main">
+          <div class="proj-head"><span class="proj-name">Linxira Bio SDK</span><span class="proj-badge">主导开发</span></div>
+          <div class="proj-desc">本地优先生信分析平台：Rust 原生引擎 + GUI/CLI + agent skills；94 个分析能力、28 个 skills、AGPL-3.0。</div>
+          <div class="proj-lang">Rust · Python · R · Java</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-head"><span class="proj-name">openagent-labforge-bio</span></div>
+          <div class="proj-desc">OpenCode 科研编排插件：权限分层、计划执行、会话检查点与 MCP；19 个 Agent 定义、617 个技能指令包索引。</div>
+          <div class="proj-lang">TypeScript / Bun</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-head"><span class="proj-name">Buckwheat-seed-quality</span></div>
+          <div class="proj-desc">PP-YOLOE+ 荞麦籽粒检测与多端推理；树莓派 5 同机 20 图测试 NCNN 307ms vs ONNX 561ms（约 1.83×）。</div>
+          <div class="proj-lang">Python / Kotlin</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-head"><span class="proj-name">CNN-MicroAI-Colony</span></div>
+          <div class="proj-desc">菌落检测与抑菌圈分析多端原型；5 图小样本测试 CPU 延迟 2539→1884ms（约 26%）。</div>
+          <div class="proj-lang">Python / ONNX</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-head"><span class="proj-name">Linxira OS</span></div>
+          <div class="proj-desc">在研科研工作站发行版：Arch 基线、双内核、签名仓库、审核软件目录；ISO 构建待完成。</div>
+          <div class="proj-lang">Architecture / Roadmap</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-head"><span class="proj-name">extendai-lab-Studio</span></div>
+          <div class="proj-desc">科研控制面原型：OpenCode 生命周期桥、安全检查、本地认证与受限规模统计原型。</div>
+          <div class="proj-lang">Python / TypeScript</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">模型训练与部署实践</span><span class="en">MODEL TRAINING</span></div>
+      <div class="tl-item">
+        <div class="tl-head"><div class="tl-name">目标检测训练与边缘推理</div></div>
+        <div class="tl-body">PP-YOLOE+、PP-YOLO、YOLOv5/v8 训练与微调，ONNX 导出及 Android/树莓派推理；比较余弦退火、Restart 与分段式学习率策略，结合训练曲线小样本调参。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><div class="tl-name">异构硬件迁移</div></div>
+        <div class="tl-body">CUDA/Paddle/PyTorch 实验；Ascend/OpenI/MindSpore 数据准备、参数解析与 dry-run 调度脚手架。<span class="small">完整训练指标待补齐。</span></div>
+      </div>
+    </div>
+
+    <div class="section" style="flex:1;">
+      <div class="section-label"><span class="zh">竞赛 · 组织 · 核验</span><span class="en">MORE</span></div>
+      <div class="mini-grid">
+        <div class="mini-col">
+          <div class="mini-title">竞赛项目经历</div>
+          <div class="mini-item"><b>中国国际大学生创新大赛</b> · 人工智能赛道主持</div>
+          <div class="mini-item"><b>"挑战杯"</b> · 负责人 · 省级立项</div>
+          <div class="mini-item"><b>大创训练项目</b> · 省级立项 · 中期检查优秀</div>
+          <div class="mini-item"><b>创新创业挑战</b> · 院系资助 · 优秀结题</div>
+        </div>
+        <div class="mini-col">
+          <div class="mini-title">组织参与</div>
+          <div class="mini-item"><b>Linxira OS</b> · 发起科研发行版；Bio SDK 主导开发</div>
+          <div class="mini-item"><b>openagent-labforge-bio</b> · 主线维护</div>
+          <div class="mini-item"><b>OpenI 启智</b> · NPU/GPU 任务与模型记录</div>
+          <div class="mini-item"><b>YeShanBoYun Studio</b> · 成员</div>
+        </div>
+        <div class="mini-col">
+          <div class="mini-title">核验入口</div>
+          <div class="mini-item"><b>GitHub</b> · github.com/BOHUYESHAN-APB</div>
+          <div class="mini-item"><b>博客</b> · bohuyeshan.top</div>
+          <div class="mini-item"><b>OpenI</b> · openi.pcl.ac.cn/bhys</div>
+          <div class="mini-item"><b>ORCID</b> · 0009-0002-8426-0610</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer"><span>韩涛 · 简历 v3 · 2026-08-15 重构</span><span>2 / 2</span></div>
+  </div>
+
+</div>
+
+</body>
+</html>

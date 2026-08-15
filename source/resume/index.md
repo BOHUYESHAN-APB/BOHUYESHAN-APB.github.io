@@ -92,7 +92,8 @@ type: resume
       <span>bohuyeshan@gmail.com</span>
     </div>
     <div class="r-ver-bar">
-      <a class="r-ver-item" href="/HTML/jianli-v2.html" target="_blank"><span class="r-ver-tag">v2</span> 最新版 (A4)<span class="r-ver-date">2026-08-15 修订</span></a>
+      <a class="r-ver-item" href="/HTML/jianli-v3.html" target="_blank"><span class="r-ver-tag">v3</span> 最新版 (A4)<span class="r-ver-date">2026-08-15 重构</span></a>
+      <a class="r-ver-item" href="/HTML/jianli-v2.html" target="_blank"><span class="r-ver-tag">v2</span> 过渡版<span class="r-ver-date">2026-08-15 修订</span></a>
       <a class="r-ver-item" href="/HTML/jianli.html" target="_blank"><span class="r-ver-tag">v1</span> 历史版<span class="r-ver-date">2026-08-15 最后修订</span></a>
     </div>
   </div>
@@ -429,11 +430,12 @@ type: resume
   <div class="r-print-section">
     <a href="/HTML/jianli-v2.html" target="_blank">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      获取印刷版简历 (v2 · A4)
+      获取印刷版简历 (v3 · A4)
     </a>
     <div class="r-ver-bar">
-      <a class="r-ver-item" href="/HTML/jianli-v2.html" target="_blank"><span class="r-ver-tag">v2</span> 最新版 (A4)<span class="r-ver-date">2026-08-15 修订</span></a>
-      <a class="r-ver-item" href="/HTML/jianli.html" target="_blank"><span class="r-ver-tag">v1</span> 历史版 (A3)<span class="r-ver-date">2026-08-15 最后修订</span></a>
+      <a class="r-ver-item" href="/HTML/jianli-v3.html" target="_blank"><span class="r-ver-tag">v3</span> 最新版 (A4)<span class="r-ver-date">2026-08-15 重构</span></a>
+      <a class="r-ver-item" href="/HTML/jianli-v2.html" target="_blank"><span class="r-ver-tag">v2</span> 过渡版<span class="r-ver-date">2026-08-15 修订</span></a>
+      <a class="r-ver-item" href="/HTML/jianli.html" target="_blank"><span class="r-ver-tag">v1</span> 历史版<span class="r-ver-date">2026-08-15 最后修订</span></a>
     </div>
     <div class="r-print-hint">A4 双面打印 · 左右两页展开即完整简历</div>
   </div>
