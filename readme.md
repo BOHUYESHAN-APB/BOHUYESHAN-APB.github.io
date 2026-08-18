@@ -1,25 +1,69 @@
-# 这是一个个人博客仓库
-## 首先我要表明的
-这个博客算是第4个公开发布的个人博客，最早的博客是什么时候启用的已经难以追溯了，但是我会将我有记录保存的博客文章发布在这里，但是不按照原有时间记录，除非有特殊意义。
-个人博客的地址是[bohuyeshan.top]
-我的另一个github账号是[bohuyeshan](https://github.com/bohuyeshan)以后会在这个账号发布个人的项目。
-## 博客介绍
-这是一个个人博客，主要记录学习笔记，以及一些技术文章。
-直接将[hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly)主题clone下来，然后修改了部分样式，然后使用[hexo](https://hexo.io/zh-cn/)进行博客的搭建。
-数据库用vercel进行部署。这至少是免费的，就是后面用来cloudflare的cdn加速qexo搭建的博客后台进行快速管理，虽然我还是喜欢用vscode直接编辑文档。
+# BoHuYeShan 的个人博客
 
-## 博客使用到的物品工具一类的？
-1. hexo
-2. hexo-theme-butterfly
-3. node.js
-4. git
-5. vscode
-6. github
-7. vercel
-8. cloudflare
+基于 [Hexo](https://hexo.io/zh-cn/) 与 [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly) 构建的个人博客，静态站点部署于 Vercel，经 Cloudflare CDN 加速，并使用 Qexo 提供在线后台管理。
 
+## 站点信息
 
-# 分支说明
-master分支是直接发布的博客，是直接本地git到远端的hexo blog。
-main分支是主要内容，版本较新
-future作为备份，防止主要内容又出现大量错误以便未来恢复。
+- 博客地址：[https://bohuyeshan.top](https://bohuyeshan.top)
+- 内容定位：学习笔记与技术文章
+- 说明：这是本人公开发布的第 4 个个人博客。历史文章均重新整理后发布，不沿用原始时间记录，具有特殊意义的文章除外。
+
+## 技术栈
+
+| 工具 | 用途 |
+| --- | --- |
+| [Hexo](https://hexo.io/zh-cn/) | 静态博客框架 |
+| [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly) | 博客主题（基于官方主题二次定制样式） |
+| Node.js | 本地构建与运行环境 |
+| Git / GitHub | 源码托管与版本管理 |
+| Vercel | 静态站点部署（Serverless） |
+| Cloudflare | CDN 加速 |
+| Qexo | 博客在线后台管理 |
+| VS Code | 日常文章编辑 |
+
+## 部署架构
+
+```text
+本地编辑（VS Code / Qexo）
+        │
+        ▼
+Git 推送至 GitHub 仓库
+        │
+        ▼
+Vercel 构建部署（Hexo 静态生成）
+        │
+        ▼
+Cloudflare CDN 加速分发
+```
+
+## 快速开始
+
+```bash
+# 安装依赖
+npm install
+
+# 本地预览
+npm run server
+
+# 生成静态文件
+npm run build
+
+# 部署至远端
+npm run deploy
+```
+
+## 分支说明
+
+| 分支 | 说明 |
+| --- | --- |
+| `master` | 直接对外发布的博客，本地 Git 推送至远端的 Hexo 博客 |
+| `main` | 主要内容分支，版本较新 |
+| `future` | 备份分支，用于主要内容出现大量错误时恢复 |
+
+## 相关账号
+
+- GitHub（个人项目）：[bohuyeshan](https://github.com/bohuyeshan)
+
+## 许可证
+
+本项目基于 [AGPL-3.0](LICENSE) 许可证开源。
