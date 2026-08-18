@@ -429,3 +429,64 @@ body {
   background: rgba(255, 255, 255, 0.12) !important;
   border: 1px solid rgba(255, 255, 255, 0.10);
 }
+
+/* ==========================================
+   11. 毛玻璃可读性修复
+   - 分页：当前页白底白字不可见 → 主题蓝底白字；其余统一深色字
+   - 返回顶部 / 右侧按钮：强制主题按钮色，保证始终可读
+   - 文章卡片：提高到不透明白，使其与浅色页面背景区分
+   ========================================== */
+/* 分页：非当前项统一深色文字 + 半透明白底 */
+#pagination .page-number,
+#pagination .prev,
+#pagination .next,
+#pagination .space {
+  color: var(--text-color) !important;
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.30);
+}
+/* 分页：当前页用主题蓝突出，白字可读 */
+#pagination .page-number.current {
+  background: #49b1f5 !important;
+  color: #fff !important;
+  border-color: #49b1f5 !important;
+}
+/* 分页：悬停态 */
+#pagination .page-number:hover,
+#pagination .prev:hover,
+#pagination .next:hover {
+  background: var(--btn-hover-color) !important;
+  color: #fff !important;
+}
+/* 返回顶部 / 右侧悬浮按钮：强制按钮色，避免透明底白字 */
+#back-to-top,
+#rightside > div > button,
+#rightside > div > a {
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-color) !important;
+}
+/* 文章正文卡片：提高到不透明白，明确与页面区分 */
+#post {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10) !important;
+}
+
+/* —— 暗色模式适配 —— */
+[data-theme='dark'] #pagination .page-number,
+[data-theme='dark'] #pagination .prev,
+[data-theme='dark'] #pagination .next,
+[data-theme='dark'] #pagination .space {
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+[data-theme='dark'] #pagination .page-number.current {
+  background: #49b1f5 !important;
+  color: #fff !important;
+  border-color: #49b1f5 !important;
+}
+[data-theme='dark'] #post {
+  background: rgba(20, 25, 40, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
