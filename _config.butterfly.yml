@@ -1,5 +1,6 @@
 # ===== 导航栏 =====
 nav:
+  logo: /img/Avatar.jpg
   display_title: true
   display_post_title: true
   fixed: false
