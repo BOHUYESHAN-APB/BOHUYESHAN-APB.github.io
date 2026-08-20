@@ -275,3 +275,8 @@ CDN:
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
+
+# ===== 数学公式 =====
+math:
+  use: katex
+  per_page: false
