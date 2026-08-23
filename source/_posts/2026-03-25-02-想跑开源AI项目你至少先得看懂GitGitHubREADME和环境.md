@@ -2,9 +2,9 @@
 title: 想跑开源 AI 项目，你至少先得看懂 Git、GitHub、README 和环境
 date: 2026-03-25 20:00:00
 tags:
-  - 生物信息学
 categories:
   - 生信技术
+
 ---
 
 # 想跑开源 AI 项目，你至少先得看懂 Git、GitHub、README 和环境

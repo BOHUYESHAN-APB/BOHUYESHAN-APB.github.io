@@ -5,10 +5,10 @@ tags:
   - Rust
   - Go
   - 性能优化
-  - 生物信息学
   - Python
 categories:
-  - 技术
+  - 技术拆解
+
 ---
 
 ## 生信分析为什么越跑越慢

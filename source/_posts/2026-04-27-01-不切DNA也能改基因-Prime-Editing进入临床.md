@@ -5,7 +5,8 @@ tags:
   - 基因编辑
   - 医学
 categories:
-  - 前沿医学
+  - 科普
+
 ---
 
 # 不切DNA也能改基因：Prime Editing进入临床，β-地中海贫血患者已经用上了

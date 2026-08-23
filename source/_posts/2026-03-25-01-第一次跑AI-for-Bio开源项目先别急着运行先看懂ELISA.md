@@ -2,9 +2,9 @@
 title: 第一次跑 AI for Bio 开源项目：先看懂 ELISA，再动手
 date: 2026-03-25 20:00:00
 tags:
-  - 生物信息学
 categories:
   - 生信技术
+
 ---
 
 # 第一次跑 AI for Bio 开源项目：先看懂 ELISA，再动手

@@ -2,9 +2,9 @@
 title: 第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）
 date: 2026-03-23 20:00:00
 tags:
-  - 生物信息学
 categories:
   - 生信技术
+
 ---
 
 # 第五篇：编辑器兼容性验证（SVG 与 Mermaid 测试）

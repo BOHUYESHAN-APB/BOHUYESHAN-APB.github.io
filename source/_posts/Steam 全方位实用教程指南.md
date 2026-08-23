@@ -1,8 +1,7 @@
 ---
 abbrlink: ''
 categories:
-- - steam
-- - 教程
+- 工具教程
 date: '2025-11-24T10:38:51.797576+08:00'
 tags:
 - steam

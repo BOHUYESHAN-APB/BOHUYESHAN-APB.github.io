@@ -2,9 +2,9 @@
 title: Geneclaw 不是基因工具，是一个自演化 Agent 框架
 date: 2026-03-25 20:00:00
 tags:
-  - 科普
 categories:
   - 科普
+
 ---
 
 # Geneclaw 不是基因工具，是一个自演化 Agent 框架

@@ -6,6 +6,7 @@ tags:
   - 部署
 categories:
   - 科研
+
 ---
 
 # 怎么部署和使用 Open Maic，以及如何用常见大模型辅助学习

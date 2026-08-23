@@ -4,9 +4,9 @@ date: 2026-04-16 20:00:00
 tags:
   - RNN
   - Transformer
-  - 生物信息学
 categories:
-  - 公众号文章
+  - 科普
+
 ---
 
 # RNN 退役了吗——它和 Transformer 在生信中的真实分工

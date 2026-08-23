@@ -1,15 +1,12 @@
 ---
 abbrlink: BHYS
 categories:
-- - 人工智能
-- - GitHub
-- - 微生物
+- 生信技术
 date: '2025-04-16T21:12:39.986138+08:00'
 tags:
-- 人工智能
+- 大模型
 - 代码
 - GitHub
-- 大模型
 - 卷积模型
 - CNN
 - 微生物

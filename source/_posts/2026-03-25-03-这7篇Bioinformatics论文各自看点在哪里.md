@@ -2,9 +2,9 @@
 title: 这 7 篇 Bioinformatics 论文，各自的看点在哪里
 date: 2026-03-25 20:00:00
 tags:
-  - 生物信息学
 categories:
   - 生信技术
+
 ---
 
 # 这 7 篇 Bioinformatics 论文，各自的看点在哪里

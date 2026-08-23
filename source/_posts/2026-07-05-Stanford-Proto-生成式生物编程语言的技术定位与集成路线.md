@@ -3,12 +3,12 @@ title: "Stanford Proto：生成式生物编程语言的技术定位——它到�
 date: 2026-07-05
 tags:
   - Proto
-  - AI-Agent
-  - 生物信息学
+  - Agent
   - MCP
   - 生成式生物学
 categories:
-  - 技术分析
+  - 技术拆解
+
 ---
 
 ## 一个关键问题：它到底是不是"编程语言"？

@@ -6,6 +6,7 @@ tags:
   - OpenMaic
 categories:
   - 科研
+
 ---
 
 # 清华版 Open Maic 为什么更像课程学习工具，而不是通用 Agent
