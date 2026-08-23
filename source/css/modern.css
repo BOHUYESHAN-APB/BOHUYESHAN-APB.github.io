@@ -1,0 +1,129 @@
+/* ==========================================
+   现代化 UI 动效包
+   - 设计令牌 + 深浅色双主题
+   - 滚动入场 / 卡片悬停 / 标题下划线 / 阅读进度条
+   - 全部渐进增强：无 JS、reduced-motion 下内容照常可见
+   ========================================== */
+
+:root {
+  --m-accent: var(--brand-1);
+  --m-accent-2: var(--brand-2);
+  --m-ease: cubic-bezier(.22, .61, .36, 1);
+  --m-dur: .35s;
+
+  --m-card-bg: rgba(255, 255, 255, .55);
+  --m-card-border: rgba(255, 255, 255, .65);
+  --m-card-shadow: rgba(31, 45, 80, .10);
+  --m-title: #2c3240;
+}
+
+[data-theme='dark'] {
+  --m-card-bg: rgba(30, 34, 46, .55);
+  --m-card-border: rgba(255, 255, 255, .12);
+  --m-card-shadow: rgba(0, 0, 0, .40);
+  --m-title: #e8ebf2;
+}
+
+/* ---------- 1. 滚动入场（配合 js/modern.js） ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--m-dur) var(--m-ease),
+    transform var(--m-dur) var(--m-ease),
+    box-shadow var(--m-dur) var(--m-ease);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* ---------- 2. 卡片悬停：轻抬升 + 描边高亮 ---------- */
+#recent-posts .recent-post-item,
+#aside-content .card-widget {
+  transition:
+    transform var(--m-dur) var(--m-ease),
+    box-shadow var(--m-dur) var(--m-ease),
+    border-color var(--m-dur) var(--m-ease),
+    background-color var(--m-dur) var(--m-ease),
+    opacity var(--m-dur) var(--m-ease);
+}
+
+#recent-posts .recent-post-item:not(.reveal):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 38px var(--m-card-shadow);
+}
+
+[data-theme='dark'] #recent-posts .recent-post-item:not(.reveal):hover {
+  border-color: var(--brand-glow);
+}
+
+/* 入场动画期间禁用 hover 位移，避免与 reveal 的 transform 打架 */
+#recent-posts .recent-post-item.reveal:not(.revealed):hover {
+  transform: translateY(18px);
+}
+
+/* ---------- 3. 文章标题悬停：渐变下划线滑入 ---------- */
+#article-container h1,
+#article-container h2,
+#article-container h3 {
+  position: relative;
+}
+
+#recent-posts .article-title {
+  background-image: linear-gradient(90deg, var(--m-accent), var(--m-accent-2));
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  transition: background-size var(--m-dur) var(--m-ease);
+}
+
+#recent-posts .recent-post-item:hover .article-title {
+  background-size: 100% 2px;
+}
+
+/* ---------- 4. 阅读进度条 ---------- */
+#read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--m-accent), var(--m-accent-2));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform .1s linear;
+}
+
+/* ---------- 5. 分页器悬停反馈 ---------- */
+#pagination a,
+#pagination .page-number {
+  transition:
+    transform var(--m-dur) var(--m-ease),
+    background-color var(--m-dur) var(--m-ease),
+    box-shadow var(--m-dur) var(--m-ease);
+}
+
+#pagination a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--m-card-shadow);
+}
+
+/* ---------- 6. 键盘焦点可见性（现代化可访问性） ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--m-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

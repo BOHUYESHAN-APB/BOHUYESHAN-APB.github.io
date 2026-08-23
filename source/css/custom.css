@@ -23,6 +23,11 @@
     inset 0 -1px 0 rgba(255, 255, 255, 0.10),
     0 4px 28px rgba(0, 0, 0, 0.06);
   --glass-radius: 12px;
+
+  /* ---------- 品牌色（全站唯一取色点：加载屏/动效/高亮均引用） ---------- */
+  --brand-1: #14b8a6;
+  --brand-2: #67e8f9;
+  --brand-glow: rgba(20, 184, 166, .45);
 }
 
 /* ==========================================
@@ -489,4 +494,61 @@ body {
 [data-theme='dark'] #post {
   background: rgba(20, 25, 40, 0.55) !important;
   border-color: rgba(255, 255, 255, 0.10) !important;
+}
+
+/* ==========================================
+   11. 宽屏阅读优化
+   ========================================== */
+
+/* 大屏加宽主布局（主题默认 1200px） */
+@media screen and (min-width: 1400px) {
+  .layout {
+    max-width: 1400px;
+  }
+
+  /* 长文限宽：大屏下正文行宽封顶，保证可读性 */
+  #article-container {
+    max-width: 920px;
+    margin-inline: auto;
+  }
+}
+
+/* 侧栏吸顶：仅桌面双栏布局启用（<900px 时主题将侧栏堆叠到正文下方） */
+@media screen and (min-width: 900px) {
+  #aside-content {
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+/* ==========================================
+   12. 侧栏滚动条美化
+   替换原生系统滚动条：细圆角、品牌色、悬停加深
+   ========================================== */
+#aside-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-glow) transparent;
+}
+
+#aside-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#aside-content::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 99px;
+}
+
+#aside-content::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: linear-gradient(180deg, var(--brand-1), var(--brand-2));
+  opacity: .55;
+}
+
+#aside-content:hover::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 100px var(--brand-glow);
 }

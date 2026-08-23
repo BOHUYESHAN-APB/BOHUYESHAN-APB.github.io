@@ -258,8 +258,8 @@ enter_transitions: true
 
 # ===== 加载动画 =====
 preloader:
-  enable: true
-  source: 1
+  # 使用 inject 注入的自定义加载屏（css/preloader.css + js/preloader.js），关闭主题默认动画
+  enable: false
 
 # ===== Open Graph =====
 Open_Graph_meta:
@@ -268,15 +268,29 @@ Open_Graph_meta:
 # ===== CDN =====
 CDN:
   internal_provider: local
-  third_party_provider: jsdelivr
+  # 本地自托管：jsdelivr 在部分网络不可达，导致 Font Awesome 图标（如首页置顶 pin）加载失败
+  third_party_provider: local
   version: true
 
 # ===== 自定义注入 =====
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
+    - <link rel="stylesheet" href="/css/preloader.css">
+    - <link rel="stylesheet" href="/css/modern.css">
+    - <div id="site-loader"><span class="sl-badge"><span class="sl-track"></span><span class="sl-spin"></span><span class="sl-core"></span></span><span class="sl-text">BoHuYeShan</span><i class="sl-bar"></i></div>
+  bottom:
+    - <script src="/js/preloader.js"></script>
+    - <script defer src="/js/modern.js"></script>
 
 # ===== 数学公式 =====
 math:
   use: katex
   per_page: false
+
+# ===== Mermaid 图表 =====
+mermaid:
+  enable: true
+  theme:
+    light: default
+    dark: dark
