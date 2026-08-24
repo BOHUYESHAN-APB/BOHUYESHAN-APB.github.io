@@ -1,0 +1,7 @@
+{
+  "name": "valine",
+  "version": "9.9.9",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "Empty local replacement for the valine comment package (comments not enabled in this blog)"
+}

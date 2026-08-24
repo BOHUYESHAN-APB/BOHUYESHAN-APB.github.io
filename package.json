@@ -32,6 +32,14 @@
     "hexo-theme-landscape": "^1.1.0",
     "hexo-wordcount": "^6.0.1",
     "katex": "^0.18.4",
-    "mermaid": "^11.16.0"
+    "mermaid": "^11.17.0"
+  },
+  "overrides": {
+    "axios": "1.19.0",
+    "follow-redirects": "1.16.0",
+    "protobufjs": "8.7.2",
+    "uuid": "14.0.2",
+    "node-fetch": "3.3.2",
+    "valine": "file:./vendor/valine-empty"
   }
 }
