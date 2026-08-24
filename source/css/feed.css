@@ -29,10 +29,11 @@
 
 /* ==========================================
    1. 网格容器
+   默认单列（移动端/窄屏），≥1200px 双列
    ========================================== */
 .recent-post-items {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--feed-gap);
 }
 
@@ -40,13 +41,6 @@
 @media screen and (min-width: 1200px) {
   .recent-post-items {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* 平板 / 窄屏桌面：1列（避免与侧边栏挤在一起） */
-@media screen and (max-width: 1199px) {
-  .recent-post-items {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -59,7 +53,6 @@
   flex-direction: column !important;
   align-items: stretch !important;
   height: auto !important;
-  min-height: 300px;
   margin-bottom: 0 !important;
   border-radius: var(--feed-radius) !important;
 }
@@ -99,12 +92,16 @@
 
 /* ==========================================
    5. 标题
+   使用与主题相同的 > 链选择器保证优先级
    ========================================== */
-#recent-posts .recent-post-item .article-title {
+#recent-posts .recent-post-item >.recent-post-info > .article-title {
   font-size: var(--feed-title-size);
   font-weight: 600;
   line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  overflow: hidden;
   margin-bottom: 4px;
 }
 
@@ -117,7 +114,7 @@
 /* ==========================================
    6. 元信息行
    ========================================== */
-#recent-posts .recent-post-item .article-meta-wrap {
+#recent-posts .recent-post-item >.recent-post-info > .article-meta-wrap {
   font-size: var(--feed-meta-size);
   margin: 6px 0 8px;
   line-height: 1.8;
@@ -140,12 +137,17 @@
 
 /* ==========================================
    7. 摘要
+   关键：不能用 flex:1（会把摘要撑开导致硬切无省略号）
+   让 -webkit-line-clamp 决定高度，3 行后显示省略号
    ========================================== */
-#recent-posts .recent-post-item .content {
+#recent-posts .recent-post-item >.recent-post-info > .content {
   font-size: var(--feed-excerpt-size);
   line-height: 1.65;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  flex: 1;
+  overflow: hidden;
+  flex: none;
   opacity: .85;
 }
 
@@ -190,12 +192,12 @@
   }
 
   /* 移动端摘要只显示2行 */
-  #recent-posts .recent-post-item .content {
+  #recent-posts .recent-post-item >.recent-post-info > .content {
     -webkit-line-clamp: 2;
   }
 
   /* 移动端元信息更紧凑 */
-  #recent-posts .recent-post-item .article-meta-wrap {
+  #recent-posts .recent-post-item >.recent-post-info > .article-meta-wrap {
     font-size: .78em;
     margin: 4px 0 6px;
   }
