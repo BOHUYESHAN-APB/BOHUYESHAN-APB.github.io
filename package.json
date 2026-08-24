@@ -32,7 +32,8 @@
     "hexo-theme-landscape": "^1.1.0",
     "hexo-wordcount": "^6.0.1",
     "katex": "^0.18.4",
-    "mermaid": "^11.17.0"
+    "mermaid": "^11.17.0",
+    "valine": "file:./vendor/valine-empty"
   },
   "overrides": {
     "axios": "1.19.0",
