@@ -11,7 +11,7 @@
 :root {
   --feed-gap: 20px;
   --feed-radius: 14px;
-  --feed-cover-h: 180px;
+  --feed-cover-h: 160px;
   --feed-pad: 20px 22px;
   --feed-ease: cubic-bezier(.22, .61, .36, 1);
   --feed-dur: .35s;
@@ -36,13 +36,7 @@
   gap: var(--feed-gap);
 }
 
-@media screen and (min-width: 1400px) {
-  .recent-post-items {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (min-width: 900px) and (max-width: 1399px) {
+@media screen and (min-width: 900px) {
   .recent-post-items {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -63,7 +57,7 @@
   flex-direction: column !important;
   align-items: stretch !important;
   height: auto !important;
-  min-height: 340px;
+  min-height: 300px;
   margin-bottom: 0 !important;
   border-radius: var(--feed-radius) !important;
 }
@@ -182,7 +176,7 @@
    ========================================== */
 @media screen and (max-width: 768px) {
   :root {
-    --feed-cover-h: 200px;
+    --feed-cover-h: 180px;
     --feed-pad: 16px 18px;
     --feed-gap: 16px;
   }

@@ -81,7 +81,7 @@ post_meta:
 index_layout: 3
 index_post_content:
   method: 3
-  length: 500
+  length: 2000
 
 # ===== 目录 =====
 toc:
