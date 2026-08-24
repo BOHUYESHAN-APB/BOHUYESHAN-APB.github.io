@@ -1,0 +1,211 @@
+/* ==========================================
+   信息流方块布局 (Feed Grid Layout)
+   - 响应式 CSS Grid
+   - 纵向卡片：封面在上，信息在下
+   - 字数/阅读时间样式
+   - 动效与微交互
+   - 深浅色双模式适配
+   ========================================== */
+
+/* ---------- 设计令牌 ---------- */
+:root {
+  --feed-gap: 20px;
+  --feed-radius: 14px;
+  --feed-cover-h: 180px;
+  --feed-pad: 20px 22px;
+  --feed-ease: cubic-bezier(.22, .61, .36, 1);
+  --feed-dur: .35s;
+  --feed-title-size: 1.08em;
+  --feed-meta-size: .80em;
+  --feed-excerpt-size: .86em;
+  --feed-hover-shadow: rgba(31, 45, 80, .14);
+  --feed-hover-border: rgba(255, 255, 255, .45);
+}
+
+[data-theme='dark'] {
+  --feed-hover-shadow: rgba(0, 0, 0, .35);
+  --feed-hover-border: var(--brand-glow);
+}
+
+/* ==========================================
+   1. 网格容器
+   ========================================== */
+.recent-post-items {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--feed-gap);
+}
+
+@media screen and (min-width: 1400px) {
+  .recent-post-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1399px) {
+  .recent-post-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .recent-post-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   2. 卡片纵向布局
+   覆盖 Butterfly index_layout:3 的横向 flex
+   ========================================== */
+#recent-posts .recent-post-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  height: auto !important;
+  min-height: 340px;
+  margin-bottom: 0 !important;
+  border-radius: var(--feed-radius) !important;
+}
+
+/* ==========================================
+   3. 封面——始终置顶
+   ========================================== */
+#recent-posts .recent-post-item .post_cover,
+#recent-posts .recent-post-item .post_cover.left,
+#recent-posts .recent-post-item .post_cover.right {
+  width: 100% !important;
+  height: var(--feed-cover-h) !important;
+  order: 0 !important;
+  flex-shrink: 0;
+}
+
+/* 封面图片过渡 */
+#recent-posts .recent-post-item .post_cover .post-bg {
+  transition: transform .6s var(--feed-ease);
+}
+
+#recent-posts .recent-post-item:hover .post_cover .post-bg {
+  transform: scale(1.06);
+}
+
+/* ==========================================
+   4. 信息区
+   ========================================== */
+#recent-posts .recent-post-item .recent-post-info,
+#recent-posts .recent-post-item .recent-post-info.no-cover {
+  width: 100% !important;
+  padding: var(--feed-pad) !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================
+   5. 标题
+   ========================================== */
+#recent-posts .recent-post-item .article-title {
+  font-size: var(--feed-title-size);
+  font-weight: 600;
+  line-height: 1.45;
+  -webkit-line-clamp: 2;
+  margin-bottom: 4px;
+}
+
+/* 置顶图标 */
+#recent-posts .recent-post-item .article-title .sticky {
+  color: var(--brand-1);
+  font-size: .85em;
+}
+
+/* ==========================================
+   6. 元信息行
+   ========================================== */
+#recent-posts .recent-post-item .article-meta-wrap {
+  font-size: var(--feed-meta-size);
+  margin: 6px 0 8px;
+  line-height: 1.8;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 0;
+}
+
+/* 字数 / 阅读时间 */
+.card-reading-meta {
+  opacity: .75;
+  white-space: nowrap;
+}
+
+.card-word-count,
+.card-read-time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================
+   7. 摘要
+   ========================================== */
+#recent-posts .recent-post-item .content {
+  font-size: var(--feed-excerpt-size);
+  line-height: 1.65;
+  -webkit-line-clamp: 3;
+  flex: 1;
+  opacity: .85;
+}
+
+/* ==========================================
+   8. 无封面卡片——顶部品牌色渐变条
+   ========================================== */
+#recent-posts .recent-post-item:has(> .recent-post-info.no-cover)::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  flex-shrink: 0;
+  border-radius: var(--feed-radius) var(--feed-radius) 0 0;
+}
+
+/* ==========================================
+   9. 动效
+   ========================================== */
+
+/* 卡片悬浮——抬升 + 阴影 + 边框泛光 */
+#recent-posts .recent-post-item:not(.reveal):hover,
+#recent-posts .recent-post-item.reveal.revealed:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px var(--feed-hover-shadow);
+  border-color: var(--feed-hover-border);
+}
+
+/* ==========================================
+   10. 移动端适配
+   ========================================== */
+@media screen and (max-width: 768px) {
+  :root {
+    --feed-cover-h: 200px;
+    --feed-pad: 16px 18px;
+    --feed-gap: 16px;
+  }
+
+  #recent-posts .recent-post-item {
+    min-height: auto;
+  }
+}
+
+/* ==========================================
+   11. 减少动画偏好
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  #recent-posts .recent-post-item,
+  #recent-posts .recent-post-item .post_cover .post-bg {
+    transition: none !important;
+  }
+
+  #recent-posts .recent-post-item:hover {
+    transform: none !important;
+  }
+
+  #recent-posts .recent-post-item:hover .post_cover .post-bg {
+    transform: none !important;
+  }
+}

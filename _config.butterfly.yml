@@ -278,6 +278,7 @@ inject:
     - <link rel="stylesheet" href="/css/custom.css">
     - <link rel="stylesheet" href="/css/preloader.css">
     - <link rel="stylesheet" href="/css/modern.css">
+    - <link rel="stylesheet" href="/css/feed.css">
     - <div id="site-loader"><span class="sl-badge"><span class="sl-track"></span><span class="sl-spin"></span><span class="sl-core"></span></span><span class="sl-text">BoHuYeShan</span><i class="sl-bar"></i></div>
   bottom:
     - <script src="/js/preloader.js"></script>
