@@ -36,13 +36,15 @@
   gap: var(--feed-gap);
 }
 
-@media screen and (min-width: 900px) {
+/* 桌面宽屏：2列（主内容区足够宽，卡片每列 ≥400px） */
+@media screen and (min-width: 1200px) {
   .recent-post-items {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 899px) {
+/* 平板 / 窄屏桌面：1列（避免与侧边栏挤在一起） */
+@media screen and (max-width: 1199px) {
   .recent-post-items {
     grid-template-columns: 1fr;
   }
@@ -178,11 +180,24 @@
   :root {
     --feed-cover-h: 180px;
     --feed-pad: 16px 18px;
-    --feed-gap: 16px;
+    --feed-gap: 14px;
+    --feed-title-size: 1em;
+    --feed-excerpt-size: .84em;
   }
 
   #recent-posts .recent-post-item {
     min-height: auto;
+  }
+
+  /* 移动端摘要只显示2行 */
+  #recent-posts .recent-post-item .content {
+    -webkit-line-clamp: 2;
+  }
+
+  /* 移动端元信息更紧凑 */
+  #recent-posts .recent-post-item .article-meta-wrap {
+    font-size: .78em;
+    margin: 4px 0 6px;
   }
 }
 
