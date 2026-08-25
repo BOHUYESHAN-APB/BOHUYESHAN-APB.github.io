@@ -107,7 +107,7 @@ type: resume
 <a href="https://bohuyeshan.top">博客</a>
 <a href="https://openi.pcl.ac.cn/bhys">OpenI</a>
 <a href="https://orcid.org/0009-0002-8426-0610">ORCID</a>
-<span>bohuyeshan@gmail.com</span>
+<span>bohuyeshan@163.com / bohuyeshan@gmail.com</span>
 </div>
 </div>
 <div class="r-section">
@@ -457,9 +457,22 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-section-title">📌 求职信息</div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">科研数据分析 / 生物信息学分析</div>
+<div class="r-name">生物信息工程师 / 生物信息学分析</div>
+<div class="r-meta">首选</div>
 </div>
-<div class="r-exp-detail">面向科研数据清洗、统计与可视化、生物信息学分析及自动化报告等工作。</div>
+<div class="r-exp-detail">面向 RNA-seq、组学分析、公共数据库挖掘与生信流程开发，交付可复现分析与自动化报告。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">AI Agent 开发工程师 / 科研软件工程师</div>
+</div>
+<div class="r-exp-detail">科研 Agent 编排（OpenCode/MCP）、生信工具链与 SDK 开发（Rust/TypeScript）、实验室信息化与自动化工作流。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">AI 制药（AIDD）算法 / 计算生物学</div>
+</div>
+<div class="r-exp-detail">药物虚拟筛选、分子对接与动力学管线、网络药理学、蛋白质结构预测（AlphaFold）。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
@@ -599,7 +612,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <h4>博客与联系</h4>
 <ul>
 <li><a href="https://bohuyeshan.top" target="_blank">个人博客 bohuyeshan.top</a></li>
-<li>邮箱：bohuyeshan@gmail.com</li>
+<li>邮箱：bohuyeshan@163.com（主）· bohuyeshan@gmail.com</li>
 </ul>
 </div>
 </div>
