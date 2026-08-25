@@ -23,7 +23,12 @@ type: resume
   .r-ver-old { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.86rem; color: #475569; }
   .r-ver-old select { padding: 0.45rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; color: #334155; font-size: 0.85rem; cursor: pointer; }
   .r-ver-old select:hover { border-color: #2563eb; }
-  .r-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .r-grid-3 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+  .r-grid-3 > * { grid-column: span 2; }
+  .r-grid-3 > .r-w2 { grid-column: span 3; }
+  .r-grid-3 > .r-w3 { grid-column: span 6; }
+  @media (max-width: 900px) { .r-grid-3 { grid-template-columns: repeat(2, 1fr); } .r-grid-3 > *, .r-grid-3 > .r-w2 { grid-column: auto; } .r-grid-3 > .r-w3 { grid-column: 1 / -1; } }
+  @media (max-width: 600px) { .r-grid-3 { grid-template-columns: 1fr; } .r-grid-3 > *, .r-grid-3 > .r-w2, .r-grid-3 > .r-w3 { grid-column: auto; } }
   .r-skill-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem 1.2rem; transition: transform 0.15s, box-shadow 0.15s; }
   .r-skill-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
   .r-skill-card h4 { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
@@ -38,7 +43,6 @@ type: resume
   .r-project-card .r-desc { font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 0.5rem; }
   .r-project-card .r-lang { display: inline-block; font-size: 0.72rem; background: #e0e7ff; color: #3730a3; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; }
   .r-project-card .r-badge { display: inline-block; font-size: 0.72rem; background: #dcfce7; color: #166534; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; margin-left: 0.3rem; }
-  .r-project-grid > .r-project-card:last-child { grid-column: 1 / -1; }
   .r-links { font-size: 0.78rem; margin: 0.35rem 0 0.45rem; color: #94a3b8; }
   .r-links a { color: #2563eb; text-decoration: none; font-weight: 600; margin-right: 0.8rem; }
   .r-links a:hover { text-decoration: underline; }
@@ -50,7 +54,9 @@ type: resume
   .r-exp-head .r-meta { font-size: 0.8rem; color: #94a3b8; }
   .r-exp-detail { font-size: 0.9rem; color: #475569; line-height: 1.6; }
   .r-exp-detail .r-hl { color: #2563eb; font-weight: 500; }
-  .r-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; }
+  .r-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 900px) { .r-stats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .r-stats { grid-template-columns: repeat(2, 1fr); } }
   .r-stat { text-align: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; }
   .r-stat .r-num { font-size: 1.8rem; font-weight: 800; color: #1e3a8a; line-height: 1.2; }
   .r-stat .r-label { font-size: 0.78rem; color: #64748b; margin-top: 0.3rem; }
@@ -122,19 +128,19 @@ type: resume
 <div class="r-section">
 <div class="r-section-title">🏆 核心成果</div>
 <div class="r-grid-3">
-<div class="r-skill-card" style="border-color:#bfdbfe; background:#eff6ff;">
+<div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
 <h4>发表论文</h4>
 <div class="r-skill-copy"><strong>IJMS 期刊论文第四作者</strong>（Software + Data curation）：Brassicaceae YABBY 系统发育与 CRC 介导的柱头发育调控，DOI: 10.3390/ijms27135740。</div>
 </div>
-<div class="r-skill-card" style="border-color:#bfdbfe; background:#eff6ff;">
+<div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
 <h4>开源项目 · Linxira Bio SDK</h4>
 <div class="r-skill-copy"><strong>主导开发</strong>的本地优先生信分析平台：Rust 原生引擎、94 个分析能力、28 个 agent skills、Windows/Debian/Arch 三平台，AGPL-3.0 开源，配套独立官网。</div>
 </div>
-<div class="r-skill-card">
+<div class="r-skill-card r-w2">
 <h4>发明专利申请 · 已公开</h4>
 <div class="r-skill-copy">第一发明人申请「基于 CNN 的多算法微生物培养综合识别方法及系统」，申请号 202510091154.4；已公开、可检索，尚未授权（人工智能类专利审查周期较长）。</div>
 </div>
-<div class="r-skill-card">
+<div class="r-skill-card r-w2">
 <h4>科研 Agent 工程</h4>
 <div class="r-skill-copy">开发 TypeScript/Bun 编排插件，以 6 个用户工作流主代理为核心；当前代码注册 19 个内置 Agent 定义，按需索引 617 个集成技能指令包。</div>
 </div>
@@ -260,6 +266,17 @@ type: resume
 <span class="r-skill-tag">Astro（官网）</span>
 </div>
 </div>
+<div class="r-skill-card">
+<h4>传统办公 · 古法办公</h4>
+<div class="r-skill-copy">全国计算机等级考试二级 <strong>MS Office</strong> 与 <strong>WPS Office</strong> 双科目完整通过；可在完全无 AI 辅助状态下独立完成 Word、Excel、PPT 全流程办公交付。</div>
+<div class="r-skill-tags">
+<span class="r-skill-tag">Word</span>
+<span class="r-skill-tag">Excel</span>
+<span class="r-skill-tag">PPT</span>
+<span class="r-skill-tag">WPS</span>
+<span class="r-skill-tag">计算机二级</span>
+</div>
+</div>
 </div>
 </div>
 <div class="r-section">
@@ -354,7 +371,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-links"><a href="https://github.com/BOHUYESHAN-APB/Buckwheat-seed-quality" target="_blank">GitHub</a></div>
 <span class="r-lang">Python / Kotlin</span>
 </div>
-<div class="r-project-card">
+<div class="r-project-card r-w3">
 <h4><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony">CNN-MicroAI-Colony</a></h4>
 <div class="r-desc">菌落检测、抑菌圈分析和多端推理原型；5 图小样本工程测试中，平衡版 CPU 延迟由 2539 ms 降至 1884 ms。</div>
 <div class="r-links"><a href="https://github.com/BOHUYESHAN-APB/CNN-MicroAI-Colony" target="_blank">GitHub</a></div>
@@ -427,7 +444,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">云南农业大学</div>
-<div class="r-meta">本科在读 · 2027届 · 预计 2027.09 毕业</div>
+<div class="r-meta">本科在读 · 2027届 · 2027.06 毕业</div>
 </div>
 <div class="r-exp-detail">生物技术专业</div>
 </div>
@@ -522,9 +539,6 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 <div class="r-section">
 <div class="r-section-title">🔗 全部链接 · 一页直达</div>
-<div class="r-link-note">
-本页聚合了全部简历版本、开源项目与学术证明入口——求职邮件中只需附上 <strong>bohuyeshan.top/resume/</strong> 这一个链接，即可避免多链接被对方邮件系统误判拦截。
-</div>
 <div class="r-grid-3">
 <div class="r-link-group">
 <h4>简历版本</h4>
@@ -577,7 +591,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <li><a href="https://openi.pcl.ac.cn/bhys" target="_blank">OpenI 启智社区</a></li>
 </ul>
 </div>
-<div class="r-link-group">
+<div class="r-link-group r-w3">
 <h4>博客与联系</h4>
 <ul>
 <li><a href="https://bohuyeshan.top" target="_blank">个人博客 bohuyeshan.top</a></li>
