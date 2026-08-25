@@ -23,6 +23,10 @@ type: resume
   .r-ver-old { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.86rem; color: #475569; }
   .r-ver-old select { padding: 0.45rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; color: #334155; font-size: 0.85rem; cursor: pointer; }
   .r-ver-old select:hover { border-color: #2563eb; }
+  @media (max-width: 600px) {
+    .r-ver-primary { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    .r-ver-primary-cta { margin-left: 0; }
+  }
   .r-grid-3 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
   .r-grid-3 > * { grid-column: span 2; }
   .r-grid-3 > .r-w2 { grid-column: span 3; }
@@ -137,8 +141,8 @@ type: resume
 <div class="r-skill-copy"><strong>主导开发</strong>的本地优先生信分析平台：Rust 原生引擎、94 个分析能力、28 个 agent skills、Windows/Debian/Arch 三平台，AGPL-3.0 开源，配套独立官网。</div>
 </div>
 <div class="r-skill-card r-w2">
-<h4>发明专利申请 · 已公开</h4>
-<div class="r-skill-copy">第一发明人申请「基于 CNN 的多算法微生物培养综合识别方法及系统」，申请号 202510091154.4；已公开、可检索，尚未授权（人工智能类专利审查周期较长）。</div>
+<h4>发明专利 · 实质审查中</h4>
+<div class="r-skill-copy">第一发明人申请「基于 CNN 的多算法微生物培养综合识别方法及系统」，申请号 202510091154.4；已公开并进入实质审查。</div>
 </div>
 <div class="r-skill-card r-w2">
 <h4>科研 Agent 工程</h4>
@@ -319,11 +323,11 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">一种基于卷积神经网络的多算法微生物培养综合识别方法及系统</div>
-<div class="r-meta">发明专利申请 · 第一发明人 · 已公开</div>
+<div class="r-meta">发明专利申请 · 第一发明人 · 实质审查中</div>
 </div>
 <div class="r-exp-detail">
-申请号：202510091154.4 · 云南农业大学 · 2025-05-16 公开<br>
-<span style="font-size:0.85rem; color:#64748b;">已公开、可检索；尚未授权——人工智能类专利虽走预审通道，审查周期仍较长。法律状态以 CNIPA 最新记录为准。</span>
+申请号：202510091154.4 · 云南农业大学 · 2025-05-16 公开 · 2025-06-03 进入实质审查
+<br><span style="font-size:0.85rem; color:#64748b;">已公开、可检索，实质审查中——人工智能类专利授权周期较长，法律状态以 CNIPA 最新记录为准。</span>
 </div>
 </div>
 </div>

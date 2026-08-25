@@ -151,11 +151,11 @@ aside:
     description:
     button:
       enable: true
-      icon: fab fa-bilibili
-      text: 去哔哩哔哩找到我！
-      link: https://space.bilibili.com/316318805
+      icon: fab fa-github
+      text: 去 GitHub 找到我！
+      link: https://github.com/BoHuYeShan
   card_announcement:
-    enable: true
+    enable: false
     content: 这是一个公告！
   card_recent_post:
     enable: true
