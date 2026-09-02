@@ -38,7 +38,7 @@
 
   /* ---- Hero ---- */
   .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm; padding-bottom: 3mm; border-bottom: 0.35mm solid #14532d; margin-bottom: 4mm; flex-shrink: 0; }
-  .hero-left { flex-shrink: 0; min-width: 0; }
+  .hero-left { flex: 1 1 auto; min-width: 0; }
   .hero-left h1 { font-family: 'Noto Serif SC','Songti SC','SimSun',serif; font-size: 21pt; font-weight: 700; color: #101a14; letter-spacing: 0.5px; line-height: 1.15; }
   .hero-left .tagline { font-size: 8.6pt; color: #14532d; font-weight: 600; letter-spacing: 0.05em; margin-top: 1mm; }
   .hero-left .edu-line { font-size: 8pt; color: #4a5468; font-weight: 500; margin-top: 0.8mm; }
@@ -207,7 +207,7 @@ function exportPDF() {
     <div class="hero">
       <div class="hero-left">
         <h1>韩涛 · Tao Han</h1>
-        <div class="tagline">微生物培养与鉴定 · 植物分子实验 · 实验设计与数据分析 · AI 辅助科研</div>
+        <div class="tagline">微生物培养与鉴定 · 植物分子实验 · 实验设计与数据分析</div>
         <div class="edu-line">云南农业大学 · 生物技术 · 2027届本科生 · 2027.06 毕业</div>
       </div>
       <div class="hero-right">
@@ -305,7 +305,8 @@ function exportPDF() {
         <h1 style="font-size:16pt;">韩涛 · 实验技能与操作方法</h1>
       </div>
       <div class="hero-right">
-        <b>GitHub</b> github.com/BOHUYESHAN-APB · <b>博客</b> bohuyeshan.top · <b>ORCID</b> 0009-0002-8426-0610
+        <b>GitHub</b> github.com/BOHUYESHAN-APB · <b>博客</b> bohuyeshan.top<br>
+        <b>ORCID</b> 0009-0002-8426-0610
       </div>
     </div>
 
