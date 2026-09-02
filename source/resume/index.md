@@ -112,11 +112,19 @@ type: resume
 </div>
 <div class="r-section">
 <div class="r-section-title">🗂️ 简历版本</div>
-<a class="r-ver-primary" href="/HTML/jianli-v3.html" target="_blank">
-<span class="r-ver-tag">v3 · 最新版</span>
+<a class="r-ver-primary" href="/HTML/jianli-v4.html" target="_blank">
+<span class="r-ver-tag">v4 · 实验实操版</span>
 <span>
-<span class="r-ver-primary-title">标准投递版 · A4 双页</span>
-<span class="r-ver-primary-desc">学术现代风格 · 一键导出 PDF · 2026-08-15 重构 / 2026-08-19 更新</span>
+<span class="r-ver-primary-title">实验实操版 · A4 双页 · 推荐投递</span>
+<span class="r-ver-primary-desc">以微生物培养、油菜与荞麦课题为主体，按「实验设计 → 实验操作 → 数据与产出」展开个人实验能力 · 一键导出 PDF · 2026-09-02 新增</span>
+</span>
+<span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
+</a>
+<a class="r-ver-primary" href="/HTML/jianli-v3.html" target="_blank">
+<span class="r-ver-tag">v3 · 综合版</span>
+<span>
+<span class="r-ver-primary-title">综合版 · A4 双页 · 推荐投递</span>
+<span class="r-ver-primary-desc">学术现代风格，覆盖生信分析 / AI 训练部署 / 系统工程与办公全维度 · 一键导出 PDF · 2026-08-15 重构 / 2026-09-02 修订</span>
 </span>
 <span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
 </a>
@@ -560,7 +568,8 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-link-group">
 <h4>简历版本</h4>
 <ul>
-<li><a href="/HTML/jianli-v3.html" target="_blank">v3 最新版 · A4（投递用）</a></li>
+<li><a href="/HTML/jianli-v4.html" target="_blank">v4 实验实操版 · A4（实验岗位投递）</a></li>
+<li><a href="/HTML/jianli-v3.html" target="_blank">v3 综合版 · A4（通用投递）</a></li>
 <li><a href="/HTML/jianli-v2.html" target="_blank">v2 过渡版</a></li>
 <li><a href="/HTML/jianli.html" target="_blank">v1 历史版</a></li>
 </ul>
@@ -618,10 +627,16 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 </div>
 <div class="r-print-section">
+<div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.8rem;">
+<a href="/HTML/jianli-v4.html" target="_blank">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+获取印刷版简历 (v4 实验实操版 · A4)
+</a>
 <a href="/HTML/jianli-v3.html" target="_blank">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-获取印刷版简历 (v3 · A4)
+获取印刷版简历 (v3 综合版 · A4)
 </a>
-<div class="r-print-hint">A4 双面打印 · 左右两页展开即完整简历 · 早期版本（v2 / v1）请使用上方「简历版本」下拉菜单</div>
+</div>
+<div class="r-print-hint">A4 双面打印 · 左右两页展开即完整简历 · v3 / v4 均为推荐版本，侧重点不同可直接投递；早期版本（v2 / v1）请使用上方「简历版本」下拉菜单</div>
 </div>
 </div>

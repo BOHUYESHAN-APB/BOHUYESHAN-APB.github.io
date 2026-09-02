@@ -46,10 +46,9 @@
   .hero-left .edu-line { font-size: 8pt; color: #4a5468; font-weight: 500; margin-top: 0.8mm; }
   .hero-right { text-align: right; font-size: 7.6pt; color: #4a5468; line-height: 1.65; flex-shrink: 0; white-space: nowrap; background: #f4f7fd; border: 0.25mm solid #e2e7f0; border-radius: 1.2mm; padding: 1.5mm 2.2mm; }
   .hero-right b { color: #1e3a8a; }
-  .hero-right b { color: #1e3a8a; }
 
   /* ---- Section ---- */
-  .section { margin-bottom: 3.6mm; }
+  .section { margin-bottom: 3mm; }
   .section:last-child { margin-bottom: 0; }
   .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.6mm; }
   .section-label .en { font-size: 6.8pt; letter-spacing: 0.22em; color: #9aa3b5; font-weight: 600; text-transform: uppercase; }
@@ -78,7 +77,7 @@
   .cap-card.cap-wide { grid-column: 1 / -1; }
 
   /* ---- Timeline ---- */
-  .tl-item { position: relative; padding: 0 0 2.6mm 5mm; border-left: 0.3mm solid #c9d3e6; margin-left: 1.5mm; }
+  .tl-item { position: relative; padding: 0 0 2.2mm 5mm; border-left: 0.3mm solid #c9d3e6; margin-left: 1.5mm; }
   .tl-item:last-child { padding-bottom: 0; }
   .tl-item::before { content: ''; position: absolute; left: -1.35mm; top: 0.6mm; width: 2.4mm; height: 2.4mm; background: #1e3a8a; border-radius: 50%; border: 0.5mm solid #fff; box-shadow: 0 0 0 0.3mm #1e3a8a; }
   .tl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
@@ -149,11 +148,12 @@
   <button class="print-btn" id="exportBtn" onclick="exportPDF()">导出 PDF (A4 双面打印)</button>
   <div class="print-status" id="printStatus"></div>
   <div class="ver-bar">
-    <a class="active" href="/HTML/jianli-v3.html">v3 当前版 (A4)<span class="ver-date">2026-08-15 重构</span></a>
+    <a href="/HTML/jianli-v4.html">v4 实验实操版 (A4)<span class="ver-date">2026-09-02 新增</span></a>
+    <a class="active" href="/HTML/jianli-v3.html">v3 综合版 (A4)<span class="ver-date">2026-09-02 修订</span></a>
     <a href="/HTML/jianli-v2.html">v2<span class="ver-date">2026-08-15</span></a>
     <a href="/HTML/jianli.html">v1<span class="ver-date">2026-08-15 最后修订</span></a>
   </div>
-  <div class="ver-note">v3 · 2026-08-15 重构 · 学术现代风 · A4 纵向</div>
+  <div class="ver-note">v3 · 2026-09-02 修订 · 学术现代风 · A4 纵向 · 第一页排版修复</div>
 </div>
 
 <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -310,24 +310,6 @@ function exportPDF() {
         </div>
         <div class="tl-body">设计并实现本地优先生信分析平台：Rust 引擎、94 个分析能力、28 个 agent skills、CI 验证门禁与 AGPL 开源发布。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-head">
-          <div class="tl-name">竞赛 · 荞麦种子质量检测（AI 赛道主持）</div>
-          <div class="tl-meta">2025</div>
-        </div>
-        <div class="tl-body">负责 <span class="hl">PP-YOLOE+</span> 训练、推理工具与迁移脚手架实践；项目获大学生创新大赛、挑战杯等省级立项。</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label"><span class="zh">求职信息</span><span class="en">JOB TARGET</span></div>
-      <div class="job-block">
-        <div class="job-row"><div class="j-name">生物信息工程师 / 生物信息学分析</div><div class="j-desc">RNA-seq、组学分析与流程开发，自动化报告交付</div></div>
-        <div class="job-row"><div class="j-name">AI Agent 开发 / 科研软件工程师</div><div class="j-desc">科研 Agent 编排、生信工具链与 SDK 开发（Rust/TS）</div></div>
-        <div class="job-row"><div class="j-name">AI 制药（AIDD）/ 计算生物学</div><div class="j-desc">虚拟筛选、分子对接管线，网络药理学与结构预测</div></div>
-        <div class="job-row"><div class="j-name">实验室助理 / 科研助理</div><div class="j-desc">按 SOP 完成实验，负责记录、样本与数据整理及结果分析</div></div>
-        <div class="job-row"><div class="j-name">地点与到岗</div><div class="j-desc">昆明优先，其他省会可考虑；面试通过后两周内到岗</div></div>
-      </div>
     </div>
 
     <div class="page-footer"><span>韩涛 · 简历 v3</span><span>1 / 2</span></div>
@@ -384,11 +366,7 @@ function exportPDF() {
       <div class="section-label"><span class="zh">模型训练与部署实践</span><span class="en">MODEL TRAINING</span></div>
       <div class="tl-item">
         <div class="tl-head"><div class="tl-name">目标检测训练与边缘推理</div></div>
-        <div class="tl-body">PP-YOLOE+、PP-YOLO、YOLOv5/v8 训练与微调，ONNX 导出及 Android/树莓派推理；比较余弦退火、Restart 与分段式学习率策略，结合训练曲线小样本调参。</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-head"><div class="tl-name">异构硬件迁移</div></div>
-        <div class="tl-body">CUDA/Paddle/PyTorch 实验；Ascend/OpenI/MindSpore 数据准备、参数解析与 dry-run 调度脚手架。<span class="small">完整训练指标待补齐。</span></div>
+        <div class="tl-body">PP-YOLOE+、PP-YOLO、YOLOv5/v8 训练与微调，ONNX 导出及 Android/树莓派推理；比较余弦退火、Restart 与分段式学习率策略，结合训练曲线小样本调参；搭建 Ascend/OpenI/MindSpore 数据准备与 dry-run 调度脚手架。<span class="small">完整训练指标待补齐。</span></div>
       </div>
     </div>
 
@@ -401,10 +379,6 @@ function exportPDF() {
       <div class="wip-item">
         <div class="wip-head">微生物小目标检测算法改进<span class="wip-meta">在研 · 拟整理为预印本</span></div>
         <div class="wip-body">比较 <span class="hl">PP-YOLO</span> 系列训练与学习率策略；已搭建 Ascend/OpenI/MindSpore 迁移脚手架，完整评测结果待补齐。</div>
-      </div>
-      <div class="wip-item">
-        <div class="wip-head">Python / R 性能热点跨语言迁移<span class="wip-meta">自学 · 原型验证</span></div>
-        <div class="wip-body">借助 AI 编程辅助梳理文件解析、表格处理与计算热点，尝试以 Rust/C++ 重写受解释器限制的模块；不声明统一性能结论。</div>
       </div>
     </div>
 
@@ -440,7 +414,17 @@ function exportPDF() {
       <div class="self-eval">生物技术专业本科在读，能衔接<b>实验执行 → 数据整理 → 生物信息学分析 → 工程化交付</b>的完整链路；已在发表论文中承担 Software 与 Data curation 贡献，主导开发 Bio SDK 开源项目，并持续训练与部署视觉模型；借助 AI 编程辅助探索 Rust/C++ 热点迁移，处于自学与原型验证阶段。</div>
     </div>
 
-    <div class="page-footer"><span>韩涛 · 简历 v3 · 2026-08-15 重构</span><span>2 / 2</span></div>
+    <div class="section">
+      <div class="section-label"><span class="zh">求职信息</span><span class="en">JOB TARGET</span></div>
+      <div class="job-block">
+        <div class="job-row"><div class="j-name">生物信息工程师 / 生物信息学分析</div><div class="j-desc">RNA-seq、组学分析与流程开发，自动化报告交付</div></div>
+        <div class="job-row"><div class="j-name">AI Agent 开发 / 科研软件工程师</div><div class="j-desc">科研 Agent 编排、生信工具链与 SDK 开发（Rust/TS）</div></div>
+        <div class="job-row"><div class="j-name">AI 制药（AIDD）/ 计算生物学</div><div class="j-desc">虚拟筛选、分子对接管线，网络药理学与结构预测</div></div>
+        <div class="job-row"><div class="j-name">实验室助理 / 科研助理</div><div class="j-desc">按 SOP 完成实验，负责记录、样本与数据整理及结果分析</div></div>
+      </div>
+    </div>
+
+    <div class="page-footer"><span>韩涛 · 简历 v3 · 2026-09-02 修订</span><span>2 / 2</span></div>
   </div>
 
 </div>
