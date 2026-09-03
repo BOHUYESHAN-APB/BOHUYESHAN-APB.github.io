@@ -14,19 +14,17 @@ type: resume
   .r-hero .r-contact a:hover { text-decoration: underline; }
   .r-section { margin-bottom: 2.5rem; }
   .r-section-title { font-size: 1.3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-  .r-ver-primary { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; border: 2px solid #bfdbfe; background: linear-gradient(135deg, #eff6ff, #f8fafc); border-radius: 12px; text-decoration: none; margin-bottom: 0.9rem; transition: transform 0.15s, box-shadow 0.15s; }
-  .r-ver-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37,99,235,0.15); }
-  .r-ver-primary .r-ver-tag { background: #1e3a8a; color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.28rem 0.7rem; border-radius: 6px; white-space: nowrap; }
-  .r-ver-primary-title { font-weight: 700; color: #101a33; font-size: 1.02rem; display: block; }
-  .r-ver-primary-desc { font-size: 0.83rem; color: #64748b; margin-top: 0.15rem; display: block; }
-  .r-ver-primary-cta { margin-left: auto; color: #2563eb; font-weight: 600; font-size: 0.88rem; white-space: nowrap; }
-  .r-ver-old { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.86rem; color: #475569; }
-  .r-ver-old select { padding: 0.45rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; color: #334155; font-size: 0.85rem; cursor: pointer; }
-  .r-ver-old select:hover { border-color: #2563eb; }
-  @media (max-width: 600px) {
-    .r-ver-primary { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
-    .r-ver-primary-cta { margin-left: 0; }
-  }
+  .r-ver-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.1rem; }
+  @media (max-width: 900px) { .r-ver-grid { grid-template-columns: 1fr; } }
+  .r-ver-card { display: flex; flex-direction: column; border: 1.5px solid #e2e8f0; border-top: 4px solid var(--c, #1e3a8a); border-radius: 12px; padding: 1.15rem 1.3rem; text-decoration: none; background: #fff; transition: transform 0.15s, box-shadow 0.15s; }
+  .r-ver-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,0.08); }
+  .r-ver-card .r-ver-tag { background: var(--c, #1e3a8a); color: #fff; font-size: 0.76rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 6px; align-self: flex-start; white-space: nowrap; margin-bottom: 0.7rem; }
+  .r-ver-card-title { font-weight: 700; color: #101a33; font-size: 1.02rem; margin-bottom: 0.3rem; }
+  .r-ver-card-desc { font-size: 0.83rem; color: #64748b; line-height: 1.55; flex: 1; }
+  .r-ver-card-cta { color: var(--c, #2563eb); font-weight: 600; font-size: 0.88rem; margin-top: 0.85rem; }
+  .r-ver-archive { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 0.7rem 1.1rem; background: #f8fafc; font-size: 0.86rem; color: #475569; }
+  .r-ver-archive select { padding: 0.45rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; color: #334155; font-size: 0.85rem; cursor: pointer; }
+  .r-ver-archive select:hover { border-color: #2563eb; }
   .r-grid-3 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
   .r-grid-3 > * { grid-column: span 2; }
   .r-grid-3 > .r-w2 { grid-column: span 3; }
@@ -112,32 +110,28 @@ type: resume
 </div>
 <div class="r-section">
 <div class="r-section-title">🗂️ 简历版本</div>
-<a class="r-ver-primary" href="/HTML/resume-lab.html" target="_blank">
+<div class="r-ver-grid">
+<a class="r-ver-card" style="--c:#15803d;" href="/HTML/resume-lab.html" target="_blank">
 <span class="r-ver-tag">实验 / 检测岗</span>
-<span>
-<span class="r-ver-primary-title">实验与检测岗位 · A4 双页</span>
-<span class="r-ver-primary-desc">以微生物培养、油菜与荞麦课题为主体，按「实验设计 → 实验操作 → 数据与产出」展开个人实验能力 · 一键导出 PDF</span>
-</span>
-<span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
+<span class="r-ver-card-title">实验与检测岗位 · A4 双页</span>
+<span class="r-ver-card-desc">以微生物培养、油菜与荞麦课题为主体，按「实验设计 → 实验操作 → 数据与产出」展开个人实验能力 · 自适应预览 + 矢量打印</span>
+<span class="r-ver-card-cta">在线查看 / 打印 →</span>
 </a>
-<a class="r-ver-primary" href="/HTML/resume-tech.html" target="_blank">
+<a class="r-ver-card" style="--c:#1d4ed8;" href="/HTML/resume-tech.html" target="_blank">
 <span class="r-ver-tag">生信 / AI 工程岗</span>
-<span>
-<span class="r-ver-primary-title">生信与 AI 工程岗位 · A4 双页</span>
-<span class="r-ver-primary-desc">生物信息学分析 · AI 训练部署 · Agent 与 SDK 工程 · 科研工程交付 · 一键导出 PDF</span>
-</span>
-<span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
+<span class="r-ver-card-title">生信与 AI 工程岗位 · A4 双页</span>
+<span class="r-ver-card-desc">生物信息学分析 · AI 训练部署 · Agent 与 SDK 工程 · 科研工程交付 · 自适应预览 + 矢量打印</span>
+<span class="r-ver-card-cta">在线查看 / 打印 →</span>
 </a>
-<a class="r-ver-primary" href="/HTML/resume-full.html" target="_blank">
+<a class="r-ver-card" style="--c:#7c3aed;" href="/HTML/resume-full.html" target="_blank">
 <span class="r-ver-tag">综合海投</span>
-<span>
-<span class="r-ver-primary-title">招聘平台标准模板 · A4 双页</span>
-<span class="r-ver-primary-desc">全能力展示 · 多岗位并列 · 标准模板骨架 · 适合招聘平台广撒网 · 一键导出 PDF</span>
-</span>
-<span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
+<span class="r-ver-card-title">招聘平台标准模板 · A4 双页</span>
+<span class="r-ver-card-desc">全能力展示 · 多岗位并列 · 标准模板骨架 · 适合招聘平台广撒网 · 自适应预览 + 矢量打印</span>
+<span class="r-ver-card-cta">在线查看 / 打印 →</span>
 </a>
-<div class="r-ver-old">
-<label for="r-ver-select">归档旧版：</label>
+</div>
+<div class="r-ver-archive">
+<span>⏳ 归档旧版（历史定位，仅供回看）：</span>
 <select id="r-ver-select" onchange="if(this.value){window.open(this.value,'_blank');this.selectedIndex=0;}">
 <option value="">— 选择归档版本 —</option>
 <option value="/HTML/resume-archived-01.html">旧版 · 科研支持定位</option>
