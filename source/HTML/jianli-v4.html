@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=210">
-<title>韩涛 (Tao Han) · 简历 v4 · 实验实操版</title>
+<title>韩涛 (Tao Han) · 简历</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,13 +24,6 @@
   .print-btn:hover { background: #16a34a; }
   .print-btn:disabled { background: #999; cursor: wait; }
   .print-status { font-size: 12px; color: #666; margin-top: 6px; min-height: 18px; }
-  .ver-bar { display: flex; justify-content: center; gap: 8px; margin: 10px 0 0; flex-wrap: wrap; }
-  .ver-bar a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border: 1px solid #c9c3b8; border-radius: 6px; font-size: 13px; font-weight: 600; color: #5a564e; background: #f5f3ee; text-decoration: none; }
-  .ver-bar a:hover { border-color: #14532d; color: #14532d; }
-  .ver-bar a.active { border-color: #14532d; background: #14532d; color: #fff; }
-  .ver-bar .ver-date { font-size: 11px; color: #9a9488; font-weight: 400; }
-  .ver-bar a.active .ver-date { color: rgba(255,255,255,0.85); }
-  .ver-note { font-size: 11px; color: #8a8680; margin-top: 6px; }
 
   .a4-sheet { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); overflow: hidden; }
   .a4-page { width: 210mm; height: 297mm; padding: 13mm 13mm 12mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
@@ -137,14 +130,6 @@
 <div class="print-btn-wrap">
   <button class="print-btn" id="exportBtn" onclick="exportPDF()">导出 PDF (A4 双面打印)</button>
   <div class="print-status" id="printStatus"></div>
-  <div class="ver-bar">
-    <a href="/HTML/jianli-v5.html">v5 最终版 (A4)<span class="ver-date">2026-09-02 新增</span></a>
-    <a class="active" href="/HTML/jianli-v4.html">v4 实验实操版 (A4)<span class="ver-date">2026-09-02 新增</span></a>
-    <a href="/HTML/jianli-v3.html">v3 综合版 (A4)<span class="ver-date">2026-09-02 修订</span></a>
-    <a href="/HTML/jianli-v2.html">v2<span class="ver-date">2026-08-15</span></a>
-    <a href="/HTML/jianli.html">v1<span class="ver-date">2026-08-15 最后修订</span></a>
-  </div>
-  <div class="ver-note">v4 · 2026-09-02 · 实验实操版 · 以课题项目为主体，展开实验设计与动手能力 · A4 纵向</div>
 </div>
 
 <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -297,7 +282,7 @@ function exportPDF() {
       </div>
     </div>
 
-    <div class="page-footer"><span>韩涛 · 简历 v4 · 实验实操版</span><span>1 / 2</span></div>
+    <div class="page-footer"><span>韩涛 · 简历</span><span>1 / 2</span></div>
   </div>
 
   <!-- ===== PAGE 2 ===== -->
@@ -393,7 +378,7 @@ function exportPDF() {
       <div class="self-eval">生物技术专业本科在读。三个课题（<b>微生物、油菜、荞麦</b>）均由本人从实验设计做起：技术路线、对照与多层证据链自主搭建；实验操作按 SOP 独立执行、记录规范；实验产物（平板图像、菌落计数、表型记录、qPCR 结果）能直接衔接 CNN 识别模型与转录组分析，形成<b>「设计 → 操作 → 数据 → 结论」</b>的完整闭环，全过程可在 GitHub 与博客追溯。</div>
     </div>
 
-    <div class="page-footer"><span>韩涛 · 简历 v4 · 实验实操版 · 2026-09-02</span><span>2 / 2</span></div>
+    <div class="page-footer"><span>韩涛 · 简历</span><span>2 / 2</span></div>
   </div>
 
 </div>
