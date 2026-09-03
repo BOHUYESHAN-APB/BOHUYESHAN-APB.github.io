@@ -84,7 +84,7 @@
   .main-col { min-width: 0; }
 
   /* ---- Sections ---- */
-  .pdf-section { margin-bottom: 3mm; break-inside: avoid; }
+  .pdf-section { margin-bottom: 2mm; break-inside: avoid; }
   .pdf-section:last-child { margin-bottom: 0; }
   .section-tab {
     display: inline-block;
@@ -140,6 +140,22 @@
   .pj-row { font-size: 7.3pt; color: #4a5468; line-height: 1.5; margin-top: 0.8mm; }
   .pj-row b { color: #1e3a8a; font-weight: 700; margin-right: 0.5mm; }
 
+  /* ---- Capability matrix (能力矩阵) ---- */
+  .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8mm; }
+  .cap-card { border: 0.25mm solid #dbe2ef; border-radius: 1.2mm; padding: 1.5mm 2.2mm; background: #fafbff; }
+  .cap-card .cap-title { font-size: 7.8pt; font-weight: 700; color: #101a33; margin-bottom: 0.6mm; display: flex; align-items: center; gap: 1.4mm; }
+  .cap-card .cap-title .dot { width: 1.4mm; height: 1.4mm; background: #1e3a8a; border-radius: 50%; flex-shrink: 0; }
+  .cap-card .cap-text { font-size: 6.8pt; color: #5a6478; line-height: 1.36; }
+  .cap-card .cap-text b { color: #1e3a8a; font-weight: 600; }
+
+  /* ---- Method grid (实验技能与方法) ---- */
+  .method-sub { font-size: 7.4pt; font-weight: 700; color: #1e3a8a; margin: 0 0 0.9mm; }
+  .method-sub + .method-sub { margin-top: 1.1mm; }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8mm 2mm; }
+  .method-item { font-size: 6.8pt; color: #4a5468; line-height: 1.34; }
+  .method-item b { display: block; font-size: 7.1pt; color: #101a33; margin-bottom: 0.15mm; }
+  .method-item b::before { content: ''; display: inline-block; width: 1.2mm; height: 1.2mm; background: #9fb4dd; border-radius: 50%; margin-right: 1mm; vertical-align: 0.05mm; }
+
   /* ---- Mini lists ---- */
   .mini-list { list-style: none; }
   .mini-list li { font-size: 7.4pt; color: #4a5468; line-height: 1.5; margin-bottom: 0.9mm; padding-left: 3mm; position: relative; }
@@ -184,8 +200,8 @@
     html, body { width: 210mm; background: #fff; }
     .a4-sheet { box-shadow: none; }
     .print-btn-wrap { display: none !important; }
-    .resume-header, .section-tab, .avatar, .side-col, .chip, .skill-tag, .asset-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .pdf-section, .timeline-item, .project-item, .skill-group, .asset-card { break-inside: avoid; }
+    .resume-header, .section-tab, .avatar, .side-col, .chip, .skill-tag, .asset-card, .cap-card, .method-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pdf-section, .timeline-item, .project-item, .skill-group, .asset-card, .cap-card, .method-item { break-inside: avoid; }
   }
 </style>
 </head>
@@ -281,8 +297,10 @@ function exportPDF() {
             <span class="chip"><span class="icon">★</span>全职</span>
             <span class="chip"><span class="icon">◎</span>昆明优先 / 省会可考虑</span>
             <span class="chip"><span class="icon">◎</span>生物工程 / 生物制药</span>
-            <span class="chip"><span class="icon">◎</span>农、林、牧、渔业</span>
+            <span class="chip"><span class="icon">🧪</span>分析技术员 · 生化岗</span>
+            <span class="chip"><span class="icon">🔬</span>分析技术员 · 理化岗</span>
             <span class="chip"><span class="icon">◎</span>生物信息 / 实验室 / 科研软件</span>
+            <span class="chip"><span class="icon">◎</span>农、林、牧、渔业</span>
             <span class="chip"><span class="icon">¥</span>8k - 12k</span>
           </div>
         </section>
@@ -328,6 +346,47 @@ function exportPDF() {
             <div class="tl-title">校内实习 · 荞麦矮化基因挖掘</div>
             <div class="tl-meta">云南农业大学 · 2026.03 — 2026.06</div>
             <div class="tl-body">以 DWF4 为切入点，BLASTP/RBH 筛选直系同源并核对局部共线性；整合 24 样本 RNA-seq、WGCNA、GSEA/Mfuzz、启动子、系统发育与 AlphaFold。<b>交付：</b>350 bp RNAi 靶片段与发卡表达盒的 in-silico 设计。</div>
+          </div>
+        </section>
+
+        <section class="pdf-section">
+          <div class="section-tab">能力矩阵</div>
+          <div class="cap-grid">
+            <div class="cap-card">
+              <div class="cap-title"><span class="dot"></span>生物信息分析</div>
+              <div class="cap-text">转录组 <b>HISAT2 / DESeq2 / WGCNA / GSEA / Mfuzz</b>、系统发育 <b>IQ-TREE</b>、结构预测 <b>AlphaFold</b>；独立跑通<b>原始数据 → 差异/共表达 → 报告图件</b>全流程。</div>
+            </div>
+            <div class="cap-card">
+              <div class="cap-title"><span class="dot"></span>AI 训练与部署</div>
+              <div class="cap-text"><b>PP-YOLOE+ / YOLOv5/8</b> 检测模型训练调参；<b>ONNX / NCNN</b> 多端部署（树莓派实测 307ms）；PyTorch / PaddlePaddle / CUDA / MindSpore。</div>
+            </div>
+            <div class="cap-card">
+              <div class="cap-title"><span class="dot"></span>分子实验</div>
+              <div class="cap-text">RNA 提取、反转录、<b>qRT-PCR</b>、分子克隆、组织培养；表型鉴定与组学分析衔接形成证据链。</div>
+            </div>
+            <div class="cap-card">
+              <div class="cap-title"><span class="dot"></span>系统工程</div>
+              <div class="cap-text">Linux/Arch、Shell、Git、Docker；<b>Rust / TypeScript / Kotlin / Java</b>；主导 Linxira Bio SDK 与 Agent 编排（MCP）。</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pdf-section">
+          <div class="section-tab">实验技能与方法</div>
+          <div class="method-sub">微生物培养与鉴定（怎么做）</div>
+          <div class="method-grid">
+            <div class="method-item"><b>培养基与灭菌</b>配方称量、调 pH、高压蒸汽灭菌、无菌倒平板。</div>
+            <div class="method-item"><b>无菌接种与分离</b>超净台操作、四区划线、涂布/稀释涂布获取单菌落。</div>
+            <div class="method-item"><b>恒温培养与观察</b>按菌株设定温时，定时记录菌落大小、形状、边缘、隆起、颜色与透明度。</div>
+            <div class="method-item"><b>计数与抑菌圈</b>CFU 平板计数、药敏平板抑菌圈直径测量与复核。</div>
+            <div class="method-item"><b>成像与数据集</b>标准化平板成像、标注与复核，覆盖黏连与低像素场景。</div>
+          </div>
+          <div class="method-sub">植物分子实验（怎么做）</div>
+          <div class="method-grid">
+            <div class="method-item"><b>表型鉴定</b>油菜花期取样、柱头发育观察，表型拍照与记录。</div>
+            <div class="method-item"><b>分子实验</b>RNA 提取、反转录、qRT-PCR 上机与结果整理。</div>
+            <div class="method-item"><b>克隆设计</b>RNAi 靶片段、发卡表达盒与酶切方案 in-silico 设计。</div>
+            <div class="method-item"><b>组织培养</b>无菌播种与组培苗继代管理。</div>
           </div>
         </section>
 
