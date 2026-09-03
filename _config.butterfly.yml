@@ -40,9 +40,9 @@ avatar:
   img: /img/Avatar.jpg
   effect: false
 disable_top_img: false
-index_img: /img/banner/home-img.jpg
-default_top_img: /img/banner/home-img.jpg
-archive_img: /img/banner/home-img.jpg
+index_img: /img/banner/home-img-new.jpeg
+default_top_img: /img/banner/home-img-new.jpeg
+archive_img: /img/banner/home-img-new.jpeg
 footer_img: false
 
 # ===== 文章封面 =====
