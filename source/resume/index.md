@@ -112,28 +112,36 @@ type: resume
 </div>
 <div class="r-section">
 <div class="r-section-title">🗂️ 简历版本</div>
-<a class="r-ver-primary" href="/HTML/jianli-v4.html" target="_blank">
-<span class="r-ver-tag">v4 · 实验实操版</span>
+<a class="r-ver-primary" href="/HTML/resume-lab.html" target="_blank">
+<span class="r-ver-tag">实验 / 检测岗</span>
 <span>
-<span class="r-ver-primary-title">实验实操版 · A4 双页 · 推荐投递</span>
-<span class="r-ver-primary-desc">以微生物培养、油菜与荞麦课题为主体，按「实验设计 → 实验操作 → 数据与产出」展开个人实验能力 · 一键导出 PDF · 2026-09-02 新增</span>
+<span class="r-ver-primary-title">实验与检测岗位 · A4 双页</span>
+<span class="r-ver-primary-desc">以微生物培养、油菜与荞麦课题为主体，按「实验设计 → 实验操作 → 数据与产出」展开个人实验能力 · 一键导出 PDF</span>
 </span>
 <span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
 </a>
-<a class="r-ver-primary" href="/HTML/jianli-v3.html" target="_blank">
-<span class="r-ver-tag">v3 · 综合版</span>
+<a class="r-ver-primary" href="/HTML/resume-tech.html" target="_blank">
+<span class="r-ver-tag">生信 / AI 工程岗</span>
 <span>
-<span class="r-ver-primary-title">综合版 · A4 双页 · 推荐投递</span>
-<span class="r-ver-primary-desc">学术现代风格，覆盖生信分析 / AI 训练部署 / 系统工程与办公全维度 · 一键导出 PDF · 2026-08-15 重构 / 2026-09-02 修订</span>
+<span class="r-ver-primary-title">生信与 AI 工程岗位 · A4 双页</span>
+<span class="r-ver-primary-desc">生物信息学分析 · AI 训练部署 · Agent 与 SDK 工程 · 科研工程交付 · 一键导出 PDF</span>
+</span>
+<span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
+</a>
+<a class="r-ver-primary" href="/HTML/resume-full.html" target="_blank">
+<span class="r-ver-tag">综合海投</span>
+<span>
+<span class="r-ver-primary-title">招聘平台标准模板 · A4 双页</span>
+<span class="r-ver-primary-desc">全能力展示 · 多岗位并列 · 标准模板骨架 · 适合招聘平台广撒网 · 一键导出 PDF</span>
 </span>
 <span class="r-ver-primary-cta">在线查看 / 导出 PDF →</span>
 </a>
 <div class="r-ver-old">
-<label for="r-ver-select">历史版本：</label>
+<label for="r-ver-select">归档旧版：</label>
 <select id="r-ver-select" onchange="if(this.value){window.open(this.value,'_blank');this.selectedIndex=0;}">
-<option value="">— 选择早期版本 —</option>
-<option value="/HTML/jianli-v2.html">v2 · 过渡版（2026-08-15 修订）</option>
-<option value="/HTML/jianli.html">v1 · 历史版（2026-08-15 最后修订）</option>
+<option value="">— 选择归档版本 —</option>
+<option value="/HTML/resume-archived-01.html">旧版 · 科研支持定位</option>
+<option value="/HTML/resume-archived-02.html">旧版 · 工程交付定位</option>
 </select>
 </div>
 </div>
@@ -580,10 +588,11 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-link-group">
 <h4>简历版本</h4>
 <ul>
-<li><a href="/HTML/jianli-v4.html" target="_blank">v4 实验实操版 · A4（实验岗位投递）</a></li>
-<li><a href="/HTML/jianli-v3.html" target="_blank">v3 综合版 · A4（通用投递）</a></li>
-<li><a href="/HTML/jianli-v2.html" target="_blank">v2 过渡版</a></li>
-<li><a href="/HTML/jianli.html" target="_blank">v1 历史版</a></li>
+<li><a href="/HTML/resume-lab.html" target="_blank">实验 / 检测岗 · A4</a></li>
+<li><a href="/HTML/resume-tech.html" target="_blank">生信 / AI 工程岗 · A4</a></li>
+<li><a href="/HTML/resume-full.html" target="_blank">综合海投 · A4</a></li>
+<li><a href="/HTML/resume-archived-01.html" target="_blank">归档 · 科研支持定位</a></li>
+<li><a href="/HTML/resume-archived-02.html" target="_blank">归档 · 工程交付定位</a></li>
 </ul>
 </div>
 <div class="r-link-group">
@@ -640,15 +649,19 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 <div class="r-print-section">
 <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.8rem;">
-<a href="/HTML/jianli-v4.html" target="_blank">
+<a href="/HTML/resume-lab.html" target="_blank">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-获取印刷版简历 (v4 实验实操版 · A4)
+获取印刷版简历 (实验 / 检测岗 · A4)
 </a>
-<a href="/HTML/jianli-v3.html" target="_blank">
+<a href="/HTML/resume-tech.html" target="_blank">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-获取印刷版简历 (v3 综合版 · A4)
+获取印刷版简历 (生信 / AI 工程岗 · A4)
+</a>
+<a href="/HTML/resume-full.html" target="_blank">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+获取印刷版简历 (综合海投 · A4)
 </a>
 </div>
-<div class="r-print-hint">A4 双面打印 · 左右两页展开即完整简历 · v3 / v4 均为推荐版本，侧重点不同可直接投递；早期版本（v2 / v1）请使用上方「简历版本」下拉菜单</div>
+<div class="r-print-hint">A4 双面打印 · 左右两页展开即完整简历 · 三个版本对应不同投递场景，按岗位选择；归档旧版请使用上方「简历版本」下拉菜单</div>
 </div>
 </div>
