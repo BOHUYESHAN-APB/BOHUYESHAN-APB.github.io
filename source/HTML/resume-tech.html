@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>韩涛 (Tao Han) · 简历</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* 自托管 Noto（SIL OFL 免版税）：屏幕与打印共用同一本地字体文件，杜绝在线字体不可用导致的打印字体跳动 */
+  @font-face { font-family: 'Noto Sans SC'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../fonts/NotoSansSC.subset.woff2') format('woff2'); }
+  @font-face { font-family: 'Noto Serif SC'; font-style: normal; font-weight: 200 900; font-display: swap; src: url('../fonts/NotoSerifSC.subset.woff2') format('woff2'); }
+</style>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { width: 100%; overflow-x: hidden; }
@@ -146,7 +148,7 @@
     .a4-sheet { box-shadow: none; zoom: 1 !important; }
     .a4-page { box-shadow: none; }
     .print-btn-wrap { display: none !important; }
-    .asset-card, .cap-card, .proj-card, .cap-tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     .tl-item, .asset-card, .cap-card, .proj-card { break-inside: avoid; }
   }
 </style>
@@ -154,61 +156,12 @@
 <body>
 
 <div class="print-btn-wrap">
-  <button class="print-btn" id="exportBtn" onclick="exportPDF()">导出 PDF (A4 双面打印)</button>
-  <div class="print-status" id="printStatus"></div>
+  <button class="print-btn" id="exportBtn" onclick="exportPDF()">打印 / 另存为 PDF (A4 矢量)</button>
 </div>
 
-<script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
 function exportPDF() {
-  if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
-    alert('PDF 库加载失败，请刷新页面重试。');
-    return;
-  }
-  var btn = document.getElementById('exportBtn');
-  var status = document.getElementById('printStatus');
-  btn.disabled = true;
-  btn.textContent = '正在生成 PDF...';
-  status.textContent = '请稍候...';
-
-  var pages = document.querySelectorAll('.a4-page');
-  var container = document.createElement('div');
-  container.style.cssText = 'position:absolute;left:-9999px;top:0;width:210mm;background:#fff;';
-  document.body.appendChild(container);
-
-  var allCanvases = [];
-
-  function renderPage(idx) {
-    if (idx >= pages.length) { buildPDF(); return; }
-    var clone = pages[idx].cloneNode(true);
-    clone.style.cssText = 'width:210mm;height:297mm;overflow:hidden;position:relative;background:#fff;padding:13mm 13mm 12mm;box-sizing:border-box;';
-    container.innerHTML = '';
-    container.appendChild(clone);
-    setTimeout(function() {
-      html2canvas(clone, { scale: 2, useCORS: true, logging: false }).then(function(canvas) {
-        allCanvases.push({ canvas: canvas, index: idx });
-        status.textContent = '已渲染 ' + allCanvases.length + '/' + pages.length + ' 页...';
-        renderPage(idx + 1);
-      });
-    }, 200);
-  }
-
-  function buildPDF() {
-    allCanvases.sort(function(a, b) { return a.index - b.index; });
-    var pdf = new jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-    for (var j = 0; j < allCanvases.length; j++) {
-      if (j > 0) pdf.addPage();
-      pdf.addImage(allCanvases[j].canvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, 210, 297);
-    }
-    pdf.save('Tao_Han_Resume_v3_A4.pdf');
-    document.body.removeChild(container);
-    btn.disabled = false;
-    btn.textContent = '导出 PDF (A4 双面打印)';
-    status.textContent = 'PDF 已下载！共 ' + allCanvases.length + ' 页 A4。';
-  }
-
-  renderPage(0);
+  window.print();
 }
 </script>
 

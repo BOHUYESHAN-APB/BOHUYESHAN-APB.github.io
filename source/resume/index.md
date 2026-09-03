@@ -313,7 +313,7 @@ type: resume
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">校内实习 — 荞麦矮化基因挖掘</div>
+<div class="r-name">科研课题组实习 — 荞麦矮化基因挖掘</div>
 <div class="r-meta">2026.03 — 2026.06</div>
 </div>
 <div class="r-exp-detail">
@@ -662,6 +662,6 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 获取印刷版简历 (综合海投 · A4)
 </a>
 </div>
-<div class="r-print-hint">A4 双面打印 · 左右两页展开即完整简历 · 三个版本对应不同投递场景，按岗位选择；归档旧版请使用上方「简历版本」下拉菜单</div>
+<div class="r-print-hint">打开后自动适配屏幕：横屏设备左右双页 · 手机 / 竖用平板上下排列。请使用各版本页面内的「打印 / 另存为 PDF」按钮获取矢量清晰版；三个版本对应不同投递场景，按岗位选择，归档旧版请使用上方「简历版本」下拉菜单</div>
 </div>
 </div>
