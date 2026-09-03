@@ -2,21 +2,21 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=210">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>韩涛 (Tao Han) · 简历</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { width: 210mm; overflow-x: hidden; }
+  html { width: 100%; overflow-x: hidden; }
   body {
     background: #eef0f4;
     font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei','Source Han Sans SC','WenQuanYi Micro Hei',sans-serif;
     color: #1a2233;
     padding: 0;
     -webkit-font-smoothing: antialiased;
-    width: 210mm;
+    width: 100%;
     overflow-x: hidden;
   }
 
@@ -28,6 +28,23 @@
   .a4-sheet { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); overflow: hidden; }
   .a4-page { width: 210mm; height: 297mm; padding: 8mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
   .a4-page + .a4-page { border-top: 0.3mm solid #e5e7eb; }
+  .a4-page { background: #fff; }
+
+  /* ---- Responsive preview (screen only; print layout untouched) ---- */
+  @media screen {
+    .a4-sheet {
+      width: fit-content; margin: 0 auto;
+      background: transparent; box-shadow: none; overflow: visible;
+      display: flex; flex-direction: column; align-items: center; gap: 28px;
+      padding: 14px 12px;
+    }
+    .a4-page { box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); }
+    .a4-page + .a4-page { border-top: none; }
+  }
+  /* 横向显示设备：左页右页；竖向（手机/竖用平板）：上下堆叠 */
+  @media screen and (min-aspect-ratio: 1/1) {
+    .a4-sheet { flex-direction: row; align-items: flex-start; }
+  }
 
   /* ---- Header banner ---- */
   .resume-header {
@@ -204,7 +221,8 @@
   @media print {
     @page { size: A4 portrait; margin: 0; }
     html, body { width: 210mm; background: #fff; }
-    .a4-sheet { box-shadow: none; }
+    .a4-sheet { box-shadow: none; zoom: 1 !important; }
+    .a4-page { box-shadow: none; }
     .print-btn-wrap { display: none !important; }
     .resume-header, .section-tab, .avatar, .side-col, .chip, .skill-tag, .asset-card, .cap-card, .method-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .pdf-section, .timeline-item, .project-item, .skill-group, .asset-card, .cap-card, .method-item { break-inside: avoid; }
@@ -638,6 +656,28 @@ function exportPDF() {
   </div>
 
 </div>
+
+<script>
+(function() {
+  var sheet = document.querySelector('.a4-sheet');
+  if (!sheet) return;
+  function isLandscape() { return window.innerWidth >= window.innerHeight; }
+  function fit() {
+    sheet.style.zoom = '';
+    var page = sheet.querySelector('.a4-page');
+    if (!page) return;
+    var pw = page.offsetWidth;               // 210mm @96dpi ≈ 794px
+    var natural = isLandscape() ? pw * 2 + 28 : pw;
+    var avail = document.documentElement.clientWidth - 24;
+    var z = Math.min(1, avail / natural);
+    if (z < 0.1) z = 0.1;
+    sheet.style.zoom = z;
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  fit();
+})();
+</script>
 
 </body>
 </html>
