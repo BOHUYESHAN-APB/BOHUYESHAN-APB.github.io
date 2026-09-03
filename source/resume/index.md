@@ -484,6 +484,18 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
+<div class="r-name">分析技术员 · 分子岗</div>
+</div>
+<div class="r-exp-detail">核酸提取、qRT-PCR、分子克隆与组培，分子检测与分析。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">分析技术员 · 理化岗</div>
+</div>
+<div class="r-exp-detail">菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
 <div class="r-name">实验室助理 / 科研助理</div>
 </div>
 <div class="r-exp-detail">可按 SOP 完成已掌握的实验步骤，并承担实验记录、样本与数据整理及结果分析。</div>
