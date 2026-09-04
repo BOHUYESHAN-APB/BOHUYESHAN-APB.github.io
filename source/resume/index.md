@@ -2,6 +2,7 @@
 title: 简历
 date: 2026-06-07 00:00:00
 type: resume
+aside: false
 ---
 
 <style>
@@ -157,6 +158,10 @@ type: resume
 <div class="r-skill-card r-w2">
 <h4>科研 Agent 工程</h4>
 <div class="r-skill-copy">开发 TypeScript/Bun 编排插件，以 6 个用户工作流主代理为核心；当前代码注册 19 个内置 Agent 定义，按需索引 617 个集成技能指令包。</div>
+</div>
+<div class="r-skill-card r-w2">
+<h4>开源 LLM 训练 · 华为昇腾</h4>
+<div class="r-skill-copy">基于昇腾 NPU + MindSpore 栈完成开源大语言模型训练/微调；训练任务记录、代码与模型权重公开于 <a href="https://openi.pcl.ac.cn/bhys" style="color:#2563eb;">OpenI 启智社区</a>，可复核、可在异构算力间迁移。</div>
 </div>
 </div>
 </div>
