@@ -58,7 +58,7 @@
   .hero-right b { color: #1e3a8a; }
 
   /* ---- Section ---- */
-  .section { margin-bottom: 3mm; }
+  .section { margin-bottom: 2.6mm; }
   .section:last-child { margin-bottom: 0; }
   .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.6mm; }
   .section-label .en { font-size: 6.8pt; letter-spacing: 0.22em; color: #9aa3b5; font-weight: 600; text-transform: uppercase; }
@@ -221,7 +221,7 @@ function exportPDF() {
         </div>
         <div class="cap-card">
           <div class="cap-title"><span class="dot"></span>AI 模型训练与部署</div>
-          <div class="cap-text">PP-YOLOE+、YOLOv5/v8 训练微调与 <b>ONNX 边缘部署</b>；树莓派 5 实测 NCNN 307ms vs ONNX 561ms；比较多种学习率策略。</div>
+          <div class="cap-text">PP-YOLOE+、YOLOv5/v8 训练微调与 <b>ONNX 边缘部署</b>；树莓派 5 实测 NCNN 307ms vs ONNX 561ms；比较多种学习率策略；<b>开源 LLM 训练微调</b>（昇腾 NPU + MindSpore，任务与代码公开于 OpenI）。</div>
           <div class="cap-tags"><span class="cap-tag">Fine-tuning</span><span class="cap-tag">模型量化</span><span class="cap-tag">PaddlePaddle</span><span class="cap-tag">PyTorch</span><span class="cap-tag">ONNX</span><span class="cap-tag">NCNN</span><span class="cap-tag">CUDA</span><span class="cap-tag">MindSpore</span></div>
         </div>
         <div class="cap-card">
@@ -323,6 +323,10 @@ function exportPDF() {
       <div class="tl-item">
         <div class="tl-head"><div class="tl-name">目标检测训练与边缘推理</div></div>
         <div class="tl-body">PP-YOLOE+、PP-YOLO、YOLOv5/v8 训练与微调，ONNX 导出及 Android/树莓派推理；比较余弦退火、Restart 与分段式学习率策略，结合训练曲线小样本调参；搭建 Ascend/OpenI/MindSpore 数据准备与 dry-run 调度脚手架。<span class="small">完整训练指标待补齐。</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><div class="tl-name">开源大语言模型训练（华为昇腾）</div></div>
+        <div class="tl-body">基于昇腾 NPU 与 MindSpore 栈完成开源 LLM 训练/微调；训练任务、代码与模型记录公开于 OpenI 启智社区，可在异构算力间复现与迁移。</div>
       </div>
     </div>
 

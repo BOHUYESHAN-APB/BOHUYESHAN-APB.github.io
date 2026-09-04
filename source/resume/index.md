@@ -220,7 +220,7 @@ type: resume
 <div class="r-grid-3">
 <div class="r-skill-card">
 <h4>AI 训练与模型部署</h4>
-<div class="r-skill-copy">围绕 PP-YOLOE+、PP-YOLO 和 YOLOv5/v8 开展训练、微调、ONNX 导出与边缘推理；完成树莓派 5 NCNN/ONNX 实测对比与菌落检测延迟优化。</div>
+<div class="r-skill-copy">围绕 PP-YOLOE+、PP-YOLO 和 YOLOv5/v8 开展训练、微调、ONNX 导出与边缘推理；完成树莓派 5 NCNN/ONNX 实测对比与菌落检测延迟优化；基于华为昇腾 NPU + MindSpore 完成开源 LLM 训练/微调，训练任务、代码与模型记录公开于 OpenI。</div>
 <div class="r-skill-tags">
 <span class="r-skill-tag">PP-YOLOE+</span>
 <span class="r-skill-tag">YOLOv5/v8</span>
@@ -413,6 +413,14 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
+<div class="r-name">开源大语言模型训练（华为昇腾）</div>
+</div>
+<div class="r-exp-detail">
+基于昇腾 NPU 与 MindSpore 栈完成开源 LLM 训练/微调；训练任务、代码与模型记录公开于 <a href="https://openi.pcl.ac.cn/bhys" style="color:#2563eb;">OpenI 启智社区</a>，可在异构算力间复现与迁移。
+</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
 <div class="r-name">竞赛与科研</div>
 <div class="r-meta">主持</div>
 </div>
@@ -515,7 +523,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <li class="r-org-item"><strong>Linxira OS</strong> — 发起并推进面向理学的 Linux 发行版（Arch 基线、双内核、[linxira] 签名仓库、容器化科研复现）；主导开发 Bio SDK 与 Zeta，组织下 26 个开源仓库 · <a href="https://linxira-os.github.io/zh/" target="_blank">官网</a></li>
 <li class="r-org-item"><strong>YeShanBoYun Studio</strong> — 组织成员，参与 NeuroPlex-Nexus 等项目</li>
 <li class="r-org-item"><strong>openagent-labforge-bio</strong> — 主线项目，持续开发维护</li>
-<li class="r-org-item"><strong>OpenI 启智社区</strong> — 公开保存部分 NPU/GPU 任务与模型记录</li>
+<li class="r-org-item"><strong>OpenI 启智社区</strong> — 公开保存 NPU/GPU 训练任务、代码与模型记录（含开源 LLM 训练）</li>
 </ul>
 </div>
 <div class="r-section">
