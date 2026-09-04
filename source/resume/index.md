@@ -141,6 +141,16 @@ aside: false
 </div>
 </div>
 <div class="r-section">
+<div class="r-section-title">🎓 教育经历</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">云南农业大学 · 生物技术</div>
+<div class="r-meta">本科在读 · 2027届 · 2027.06 毕业</div>
+</div>
+<div class="r-exp-detail">当前研究兴趣：<span class="r-hl">微生物检测 AI</span>、<span class="r-hl">功能基因组与生物信息分析</span>的交叉方向；主导与参与的经历详见下方各板块，全部可在 GitHub 与 OpenI 追溯。</div>
+</div>
+</div>
+<div class="r-section">
 <div class="r-section-title">🏆 核心成果</div>
 <div class="r-grid-3">
 <div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
@@ -467,62 +477,6 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 </div>
 <div class="r-section">
-<div class="r-section-title">🎓 教育</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">云南农业大学</div>
-<div class="r-meta">本科在读 · 2027届 · 2027.06 毕业</div>
-</div>
-<div class="r-exp-detail">生物技术专业</div>
-</div>
-</div>
-<div class="r-section">
-<div class="r-section-title">📌 求职信息</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">生物信息工程师 / 生物信息学分析</div>
-<div class="r-meta">首选</div>
-</div>
-<div class="r-exp-detail">面向 RNA-seq、组学分析、公共数据库挖掘与生信流程开发，交付可复现分析与自动化报告。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">AI Agent 开发工程师 / 科研软件工程师</div>
-</div>
-<div class="r-exp-detail">科研 Agent 编排（OpenCode/MCP）、生信工具链与 SDK 开发（Rust/TypeScript）、实验室信息化与自动化工作流。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">AI 制药（AIDD）算法 / 计算生物学</div>
-</div>
-<div class="r-exp-detail">药物虚拟筛选、分子对接与动力学管线、网络药理学、蛋白质结构预测（AlphaFold）。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">分析技术员 · 分子岗</div>
-</div>
-<div class="r-exp-detail">核酸提取、qRT-PCR、分子克隆与组培，分子检测与分析。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">分析技术员 · 理化岗</div>
-</div>
-<div class="r-exp-detail">菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">实验室助理 / 科研助理</div>
-</div>
-<div class="r-exp-detail">可按 SOP 完成已掌握的实验步骤，并承担实验记录、样本与数据整理及结果分析。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">求职地点与到岗时间</div>
-</div>
-<div class="r-exp-detail">昆明优先，其他省会城市可考虑；面试通过后两周内到岗。</div>
-</div>
-</div>
-<div class="r-section">
 <div class="r-section-title">🤝 组织参与</div>
 <ul class="r-org-list">
 <li class="r-org-item"><strong>Linxira OS</strong> — 发起并推进面向理学的 Linux 发行版（Arch 基线、双内核、[linxira] 签名仓库、容器化科研复现）；主导开发 Bio SDK 与 Zeta，组织下 26 个开源仓库 · <a href="https://linxira-os.github.io/zh/" target="_blank">官网</a></li>
@@ -587,6 +541,52 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-meta">自学 · 原型验证</div>
 </div>
 <div class="r-exp-detail">借助 AI 编程辅助梳理文件解析、表格处理和计算热点，尝试以 Rust/C++ 重写受解释器与单线程限制的模块；目前不声明统一性能结论。</div>
+</div>
+</div>
+<div class="r-section">
+<div class="r-section-title">📌 求职信息</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">生物信息工程师 / 生物信息学分析</div>
+<div class="r-meta">首选</div>
+</div>
+<div class="r-exp-detail">面向 RNA-seq、组学分析、公共数据库挖掘与生信流程开发，交付可复现分析与自动化报告。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">AI Agent 开发工程师 / 科研软件工程师</div>
+</div>
+<div class="r-exp-detail">科研 Agent 编排（OpenCode/MCP）、生信工具链与 SDK 开发（Rust/TypeScript）、实验室信息化与自动化工作流。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">AI 制药（AIDD）算法 / 计算生物学</div>
+</div>
+<div class="r-exp-detail">药物虚拟筛选、分子对接与动力学管线、网络药理学、蛋白质结构预测（AlphaFold）。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">分析技术员 · 分子岗</div>
+</div>
+<div class="r-exp-detail">核酸提取、qRT-PCR、分子克隆与组培，分子检测与分析。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">分析技术员 · 理化岗</div>
+</div>
+<div class="r-exp-detail">菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">实验室助理 / 科研助理</div>
+</div>
+<div class="r-exp-detail">可按 SOP 完成已掌握的实验步骤，并承担实验记录、样本与数据整理及结果分析。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">求职地点与到岗时间</div>
+</div>
+<div class="r-exp-detail">昆明优先，其他省会城市可考虑；面试通过后两周内到岗。</div>
 </div>
 </div>
 <div class="r-section">
