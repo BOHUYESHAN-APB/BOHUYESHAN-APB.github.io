@@ -158,9 +158,9 @@ aside: false
 <h4>发明专利 · 第一发明人</h4>
 <div class="r-skill-copy"><strong>微生物培养综合识别方法及系统</strong>，申请号 202510091154.4，实质审查中；覆盖菌落检测、分类计数与抑菌圈测量的完整实验-数据闭环。</div>
 </div>
-<div class="r-skill-card r-w2">
-<h4>微生物检测能力</h4>
-<div class="r-skill-copy">菌落总数检测全流程：稀释涂布 → 恒温培养 → CFU 计数；抑菌圈测量；无菌操作与形态学鉴别。</div>
+<div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
+<h4>植物分子能力</h4>
+<div class="r-skill-copy">荞麦矮化基因（DWF4）鉴定与克隆、表达载体设计构建与遗传转化；组培无菌操作；350 bp RNAi 靶片段与发卡表达盒 in-silico 设计。</div>
 </div>
 <div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
 <h4>发表论文 · 第四作者</h4>
@@ -242,15 +242,20 @@ aside: false
 <div class="r-skill-card">
 <h4>微生物检测</h4>
 <div class="r-skill-tags">
-<span class="r-skill-tag">培养分离</span>
+<span class="r-skill-tag">菌种分离纯化</span>
+<span class="r-skill-tag">土壤微生物分离</span>
+<span class="r-skill-tag">感受态细胞制作</span>
 <span class="r-skill-tag">CFU 计数</span>
 <span class="r-skill-tag">抑菌圈测量</span>
 <span class="r-skill-tag">形态学鉴别</span>
 </div>
 </div>
 <div class="r-skill-card">
-<h4>分子克隆与构建</h4>
+<h4>分子克隆与构建（基因克隆 · 转基因）</h4>
 <div class="r-skill-tags">
+<span class="r-skill-tag">基因克隆</span>
+<span class="r-skill-tag">载体设计构建</span>
+<span class="r-skill-tag">转基因 / 遗传转化</span>
 <span class="r-skill-tag">靶片段设计</span>
 <span class="r-skill-tag">表达盒设计</span>
 <span class="r-skill-tag">酶切方案设计</span>
@@ -380,10 +385,9 @@ aside: false
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">荞麦矮化基因挖掘课题</div>
-<div class="r-meta">2026.03 — 2026.06</div>
 </div>
 <div class="r-exp-detail">
-350 bp RNAi 靶片段、发卡表达盒、限制性酶切方案与基因载体设计（in-silico）。
+350 bp RNAi 靶片段、发卡表达盒、限制性酶切方案与基因载体设计（in-silico）；DWF4 基因鉴定与克隆、表达载体构建与遗传转化。
 <br><span class="r-hl">成果</span>: 完整 in-silico 克隆方案文档（已归档）
 </div>
 </div>
@@ -508,8 +512,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">独立实验能力</div>
 </div>
 <div class="r-exp-detail">
-接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">分子克隆（载体构建、遗传转化、mRNA 设计与构建）</span>和<span class="r-hl">组织培养</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
-</div>
+接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">基因克隆（DWF4）与载体构建</span>、<span class="r-hl">遗传转化 / 转基因操作</span>、<span class="r-hl">mRNA 设计与构建</span>和<span class="r-hl">组织培养</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
@@ -607,7 +610,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">分析技术员（生化岗 / 分子岗）</div>
 <div class="r-meta">首选</div>
 </div>
-<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：载体构建、遗传转化、mRNA 设计与构建（合成委托公司）；微生物培养鉴定、菌落计数与抑菌圈测量；实验记录规范化、可追溯。</div>
+<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：基因克隆（DWF4）、载体设计构建、遗传转化 / 转基因、mRNA 设计与构建（合成委托公司）；微生物培养鉴定（含菌种分离纯化、土壤微生物分离、感受态细胞制作）、菌落计数与抑菌圈测量；实验记录规范化、可追溯。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
@@ -727,5 +730,6 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </a>
 </div>
 <div class="r-print-hint">打开后自动适配屏幕：横屏设备左右双页 · 手机 / 竖用平板上下排列。请使用各版本页面内的「打印 / 另存为 PDF」按钮获取矢量清晰版；三个版本对应不同投递场景，按岗位选择，归档旧版请使用上方「简历版本」下拉菜单</div>
+</div>
 </div>
 </div>
