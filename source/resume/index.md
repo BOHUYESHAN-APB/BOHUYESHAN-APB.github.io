@@ -349,13 +349,12 @@ aside: false
 </div>
 <div class="r-skill-card">
 <h4>传统办公 · 古法办公</h4>
-<div class="r-skill-copy">全国计算机等级考试二级 <strong>MS Office</strong> 与 <strong>WPS Office</strong> 双科目完整通过；可在完全无 AI 辅助状态下独立完成 Word、Excel、PPT 全流程办公交付。</div>
+<div class="r-skill-copy">全国计算机等级考试二级 <strong>MS Office + WPS Office</strong> 双科目合格；可在完全无 AI 辅助状态下独立完成 Word、Excel、PPT 全流程办公交付。</div>
 <div class="r-skill-tags">
 <span class="r-skill-tag">Word</span>
 <span class="r-skill-tag">Excel</span>
 <span class="r-skill-tag">PPT</span>
-<span class="r-skill-tag">WPS</span>
-<span class="r-skill-tag">计算机二级</span>
+<span class="r-skill-tag">计算机二级（双科目）</span>
 </div>
 </div>
 </div>
