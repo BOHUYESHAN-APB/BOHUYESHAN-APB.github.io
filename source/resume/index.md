@@ -98,7 +98,7 @@ aside: false
 <div class="resume-page">
 <div class="r-hero">
 <h1>BoHuYeShan (韩涛)</h1>
-<div class="r-subtitle">AI 模型训练与部署 · 生物信息学分析 · 分子生物学实验 · 科研工程交付</div>
+<div class="r-subtitle">生物技术 · 分子生物学实验与微生物检测 · 生物信息学分析与工程实践</div>
 <div class="r-contact">
 <a href="https://github.com/BOHUYESHAN-APB">GitHub</a>
 <a href="https://github.com/Linxira-OS">Linxira-OS (开源组织)</a>
@@ -109,6 +109,7 @@ aside: false
 <span>bohuyeshan@163.com / bohuyeshan@gmail.com</span>
 </div>
 </div>
+<div class="r-link-note" style="margin-top:1.5rem;">生物技术本科，三个课题均从实验设计与 SOP 执行做起，覆盖微生物培养鉴定、植物分子实验与组学数据分析；实验记录规范化、可追溯，产物能直接衔接下游统计与自动化报告；具备把重复检测环节沉淀为工具的经验，发明专利第一发明人。期望在规范化团队中长期发展。</div>
 <div class="r-section">
 <div class="r-section-title">🗂️ 简历版本</div>
 <div class="r-ver-grid">
@@ -125,9 +126,9 @@ aside: false
 <span class="r-ver-card-cta">在线查看 / 打印 →</span>
 </a>
 <a class="r-ver-card" style="--c:#7c3aed;" href="/HTML/resume-full.html" target="_blank">
-<span class="r-ver-tag">综合海投</span>
-<span class="r-ver-card-title">招聘平台标准模板 · A4 双页</span>
-<span class="r-ver-card-desc">全能力展示 · 多岗位并列 · 标准模板骨架 · 适合招聘平台广撒网 · 自适应预览 + 矢量打印</span>
+<span class="r-ver-tag">通用投递版</span>
+<span class="r-ver-card-title">生物 / 制药 / 检测类通用 · A4 双页</span>
+<span class="r-ver-card-desc">分子实验、微生物检测与数据分析均衡呈现，意向覆盖分析技术员 / QC / 实验室技术员 / 科研助理 · 自适应预览 + 矢量打印</span>
 <span class="r-ver-card-cta">在线查看 / 打印 →</span>
 </a>
 </div>
@@ -154,24 +155,20 @@ aside: false
 <div class="r-section-title">🏆 核心成果</div>
 <div class="r-grid-3">
 <div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
-<h4>发表论文</h4>
-<div class="r-skill-copy"><strong>IJMS 期刊论文第四作者</strong>（Software + Data curation）：Brassicaceae YABBY 系统发育与 CRC 介导的柱头发育调控，DOI: 10.3390/ijms27135740。</div>
+<h4>发明专利 · 第一发明人</h4>
+<div class="r-skill-copy"><strong>微生物培养综合识别方法及系统</strong>，申请号 202510091154.4，实质审查中；覆盖菌落检测、分类计数与抑菌圈测量的完整实验-数据闭环。</div>
+</div>
+<div class="r-skill-card r-w2">
+<h4>微生物检测能力</h4>
+<div class="r-skill-copy">菌落总数检测全流程：稀释涂布 → 恒温培养 → CFU 计数；抑菌圈测量；无菌操作与形态学鉴别。</div>
 </div>
 <div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
-<h4>开源项目 · Linxira Bio SDK</h4>
-<div class="r-skill-copy"><strong>主导开发</strong>的本地优先生信分析平台：Rust 原生引擎、94 个分析能力、28 个 agent skills、Windows/Debian/Arch 三平台，AGPL-3.0 开源，配套独立官网。</div>
+<h4>发表论文 · 第四作者</h4>
+<div class="r-skill-copy"><strong>IJMS 27(13):5740</strong>，DOI: 10.3390/ijms27135740；CRediT: Software, Data curation。</div>
 </div>
 <div class="r-skill-card r-w2">
-<h4>发明专利 · 实质审查中</h4>
-<div class="r-skill-copy">第一发明人申请「基于 CNN 的多算法微生物培养综合识别方法及系统」，申请号 202510091154.4；已公开并进入实质审查。</div>
-</div>
-<div class="r-skill-card r-w2">
-<h4>科研 Agent 工程</h4>
-<div class="r-skill-copy">开发 TypeScript/Bun 编排插件，以 6 个用户工作流主代理为核心；当前代码注册 19 个内置 Agent 定义，按需索引 617 个集成技能指令包。</div>
-</div>
-<div class="r-skill-card r-w2">
-<h4>开源 LLM 训练 · 华为昇腾</h4>
-<div class="r-skill-copy">基于昇腾 NPU + MindSpore 栈完成开源大语言模型训练/微调；训练任务记录、代码与模型权重公开于 <a href="https://openi.pcl.ac.cn/bhys" style="color:#2563eb;">OpenI 启智社区</a>，可复核、可在异构算力间迁移。</div>
+<h4>开源原型 · CNN-MicroAI-Colony</h4>
+<div class="r-skill-copy">菌落检测、分类计数、抑菌圈分析多端原型。</div>
 </div>
 </div>
 </div>
@@ -231,6 +228,56 @@ aside: false
 </div>
 </div>
 <div class="r-section">
+<div class="r-section-title">🧪 检测方法与仪器</div>
+<div class="r-grid-3">
+<div class="r-skill-card">
+<h4>核酸分析</h4>
+<div class="r-skill-tags">
+<span class="r-skill-tag">RNA 提取</span>
+<span class="r-skill-tag">反转录</span>
+<span class="r-skill-tag">qRT-PCR</span>
+<span class="r-skill-tag">毛细管电泳</span>
+</div>
+</div>
+<div class="r-skill-card">
+<h4>微生物检测</h4>
+<div class="r-skill-tags">
+<span class="r-skill-tag">培养分离</span>
+<span class="r-skill-tag">CFU 计数</span>
+<span class="r-skill-tag">抑菌圈测量</span>
+<span class="r-skill-tag">形态学鉴别</span>
+</div>
+</div>
+<div class="r-skill-card">
+<h4>分子克隆与构建</h4>
+<div class="r-skill-tags">
+<span class="r-skill-tag">靶片段设计</span>
+<span class="r-skill-tag">表达盒设计</span>
+<span class="r-skill-tag">酶切方案设计</span>
+<span class="r-skill-tag">载体构建</span>
+<span class="r-skill-tag">遗传转化</span>
+<span class="r-skill-tag">mRNA 设计与构建</span>
+</div>
+</div>
+<div class="r-skill-card">
+<h4>无菌操作</h4>
+<div class="r-skill-tags">
+<span class="r-skill-tag">培养基制备</span>
+<span class="r-skill-tag">高压灭菌</span>
+<span class="r-skill-tag">超净台</span>
+<span class="r-skill-tag">组培</span>
+</div>
+</div>
+<div class="r-skill-card">
+<h4>数据分析</h4>
+<div class="r-skill-tags">
+<span class="r-skill-tag">R/Python 统计作图</span>
+<span class="r-skill-tag">自动化报告</span>
+</div>
+</div>
+</div>
+</div>
+<div class="r-section">
 <div class="r-section-title">⚡ 技术能力</div>
 <div class="r-grid-3">
 <div class="r-skill-card">
@@ -261,7 +308,7 @@ aside: false
 </div>
 <div class="r-skill-card">
 <h4>分子生物学实验</h4>
-<div class="r-skill-copy">受过系统实验训练，可按 SOP 独立完成已掌握步骤：表型鉴定、RNA 提取与反转录、qRT-PCR、分子克隆、组织培养，并规范记录与整理结果。</div>
+<div class="r-skill-copy">受过系统实验训练，可按 SOP 独立完成已掌握步骤：表型鉴定、RNA 提取与反转录、qRT-PCR、毛细管电泳、载体构建与遗传转化、mRNA 设计与构建、组织培养，并规范记录与整理结果。</div>
 <div class="r-skill-tags">
 <span class="r-skill-tag">表型鉴定</span>
 <span class="r-skill-tag">RNA 提取</span>
@@ -312,22 +359,32 @@ aside: false
 <div class="r-section-title">🔬 科研与实习经历</div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">课题组研究助理</div>
+<div class="r-name">微生物培养检测与 AI 识别课题</div>
 <div class="r-meta">2025.01 — 2026.05</div>
 </div>
 <div class="r-exp-detail">
-在油菜 YABBY 课题中完成十字花科 YABBY 家族鉴定、系统发育树构建、顺式元件扫描与转录组差异表达分析，配套整理图件与分析脚本；同期独立搭建微生物菌落 CNN 检测与分类计数流程。
-<br><span class="r-hl">成果</span>: IJMS 期刊论文第四作者 (software + data curation); 以第一发明人申请发明专利 1 项 (基于 CNN 的微生物培养综合识别系统, 申请号 202510091154.4)
+按 SOP 完成培养基配制与高压蒸汽灭菌、无菌倒平板；四区划线与涂布接种；恒温培养并按规范记录菌落形态指标；标准化平板成像并建立标注数据集（覆盖黏连菌落、低像素难例）；Python 脚本辅助批量计数与统计图表。
+<br><span class="r-hl">成果</span>: 发明专利 202510091154.4（第一发明人，实质审查中）+ 标注数据集与计数脚本
 </div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">科研课题组实习 — 荞麦矮化基因挖掘</div>
+<div class="r-name">油菜 YABBY 基因家族课题</div>
+<div class="r-meta">2025.01 — 2026.05</div>
+</div>
+<div class="r-exp-detail">
+花期取样与表型观察记录；RNA 提取、反转录与 qRT-PCR 上机及结果整理；转录组差异表达分析。
+<br><span class="r-hl">成果</span>: IJMS 27(13):5740（DOI: 10.3390/ijms27135740）第四作者，CRediT: Software, Data curation
+</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">荞麦矮化基因挖掘课题</div>
 <div class="r-meta">2026.03 — 2026.06</div>
 </div>
 <div class="r-exp-detail">
-通过 BLASTP/RBH 筛选 DWF4 直系同源候选，并比较上下游 ±3 基因的局部共线性；整合 24 样本 RNA-seq、WGCNA、GSEA/Mfuzz、启动子 motif、系统发育与 AlphaFold 结构预测。
-<br><span class="r-hl">成果</span>: 形成多层计算证据，完成 350 bp RNAi 靶片段、发卡表达盒与限制性酶切方案的 in-silico 设计；遗传转化和功能验证待完成
+350 bp RNAi 靶片段、发卡表达盒、限制性酶切方案与基因载体设计（in-silico）。
+<br><span class="r-hl">成果</span>: 完整 in-silico 克隆方案文档（已归档）
 </div>
 </div>
 </div>
@@ -451,7 +508,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">独立实验能力</div>
 </div>
 <div class="r-exp-detail">
-接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">分子克隆</span>和<span class="r-hl">组织培养</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
+接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">分子克隆（载体构建、遗传转化、mRNA 设计与构建）</span>和<span class="r-hl">组织培养</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
 </div>
 </div>
 <div class="r-exp-item">
@@ -466,11 +523,11 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-section">
 <div class="r-section-title">📊 关键数据</div>
 <div class="r-stats">
+<div class="r-stat"><div class="r-num">1</div><div class="r-label">第一发明人专利申请</div></div>
 <div class="r-stat"><div class="r-num">1</div><div class="r-label">IJMS 期刊论文</div></div>
+<div class="r-stat"><div class="r-num">24</div><div class="r-label">DWF4 分析样本</div></div>
 <div class="r-stat"><div class="r-num">94</div><div class="r-label">Bio SDK 分析能力</div></div>
 <div class="r-stat"><div class="r-num">28</div><div class="r-label">Bio SDK agent skills</div></div>
-<div class="r-stat"><div class="r-num">1</div><div class="r-label">第一发明人专利申请</div></div>
-<div class="r-stat"><div class="r-num">24</div><div class="r-label">DWF4 分析样本</div></div>
 <div class="r-stat"><div class="r-num">617</div><div class="r-label">集成索引的技能指令包</div></div>
 <div class="r-stat"><div class="r-num">17</div><div class="r-label">Linxira 自研签名工具</div></div>
 <div class="r-stat"><div class="r-num">26</div><div class="r-label">Linxira-OS 开源仓库</div></div>
@@ -547,34 +604,34 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-section-title">📌 求职信息</div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">生物信息工程师 / 生物信息学分析</div>
+<div class="r-name">分析技术员（生化岗 / 分子岗）</div>
 <div class="r-meta">首选</div>
+</div>
+<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：载体构建、遗传转化、mRNA 设计与构建（合成委托公司）；微生物培养鉴定、菌落计数与抑菌圈测量；实验记录规范化、可追溯。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">分析技术员 · 理化岗</div>
+</div>
+<div class="r-exp-detail">毛细管电泳、菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">生物信息工程师 / 生物信息学分析</div>
 </div>
 <div class="r-exp-detail">面向 RNA-seq、组学分析、公共数据库挖掘与生信流程开发，交付可复现分析与自动化报告。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">AI Agent 开发工程师 / 科研软件工程师</div>
+<div class="r-name">AI 智能体开发 / 科研软件工程师</div>
 </div>
-<div class="r-exp-detail">科研 Agent 编排（OpenCode/MCP）、生信工具链与 SDK 开发（Rust/TypeScript）、实验室信息化与自动化工作流。</div>
+<div class="r-exp-detail">Python 工具开发、重复检测环节自动化与报告生成、生信脚本与流程整理、实验室信息化工作流。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">AI 制药（AIDD）算法 / 计算生物学</div>
 </div>
 <div class="r-exp-detail">药物虚拟筛选、分子对接与动力学管线、网络药理学、蛋白质结构预测（AlphaFold）。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">分析技术员 · 分子岗</div>
-</div>
-<div class="r-exp-detail">核酸提取、qRT-PCR、分子克隆与组培，分子检测与分析。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">分析技术员 · 理化岗</div>
-</div>
-<div class="r-exp-detail">菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
@@ -586,7 +643,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-exp-head">
 <div class="r-name">求职地点与到岗时间</div>
 </div>
-<div class="r-exp-detail">昆明优先，其他省会城市可考虑；面试通过后两周内到岗。</div>
+<div class="r-exp-detail">昆明优先，其他省会城市可考虑；面试通过且毕业后两周内到岗。</div>
 </div>
 </div>
 <div class="r-section">
@@ -597,7 +654,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <ul>
 <li><a href="/HTML/resume-lab.html" target="_blank">实验 / 检测岗 · A4</a></li>
 <li><a href="/HTML/resume-tech.html" target="_blank">生信 / AI 工程岗 · A4</a></li>
-<li><a href="/HTML/resume-full.html" target="_blank">综合海投 · A4</a></li>
+<li><a href="/HTML/resume-full.html" target="_blank">通用投递版 · A4</a></li>
 <li><a href="/HTML/resume-archived-01.html" target="_blank">归档 · 科研支持定位</a></li>
 <li><a href="/HTML/resume-archived-02.html" target="_blank">归档 · 工程交付定位</a></li>
 </ul>
@@ -666,7 +723,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </a>
 <a href="/HTML/resume-full.html" target="_blank">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-获取印刷版简历 (综合海投 · A4)
+获取印刷版简历 (通用投递版 · A4)
 </a>
 </div>
 <div class="r-print-hint">打开后自动适配屏幕：横屏设备左右双页 · 手机 / 竖用平板上下排列。请使用各版本页面内的「打印 / 另存为 PDF」按钮获取矢量清晰版；三个版本对应不同投递场景，按岗位选择，归档旧版请使用上方「简历版本」下拉菜单</div>

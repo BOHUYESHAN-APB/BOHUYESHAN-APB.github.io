@@ -28,7 +28,7 @@
   .print-status { font-size: 12px; color: #666; margin-top: 6px; min-height: 18px; }
 
   .a4-sheet { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.18); overflow: hidden; }
-  .a4-page { width: 210mm; height: 297mm; padding: 13mm 13mm 12mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .a4-page { width: 210mm; height: 297mm; padding: 12mm 13mm 11mm; overflow: hidden; position: relative; display: flex; flex-direction: column; }
   .a4-page + .a4-page { border-top: 0.3mm solid #d9d5ce; }
   .a4-page { background: #fff; }
 
@@ -49,7 +49,7 @@
   }
 
   /* ---- Hero ---- */
-  .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm; padding-bottom: 3mm; border-bottom: 0.35mm solid #14532d; margin-bottom: 4mm; flex-shrink: 0; }
+  .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm; padding-bottom: 2.5mm; border-bottom: 0.35mm solid #14532d; margin-bottom: 3mm; flex-shrink: 0; }
   .hero-left { flex: 1 1 auto; min-width: 0; }
   .hero-left h1 { font-family: 'Noto Serif SC','Songti SC','SimSun',serif; font-size: 21pt; font-weight: 700; color: #101a14; letter-spacing: 0.5px; line-height: 1.15; }
   .hero-left .tagline { font-size: 8.6pt; color: #14532d; font-weight: 600; letter-spacing: 0.05em; margin-top: 1mm; }
@@ -58,31 +58,31 @@
   .hero-right b { color: #14532d; }
 
   /* ---- Section ---- */
-  .section { margin-bottom: 3mm; }
+  .section { margin-bottom: 2.5mm; }
   .section:last-child { margin-bottom: 0; }
-  .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2.4mm; }
+  .section-label { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2mm; }
   .section-label .en { font-size: 6.8pt; letter-spacing: 0.22em; color: #9ab3a0; font-weight: 600; text-transform: uppercase; }
   .section-label .zh { font-family: 'Noto Serif SC',serif; font-size: 11.5pt; font-weight: 700; color: #101a14; letter-spacing: 0.02em; }
   .section-label::after { content: ''; flex: 1; height: 0.2mm; background: #d9e7de; }
 
   /* ---- Core assets (3 cards) ---- */
-  .asset-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
-  .asset-card { border: 0.3mm solid #d4e7da; border-top: 1.2mm solid #14532d; border-radius: 1.2mm; padding: 2.2mm 2.6mm 2mm; background: #fafdfb; position: relative; }
-  .asset-card .asset-tag { display: inline-block; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.08em; color: #14532d; background: #dcfce7; padding: 0.4mm 2mm; border-radius: 1mm; margin-bottom: 1.8mm; }
-  .asset-card .asset-title { font-size: 9.5pt; font-weight: 700; color: #101a14; line-height: 1.35; margin-bottom: 0.8mm; }
-  .asset-card .asset-sub { font-size: 7.2pt; color: #14532d; font-weight: 600; margin-bottom: 1.2mm; }
-  .asset-card .asset-desc { font-size: 7.6pt; color: #4a5468; line-height: 1.5; margin-bottom: 1.6mm; }
+  .asset-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; }
+  .asset-card { border: 0.3mm solid #d4e7da; border-top: 1.2mm solid #14532d; border-radius: 1.2mm; padding: 2mm 2.4mm 1.8mm; background: #fafdfb; position: relative; }
+  .asset-card .asset-tag { display: inline-block; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.08em; color: #14532d; background: #dcfce7; padding: 0.4mm 2mm; border-radius: 1mm; margin-bottom: 1.4mm; }
+  .asset-card .asset-title { font-size: 9.5pt; font-weight: 700; color: #101a14; line-height: 1.35; margin-bottom: 0.6mm; }
+  .asset-card .asset-sub { font-size: 7.2pt; color: #14532d; font-weight: 600; margin-bottom: 1mm; }
+  .asset-card .asset-desc { font-size: 7.6pt; color: #4a5468; line-height: 1.45; margin-bottom: 1.2mm; }
   .asset-card .asset-proof { font-size: 7pt; color: #8a94a8; line-height: 1.45; }
   .asset-card .asset-proof b { color: #14532d; font-weight: 600; }
 
   /* ---- Project deep-dive ---- */
-  .deep-item { padding: 0 0 2.8mm 5mm; border-left: 0.3mm solid #c6dacc; margin-left: 1.5mm; position: relative; }
+  .deep-item { padding: 0 0 2.2mm 5mm; border-left: 0.3mm solid #c6dacc; margin-left: 1.5mm; position: relative; }
   .deep-item:last-child { padding-bottom: 0; }
   .deep-item::after { content: ''; position: absolute; left: -1.35mm; top: 0.6mm; width: 2.4mm; height: 2.4mm; background: #14532d; border-radius: 50%; border: 0.5mm solid #fff; box-shadow: 0 0 0 0.3mm #14532d; }
   .deep-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
   .deep-head .deep-name { font-size: 9.5pt; font-weight: 700; color: #101a14; }
   .deep-head .deep-meta { font-size: 7.6pt; color: #8a94a8; white-space: nowrap; }
-  .deep-row { font-size: 7.6pt; color: #4a5468; line-height: 1.52; margin-top: 0.9mm; }
+  .deep-row { font-size: 7.6pt; color: #4a5468; line-height: 1.45; margin-top: 0.7mm; }
   .deep-row b { color: #14532d; font-weight: 700; margin-right: 0.6mm; }
   .deep-row .hl { color: #14532d; font-weight: 600; }
 
@@ -99,7 +99,7 @@
   /* ---- Method grid ---- */
   .method-sub { font-size: 8pt; font-weight: 700; color: #14532d; margin: 0 0 1.4mm; }
   .method-sub + .method-sub { margin-top: 2mm; }
-  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 3mm; }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4mm 3mm; }
   .method-item { font-size: 7.4pt; color: #4a5468; line-height: 1.48; }
   .method-item b { display: block; font-size: 8pt; color: #101a14; margin-bottom: 0.3mm; }
   .method-item b::before { content: ''; display: inline-block; width: 1.4mm; height: 1.4mm; background: #14532d; border-radius: 50%; margin-right: 1.2mm; vertical-align: 0.1mm; }
@@ -115,16 +115,16 @@
   .proj-card .proj-lang { font-size: 6.8pt; color: #8a94a8; }
 
   /* ---- Mini grid ---- */
-  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
-  .mini-col .mini-title { font-size: 8pt; font-weight: 700; color: #101a14; margin-bottom: 1.6mm; letter-spacing: 0.04em; }
-  .mini-item { font-size: 7.4pt; color: #4a5468; line-height: 1.5; margin-bottom: 1.1mm; padding-left: 3mm; position: relative; }
+  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .mini-col .mini-title { font-size: 8pt; font-weight: 700; color: #101a14; margin-bottom: 1.2mm; letter-spacing: 0.04em; }
+  .mini-item { font-size: 7.4pt; color: #4a5468; line-height: 1.45; margin-bottom: 0.8mm; padding-left: 3mm; position: relative; }
   .mini-item::before { content: ''; position: absolute; left: 0; top: 1.2mm; width: 1mm; height: 1mm; background: #8fbc9f; border-radius: 0.2mm; }
   .mini-item b { color: #101a14; }
 
-  .page-footer { position: absolute; left: 13mm; right: 13mm; bottom: 5mm; padding-top: 1.5mm; border-top: 0.2mm solid #dcebe1; font-size: 7.2pt; color: #9ab3a0; display: flex; justify-content: space-between; }
+  .page-footer { position: absolute; left: 13mm; right: 13mm; bottom: 4.5mm; padding-top: 1.5mm; border-top: 0.2mm solid #dcebe1; font-size: 7.2pt; color: #9ab3a0; display: flex; justify-content: space-between; }
 
   /* ---- Job block ---- */
-  .job-block { background: #fafdfb; border: 0.25mm solid #d4e7da; border-radius: 1.2mm; padding: 2.6mm 3mm; }
+  .job-block { background: #fafdfb; border: 0.25mm solid #d4e7da; border-radius: 1.2mm; padding: 2mm 3mm; }
   .job-row { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; padding: 1mm 0; border-bottom: 0.2mm dashed #dcebe1; }
   .job-row:last-child { border-bottom: none; }
   .job-row .j-name { font-size: 8.6pt; font-weight: 700; color: #101a14; }
@@ -164,7 +164,8 @@ function exportPDF() {
     <div class="hero">
       <div class="hero-left">
         <h1>韩涛 · Tao Han</h1>
-        <div class="tagline">分析检测（分子岗 · 理化岗）· 微生物培养与鉴定 · 植物分子实验 · 数据分析</div>
+        <div class="tagline">分析技术员（生化岗 / 分子岗）</div>
+        <div class="edu-line" style="margin-top:0.4mm;">微生物培养与鉴定 · 核酸与蛋白分析 · 检测方法建立与规范化记录</div>
         <div class="edu-line">云南农业大学 · 生物技术 · 2027届本科生 · 2027.06 毕业</div>
       </div>
       <div class="hero-right">
@@ -177,6 +178,10 @@ function exportPDF() {
     </div>
 
     <div class="section">
+      <div class="self-eval" style="margin-bottom:2mm;">生物技术本科，三个课题均从实验设计与 SOP 执行做起，覆盖微生物培养鉴定、植物分子实验与组学数据分析；实验记录按 SOP 留存、关键步骤可追溯，产物能直接衔接下游统计与自动化报告；具备把重复检测环节沉淀为工具的经验，发明专利第一发明人。期望在昆明规范化团队中长期发展。</div>
+    </div>
+
+    <div class="section">
       <div class="section-label"><span class="zh">核心资产</span><span class="en">CORE ASSETS</span></div>
       <div class="asset-grid">
         <div class="asset-card">
@@ -184,26 +189,32 @@ function exportPDF() {
           <div class="asset-title">微生物培养综合识别方法及系统</div>
           <div class="asset-sub">基于 CNN 的多算法方案</div>
           <div class="asset-desc">申请号 202510091154.4 · 云南农业大学 · 已公开，实质审查中</div>
-          <div class="asset-proof"><b>能力证明：</b>从菌落培养、平板成像到模型识别的完整实验-数据闭环</div>
+          <div class="asset-proof"><b>能力证明：</b>覆盖菌落检测、分类计数与抑菌圈测量的完整实验-数据闭环</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-tag">微生物检测能力</div>
+          <div class="asset-title">菌落总数检测全流程</div>
+          <div class="asset-sub">稀释涂布 → 恒温培养 → CFU 计数</div>
+          <div class="asset-desc">抑菌圈测量；无菌操作与形态学鉴别</div>
+          <div class="asset-proof"><b>能力证明：</b>独立按 SOP 完成从接种到计数出报告的检测流程</div>
         </div>
         <div class="asset-card">
           <div class="asset-tag">论文 · 第四作者</div>
           <div class="asset-title">IJMS 期刊论文</div>
-          <div class="asset-sub">Brassicaceae YABBY 系统发育与 CRC 介导柱头发育调控</div>
-          <div class="asset-desc">International Journal of Molecular Sciences, 27(13):5740 · CRediT: Software, Data curation</div>
-          <div class="asset-proof"><b>能力证明：</b>植物表型鉴定与转录组分析衔接的研究经历</div>
-        </div>
-        <div class="asset-card">
-          <div class="asset-tag">开源 · 微生物方向</div>
-          <div class="asset-title">CNN-MicroAI-Colony</div>
-          <div class="asset-sub">菌落检测 · 分类计数 · 抑菌圈分析</div>
-          <div class="asset-desc">桌面 / 树莓派 / Android 多端原型 · 5 图小样本测试 CPU 延迟 2539→1884ms（约 26%）</div>
-          <div class="asset-proof"><b>能力证明：</b>把实验流程沉淀为可复用工具的工程能力</div>
+          <div class="asset-sub">CRediT: Software, Data curation</div>
+          <div class="asset-desc">International Journal of Molecular Sciences, 27(13):5740, DOI: 10.3390/ijms27135740</div>
+          <div class="asset-proof"><b>能力证明：</b>转录组分析与可复现数据整理</div>
         </div>
       </div>
     </div>
 
-    <div class="section" style="flex:1;">
+    <div class="section">
+      <div class="method-grid" style="margin-bottom:2mm;">
+        <div class="method-item" style="grid-column:1/-1;"><b>CNN-MicroAI-Colony</b>菌落检测、分类计数、抑菌圈分析多端原型</div>
+      </div>
+    </div>
+
+    <div class="section">
       <div class="section-label"><span class="zh">课题项目经历</span><span class="en">RESEARCH PROJECTS</span></div>
       <div class="deep-item">
         <div class="deep-head">
@@ -211,45 +222,63 @@ function exportPDF() {
           <div class="deep-meta">课题组研究助理 · 2025.01 — 2026.05</div>
         </div>
         <div class="deep-row"><b>实验设计</b>自主设计「培养 → 观察 → 成像 → 识别」技术路线：以标准化平板成像配合多算法 CNN 比对，实现菌落检测、分类与计数，并覆盖黏连菌落、低像素等难例场景。</div>
-        <div class="deep-row"><b>实验操作</b>配制培养基、高压蒸汽灭菌、倒平板；超净工作台内划线/涂布接种后恒温培养；定时观察并记录菌落大小、形状、边缘、隆起、颜色与透明度等形态指标；标准化采集平板图像并建立标注数据集。</div>
-        <div class="deep-row"><b>数据与产出</b>训练 CNN 完成菌落检测、分类计数与抑菌圈测量；<span class="hl">发明专利第一发明人（实质审查中）</span>；开源 CNN-MicroAI-Colony 多端原型，在研菌落小目标检测算法改进。</div>
+        <div class="deep-row"><b>实验操作</b>按 SOP 完成培养基配制与高压蒸汽灭菌、无菌倒平板；四区划线与涂布接种；恒温培养并按规范记录菌落形态指标，关键步骤可追溯。</div>
+        <div class="deep-row"><b>数据与产出</b>标准化平板成像并建立标注数据集，统一判读口径、跨批次一致，覆盖黏连菌落、低像素等难例场景；训练 CNN 完成菌落检测、分类计数与抑菌圈测量；结果整理为可直接提交的检测记录与统计图表；<span class="hl">发明专利第一发明人（实质审查中）</span>。</div>
       </div>
       <div class="deep-item">
         <div class="deep-head">
           <div class="deep-name">油菜 YABBY 与柱头发育 · 论文课题</div>
           <div class="deep-meta">课题组研究助理 · 2025.01 — 2026.05</div>
         </div>
-        <div class="deep-row"><b>实验设计</b>搭建「家族鉴定 → 系统发育 → 顺式元件 → 差异表达 → 表型验证」的多层证据链，以 CRC-YABBY 为线索解释柱头发育调控。</div>
-        <div class="deep-row"><b>实验操作</b>油菜花期取样与柱头发育表型观察、拍照与记录；配合 RNA 提取、反转录与 qRT-PCR 验证表达模式。</div>
-        <div class="deep-row"><b>数据与产出</b>完成转录组差异表达与顺式元件扫描分析，整理可复现脚本与图件；<span class="hl">IJMS 论文第四作者（Software, Data curation）</span>。</div>
+        <div class="deep-row"><b>实验设计</b>以 CRC-YABBY 为线索，搭建差异表达与表型验证的证据链，解释柱头发育调控。</div>
+        <div class="deep-row"><b>实验操作</b>油菜花期取样与柱头发育表型观察、拍照与记录；RNA 提取、反转录与 qRT-PCR 验证表达模式，实验记录按 SOP 留存。</div>
+        <div class="deep-row"><b>数据与产出</b>完成转录组差异表达分析，整理可复现脚本与图件，结果整理为可直接提交的检测记录与统计图表；<span class="hl">IJMS 论文第四作者（27(13):5740, DOI: 10.3390/ijms27135740；Software, Data curation）</span>。</div>
       </div>
       <div class="deep-item">
         <div class="deep-head">
           <div class="deep-name">荞麦矮化基因挖掘 · 毕业实习课题</div>
           <div class="deep-meta">科研课题组实习 · 2026.03 — 2026.06</div>
         </div>
-        <div class="deep-row"><b>实验设计</b>以 DWF4 为切入点设计筛选策略：BLASTP/RBH 直系同源鉴定 + 上下游 ±3 基因局部共线性核对，再用 24 样本 RNA-seq 多维证据收敛候选。</div>
-        <div class="deep-row"><b>实验操作</b>整合 WGCNA、GSEA/Mfuzz 共表达与启动子、系统发育、AlphaFold 结构预测；完成 350 bp RNAi 靶片段、发卡表达盒与酶切方案的 in-silico 设计。</div>
-        <div class="deep-row"><b>数据与产出</b>形成候选基因多层计算证据与可直接下手的克隆方案；<span class="hl">遗传转化与功能验证待课题组推进</span>。</div>
-      </div>
-      <div class="deep-item">
-        <div class="deep-head">
-          <div class="deep-name">荞麦种子质量检测 · 竞赛课题</div>
-          <div class="deep-meta">AI 赛道主持 · 2025</div>
-        </div>
-        <div class="deep-row"><b>实验设计</b>面向籽粒表型的图像检测方案：统一采集与标注规范、PP-YOLOE+ 训练与「桌面 → 树莓派」多端推理路线。</div>
-        <div class="deep-row"><b>实验操作与产出</b>籽粒图像采集与标注、训练调参与学习率策略对比；树莓派 5 边缘实测 NCNN 307ms vs ONNX 561ms；<span class="hl">获大创、挑战杯等省级立项</span>。</div>
+        <div class="deep-row"><b>实验设计</b>以 DWF4 为切入点，完成 350 bp RNAi 靶片段、发卡表达盒与酶切方案的 in-silico 分子克隆设计，设计方案按 SOP 文档化留存。</div>
+        <div class="deep-row"><b>数据与产出</b>形成可直接下手的克隆方案与完整设计记录；<span class="hl">遗传转化与功能验证待课题组推进</span>。</div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="zh">求职信息</span><span class="en">JOB TARGET</span></div>
       <div class="job-block">
-        <div class="job-row"><div class="j-name">分析技术员 · 分子岗</div><div class="j-desc">核酸提取、qRT-PCR、分子克隆与组培，分子检测与分析</div></div>
+        <div class="job-row"><div class="j-name">分析技术员（生化岗 / 分子岗）</div><div class="j-desc">微生物检测、核酸分析与规范化记录，结果整理为可提交报告</div></div>
         <div class="job-row"><div class="j-name">分析技术员 · 理化岗</div><div class="j-desc">菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告</div></div>
         <div class="job-row"><div class="j-name">实验室技术员 / 实验室助理</div><div class="j-desc">微生物培养与观察、样品前处理、检测与数据记录</div></div>
-        <div class="job-row"><div class="j-name">科研助理 / 研究助理</div><div class="j-desc">按 SOP 执行实验，负责记录、样本与数据管理，衔接结果分析</div></div>
-        <div class="job-row"><div class="j-name">生物信息分析（实验背景）</div><div class="j-desc">RNA-seq、组学分析与自动化报告，实验-分析一体化</div></div>
+        <div class="job-row"><div class="j-name">科研助理 / 研究助理</div><div class="j-desc">按 SOP 执行实验，负责记录、样本与数据管理，衔接结果分析（面试通过且毕业后两周内到岗）</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">可独立承担的检测任务</span><span class="en">READY TASKS</span></div>
+      <div class="method-grid">
+        <div class="method-item"><b>菌落总数检测</b>样品稀释涂布 → 恒温培养 → CFU 平板计数与记录。</div>
+        <div class="method-item"><b>抑菌圈测量</b>药敏平板制备与接种，抑菌圈直径测量与复核（抑菌活性测定）。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label"><span class="zh">竞赛 · 核验</span><span class="en">MORE</span></div>
+      <div class="mini-grid">
+        <div class="mini-col">
+          <div class="mini-title">竞赛荣誉</div>
+          <div class="mini-item"><b>荞麦种子质量检测</b> · AI 赛道主持 · 省级立项</div>
+          <div class="mini-item"><b>"挑战杯"</b> · 负责人 · 省级立项</div>
+          <div class="mini-item"><b>大创训练项目</b> · 省级立项 · 中期检查优秀</div>
+          <div class="mini-item"><b>创新创业挑战</b> · 院系资助 · 优秀结题</div>
+        </div>
+        <div class="mini-col">
+          <div class="mini-title">核验入口</div>
+          <div class="mini-item"><b>GitHub</b> · github.com/BOHUYESHAN-APB（代码与测试记录）</div>
+          <div class="mini-item"><b>博客</b> · bohuyeshan.top（课题记录）</div>
+          <div class="mini-item"><b>OpenI</b> · openi.pcl.ac.cn/bhys（NPU/GPU 任务记录）</div>
+          <div class="mini-item"><b>ORCID</b> · 0009-0002-8426-0610（论文署名）</div>
+        </div>
       </div>
     </div>
 
@@ -272,89 +301,77 @@ function exportPDF() {
       <div class="section-label"><span class="zh">实验技能矩阵</span><span class="en">LAB SKILLS</span></div>
       <div class="cap-grid">
         <div class="cap-card">
-          <div class="cap-title"><span class="dot"></span>微生物培养与观察</div>
-          <div class="cap-text">按 SOP 完成培养基配制与灭菌、无菌操作、接种与倒平板、恒温培养；菌落形态观察与生长记录。</div>
-          <div class="cap-tags"><span class="cap-tag">无菌操作</span><span class="cap-tag">培养基制备</span><span class="cap-tag">平板接种</span><span class="cap-tag">菌落形态观察</span><span class="cap-tag">恒温培养</span></div>
+          <div class="cap-title"><span class="dot"></span>微生物培养与检测</div>
+          <div class="cap-text">按 SOP 完成培养基配制与高压灭菌、无菌操作、接种与倒平板、恒温培养；菌落总数检测（稀释涂布→CFU 计数）、抑菌圈测量、形态学鉴别。</div>
+          <div class="cap-tags"><span class="cap-tag">无菌操作</span><span class="cap-tag">培养基制备</span><span class="cap-tag">高压灭菌</span><span class="cap-tag">CFU 计数</span><span class="cap-tag">抑菌圈测量</span><span class="cap-tag">形态学鉴别</span></div>
         </div>
         <div class="cap-card">
-          <div class="cap-title"><span class="dot"></span>菌落计数与鉴定</div>
-          <div class="cap-text">平板菌落计数、形态学鉴别辅助、药敏平板抑菌圈测量；标准化平板成像与数据集标注管理。</div>
-          <div class="cap-tags"><span class="cap-tag">平板计数</span><span class="cap-tag">形态学鉴别</span><span class="cap-tag">抑菌圈测量</span><span class="cap-tag">图像采集</span><span class="cap-tag">数据标注</span></div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-title"><span class="dot"></span>植物分子实验</div>
-          <div class="cap-text">植物表型鉴定（油菜花期与柱头发育）、RNA 提取与反转录、qRT-PCR、分子克隆、组织培养。</div>
-          <div class="cap-tags"><span class="cap-tag">表型鉴定</span><span class="cap-tag">RNA 提取</span><span class="cap-tag">qRT-PCR</span><span class="cap-tag">分子克隆</span><span class="cap-tag">组织培养</span></div>
+          <div class="cap-title"><span class="dot"></span>核酸分析与分子克隆</div>
+          <div class="cap-text">RNA 提取、反转录、qRT-PCR 上机与结果整理；分子克隆 in-silico 设计（靶片段、表达盒、酶切方案）；组织培养。</div>
+          <div class="cap-tags"><span class="cap-tag">核酸提取</span><span class="cap-tag">qRT-PCR</span><span class="cap-tag">分子克隆</span><span class="cap-tag">组织培养</span></div>
         </div>
         <div class="cap-card">
           <div class="cap-title"><span class="dot"></span>实验记录与数据管理</div>
-          <div class="cap-text">实验记录与样本管理规范化；R/Python 统计作图与自动化报告，实验数据直接衔接下游分析。</div>
-          <div class="cap-tags"><span class="cap-tag">实验记录</span><span class="cap-tag">样本管理</span><span class="cap-tag">统计作图</span><span class="cap-tag">自动化报告</span></div>
+          <div class="cap-text">实验记录按 SOP 留存、关键步骤可追溯；数据完整性意识；R/Python 统计作图与自动化报告，结果整理为可直接提交的检测记录与统计图表。</div>
+          <div class="cap-tags"><span class="cap-tag">数据完整性意识</span><span class="cap-tag">实验记录规范化</span><span class="cap-tag">统计作图</span><span class="cap-tag">自动化报告</span></div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title"><span class="dot"></span>无菌操作与组培</div>
+          <div class="cap-text">超净台操作、培养基制备、高压蒸汽灭菌；无菌播种与组培苗继代管理。</div>
+          <div class="cap-tags"><span class="cap-tag">超净台操作</span><span class="cap-tag">培养基制备</span><span class="cap-tag">高压灭菌</span><span class="cap-tag">组培</span></div>
         </div>
       </div>
+      <div class="self-eval" style="margin-top:3mm; font-size:7.4pt;">附加能力：能用 Python/R 编写脚本，将重复检测与统计环节自动化（如菌落计数、抑菌圈测量工具化），结果整理为可直接提交的检测记录与统计图表。</div>
     </div>
 
     <div class="section">
-      <div class="section-label"><span class="zh">实验操作方法</span><span class="en">METHODS</span></div>
-      <div class="method-sub">微生物培养与鉴定（怎么做）</div>
+      <div class="section-label"><span class="zh">检测方法与仪器</span><span class="en">METHODS &amp; INSTRUMENTS</span></div>
+      <div class="method-sub">核酸分析</div>
       <div class="method-grid">
-        <div class="method-item"><b>培养基与灭菌</b>按配方称量溶解、调 pH、分装；高压蒸汽灭菌后无菌倒平板、摆斜面。</div>
-        <div class="method-item"><b>无菌接种与分离</b>超净台预处理、火焰区操作；四区划线、涂布与稀释涂布获取单菌落。</div>
-        <div class="method-item"><b>恒温培养与观察</b>按菌株设定温度与时长；定时记录菌落大小、形状、边缘、隆起、颜色与透明度。</div>
-        <div class="method-item"><b>计数与形态记录</b>平板菌落计数（CFU）；结合形态特征辅助鉴别并记录生长变化。</div>
-        <div class="method-item"><b>抑菌圈测量</b>药敏平板制备与接种，抑菌圈直径测量与复核。</div>
-        <div class="method-item"><b>成像与数据集</b>标准化背景与多光照平板成像；图像标注与复核，覆盖黏连与低像素场景。</div>
+        <div class="method-item"><b>RNA 提取</b>植物组织总 RNA 提取与质检。</div>
+        <div class="method-item"><b>反转录</b>cDNA 合成与模板质控。</div>
+        <div class="method-item"><b>qRT-PCR</b>上机操作、结果整理与表达量计算。</div>
       </div>
-      <div class="method-sub">植物分子实验（怎么做）</div>
+      <div class="method-sub">微生物检测</div>
       <div class="method-grid">
-        <div class="method-item"><b>表型鉴定</b>油菜花期取样、柱头发育观察，表型拍照与记录。</div>
-        <div class="method-item"><b>分子实验</b>RNA 提取与反转录、qRT-PCR 上机与结果整理。</div>
-        <div class="method-item"><b>克隆设计</b>RNAi 靶片段、发卡表达盒与酶切方案 in-silico 设计。</div>
-        <div class="method-item"><b>组织培养</b>无菌播种与组培苗继代管理。</div>
+        <div class="method-item"><b>培养分离</b>四区划线、涂布接种获取单菌落。</div>
+        <div class="method-item"><b>CFU 计数</b>稀释涂布 → 恒温培养 → 平板计数与记录。</div>
+        <div class="method-item"><b>抑菌圈测量</b>药敏平板制备与接种，直径测量与复核。</div>
+        <div class="method-item"><b>形态学鉴别</b>菌落大小、形状、边缘、隆起、颜色与透明度观察记录。</div>
+      </div>
+      <div class="method-sub">分子克隆（in-silico）</div>
+      <div class="method-grid">
+        <div class="method-item"><b>靶片段设计</b>350 bp RNAi 靶片段筛选与验证。</div>
+        <div class="method-item"><b>表达盒设计</b>发卡表达盒构建方案设计。</div>
+        <div class="method-item"><b>酶切方案</b>限制性内切酶位点分析与克隆策略。</div>
+      </div>
+      <div class="method-sub">无菌操作</div>
+      <div class="method-grid">
+        <div class="method-item"><b>培养基制备</b>按配方称量溶解、调 pH、分装。</div>
+        <div class="method-item"><b>高压灭菌</b>高压蒸汽灭菌操作与验证。</div>
+        <div class="method-item"><b>超净台操作</b>火焰区无菌操作规范。</div>
+        <div class="method-item"><b>组培</b>无菌播种与组培苗继代管理。</div>
+      </div>
+      <div class="method-sub">数据分析</div>
+      <div class="method-grid">
+        <div class="method-item"><b>R/Python 统计作图</b>差异表达分析、可视化与可复现脚本。</div>
+        <div class="method-item"><b>自动化报告</b>实验数据自动汇总与报告生成。</div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-label"><span class="zh">实验数据与下游分析</span><span class="en">DATA PIPELINE</span></div>
       <div class="method-grid">
-        <div class="method-item"><b>转录组数据</b>24 样本 RNA-seq：HISAT2/featureCounts/DESeq2 差异表达，WGCNA 共表达与 GSEA/Mfuzz 富集。</div>
-        <div class="method-item"><b>菌落图像数据</b>标注数据集 → CNN 检测、分类与计数；黏连与低像素难例覆盖与复核。</div>
+        <div class="method-item"><b>转录组数据</b>RNA-seq 差异表达分析与可复现脚本整理。</div>
+        <div class="method-item"><b>菌落图像数据</b>标注数据集（统一判读口径、跨批次一致）→ CNN 检测、分类与计数；黏连与低像素难例覆盖与复核。</div>
         <div class="method-item"><b>分子验证数据</b>qRT-PCR 结果整理与表达模式归纳，衔接表型观察记录形成证据。</div>
         <div class="method-item"><b>统计与报告</b>R/Python 统计与可视化，自动化报告生成，实验数据全程可追溯。</div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-label"><span class="zh">竞赛 · 核验</span><span class="en">MORE</span></div>
-      <div class="mini-grid">
-        <div class="mini-col">
-          <div class="mini-title">竞赛项目经历</div>
-          <div class="mini-item"><b>荞麦种子质量检测</b> · AI 赛道主持 · PP-YOLOE+ 训练与推理工具实践</div>
-          <div class="mini-item"><b>"挑战杯"</b> · 负责人 · 省级立项</div>
-          <div class="mini-item"><b>大创训练项目</b> · 省级立项 · 中期检查优秀</div>
-          <div class="mini-item"><b>创新创业挑战</b> · 院系资助 · 优秀结题</div>
-        </div>
-        <div class="mini-col">
-          <div class="mini-title">核验入口</div>
-          <div class="mini-item"><b>GitHub</b> · github.com/BOHUYESHAN-APB（代码与测试记录）</div>
-          <div class="mini-item"><b>博客</b> · bohuyeshan.top（课题记录）</div>
-          <div class="mini-item"><b>OpenI</b> · openi.pcl.ac.cn/bhys（NPU/GPU 任务记录）</div>
-          <div class="mini-item"><b>ORCID</b> · 0009-0002-8426-0610（论文署名）</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label"><span class="zh">可独立承担的检测任务</span><span class="en">READY TASKS</span></div>
-      <div class="method-grid">
-        <div class="method-item"><b>菌落总数检测</b>样品稀释涂布 → 恒温培养 → CFU 平板计数与记录。</div>
-        <div class="method-item"><b>抑菌圈测量</b>药敏平板制备与接种，抑菌圈直径测量与复核。</div>
-      </div>
-    </div>
-
-    <div class="section">
       <div class="section-label"><span class="zh">自我评价</span><span class="en">SUMMARY</span></div>
-      <div class="self-eval">生物技术专业本科在读。三个课题（<b>微生物、油菜、荞麦</b>）均由本人从实验设计做起：技术路线、对照与多层证据链自主搭建；实验操作按 SOP 独立执行、记录规范；实验产物（平板图像、菌落计数、表型记录、qPCR 结果）能直接衔接 CNN 识别模型与转录组分析，形成<b>「设计 → 操作 → 数据 → 结论」</b>的完整闭环，全过程可在 GitHub 与博客追溯。</div>
+      <div class="self-eval">生物技术专业本科在读。三个课题（<b>微生物、油菜、荞麦</b>）均从实验设计与 SOP 执行做起，覆盖微生物培养鉴定、植物分子实验与组学数据分析；实验记录按 SOP 留存、关键步骤可追溯，结果整理为可直接提交的检测记录与统计图表；具备把重复检测环节沉淀为工具的经验，<b>发明专利第一发明人</b>。期望在昆明规范化团队中长期发展。</div>
     </div>
 
     <div class="page-footer"><span>韩涛 · 简历</span><span>2 / 2</span></div>
