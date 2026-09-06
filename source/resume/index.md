@@ -610,7 +610,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">分析技术员（生化岗 / 分子岗）</div>
 <div class="r-meta">首选</div>
 </div>
-<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：基因克隆（DWF4）、载体设计构建、遗传转化 / 转基因、mRNA 设计与构建（合成委托公司）；微生物培养鉴定（含菌种分离纯化、土壤微生物分离、感受态细胞制作）、菌落计数与抑菌圈测量；实验记录规范化、可追溯。</div>
+<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：基因克隆（DWF4）、载体设计构建、遗传转化 / 转基因、mRNA 设计与构建（合成委托公司）；微生物培养鉴定（含菌种分离纯化、土壤微生物分离、感受态细胞制作）、菌落计数与抑菌圈测量；实验记录规范化、可追溯；了解 GMP/GLP 对检验记录与数据完整性的基本要求。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
@@ -646,7 +646,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-exp-head">
 <div class="r-name">求职地点与到岗时间</div>
 </div>
-<div class="r-exp-detail">昆明优先，其他省会城市可考虑；面试通过且毕业后两周内到岗。</div>
+<div class="r-exp-detail">昆明优先，其他省会城市可考虑；期望薪资 7-10K；面试通过且毕业后两周内到岗。</div>
 </div>
 </div>
 <div class="r-section">
