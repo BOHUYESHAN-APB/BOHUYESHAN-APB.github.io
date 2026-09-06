@@ -512,14 +512,14 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">独立实验能力</div>
 </div>
 <div class="r-exp-detail">
-接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">基因克隆（DWF4）与载体构建</span>、<span class="r-hl">遗传转化 / 转基因操作</span>、<span class="r-hl">mRNA 设计与构建</span>和<span class="r-hl">组织培养</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
+接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">基因克隆（DWF4）与载体构建</span>、<span class="r-hl">遗传转化 / 转基因操作</span>、<span class="r-hl">mRNA 设计与构建</span>和<span class="r-hl">植物细胞培养（组培全流程）</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">生信分析手段</div>
 </div>
 <div class="r-exp-detail">
-可独立完成植物 <strong>RNA-seq</strong>、候选基因筛选、<strong>系统发育</strong>与结构预测的可复现分析，覆盖 BLASTP/RBH、MAFFT/IQ-TREE、HISAT2/featureCounts/DESeq2、WGCNA、GSEA/Mfuzz、motif/JASPAR 与 AlphaFold；正在扩展 TCGA/GEO、网络药理学和分子模拟工作流。
+可独立完成植物 <strong>RNA-seq</strong>、候选基因筛选、<strong>系统发育</strong>与结构预测的可复现分析，覆盖 BLASTP/RBH、MAFFT/IQ-TREE、HISAT2/featureCounts/DESeq2、WGCNA、GSEA/Mfuzz、motif/JASPAR；使用 AlphaFold 完成候选蛋白结构预测，辅助功能位点解释；正在扩展 TCGA/GEO、网络药理学和分子模拟工作流。
 </div>
 </div>
 </div>
