@@ -131,6 +131,12 @@ aside: false
 <span class="r-ver-card-desc">分子实验、微生物检测与数据分析均衡呈现，意向覆盖分析技术员 / QC / 实验室技术员 / 科研助理 · 自适应预览 + 矢量打印</span>
 <span class="r-ver-card-cta">在线查看 / 打印 →</span>
 </a>
+<a class="r-ver-card" style="--c:#b45309; grid-column:1 / -1; flex-direction:row; align-items:center; gap:0.9rem; flex-wrap:wrap;" href="/resume/skills/">
+<span class="r-ver-tag">技能清单</span>
+<span class="r-ver-card-title" style="margin:0;">完整技能索引 · 分子实验 / 微生物检测 / 生信 / AI 工程</span>
+<span class="r-ver-card-desc" style="flex:1; min-width:14rem; margin:0;">按领域分组的全部技能与熟练度自评，每项附仓库 / 论文 / 专利等证据链接</span>
+<span class="r-ver-card-cta" style="margin:0;">查看清单 →</span>
+</a>
 </div>
 <div class="r-ver-archive">
 <span>⏳ 归档旧版（历史定位，仅供回看）：</span>
@@ -645,7 +651,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-exp-head">
 <div class="r-name">求职地点与到岗时间</div>
 </div>
-<div class="r-exp-detail">昆明优先，其他省会城市可考虑；期望薪资 7-10K；面试通过且毕业后两周内到岗。</div>
+<div class="r-exp-detail">昆明优先，其他省会城市可考虑；期望薪资 8-10K；面试通过且毕业后两周内到岗。</div>
 </div>
 </div>
 <div class="r-section">
@@ -654,6 +660,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-link-group">
 <h4>简历版本</h4>
 <ul>
+<li><a href="/resume/skills/">技能清单 · 完整索引</a></li>
 <li><a href="/HTML/resume-lab.html" target="_blank">实验 / 检测岗 · A4</a></li>
 <li><a href="/HTML/resume-tech.html" target="_blank">生信 / AI 工程岗 · A4</a></li>
 <li><a href="/HTML/resume-full.html" target="_blank">通用投递版 · A4</a></li>
