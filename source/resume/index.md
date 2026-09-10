@@ -133,7 +133,7 @@ aside: false
 </a>
 <a class="r-ver-card" style="--c:#b45309; grid-column:1 / -1; flex-direction:row; align-items:center; gap:0.9rem; flex-wrap:wrap;" href="/resume/skills/">
 <span class="r-ver-tag">技能清单</span>
-<span class="r-ver-card-title" style="margin:0;">完整技能索引 · 分子实验 / 微生物检测 / 生信 / AI 工程</span>
+<span class="r-ver-card-title" style="margin:0;">完整技能索引 · 分子实验 / 微生物检测 / 生信 / AI 与软件工程</span>
 <span class="r-ver-card-desc" style="flex:1; min-width:14rem; margin:0;">按领域分组的全部技能与熟练度自评，每项附仓库 / 论文 / 专利等证据链接</span>
 <span class="r-ver-card-cta" style="margin:0;">查看清单 →</span>
 </a>
@@ -212,16 +212,16 @@ aside: false
 <div class="r-chart-card">
 <h4>Linxira 开源生态规模 <span class="r-chart-badge">26 仓库</span></h4>
 <div class="r-chart-sub">Linxira-OS 组织 · 自研交付物统计（项）</div>
-<svg viewBox="0 0 340 146" role="img" aria-label="Linxira开源生态规模：双语文档108、分析能力94、agent skills 28、开源仓库26、签名工具17">
-<text x="110" y="26" text-anchor="end" font-size="11" fill="#475569">双语文档</text>
-<rect class="bar" x="118" y="14" width="190" height="16" rx="4" fill="#1e3a8a"/>
-<text x="316" y="26" font-size="11" fill="#1e3a8a" font-weight="700">108</text>
-<text x="110" y="52" text-anchor="end" font-size="11" fill="#475569">分析能力</text>
-<rect class="bar d1" x="118" y="40" width="165" height="16" rx="4" fill="#2563eb"/>
-<text x="291" y="52" font-size="11" fill="#1e3a8a" font-weight="700">94</text>
+<svg viewBox="0 0 340 146" role="img" aria-label="Linxira开源生态规模：分析能力112、双语文档108、agent skills 35、开源仓库26、签名工具17">
+<text x="110" y="26" text-anchor="end" font-size="11" fill="#475569">分析能力</text>
+<rect class="bar" x="118" y="14" width="197" height="16" rx="4" fill="#1e3a8a"/>
+<text x="309" y="26" text-anchor="end" font-size="11" fill="#fff" font-weight="700">112</text>
+<text x="110" y="52" text-anchor="end" font-size="11" fill="#475569">双语文档</text>
+<rect class="bar d1" x="118" y="40" width="190" height="16" rx="4" fill="#2563eb"/>
+<text x="316" y="52" font-size="11" fill="#1e3a8a" font-weight="700">108</text>
 <text x="110" y="78" text-anchor="end" font-size="11" fill="#475569">agent skills</text>
-<rect class="bar d2" x="118" y="66" width="49" height="16" rx="4" fill="#3b82f6"/>
-<text x="175" y="78" font-size="11" fill="#1e3a8a" font-weight="700">28</text>
+<rect class="bar d2" x="118" y="66" width="62" height="16" rx="4" fill="#3b82f6"/>
+<text x="188" y="78" font-size="11" fill="#1e3a8a" font-weight="700">35</text>
 <text x="110" y="104" text-anchor="end" font-size="11" fill="#475569">开源仓库</text>
 <rect class="bar d3" x="118" y="92" width="46" height="16" rx="4" fill="#60a5fa"/>
 <text x="172" y="104" font-size="11" fill="#1e3a8a" font-weight="700">26</text>
@@ -432,7 +432,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-grid-3 r-project-grid">
 <div class="r-project-card" style="border-color:#bfdbfe; background:#eff6ff;">
 <h4><a href="https://github.com/Linxira-OS/linxira-bio-sdk">Linxira Bio SDK</a> <span class="r-badge">主导开发</span></h4>
-<div class="r-desc"><strong>本地优先、开箱即用的生信分析平台</strong>：Rust 原生引擎 + 原生 GUI/CLI + agent skills；支持 FASTA / FASTQ / GFF / VCF / BED / CSV / PDB 导入，覆盖质控 → 修剪 → 比对 → 变异 → 富集 → 报告全流程；表格、SVG 图表与交互式结构查看器，可导出 CSV/TSV/JSON/XLSX 及 HTML/PDF 论文级报告；94 个分析能力、28 个 agent skills、中英双语文档；Windows / Debian / Arch 三平台，AGPL-3.0 开源，CI 含 JSON Schema 验证。</div>
+<div class="r-desc"><strong>本地优先、开箱即用的生信分析平台</strong>：Rust 原生引擎 + 原生 GUI/CLI + agent skills；支持 FASTA / FASTQ / GFF / VCF / BED / CSV / PDB 导入，覆盖质控 → 修剪 → 比对 → 变异 → 富集 → 报告全流程；表格、SVG 图表与交互式结构查看器，可导出 CSV/TSV/JSON/XLSX 及 HTML/PDF 论文级报告；112 项版本化分析能力、35 个 agent skills、中英双语文档；Windows / Debian / Arch 三平台，AGPL-3.0 开源，CI 含 JSON Schema 验证。</div>
 <div class="r-links"><a href="https://github.com/Linxira-OS/linxira-bio-sdk" target="_blank">GitHub</a><a href="https://linxira-os.github.io/bio-sdk/zh/" target="_blank">官网 ↗</a></div>
 <span class="r-lang">Rust · Python · R · Java</span>
 </div>
@@ -534,8 +534,8 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-stat"><div class="r-num">1</div><div class="r-label">第一发明人专利申请</div></div>
 <div class="r-stat"><div class="r-num">1</div><div class="r-label">IJMS 期刊论文</div></div>
 <div class="r-stat"><div class="r-num">24</div><div class="r-label">DWF4 分析样本</div></div>
-<div class="r-stat"><div class="r-num">94</div><div class="r-label">Bio SDK 分析能力</div></div>
-<div class="r-stat"><div class="r-num">28</div><div class="r-label">Bio SDK agent skills</div></div>
+<div class="r-stat"><div class="r-num">112</div><div class="r-label">Bio SDK 分析能力</div></div>
+<div class="r-stat"><div class="r-num">35</div><div class="r-label">Bio SDK agent skills</div></div>
 <div class="r-stat"><div class="r-num">617</div><div class="r-label">集成索引的技能指令包</div></div>
 <div class="r-stat"><div class="r-num">17</div><div class="r-label">Linxira 自研签名工具</div></div>
 <div class="r-stat"><div class="r-num">26</div><div class="r-label">Linxira-OS 开源仓库</div></div>
