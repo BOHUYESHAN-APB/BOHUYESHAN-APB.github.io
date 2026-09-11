@@ -166,7 +166,7 @@ aside: false
 </div>
 <div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
 <h4>植物分子能力</h4>
-<div class="r-skill-copy">荞麦矮化基因（DWF4）鉴定与克隆、表达载体设计构建与遗传转化；组培无菌操作；350 bp RNAi 靶片段与发卡表达盒 in-silico 设计。</div>
+<div class="r-skill-copy">荞麦矮化基因（DWF4）鉴定与克隆、过表达与 RNAi 抑制表达载体的设计构建（全流程亲手完成）与遗传转化；组培无菌操作；350 bp RNAi 靶片段与发卡表达盒 in-silico 设计。</div>
 </div>
 <div class="r-skill-card r-w2" style="border-color:#bfdbfe; background:#eff6ff;">
 <h4>发表论文 · 第四作者</h4>
@@ -267,7 +267,7 @@ aside: false
 <span class="r-skill-tag">酶切方案设计</span>
 <span class="r-skill-tag">载体构建</span>
 <span class="r-skill-tag">遗传转化</span>
-<span class="r-skill-tag">mRNA 设计与构建</span>
+<span class="r-skill-tag">mRNA 序列设计（委托合成）</span>
 </div>
 </div>
 <div class="r-skill-card">
@@ -293,7 +293,7 @@ aside: false
 <div class="r-grid-3">
 <div class="r-skill-card">
 <h4>AI 训练与模型部署</h4>
-<div class="r-skill-copy">围绕 PP-YOLOE+、PP-YOLO 和 YOLOv5/v8 开展训练、微调、ONNX 导出与边缘推理；完成树莓派 5 NCNN/ONNX 实测对比与菌落检测延迟优化；基于华为昇腾 NPU + MindSpore 完成开源 LLM 训练/微调，训练任务、代码与模型记录公开于 OpenI。</div>
+<div class="r-skill-copy">围绕 PP-YOLOE+、PP-YOLO 和 YOLOv5/v8 开展训练、微调、ONNX 导出与边缘推理；完成树莓派 5 NCNN/ONNX 实测对比与菌落检测延迟优化；基于华为昇腾 NPU + MindSpore 完成开源 LLM 训练/微调任务跑通，训练任务、代码与模型记录公开于 OpenI，完整评测报告整理中。</div>
 <div class="r-skill-tags">
 <span class="r-skill-tag">PP-YOLOE+</span>
 <span class="r-skill-tag">YOLOv5/v8</span>
@@ -319,7 +319,7 @@ aside: false
 </div>
 <div class="r-skill-card">
 <h4>分子生物学实验</h4>
-<div class="r-skill-copy">受过系统实验训练，可按 SOP 独立完成已掌握步骤：表型鉴定、RNA 提取与反转录、qRT-PCR、毛细管电泳、载体构建与遗传转化、mRNA 设计与构建、组织培养，并规范记录与整理结果。</div>
+<div class="r-skill-copy">受过系统实验训练，可按 SOP 独立完成已掌握步骤：表型鉴定、RNA 提取与反转录、qRT-PCR、毛细管电泳、过表达与 RNAi 抑制表达载体构建、遗传转化、组织培养与 mRNA 序列设计（合成委托），并规范记录与整理结果。</div>
 <div class="r-skill-tags">
 <span class="r-skill-tag">表型鉴定</span>
 <span class="r-skill-tag">RNA 提取</span>
@@ -497,7 +497,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">开源大语言模型训练（华为昇腾）</div>
 </div>
 <div class="r-exp-detail">
-基于昇腾 NPU 与 MindSpore 栈完成开源 LLM 训练/微调；训练任务、代码与模型记录公开于 <a href="https://openi.pcl.ac.cn/bhys" style="color:#2563eb;">OpenI 启智社区</a>，可在异构算力间复现与迁移。
+基于昇腾 NPU 与 MindSpore 栈完成开源 LLM 训练/微调任务跑通；训练任务、代码与模型记录公开于 <a href="https://openi.pcl.ac.cn/bhys" style="color:#2563eb;">OpenI 启智社区</a>（可查验），完整评测报告整理中。
 </div>
 </div>
 <div class="r-exp-item">
@@ -517,14 +517,14 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-name">独立实验能力</div>
 </div>
 <div class="r-exp-detail">
-接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">基因克隆（DWF4）与载体构建</span>、<span class="r-hl">遗传转化 / 转基因操作</span>、<span class="r-hl">mRNA 设计与构建</span>和<span class="r-hl">植物细胞培养（组培全流程）</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
+接受过<span class="r-hl">植物表型鉴定</span>、<span class="r-hl">RNA 提取与反转录</span>、<span class="r-hl">qRT-PCR</span>、<span class="r-hl">毛细管电泳</span>、<span class="r-hl">基因克隆（DWF4）与过表达 / RNAi 载体构建</span>、<span class="r-hl">遗传转化 / 转基因操作</span>、<span class="r-hl">mRNA 序列设计（合成委托）</span>和<span class="r-hl">植物细胞培养（组培全流程）</span>训练，可按 SOP 独立完成已掌握步骤，并进行实验记录与结果整理。
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">生信分析手段</div>
 </div>
 <div class="r-exp-detail">
-可独立完成植物 <strong>RNA-seq</strong>、候选基因筛选、<strong>系统发育</strong>与结构预测的可复现分析，覆盖 BLASTP/RBH、MAFFT/IQ-TREE、HISAT2/featureCounts/DESeq2、WGCNA、GSEA/Mfuzz、motif/JASPAR；使用 AlphaFold 完成候选蛋白结构预测，辅助功能位点解释；正在扩展 TCGA/GEO、网络药理学和分子模拟工作流。
+可独立完成植物 <strong>RNA-seq</strong>、候选基因筛选、<strong>系统发育</strong>与结构预测的可复现分析，覆盖 BLASTP/RBH、MAFFT/IQ-TREE、HISAT2/featureCounts/DESeq2、WGCNA、GSEA/Mfuzz、motif/JASPAR；使用 AlphaFold 完成候选蛋白结构预测，辅助功能位点解释；正在扩展 WGS 群体遗传（BWA/GATK/BCFtools、ADMIXTURE、XP-CLR 等工具链，1001 Genomes 子集实练中）、TCGA/GEO、网络药理学和分子模拟工作流。
 </div>
 </div>
 </div>
@@ -595,6 +595,13 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
+<div class="r-name">WGS 群体遗传分析工具链</div>
+<div class="r-meta">2026.09 — 持续 · 自学实练</div>
+</div>
+<div class="r-exp-detail">系统自学群体重测序全流程：BWA/GATK/BCFtools 变异检测、PCA/ADMIXTURE 群体结构、π/Fst 遗传多样性、XP-CLR/XP-EHH 选择清除与 GEMMA 关联分析；以拟南芥 1001 Genomes 子集实练，并与本科毕业课题的荞麦群体数据实践同步推进。<a href="/2026/09/10/2026-09-10-01-群体重测序分析入门-从FASTQ到选择清除/" style="color:#2563eb;">学习地图已发布于博客</a>，实练记录持续更新。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
 <div class="r-name">微生物小目标检测算法改进</div>
 <div class="r-meta">在研 · 拟整理为预印本</div>
 </div>
@@ -612,22 +619,21 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-section-title">📌 求职信息</div>
 <div class="r-exp-item">
 <div class="r-exp-head">
-<div class="r-name">分析技术员（生化岗 / 分子岗）</div>
-<div class="r-meta">首选</div>
+<div class="r-name">生物信息工程师 / 生物信息学分析</div>
 </div>
-<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：基因克隆（DWF4）、载体设计构建、遗传转化 / 转基因、mRNA 设计与构建（合成委托公司）；微生物培养鉴定（含菌种分离纯化、土壤微生物分离、感受态细胞制作）、菌落计数与抑菌圈测量；实验记录规范化、可追溯；了解 GMP/GLP 对检验记录与数据完整性的基本要求。</div>
+<div class="r-exp-detail">面向 RNA-seq、组学分析、公共数据库挖掘与生信流程开发，交付可复现分析与自动化报告。</div>
+</div>
+<div class="r-exp-item">
+<div class="r-exp-head">
+<div class="r-name">分析技术员（生化岗 / 分子岗）</div>
+</div>
+<div class="r-exp-detail">生化与核酸分析：核酸提取、反转录、qRT-PCR、毛细管电泳；分子构建：基因克隆（DWF4）、过表达与 RNAi 抑制表达载体设计构建（全流程亲手完成）、遗传转化 / 转基因、mRNA 序列设计（合成委托外部公司）；微生物培养鉴定（含菌种分离纯化、土壤微生物分离、感受态细胞制作）、菌落计数与抑菌圈测量；实验记录规范化、可追溯；了解 GMP/GLP 对检验记录与数据完整性的基本要求。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
 <div class="r-name">分析技术员 · 理化岗</div>
 </div>
 <div class="r-exp-detail">毛细管电泳、菌落计数、形态学鉴别、抑菌圈测量，样品检测与报告。</div>
-</div>
-<div class="r-exp-item">
-<div class="r-exp-head">
-<div class="r-name">生物信息工程师 / 生物信息学分析</div>
-</div>
-<div class="r-exp-detail">面向 RNA-seq、组学分析、公共数据库挖掘与生信流程开发，交付可复现分析与自动化报告。</div>
 </div>
 <div class="r-exp-item">
 <div class="r-exp-head">
@@ -651,7 +657,7 @@ DOI: <a href="https://doi.org/10.3390/ijms27135740" style="color:#2563eb;">10.33
 <div class="r-exp-head">
 <div class="r-name">求职地点与到岗时间</div>
 </div>
-<div class="r-exp-detail">昆明优先，其他省会城市可考虑；期望薪资 8-10K；面试通过且毕业后两周内到岗。</div>
+<div class="r-exp-detail">昆明优先，其他省会城市可考虑；期望薪资面谈；面试通过且毕业后两周内到岗。</div>
 </div>
 </div>
 <div class="r-section">

@@ -98,8 +98,8 @@ description: 韩涛（BoHuYeShan）完整技能清单：分子生物学实验、
 </div>
 <div class="r-skill-card r-w3">
 <div class="r-skill-head"><h4>分子克隆与构建</h4><span class="r-level r-lv-ok">掌握</span></div>
-<div class="r-skill-copy"><strong>DWF4 基因鉴定与克隆</strong>、表达<strong>载体设计构建</strong>与<strong>遗传转化 / 转基因</strong>操作；<strong>mRNA 设计与构建</strong>（合成委托公司）；350 bp <strong>RNAi 靶片段</strong>筛选、<strong>发卡表达盒</strong>与限制性<strong>酶切方案</strong>的 in-silico 设计；<strong>普通 PCR</strong> 扩增与<strong>引物设计</strong>（qRT-PCR / 克隆用）、<strong>琼脂糖凝胶电泳</strong>检测（DNA / RNA）与<strong>凝胶回收纯化</strong>、大肠杆菌<strong>感受态热激转化</strong>；常用克隆辅助软件与在线工具辅助序列分析、引物与酶切方案设计。</div>
-<div class="r-skill-tags"><span class="r-skill-tag">基因克隆</span><span class="r-skill-tag">载体构建</span><span class="r-skill-tag">遗传转化</span><span class="r-skill-tag">mRNA 设计与构建</span><span class="r-skill-tag">RNAi 靶片段</span><span class="r-skill-tag">酶切方案设计</span><span class="r-skill-tag">普通 PCR</span><span class="r-skill-tag">引物设计</span><span class="r-skill-tag">琼脂糖电泳</span><span class="r-skill-tag">凝胶回收</span><span class="r-skill-tag">热激转化</span></div>
+<div class="r-skill-copy"><strong>DWF4 基因鉴定与克隆</strong>；<strong>过表达载体与 RNAi 抑制表达载体</strong>的<strong>设计构建全流程亲手完成</strong>（含 350 bp <strong>RNAi 靶片段</strong>筛选、<strong>发卡表达盒</strong>与限制性<strong>酶切方案</strong>的 in-silico 设计）；<strong>遗传转化 / 转基因</strong>操作；<strong>mRNA 序列 in-silico 设计</strong>（合成与制备委托外部公司）；<strong>普通 PCR</strong> 扩增与<strong>引物设计</strong>（qRT-PCR / 克隆用）、<strong>琼脂糖凝胶电泳</strong>检测（DNA / RNA）与<strong>凝胶回收纯化</strong>、大肠杆菌<strong>感受态热激转化</strong>；常用克隆辅助软件与在线工具辅助序列分析、引物与酶切方案设计。</div>
+<div class="r-skill-tags"><span class="r-skill-tag">基因克隆</span><span class="r-skill-tag">过表达 / RNAi 载体构建</span><span class="r-skill-tag">遗传转化</span><span class="r-skill-tag">mRNA 序列设计（委托合成）</span><span class="r-skill-tag">RNAi 靶片段</span><span class="r-skill-tag">酶切方案设计</span><span class="r-skill-tag">普通 PCR</span><span class="r-skill-tag">引物设计</span><span class="r-skill-tag">琼脂糖电泳</span><span class="r-skill-tag">凝胶回收</span><span class="r-skill-tag">热激转化</span></div>
 <div class="r-ev">证据：荞麦矮化基因课题 · in-silico 克隆方案文档（已归档）</div>
 </div>
 <div class="r-skill-card r-w3">
@@ -215,8 +215,9 @@ description: 韩涛（BoHuYeShan）完整技能清单：分子生物学实验、
 </div>
 <div class="r-skill-card r-w3">
 <div class="r-skill-head"><h4>临床与多组学扩展</h4><span class="r-level r-lv-learn">了解</span></div>
-<div class="r-skill-copy">Bio SDK 中实现单细胞 QC、空间转录组、生存分析、药物基因组、代谢组、微生物组多样性、队列表 QC、通路（RUO）与宏基因组分类等模块；个人正在扩展 <strong>TCGA / GEO</strong> 公共数据挖掘、<strong>网络药理学</strong>与<strong>分子模拟</strong>，跟踪 Proto、PBCNet2.0 等 AI for Science 工具并形成接入评估笔记。</div>
-<div class="r-skill-tags"><span class="r-skill-tag">single-cell QC</span><span class="r-skill-tag">spatial</span><span class="r-skill-tag">survival</span><span class="r-skill-tag">pharmacogenomics</span><span class="r-skill-tag">metabolomics</span><span class="r-skill-tag">microbiome</span><span class="r-skill-tag">metagenomics</span><span class="r-skill-tag">TCGA/GEO</span><span class="r-skill-tag">网络药理学</span></div>
+<div class="r-skill-copy">Bio SDK 中实现单细胞 QC、空间转录组、生存分析、药物基因组、代谢组、微生物组多样性、队列表 QC、通路（RUO）与宏基因组分类等模块；个人正在系统自学 <strong>WGS 群体遗传</strong>工具链（BWA/GATK/BCFtools、Plink/ADMIXTURE、XP-CLR/XP-EHH、GEMMA），以拟南芥 1001 Genomes 子集实练，与本科毕业课题的荞麦群体数据实践同步推进；同时扩展 <strong>TCGA / GEO</strong> 公共数据挖掘、<strong>网络药理学</strong>与<strong>分子模拟</strong>，跟踪 Proto、PBCNet2.0 等 AI for Science 工具并形成接入评估笔记。</div>
+<div class="r-skill-tags"><span class="r-skill-tag">single-cell QC</span><span class="r-skill-tag">spatial</span><span class="r-skill-tag">survival</span><span class="r-skill-tag">pharmacogenomics</span><span class="r-skill-tag">metabolomics</span><span class="r-skill-tag">microbiome</span><span class="r-skill-tag">metagenomics</span><span class="r-skill-tag">WGS / 群体遗传</span><span class="r-skill-tag">TCGA/GEO</span><span class="r-skill-tag">网络药理学</span></div>
+<div class="r-ev">证据：<a href="/2026/09/10/2026-09-10-01-群体重测序分析入门-从FASTQ到选择清除/" target="_blank">WGS 群体遗传学习地图（博客）↗</a></div>
 </div>
 <div class="r-skill-card r-w3">
 <div class="r-skill-head"><h4>图表与报告产出</h4><span class="r-level r-lv-pro">熟练</span></div>
@@ -248,7 +249,7 @@ description: 韩涛（BoHuYeShan）完整技能清单：分子生物学实验、
 </div>
 <div class="r-skill-card r-w3">
 <div class="r-skill-head"><h4>开源 LLM 训练（昇腾 NPU）</h4><span class="r-level r-lv-ok">掌握</span></div>
-<div class="r-skill-copy">基于华为<strong>昇腾 NPU + MindSpore</strong> 栈完成开源 LLM 训练 / 微调；训练任务、代码与模型记录公开于 OpenI 启智社区，可在异构算力间复现迁移。</div>
+<div class="r-skill-copy">基于华为<strong>昇腾 NPU + MindSpore</strong> 栈完成开源 LLM 训练 / 微调任务跑通；训练任务、代码与模型记录公开于 OpenI 启智社区（可查验），完整评测报告整理中。</div>
 <div class="r-skill-tags"><span class="r-skill-tag">MindSpore</span><span class="r-skill-tag">Ascend NPU</span><span class="r-skill-tag">LLM 微调</span></div>
 <div class="r-ev">证据：<a href="https://openi.pcl.ac.cn/bhys" target="_blank">OpenI 公开训练记录 ↗</a></div>
 </div>
