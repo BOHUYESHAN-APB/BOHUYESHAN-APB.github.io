@@ -95,6 +95,7 @@ pagination_dir: page
 ## include:/exclude: options only apply to the 'source/' folder
 include:
 exclude:
+  - "**/.mimosa/**"
 ignore:
 
 # Search
@@ -114,4 +115,3 @@ deploy:
   type: git
   repo: https://github.com/BOHUYESHAN-APB/BOHUYESHAN-APB.github.io.git
   branch: main
-

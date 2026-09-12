@@ -9,3 +9,9 @@ _multiconfig.yml
 temp_materials/
 .opencode/
 .workbuddy/
+.mimosa/
+.zcode/
+source/_drafts/
+tools/bio-plots/data-real/
+tools/bio-plots/data_dump/
+*.tmp
