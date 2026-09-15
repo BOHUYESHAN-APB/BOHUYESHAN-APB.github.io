@@ -13,6 +13,22 @@ import remarkCollapse from "remark-collapse";
 import rehypeCallouts from "rehype-callouts";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import { visit } from "unist-util-visit";
+
+// Turn ```mermaid fences into placeholder divs before shiki can eat them;
+// src/components/Mermaid.astro renders them client-side.
+function remarkMermaidPlaceholder() {
+  return tree => {
+    visit(tree, "code", node => {
+      if (node.lang === "mermaid") {
+        node.type = "html";
+        node.value = `<div class="mermaid-block" data-source="${encodeURIComponent(
+          node.value
+        )}"></div>`;
+      }
+    });
+  };
+}
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -42,6 +58,7 @@ export default defineConfig({
       remarkPlugins: [
         remarkToc,
         [remarkCollapse, { test: "Table of contents" }],
+        remarkMermaidPlaceholder,
         remarkMath,
       ],
       rehypePlugins: [rehypeCallouts, rehypeKatex],
