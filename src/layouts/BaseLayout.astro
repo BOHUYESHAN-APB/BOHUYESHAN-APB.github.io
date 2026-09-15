@@ -87,5 +87,87 @@ const {
         }
       }
     </style>
+
+    <script is:inline>
+      // 彩蛋：Konami 秘籍（↑↑↓↓←→←→BA）。暗色 → 流星雨；亮色 → 龙卷风卷起文章。
+      ;(function () {
+        var SEQ = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+        var idx = 0
+        document.addEventListener('keydown', function (e) {
+          var k = e.key.length === 1 ? e.key.toLowerCase() : e.key
+          idx = k === SEQ[idx] ? idx + 1 : k === SEQ[0] ? 1 : 0
+          if (idx === SEQ.length) {
+            idx = 0
+            toggleEgg()
+          }
+        })
+        function toast(msg) {
+          var t = document.createElement('div')
+          t.className = 'egg-toast'
+          t.textContent = msg
+          document.body.appendChild(t)
+          setTimeout(function () {
+            t.style.opacity = '0'
+          }, 2400)
+          setTimeout(function () {
+            t.remove()
+          }, 2900)
+        }
+        function makeMeteors() {
+          var layer = document.createElement('div')
+          layer.className = 'meteor-layer'
+          for (var i = 0; i < 8; i++) {
+            var m = document.createElement('i')
+            m.className = 'meteor'
+            m.style.top = -5 + Math.random() * 50 + '%'
+            m.style.left = 5 + Math.random() * 105 + '%'
+            m.style.animationDuration = 1 + Math.random() * 1.4 + 's'
+            m.style.animationDelay = Math.random() * 8 + 's'
+            m.style.width = 120 + Math.random() * 140 + 'px'
+            layer.appendChild(m)
+          }
+          document.body.appendChild(layer)
+        }
+        function makeTornado() {
+          var layer = document.createElement('div')
+          layer.className = 'tornado-layer'
+          var back = document.createElement('i')
+          back.className = 'tornado-funnel back'
+          layer.appendChild(back)
+          var funnel = document.createElement('i')
+          funnel.className = 'tornado-funnel'
+          layer.appendChild(funnel)
+          for (var d = 0; d < 3; d++) {
+            var db = document.createElement('i')
+            db.className = 'debris'
+            db.style.left = 30 + Math.random() * 160 + 'px'
+            db.style.bottom = 4 + Math.random() * 18 + 'px'
+            db.style.animationDelay = d * 0.23 + 's'
+            db.style.animationDuration = 0.6 + Math.random() * 0.4 + 's'
+            layer.appendChild(db)
+          }
+          document.body.appendChild(layer)
+        }
+        function cleanupWeather() {
+          document.querySelectorAll('.meteor-layer,.tornado-layer').forEach(function (el) {
+            el.remove()
+          })
+        }
+        function toggleEgg() {
+          var dark = document.documentElement.classList.contains('dark')
+          var egg = dark ? 'egg-meteor' : 'egg-tornado'
+          var on = document.body.classList.toggle(egg)
+          document.body.classList.remove(dark ? 'egg-tornado' : 'egg-meteor')
+          cleanupWeather()
+          if (on) {
+            if (dark) makeMeteors()
+            else makeTornado()
+            toast(dark ? '☄️ 彩蛋开启：流星雨' : '🌪️ 彩蛋开启：龙卷风')
+          } else {
+            toast('彩蛋已关闭')
+          }
+        }
+      })()
+    </script>
   </body>
 </html>

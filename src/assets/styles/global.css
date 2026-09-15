@@ -281,3 +281,299 @@ span.katex-display {
     border-radius: 999px;
   }
 }
+
+/* ============ 星空银河背景（纯 CSS 零依赖） ============ */
+/* 暗：深空底色；亮：浅色天空 */
+html.dark {
+  background-color: #04060d;
+}
+html.dark body {
+  background-color: transparent;
+}
+/* 层一（暗）：银河雾带 + 星星瓦片平铺 + 底部天际线剪影 */
+html.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 75% -5%, rgba(99, 102, 241, 0.16), transparent 62%),
+    radial-gradient(ellipse 70% 45% at 12% 28%, rgba(139, 92, 246, 0.09), transparent 65%),
+    radial-gradient(ellipse 60% 40% at 88% 88%, rgba(56, 189, 248, 0.06), transparent 60%),
+    radial-gradient(1.2px 1.2px at 38px 62px, rgba(255, 255, 255, 0.55), transparent 55%),
+    radial-gradient(1px 1px at 120px 24px, rgba(255, 255, 255, 0.45), transparent 55%),
+    radial-gradient(1.4px 1.4px at 188px 141px, rgba(203, 213, 225, 0.5), transparent 55%),
+    radial-gradient(1px 1px at 76px 178px, rgba(255, 255, 255, 0.4), transparent 55%),
+    radial-gradient(1px 1px at 210px 88px, rgba(255, 255, 255, 0.35), transparent 55%),
+    radial-gradient(1px 1px at 22px 130px, rgba(255, 255, 255, 0.3), transparent 55%),
+    radial-gradient(1px 1px at 12px 44px, rgba(255, 255, 255, 0.5), transparent 55%),
+    radial-gradient(1px 1px at 99px 155px, rgba(255, 255, 255, 0.3), transparent 55%),
+    radial-gradient(1px 1px at 33px 8px, rgba(255, 255, 255, 0.4), transparent 55%),
+    radial-gradient(1px 1px at 150px 190px, rgba(255, 255, 255, 0.3), transparent 55%),
+    radial-gradient(1px 1px at 59px 104px, rgba(255, 255, 255, 0.28), transparent 55%),
+    radial-gradient(1px 1px at 8px 91px, rgba(255, 255, 255, 0.32), transparent 55%),
+    radial-gradient(1px 1px at 92px 30px, rgba(255, 255, 255, 0.3), transparent 55%),
+    radial-gradient(1px 1px at 165px 60px, rgba(255, 255, 255, 0.34), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='160'%3E%3Cg fill='%2301030a'%3E%3Crect x='0' y='90' width='70' height='70'/%3E%3Crect x='70' y='60' width='50' height='100'/%3E%3Crect x='120' y='100' width='80' height='60'/%3E%3Crect x='200' y='40' width='60' height='120'/%3E%3Crect x='229' y='20' width='4' height='24'/%3E%3Crect x='260' y='80' width='90' height='80'/%3E%3Crect x='350' y='55' width='55' height='105'/%3E%3Crect x='405' y='95' width='75' height='65'/%3E%3Crect x='480' y='30' width='70' height='130'/%3E%3Crect x='510' y='10' width='3' height='22'/%3E%3Crect x='550' y='70' width='80' height='90'/%3E%3Crect x='630' y='90' width='60' height='70'/%3E%3Crect x='690' y='45' width='65' height='115'/%3E%3Crect x='755' y='85' width='85' height='75'/%3E%3Crect x='840' y='35' width='55' height='125'/%3E%3Crect x='863' y='15' width='4' height='22'/%3E%3Crect x='895' y='75' width='75' height='85'/%3E%3Crect x='970' y='50' width='60' height='110'/%3E%3Crect x='1030' y='95' width='80' height='65'/%3E%3Crect x='1110' y='65' width='55' height='95'/%3E%3Crect x='1165' y='100' width='35' height='60'/%3E%3C/g%3E%3Cg fill='%23ffd98a' opacity='.35'%3E%3Crect x='82' y='75' width='4' height='6'/%3E%3Crect x='95' y='88' width='4' height='6'/%3E%3Crect x='215' y='55' width='4' height='6'/%3E%3Crect x='235' y='70' width='4' height='6'/%3E%3Crect x='497' y='48' width='4' height='6'/%3E%3Crect x='517' y='60' width='4' height='6'/%3E%3Crect x='705' y='60' width='4' height='6'/%3E%3Crect x='725' y='75' width='4' height='6'/%3E%3Crect x='855' y='50' width='4' height='6'/%3E%3Crect x='875' y='65' width='4' height='6'/%3E%3Crect x='985' y='65' width='4' height='6'/%3E%3Crect x='1005' y='80' width='4' height='6'/%3E%3Crect x='1125' y='80' width='4' height='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:
+    cover,
+    cover,
+    cover,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    240px 240px,
+    170px 170px,
+    auto 150px;
+  background-position:
+    center,
+    center,
+    center,
+    0 0,
+    40px 60px,
+    90px 20px,
+    130px 110px,
+    20px 150px,
+    160px 40px,
+    70px 0,
+    110px 130px,
+    200px 90px,
+    10px 10px,
+    55px 45px,
+    175px 165px,
+    30px 80px,
+    145px 10px,
+    0 bottom;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat,
+    repeat-x;
+  animation: star-twinkle 9s ease-in-out infinite alternate-reverse;
+}
+/* 层二（暗）：亮星（带辉光，与暗星异步闪烁） */
+html.dark body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2.2px 2.2px at 15% 22%, rgba(255, 255, 255, 0.95), transparent 60%),
+    radial-gradient(2px 2px at 47% 12%, rgba(199, 210, 254, 0.9), transparent 60%),
+    radial-gradient(2.4px 2.4px at 69% 41%, rgba(255, 255, 255, 0.85), transparent 60%),
+    radial-gradient(2px 2px at 83% 76%, rgba(165, 180, 252, 0.85), transparent 60%),
+    radial-gradient(1.8px 1.8px at 33% 55%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(2px 2px at 91% 30%, rgba(199, 210, 254, 0.75), transparent 60%),
+    radial-gradient(1.8px 1.8px at 7% 48%, rgba(255, 255, 255, 0.75), transparent 60%),
+    radial-gradient(2.2px 2.2px at 56% 68%, rgba(165, 180, 252, 0.7), transparent 60%),
+    radial-gradient(2.4px 2.4px at 25% 84%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(2px 2px at 74% 6%, rgba(199, 210, 254, 0.8), transparent 60%),
+    radial-gradient(1.8px 1.8px at 44% 92%, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(2.2px 2.2px at 96% 58%, rgba(255, 255, 255, 0.75), transparent 60%);
+  background-size: 420px 420px;
+  background-repeat: repeat;
+  animation: star-twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes star-twinkle {
+  from {
+    opacity: 0.82;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* 亮色模式：浅色天空 + 浅灰天际线 */
+html:not(.dark) body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: linear-gradient(180deg, #eef4fb 0%, #f7fafc 55%, #e8eef6 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='160'%3E%3Cg fill='%23d7e0ec'%3E%3Crect x='0' y='90' width='70' height='70'/%3E%3Crect x='70' y='60' width='50' height='100'/%3E%3Crect x='120' y='100' width='80' height='60'/%3E%3Crect x='200' y='40' width='60' height='120'/%3E%3Crect x='229' y='20' width='4' height='24'/%3E%3Crect x='260' y='80' width='90' height='80'/%3E%3Crect x='350' y='55' width='55' height='105'/%3E%3Crect x='405' y='95' width='75' height='65'/%3E%3Crect x='480' y='30' width='70' height='130'/%3E%3Crect x='510' y='10' width='3' height='22'/%3E%3Crect x='550' y='70' width='80' height='90'/%3E%3Crect x='630' y='90' width='60' height='70'/%3E%3Crect x='690' y='45' width='65' height='115'/%3E%3Crect x='755' y='85' width='85' height='75'/%3E%3Crect x='840' y='35' width='55' height='125'/%3E%3Crect x='863' y='15' width='4' height='22'/%3E%3Crect x='895' y='75' width='75' height='85'/%3E%3Crect x='970' y='50' width='60' height='110'/%3E%3Crect x='1030' y='95' width='80' height='65'/%3E%3Crect x='1110' y='65' width='55' height='95'/%3E%3Crect x='1165' y='100' width='35' height='60'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:
+    cover,
+    auto 150px;
+  background-position:
+    center,
+    0 bottom;
+  background-repeat:
+    no-repeat,
+    repeat-x;
+}
+
+/* ============ 彩蛋：流星雨（暗色） / 龙卷风（亮色） ============ */
+.meteor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.meteor {
+  position: absolute;
+  width: 160px;
+  height: 1.6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(199, 210, 254, 0.4), transparent);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
+  animation: meteor-fly linear infinite;
+}
+@keyframes meteor-fly {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-80vw, 85vh, 0) rotate(-45deg);
+    opacity: 0;
+  }
+}
+.tornado-layer {
+  position: fixed;
+  left: -300px;
+  bottom: 0;
+  width: 100%;
+  height: 74vh;
+  z-index: 0;
+  pointer-events: none;
+  animation: tornado-sweep 7s linear infinite;
+}
+.tornado-funnel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 260px;
+  height: 68vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='520' viewBox='0 0 260 520'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='.45' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse cx='118' cy='502' rx='34' ry='7' fill='%23475569' fill-opacity='.35'/%3E%3Cg fill='none' stroke='url(%23g)' stroke-opacity='.9'%3E%3Cellipse cx='112' cy='34' rx='112' ry='26'/%3E%3Cellipse cx='116' cy='82' rx='99' ry='24'/%3E%3Cellipse cx='121' cy='130' rx='86' ry='22'/%3E%3Cellipse cx='118' cy='178' rx='73' ry='20'/%3E%3Cellipse cx='113' cy='226' rx='61' ry='18'/%3E%3Cellipse cx='117' cy='274' rx='50' ry='16'/%3E%3Cellipse cx='123' cy='322' rx='40' ry='14'/%3E%3Cellipse cx='116' cy='370' rx='30' ry='12'/%3E%3Cellipse cx='120' cy='418' rx='21' ry='10'/%3E%3Cellipse cx='112' cy='466' rx='13' ry='7'/%3E%3Cellipse cx='116' cy='504' rx='7' ry='4'/%3E%3C/g%3E%3Cg fill='url(%23g)' fill-opacity='.55'%3E%3Cellipse cx='112' cy='34' rx='70' ry='14'/%3E%3Cellipse cx='121' cy='130' rx='52' ry='11'/%3E%3Cellipse cx='113' cy='226' rx='34' ry='9'/%3E%3Cellipse cx='116' cy='370' rx='17' ry='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  animation: tornado-wobble 0.9s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+.tornado-funnel.back {
+  opacity: 0.45;
+  filter: blur(1.5px);
+  animation: tornado-wobble-back 0.9s ease-in-out infinite alternate-reverse;
+}
+@keyframes tornado-wobble-back {
+  from {
+    transform: translateX(-26px) scale(0.72) skewX(5deg) scaleX(1);
+  }
+  to {
+    transform: translateX(-26px) scale(0.72) skewX(-5deg) scaleX(1.14);
+  }
+}
+.debris {
+  position: absolute;
+  bottom: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #64748b;
+  opacity: 0.65;
+  animation: debris-orbit 0.7s linear infinite alternate;
+}
+@keyframes tornado-sweep {
+  from {
+    left: -340px;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes tornado-wobble {
+  from {
+    transform: skewX(5deg) scaleX(1);
+  }
+  to {
+    transform: skewX(-5deg) scaleX(1.14);
+  }
+}
+@keyframes debris-orbit {
+  from {
+    transform: translate(-30px, -2px) scale(0.75) rotate(0deg);
+  }
+  to {
+    transform: translate(32px, 4px) scale(1.15) rotate(180deg);
+  }
+}
+/* 龙卷风卷起文章卡片 */
+body.egg-tornado .post-preview {
+  animation: tornado-lift 1.5s ease-in-out infinite;
+}
+body.egg-tornado .post-preview:nth-child(2n) {
+  animation-delay: 0.18s;
+}
+body.egg-tornado .post-preview:nth-child(3n) {
+  animation-delay: 0.36s;
+}
+@keyframes tornado-lift {
+  0%,
+  100% {
+    transform: none;
+  }
+  30% {
+    transform: translate(-8px, -20px) rotate(-2.4deg);
+  }
+  60% {
+    transform: translate(10px, -12px) rotate(2.2deg);
+  }
+}
+.egg-toast {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 60;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border) / var(--un-border-opacity, 1));
+  background: hsl(var(--card) / var(--un-bg-opacity, 1));
+  color: hsl(var(--foreground) / var(--un-text-opacity, 1));
+  font-size: 0.875rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.4s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dark body::before,
+  html.dark body::after,
+  .meteor,
+  .tornado-layer,
+  .tornado-funnel,
+  body.egg-tornado .post-preview {
+    animation: none;
+  }
+}

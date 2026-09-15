@@ -45,3 +45,4 @@ bunfig.toml
 public/old/
 Thumbs.db
 *.log
+.mimosa/
