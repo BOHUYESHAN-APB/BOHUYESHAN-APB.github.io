@@ -99,7 +99,7 @@ export const sponsor = {
   /** 支付宝收款码图片，如 '/img/sponsor/alipay.png' */
   alipayQr: '',
   /** 爱发电主页（国内） */
-  afdian: '',
+  afdian: 'https://afdian.com/a/bhys_afd',
   /** Buy Me a Coffee 主页（国际） */
   buyMeACoffee: '',
   /** GitHub Sponsors 主页（国际） */
