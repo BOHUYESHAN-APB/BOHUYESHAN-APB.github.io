@@ -38,6 +38,19 @@ const FEATURED = new Set([
   "2026-09-13-01-生信图表大全第七篇-把190张图重画成Nature风格.md",
 ]);
 
+function parseScalar(v) {
+  v = v.trim();
+  // flow-style YAML list: [a, b, c]
+  if (v.startsWith("[") && v.endsWith("]")) {
+    return v
+      .slice(1, -1)
+      .split(",")
+      .map(t => t.trim().replace(/^["']|["']$/g, ""))
+      .filter(Boolean);
+  }
+  return v.replace(/^["']|["']$/g, "");
+}
+
 function parseFrontMatter(text) {
   const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!m) return { fm: {}, body: text };
@@ -46,14 +59,14 @@ function parseFrontMatter(text) {
   for (const line of m[1].split(/\r?\n/)) {
     const item = line.match(/^\s*-\s+(.*)$/);
     if (item && curKey) {
-      fm[curKey] = [...(fm[curKey] || []), item[1].trim()];
+      fm[curKey] = [...(fm[curKey] || []), parseScalar(item[1])];
       continue;
     }
     const kv = line.match(/^([A-Za-z_][\w-]*):\s*(.*)$/);
     if (kv) {
       curKey = kv[1];
       const v = kv[2].trim();
-      fm[curKey] = v === "" ? null : v;
+      fm[curKey] = v === "" ? null : parseScalar(v);
     }
   }
   return { fm, body: text.slice(m[0].length) };
@@ -148,7 +161,25 @@ for (const file of SOURCES) {
   }
 
   const title = (fm.title || "").replace(/^["']|["']$/g, "");
-  const tags = Array.isArray(fm.tags) ? fm.tags : fm.tags ? [fm.tags] : [];
+  // categories fold into tags so the old taxonomy stays browsable
+  const CATEGORY_ALIASES = { 生信图表大全: "图表大全" };
+  const TAG_ALIASES = { "图表可视化": "科研绘图", "AI 制药": "AI制药", "Nature 风格": "科研绘图", "方法选型": "技术选型" };
+  const DROP_TAGS = new Set(["基因", "AI", "真实数据"]);
+  const rawTags = Array.isArray(fm.tags) ? fm.tags : fm.tags ? [fm.tags] : [];
+  const rawCats = Array.isArray(fm.categories)
+    ? fm.categories
+    : fm.categories
+      ? [fm.categories]
+      : [];
+  const tags = [
+    ...new Set(
+      [...rawTags, ...rawCats.map(c => CATEGORY_ALIASES[c] || c)]
+        .map(t => String(t).trim())
+        .filter(Boolean)
+        .map(t => TAG_ALIASES[t] || t)
+        .filter(t => !DROP_TAGS.has(t))
+    ),
+  ];
   const fmOut = [
     "---",
     `title: ${JSON.stringify(title)}`,

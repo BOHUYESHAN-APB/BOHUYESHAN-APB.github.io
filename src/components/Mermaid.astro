@@ -1,0 +1,57 @@
+---
+/**
+ * Client-side Mermaid renderer.
+ *
+ * Finds fenced ```mermaid blocks (rendered by Astro as
+ * <pre><code class="language-mermaid">) and replaces them with diagrams.
+ * mermaid.js loads lazily from CDN only when a block exists on the page.
+ */
+---
+<script is:inline>
+  (function () {
+    var blocks = document.querySelectorAll(
+      "pre > code.language-mermaid, pre > code[class*='language-mermaid']"
+    );
+    if (!blocks.length) return;
+
+    function load(cb) {
+      if (window.mermaid) return cb(window.mermaid);
+      var s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+      s.onload = function () {
+        window.mermaid.initialize({
+          startOnLoad: false,
+          theme: document.documentElement.dataset.theme === "dark" ? "dark" : "default",
+          fontFamily: "system-ui, sans-serif",
+        });
+        cb(window.mermaid);
+      };
+      s.onerror = function () {
+        blocks.forEach(function (el) {
+          el.closest("pre").style.display = "";
+        });
+      };
+      document.head.appendChild(s);
+    }
+
+    load(function (mermaid) {
+      blocks.forEach(function (el, i) {
+        var pre = el.closest("pre");
+        var div = document.createElement("div");
+        div.className = "mermaid-figure";
+        div.style.cssText = "margin:1.5rem 0;text-align:center;overflow-x:auto;";
+        div.dataset.source = el.textContent;
+        pre.replaceWith(div);
+        mermaid
+          .render("mmd-" + i + "-" + Date.now(), el.textContent)
+          .then(function (r) {
+            div.innerHTML = r.svg;
+          })
+          .catch(function () {
+            // fall back to showing the source on render failure
+            div.replaceWith(pre);
+          });
+      });
+    });
+  })();
+</script>
