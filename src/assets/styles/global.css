@@ -576,4 +576,9 @@ body.egg-tornado .post-preview:nth-child(3n) {
   body.egg-tornado .post-preview {
     animation: none;
   }
+  /* 动画停用后流星会以 opacity:1 冻在原地，两个图层直接隐藏 */
+  .meteor-layer,
+  .tornado-layer {
+    display: none;
+  }
 }

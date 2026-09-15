@@ -167,6 +167,19 @@ const {
             toast('彩蛋已关闭')
           }
         }
+        // 彩蛋开启期间切主题：效果跟随（暗色流星 ↔ 亮色龙卷风），静默换不提示
+        new MutationObserver(function () {
+          var dark = document.documentElement.classList.contains('dark')
+          var meteorOn = document.body.classList.contains('egg-meteor')
+          var tornadoOn = document.body.classList.contains('egg-tornado')
+          if (!meteorOn && !tornadoOn) return
+          if ((dark && meteorOn) || (!dark && tornadoOn)) return
+          document.body.classList.remove('egg-meteor', 'egg-tornado')
+          document.body.classList.add(dark ? 'egg-meteor' : 'egg-tornado')
+          cleanupWeather()
+          if (dark) makeMeteors()
+          else makeTornado()
+        }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
       })()
     </script>
   </body>
