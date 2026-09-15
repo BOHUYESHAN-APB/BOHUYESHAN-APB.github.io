@@ -87,6 +87,11 @@ featured: false     # 本主题无此字段，纯占位不要写
 - 改归档站后联动发布：`gh workflow run deploy.yml -R BOHUYESHAN-APB/BOHUYESHAN-APB.github.io`
 - 本地无 Google/CDN 依赖：字体（fontsource variable）、图标、搜索全部本地
 - 修改 `src/content/blog/` 内文件路径 = 修改 URL，站内互链必须同步
+- **主题升级注意**：astro-pure 是 npm 依赖，`src/components/` 里有本地覆盖组件，升级版本后需对照上游逐一复查：
+  - `PostPreview.astro` / `ArticleBottom.astro`：文章链接改为根级日期 URL（`/${id}/`），上游默认 `/blog/<id>` 与按路径前两段拼链接，在本站会 404
+  - `Copyright.astro`：中文标签 + 底部入口改指 `/support/`
+  - `PFSearch.astro`：PagefindUI 中文界面
+- URL 规范为根级日期制（`/YYYY/MM/DD/slug/`），内容目录同样按日期分层（`src/content/blog/YYYY/MM/DD/`），本地管理与线上路径一一对应；不采用主题默认的 `/blog/` 前缀
 
 ## 七、给予支持（/support）
 
