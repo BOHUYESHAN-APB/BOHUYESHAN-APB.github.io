@@ -3,13 +3,13 @@
 // Only change: post links point at the date-based root URL (/YYYY/MM/DD/slug)
 // instead of the theme's default /blog/<id>.
 import { Image } from 'astro:assets'
-import { type CollectionEntry, type CollectionKey, render } from 'astro:content'
+import { type CollectionEntry, render } from 'astro:content'
 
 import { cn } from 'astro-pure/utils'
 import { Button, FormattedDate, Icon } from 'astro-pure/user'
 
-type Props<T extends CollectionKey> = {
-  post: CollectionEntry<T>
+type Props = {
+  post: CollectionEntry<'blog'>
   detailed?: boolean
   class?: string
 }
@@ -54,7 +54,7 @@ const postDate = data.updatedDate ?? data.publishDate
 
       {/* title */}
       <div class='flex justify-between flex-grow'>
-        <div class={detailed && 'font-medium'}>
+        <div class={detailed ? 'font-medium' : undefined}>
           {data.draft && <span class='text-red-500'>(Draft) </span>}
           {data.title}
         </div>

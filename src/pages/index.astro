@@ -1,5 +1,7 @@
 ---
+import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
 
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Icon, Label } from 'astro-pure/user'
@@ -10,7 +12,7 @@ import config from '@/site-config'
 
 const MAX_POSTS = 8
 const allPosts = await getBlogCollection()
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+const allPostsByDate = (sortMDByDate(allPosts) as CollectionEntry<'blog'>[]).slice(0, MAX_POSTS)
 
 const imagePath = config.logo.src
 const images = import.meta.glob<{ default: ImageMetadata }>(
