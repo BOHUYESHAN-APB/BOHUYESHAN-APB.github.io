@@ -1,0 +1,138 @@
+---
+import { Button } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+import { sponsor } from '@/site-config'
+
+const meta = {
+  description: '支持这个博客持续更新：Star、关注、分享、订阅与赞赏',
+  title: '给予支持'
+}
+
+const qrChannels = [
+  { label: '微信收款码', qr: sponsor.wechatQr },
+  { label: '支付宝收款码', qr: sponsor.alipayQr }
+].filter((c) => c.qr)
+
+const linkChannels = [
+  { label: '爱发电', desc: '国内赞助平台', href: sponsor.afdian },
+  { label: 'Buy Me a Coffee', desc: '国际赞助平台', href: sponsor.buyMeACoffee },
+  { label: 'GitHub Sponsors', desc: 'GitHub 官方赞助', href: sponsor.githubSponsors }
+].filter((c) => c.href)
+
+const freeWays = [
+  {
+    title: '给仓库点个 Star',
+    desc: '源码就在 GitHub，Star 是最直接的动力。',
+    href: 'https://github.com/BOHUYESHAN-APB/BOHUYESHAN-APB.github.io',
+    action: '去点 Star'
+  },
+  {
+    title: '关注作者',
+    desc: '在 GitHub 上关注，新动态第一时间可见。',
+    href: 'https://github.com/BOHUYESHAN-APB',
+    action: '去关注'
+  },
+  {
+    title: '把文章分享出去',
+    desc: '每篇文章底部都有分享按钮，转给需要的人最有价值。',
+    href: '/blog/',
+    action: '去挑一篇'
+  },
+  {
+    title: '订阅 RSS',
+    desc: '用阅读器订阅，更新不再错过。',
+    href: '/rss.xml',
+    action: '复制订阅'
+  }
+]
+---
+
+<PageLayout {meta}>
+  <Button title='返回' href='/' variant='back' />
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 mt-6 text-3xl font-medium sm:mt-10'>给予支持</h1>
+      <p class='mb-10 max-w-2xl text-muted-foreground'>
+        本站没有广告，也没有跟踪脚本。如果文章帮到了你，可以通过下面的方式支持写作继续——花不花钱都有办法。
+      </p>
+    </div>
+
+    <div id='content' class='animate flex flex-col gap-y-12'>
+      <section aria-label='不花钱的支持'>
+        <h2 class='mb-4 text-xl font-medium'>不花钱的（最有用）</h2>
+        <div class='grid gap-3 sm:grid-cols-2'>
+          {
+            freeWays.map((w) => (
+              <a
+                href={w.href}
+                class='group rounded-xl border p-4 no-underline transition-colors hover:border-primary'
+                target={w.href.startsWith('http') ? '_blank' : undefined}
+                rel={w.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                <div class='flex items-center justify-between'>
+                  <span class='font-medium'>{w.title}</span>
+                  <span class='text-sm text-muted-foreground transition-colors group-hover:text-primary'>
+                    {w.action} →
+                  </span>
+                </div>
+                <p class='mt-2 text-sm text-muted-foreground'>{w.desc}</p>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+
+      {
+        (qrChannels.length > 0 || linkChannels.length > 0) && (
+          <section aria-label='请作者喝一杯'>
+            <h2 class='mb-4 text-xl font-medium'>请作者喝一杯 ☕</h2>
+            {linkChannels.length > 0 && (
+              <div class='mb-4 grid gap-3 sm:grid-cols-3'>
+                {linkChannels.map((c) => (
+                  <a
+                    href={c.href}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    class='group rounded-xl border p-4 no-underline transition-colors hover:border-primary'
+                  >
+                    <div class='flex items-center justify-between'>
+                      <span class='font-medium'>{c.label}</span>
+                      <span class='text-sm text-muted-foreground transition-colors group-hover:text-primary'>
+                        前往 →
+                      </span>
+                    </div>
+                    <p class='mt-2 text-sm text-muted-foreground'>{c.desc}</p>
+                  </a>
+                ))}
+              </div>
+            )}
+            {qrChannels.length > 0 && (
+              <div class='flex flex-wrap gap-6'>
+                {qrChannels.map((c) => (
+                  <figure class='rounded-xl border p-4 text-center'>
+                    <img src={c.qr} alt={c.label} class='mx-auto size-44' loading='lazy' />
+                    <figcaption class='mt-2 text-sm text-muted-foreground'>{c.label}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+          </section>
+        )
+      }
+
+      <section aria-label='其他方式'>
+        <h2 class='mb-4 text-xl font-medium'>其他方式</h2>
+        <p class='text-sm text-muted-foreground'>
+          发现文章错误、有更好的想法，或者想一起写点东西？欢迎在
+          <a
+            class='underline decoration-dashed underline-offset-4'
+            href='https://github.com/BOHUYESHAN-APB/BOHUYESHAN-APB.github.io'
+            target='_blank'
+            rel='noopener noreferrer'>GitHub 仓库</a
+          >
+          提 Issue 或 Pull Request——这也是非常棒的支持。
+        </p>
+      </section>
+    </div>
+  </main>
+</PageLayout>

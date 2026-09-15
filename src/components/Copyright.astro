@@ -1,0 +1,77 @@
+---
+/**
+ * Local override of astro-pure/components/pages/Copyright.astro.
+ * - 中文标签
+ * - 分享交给 src/components/ShareButtons.astro（移除主题自带的分享行与二维码按钮，避免重复）
+ * - 主题里指向 /projects#sponsorship 的死链改为 /support/ 给予支持入口
+ */
+import type { CollectionEntry } from 'astro:content'
+
+import { cn, getFormattedDate } from 'astro-pure/utils'
+import { Icon } from 'astro-pure/user'
+import config from '@/site-config'
+
+type Props = {
+  data: CollectionEntry<'blog'>['data']
+  class?: string
+}
+
+const {
+  data: { title, publishDate },
+  class: className
+} = Astro.props
+---
+
+<div
+  class={cn(
+    'relative flex flex-col gap-y-2 rounded-xl border px-3 sm:px-4 py-2 sm:py-3',
+    className
+  )}
+>
+  <Icon class='absolute end-4 top-4 size-20 opacity-10' name='copyright' />
+
+  {/* title & link */}
+  <div class='flex flex-col'>
+    <div class='font-medium text-foreground'>{title}</div>
+    <div class='text-sm line-clamp-1'>{Astro.url}</div>
+  </div>
+
+  {/* common info */}
+  <div class='flex flex-row flex-wrap justify-start gap-x-5 gap-y-1 sm:gap-x-8'>
+    <div class='flex gap-x-2 sm:flex-col'>
+      <span>作者</span>
+      <span class='text-sm text-foreground max-sm:place-self-center'>{config.author}</span>
+    </div>
+    {
+      publishDate && (
+        <div class='flex gap-x-2 sm:min-w-16 sm:flex-col'>
+          <span>发布于</span>
+          <span class='text-sm text-foreground max-sm:place-self-center'>
+            {getFormattedDate(publishDate, { month: 'long' })}
+          </span>
+        </div>
+      )
+    }
+    <div class='flex gap-x-2 sm:flex-col'>
+      <span>授权</span>
+      <a
+        class='text-sm text-foreground max-sm:place-self-center'
+        href='https://creativecommons.org/licenses/by-nc-sa/4.0/'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        CC BY-NC-SA 4.0
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class='mx-6 rounded-b-xl border border-t-0 px-3 pb-1.5 pt-1 sm:mx-8 sm:px-4'>
+  <a
+    href='/support/'
+    class='flex items-center justify-between text-muted-foreground no-underline transition-colors hover:text-primary'
+  >
+    <span>觉得有帮助？给予支持 ☕</span>
+    <Icon class='box-content size-5 p-1' name='receive-money' />
+  </a>
+</div>

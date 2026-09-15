@@ -1,9 +1,11 @@
 ---
 /**
- * Chinese-first share buttons for post pages.
- * - WeChat: pops a QR code of the current URL, rendered at build time with uqr
+ * Share buttons for post pages — domestic + international.
+ * - 微信: pops a QR code of the current URL, rendered at build time with uqr
  *   (no client JS, no external QR service).
- * - Weibo / QQ: standard share endpoints, opened in a new tab.
+ * - 微博 / QQ / X / Facebook / LinkedIn / Telegram: standard share endpoints,
+ *   opened in a new tab.
+ * - 复制链接: clipboard write with button-text feedback.
  * Built per page, so each post carries its own links.
  */
 import { renderSVG } from 'uqr'
@@ -16,13 +18,29 @@ interface Props {
 const { url, title = '' } = Astro.props
 const enc = (s: string) => encodeURIComponent(s)
 
-const weibo = `https://service.weibo.com/share/share.php?url=${enc(url)}&title=${enc(title)}`
-const qq = `https://connect.qq.com/widget/shareqq/index.html?url=${enc(url)}&title=${enc(title)}&summary=${enc('')}`
+const international = [
+  {
+    label: 'X',
+    href: `https://x.com/intent/tweet?text=${enc(title)}&url=${enc(url)}`
+  },
+  {
+    label: 'Facebook',
+    href: `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`
+  },
+  {
+    label: 'LinkedIn',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`
+  },
+  {
+    label: 'Telegram',
+    href: `https://t.me/share/url?url=${enc(url)}&text=${enc(title)}`
+  }
+]
 const qrSvg = renderSVG(url, { border: 1 })
 const qrId = `wechat-qr-${Math.abs(url.split('').reduce((a, c) => a + c.charCodeAt(0), 0))}`
 ---
 
-<div class='share-buttons my-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground'>
+<div class='share-buttons my-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground'>
   <span>分享：</span>
   <button
     type='button'
@@ -32,7 +50,7 @@ const qrId = `wechat-qr-${Math.abs(url.split('').reduce((a, c) => a + c.charCode
     微信（扫码）
   </button>
   <a
-    href={weibo}
+    href={`https://service.weibo.com/share/share.php?url=${enc(url)}&title=${enc(title)}`}
     target='_blank'
     rel='noopener noreferrer'
     class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
@@ -40,13 +58,38 @@ const qrId = `wechat-qr-${Math.abs(url.split('').reduce((a, c) => a + c.charCode
     微博
   </a>
   <a
-    href={qq}
+    href={`https://connect.qq.com/widget/shareqq/index.html?url=${enc(url)}&title=${enc(title)}&summary=${enc('')}`}
     target='_blank'
     rel='noopener noreferrer'
     class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
   >
     QQ 好友
   </a>
+
+  <span class='hidden select-none opacity-40 sm:inline'>|</span>
+
+  {
+    international.map((s) => (
+      <a
+        href={s.href}
+        target='_blank'
+        rel='noopener noreferrer'
+        class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+      >
+        {s.label}
+      </a>
+    ))
+  }
+
+  <span class='hidden select-none opacity-40 sm:inline'>|</span>
+
+  <button
+    type='button'
+    id='share-copy-link'
+    class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+  >
+    复制链接
+  </button>
 
   <div
     id={qrId}
@@ -77,5 +120,16 @@ const qrId = `wechat-qr-${Math.abs(url.split('').reduce((a, c) => a + c.charCode
       var pop = document.getElementById(target.getAttribute('data-wechat-toggle'))
       if (pop) pop.classList.toggle('hidden')
     }
+  })
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest && e.target.closest('#share-copy-link')
+    if (!btn) return
+    navigator.clipboard.writeText(window.location.href).then(function () {
+      var original = btn.textContent
+      btn.textContent = '已复制 ✓'
+      setTimeout(function () {
+        btn.textContent = original
+      }, 1500)
+    })
   })
 </script>

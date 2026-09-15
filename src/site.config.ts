@@ -51,7 +51,8 @@ export const theme: ThemeUserConfig = {
       { title: '博客', link: '/blog' },
       { title: '归档', link: '/archives' },
       { title: '搜索', link: '/search' },
-      { title: '关于', link: '/about' }
+      { title: '关于', link: '/about' },
+      { title: '支持', link: '/support' }
     ]
   },
 
@@ -86,6 +87,23 @@ export const theme: ThemeUserConfig = {
     /** Enable image captions (default false) */
     // imageCaption: true
   }
+}
+
+/**
+ * 给予支持（/support 页与文章底部入口共用）。
+ * 渠道留空即不渲染——没有空位。收款码图片放到 public/img/sponsor/ 后填根路径。
+ */
+export const sponsor = {
+  /** 微信收款码图片，如 '/img/sponsor/wechat.png' */
+  wechatQr: '',
+  /** 支付宝收款码图片，如 '/img/sponsor/alipay.png' */
+  alipayQr: '',
+  /** 爱发电主页（国内） */
+  afdian: '',
+  /** Buy Me a Coffee 主页（国际） */
+  buyMeACoffee: '',
+  /** GitHub Sponsors 主页（国际） */
+  githubSponsors: ''
 }
 
 export const integ: IntegrationUserConfig = {

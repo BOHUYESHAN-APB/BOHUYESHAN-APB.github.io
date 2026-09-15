@@ -85,3 +85,9 @@ featured: false     # 本主题无此字段，纯占位不要写
 - 改归档站后联动发布：`gh workflow run deploy.yml -R BOHUYESHAN-APB/BOHUYESHAN-APB.github.io`
 - 本地无 Google/CDN 依赖：字体（fontsource variable）、图标、搜索全部本地
 - 修改 `src/content/blog/` 内文件路径 = 修改 URL，站内互链必须同步
+
+## 七、给予支持（/support）
+
+- 支持页在 `src/pages/support/index.astro`，文章底部版权卡下方固定入口「给予支持 ☕」指到这里
+- 赞赏渠道集中在 `src/site.config.ts` 的 `sponsor` 导出：微信/支付宝收款码（图片放 `public/img/sponsor/`，配置里填根路径）、爱发电、Buy Me a Coffee、GitHub Sponsors——**留空的渠道自动隐藏，不会出现空位**
+- 不花钱的支持（Star/关注/分享/RSS）是真实链接，不要动
