@@ -18,7 +18,8 @@ import { visit } from "unist-util-visit";
 // Turn ```mermaid fences into placeholder divs before shiki can eat them;
 // src/components/Mermaid.astro renders them client-side.
 function remarkMermaidPlaceholder() {
-  return tree => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (tree: any) => {
     visit(tree, "code", node => {
       if (node.lang === "mermaid") {
         node.type = "html";
