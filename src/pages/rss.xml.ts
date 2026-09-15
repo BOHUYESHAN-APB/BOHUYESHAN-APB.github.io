@@ -59,7 +59,7 @@ const GET = async (context: AstroGlobal) => {
 
   return rss({
     // Basic configs
-    trailingSlash: false,
+    trailingSlash: true,
     xmlns: { h: 'http://www.w3.org/TR/html4/', atom: 'http://www.w3.org/2005/Atom' },
     stylesheet: '/scripts/pretty-feed-v3.xsl',
 
@@ -70,7 +70,7 @@ const GET = async (context: AstroGlobal) => {
     items: await Promise.all(
       allPostsByDate.map(async (post) => ({
         pubDate: post.data.publishDate,
-        link: `/blog/${post.id}`,
+        link: `/${post.id}/`,
         // `pubDate` intentionally stays on `publishDate` so aggregators do not re-flow an
         // edited post as new. `atom:updated` lets readers that support it detect the edit.
         customData: `<h:img src="${typeof post.data.heroImage?.src === 'string' ? post.data.heroImage?.src : post.data.heroImage?.src.src}" />
