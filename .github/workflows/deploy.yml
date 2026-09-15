@@ -49,11 +49,21 @@ jobs:
       - name: Install new site dependencies
         run: npm ci
 
-      - name: Build new site
-        run: npm run build
+      - name: Type check
+        run: npx astro check
         env:
-          # astro check + build peak well above the runner's default heap
-          NODE_OPTIONS: --max-old-space-size=6144
+          NODE_OPTIONS: --max-old-space-size=3584
+
+      - name: Build site
+        run: npx astro build
+        env:
+          NODE_OPTIONS: --max-old-space-size=3584
+
+      - name: Build search index (pagefind)
+        run: npx pagefind --site dist
+
+      - name: Copy search index into public
+        run: node -e "require('fs').cpSync('dist/pagefind','public/pagefind',{recursive:true})"
 
       - name: Verify every /old/ reference resolves
         run: node scripts/check-old-links.mjs dist
