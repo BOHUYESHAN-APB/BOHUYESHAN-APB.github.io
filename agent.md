@@ -81,6 +81,7 @@ featured: false     # 本主题无此字段，纯占位不要写
 
 ## 六、发布与变更须知
 
+- **发布纪律（最高优先级）**：新文章与内容修改先在本地预览（`pnpm dev`），经用户确认满意后才 `git push` 发布。写好但未确认的文章一律 `draft: true`——dev 环境可见、线上不渲染、不进 RSS。未经确认不得 push 任何内容变更
 - push 到 main 自动部署：构建 → pagefind → /old/ 组合 → 引用完整性检查，任一失败不上线
 - 改归档站后联动发布：`gh workflow run deploy.yml -R BOHUYESHAN-APB/BOHUYESHAN-APB.github.io`
 - 本地无 Google/CDN 依赖：字体（fontsource variable）、图标、搜索全部本地
