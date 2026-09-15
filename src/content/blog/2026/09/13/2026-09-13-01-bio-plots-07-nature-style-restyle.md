@@ -6,7 +6,7 @@ tags: ["图表大全", "科研绘图", "技术选型"]
 ---
 
 
-本系列已出七篇：[第一篇（41 张，统计与转录组临床）](/2026/09/12/2026-09-12-01-生信图表大全第一篇-41张图的坐标轴参数与绘制语言/) · [第二篇（33 张，群体遗传与基因组）](/2026/09/12/2026-09-12-02-生信图表大全第二篇-群体遗传比较基因组与单细胞的33张图/) · [第三篇（29 张，测序、表观与空间组学）](/2026/09/12/2026-09-12-03-生信图表大全第三篇-从测序QC到空间组学的29张图/) · [第四篇（30 张，蛋白、生态与 AI 多组学）](/2026/09/12/2026-09-12-04-生信图表大全第四篇-从蛋白互作到AI多组学的30张图/) · [第五篇（40 张，蛋白结构、变异与表达验证）](/2026/09/12/2026-09-12-05-生信图表大全第五篇-蛋白结构变异与表达验证的40张图/) · [第六篇（22 张，真实公开数据实战）](/2026/09/12/2026-09-12-08-生信图表大全第六篇-用真实公开数据画的22张图/) · 第七篇（190 张图 Nature 风格重构与方法选型）即本篇。
+本系列已出七篇：[第一篇（41 张，统计与转录组临床）](/2026/09/12/2026-09-12-01-bio-plots-01-axes-and-languages/) · [第二篇（33 张，群体遗传与基因组）](/2026/09/12/2026-09-12-02-bio-plots-02-population-single-cell/) · [第三篇（29 张，测序、表观与空间组学）](/2026/09/12/2026-09-12-03-bio-plots-03-qc-to-spatial-omics/) · [第四篇（30 张，蛋白、生态与 AI 多组学）](/2026/09/12/2026-09-12-04-bio-plots-04-ppi-to-multiomics/) · [第五篇（40 张，蛋白结构、变异与表达验证）](/2026/09/12/2026-09-12-05-bio-plots-05-protein-structure-validation/) · [第六篇（22 张，真实公开数据实战）](/2026/09/12/2026-09-12-08-bio-plots-06-real-public-data/) · 第七篇（190 张图 Nature 风格重构与方法选型）即本篇。
 
 有读者批评得很难听："AI 画的图，一眼低质。"这话对了一半——图确实是 AI 画的，但"低质感"不是 AI 的锅，是**默认 matplotlib 的锅**：默认字号大得像幻灯片、默认色板饱和得像儿童玩具、网格线铺满背景、四条脊柱围一圈框。人画图时会下意识避开这些，AI 不给规范就全踩。所以本篇做两件事：
 
@@ -433,7 +433,7 @@ python -B tools/bio-plots/ch12f_real_vs_sim.py  # 192-195
 2. Wong B. Points of view: Color blindness. *Nature Methods* 8: 441, 2011. [doi:10.1038/nmeth.1618](https://doi.org/10.1038/nmeth.1618)——Okabe-Ito 色板（Okabe M, Ito K. Color Universal Design, 2008）的期刊推介文。
 3. Hunter JD. Matplotlib: a 2D graphics environment. *Computing in Science & Engineering* 9(3): 90-95, 2007. [doi:10.1109/MCSE.2007.55](https://doi.org/10.1109/MCSE.2007.55)
 4. 技能仓库（本篇第二章逐一评审）：[Yuan1z0825/nature-skills](https://github.com/Yuan1z0825/nature-skills)（skill: nature-figure，主用）· [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills)（skill: scientific-visualization，nature.mplstyle）· [anthropics/skills](https://github.com/anthropics/skills)（官方库，格式参照）· [Boom5426/Nature-Paper-Skills](https://github.com/Boom5426/Nature-Paper-Skills)（未采用）
-5. 方法选型各条目的方法学出处（DESeq2/GSEA/DESeq 口径等）已随前六篇各自的参考文献节给出，本篇不重复；第六篇真实数据的完整文献见[第六篇参考文献](/2026/09/12/2026-09-12-08-生信图表大全第六篇-用真实公开数据画的22张图/)。
+5. 方法选型各条目的方法学出处（DESeq2/GSEA/DESeq 口径等）已随前六篇各自的参考文献节给出，本篇不重复；第六篇真实数据的完整文献见[第六篇参考文献](/2026/09/12/2026-09-12-08-bio-plots-06-real-public-data/)。
 
 ### 本篇参考代码
 

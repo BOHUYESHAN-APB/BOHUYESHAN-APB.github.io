@@ -7,6 +7,7 @@
 - Astro 博客，主题 Astro Theme Pure（pnpm 管理），GitHub Actions 自动部署到 GitHub Pages（自定义域名 bohuyeshan.top）
 - 旧站（Hexo/Butterfly 全量历史）归档于仓库 `bohuyeshan-archive`，由本仓库的部署流水线构建后挂在 `bohuyeshan.top/old/` 路径
 - 文章目录：`src/content/blog/<年>/<月>/<日>/<slug>.md`，**目录结构即 URL**：`/年/月/日/slug/`，移动文件 = 改 URL
+- **文章 .md 文件名一律英文**：全小写 + 连字符，格式 `YYYY-MM-DD-NN-english-slug.md`（如 `2026-09-15-01-fde-forward-deployed-engineer.md`）；中文写在 front-matter 的 title 里，不进文件名。改名迁移过的文章（含 12 篇 Hexo 迁移文），旧中文 URL 由 `public/<旧路径>/index.html` 跳转页承接，新建文章无需再兼容中文路径
 - 构建验证：`npx astro build`（含 pagefind 搜索索引生成）；本地预览：`pnpm dev`
 - 第三方前端库全量本地自托管（`public/js/`：3dmol、pdb-viewer、mermaid），**不要引入 jsdelivr/cdnjs 外链**
 
