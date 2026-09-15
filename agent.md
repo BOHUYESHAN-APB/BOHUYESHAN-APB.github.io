@@ -56,8 +56,18 @@ featured: false     # 本主题无此字段，纯占位不要写
 | 折叠块 | `<details><summary>标题</summary>内容</details>` | 禁止任何 `{% %}` 模板标签语法 |
 | 内联 SVG | 直接写 `<svg>` | 原样透传 |
 | 图片 | 新站图片放 `public/img/<slug>/`，引用 `/img/<slug>/x.png` | 旧图在 `/old/img/...` 可直接热链 |
+| 视频 | 文件放 `public/media/<slug>/`，正文写 `<video controls src="/media/<slug>/x.mp4"></video>` | 单文件 ≤50MB；更大用 B 站 iframe 外链 |
+| 音频 | 文件放 `public/media/<slug>/`，正文写 `<audio controls src="/media/<slug>/x.mp3"></audio>` | 单文件 ≤50MB |
 | 站内互链 | 真实永久路径 `/年/月/日/slug/` | 归档旧文用 `/old/年/月/日/slug/` |
 | 分享 | 文章底部自动生成：微信二维码 / 微博 / QQ | 微信二维码构建期生成，无外部服务 |
+
+### 文章资产规则
+
+1. **目录与路径**：所有随文资产放 `public/` 下（`public/img/<slug>/`、`public/media/<slug>/`），正文引用一律用根绝对路径（`/img/…`、`/media/…`）。`public/` 内文件原样部署到站点根，构建不做任何改写。
+2. **不要用图床/CDN 外链**：全站资源本地自托管，外链图床随时会死链。
+3. **大小纪律**：单文件超过 50MB GitHub 会告警、超 100MB 直接拒收，且大文件永久留在 git 历史里。截图先压缩再提交（PNG 截图转 JPG/WebP 可缩一个量级）；大视频一律 B 站外链（`<iframe>` 直接过境即可）。
+4. **封面图**：不使用 front-matter 的 `heroImage` 字段（它要求数据管线内解析，与 `public/` 约定冲突）；封面直接用正文首图。
+5. **文件名**：全小写 + 连字符，避免空格、中文、大小写混用——线上是 Linux 大小写敏感环境。
 
 ## 五、正文 Markdown 渲染规范
 
