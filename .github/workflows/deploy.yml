@@ -51,6 +51,9 @@ jobs:
 
       - name: Build new site
         run: npm run build
+        env:
+          # astro check + build peak well above the runner's default heap
+          NODE_OPTIONS: --max-old-space-size=6144
 
       - name: Verify every /old/ reference resolves
         run: node scripts/check-old-links.mjs dist
