@@ -1,5 +1,4 @@
 ---
-import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
@@ -7,6 +6,9 @@ import { getAssetPath } from "@/utils/withBase";
 import config from "@/config";
 import "@/styles/global.css";
 import "katex/dist/katex.min.css";
+// Self-hosted font (OFL): no Google network dependency at build or runtime
+import "@fontsource-variable/google-sans-code";
+import "@fontsource-variable/google-sans-code/wght-italic.css";
 
 type Props = {
   title?: string;
@@ -45,11 +47,7 @@ const rssHref = getRelativeLocaleUrl(
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Font -->
-    <Font
-      cssVariable="--font-google-sans-code"
-      preload={[{ subset: "latin", weight: 400, style: "normal" }]}
-    />
+    <!-- Font: self-hosted via fontsource, variable defined in theme.css -->
 
     <!-- Primary meta -->
     <title>{title}</title>

@@ -1,0 +1,83 @@
+---
+/**
+ * Left-side table of contents for posts.
+ *
+ * Built client-side from the rendered article headings (h2/h3), so anchors
+ * always match the DOM. Fixed rail on the left edge for xl+ screens; hidden
+ * when the article has fewer than 3 qualifying headings.
+ */
+---
+<nav
+  id="post-toc"
+  aria-label="目录"
+  class="hidden xl:block fixed left-5 top-24 bottom-8 w-64 z-10"
+  style="display:none"
+>
+  <div class="h-full overflow-y-auto pr-2 [scrollbar-width:thin]">
+    <p class="mb-3 text-xs font-semibold tracking-widest text-muted-foreground">
+      目 录
+    </p>
+    <ul id="post-toc-list" class="space-y-1 border-l border-border"></ul>
+  </div>
+</nav>
+
+<script is:inline data-astro-rerun>
+  (function () {
+    function build() {
+      var article = document.getElementById("article");
+      var nav = document.getElementById("post-toc");
+      if (!article || !nav) return;
+
+      var headings = article.querySelectorAll("h2, h3");
+      if (headings.length < 3) return;
+
+      var list = document.getElementById("post-toc-list");
+      var links = [];
+      headings.forEach(function (h) {
+        if (!h.id) return;
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = "#" + h.id;
+        a.dataset.tocDepth = h.tagName;
+        a.textContent = h.textContent;
+        a.className =
+          "block truncate py-0.5 text-[13px] leading-6 no-underline transition-colors hover:text-accent " +
+          (h.tagName === "H2" ? "pl-3" : "pl-7 text-muted-foreground");
+        li.appendChild(a);
+        list.appendChild(li);
+        links.push(a);
+      });
+      if (!links.length) return;
+      nav.style.display = "";
+
+      function setActive(id) {
+        links.forEach(function (l) {
+          var on = decodeURIComponent(l.hash.slice(1)) === id;
+          l.classList.toggle("text-accent", on);
+          l.classList.toggle("font-semibold", on);
+        });
+      }
+
+      var current = headings[0].id;
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) current = e.target.id;
+          });
+          if (current) setActive(current);
+        },
+        { rootMargin: "-90px 0px -65% 0px" }
+      );
+      headings.forEach(function (h) {
+        observer.observe(h);
+      });
+      setActive(current);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", build);
+    } else {
+      build();
+    }
+  })();
+</script>

@@ -10,6 +10,14 @@
   --font-app: var(--font-google-sans-code);
 }
 
+/* Self-hosted font stack (fontsource variable) + CJK fallbacks */
+:root {
+  --font-google-sans-code: "Google Sans Code Variable", "Google Sans Code",
+    ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    sans-serif;
+}
+
 /* Light theme values */
 :root,
 [data-theme="light"] {
