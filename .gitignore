@@ -1,40 +1,47 @@
-# build output
+### Astro ###
 dist/
-
-# generated types
 .astro/
 
-# dependencies
-node_modules/
+### Vercel ###
+.vercel/
 
+### Vim ###
+[._]*.un~
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Code workspace files
+*.code-workspace
+
+### Node ###
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# pagefind
-public/pagefind
-
-# composed archived Hexo site (built by CI, not tracked)
-public/old/
+# dependencies
+node_modules/
 
 # environment variables
 .env
-.env.*
 .env.production
 
-# macOS-specific files
+### Custom ###
 .DS_Store
+old_blog
+ignore.*
+bunfig.toml
+/src/content/blog/test.*
+/test/
 
-# jetbrains setting folder
-.idea/
-
-# pagefind
-public/pagefind
-
-# pnpm
-.pnpm-store
-
-# docker compose
-compose.override.yaml
+### 本站 ###
+# 组合进来的归档站构建产物（CI 生成，不入库）
+public/old/
+Thumbs.db
+*.log

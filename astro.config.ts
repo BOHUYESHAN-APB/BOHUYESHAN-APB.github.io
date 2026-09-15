@@ -1,93 +1,158 @@
-import {
-  defineConfig,
-  envField,
-  svgoOptimizer,
-} from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import { unified } from "@astrojs/markdown-remark";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
-import rehypeCallouts from "rehype-callouts";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import { visit } from "unist-util-visit";
+import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import AstroPureIntegration from 'astro-pure'
+import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config'
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
+import { visit } from 'unist-util-visit'
 
 // Turn ```mermaid fences into placeholder divs before shiki can eat them;
 // src/components/Mermaid.astro renders them client-side.
 function remarkMermaidPlaceholder() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (tree: any) => {
-    visit(tree, "code", node => {
-      if (node.lang === "mermaid") {
-        node.type = "html";
-        node.value = `<div class="mermaid-block" data-source="${encodeURIComponent(
-          node.value
-        )}"></div>`;
+  return (tree: unknown) => {
+    visit(tree as import('unist').Node, 'code', (node) => {
+      const codeNode = node as { lang?: string; type: string; value: string }
+      if (codeNode.lang === 'mermaid') {
+        codeNode.type = 'html'
+        codeNode.value = `<div class="mermaid-block" data-source="${encodeURIComponent(
+          codeNode.value
+        )}"></div>`
       }
-    });
-  };
+    })
+  }
 }
+
+// Local integrations
+import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
+// Shiki
+import {
+  addCollapse,
+  addCopyButton,
+  addLanguage,
+  addTitle,
+  updateStyle
+} from './src/plugins/shiki-custom-transformers.ts'
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
-  transformerNotationWordHighlight,
-} from "@shikijs/transformers";
-import { transformerFileName } from "./src/utils/transformers/fileName";
-import config from "./astro-paper.config";
+  transformerRemoveNotationEscape
+} from './src/plugins/shiki-official/transformers.ts'
+import config from './src/site.config.ts'
 
+// https://astro.build/config
 export default defineConfig({
-  site: config.site.url,
-  integrations: [
-    mdx(),
-    sitemap({
-      filter: page =>
-        config.features?.showArchives !== false || !page.endsWith("/archives/"),
-    }),
+  // [Basic]
+  site: 'https://bohuyeshan.top',
+  // Deploy to a sub path
+  // https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
+  // base: '/astro-pure/',
+  trailingSlash: 'always',
+  // root: './my-project-directory',
+  server: { host: true },
+  // https://docs.astro.build/en/guides/prefetch/
+  prefetch: {
+    // prefetchAll: true,
+    defaultStrategy: 'viewport'
+  },
+
+  // [Adapter]
+  // Static output for GitHub Pages — no SSR adapter needed.
+  // Local (standalone)
+  // adapter: node({ mode: 'standalone' }),
+  // output: 'server',
+
+  // [Assets]
+  image: {
+    responsiveStyles: true,
+    service: { entrypoint: 'astro/assets/services/sharp' },
+    // domains: ['ghchart.rshah.org'],
+    remotePatterns: [{ protocol: 'https' }]
+  },
+  // Enable font preloading and optimization
+  // https://docs.astro.build/en/guides/fonts/
+  fonts: [
+    {
+      provider: fontProviders.fontshare(),
+      name: 'Satoshi',
+      cssVariable: '--font-satoshi',
+      // Default included:
+      // weights: [400],
+      // styles: ["normal", "italics"],
+      // subsets: ["cyrillic-ext", "cyrillic", "greek-ext", "greek", "vietnamese", "latin-ext", "latin"],
+      // fallbacks: ["sans-serif"],
+      styles: ['normal', 'italic'],
+      weights: [400, 500],
+      subsets: ['latin']
+    }
   ],
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
+
+  // [Markdown]
   markdown: {
-    processor: unified({
-      remarkPlugins: [
-        remarkToc,
-        [remarkCollapse, { test: "Table of contents" }],
-        remarkMermaidPlaceholder,
-        remarkMath,
-      ],
-      rehypePlugins: [rehypeCallouts, rehypeKatex],
-    }),
+    remarkPlugins: [remarkMermaidPlaceholder, remarkMath],
+    rehypePlugins: [
+      [rehypeKatex, {}],
+      rehypeHeadingIds,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+          properties: { className: ['anchor'] },
+          content: { type: 'text', value: '#' }
+        }
+      ]
+    ],
+    // https://docs.astro.build/en/guides/syntax-highlighting/
     shikiConfig: {
-      themes: { light: "min-light", dark: "night-owl" },
-      defaultColor: false,
-      wrap: false,
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      },
       transformers: [
-        transformerFileName({ style: "v2", hideDot: false }),
+        // Two copies of @shikijs/types (one under node_modules
+        // and another nested under @astrojs/markdown-remark → shiki).
+        // Official transformers
+        // @ts-ignore this happens due to multiple versions of shiki types
+        transformerNotationDiff(),
+        // @ts-ignore this happens due to multiple versions of shiki types
         transformerNotationHighlight(),
-        transformerNotationWordHighlight(),
-        transformerNotationDiff({ matchAlgorithm: "v3" }),
-      ],
-    },
+        // @ts-ignore this happens due to multiple versions of shiki types
+        transformerRemoveNotationEscape(),
+        // Custom transformers
+        // @ts-ignore this happens due to multiple versions of shiki types
+        updateStyle(),
+        // @ts-ignore this happens due to multiple versions of shiki types
+        addTitle(),
+        // @ts-ignore this happens due to multiple versions of shiki types
+        addLanguage(),
+        // @ts-ignore this happens due to multiple versions of shiki types
+        addCopyButton(2000), // timeout in ms
+        // @ts-ignore this happens due to multiple versions of shiki types
+        addCollapse(15) // max lines that needs to collapse
+      ]
+    }
   },
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  env: {
-    schema: {
-      PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
-        access: "public",
-        context: "client",
-        optional: true,
-      }),
-    },
-  },
+
+  // [Integrations]
+  integrations: [
+    // astro-pure will automatically add sitemap, mdx & unocss
+    // sitemap(),
+    // mdx(),
+    AstroPureIntegration(config)
+  ],
+
+  // [Experimental]
   experimental: {
+    // Allow compatible editors to support intellisense features for content collection entries
+    // https://docs.astro.build/en/reference/experimental-flags/content-intellisense/
+    contentIntellisense: true,
+    // Enable SVGO optimization for SVG assets
+    // https://docs.astro.build/en/reference/experimental-flags/svg-optimization/
     svgOptimizer: svgoOptimizer(),
-  },
-});
+    // Enables pre-rendering your prefetched pages on the client in supported browsers.
+    // https://docs.astro.build/en/reference/experimental-flags/client-prerender/
+    clientPrerender: true,
+    // https://docs.astro.build/en/reference/experimental-flags/queued-rendering/
+    queuedRendering: {
+      enabled: true
+    }
+  }
+})

@@ -1,0 +1,41 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const headings = [
+  { depth: 2, slug: 'content', text: '内容方向' },
+  { depth: 2, slug: 'about-blog', text: '关于本站' }
+]
+---
+
+<PageLayout title='关于' {headings}>
+  <p>
+    生物信息 × AI 方向的独立技术博客。关注生信分析管线、群体遗传与比较基因组、蛋白质语言模型，以及
+    AI Agent 在科研工作中的工程化落地。
+  </p>
+  <p>写东西的标准只有一条：留下可复现的技术细节和完整代码，不做装饰。</p>
+
+  <h2 id='content'>内容方向</h2>
+  <ul>
+    <li>生信分析：群体重测序、比较基因组、空间组学的完整流程与图表语言</li>
+    <li>蛋白质方向：结构预测、语言模型、突变效应</li>
+    <li>工程实践：本地工具链、schema 门禁、可复现的自动化流水线</li>
+    <li>AI 使用：Agent 工作流、多轮协作写作与验收方法论</li>
+  </ul>
+
+  <h2 id='about-blog'>关于本站</h2>
+  <p>
+    2026-08 之前的全部历史文章、项目页面与个人简历保存在
+    <a href='/old/'>/old/ 存档站</a>（Hexo + Butterfly 的完整快照），老链接由站内跳转页自动带路。
+  </p>
+  <p>
+    本站由 <a href='https://astro.build/' target='_blank' rel='noopener noreferrer'>Astro</a> +
+    <a
+      href='https://github.com/cworld1/astro-theme-pure'
+      target='_blank'
+      rel='noopener noreferrer'>Astro Theme Pure</a
+    > 驱动：纯静态构建、无跟踪脚本。GitHub 仓库：
+    <a href='https://github.com/BOHUYESHAN-APB' target='_blank' rel='noopener noreferrer'
+      >BOHUYESHAN-APB</a
+    >。
+  </p>
+</PageLayout>

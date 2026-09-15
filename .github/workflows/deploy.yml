@@ -1,4 +1,4 @@
-name: Deploy bohuyeshan.top (Astro + archived Hexo)
+name: Deploy bohuyeshan.top (Astro Pure + archived Hexo)
 
 on:
   push:
@@ -28,14 +28,16 @@ jobs:
           ref: main
           path: old-src
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
-          cache-dependency-path: |
-            package-lock.json
-            old-src/package-lock.json
+          cache: pnpm
 
       - name: Build archived site (root=/old/)
         run: cd old-src && npm ci && npx hexo generate
@@ -46,24 +48,11 @@ jobs:
           cp -r old-src/public/. public/old/
           test -f public/old/index.html
 
-      - name: Install new site dependencies
-        run: npm ci
-
-      - name: Type check
-        run: npx astro check
-        env:
-          NODE_OPTIONS: --max-old-space-size=3584
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build site
-        run: npx astro build
-        env:
-          NODE_OPTIONS: --max-old-space-size=3584
-
-      - name: Build search index (pagefind)
-        run: npx pagefind --site dist
-
-      - name: Copy search index into public
-        run: node -e "require('fs').cpSync('dist/pagefind','public/pagefind',{recursive:true})"
+        run: pnpm run build
 
       - name: Verify every /old/ reference resolves
         run: node scripts/check-old-links.mjs dist
