@@ -1,0 +1,72 @@
+name: Deploy bohuyeshan.top (Astro + archived Hexo)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout new site
+        uses: actions/checkout@v4
+
+      - name: Checkout archived Hexo site
+        uses: actions/checkout@v4
+        with:
+          repository: BOHUYESHAN-APB/bohuyeshan-archive
+          ref: main
+          path: old-src
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            old-src/package-lock.json
+
+      - name: Build archived site (root=/old/)
+        run: cd old-src && npm ci && npx hexo generate
+
+      - name: Compose archived site into public/old
+        run: |
+          mkdir -p public/old
+          cp -r old-src/public/. public/old/
+          test -f public/old/index.html
+
+      - name: Install new site dependencies
+        run: npm ci
+
+      - name: Build new site
+        run: npm run build
+
+      - name: Verify every /old/ reference resolves
+        run: node scripts/check-old-links.mjs dist
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
