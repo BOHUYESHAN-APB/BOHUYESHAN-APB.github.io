@@ -11,7 +11,13 @@ function removeDups(array: string[]) {
 // Define blog collection
 const blog = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
-  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  loader: glob({
+    base: './src/content/blog',
+    pattern: '**/*.{md,mdx}',
+    // Preserve filename casing so URLs stay byte-identical to the
+    // archived Hexo site (Agent/LLM/FASTQ… must not be slugified).
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '')
+  }),
   // Required
   schema: ({ image }) =>
     z.object({
@@ -42,7 +48,11 @@ const blog = defineCollection({
 
 // Define docs collection
 const docs = defineCollection({
-  loader: glob({ base: './src/content/docs', pattern: '**/*.{md,mdx}' }),
+  loader: glob({
+    base: './src/content/docs',
+    pattern: '**/*.{md,mdx}',
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '')
+  }),
   schema: () =>
     z.object({
       title: z.string().max(60),
