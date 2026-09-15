@@ -7,7 +7,7 @@ export const theme: ThemeUserConfig = {
   /** Will be used in index page & copyright declaration */
   author: 'BoHuYeShan',
   /** Description metadata for your website. Can be used in page metadata. */
-  description: '生物信息 × AI 技术博客：生信分析管线、群体遗传、蛋白质语言模型、AI Agent 工程实践。只留干货，不做装饰。',
+  description: '生物技术的底子，生信与 AI 是杠杆不是退路：生信工程、蛋白质语言模型、Agent 工作流，以及这个时代生物人手里的牌。只留干货，不做装饰。',
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
   favicon: '/favicon/favicon.ico',
   /** The default social card image for your site which should be a path to an image in the `public/` directory. */
