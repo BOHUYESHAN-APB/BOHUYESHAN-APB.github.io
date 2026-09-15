@@ -39,7 +39,7 @@ if (!images[imagePath])
         <h1 class='text-3xl font-medium'>{config.author}</h1>
         <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
           <Label
-            title='Source code'
+            title='GitHub'
             as='a'
             href='https://github.com/BOHUYESHAN-APB'
             target='_blank'
@@ -51,7 +51,7 @@ if (!images[imagePath])
     </section>
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
-      <Section title='About'>
+      <Section title='关于'>
         <p class='text-muted-foreground'>
           生物信息 × AI 的技术博客：生信分析管线、群体遗传、蛋白质语言模型、AI Agent
           工程实践。只留干货，不做装饰。
@@ -61,12 +61,12 @@ if (!images[imagePath])
           <a class='underline decoration-dashed underline-offset-4' href='/old/'>/old/ 存档站</a>
           ，老链接可直接访问或由站内跳转页自动带路。
         </p>
-        <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
+        <Button title='了解更多' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
 
       {
         allPostsByDate.length > 0 && (
-          <Section title='Posts'>
+          <Section title='最新文章'>
             <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
               {allPostsByDate.map((p) => (
                 <li class='flex flex-col gap-x-2 sm:flex-row'>
@@ -74,7 +74,7 @@ if (!images[imagePath])
                 </li>
               ))}
             </ul>
-            <Button title='More posts' class='w-fit self-end' href='/blog' variant='ahead' />
+            <Button title='更多文章' class='w-fit self-end' href='/blog' variant='ahead' />
           </Section>
         )
       }
