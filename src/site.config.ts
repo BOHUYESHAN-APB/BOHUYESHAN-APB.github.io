@@ -48,11 +48,11 @@ export const theme: ThemeUserConfig = {
   /** Configure the header of your site. */
   header: {
     menu: [
-      { title: '博客', link: '/blog' },
-      { title: '归档', link: '/archives' },
-      { title: '搜索', link: '/search' },
-      { title: '关于', link: '/about' },
-      { title: '支持', link: '/support' }
+      { title: '博客', link: '/blog/' },
+      { title: '归档', link: '/archives/' },
+      { title: '搜索', link: '/search/' },
+      { title: '关于', link: '/about/' },
+      { title: '支持', link: '/support/' }
     ]
   },
 
@@ -173,19 +173,19 @@ export const terms: CardListData = {
   list: [
     {
       title: 'Privacy Policy',
-      link: '/terms/privacy-policy'
+      link: '/terms/privacy-policy/'
     },
     {
       title: 'Terms and Conditions',
-      link: '/terms/terms-and-conditions'
+      link: '/terms/terms-and-conditions/'
     },
     {
       title: 'Copyright',
-      link: '/terms/copyright'
+      link: '/terms/copyright/'
     },
     {
       title: 'Disclaimer',
-      link: '/terms/disclaimer'
+      link: '/terms/disclaimer/'
     }
   ]
 }

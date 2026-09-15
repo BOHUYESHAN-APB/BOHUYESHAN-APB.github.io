@@ -53,15 +53,13 @@ if (!images[imagePath])
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='关于'>
         <p class='text-muted-foreground'>
-          生物技术专业，编程科班出身（Python / Java）。生信与 AI 是杠杆不是退路：这里记录生信工程、蛋白质语言模型、Agent
-          工作流，以及这个时代生物人手里的牌。只留干货，不做装饰。
+          生物技术专业，编程科班出身（Python / Java）。做事的路线一直很清楚：从生物学的问题出发，用工程把答案做出来——荞麦种子品质识别、菌落计数、Bio-SDK
+          生信工具链、Linxira OS 独立发行版，直到用真实果蝇连接组仿真两只大脑下五子棋。
         </p>
         <p class='mt-3 text-muted-foreground'>
-          2026-08 之前的全部文章与简历已归档至
-          <a class='underline decoration-dashed underline-offset-4' href='/old/'>/old/ 存档站</a>
-          ，老链接可直接访问或由站内跳转页自动带路。
+          这里记录三条线：生信工程、AI 实践、行业真账。生信与 AI 是杠杆不是退路，只留干货，不做装饰。
         </p>
-        <Button title='了解更多' class='w-fit self-end' href='/about' variant='ahead' />
+        <Button title='了解更多' class='w-fit self-end' href='/about/' variant='ahead' />
       </Section>
 
       {
@@ -74,7 +72,7 @@ if (!images[imagePath])
                 </li>
               ))}
             </ul>
-            <Button title='更多文章' class='w-fit self-end' href='/blog' variant='ahead' />
+            <Button title='更多文章' class='w-fit self-end' href='/blog/' variant='ahead' />
           </Section>
         )
       }
