@@ -441,13 +441,16 @@ html:not(.dark) body::before {
   width: 160px;
   height: 1.6px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(199, 210, 254, 0.4), transparent);
+  /* 亮头在右端：rotate(45deg) 后右端朝右下，即飞行方向的 leading edge */
+  background: linear-gradient(90deg, transparent, rgba(199, 210, 254, 0.4), rgba(255, 255, 255, 0.95));
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
+  /* 等待 animation-delay 期间保持不可见，否则会以未旋转的水平条带裸露在页面上 */
+  opacity: 0;
   animation: meteor-fly linear infinite;
 }
 @keyframes meteor-fly {
   0% {
-    transform: translate3d(0, 0, 0) rotate(-45deg);
+    transform: translate3d(0, 0, 0) rotate(45deg);
     opacity: 0;
   }
   8% {
@@ -457,7 +460,7 @@ html:not(.dark) body::before {
     opacity: 1;
   }
   100% {
-    transform: translate3d(-80vw, 85vh, 0) rotate(-45deg);
+    transform: translate3d(70vw, 70vh, 0) rotate(45deg);
     opacity: 0;
   }
 }

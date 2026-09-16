@@ -119,8 +119,9 @@ const {
           for (var i = 0; i < 8; i++) {
             var m = document.createElement('i')
             m.className = 'meteor'
-            m.style.top = -5 + Math.random() * 50 + '%'
-            m.style.left = 5 + Math.random() * 105 + '%'
+            // 向右下飞 70vw：出生点偏左才能让轨迹扫过整个视口，而不是刚出生就冲出右边界
+            m.style.top = -5 + Math.random() * 40 + '%'
+            m.style.left = -30 + Math.random() * 100 + '%'
             m.style.animationDuration = 1 + Math.random() * 1.4 + 's'
             m.style.animationDelay = Math.random() * 8 + 's'
             m.style.width = 120 + Math.random() * 140 + 'px'
