@@ -2,6 +2,9 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
+// Fix CJK emphasis: CommonMark rejects closers like `。**汉字`(punctuation+`**`+letter),
+// leaving raw `**` in rendered output. This plugin applies the CJK-friendly flanking rules.
+import remarkCjkFriendly from 'remark-cjk-friendly'
 import remarkMath from 'remark-math'
 import { visit } from 'unist-util-visit'
 
@@ -87,7 +90,7 @@ export default defineConfig({
 
   // [Markdown]
   markdown: {
-    remarkPlugins: [remarkMermaidPlaceholder, remarkMath],
+    remarkPlugins: [remarkMermaidPlaceholder, remarkCjkFriendly, remarkMath],
     rehypePlugins: [
       [rehypeKatex, {}],
       rehypeHeadingIds,
