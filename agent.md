@@ -99,3 +99,11 @@ featured: false     # 本主题无此字段，纯占位不要写
 - 支持页在 `src/pages/support/index.astro`，文章底部版权卡下方固定入口「给予支持 ☕」指到这里
 - 赞赏渠道集中在 `src/site.config.ts` 的 `sponsor` 导出：微信/支付宝收款码（图片放 `public/img/sponsor/`，配置里填根路径）、爱发电、Buy Me a Coffee、GitHub Sponsors——**留空的渠道自动隐藏，不会出现空位**
 - 不花钱的支持（Star/关注/分享/RSS）是真实链接，不要动
+
+## 八、简历打印版（归档仓库 source/HTML/）维护经验
+
+- **不自夸原则（用户明确要求）**：简历与 /resume/ 各页不得出现「主导」「主导开发」类字样——哪怕属实也不写，措辞用「开发」「维护」或直接列项目名；项目真实度由 GitHub 仓库自证。同理，过新（当月才做）的项目不要写成简历经历条目
+- **量版面空隙要量叶子元素**：`.section` 常被 `flex:1` 拉伸、`.side-col`/`.main-col` 是 flex 等高容器，`offsetTop+offsetHeight` 量到的是盒子底不是内容底。要量 `.tl-item`/`.job-block`/`.method-grid`/`.proj-grid`/`.mini-grid` 等叶子块的真实底边；且必须在**自托管字体正确加载**（`await document.fonts.ready`）后测，回退字体行宽不同会差几十像素
+- **往两页简历中间插区块 = 高危 div 平衡操作**：多写一个 `</div>` 会把 `.a4-page` 提前闭合，第二页脱离 `.a4-sheet` 变成 body 子元素——症状是两页上下堆叠、`.a4-page + .a4-page` 选择器全部失效。改完必须用 `pages[1].previousElementSibling === pages[0]` 验证相邻关系
+- tech 版第二页间距选择器必须写 `> .section`（子元素是 div 不是 section 标签，裸 `section` 选择器永远不命中——这个坑踩过两次）
+- 归档仓库 push 后需手动触发主站组合部署：`gh workflow run deploy.yml -R BOHUYESHAN-APB/BOHUYESHAN-APB.github.io`，完成后从线上（加 `?v=` 破缓存）用 `msedge --headless=new --no-pdf-header-footer --print-to-pdf` 重新生成桌面「简历打印」三份 PDF
