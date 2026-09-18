@@ -107,3 +107,4 @@ featured: false     # 本主题无此字段，纯占位不要写
 - **往两页简历中间插区块 = 高危 div 平衡操作**：多写一个 `</div>` 会把 `.a4-page` 提前闭合，第二页脱离 `.a4-sheet` 变成 body 子元素——症状是两页上下堆叠、`.a4-page + .a4-page` 选择器全部失效。改完必须用 `pages[1].previousElementSibling === pages[0]` 验证相邻关系
 - tech 版第二页间距选择器必须写 `> .section`（子元素是 div 不是 section 标签，裸 `section` 选择器永远不命中——这个坑踩过两次）
 - 归档仓库 push 后需手动触发主站组合部署：`gh workflow run deploy.yml -R BOHUYESHAN-APB/BOHUYESHAN-APB.github.io`，完成后从线上（加 `?v=` 破缓存）用 `msedge --headless=new --no-pdf-header-footer --print-to-pdf` 重新生成桌面「简历打印」三份 PDF
+- **归档路径转正机制（用户 2026.09 确认）**：新博客仓库部署时自动拉取归档仓库（bohuyeshan-archive）并把路径转正——线上 `/resume/*` 等旧路径 404 的问题不要在归档仓库侧修，等新仓库流水线转正即可；转正前，简历打印版上的查验地址指向实际落点 `/old/resume/projects`
