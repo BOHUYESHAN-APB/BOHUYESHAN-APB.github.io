@@ -3,7 +3,7 @@ title: 谷歌都下场了：扩散语言模型的四倍速与六倍错
 description: 谷歌 6 月发布 DiffusionGemma：与 Gemma 4 26B A4B 同骨架，4 倍生成速度换来全线跑分下滑——AIME 掉 19 分、Tau2 agent 掉 12 分，社区实测 agent 任务错误率 6 倍。这篇把官方跑分原样摆出来，拆「顺序敏感任务掉分」的机制，嵌一份交互演示看工具调用怎么崩，附我自己的 10M 参数扩散模型训练计划。
 publishDate: 2026-09-21
 tags: [大模型, Agent, 技术拆解]
-draft: true
+draft: false
 ---
 
 6 月 10 日，谷歌发布 DiffusionGemma：Apache 2.0 开源，26B MoE（总参 25.2B，激活 3.8B），官方一句话说清了它的身世——**与 Gemma 4 26B A4B 相同架构，开发者只需实现一个去噪步**。推理速度：H100 FP8 上 1000+ token/s，RTX 5090 上 700+，官方口径最高 4 倍。

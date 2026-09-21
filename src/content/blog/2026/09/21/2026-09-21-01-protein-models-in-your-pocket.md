@@ -3,7 +3,7 @@ title: 从 2.62 TB 到 5,120 token：蛋白质模型的部署阶梯
 description: ColabFold 1.6.3 全量 pip 安装、老卡 2.5x、ipSAE/pDockQ2 进主输出；AF2 的 monomer 推理被塞进手机浏览器。这篇按官方口径排一张部署阶梯：2.62 TB 的库、5,120 token 的 80 GB 担保线、940 GB 的绝对本地、免费层半小时的首跑——外加一张场景选型边界表，和为什么结果接近不等于认可等价。
 publishDate: 2026-09-21
 tags: [蛋白质, AI for Science, 技术选型, 技术拆解]
-draft: true
+draft: false
 ---
 
 9 月 14 日，ColabFold 发布 1.6.3。同一个月更早的时候，Martin Steinegger 的一个实验页面安静上线：在手机浏览器里，直接跑 AlphaFold2 的单链推理。费电、发热、烧流量，但它跑通了。
