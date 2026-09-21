@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transformer vs Diffusion · Agent 工具调用对比演示</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        background: linear-gradient(180deg, #f1f5f9 0%, #e8eef7 100%);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .container {
+        max-width: 1440px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 28px;
+        box-shadow: 0 24px 60px -16px rgba(30, 41, 59, 0.18);
+        padding: 22px 26px 26px;
+    }
+
+    /* ---------- header ---------- */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+        gap: 12px;
+    }
+    .header-left h1 {
+        font-size: 22px;
+        font-weight: 800;
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .header-left h1 .grad {
+        background: linear-gradient(120deg, #0ea5e9, #6366f1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .header-left .subtitle {
+        color: #64748b;
+        font-size: 13px;
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .badge {
+        background: #eef2ff; color: #4f46e5; font-size: 11px; font-weight: 600;
+        padding: 2px 12px; border-radius: 20px;
+    }
+    .header-right { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    .btn {
+        border: none; padding: 8px 18px; border-radius: 40px; font-size: 13px; font-weight: 600;
+        cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 6px;
+        font-family: inherit;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: #1e293b; color: #fff; }
+    .btn-primary:hover { background: #0f172a; }
+    .btn-outline { background: #fff; color: #334155; border: 1px solid #e2e8f0; }
+    .btn-outline:hover { background: #f1f5f9; }
+
+    /* ---------- scene selector ---------- */
+    .scene-selector {
+        display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;
+        background: #f8fafc; padding: 6px; border-radius: 60px; border: 1px solid #eef2f6;
+    }
+    .scene-btn {
+        border: none; background: transparent; padding: 6px 15px; border-radius: 40px;
+        font-size: 12.5px; font-weight: 600; color: #475569; cursor: pointer;
+        transition: all .18s; font-family: inherit; white-space: nowrap;
+    }
+    .scene-btn:hover { background: #e2e8f0; color: #0f172a; }
+    .scene-btn.active {
+        background: linear-gradient(120deg, #1e293b, #334155); color: #fff;
+        box-shadow: 0 4px 12px rgba(30,41,59,.25);
+    }
+
+    /* ---------- timeline ---------- */
+    .timeline {
+        margin: 0 0 8px 0; display: flex; align-items: center; gap: 14px;
+        background: #f8fafc; padding: 7px 16px; border-radius: 40px; border: 1px solid #eef2f6;
+    }
+    .timeline label { font-size: 13px; font-weight: 600; color: #475569; white-space: nowrap; }
+    .timeline input[type="range"] {
+        flex: 1; -webkit-appearance: none; height: 6px; background: #dbe3ec; border-radius: 10px; outline: none;
+    }
+    .timeline input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6, #6366f1); cursor: pointer;
+        border: 3px solid #fff; box-shadow: 0 2px 8px rgba(37, 99, 235, .4);
+    }
+    .timeline input[type="range"]::-moz-range-thumb {
+        width: 13px; height: 13px; border-radius: 50%; background: #3b82f6; cursor: pointer;
+        border: 3px solid #fff; box-shadow: 0 2px 8px rgba(37,99,235,.4);
+    }
+    .step-info {
+        font-size: 12.5px; font-weight: 700; color: #0f172a; min-width: 88px; text-align: center;
+        background: #eef2f6; padding: 3px 10px; border-radius: 20px; font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- legend ---------- */
+    .legend {
+        display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center;
+        font-size: 11.5px; color: #64748b; padding: 2px 4px 10px;
+    }
+    .legend .lg-item { display: inline-flex; align-items: center; gap: 5px; }
+    .lg-chip {
+        display: inline-block; padding: 0 7px; border-radius: 4px; font-size: 11px; line-height: 18px;
+        border: 1px solid transparent;
+    }
+    .lg-chip.kw  { background:#ecfdf5; color:#0b6e4f; border-color:#a7f3d0; font-weight:600; }
+    .lg-chip.tk  { background:#fffbeb; color:#b45309; border-color:#fde68a; font-weight:600; }
+    .lg-chip.mk  { background:#fef3c7; color:#92400e; border-color:#fcd34d; font-weight:700; }
+    .lg-chip.mis { background:#fee2e2; color:#b91c1c; border-color:#fca5a5; font-weight:600; }
+    .lg-chip.fen { background:#f5f3ff; color:#6d28d9; border-color:#ddd6fe; font-family: monospace; }
+    .lg-chip.fill{ background:transparent; color:#94a3b8; }
+    .lg-chip.guess{ background:transparent; color:#b45309; border-bottom:1px dashed #d97706; }
+
+    /* ---------- grid & cards ---------- */
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .model-card {
+        background: #fff; border-radius: 18px; border: 1px solid #e6edf5;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, .05); overflow: hidden;
+        display: flex; flex-direction: column;
+    }
+    .model-card.acc { border-top: 3px solid #3b82f6; }
+    .model-card.dif { border-top: 3px solid #0ea5e9; }
+
+    .model-card-header {
+        padding: 11px 16px 9px; border-bottom: 1px solid #f1f5f9;
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;
+    }
+    .model-name { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15.5px; color: #0f172a; }
+    .model-name .icon { font-size: 19px; }
+    .model-name .tag {
+        font-size: 10px; font-weight: 700; background: #f1f5f9; color: #475569;
+        padding: 2px 9px; border-radius: 30px; letter-spacing: .3px;
+    }
+    .model-card.acc .tag { background: #eff6ff; color: #1d4ed8; }
+    .model-card.dif .tag { background: #ecfeff; color: #0e7490; }
+    .status { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #64748b; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; transition: background .3s; }
+    .dot.idle { background: #cbd5e1; }
+    .dot.generating { background: #f59e0b; animation: pulse-dot .9s infinite; }
+    .dot.done { background: #22c55e; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.75)} }
+
+    /* ---------- output ---------- */
+    .output-area { padding: 12px 16px 14px; flex: 1; min-height: 150px; background: #fbfdff; position: relative; }
+    .output-head {
+        display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+        font-size: 10.5px; font-weight: 700; color: #94a3b8; letter-spacing: .6px; text-transform: uppercase;
+    }
+    .output-head .hint-right { margin-left: auto; font-weight: 500; text-transform: none; }
+    .output-text {
+        font-size: 14.5px; line-height: 1.85; color: #0f172a; font-weight: 430;
+        word-break: break-word; min-height: 64px;
+    }
+    .token { display: inline; border-radius: 3px; padding: 0 1px; transition: all .06s ease; }
+    .token.text { color: #1e293b; }
+    .token.keyword { color: #0b6e4f; font-weight: 700; background: #ecfdf5; padding: 0 3px; border-radius: 4px; border: 1px solid transparent; }
+    .token.guess { color: #92400e; background: #fffbeb; border-bottom: 1.5px dashed #f59e0b; }
+    .token.tool { color: #b45309; font-weight: 600; background: #fffbeb; padding: 0 3px; border-radius: 4px; border: 1px solid #fde68a; }
+    .token.tool-start, .token.tool-end {
+        color: #92400e; font-weight: 800; background: #fef3c7; padding: 0 3px;
+        border-radius: 4px; border: 1px solid #fcd34d;
+    }
+    .token.mistrigger {
+        background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 0 3px;
+        border-radius: 4px; border: 1px solid #fca5a5; text-decoration: underline wavy #ef4444 1px;
+    }
+    .token.fence {
+        color: #6d28d9; font-weight: 600; background: #f5f3ff; padding: 0 3px; border-radius: 4px;
+        border: 1px dashed #c4b5fd; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 13px;
+    }
+    .token.filler { color: #b6c2d2; font-weight: 300; }
+    .cursor-blink {
+        display: inline-block; width: 2px; height: 1.05em; background: #3b82f6; margin-left: 1px;
+        vertical-align: text-bottom; animation: blink .85s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ---------- tool panel ---------- */
+    .tool-panel { padding: 9px 16px 12px; border-top: 1px solid #f1f5f9; background: #fbfdff; }
+    .tool-row { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; }
+    .tool-row .label { font-weight: 700; color: #475569; font-size: 12px; }
+    .status-badge {
+        padding: 2px 13px; border-radius: 30px; font-size: 11.5px; font-weight: 700;
+        background: #eef2f6; color: #64748b; transition: all .2s; letter-spacing: .2px;
+    }
+    .status-badge.idle { background: #eef2f6; color: #94a3b8; }
+    .status-badge.waiting { background: #fef9c3; color: #854d0e; }
+    .status-badge.executing { background: #dbeafe; color: #1d4ed8; animation: pulse-badge .8s infinite; }
+    .status-badge.success { background: #d1fae5; color: #065f46; }
+    .status-badge.delayed { background: #fef3c7; color: #b45309; }
+    .status-badge.mistrigger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .status-badge.nested { background: #ede9fe; color: #6d28d9; border: 1px solid #c4b5fd; }
+    .status-badge.reorder { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+    .status-badge.nocall { background: #f1f5f9; color: #64748b; }
+    @keyframes pulse-badge { 0%,100%{opacity:1} 50%{opacity:.55} }
+    .tool-detail {
+        font-family: 'JetBrains Mono', Consolas, monospace; font-size: 11.5px; background: #1e293b;
+        color: #fcd34d; padding: 2px 12px; border-radius: 20px; max-width: 240px;
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .tool-msg {
+        margin-top: 6px; font-size: 12px; line-height: 1.55; color: #334155;
+        background: #f8fafc; border: 1px solid #eef2f6; border-radius: 10px; padding: 6px 11px; min-height: 18px;
+    }
+    .tool-msg.err { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+    .tool-msg.ok  { background: #f0fdf4; border-color: #bbf7d0; color: #14532d; }
+    .tool-msg.warn{ background: #fffbeb; border-color: #fde68a; color: #78350f; }
+    .tool-trace { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 5px; min-height: 0; }
+    .trace-chip {
+        font-size: 10.5px; font-weight: 700; padding: 1px 9px; border-radius: 20px; background: #f1f5f9;
+        color: #475569; border: 1px solid #e2e8f0; font-variant-numeric: tabular-nums;
+    }
+    .trace-chip.on  { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+    .trace-chip.bad { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+    .progress-mini { margin-top: 7px; height: 4px; background: #eef2f6; border-radius: 10px; overflow: hidden; }
+    .fill-mini { height: 100%; width: 0%; border-radius: 10px; transition: width .15s ease;
+        background: linear-gradient(90deg, #3b82f6, #6366f1); }
+    .fill-mini.diffusion-fill { background: linear-gradient(90deg, #0ea5e9, #14b8a6); }
+
+    /* ---------- footer ---------- */
+    .footer-note { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; font-size: 12.5px; color: #334155; line-height: 1.6; }
+    .note-card { background: #f8fafc; border: 1px solid #eef2f6; border-radius: 12px; padding: 9px 13px; }
+    .note-card .t { font-weight: 800; font-size: 12px; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
+    .note-card.acc { border-left: 3px solid #3b82f6; }
+    .note-card.dif { border-left: 3px solid #0ea5e9; }
+    .scene-desc {
+        grid-column: 1 / -1; background: #eef2ff; border: 1px solid #e0e7ff;
+        padding: 9px 14px; border-radius: 12px; color: #1e293b;
+    }
+    .scene-desc .scene-title { font-weight: 800; color: #3730a3; }
+    .scene-desc .watch { margin-top: 3px; color: #4338ca; font-size: 12px; line-height: 1.6; }
+    .empty-state { color: #94a3b8; font-size: 13px; text-align: center; padding: 14px 10px; }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 1024px) {
+        .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+        .footer-note { grid-template-columns: 1fr; }
+        .container { padding: 16px 14px; }
+    }
+    @media (max-width: 640px) {
+        body { padding: 10px; }
+        .header { flex-direction: column; }
+        .header-left h1 { font-size: 18px; }
+        .scene-selector { flex-wrap: nowrap; overflow-x: auto; padding: 5px; }
+        .output-text { font-size: 13px; line-height: 1.7; }
+        .timeline { flex-wrap: wrap; }
+        .tool-detail { max-width: 150px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- header -->
+    <div class="header">
+        <div class="header-left">
+            <h1><span class="grad">Transformer</span> vs <span class="grad">Diffusion</span> · Agent 工具调用</h1>
+            <div class="subtitle">
+                <span>拖动进度条 / 播放，观察两种模型在流式工具调用中的行为差异</span>
+                <span class="badge">交互式演示 · 单文件</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-primary" id="btnPlay">▶ 播放</button>
+            <button class="btn btn-outline" id="btnReset">⟳ 重置</button>
+        </div>
+    </div>
+
+    <!-- scenes -->
+    <div class="scene-selector" id="sceneSelector"></div>
+
+    <!-- timeline -->
+    <div class="timeline">
+        <label for="stepSlider">⏳ 进度</label>
+        <input type="range" id="stepSlider" min="0" max="100" value="0" />
+        <span class="step-info" id="stepInfo">0 / 0</span>
+    </div>
+
+    <!-- legend -->
+    <div class="legend">
+        <span>图例：</span>
+        <span class="lg-item"><span class="lg-chip tk">get_weather</span> 工具内容</span>
+        <span class="lg-item"><span class="lg-chip mk">&lt;tool&gt;</span> 工具标记</span>
+        <span class="lg-item"><span class="lg-chip kw">关键词</span> 关键词</span>
+        <span class="lg-item"><span class="lg-chip guess">预填</span> 先于工具出现的“猜测”</span>
+        <span class="lg-item"><span class="lg-chip mis">误触</span> 误触</span>
+        <span class="lg-item"><span class="lg-chip fen">```</span> 代码围栏</span>
+        <span class="lg-item"><span class="lg-chip fill">_</span> 尚未定稿（扩散）</span>
+    </div>
+
+    <!-- grid -->
+    <div class="comparison-grid">
+
+        <!-- Transformer -->
+        <div class="model-card acc">
+            <div class="model-card-header">
+                <div class="model-name"><span class="icon">🔮</span> Transformer <span class="tag">自回归 · 顺序流式</span></div>
+                <div class="status"><span class="dot idle" id="dotT"></span><span id="statusT">就绪</span></div>
+            </div>
+            <div class="output-area">
+                <div class="output-head"><span>输出流（按 token 顺序）</span><span class="hint-right">每步新增 1 个 token</span></div>
+                <div class="output-text" id="outputT"><div class="empty-state">选择场景，点击 ▶ 播放 或拖动进度条</div></div>
+            </div>
+            <div class="tool-panel">
+                <div class="tool-row">
+                    <span class="label">🔧 工具调用</span>
+                    <span class="status-badge idle" id="badgeT">等待</span>
+                    <span class="tool-detail" id="detailT">—</span>
+                </div>
+                <div class="tool-msg" id="msgT">—</div>
+                <div class="tool-trace" id="traceT"></div>
+                <div class="progress-mini"><div class="fill-mini" id="miniT" style="width:0%"></div></div>
+            </div>
+        </div>
+
+        <!-- Diffusion -->
+        <div class="model-card dif">
+            <div class="model-card-header">
+                <div class="model-name"><span class="icon">🌊</span> Diffusion <span class="tag">扩散 · 并行去噪</span></div>
+                <div class="status"><span class="dot idle" id="dotD"></span><span id="statusD">就绪</span></div>
+            </div>
+            <div class="output-area">
+                <div class="output-head"><span>整篇并行去噪（按重要性定稿）</span><span class="hint-right">未定稿 → <b>_</b></span></div>
+                <div class="output-text" id="outputD"><div class="empty-state">选择场景，点击 ▶ 播放 或拖动进度条</div></div>
+            </div>
+            <div class="tool-panel">
+                <div class="tool-row">
+                    <span class="label">🔧 工具调用</span>
+                    <span class="status-badge idle" id="badgeD">等待</span>
+                    <span class="tool-detail" id="detailD">—</span>
+                </div>
+                <div class="tool-msg" id="msgD">—</div>
+                <div class="tool-trace" id="traceD"></div>
+                <div class="progress-mini"><div class="fill-mini diffusion-fill" id="miniD" style="width:0%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+        <div class="note-card acc">
+            <div class="t">🔮 Transformer（自回归）</div>
+            输出按 token <b>顺序流式</b>到来。引擎一旦看到 <b>&lt;tool&gt;…&lt;/tool&gt; 完整闭合</b>，立即执行并把返回值交给后续续写 —— 后半段文本可以引用<b>真实</b>执行结果。
+        </div>
+        <div class="note-card dif">
+            <div class="t">🌊 Diffusion（扩散）</div>
+            所有 token <b>并行“去噪”</b>，越是语义关键的 token 越早定稿。于是关键词 / 工具内容常<b>先于标记</b>浮现，可能引发 <b>延迟 · 误触 · 顺序颠倒 · 嵌套错乱</b>，难以在流式中可靠地执行工具。
+        </div>
+        <div class="scene-desc" id="sceneDesc"></div>
+    </div>
+</div>
+
+<script>
+// ============================================================================
+// ==PURE-START==   （纯逻辑区：可在 Node 中直接抽取测试，不含任何 DOM 依赖）
+// ============================================================================
+
+// ---------- 工具函数 ----------
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+/** 把 indices 随机分配到 [lo, hi] 步（容量不足则循环复用 → 允许并行定稿） */
+function fillSteps(steps, indices, lo, hi) {
+    if (!indices.length) return;
+    const pool = [];
+    for (let v = lo; v <= hi; v++) pool.push(v);
+    shuffle(indices).forEach((idx, i) => { steps[idx] = pool[i % pool.length]; });
+}
+/** 把一段连续索引 [a,b] 依次分配到 lo..lo+(b-a) */
+function seqSteps(steps, a, b, lo) {
+    for (let i = a; i <= b; i++) steps[i] = lo + (i - a);
+}
+
+/** 从 tokens 推导工具调用跨度（支持嵌套）与代码围栏区间 */
+function computeStructure(tokens) {
+    const spans = [];
+    const stack = [];
+    const fenceStack = [];
+    const fences = [];
+    tokens.forEach((t, i) => {
+        if (t.type === 'tool-start') stack.push({ s: i, depth: stack.length, openStep: -1 });
+        else if (t.type === 'tool-end') {
+            const o = stack.pop();
+            if (o) spans.push({ s: o.s, e: i, depth: o.depth });
+        }
+        if (t.type === 'fence-start') fenceStack.push(i);
+        else if (t.type === 'fence-end' && fenceStack.length) {
+            fences.push({ s: fenceStack.pop(), e: i });
+        }
+    });
+    // 每个 span 的父调用（最近的包含它的外层 span）
+    spans.forEach(sp => {
+        sp.parent = null;
+        for (const p of spans) {
+            if (p.s < sp.s && sp.e < p.e) {
+                if (!sp.parent || (p.s > sp.parent.s)) sp.parent = p;
+            }
+        }
+        // 是否位于代码围栏内
+        sp.fenced = fences.some(f => f.s < sp.s && sp.e < f.e);
+    });
+    // 从工具块中提取工具名（第一个 tool 内容 token）
+    spans.forEach(sp => {
+        const nameTok = tokens.slice(sp.s + 1, sp.e).find(t => t.type === 'tool');
+        sp.name = nameTok ? nameTok.text : 'tool';
+    });
+    return { spans, fences };
+}
+
+// ---------- 场景定义 ----------
+const SCENES = [
+
+// ════════════ 场景 1：天气查询（标准 · Diffusion 延迟） ════════════
+{
+    id: 'weather',
+    name: '🌤️ 天气查询',
+    desc: '标准工具调用：Transformer 在 </tool> 闭合瞬间即拿到结果并用它续写；Diffusion 的结果关键词早于工具调用“猜测性”浮现，真正的调用到很晚才闭合。',
+    watch: '👀 看什么：① 左侧步 23 一过（</tool> 闭合）立刻变绿并返回结果，之后“多云转小雨/带伞”等续写是引用真实返回值；② 右侧那些带虚线底纹的关键词（多云·小雨·带伞）早在步 1~5 就以“猜测”出现 —— 那时工具根本还没闭合（步 29），若猜错就是幻觉。',
+    tokens: [
+        { text: '好的', type: 'text' }, { text: '，', type: 'text' }, { text: '我', type: 'text' },
+        { text: '来', type: 'text' }, { text: '帮', type: 'text' }, { text: '您', type: 'text' },
+        { text: '查询', type: 'keyword' }, { text: '上海', type: 'keyword' }, { text: '明天', type: 'keyword' },
+        { text: '的', type: 'text' }, { text: '天气', type: 'keyword' }, { text: '。', type: 'text' },
+        { text: ' ', type: 'text' },
+        { text: '<tool>', type: 'tool-start' },
+        { text: 'get_weather', type: 'tool' }, { text: '(city=', type: 'tool' }, { text: "'上海'", type: 'tool' },
+        { text: ',', type: 'tool' }, { text: ' ', type: 'tool' }, { text: 'date=', type: 'tool' },
+        { text: "'明天'", type: 'tool' }, { text: ')', type: 'tool' },
+        { text: '</tool>', type: 'tool-end' },
+        { text: ' ', type: 'text' },
+        { text: '根据', type: 'text' }, { text: '查询', type: 'text' }, { text: '结果', type: 'text' },
+        { text: '，', type: 'text' },
+        { text: '明天', type: 'keyword' }, { text: '上海', type: 'keyword' }, { text: '多云', type: 'keyword' },
+        { text: '转', type: 'text' }, { text: '小雨', type: 'keyword' }, { text: '，', type: 'text' },
+        { text: '建议', type: 'text' }, { text: '带伞', type: 'keyword' }, { text: '。', type: 'text' }
+    ],
+    // 结果回归数据（用于工具面板 & 续写一致性判断）
+    callResult: { name: 'get_weather', params: 'city="上海", date="明天"', result: '🌤️ 多云转小雨，22°C，建议带伞' },
+    diffusionSteps(tokens) {
+        const n = tokens.length, steps = new Array(n).fill(0);
+        const kw = [], pre = [], post = [], call = [];
+        tokens.forEach((t, i) => {
+            if (t.type === 'keyword') kw.push(i);
+            else if (t.type === 'tool-start' || t.type === 'tool' || t.type === 'tool-end') call.push(i);
+            else if (i < 13) pre.push(i);
+            else post.push(i);
+        });
+        fillSteps(steps, kw, 1, 5);            // 关键词 = 语义骨架，最先浮现（含“猜测”出的结果词）
+        seqSteps(steps, 13, 22, 20);           // 工具调用整体偏晚：步 20 → 29 才闭合
+        fillSteps(steps, pre, 6, 17);          // 正文前半段
+        fillSteps(steps, post, 18, n);         // 正文后半段（与工具闭合时间重叠 → 并行去噪的证据）
+        return steps;
+    }
+},
+
+// ════════════ 场景 2：Markdown 误触 ════════════
+{
+    id: 'markdown',
+    name: '📝 Markdown 误触',
+    desc: '文本最终是“``` 代码块中的工具示例”，本不应执行。但 Diffusion 先把 get_weather(...) 的“内容轮廓”画了出来（此时 ``` 与 <tool> 都没出现）→ 实时引擎把它误当成真实调用触发。',
+    watch: '👀 看什么：① 左侧自回归模型按顺序先生成 ``` 代码围栏 → 引擎知道围栏内是纯文本，始终“未触发” ✅；② 右侧内容 get_weather(...) 在步 2~6 就红底浮现，而 ``` 步 10、<tool> 步 12 才到 —— 引擎已误触发，副作用不可撤回。',
+    tokens: [
+        { text: '让我', type: 'text' }, { text: '在', type: 'text' }, { text: 'Markdown', type: 'keyword' },
+        { text: '文档', type: 'text' }, { text: '里', type: 'text' }, { text: '展示', type: 'text' },
+        { text: '一个', type: 'text' }, { text: '工具调用', type: 'keyword' }, { text: '的', type: 'text' },
+        { text: '示例', type: 'text' }, { text: '：', type: 'text' }, { text: '\n', type: 'text' },
+        { text: '```markdown', type: 'fence-start' }, { text: '\n', type: 'text' },
+        { text: '<tool>', type: 'tool-start' },
+        { text: 'get_weather', type: 'tool' }, { text: '(city=', type: 'tool' }, { text: "'上海'", type: 'tool' },
+        { text: ',', type: 'tool' }, { text: ' ', type: 'tool' }, { text: 'date=', type: 'tool' },
+        { text: "'明天'", type: 'tool' }, { text: ')', type: 'tool' },
+        { text: '</tool>', type: 'tool-end' },
+        { text: '\n', type: 'text' }, { text: '```', type: 'fence-end' }, { text: '\n', type: 'text' },
+        { text: '这', type: 'text' }, { text: '只是', type: 'text' }, { text: '文档', type: 'text' },
+        { text: '示例', type: 'text' }, { text: '，', type: 'text' }, { text: '不会', type: 'text' },
+        { text: '真的', type: 'text' }, { text: '执行', type: 'text' }, { text: '。', type: 'text' }
+    ],
+    diffusionSteps(tokens) {
+        const n = tokens.length, steps = new Array(n).fill(0);
+        const kw = [], content = [], preT = [], postT = [], marks = [], fences = [];
+        tokens.forEach((t, i) => {
+            if (t.type === 'keyword') kw.push(i);
+            else if (t.type === 'fence-start' || t.type === 'fence-end') fences.push(i);
+            else if (t.type === 'tool-start' || t.type === 'tool-end') marks.push(i);
+            else if (t.type === 'tool') content.push(i);
+            else if (i < 14) preT.push(i);
+            else postT.push(i);
+        });
+        fillSteps(steps, kw, 1, 2);
+        fillSteps(steps, content, 2, 6);       // ← 关键：工具“内容”极早浮现（步 2~6）
+        fillSteps(steps, preT, 3, 9);
+        seqSteps(steps, tokens.findIndex(t => t.type === 'fence-start'), tokens.findIndex(t => t.type === 'fence-start'), 10); // 围栏步10
+        seqSteps(steps, tokens.findIndex(t => t.type === 'fence-end'), tokens.findIndex(t => t.type === 'fence-end'), 11);   // 围栏步11
+        seqSteps(steps, tokens.findIndex(t => t.type === 'tool-start'), tokens.findIndex(t => t.type === 'tool-start'), 12); // 标记步12
+        seqSteps(steps, tokens.findIndex(t => t.type === 'tool-end'), tokens.findIndex(t => t.type === 'tool-end'), 13);     // 标记步13
+        fillSteps(steps, postT, 14, n);
+        return steps;
+    }
+},
+
+// ════════════ 场景 3：多步链式（顺序颠倒） ════════════
+{
+    id: 'multitool',
+    name: '🔗 多步链式',
+    desc: '用户要求“先查天气、再发邮件”。Diffusion 把文本靠后的 send_email 块先画完整（步 13），get_weather 块到步 15 才开始 → 执行顺序颠倒成“先发邮件”。',
+    watch: '👀 看什么：① 左侧按文本顺序逐个执行：get_weather ✓ 步 15 → send_email ✓ 步 26，与请求一致；② 右侧 send_email 先于 get_weather 闭合，底部轨迹显示两个调用按“完成顺序”执行，与文本顺序相反 ↔。',
+    tokens: [
+        { text: '先', type: 'text' }, { text: '查询', type: 'keyword' }, { text: '天气', type: 'keyword' },
+        { text: '，', type: 'text' }, { text: '再', type: 'text' }, { text: '发送', type: 'keyword' },
+        { text: '邮件', type: 'keyword' }, { text: '。', type: 'text' }, { text: ' ', type: 'text' },
+        { text: '<tool>', type: 'tool-start' },
+        { text: 'get_weather', type: 'tool' }, { text: '(city=', type: 'tool' }, { text: "'上海'", type: 'tool' },
+        { text: ')', type: 'tool' }, { text: '</tool>', type: 'tool-end' },
+        { text: ' ', type: 'text' },
+        { text: '<tool>', type: 'tool-start' },
+        { text: 'send_email', type: 'tool' }, { text: '(to=', type: 'tool' }, { text: "'user@example.com'", type: 'tool' },
+        { text: ',', type: 'tool' }, { text: ' ', type: 'tool' }, { text: 'subject=', type: 'tool' },
+        { text: "'天气报告'", type: 'tool' }, { text: ')', type: 'tool' }, { text: '</tool>', type: 'tool-end' },
+        { text: ' ', type: 'text' }, { text: '完成', type: 'text' }, { text: '。', type: 'text' }
+    ],
+    // 两个调用块各自的执行结果（按文本顺序）
+    callResults: [
+        { name: 'get_weather', params: 'city="上海"', result: '🌤️ 上海多云，23°C' },
+        { name: 'send_email', params: 'to="user@example.com", subject="天气报告"', result: '📧 已发送 1 封邮件' }
+    ],
+    diffusionSteps(tokens) {
+        const n = tokens.length, steps = new Array(n).fill(0);
+        // 定位两个工具块
+        const starts = [], ends = [];
+        tokens.forEach((t, i) => {
+            if (t.type === 'tool-start') starts.push(i);
+            if (t.type === 'tool-end') ends.push(i);
+        });
+        const A_S = starts[0], A_E = ends[0];   // get_weather（文本靠前）
+        const B_S = starts[1], B_E = ends[1];   // send_email（文本靠后）
+        const kw = [], pre = [], tail = [];
+        tokens.forEach((t, i) => {
+            if (t.type === 'keyword') kw.push(i);
+            else if (t.type.startsWith('tool')) return;
+            else if (i < A_S) pre.push(i);
+            else tail.push(i);
+        });
+        fillSteps(steps, kw, 1, 3);
+        fillSteps(steps, pre, 1, 5);
+        seqSteps(steps, B_S, B_E, 4);            // ← 文本靠后的 send_email 先定稿（步 4~13）
+        seqSteps(steps, A_S, A_E, 15);           // get_weather 反而晚（步 15~20）
+        fillSteps(steps, tail, 14, n - 1);
+        return steps;
+    }
+},
+
+// ════════════ 场景 4：嵌套调用（内层先于外层出现 → 嵌套错乱） ════════════
+{
+    id: 'nested',
+    name: '🧩 嵌套调用',
+    desc: 'outer_tool 的参数中嵌套 inner_tool。Diffusion 把整个内层调用先画完（步 7 即闭合）时，外层的 <tool> 到步 12 才出现 —— 内层在“没有外层上下文”的状态下被触发，嵌套结构错乱。',
+    watch: '👀 看什么：① 左侧自回归按文本顺序输出：inner_tool 闭合即执行（步 14），随后 outer_tool 闭合、引用内层返回值完成组装（步 16），两条轨迹 ✓ 合法嵌套；② 右侧 inner_tool 步 7 就闭合，而 outer_tool 步 12 才露头 → 引擎把内层当独立调用执行 → 嵌套错乱 🧩。',
+    tokens: [
+        { text: '请', type: 'text' }, { text: '执行', type: 'text' },
+        { text: '嵌套', type: 'keyword' }, { text: '调用', type: 'keyword' },
+        { text: '：', type: 'text' }, { text: ' ', type: 'text' },
+        { text: '<tool>', type: 'tool-start' },
+        { text: 'outer_tool', type: 'tool' }, { text: '(', type: 'tool' },
+        { text: '<tool>', type: 'tool-start' },
+        { text: 'inner_tool', type: 'tool' }, { text: '(', type: 'tool' }, { text: ')', type: 'tool' },
+        { text: '</tool>', type: 'tool-end' },
+        { text: ')', type: 'tool' },
+        { text: '</tool>', type: 'tool-end' },
+        { text: ' ', type: 'text' }, { text: '完成', type: 'text' }, { text: '。', type: 'text' }
+    ],
+    callResults: [
+        { name: 'outer_tool', params: 'inner_tool()', result: '✅ outer_tool 组装完成（引用了 inner 返回值 42）' },
+        { name: 'inner_tool', params: '()', result: '⚙️ inner_tool → 42' }
+    ],
+    diffusionSteps(tokens) {
+        const n = tokens.length, steps = new Array(n).fill(0);
+        // 定位嵌套对
+        const starts = [], ends = [];
+        tokens.forEach((t, i) => {
+            if (t.type === 'tool-start') starts.push(i);
+            if (t.type === 'tool-end') ends.push(i);
+        });
+        const O_S = starts[0], O_E = ends[1];   // 外层 outer_tool
+        const I_S = starts[1], I_E = ends[0];   // 内层 inner_tool
+        seqSteps(steps, I_S, I_E, 3);            // ← 内层步 3~7 整体先定稿
+        const outerTok = [];
+        for (let i = O_S; i <= O_E; i++) if (i < I_S || i > I_E) outerTok.push(i);
+        fillSteps(steps, outerTok, 12, 16);      // 外层标记/内容步 12~16 后定稿
+        const kw = [], head = [], tailT = [];
+        tokens.forEach((t, i) => {
+            if (t.type === 'keyword') kw.push(i);
+            else if (t.type.startsWith('tool')) return;
+            else if (i < I_S) head.push(i);
+            else tailT.push(i);
+        });
+        fillSteps(steps, kw, 1, 2);
+        fillSteps(steps, head, 2, 5);
+        fillSteps(steps, tailT, 17, n - 1);
+        return steps;
+    }
+}
+];
+
+// ============================================================================
+//  场景状态构造 + Diffusion 结构异常静态分析（核心状态机）
+// ============================================================================
+function computeState(scene) {
+    const tokens = scene.tokens;
+    const steps = scene.diffusionSteps(tokens);          // 每场景自定义的 Diffusion 定稿步数
+    const total = tokens.length;
+    // 防御性约束：任何 token 定稿步必须在 [1, total] 内（缺省则最晚定稿）
+    for (let i = 0; i < total; i++) {
+        const v = steps[i];
+        if (!(v >= 1 && v <= total)) steps[i] = total;
+    }
+    const { spans, fences } = computeStructure(tokens);
+
+    spans.forEach(sp => {
+        sp.startStep = steps[sp.s];
+        sp.endStep = steps[sp.e];
+        // 属于本调用“直接”的工具内容 token：排除嵌套在其中的子调用 token
+        const children = spans.filter(c => c.parent === sp);
+        sp.content = [];
+        for (let i = sp.s + 1; i < sp.e; i++) {
+            if (tokens[i].type !== 'tool') continue;
+            if (children.some(c => c.s < i && i < c.e)) continue;
+            sp.content.push(i);
+        }
+        sp.toolMin = Math.min(steps[sp.s], steps[sp.e], ...sp.content.map(i => steps[i]));
+    });
+
+    // Transformer 侧可执行调用：非围栏内的所有跨度，按文本序
+    const execCalls = spans.filter(sp => !sp.fenced).sort((a, b) => a.s - b.s);
+
+    // ① 误触：调用“内容”中最早定稿的 token 先于其起始标记出现
+    const misfire = { type: 'mistrigger', on: false, trigger: Infinity, span: null };
+    // ② 嵌套错乱：内层调用闭合早于其外层标记出现
+    const nested = { type: 'nested', on: false, trigger: Infinity, span: null };
+    // ③ 顺序颠倒：同级调用中“文本靠后者”更早闭合
+    const reorder = { type: 'reorder', on: false, trigger: Infinity, a: null, b: null };
+
+    spans.forEach(sp => {
+        const leaked = sp.content.filter(i => steps[i] < sp.startStep);
+        if (leaked.length) {
+            misfire.on = true;
+            const t = Math.min(...leaked.map(i => steps[i]));
+            if (t < misfire.trigger) { misfire.trigger = t; misfire.span = sp; }
+        }
+        if (sp.parent && sp.endStep < sp.parent.startStep && sp.endStep < nested.trigger) {
+            nested.on = true; nested.trigger = sp.endStep; nested.span = sp;
+        }
+    });
+
+    const top = spans.filter(sp => !sp.parent && !sp.fenced);
+    for (const b of top) {
+        for (const a of top) {
+            if (a.s < b.s && b.endStep < a.endStep && b.endStep < reorder.trigger) {
+                reorder.on = true; reorder.trigger = b.endStep; reorder.a = a; reorder.b = b;
+            }
+        }
+    }
+
+    const anomalies = [misfire, nested, reorder].filter(x => x.on).sort((x, y) => x.trigger - y.trigger);
+    return { scene, tokens, steps, spans, fences, execCalls, anomalies, misfire, nested, reorder };
+}
+
+/** Transformer：自回归前缀揭示。闭合即执行；围栏内调用永不执行 */
+function statusTransformer(state, s) {
+    const { execCalls } = state;
+    if (!execCalls.length) return { code: s > 0 ? 'nocall' : 'waiting' };
+    const done = execCalls.filter(sp => s > sp.e);
+    const running = execCalls.filter(sp => s > sp.s && !(s > sp.e));
+    if (running.length) return { code: 'executing' };
+    if (done.length) return { code: 'success' };
+    return { code: 'waiting' };
+}
+
+/** Diffusion：按揭示进度 + 预扫描异常给出状态。异常一经触发即持续 */
+function statusDiffusion(state, s) {
+    const { anomalies, spans, steps } = state;
+    for (const an of anomalies) if (s >= an.trigger) return { code: an.type, anomaly: an };
+    let first = Infinity, allTopDone = true;
+    for (const sp of spans) {
+        first = Math.min(first, sp.toolMin);
+        if (!sp.parent && s < sp.endStep) allTopDone = false;
+    }
+    if (s < first) return { code: 'waiting' };
+    if (allTopDone) return { code: 'success' };
+    return { code: 'delayed' };
+}
+
+const CODE_META = {
+    waiting:    { label: '等待',     cls: 'waiting' },
+    executing:  { label: '执行中',   cls: 'executing' },
+    success:    { label: '成功',     cls: 'success' },
+    delayed:    { label: '延迟',     cls: 'delayed' },
+    mistrigger: { label: '误触',     cls: 'mistrigger' },
+    nested:     { label: '嵌套错乱', cls: 'nested' },
+    reorder:    { label: '顺序颠倒', cls: 'reorder' },
+    nocall:     { label: '未触发',   cls: 'nocall' }
+};
+// ==PURE-END==
+
+// ============================================================================
+//  DOM 渲染层
+// ============================================================================
+const $ = id => document.getElementById(id);
+const el = {
+    outputT: $('outputT'), outputD: $('outputD'),
+    dotT: $('dotT'), dotD: $('dotD'),
+    statusT: $('statusT'), statusD: $('statusD'),
+    badgeT: $('badgeT'), badgeD: $('badgeD'),
+    detailT: $('detailT'), detailD: $('detailD'),
+    msgT: $('msgT'), msgD: $('msgD'),
+    traceT: $('traceT'), traceD: $('traceD'),
+    miniT: $('miniT'), miniD: $('miniD'),
+    slider: $('stepSlider'), stepInfo: $('stepInfo'),
+    btnPlay: $('btnPlay'), btnReset: $('btnReset'),
+    sceneSel: $('sceneSelector'), sceneDesc: $('sceneDesc')
+};
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// 全局状态
+let state = null, stateIdx = 0, step = 0, totalSteps = 0, playing = false, timer = null;
+
+// 场景内调用结果表
+function callInfo(state, sp) {
+    const m = new Map();
+    const sc = state.scene;
+    if (sc.callResult) m.set(sc.callResult.name, sc.callResult);
+    (sc.callResults || []).forEach(r => m.set(r.name, r));
+    const r = m.get(sp.name) || {};
+    return { name: sp.name, params: r.params || '', result: r.result || '' };
+}
+
+function tokenHtml(t) {
+    const clsMap = {
+        'text': 'text', 'keyword': 'keyword', 'tool': 'tool',
+        'tool-start': 'tool-start', 'tool-end': 'tool-end',
+        'fence-start': 'fence', 'fence-end': 'fence'
+    };
+    return '<span class="token ' + (clsMap[t.type] || 'text') + '">' + escapeHtml(t.text) + '</span>';
+}
+
+function diffTokenHtml(st, i, revealed) {
+    const t = st.tokens[i];
+    if (!revealed) {
+        return /^\s+$/.test(t.text)
+            ? '<span class="token filler">&nbsp;</span>'
+            : '<span class="token filler">_</span>';
+    }
+    if (t.type === 'keyword') {
+        // “猜测”底纹：位于某顶层调用之后、却早于该调用闭合定稿的关键词
+        let guess = false;
+        for (const sp of st.spans) {
+            if (!sp.parent && sp.e < i && st.steps[i] < sp.endStep) { guess = true; break; }
+        }
+        if (guess) return '<span class="token keyword guess">' + escapeHtml(t.text) + '</span>';
+        return tokenHtml(t);
+    }
+    if (t.type === 'text' || t.type === 'fence-start' || t.type === 'fence-end') return tokenHtml(t);
+    // tool 内容泄漏（先于所属 <tool> 定稿）→ 误触红
+    for (const sp of st.spans) {
+        if (i > sp.s && i < sp.e && t.type === 'tool' && st.steps[i] < sp.startStep) {
+            return '<span class="token mistrigger">' + escapeHtml(t.text) + '</span>';
+        }
+    }
+    return tokenHtml(t);
+}
+
+function render(s) {
+    step = Math.min(Math.max(0, s), totalSteps);
+    const isEnd = step >= totalSteps;
+
+    // Transformer：前缀揭示
+    let htmlT = '';
+    for (let i = 0; i < step; i++) htmlT += tokenHtml(state.tokens[i]);
+    htmlT += step < totalSteps ? '<span class="cursor-blink"></span>' : '';
+    el.outputT.innerHTML = htmlT || '<div class="empty-state">…</div>';
+
+    // Diffusion：并行定稿
+    let htmlD = '', revealed = 0;
+    for (let i = 0; i < totalSteps; i++) {
+        const vis = step >= state.steps[i];
+        if (vis) revealed++;
+        htmlD += diffTokenHtml(state, i, vis);
+    }
+    htmlD += step < totalSteps ? '<span class="cursor-blink"></span>' : '';
+    el.outputD.innerHTML = htmlD;
+
+    // 迷你进度条（Diffusion 用已定稿比例，二者出现差异本身也是看点）
+    el.miniT.style.width = (totalSteps ? Math.round(step / totalSteps * 100) : 0) + '%';
+    el.miniD.style.width = (totalSteps ? Math.round(revealed / totalSteps * 100) : 0) + '%';
+    const pct = totalSteps ? Math.round(step / totalSteps * 100) : 0;
+    el.slider.value = pct;
+    el.stepInfo.textContent = step + ' / ' + totalSteps;
+
+    // 生成状态灯
+    const dotCls = isEnd ? 'done' : (step > 0 ? 'generating' : 'idle');
+    const dotTxt = isEnd ? '完成' : (step > 0 ? '生成中…' : '就绪');
+    el.dotT.className = el.dotD.className = 'dot ' + dotCls;
+    el.statusT.textContent = el.statusD.textContent = dotTxt;
+
+    panelT(step);
+    panelD(step);
+}
+// ---- Transformer 工具面板 ----
+function panelT(s) {
+    const st = statusTransformer(state, s);
+    const meta = CODE_META[st.code] || CODE_META.waiting;
+    el.badgeT.className = 'status-badge ' + meta.cls;
+    el.badgeT.textContent = meta.label;
+
+    // 无真实调用（Markdown 围栏场景）
+    if (!state.execCalls.length) {
+        el.detailT.textContent = '—';
+        if (s === 0) {
+            el.msgT.textContent = '输出尚未开始…';
+            el.msgT.className = 'tool-msg';
+        } else {
+            el.msgT.innerHTML = '✅ 文本中的 <b>&lt;tool&gt;…&lt;/tool&gt;</b> 位于 <b>``` 代码围栏</b> 内，属于被引用的示例文本 —— 自回归模型按顺序先生成围栏，引擎识别围栏语境，因此 <b>从未触发执行</b>。';
+            el.msgT.className = 'tool-msg ok';
+        }
+        el.traceT.innerHTML = '';
+        return;
+    }
+
+    const done = state.execCalls.filter(sp => s > sp.e);
+    const running = state.execCalls.find(sp => s > sp.s && !(s > sp.e));
+    const cur = running || done[done.length - 1];
+    el.detailT.textContent = cur ? callInfo(state, cur).name + '(' + callInfo(state, cur).params + ')' : '—';
+
+    if (st.code === 'waiting') {
+        el.msgT.textContent = '输出中：<tool> 标记尚未出现…';
+        el.msgT.className = 'tool-msg';
+    } else if (st.code === 'executing') {
+        const ci = callInfo(state, running);
+        el.msgT.textContent = '⏳ 已读到 <tool>，等待 </tool> 闭合 —— 闭合瞬间即执行 ' + ci.name + '(…)';
+        el.msgT.className = 'tool-msg warn';
+    } else if (st.code === 'success') {
+        if (done.length === 1) {
+            const ci = callInfo(state, done[0]);
+            el.msgT.innerHTML = '✅ <b>&lt;/tool&gt; 闭合即执行</b> → <b>' + escapeHtml(ci.name + '(' + ci.params + ')') + '</b> = ' + escapeHtml(ci.result) + '。剩余文本引用<b>真实返回值</b>续写。';
+        } else {
+            el.msgT.textContent = '✅ ' + done.length + ' 个调用均已闭合即执行、返回值可用，剩余文本引用真实结果续写。';
+        }
+        el.msgT.className = 'tool-msg ok';
+    }
+
+    // 执行轨迹（按文本序编号，闭合点亮）
+    el.traceT.innerHTML = state.execCalls.map((sp, k) => {
+        const ci = callInfo(state, sp);
+        const on = s > sp.e;
+        return '<span class="trace-chip' + (on ? ' on' : '') + '">' + (k + 1) + ' ' + escapeHtml(ci.name) + (on ? ' ✓' : ' …') + '</span>';
+    }).join('');
+}
+
+// ---- Diffusion 工具面板 ----
+function panelD(s) {
+    const st = statusDiffusion(state, s);
+    const meta = CODE_META[st.code] || CODE_META.waiting;
+    el.badgeD.className = 'status-badge ' + meta.cls;
+    el.badgeD.textContent = meta.label;
+    let detail = '—';
+
+    if (st.code === 'waiting') {
+        el.msgD.textContent = '正文去噪中：工具相关 token 尚未定稿…';
+        el.msgD.className = 'tool-msg';
+    } else if (st.code === 'delayed') {
+        el.msgD.textContent = '⚠️ <tool>…</tool> 尚未全部定稿，调用无法开始 —— 只能等全文收敛后再执行，无法像左侧那样边流式边执行。';
+        el.msgD.className = 'tool-msg warn';
+    } else if (st.code === 'success') {
+        const last = state.spans.filter(sp => !sp.parent).sort((a, b) => b.endStep - a.endStep)[0];
+        const ci = callInfo(state, last);
+        detail = ci.name + '(' + ci.params + ')';
+        el.msgD.innerHTML = '✅ 步 ' + last.endStep + ' 才全部定稿 → ' + escapeHtml(ci.name + '(' + ci.params + ')') + ' = ' + escapeHtml(ci.result) + '。比左侧晚 6 步，且正文中<b>虚线底纹的关键词</b>是提前“猜测”填充 —— 与返回值不符即为幻觉。';
+        el.msgD.className = 'tool-msg ok';
+    } else if (st.code === 'mistrigger') {
+        const an = st.anomaly, ci = callInfo(state, an.span);
+        detail = ci.name + '(' + ci.params + ')';
+        el.msgD.innerHTML = '❌ <b>' + escapeHtml(ci.name) + '(…)</b> 的内容在步 <b>' + an.trigger + '</b> 就定稿，而 <b>&lt;tool&gt;</b> / <b>```</b> 要到步 <b>' + an.span.startStep + '</b> 才出现 → 实时引擎已<b>误触发执行</b>；之后补齐的标记为时已晚，副作用不可撤回。';
+        el.msgD.className = 'tool-msg err';
+    } else if (st.code === 'nested') {
+        const an = st.anomaly, ci = callInfo(state, an.span);
+        detail = ci.name + '(…)';
+        el.msgD.innerHTML = '🧩 内层 <b>' + escapeHtml(ci.name) + '</b> 步 <b>' + an.trigger + '</b> 已闭合，外层 <b>&lt;tool&gt;</b> 到步 <b>' + an.span.parent.startStep + '</b> 才出现 → 内层在<b>无外层上下文</b>的状态下被触发，嵌套结构错乱。';
+        el.msgD.className = 'tool-msg err';
+    } else if (st.code === 'reorder') {
+        const an = st.anomaly;
+        const ca = callInfo(state, an.a), cb = callInfo(state, an.b);
+        detail = cb.name + ' → ' + ca.name;
+        el.msgD.innerHTML = '↔️ 文本靠后的 <b>' + escapeHtml(cb.name) + '</b> 步 <b>' + an.b.endStep + '</b> 先闭合执行，<b>' + escapeHtml(ca.name) + '</b> 步 <b>' + an.a.endStep + '</b> 才完成 → 执行顺序与请求相反。';
+        el.msgD.className = 'tool-msg err';
+    }
+    el.detailD.textContent = detail;
+
+    // Diffusion 轨迹：按文本序显示每个调用的“定稿步”，异常相关高亮
+    el.traceD.innerHTML = state.spans.slice().sort((a, b) => a.s - b.s).map((sp, k) => {
+        const ci = callInfo(state, sp);
+        const on = s >= sp.endStep;
+        let cls = on ? 'on' : '';
+        if (st.code === 'reorder' && state.reorder.b === sp) cls = 'bad';
+        if (st.code === 'nested' && state.nested.span === sp) cls = 'bad';
+        if (st.code === 'mistrigger' && state.misfire.span === sp) cls = 'bad';
+        const mark = on ? (cls === 'bad' ? '↺' : '✓') : '…';
+        return '<span class="trace-chip ' + cls + '">' + (k + 1) + ' ' + escapeHtml(ci.name) + ' · 步' + sp.endStep + ' ' + mark + '</span>';
+    }).join('');
+}
+
+// ---- 场景 / 播放 / 重置 / 滑块 ----
+function loadScene(i) {
+    stopPlay();
+    stateIdx = i;
+    state = computeState(SCENES[i]);
+    totalSteps = state.tokens.length;
+    step = 0;
+    const sc = state.scene;
+    el.sceneDesc.innerHTML = '<div class="scene-title">当前场景：' + sc.name + '</div><div>' + sc.desc + '</div><div class="watch">' + sc.watch + '</div>';
+    sceneBtns.forEach((b, k) => b.classList.toggle('active', k === i));
+    render(0);
+}
+
+function stopPlay() {
+    if (timer) { clearInterval(timer); timer = null; }
+    playing = false;
+    el.btnPlay.textContent = '▶ 播放';
+}
+
+function togglePlay() {
+    if (playing) { stopPlay(); return; }
+    if (step >= totalSteps) step = 0;
+    playing = true;
+    el.btnPlay.textContent = '⏸ 暂停';
+    timer = setInterval(() => {
+        step++;
+        if (step > totalSteps) { stopPlay(); render(totalSteps); return; }
+        render(step);
+    }, 200);
+}
+
+function resetAll() { stopPlay(); step = 0; render(0); }
+
+// 场景按钮自动生成
+SCENES.forEach((sc, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'scene-btn' + (i === 0 ? ' active' : '');
+    b.textContent = sc.name;
+    b.addEventListener('click', () => { if (i !== stateIdx) loadScene(i); });
+    el.sceneSel.appendChild(b);
+});
+const sceneBtns = Array.from(el.sceneSel.children);
+
+el.slider.addEventListener('input', () => {
+    stopPlay();
+    render(Math.round(parseInt(el.slider.value, 10) / 100 * totalSteps));
+});
+el.btnPlay.addEventListener('click', togglePlay);
+el.btnReset.addEventListener('click', resetAll);
+
+loadScene(0);
+console.log('🔧 Transformer vs Diffusion 工具调用演示已加载。播放或拖动进度条观察差异。');
+</script>
+</body>
+</html>
