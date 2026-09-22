@@ -36,8 +36,6 @@ export const theme: ThemeUserConfig = {
 
   // Still in test
   head: [
-    { tag: 'link', attrs: { rel: 'llms', href: '/llms.txt' }, content: '' },
-    { tag: 'meta', attrs: { name: 'llms-txt', content: '/llms.txt' }, content: '' },
     /* Telegram channel */
     // {
     //   tag: 'meta',
