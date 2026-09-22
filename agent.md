@@ -115,4 +115,8 @@ featured: false     # 本主题无此字段，纯占位不要写
 - `bohuyeshan.top/llms.txt`（本仓库 `public/llms.txt`）与 GitHub profile 仓库 `BOHUYESHAN-APB/BOHUYESHAN-APB` 是对外身份与口径的唯一来源。
 - 权威口径：Agent 定义 **19 = 8 主编排 + 11 专家**（openagent-labforge-bio `src/config/constants.ts`）；生信技能 **617 / 87 类**（`resources/bioSkills` 实测）。旧印刷品中的 17 / 88 为过时数字。
 - 修改简历三版、仓库描述、README 中任何对外数字时，必须同步 `public/llms.txt`。
-- `public/robots.txt`：不拦普通爬取；注释声明不建议用于训练、背调者引导至 llms.txt。
+- `public/robots.txt`：不拦普通爬取；注释仅声明不建议训练（注释会被解析器剥掉，**不可作为引导通道**）。`Sitemap:` 行指向 sitemap-index.xml。
+- **发现链路规范（2026-09-22 晚修订，依据现行 llms.txt 提案与爬虫实测）**：
+  - 进站 ≠ 读 llms.txt/robots.txt。chatbox 抓首页正文与 meta description；礼貌爬虫读 robots.txt 只看指令不看注释；主动探测 /llms.txt 的只有部分 coding agent 与文档向工具。
+  - 载体优先级：**首页可见正文 + 首页 meta description**（`src/pages/index.astro` 的 meta.description 与"关于"区 🧭 块，改口径必须同步）> HTML `<link rel="describedby" type="text/plain" href="/llms.txt">`（BaseLayout，规范形式；`rel="llms"` 为非标准自造，已废弃）> HTTP `Link: </llms.txt>; rel="describedby"` 响应头（GitHub Pages 加不了，需用户在 Cloudflare Transform Rules 配 Response Header，待用户手动）> robots.txt Sitemap 行。
+  - sitemap 不列 llms.txt（非 HTML 页，Astro sitemap 插件只收路由，收益近零，不做）。

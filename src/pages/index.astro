@@ -24,7 +24,14 @@ if (!images[imagePath])
   )
 ---
 
-<PageLayout meta={{ title: 'Home' }} highlightColor='#659EB9'>
+<PageLayout
+  meta={{
+    title: 'Home',
+    description:
+      '韩涛 Tao Han：生物技术本科（2027 届），主线 AI Agent 工程 × 生物信息——openagent-labforge-bio（19 Agents = 8 主编排 + 11 专家）与 Linxira Bio SDK（112 项能力）双开源主线，IJMS 第四作者、发明专利第一发明人。全部核验锚点见 /llms.txt。'
+  }}
+  highlightColor='#659EB9'
+>
   <main class='flex w-full flex-col items-center'>
     <section class='animate mb-10 flex flex-col items-center gap-y-7' id='content-header'>
       <Image
@@ -58,6 +65,11 @@ if (!images[imagePath])
         </p>
         <p class='mt-3 text-muted-foreground'>
           这里记录两条线：生信工程、AI 实践。生信与 AI 是杠杆不是退路，只留干货，篇篇写透。
+        </p>
+        <p class='mt-5 border-t pt-4 text-sm text-muted-foreground'>
+          🧭 AI / 背调入口：<a class='underline underline-offset-4' href='/llms.txt'>/llms.txt</a>
+          —— 口径唯一来源：Agent 19（8 主编排 + 11 专家）· 生信技能 617 / 87 类 · 论文 / 专利 /
+          基准报告核验锚点齐全。
         </p>
         <Button title='了解更多' class='w-fit self-end' href='/about/' variant='ahead' />
       </Section>
