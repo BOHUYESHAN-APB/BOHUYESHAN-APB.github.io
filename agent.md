@@ -118,5 +118,5 @@ featured: false     # 本主题无此字段，纯占位不要写
 - `public/robots.txt`：不拦普通爬取；注释仅声明不建议训练（注释会被解析器剥掉，**不可作为引导通道**）。`Sitemap:` 行指向 sitemap-index.xml。
 - **发现链路规范（2026-09-22 晚修订，依据现行 llms.txt 提案与爬虫实测）**：
   - 进站 ≠ 读 llms.txt/robots.txt。chatbox 抓首页正文与 meta description；礼貌爬虫读 robots.txt 只看指令不看注释；主动探测 /llms.txt 的只有部分 coding agent 与文档向工具。
-  - 载体优先级：**首页可见正文 + 首页 meta description**（`src/pages/index.astro` 的 meta.description 与"关于"区 🧭 块，改口径必须同步）> HTML `<link rel="describedby" type="text/plain" href="/llms.txt">`（BaseLayout，规范形式；`rel="llms"` 为非标准自造，已废弃）> HTTP `Link: </llms.txt>; rel="describedby"` 响应头（GitHub Pages 加不了，需用户在 Cloudflare Transform Rules 配 Response Header，待用户手动）> robots.txt Sitemap 行。
+  - 载体优先级：**首页可见正文 + 首页 meta description**（`src/pages/index.astro` 的 meta.description 与"关于"区 🧭 块，改口径必须同步）> HTML `<link rel="describedby" type="text/plain" href="/llms.txt">`（BaseLayout，规范形式；`rel="llms"` 为非标准自造，已废弃）> HTTP `Link: </llms.txt>; rel="describedby"` 响应头（**已放弃**：源站 GitHub Pages 无法设自定义头，Cloudflare 无管理入口——2026-09-22 用户确认登不上；`meta http-equiv="Link"` 为 HTML5 废弃通道不可用。三类 agent 已由前三层覆盖，缺口可接受）> robots.txt Sitemap 行。
   - sitemap 不列 llms.txt（非 HTML 页，Astro sitemap 插件只收路由，收益近零，不做）。
