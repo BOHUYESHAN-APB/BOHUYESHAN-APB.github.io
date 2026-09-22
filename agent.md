@@ -108,3 +108,11 @@ featured: false     # 本主题无此字段，纯占位不要写
 - tech 版第二页间距选择器必须写 `> .section`（子元素是 div 不是 section 标签，裸 `section` 选择器永远不命中——这个坑踩过两次）
 - 归档仓库 push 后需手动触发主站组合部署：`gh workflow run deploy.yml -R BOHUYESHAN-APB/BOHUYESHAN-APB.github.io`，完成后从线上（加 `?v=` 破缓存）用 `msedge --headless=new --no-pdf-header-footer --print-to-pdf` 重新生成桌面「简历打印」三份 PDF
 - **归档路径转正机制（用户 2026.09 确认）**：新博客仓库部署时自动拉取归档仓库（bohuyeshan-archive）并把路径转正——线上 `/resume/*` 等旧路径 404 的问题不要在归档仓库侧修，等新仓库流水线转正即可；转正前，简历打印版上的查验地址指向实际落点 `/old/resume/projects`
+
+
+## 九、对外口径管理（2026-09-22）
+
+- `bohuyeshan.top/llms.txt`（本仓库 `public/llms.txt`）与 GitHub profile 仓库 `BOHUYESHAN-APB/BOHUYESHAN-APB` 是对外身份与口径的唯一来源。
+- 权威口径：Agent 定义 **19 = 8 主编排 + 11 专家**（openagent-labforge-bio `src/config/constants.ts`）；生信技能 **617 / 87 类**（`resources/bioSkills` 实测）。旧印刷品中的 17 / 88 为过时数字。
+- 修改简历三版、仓库描述、README 中任何对外数字时，必须同步 `public/llms.txt`。
+- `public/robots.txt`：不拦普通爬取；注释声明不建议用于训练、背调者引导至 llms.txt。
