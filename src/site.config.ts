@@ -7,7 +7,7 @@ export const theme: ThemeUserConfig = {
   /** Will be used in index page & copyright declaration */
   author: 'BoHuYeShan',
   /** Description metadata for your website. Can be used in page metadata. */
-  description: '从生物学的问题出发，用工程把答案做出来，再让 AI 把管线放大：生信工程、蛋白质语言模型、Agent 工作流，以及这个时代值得想清楚的事。只留干货，不做装饰。',
+  description: 'AI 让世界重新变成了一个整体：多学科、多领域的联动变得前所未有地频繁，看得懂不同领域怎么说话的人才有下一步。这里写工程、写 AI、写联动本身。只留干货，不做装饰。',
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
   favicon: '/favicon/favicon.ico',
   /** The default social card image for your site which should be a path to an image in the `public/` directory. */
