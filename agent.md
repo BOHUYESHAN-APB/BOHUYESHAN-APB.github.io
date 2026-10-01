@@ -93,6 +93,7 @@ featured: false     # 本主题无此字段，纯占位不要写
   - `Copyright.astro`：中文标签 + 底部入口改指 `/support/`
   - `PFSearch.astro`：PagefindUI 中文界面
 - URL 规范为根级日期制（`/YYYY/MM/DD/slug/`），内容目录同样按日期分层（`src/content/blog/YYYY/MM/DD/`），本地管理与线上路径一一对应；不采用主题默认的 `/blog/` 前缀
+- **授权协议口径（2026-10-01 确认）**：文章底部版权卡（`src/components/Copyright.astro`）里的 `CC BY-NC-SA 4.0` 是**全站默认值**，对所有文章一视同仁，不做按篇配置（blog schema 里没有 license 字段，主题也不支持）。**正文自己写的授权声明优先**——正文若声明了别的协议（如 Linxira 系列沿用的文章 `CC-BY-4.0`、代码 `AGPL-3.0-or-later`），以正文为准：既不要改版权卡去迁就单篇，也不要删正文声明。卡片与正文不一致属于「默认 + 正文覆盖」的正常状态，不是待修 bug
 
 ## 七、给予支持（/support）
 
