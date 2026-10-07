@@ -55,7 +55,7 @@ featured: false     # 本主题无此字段，纯占位不要写
 | --- | --- | --- |
 | 数学公式 | `$行内$` 与 `$$展示$$` | KaTeX 全站启用 |
 | Mermaid 图 | ```` ```mermaid ```` 围栏 | remark 插件转占位 + 本地 mermaid.min.js 客户端渲染 |
-| 蛋白 3D 视图 | `<div class="pdb3d" data-cfg='{...}' style="height:420px"></div>`，其后加 `<script src="/js/3dmol-min.js"></script><script src="/js/pdb-viewer.js"></script>` | 点击加载、全页独占；pdb 路径仅允许本站相对路径 |
+| 蛋白 3D 视图 | `<div class="pdb3d" data-cfg='{...}' style="height:420px"></div>`，其后**必须紧跟** `<script src="/js/3dmol-min.js"></script><script src="/js/pdb-viewer.js"></script>` | **容器与两个 script 标签缺一不可，漏挂即整块空白**（10-07 诺奖篇踩过坑）；点击加载、全页独占；pdb 文件放 `public/media/<slug>/`，data-cfg 里只写本站相对路径 |
 | 折叠块 | `<details><summary>标题</summary>内容</details>` | 禁止任何 `{% %}` 模板标签语法 |
 | 内联 SVG | 直接写 `<svg>` | 原样透传 |
 | 图片 | 新站图片放 `public/img/<slug>/`，引用 `/img/<slug>/x.png` | 旧图在 `/old/img/...` 可直接热链 |
@@ -82,6 +82,7 @@ featured: false     # 本主题无此字段，纯占位不要写
 4. 表格单元格内裸 `|` 写 `\|`；必须有 `| --- |` 分隔行
 5. 行内代码含反引号用双反引号包裹
 6. **禁止写入会随时间过期的状态描述**（如「明年毕业」「最近在准备 X」）：About、首页、站点描述里只放长期成立的表述；时间点只允许作为文章主题本身出现（publishDate、事件日期）
+7. **章节序号规范（2026-10-07 用户确认）**：采用汉字序号分节的文章，序号一律从「〇、」起编（〇 为引子/起因/总览位），依次〇、一、二、三……；**不得从「一、」起编，也不用阿拉伯数字做章节号**。重编号旧文时须同步修正文内「第 X 节」引用。结构化体裁豁免并保留历史结构：Q&A 体、连载「第 X 部分」体、项目文档的分级阿拉伯编号（`1.`/`3.1`，如 FlyGO 文）、无序号小标题体
 
 ## 六、发布与变更须知
 

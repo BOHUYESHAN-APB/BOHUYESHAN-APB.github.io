@@ -16,7 +16,7 @@ tags: ["图表大全", "科研绘图", "生信入门", "重测序"]
 
 <!-- more -->
 
-## 一、地图
+## 〇、地图
 
 {% mermaid %}
 flowchart LR
@@ -104,7 +104,7 @@ flowchart LR
 | 拉氏图 | 二面角落不落允许区 | phi | psi | PyMOL |
 | RMSD 曲线 | 分子动力学平衡没平衡 | 模拟时间 | RMSD | VMD/GROMACS |
 
-## 二、群体遗传与 GWAS
+## 一、群体遗传与 GWAS
 
 ### 2.1 曼哈顿图
 
@@ -473,7 +473,7 @@ fig.savefig("47-pi-fst.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 三、比较基因组与基因组学
+## 二、比较基因组与基因组学
 
 ### 3.1 共线性点阵图
 
@@ -768,7 +768,7 @@ fig.savefig("52-genedensity.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 四、基因家族与序列分析
+## 三、基因家族与序列分析
 
 ### 4.1 Motif logo 图
 
@@ -964,7 +964,7 @@ fig.savefig("55-msa.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 五、微生物组与生态
+## 四、微生物组与生态
 
 ### 5.1 PCoA 置信椭圆图
 
@@ -1169,7 +1169,7 @@ fig.savefig("58-abundance.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 六、单细胞补充
+## 五、单细胞补充
 
 ### 6.1 拟时序轨迹图
 
@@ -1329,7 +1329,7 @@ fig.savefig("60-scdotplot.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 七、网络与共表达
+## 六、网络与共表达
 
 ### 7.1 PPI / 共表达网络图
 
@@ -1455,7 +1455,7 @@ fig.savefig("62-moduletrait.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 八、生化与湿实验补充
+## 七、生化与湿实验补充
 
 ### 8.1 剂量响应曲线（IC50）
 
@@ -1684,7 +1684,7 @@ fig.savefig("66-growth.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 九、机器学习与模型评估
+## 八、机器学习与模型评估
 
 ### 9.1 PR 曲线
 
@@ -1922,7 +1922,7 @@ fig.savefig("70-featimp.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 十、育种与数量遗传
+## 九、育种与数量遗传
 
 ### 10.1 品种多性状雷达图
 
@@ -2043,7 +2043,7 @@ fig.savefig("72-gge.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 十一、蛋白结构补充
+## 十、蛋白结构补充
 
 ### 11.1 Ramachandran 拉氏图
 
@@ -2187,7 +2187,7 @@ fig.savefig("74-rmsd.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 十二、写到第二篇为止
+## 十一、写到第二篇为止
 
 上下两篇加起来 74 张图，覆盖了从统计图表到结构模拟的主要出图场景。回头看会发现一个朴素的规律：**图没有新不新，只有回答的问题准不准**。曼哈顿图再花哨，回答的仍是「哪里关联最强」；混淆矩阵再朴素，它是模型改进唯一的路标。写作时先写下这张图要回答的那句话，再决定用什么图，顺序反了就会画出漂亮但没用的图。
 

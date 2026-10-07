@@ -16,7 +16,7 @@ tags: ["图表大全", "科研绘图", "生信入门", "蛋白质"]
 
 <!-- more -->
 
-## 一、地图
+## 〇、地图
 
 {% mermaid %}
 flowchart LR
@@ -93,7 +93,7 @@ flowchart LR
 | 帕累托图 | 主要矛盾是哪几项 | 类目 | 计数+累计% | 手绘 |
 | 3D PCA | 第三轴有无信息 | PC1-3 | 三维散点 | sklearn |
 
-## 二、蛋白与分子互作
+## 一、蛋白与分子互作
 
 ### 2.1 蛋白结构域架构图
 
@@ -645,7 +645,7 @@ fig.savefig("109-subcell.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 三、生化与湿实验曲线
+## 二、生化与湿实验曲线
 
 ### 3.1 Lineweaver-Burk 双倒数图
 
@@ -971,7 +971,7 @@ fig.savefig("114-luciferase.png", dpi=200, bbox_inches="tight")
 ```
 
 </details>
-## 四、微生物与生态
+## 三、微生物与生态
 
 ### 4.1 稀疏化曲线
 
@@ -1421,7 +1421,7 @@ fig.savefig("120-time-kill.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 五、代谢组与宏基因组
+## 四、代谢组与宏基因组
 
 ### 5.1 镜像质谱图
 
@@ -1641,7 +1641,7 @@ fig.savefig("123-blob.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 六、AI 与多组学前沿
+## 五、AI 与多组学前沿
 
 ### 6.1 MOFA 因子图
 
@@ -2092,7 +2092,7 @@ fig.savefig("128-multiomics.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 七、统计与呈现杂图
+## 六、统计与呈现杂图
 
 ### 7.1 漏斗图
 
@@ -2417,7 +2417,7 @@ fig.savefig("133-pca3d.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 八、写在最后：此篇收束，系列续于第五篇
+## 七、写在最后：此篇收束，系列续于第五篇
 
 前四篇合计 **133 张图**：[第一篇](/2026/09/12/2026-09-12-01-bio-plots-01-axes-and-languages/) 41 张打底（统计、转录组、临床）、[第二篇](/2026/09/12/2026-09-12-02-bio-plots-02-population-single-cell/) 33 张进阶（群体遗传、比较基因组、单细胞）、[第三篇](/2026/09/12/2026-09-12-03-bio-plots-03-qc-to-spatial-omics/) 29 张承接（测序 QC、表观、空间组学）、本篇 30 张（蛋白、生化、生态、AI 多组学）。系列未完——[第五篇（40 张，蛋白结构、变异与表达验证）](/2026/09/12/2026-09-12-05-bio-plots-05-protein-structure-validation/)首次成建制引入真实 PDB/AlphaFold 坐标与 4 张浏览器可拖拽的交互 3D，[第六篇（22 张，真实公开数据实战）](/2026/09/12/2026-09-12-08-bio-plots-06-real-public-data/)再用 1001 Genomes 全基因组矩阵把全套推到 195 张。写完这轮最大的体会还是那句朴素的话：**先想清楚这张图要回答的那句话，再挑图型；反过来就会画出漂亮但没用的图**。133 张里没有一张是因为「好看」被选进来的——它们各自回答一个具体问题，图注里的每一个数字都与生成它的数据严格一致，折叠块里的 CSV 和代码让你从这张网页直接复现到自己的终端。
 

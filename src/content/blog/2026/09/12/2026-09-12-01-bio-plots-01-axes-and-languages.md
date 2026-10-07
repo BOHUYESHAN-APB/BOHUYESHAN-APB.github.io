@@ -18,7 +18,7 @@ tags: ["图表大全", "科研绘图", "生信入门", "蛋白质"]
 
 <!-- more -->
 
-## 一、图表地图：先看森林，再看树
+## 〇、图表地图：先看森林，再看树
 
 {% mermaid %}
 flowchart LR
@@ -109,7 +109,7 @@ flowchart LR
 | 级联表达热图 | 表达波沿基因传递 | 时间点 | 基因，颜色=z | pheatmap |
 | 脊线图 | 各簇分布形状对比 | 表达量 | 簇，高度=密度 | ggridges |
 
-## 二、差异表达与数据全景
+## 一、差异表达与数据全景
 
 ### 2.1 火山图（volcano plot）
 
@@ -810,7 +810,7 @@ fig.savefig("11-tpm-dist.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 三、降维与聚类
+## 二、降维与聚类
 
 ### 3.1 PCA 得分图
 
@@ -999,7 +999,7 @@ fig.savefig("14-dendro-heatmap.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 四、富集分析
+## 三、富集分析
 
 ### 4.1 KEGG 富集气泡图
 
@@ -1284,7 +1284,7 @@ fig.savefig("18-gsea.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 五、建模与评估风格图
+## 四、建模与评估风格图
 
 ### 5.1 ROC 曲线
 
@@ -1550,7 +1550,7 @@ fig.savefig("22-forest.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 六、湿实验验证类图
+## 五、湿实验验证类图
 
 ### 6.1 qRT-PCR 相对表达柱状图
 
@@ -2273,7 +2273,7 @@ fig.savefig("33-flow-apop.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 七、数据流转图
+## 六、数据流转图
 
 ### 7.1 桑基图（Sankey diagram）
 
@@ -2351,7 +2351,7 @@ fig.savefig("34-sankey.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 八、基因与蛋白结构专题
+## 七、基因与蛋白结构专题
 
 ### 8.1 蛋白结构锚点与保守残基标注
 
@@ -2836,7 +2836,7 @@ fig.savefig("41-ridgeline.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 九、图注写作法：让审稿人不用猜
+## 八、图注写作法：让审稿人不用猜
 
 前面每张图都给了一句图注示例，这里把套路摊开。一条合格的图注永远是五段式：**图名（WHAT）+ 材料条件（WHO）+ 参数口径（HOW）+ 结论句（SO WHAT）+ 标注说明（①②③）**。
 
@@ -2863,7 +2863,7 @@ fig.savefig("41-ridgeline.png", dpi=200, bbox_inches="tight")
 
 最后是三条硬性自检：坐标轴必须有物理量与单位（TPM、log2FC、循环数、温度 C，不能只有数字）；统计标记必须能追溯到检验方法（星号、误差线类型、n）；每张模拟或拼合示意图必须在图注声明，本文所有图右下角的 Simulated data 水印就是这条纪律的示范。
 
-## 十、写在最后
+## 九、写在最后
 
 41 张图过完一遍，你会发现它们的底层逻辑其实只有四种动作：比较（柱状图、箱线图）、关系（散点、相关热图、弦图）、分布（小提琴、脊线图、流式直方图）和排序（GSEA、火山图、森林图）。拿到一张陌生图，先问它是哪种动作、坐标轴各是什么、颜色编码什么，大部分图不教自会。
 

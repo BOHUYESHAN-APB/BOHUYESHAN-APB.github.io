@@ -16,7 +16,7 @@ tags: ["图表大全", "科研绘图", "生信入门", "重测序"]
 
 <!-- more -->
 
-## 一、地图
+## 〇、地图
 
 {% mermaid %}
 flowchart LR
@@ -91,7 +91,7 @@ flowchart LR
 | LR 气泡图 | 哪对配受体在哪群强 | 靶细胞群 | 气泡=概率颜色=p | CellChat |
 | 空间 spot 图 | 基因在切片哪里表达 | 组织坐标 | spot 颜色=表达 | Seurat/Squidpy |
 
-## 二、测序数据 QC 与比对
+## 一、测序数据 QC 与比对
 
 ### 2.1 逐循环碱基质量箱线图
 
@@ -468,7 +468,7 @@ fig.savefig("79-pileup.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 三、变异与群体遗传
+## 二、变异与群体遗传
 
 ### 3.1 突变频谱图
 
@@ -981,7 +981,7 @@ fig.savefig("86-structure.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 四、GWAS 精细定位
+## 三、GWAS 精细定位
 
 ### 4.1 LocusZoom 风格区域关联图
 
@@ -1211,7 +1211,7 @@ fig.savefig("88-pip.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 五、遗传图谱与育种
+## 四、遗传图谱与育种
 
 ### 5.1 QTL 定位 LOD 曲线
 
@@ -1440,7 +1440,7 @@ fig.savefig("91-ammi.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 六、功能基因组与表观
+## 五、功能基因组与表观
 
 ### 6.1 GO 有向无环图
 
@@ -1937,7 +1937,7 @@ fig.savefig("97-hic.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 七、单细胞与细胞通讯
+## 六、单细胞与细胞通讯
 
 ### 7.1 RNA velocity 相图
 
@@ -2286,7 +2286,7 @@ fig.savefig("103-spatial.png", dpi=200, bbox_inches="tight")
 
 </details>
 
-## 八、写到第三篇为止
+## 七、写到第三篇为止
 
 到这里三篇合计 103 张图，从一张柱状图走到了组织的空间地图。本篇全部脚本在仓库 `tools/bio-plots/ch10a_more.py` 与 `ch10b_more.py`，随机种子固定，跑出来的图与文中一致。最后一块拼图在[第四篇](/2026/09/12/2026-09-12-04-bio-plots-04-ppi-to-multiomics/)：蛋白与分子互作、生化曲线、微生物生态、代谢质谱，以及深度学习归因、蛋白语言模型这些新技术的图。
 
