@@ -45,6 +45,8 @@ tags: [AI for Science, 蛋白质结构, 生信技术]
 
 <div class="pdb3d" data-cfg='{ "pdb": "/media/nobel-chrmine/7w9w.pdb", "bg": "white", "styles": [ { "sel": { }, "style": { "cartoon": { "color": "#9db8d2" } } }, { "sel": { "resn": "RET" }, "style": { "stick": { "colorscheme": "orangeCarbon" } } }, { "sel": { "resn": "CLR" }, "style": { "stick": { "colorscheme": "greyCarbon", "opacity": 0.5 } } } ], "zoom": { "sel": { "resn": "RET" } } }' style="height:420px;border:1px solid #e3e6ea;border-radius:8px;overflow:hidden"></div>
 
+<script src="/js/3dmol-min.js"></script><script src="/js/pdb-viewer.js"></script>
+
 **怎么读**：拖拽旋转，滚轮缩放。初始视角聚焦橙色视黄醛——光开关的锁芯；灰白色棍状物是来自冷冻电镜样品脂质环境的胆固醇。结构之后的工程学：结构指导突变衍生出更快的 ChroME 系列，推进到视网膜色素变性的视力恢复（[Fong et al., Sci Rep 2025](https://www.nature.com/articles/s41598-025-04286-9)）；2026 年改良版 ChReef 登上 Nature Biomedical Engineering。从挖矿到结构到工程，一轮迭代已压缩到两三年。
 
 ## 四、边界：别把支线说成主干
