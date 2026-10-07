@@ -21,7 +21,7 @@ tags: ["图表大全", "群体遗传", "GWAS", "表观遗传", "结构生物学"
 | RNA-seq 覆盖度 | 1001 Genomes [27genomes](https://1001genomes.org/data/1001Gp/27genomes/releases/current/rnaseq/) release | 240 个 bigWig（**不下载**） | pyBigWig 远程范围查询 |
 | ~~甲基化（CG/CHG/CHH）~~ | 同上 [methylation](https://1001genomes.org/data/1001Gp/27genomes/releases/current/methylation/) 目录 | **验真拦截**：抽验 4 个文件 nBasesCovered=0，全部为空壳 | 弃用，改图，见第八章案例 ⑤ |
 | 基因注释 | 各 accession 假基因组 GFF + [Ensembl Plants TAIR10 GFF3](https://ftp.ensemblgenomes.org/pub/plants/release-57/gff3/arabidopsis_thaliana/) | 26 × 2.6 MB + 9.5 MB | 下载解析 |
-| 蛋白结构 | PDB [4LSX](https://www.rcsb.org/structure/4LSX)（BRI1–SERK1 共受体复合物） | 2.35 MB | 下载解析（[本站镜像](/old/lib/pdb/4LSX.pdb)） |
+| 蛋白结构 | PDB [4LSX](https://www.rcsb.org/structure/4LSX)（BRI1–SERK1 共受体复合物） | 2.35 MB | 下载解析（[站内镜像](/old/lib/pdb/4LSX.pdb)） |
 
 三个工程决定值得单独说：
 
@@ -685,15 +685,15 @@ for c, col in CCOL.items():
 
 ## 五、真实结构：BRI1–SERK1 复合物（188-191）
 
-**数据**：真实 —— PDB [4LSX](https://www.rcsb.org/structure/4LSX)（[下载](https://files.rcsb.org/download/4LSX.pdb) · [本站镜像](/old/lib/pdb/4LSX.pdb)）：拟南芥受体激酶 BRI1（胞外 LRR 富含区，链 A/B）与共受体 SERK1（链 C/D，BAK1 的同家族成员）各两份拷贝，共晶出两个异源二聚体，另带油菜素内酯配体（BLD）与糖链（NAG/MAN/BMA）。非对称单元里 A+C 与 B+D 各为一个生理复合物，本章取 A+C 分析。水印「Real structure data: PDB 4LSX」。
+**数据**：真实 —— PDB [4LSX](https://www.rcsb.org/structure/4LSX)（[下载](https://files.rcsb.org/download/4LSX.pdb) · [站内镜像](/old/lib/pdb/4LSX.pdb)）：拟南芥受体激酶 BRI1（胞外 LRR 富含区，链 A/B）与共受体 SERK1（链 C/D，BAK1 的同家族成员）各两份拷贝，共晶出两个异源二聚体，另带油菜素内酯配体（BLD）与糖链（NAG/MAN/BMA）。非对称单元里 A+C 与 B+D 各为一个生理复合物，本章取 A+C 分析。水印「Real structure data: PDB 4LSX」。
 
 ### 图 188 3D 交互查看：自己转一个真实受体复合物
 
 **它回答什么问题**：第五篇交互章节加载的是单链蛋白加抑制剂；这次上强度——**两条受体链 + 油菜素内酯配体 + 糖链**的真实激素感知复合物。BRI1 怎么"握住"共受体、激素口袋在哪，拖一圈比读十段文字清楚。
 
-**怎么读**：默认整体 cartoon（BRI1 蓝灰、SERK1 暖色），BLD 以棍棒模型橙色标出，视角自动对准配体口袋。点击「播放」加载（本站 3D 查看器同一时刻只保留一个活动 WebGL 上下文，切换时旧画布会被主动释放——上一部已经把性能调好了）。找三样东西：LRR 旋梯、C 端的 island（界面所在，图 189-191 都围绕它）、口袋里的 BLD。
+**怎么读**：默认整体 cartoon（BRI1 蓝灰、SERK1 暖色），BLD 以棍棒模型橙色标出，视角自动对准配体口袋。点击「播放」加载（站内 3D 查看器同一时刻只保留一个活动 WebGL 上下文，切换时旧画布会被主动释放——上一部已经把性能调好了）。找三样东西：LRR 旋梯、C 端的 island（界面所在，图 189-191 都围绕它）、口袋里的 BLD。
 
-**用什么画**：本站自托管 3Dmol.js 2.4.0 + `/js/pdb-viewer.js` 封装；一个 `div.pdb3d` 加一段 JSON 配置（懒加载、单实例、出错恢复按钮），见折叠块。
+**用什么画**：站内自托管 3Dmol.js 2.4.0 + `/js/pdb-viewer.js` 封装；一个 `div.pdb3d` 加一段 JSON 配置（懒加载、单实例、出错恢复按钮），见折叠块。
 
 <div class="pdb3d" data-cfg='{ "pdb": "/old/lib/pdb/4LSX.pdb", "bg": "white", "styles": [ { "sel": { "chain": "A" }, "style": { "cartoon": { "color": "#7fa8d0" } } }, { "sel": { "chain": "C" }, "style": { "cartoon": { "color": "#e8a87c" } } }, { "sel": { "resn": "BLD" }, "style": { "stick": { "colorscheme": "orangeCarbon" } } }, { "sel": { "resn": "NAG" }, "style": { "stick": { "colorscheme": "greenCarbon", "opacity": 0.6 } } } ], "zoom": { "sel": { "resn": "BLD" } } }' style="height:440px;border:1px solid #e3e6ea;border-radius:8px;overflow:hidden"></div>
 
@@ -1030,7 +1030,7 @@ ax.plot([0, lim], [0, lim], "k--", lw=1)
 
 这篇的全部绘制跑在什么环境？交代清楚：**Windows 工作站 + WSL2**。317 MB 的矩阵下载、h5py 分块扫描、60 个 bigWig 的并行远程查询、matplotlib 渲染，全部在 WSL2 里的 Python venv（numpy / scipy / matplotlib / h5py / pyBigWig）完成，Windows 侧只负责浏览器和文章本身。WSL 的角色分工我们在 Bio SDK 系列里写过：**Debian 守兼容存量，Arch 做增量**——本篇的 venv 就搭在 WSL 的 Arch 侧。
 
-顺带说清一个选型：**这套流程没有任何一步依赖 Windows**。所有脚本 `wsl.exe` 里那行 `python -B xxx.py` 换成任何原生 Linux 终端直接执行都成立——包括我们自己维护的 **[Linxira](https://github.com/Linxira-OS)**：一个 Arch 系、面向科学计算工作站的发行版，本站服务器端工具链的测试基座之一就是它。它把"Agent 无执行把手"当作设计原则（系统自带的 Welcome 面板只读、包事务必须过 Package Center 目录审查），滚动内核 + 发行版包管理器装驱动/CUDA 的思路，之前[底座之争](/2026/08/05/2026-08-05-01-bio-workstation-kernel-rolling-vs-lts/)那篇展开过。一句话：**画真实数据图的门槛不在操作系统，在数据工程；选哪个 Linux 只决定你重新装环境的频率。**
+顺带说清一个选型：**这套流程没有任何一步依赖 Windows**。所有脚本 `wsl.exe` 里那行 `python -B xxx.py` 换成任何原生 Linux 终端直接执行都成立——包括我们自己维护的 **[Linxira](https://github.com/Linxira-OS)**：一个 Arch 系、面向科学计算工作站的发行版，服务器端工具链的测试基座之一就是它。它把"Agent 无执行把手"当作设计原则（系统自带的 Welcome 面板只读、包事务必须过 Package Center 目录审查），滚动内核 + 发行版包管理器装驱动/CUDA 的思路，之前[底座之争](/2026/08/05/2026-08-05-01-bio-workstation-kernel-rolling-vs-lts/)那篇展开过。一句话：**画真实数据图的门槛不在操作系统，在数据工程；选哪个 Linux 只决定你重新装环境的频率。**
 
 如果你想要一条命令把这些图型的**交互版**跑在自己机器上（模拟数据教学版 + 真实数据 schema 双轨），我们组织的 [Linxira Bio SDK](https://github.com/Linxira-OS/linxira-bio-sdk)（[产品页](https://linxira-os.github.io/bio-sdk/zh/)）就是为此搭的本地工具链：JSON 任务进、图表 PNG 出，Windows / Debian / Arch（含 WSL）可用。
 
@@ -1047,7 +1047,7 @@ ax.plot([0, lim], [0, lim], "k--", lw=1)
 - 表型：[AraPheno GT292](https://arapheno.1001genomes.org/phenotype/292/)（4 天根长）
 - 表达与注释：[27genomes release](https://1001genomes.org/data/1001Gp/27genomes/releases/current/)（RNA-seq bigWig 远程查询 + 各 accession 假基因组 GFF；methylation/ 目录经验真为空壳，未使用）
 - 基因坐标（TAIR10）：[Ensembl Plants release 57](https://ftp.ensemblgenomes.org/pub/plants/release-57/gff3/arabidopsis_thaliana/)
-- 结构：[PDB 4LSX](https://www.rcsb.org/structure/4LSX)（[本站镜像](/old/lib/pdb/4LSX.pdb)）
+- 结构：[PDB 4LSX](https://www.rcsb.org/structure/4LSX)（[站内镜像](/old/lib/pdb/4LSX.pdb)）
 - 数据使用与引用口径以各数据库官方说明为准（1001 Genomes 数据的使用条款见其 [disclaimer](https://1001genomes.org/disclaimer/) 页）。
 
 ## 参考文献

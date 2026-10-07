@@ -62,7 +62,7 @@ DiffusionGemma 不是把 AR 模型「改成」扩散那么玄乎，它的推理�
 
 **扩散模型必须整段定稿。** 一块画布在去噪过程中，所有位置同时变化：这一刻函数名是对的，下一刻可能被重写；参数段的「猜测值」先浮现了，闭标记还悬着。想安全触发一次工具调用，你必须保证**两头标记和中间内容全部收敛定稿**——而并行去噪恰恰不保证任何局部先收敛。
 
-下面这个交互演示把三种典型事故拆开了，拖动进度条逐步看（页面由 DeepSeek 生成，完全本地运行，本站自托管）：
+下面这个交互演示把三种典型事故拆开了，拖动进度条逐步看（页面由 DeepSeek 生成，完全本地运行，站内自托管）：
 
 <iframe src="/embed/tool-call-compare.html" style="width:100%;height:760px;border:1px solid rgba(128,128,128,.25);border-radius:8px" loading="lazy"></iframe>
 
@@ -119,7 +119,7 @@ DiffusionGemma 不是把 AR 模型「改成」扩散那么玄乎，它的推理�
 
 所以当下扩散语言模型的核心矛盾可以一句话说完：**工具调用是最强的需求，却是扩散最弱的项。** 谁先补上块级定稿协议、让 agent 框架的循环从「流式」迁移到「画布」，谁就打开了扩散 agent 的大门——在那之前，四倍速只属于不需要工具的场景：行内编辑、代码填空、Sudoku 这类全局约束问题。
 
-至于我那个 10M 的小玩具，它赢不了任何 benchmark。它的意义是把这条边界亲手踩一遍：设计笔记写在前面了，训完之后，掉分的形状对不对得上，我在本站交卷。
+至于我那个 10M 的小玩具，它赢不了任何 benchmark。它的意义是把这条边界亲手踩一遍：设计笔记写在前面了，训完之后，掉分的形状对不对得上，后面另文交卷。
 
 ## 数据口径
 
@@ -127,6 +127,6 @@ DiffusionGemma 不是把 AR 模型「改成」扩散那么玄乎，它的推理�
 - 全部跑分数字：[HuggingFace 模型卡](https://huggingface.co/google/diffusiongemma-26B-A4B-it)（与 ai.google.dev 模型卡同源），表中数字原样转录，未做换算；国内镜像入口见 [ModelScope Gemma-4 合集](https://www.modelscope.cn/collections/google/Gemma-4)
 - 「快 4 倍、错 6 倍」：Reddit r/LocalLLaMA 社区实测帖（2026-06-12，单卡 H100 FP8，agent 任务对比）口径，非官方数据
 - Tau2 为 agent 工具调用基准；MRCR 为多锚点长上下文检索基准；HLE（Humanity's Last Exam）no tools 一项为扩散版唯一反超项
-- 工具调用交互演示页：DeepSeek 生成，本地自包含 HTML，本站自托管于 `/embed/tool-call-compare.html`
-- BLRH 项目（本站作者私有仓库，**按实际代码口径**）：`src/blrh_llm/model/blrh_v1.py` 已实现 BioCircuitBlock（共享块 T_max 次迭代 + 自适应停止、果蝇蘑菇体式稀疏隐层扩张 + TopK、Hebbian 门控，MindSpore），以自回归目标在 OpenI - 启智AI开源社区（[openi.pcl.ac.cn/bhys](https://openi.pcl.ac.cn/bhys)，官方定位「提供普惠算力」）的昇腾卡上训练（910/910B，24G–48G 档，config 如 d_model 384、t_max 10、vocab 12000）；扩散层（mask-恢复目标、去噪采样、ReMix 拒绝）**未编码**，v2 分支未创建；OpenI 项目/数据集名为 DLLM/DLLM1，其上当前运行为 AR 训练。额度后期收紧、训练线暂停；「昇腾生态与算子适配痛苦」为作者一手使用体感
+- 工具调用交互演示页：DeepSeek 生成，本地自包含 HTML，站内自托管于 `/embed/tool-call-compare.html`
+- BLRH 项目（作者私有仓库，**按实际代码口径**）：`src/blrh_llm/model/blrh_v1.py` 已实现 BioCircuitBlock（共享块 T_max 次迭代 + 自适应停止、果蝇蘑菇体式稀疏隐层扩张 + TopK、Hebbian 门控，MindSpore），以自回归目标在 OpenI - 启智AI开源社区（[openi.pcl.ac.cn/bhys](https://openi.pcl.ac.cn/bhys)，官方定位「提供普惠算力」）的昇腾卡上训练（910/910B，24G–48G 档，config 如 d_model 384、t_max 10、vocab 12000）；扩散层（mask-恢复目标、去噪采样、ReMix 拒绝）**未编码**，v2 分支未创建；OpenI 项目/数据集名为 DLLM/DLLM1，其上当前运行为 AR 训练。额度后期收紧、训练线暂停；「昇腾生态与算子适配痛苦」为作者一手使用体感
 - 「主流框架按流式 AR 假设设计」「协议层缺块级确认」为本文判断，非引述

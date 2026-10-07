@@ -72,6 +72,6 @@ tags: [AI for Science, 蛋白质结构, 生信技术]
 - [Marshel et al., Science 2019](https://pubmed.ncbi.nlm.nih.gov/31320556)：ChRmine 首秀、小集群刺激引发感知
 - [Abdelfattah et al., Science 2019](https://pubmed.ncbi.nlm.nih.gov/31371562/)：Voltron 化学遗传电压指示器；[Voltron2, Cell 2023](https://www.sciencedirect.com/science/article/pii/S0896627323002052)
 - [All-optical 协议, Nat Protoc 2022](https://pubmed.ncbi.nlm.nih.gov/35478249/)；[深度学习神经解码综述, Brief Bioinform 2021](https://academic.oup.com/bib/article/22/2/1577/6054827)；[人源神经元全光电生理开源管线, Adv Sci 2026](https://pubmed.ncbi.nlm.nih.gov/41801223)
-- Deisseroth Lab [工具页](https://dlab.stanford.edu/resources/optogenetics/sequence-info)：ChRmine 定义；[Cell 2022 结构](https://www.cell.com/cell/fulltext/S0092-8674(22)00031-9)、PDB [7W9W](https://www.rcsb.org/structure/7W9W)（[下载](https://files.rcsb.org/download/7W9W.pdb) · [本站镜像](/media/nobel-chrmine/7w9w.pdb)）；[Fong et al., Sci Rep 2025](https://www.nature.com/articles/s41598-025-04286-9)
+- Deisseroth Lab [工具页](https://dlab.stanford.edu/resources/optogenetics/sequence-info)：ChRmine 定义；[Cell 2022 结构](https://www.cell.com/cell/fulltext/S0092-8674(22)00031-9)、PDB [7W9W](https://www.rcsb.org/structure/7W9W)（[下载](https://files.rcsb.org/download/7W9W.pdb) · [站内镜像](/media/nobel-chrmine/7w9w.pdb)）；[Fong et al., Sci Rep 2025](https://www.nature.com/articles/s41598-025-04286-9)
 - 未核到：ChReef 具体性能指标（仅见检索摘要）；7W9W 镜像为 RCSB 原样下载
 - [2026 化学奖官方摘要](https://www.nobelprize.org/prizes/chemistry/2026/summary/)：Kagan 与 Soai，不对称有机合成中的非线性效应与自催化（〇 节事实来源）

@@ -8,7 +8,7 @@ tags: ["图表大全", "科研绘图", "蛋白质", "蛋白质结构"]
 
 [第四篇](/2026/09/12/2026-09-12-04-bio-plots-04-ppi-to-multiomics/)收在 AI 多组学，但「结构 → 变异 → 表达」这条主线还欠一整篇：拿到一个点突变，怎么把它标到三维结构上？口袋是松了还是紧了？预测完之后，qPCR 和半定量 RT-PCR 怎么把结论落成柱状图和凝胶？这篇 40 张图（编号 134-173）专门铺满三件事：**蛋白结构的各种画法（含 4 张浏览器里点按加载、直接拖拽的交互 3D）**、**从预测质量到口袋功能的结构分析图**、**qPCR / 半定量 / 基因型差异的表达验证图**。
 
-从这篇起，系列第一次大规模使用**真实实验数据**。16 张真实图基于四套公开坐标：PDB [6A15](https://www.rcsb.org/structure/6A15)（拟南芥油菜素甾醇合成酶 CYP90B1/DWF4 与胆固醇、血红素共晶，链 A 共 439 个解析残基）、PDB [1BI5](https://www.rcsb.org/structure/1BI5) / [1I89](https://www.rcsb.org/structure/1I89)（苜蓿查尔酮合酶野生型与 G256L 突变体）、[AlphaFold DB](https://alphafold.ebi.ac.uk/entry/O64989) 的 DWF4 预测模型（O64989，全局 pLDDT 89.75）、PDB [5ZD4](https://www.rcsb.org/structure/5ZD4)（BIL1/BZR1 转录因子 DNA 结合域-DNA 复合物）。**每张图配图下面第一行就是「数据」标签**：真实图写明入口号、原始文件下载链接与本站镜像路径，图右下水印为「Real structure data: PDB …」；模拟图水印为「Simulated data, for teaching only」。全篇 16 张真实 + 24 张模拟，一张不混，速查表里再对一遍总账。
+从这篇起，系列第一次大规模使用**真实实验数据**。16 张真实图基于四套公开坐标：PDB [6A15](https://www.rcsb.org/structure/6A15)（拟南芥油菜素甾醇合成酶 CYP90B1/DWF4 与胆固醇、血红素共晶，链 A 共 439 个解析残基）、PDB [1BI5](https://www.rcsb.org/structure/1BI5) / [1I89](https://www.rcsb.org/structure/1I89)（苜蓿查尔酮合酶野生型与 G256L 突变体）、[AlphaFold DB](https://alphafold.ebi.ac.uk/entry/O64989) 的 DWF4 预测模型（O64989，全局 pLDDT 89.75）、PDB [5ZD4](https://www.rcsb.org/structure/5ZD4)（BIL1/BZR1 转录因子 DNA 结合域-DNA 复合物）。**每张图配图下面第一行就是「数据」标签**：真实图写明入口号、原始文件下载链接与站内镜像路径，图右下水印为「Real structure data: PDB …」；模拟图水印为「Simulated data, for teaching only」。全篇 16 张真实 + 24 张模拟，一张不混，速查表里再对一遍总账。
 
 每张图固定四段：它回答什么问题、怎么读（横轴纵轴阈值参数）、用什么画、图注怎么写。每张图下面有默认折叠的「展开查看」块，里面是**画这张图的那组数据的原样 CSV** 和**可直接运行的绘图代码**——真实结构图的折叠块里给的代码吃的是 PDB 坐标文件（下载链接就在代码第一行注释里），模拟图吃的是 CSV，替换成自己的数据就能跑。管线思路仍见[群体重测序学习地图](/2026/09/10/2026-09-10-01-population-resequencing-fastq-to-selection/)。
 
@@ -109,7 +109,7 @@ flowchart LR
 
 ![C-alpha 迹线](/old/img/bio-plots/134-ca-trace.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载 PDB 文件](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），图右下水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载 PDB 文件](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），图右下水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：这个蛋白整体长什么样——是紧凑球状还是拖条长尾，N 端 C 端各在哪，折叠够不够"拧"。结构文章的第一张图和组会第一页常就是它。
 
@@ -179,7 +179,7 @@ fig.savefig("134-ca-trace.png", dpi=200, bbox_inches="tight")
 
 ![线框图](/old/img/bio-plots/135-wireframe.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：蛋白的化学细节长什么样——侧链朝哪、二硫键/配位键在哪、原子密度多大。当你要讨论"某个侧链够不够得着配体"时，先看线框。
 
@@ -243,7 +243,7 @@ fig.savefig("135-wireframe.png", dpi=200, bbox_inches="tight")
 
 ![口袋棍棒图](/old/img/bio-plots/136-pocket-stick.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：配体周围到底是谁在搭口袋——距离口袋几埃、什么化学性质、哪个残基贴得最近。"底物通道由芳香/疏水残基构成"这类结论句，必须靠这张图支撑。
 
@@ -318,7 +318,7 @@ print("nearest:", sorted(pocket, key=lambda t: t[2])[:3])
 
 ![球状模型](/old/img/bio-plots/137-spacefill.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：蛋白表面长什么样、配体从外面还看得见吗——空间填充（CPK 球）模型回答"埋没程度"。做分子对接、讨论底物进入通道时，这是最直观的一张。
 
@@ -367,7 +367,7 @@ fig.savefig("137-spacefill.png", dpi=200, bbox_inches="tight")
 
 ![缎带](/old/img/bio-plots/138-ribbon.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：出版物的"定妆照"——缎带图是综述、教材、封面里出现频率最高的蛋白表示法，一眼看出螺旋束、片层堆叠和整体拓扑。
 
@@ -418,7 +418,7 @@ fig.savefig("138-ribbon.png", dpi=200, bbox_inches="tight")
 
 ## 二、浏览器里拖得动的 3D：3Dmol.js（139-142）
 
-静态截图看单帧，交互 3D 看关系。本站把 [3Dmol.js](https://3dmol.csb.pitt.edu/)（BSD 协议的 WebGL 分子查看器）与四套 PDB 坐标全部自托管在仓库里（`/js/` 与 `/lib/pdb/`），**渲染不发任何第三方请求**。为了不让一页背着 5 个 WebGL 上下文，**每个视图都是先点「▶ 点击加载 3D 视图」按钮才真正渲染，且同一时间全页只保留一个：打开新的会自动关闭上一个**（旧视图的 WebGL 上下文被释放、容器恢复成按钮，随时可以再点开）。加载后**左键拖动旋转、滚轮缩放、右键平移**（手机端单指旋转、双指缩放）。四张图全部加载真实坐标。
+静态截图看单帧，交互 3D 看关系。这里把 [3Dmol.js](https://3dmol.csb.pitt.edu/)（BSD 协议的 WebGL 分子查看器）与四套 PDB 坐标全部自托管在仓库里（`/js/` 与 `/lib/pdb/`），**渲染不发任何第三方请求**。为了不让一页背着 5 个 WebGL 上下文，**每个视图都是先点「▶ 点击加载 3D 视图」按钮才真正渲染，且同一时间全页只保留一个：打开新的会自动关闭上一个**（旧视图的 WebGL 上下文被释放、容器恢复成按钮，随时可以再点开）。加载后**左键拖动旋转、滚轮缩放、右键平移**（手机端单指旋转、双指缩放）。四张图全部加载真实坐标。
 
 ### 3.1 交互 cartoon：全酶 + 配体（139）
 
@@ -427,20 +427,20 @@ fig.savefig("138-ribbon.png", dpi=200, bbox_inches="tight")
 
 <div class="pdb3d" data-cfg='{ "pdb": "/old/lib/pdb/6a15.pdb", "bg": "white", "styles": [ { "sel": { }, "style": { "cartoon": { "color": "#b9c6d4" } } }, { "sel": { "resn": "HEM" }, "style": { "stick": { "colorscheme": "redCarbon" } } }, { "sel": { "resn": "CLR" }, "style": { "stick": { "colorscheme": "orangeCarbon" } } } ], "zoom": { "sel": { "resn": "CLR" } } }' style="height:420px;border:1px solid #e3e6ea;border-radius:8px;overflow:hidden"></div>
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)，交互视图直接加载镜像）。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)，交互视图直接加载镜像）。
 
 **它回答什么问题**：口袋在整体折叠中的位置——灰 cartoon 是全酶，红棍是血红素，橙棍是胆固醇；初始视角直接zoom 到胆固醇，转一转就能看到它坐在螺旋篮的芯里，血红素在它斜下方。
 
 **怎么读**：cartoon 把二级结构画成弹簧（螺旋）与箭头（片层），是信息/噪声比最高的表示。交互的价值在于"自问自答"：胆固醇离血红素铁多远？口袋有没有朝溶剂的开口？拖两下就有答案，这是截图给不了的。
 
-**用什么画**：本站 `/js/pdb-viewer.js`（约 60 行的安全封装）+ 自托管 3Dmol 2.4.0；每个视图就是一个 `div.pdb3d` 加一段 JSON 配置，见折叠块。
+**用什么画**：站内 `/js/pdb-viewer.js`（约 60 行的安全封装）+ 自托管 3Dmol 2.4.0；每个视图就是一个 `div.pdb3d` 加一段 JSON 配置，见折叠块。
 
 **图注示例**：
 
 > 图 139 CYP90B1 全酶 cartoon 与双配体交互视图（真实数据，PDB 6A15）。灰 cartoon 为蛋白链 A；红棍为血红素（HEM 601），橙棍为胆固醇（CLR 602）；初始视角聚焦胆固醇口袋，可拖拽旋转、缩放。
 
 <details>
-<summary>展开查看：本站 3D 视图的嵌入代码</summary>
+<summary>展开查看：站内 3D 视图的嵌入代码</summary>
 
 
 ```html
@@ -461,7 +461,7 @@ fig.savefig("138-ribbon.png", dpi=200, bbox_inches="tight")
 }' style="height:420px"></div>
 ```
 
-配置字段：`pdb` 只允许本站相对路径（查看器会拒绝 `..` 与绝对 URL，不发第三方请求）；`styles` 数组依次 addStyle，后写的规则覆盖先写的；`zoom.sel` 控制初始聚焦。自托管 PDB 文件放在 `/lib/pdb/`。
+配置字段：`pdb` 只允许站内相对路径（查看器会拒绝 `..` 与绝对 URL，不发第三方请求）；`styles` 数组依次 addStyle，后写的规则覆盖先写的；`zoom.sel` 控制初始聚焦。自托管 PDB 文件放在 `/lib/pdb/`。
 
 </details>
 
@@ -471,13 +471,13 @@ fig.savefig("138-ribbon.png", dpi=200, bbox_inches="tight")
 
 <div class="pdb3d" data-cfg='{ "pdb": "/old/lib/pdb/1i89.pdb", "bg": "white", "styles": [ { "sel": { }, "style": { "cartoon": { "color": "#d99696" } } }, { "sel": { "resi": 256 }, "style": { "sphere": { "color": "#e05252" } } } ], "zoom": { "sel": { "resi": 256 } } }' style="height:400px;border:1px solid #e3e6ea;border-radius:8px;overflow:hidden"></div>
 
-**数据**：真实 —— PDB [1BI5](https://www.rcsb.org/structure/1BI5)（苜蓿查尔酮合酶 CHS 野生型，[下载](https://files.rcsb.org/download/1BI5.pdb) · [本站镜像](/old/lib/pdb/1bi5.pdb)，上视图）与 PDB [1I89](https://www.rcsb.org/structure/1I89)（G256L 突变体，[下载](https://files.rcsb.org/download/1I89.pdb) · [本站镜像](/old/lib/pdb/1i89.pdb)，下视图）；两图初始都聚焦红球标出的 256 位残基。
+**数据**：真实 —— PDB [1BI5](https://www.rcsb.org/structure/1BI5)（苜蓿查尔酮合酶 CHS 野生型，[下载](https://files.rcsb.org/download/1BI5.pdb) · [站内镜像](/old/lib/pdb/1bi5.pdb)，上视图）与 PDB [1I89](https://www.rcsb.org/structure/1I89)（G256L 突变体，[下载](https://files.rcsb.org/download/1I89.pdb) · [站内镜像](/old/lib/pdb/1i89.pdb)，下视图）；两图初始都聚焦红球标出的 256 位残基。
 
 **它回答什么问题**："一个点突变把口袋撑松/挤紧"到底长什么样——G256 是 CHS 底物通道口的小氨基酸，换成大侧链亮氨酸（L）会占据底物进入通道。这是第四篇 EMSA 之外、结构侧最有说服力的真实案例。
 
 **怎么读**：上（蓝）野生型：256 号红球处通道敞开；下（红）突变体：同一位置的甘氨酸换成亮氨酸后体积堵住通道口。两个视图都是初始 zoom 到 256 位，旋转对比口袋开合。**别用肉眼下定量结论**——定量版是图 145 的叠合与图 151 的口袋体积。
 
-**用什么画**：同 139 的本站查看器，两个 div 各指向一个 PDB 镜像；`{ "resi": 256 }` 选中残基画球。
+**用什么画**：同 139 的站内查看器，两个 div 各指向一个 PDB 镜像；`{ "resi": 256 }` 选中残基画球。
 
 **图注示例**：
 
@@ -509,13 +509,13 @@ fig.savefig("138-ribbon.png", dpi=200, bbox_inches="tight")
 
 <div class="pdb3d" data-cfg='{ "pdb": "/old/lib/pdb/af-o64989.pdb", "bg": "white", "styles": [ { "sel": { }, "style": { "cartoon": { "colorscheme": { "prop": "b", "gradient": "rwb", "min": 50, "max": 100 } } } } ] }' style="height:420px;border:1px solid #e3e6ea;border-radius:8px;overflow:hidden"></div>
 
-**数据**：真实 —— [AlphaFold DB 入口 O64989](https://alphafold.ebi.ac.uk/entry/O64989)（拟南芥 DWF4/CYP90B1 预测模型，[模型文件](https://alphafold.ebi.ac.uk/files/AF-O64989-F1-model_v6.pdb) · [本站镜像](/old/lib/pdb/af-o64989.pdb)），全局平均 pLDDT 89.75。
+**数据**：真实 —— [AlphaFold DB 入口 O64989](https://alphafold.ebi.ac.uk/entry/O64989)（拟南芥 DWF4/CYP90B1 预测模型，[模型文件](https://alphafold.ebi.ac.uk/files/AF-O64989-F1-model_v6.pdb) · [站内镜像](/old/lib/pdb/af-o64989.pdb)），全局平均 pLDDT 89.75。
 
 **它回答什么问题**：预测模型能不能用、哪一段不能用——第四篇图 105 讲过 pLDDT 曲线（模拟），这张直接把 pLDDT 画在真实 AF 模型的 3D 骨架上，蓝=可信、红=不可信，一眼看到低置信段都摊在表面环上。
 
 **怎么读**：AlphaFold PDB 文件的 B-factor 列存的就是 pLDDT，配色 `rwb` 渐变区间 50-100：**蓝（>90）原子级可信、白（70-90）骨架可信、红（<50-60）当无序环处理**。DWF4 模型整体偏蓝（均值 89.75），N 端膜锚定段与若干长环发红——它们不参与结构解读，但正是柔性/互作信号所在。
 
-**用什么画**：本站查看器 + 3Dmol 的按属性着色：`"colorscheme": { "prop": "b", "gradient": "rwb", "min": 50, "max": 100 }`。
+**用什么画**：站内查看器 + 3Dmol 的按属性着色：`"colorscheme": { "prop": "b", "gradient": "rwb", "min": 50, "max": 100 }`。
 
 **图注示例**：
 
@@ -542,13 +542,13 @@ AlphaFold 模型文件（`AF-<UniProt>-F1-model_v*.pdb`）的 B-factor 列存 pL
 
 <div class="pdb3d" data-cfg='{ "pdb": "/old/lib/pdb/5zd4.pdb", "bg": "white", "styles": [ { "sel": { "chain": "A" }, "style": { "cartoon": { "color": "#d8d8d8" } } }, { "sel": { "chain": "B" }, "style": { "cartoon": { "color": "#d8d8d8" } } }, { "sel": { "chain": "C" }, "style": { "cartoon": { "color": "#d8d8d8" } } }, { "sel": { "chain": "D" }, "style": { "cartoon": { "color": "#d8d8d8" } } }, { "sel": "A:1-88", "style": { "cartoon": { "color": "#e0a13f" } } }, { "sel": "B:1-88", "style": { "cartoon": { "color": "#e0a13f" } } }, { "sel": "C:1-88", "style": { "cartoon": { "color": "#e0a13f" } } }, { "sel": "D:1-88", "style": { "cartoon": { "color": "#e0a13f" } } }, { "sel": { "chain": "E" }, "style": { "stick": { "colorscheme": "cyanCarbon" } } }, { "sel": { "chain": "F" }, "style": { "stick": { "colorscheme": "cyanCarbon" } } }, { "sel": { "chain": "G" }, "style": { "stick": { "colorscheme": "cyanCarbon" } } }, { "sel": { "chain": "H" }, "style": { "stick": { "colorscheme": "cyanCarbon" } } } ], "zoom": { "sel": { "chain": "E" } } }' style="height:420px;border:1px solid #e3e6ea;border-radius:8px;overflow:hidden"></div>
 
-**数据**：真实 —— PDB [5ZD4](https://www.rcsb.org/structure/5ZD4)（BIL1/BZR1 DNA 结合域与 E-box 序列 DNA 的复合物，[下载](https://files.rcsb.org/download/5ZD4.pdb) · [本站镜像](/old/lib/pdb/5zd4.pdb)）。
+**数据**：真实 —— PDB [5ZD4](https://www.rcsb.org/structure/5ZD4)（BIL1/BZR1 DNA 结合域与 E-box 序列 DNA 的复合物，[下载](https://files.rcsb.org/download/5ZD4.pdb) · [站内镜像](/old/lib/pdb/5zd4.pdb)）。
 
 **它回答什么问题**：第四篇的 EMSA（图 108）证明"结合"，双荧光素酶（图 114）证明"激活"，这张回答最后一步：**转录因子在原子层面怎么抓住 DNA**——BZR1 的 bHLH 结合域（橙色）插进 DNA 大沟。
 
 **怎么读**：灰色长条是结晶用的 MBP 融合标签（残基编号是**负数** -367 到 0，这是融合蛋白晶体的常见做法，读结构时先把它们认出来剔除）；橙色 1-88 才是 BZR1 DNA 结合域；青色棍是两条 15 bp DNA。初始视角 zoom 到 DNA，四个复合物拷贝在晶胞里。把橙色螺旋转到 DNA 大沟里，就是 EMSA 那条迁移带的全部分子基础。
 
-**用什么画**：本站查看器；用 `"A:1-88"` 这样的字符串选区避开负编号的 MBP 段，DNA 链按链名 E-H 选。
+**用什么画**：站内查看器；用 `"A:1-88"` 这样的字符串选区避开负编号的 MBP 段，DNA 链按链名 E-H 选。
 
 **图注示例**：
 
@@ -651,7 +651,7 @@ fig.savefig("143-pae-map.png", dpi=200, bbox_inches="tight")
 
 ![接触图](/old/img/bio-plots/144-contact-map.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：蛋白的折叠拓扑——哪些远程序列片段在空间里贴在一起。接触图还是结构预测评测的"对答案"工具：预测结构与晶体结构的接触图几乎一样，折叠就对了。
 
@@ -1058,7 +1058,7 @@ fig.savefig("149-ss-track.png", dpi=200, bbox_inches="tight")
 
 ![口袋定位](/old/img/bio-plots/150-pocket-map.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：口袋在蛋白全局的哪个位置——136 是钻进口袋里看，这张退出来看全局：灰轨迹是全酶骨架，红点是 23 个口袋残基，橙/紫大球是胆固醇与血红素。
 
@@ -1414,7 +1414,7 @@ fig.savefig("154-interface-contacts.png", dpi=200, bbox_inches="tight")
 
 ![SASA](/old/img/bio-plots/155-sasa.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），Shrake-Rupley 算法计算；水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），Shrake-Rupley 算法计算；水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：每个残基暴露多少在水里——埋没核心、表面环、配体封舱，一个数说清。图 137 的"胆固醇几乎看不见"在这里定量兑现。
 
@@ -1989,7 +1989,7 @@ fig.savefig("163-expr-pheno.png", dpi=200, bbox_inches="tight")
 
 ![拉氏图](/old/img/bio-plots/164-ramachandran.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），φ/ψ 由骨架 N-CA-C 原子直接算出；水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），φ/ψ 由骨架 N-CA-C 原子直接算出；水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：蛋白主链二面角组合合不合理——结构验证的第一张图，投稿结构论文或用 AlphaFold 模型前的例行体检。
 
@@ -2041,7 +2041,7 @@ fig.savefig("164-ramachandran.png", dpi=200, bbox_inches="tight")
 
 ![B 因子](/old/img/bio-plots/165-bfactor.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)），取每个残基全部原子的 B 列均值；水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)），取每个残基全部原子的 B 列均值；水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：晶体里哪段最"晃"——B 因子是实验测到的柔性/无序代理，和 AlphaFold 的 pLDDT（图 141）互为印证：一个来自 X 射线衍射，一个来自深度学习，说的都是同一件事的两面。
 
@@ -2091,7 +2091,7 @@ k = np.convolve(b, np.ones(9) / 9, "same")
 
 ![接触数](/old/img/bio-plots/166-contact-number.png)
 
-**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [本站镜像](/old/lib/pdb/6a15.pdb)）；水印「Real structure data: PDB 6A15」。
+**数据**：真实 —— PDB [6A15](https://www.rcsb.org/structure/6A15)（[下载](https://files.rcsb.org/download/6A15.pdb) · [站内镜像](/old/lib/pdb/6a15.pdb)）；水印「Real structure data: PDB 6A15」。
 
 **它回答什么问题**：谁埋在疏水核心——每个残基周围 8 Å 内有多少个序列远邻的 C-alpha，一个比 SASA 更便宜的"埋没程度"指标，与图 155 严格互补（接触数的峰对 SASA 的谷）。
 
@@ -2549,13 +2549,13 @@ fig.savefig("173-western-blot.png", dpi=200, bbox_inches="tight")
 ## 参考代码
 
 - 第五篇 36 张静态图的完整生成脚本：仓库 `tools/bio-plots/ch11a_struct.py`（真实结构 9 张：134-138、144、145、150、155）、`ch11b_pred.py`（预测/变异 9 张：143、146-154）、`ch11c_expr.py`（表达验证 8 张：156-163）、`ch11d_more.py`（补遗 10 张：164-173，真实 3 张 + 模拟 7 张）；模拟图随机种子固定，真实图直接读 `/lib/pdb/` 镜像，重跑即可复现文中每一根线条。
-- 交互 3D：`source/js/3dmol-min.js`（自托管 3Dmol 2.4.0，原版见 [3dmol.csb.pitt.edu](https://3dmol.csb.pitt.edu/) 与 [cdnjs](https://cdnjs.com/libraries/3Dmol)）+ `source/js/pdb-viewer.js`（本站约 60 行安全封装：只允许本站相对路径的 PDB、不向第三方发请求、无 3Dmol 或加载失败时显示文字回退）。
+- 交互 3D：`source/js/3dmol-min.js`（自托管 3Dmol 2.4.0，原版见 [3dmol.csb.pitt.edu](https://3dmol.csb.pitt.edu/) 与 [cdnjs](https://cdnjs.com/libraries/3Dmol)）+ `source/js/pdb-viewer.js`（约 60 行安全封装：只允许站内相对路径的 PDB、不向第三方发请求、无 3Dmol 或加载失败时显示文字回退）。
 - 数据与代码的原样导出：`tools/bio-plots/data_dump/post5a/b/c_data.txt`（每张图的 CSV 与拟合参数逐字留存）。
 - 系列前四篇：[第一篇](/2026/09/12/2026-09-12-01-bio-plots-01-axes-and-languages/) · [第二篇](/2026/09/12/2026-09-12-02-bio-plots-02-population-single-cell/) · [第三篇](/2026/09/12/2026-09-12-03-bio-plots-03-qc-to-spatial-omics/) · [第四篇](/2026/09/12/2026-09-12-04-bio-plots-04-ppi-to-multiomics/)。
 
 ## 参考数据
 
-| 数据集 | 用途（图号） | 原始来源 | 本站镜像 |
+| 数据集 | 用途（图号） | 原始来源 | 站内镜像 |
 | --- | --- | --- | --- |
 | PDB 6A15（AtCYP90B1/DWF4 + CLR + HEM） | 134-139、144、150、152 位点、155 | [RCSB 页面](https://www.rcsb.org/structure/6A15) · [文件下载](https://files.rcsb.org/download/6A15.pdb) | [`/lib/pdb/6a15.pdb`](/old/lib/pdb/6a15.pdb) |
 | PDB 1BI5（苜蓿 CHS 野生型） | 140、145 | [RCSB 页面](https://www.rcsb.org/structure/1BI5) · [文件下载](https://files.rcsb.org/download/1BI5.pdb) | [`/lib/pdb/1bi5.pdb`](/old/lib/pdb/1bi5.pdb) |
