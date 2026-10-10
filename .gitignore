@@ -46,3 +46,7 @@ public/old/
 Thumbs.db
 *.log
 .mimosa/
+
+### Agent 工作目录 ###
+# 记忆/草稿工作区，不入公开仓库
+.workbuddy/
