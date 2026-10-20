@@ -12,7 +12,9 @@ import config from '@/site-config'
 
 const MAX_POSTS = 8
 const allPosts = await getBlogCollection()
-const allPostsByDate = (sortMDByDate(allPosts) as CollectionEntry<'blog'>[]).slice(0, MAX_POSTS)
+const allPostsByDate = [...(sortMDByDate(allPosts) as CollectionEntry<'blog'>[])]
+  .sort((a, b) => Number(!!b.data.pinned) - Number(!!a.data.pinned))
+  .slice(0, MAX_POSTS)
 
 const imagePath = config.logo.src
 const images = import.meta.glob<{ default: ImageMetadata }>(

@@ -41,6 +41,8 @@ const blog = defineCollection({
       tags: z.array(z.string()).default([]).transform(removeDups),
       language: z.string().optional(),
       draft: z.boolean().default(false),
+      // 强制置顶：置顶文章永远排在列表最前，不受发布时间影响
+      pinned: z.boolean().default(false),
       // Special fields
       comment: z.boolean().default(false)
     })
