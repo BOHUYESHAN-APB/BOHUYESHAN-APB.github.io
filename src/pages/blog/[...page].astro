@@ -12,7 +12,7 @@ import config from '@/site-config'
 export const prerender = true
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const byDate = sortMDByDate(await getBlogCollection())
+  const byDate = sortMDByDate(await getBlogCollection()) as CollectionEntry<'blog'>[]
   // 强制置顶：pinned 文章永远排最前，不受发布时间影响
   const collections = [
     ...byDate.filter((p) => p.data.pinned),
