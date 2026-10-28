@@ -53,8 +53,13 @@ const renderContent = async (post: CollectionEntry<'blog'>, site: URL) => {
   return String(file)
 }
 
-const GET = async (context: AstroGlobal) => {
-  const allPostsByDate = sortMDByDate(await getBlogCollection()) as CollectionEntry<'blog'>[]
+export const createFeed = async (
+  context: AstroGlobal,
+  options: { limit?: number; pinned?: 'include' | 'exclude' } = {}
+) => {
+  let allPostsByDate = sortMDByDate(await getBlogCollection()) as CollectionEntry<'blog'>[]
+  if (options.pinned === 'exclude') allPostsByDate = allPostsByDate.filter((p) => !p.data.pinned)
+  if (options.limit) allPostsByDate = allPostsByDate.slice(0, options.limit)
   const siteUrl = context.site ?? new URL(import.meta.env.SITE)
 
   return rss({
@@ -86,5 +91,7 @@ const GET = async (context: AstroGlobal) => {
     )
   })
 }
+
+const GET = (context: AstroGlobal) => createFeed(context)
 
 export { GET }
