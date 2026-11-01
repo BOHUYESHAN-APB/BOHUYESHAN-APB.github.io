@@ -1,0 +1,135 @@
+---
+/**
+ * Share buttons for post pages — domestic + international.
+ * - 微信: pops a QR code of the current URL, rendered at build time with uqr
+ *   (no client JS, no external QR service).
+ * - 微博 / QQ / X / Facebook / LinkedIn / Telegram: standard share endpoints,
+ *   opened in a new tab.
+ * - 复制链接: clipboard write with button-text feedback.
+ * Built per page, so each post carries its own links.
+ */
+import { renderSVG } from 'uqr'
+
+interface Props {
+  url: string
+  title?: string
+}
+
+const { url, title = '' } = Astro.props
+const enc = (s: string) => encodeURIComponent(s)
+
+const international = [
+  {
+    label: 'X',
+    href: `https://x.com/intent/tweet?text=${enc(title)}&url=${enc(url)}`
+  },
+  {
+    label: 'Facebook',
+    href: `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`
+  },
+  {
+    label: 'LinkedIn',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`
+  },
+  {
+    label: 'Telegram',
+    href: `https://t.me/share/url?url=${enc(url)}&text=${enc(title)}`
+  }
+]
+const qrSvg = renderSVG(url, { border: 1 })
+const qrId = `wechat-qr-${Math.abs(url.split('').reduce((a, c) => a + c.charCodeAt(0), 0))}`
+---
+
+<div class='share-buttons my-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground'>
+  <span>分享：</span>
+  <button
+    type='button'
+    data-wechat-toggle={qrId}
+    class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+  >
+    微信（扫码）
+  </button>
+  <a
+    href={`https://service.weibo.com/share/share.php?url=${enc(url)}&title=${enc(title)}`}
+    target='_blank'
+    rel='noopener noreferrer'
+    class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+  >
+    微博
+  </a>
+  <a
+    href={`https://connect.qq.com/widget/shareqq/index.html?url=${enc(url)}&title=${enc(title)}&summary=${enc('')}`}
+    target='_blank'
+    rel='noopener noreferrer'
+    class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+  >
+    QQ 好友
+  </a>
+
+  <span class='hidden select-none opacity-40 sm:inline'>|</span>
+
+  {
+    international.map((s) => (
+      <a
+        href={s.href}
+        target='_blank'
+        rel='noopener noreferrer'
+        class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+      >
+        {s.label}
+      </a>
+    ))
+  }
+
+  <span class='hidden select-none opacity-40 sm:inline'>|</span>
+
+  <button
+    type='button'
+    id='share-copy-link'
+    class='rounded-md border border-border px-2.5 py-1 transition-colors hover:border-primary hover:text-primary'
+  >
+    复制链接
+  </button>
+
+  <div
+    id={qrId}
+    class='wechat-qr-pop hidden rounded-xl border border-border bg-background p-3 shadow-md'
+  >
+    <div class='qr-svg [&_svg]:size-36' set:html={qrSvg} />
+    <p class='mt-2 text-center text-xs text-muted-foreground'>微信扫码分享本文</p>
+  </div>
+</div>
+
+<style>
+  .wechat-qr-pop {
+    position: absolute;
+    z-index: 30;
+  }
+  .share-buttons {
+    position: relative;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('click', function (e) {
+    var target = e.target && e.target.closest && e.target.closest('[data-wechat-toggle]')
+    document.querySelectorAll('.wechat-qr-pop').forEach(function (pop) {
+      if (!target || pop.id !== target.getAttribute('data-wechat-toggle')) pop.classList.add('hidden')
+    })
+    if (target) {
+      var pop = document.getElementById(target.getAttribute('data-wechat-toggle'))
+      if (pop) pop.classList.toggle('hidden')
+    }
+  })
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest && e.target.closest('#share-copy-link')
+    if (!btn) return
+    navigator.clipboard.writeText(window.location.href).then(function () {
+      var original = btn.textContent
+      btn.textContent = '已复制 ✓'
+      setTimeout(function () {
+        btn.textContent = original
+      }, 1500)
+    })
+  })
+</script>

@@ -1,0 +1,93 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+
+import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
+import { Button, Icon, Label } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+import PostPreview from '@/components/PostPreview.astro'
+import Section from '@/components/home/Section.astro'
+import config from '@/site-config'
+
+const MAX_POSTS = 8
+const allPosts = await getBlogCollection()
+const allPostsByDate = [...(sortMDByDate(allPosts) as CollectionEntry<'blog'>[])]
+  .sort((a, b) => Number(!!b.data.pinned) - Number(!!a.data.pinned))
+  .slice(0, MAX_POSTS)
+
+const imagePath = config.logo.src
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/*.{jpeg,jpg,png,gif,avif,webp}'
+)
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,avif,webp}"`
+  )
+---
+
+<PageLayout
+  meta={{
+    title: 'Home',
+    description:
+      '韩涛 Tao Han：生物技术本科（2027 届），主线 AI Agent 工程 × 生物信息——Linxira Zeta（ADE 形态的终端 AI 编码代理，截至 2026-10-28 较上游 oh-my-pi 多 1607 个提交）与 Linxira Bio SDK（132 项能力）双开源主线，IJMS 第四作者、发明专利第一发明人。核验锚点见 GitHub 仓库。'
+  }}
+  highlightColor='#659EB9'
+>
+  <main class='flex w-full flex-col items-center'>
+    <section class='animate mb-10 flex flex-col items-center gap-y-7' id='content-header'>
+      <Image
+        src={images[imagePath]()}
+        alt={config.logo.alt || 'Profile'}
+        class='h-28 w-auto rounded-full border p-1'
+        loading='eager'
+        fetchpriority='high'
+      />
+
+      <div class='flex flex-col items-center gap-y-4'>
+        <h1 class='text-3xl font-medium'>{config.author}</h1>
+        <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
+          <Label
+            title='GitHub'
+            as='a'
+            href='https://github.com/BOHUYESHAN-APB'
+            target='_blank'
+          >
+            <Icon name='github' class='size-5' slot='icon' />
+          </Label>
+        </div>
+      </div>
+    </section>
+
+    <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
+      <Section title='关于'>
+        <p class='text-muted-foreground'>
+          生物技术专业，编程科班出身（Python / Java）。做事的路线一直很清楚：从生物学的问题出发，用工程把答案做出来——荞麦种子品质识别、菌落计数、Bio-SDK
+          生信工具链、Linxira OS 独立发行版，直到用真实果蝇连接组仿真两只大脑下五子棋。
+        </p>
+        <p class='mt-3 text-muted-foreground'>
+          这里记录两条线：工程、AI。AI 把学科的墙一扇扇拆掉，看得懂不同领域怎么说话、能把它们接起来的人，才有下一步——只留干货，篇篇写透。
+        </p>
+        <p class='mt-5 border-t pt-4 text-sm text-muted-foreground'>
+          🧭 项目与核验：<a class='underline underline-offset-4' href='https://github.com/BOHUYESHAN-APB'>github.com/BOHUYESHAN-APB</a>
+        </p>
+        <Button title='了解更多' class='w-fit self-end' href='/about/' variant='ahead' />
+      </Section>
+
+      {
+        allPostsByDate.length > 0 && (
+          <Section title='最新文章'>
+            <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
+              {allPostsByDate.map((p) => (
+                <li class='flex flex-col gap-x-2 sm:flex-row'>
+                  <PostPreview post={p} />
+                </li>
+              ))}
+            </ul>
+            <Button title='更多文章' class='w-fit self-end' href='/blog/' variant='ahead' />
+          </Section>
+        )
+      }
+    </div>
+  </main>
+</PageLayout>

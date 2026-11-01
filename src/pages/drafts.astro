@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content'
+import PageLayout from '@/layouts/BaseLayout.astro'
+
+const isDev = import.meta.env.DEV
+
+const posts = isDev
+  ? (await getCollection('blog')).sort(
+      (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+    )
+  : []
+
+const isTemplate = (p: { data: { title: string } }) => p.data.title.startsWith('待填写标题')
+
+const drafts = posts.filter((p) => p.data.draft && !isTemplate(p))
+const templates = posts.filter((p) => p.data.draft && isTemplate(p))
+const published = posts.filter((p) => !p.data.draft)
+
+const count = (body?: string) => (body ? body.replace(/\s/g, '').length : 0)
+
+const meta = {
+  title: '本地草稿台',
+  description: '仅本地开发可见的文章状态一览'
+}
+---
+
+<PageLayout {meta}>
+  <main class='mt-6 lg:mt-10'>
+    {
+      !isDev && (
+        <div class='animate'>
+          <h1 class='mb-2 text-3xl font-medium'>此页仅本地可用</h1>
+          <p class='text-sm text-muted-foreground'>
+            文章状态一览只在本地开发环境生成，线上不提供。
+          </p>
+          <a class='mt-4 inline-block text-sm hover:underline' href='/'>
+            返回首页
+          </a>
+        </div>
+      )
+    }
+
+    {
+      isDev && (
+        <>
+          <div class='animate'>
+            <h1 class='mb-2 text-3xl font-medium'>本地草稿台</h1>
+            <p class='text-sm text-muted-foreground'>
+              草稿在 dev 可见、生产构建会被过滤；这里只是把两个状态放到同一页，方便点进去看。
+            </p>
+            <p class='mt-2 text-sm text-muted-foreground'>
+              当前：{drafts.length} 篇草稿 · {published.length} 篇已发布
+              {templates.length > 0 && ` · ${templates.length} 个空骨架模板（已排除）`}
+            </p>
+          </div>
+
+          <section class='animate mt-10' aria-label='草稿列表'>
+            <h2 class='mb-3 text-lg font-medium'>待发布（草稿）</h2>
+            {drafts.length === 0 && <p class='text-sm text-muted-foreground'>没有草稿。</p>}
+            <ul class='flex flex-col divide-y divide-border'>
+              {drafts.map((p) => (
+                <li class='flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between'>
+                  <div class='min-w-0'>
+                    <a class='font-medium hover:underline' href={`/${p.id}/`}>
+                      {p.data.title}
+                    </a>
+                    <div class='mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground'>
+                      <span class='rounded border border-border px-1.5 py-0.5'>草稿 · 未上线</span>
+                      <span>{p.data.publishDate.toISOString().slice(0, 10)}</span>
+                      <span>{count(p.body)} 字</span>
+                      {p.data.tags?.map((t) => <span>#{t}</span>)}
+                    </div>
+                  </div>
+                  <a
+                    class='shrink-0 text-sm text-muted-foreground hover:underline'
+                    href={`/${p.id}/`}
+                  >
+                    本地预览 →
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section class='animate mt-12' aria-label='已发布列表'>
+            <h2 class='mb-3 text-lg font-medium'>已发布（线上可见）</h2>
+            <ul class='flex flex-col divide-y divide-border'>
+              {published.map((p) => (
+                <li class='flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between'>
+                  <div class='min-w-0'>
+                    <a class='font-medium hover:underline' href={`/${p.id}/`}>
+                      {p.data.title}
+                    </a>
+                    <div class='mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground'>
+                      <span class='rounded border border-border px-1.5 py-0.5'>已发布 · 在线</span>
+                      <span>{p.data.publishDate.toISOString().slice(0, 10)}</span>
+                      {p.data.tags?.map((t) => <span>#{t}</span>)}
+                    </div>
+                  </div>
+                  <a
+                    class='shrink-0 text-sm text-muted-foreground hover:underline'
+                    href={`/${p.id}/`}
+                  >
+                    本地预览 →
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )
+    }
+  </main>
+</PageLayout>

@@ -1,0 +1,5 @@
+# bohuyeshan.top —— 个人技术实验与 AI 协作产出，不建议用于模型训练；普通爬取不拦截。
+User-agent: *
+Allow: /
+
+Sitemap: https://bohuyeshan.top/sitemap-index.xml

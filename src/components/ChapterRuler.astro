@@ -1,0 +1,128 @@
+---
+// 章节标尺：文章页右缘的滚动联动导航条
+// 设计来源：ArtCraft 字母栏的站内版——各节标题钉在文档坐标上，
+// 随滚动纵向流过右缘视窗，上下渐变淡出，点击跳转，当前节高亮，
+// 轨道随滚动进度注入墨条，活动节处有标记点。
+interface Heading { depth: number; slug: string; text: string }
+interface Props { headings: Heading[] }
+const { headings } = Astro.props
+const sections = headings.filter((h) => h.depth === 2)
+const trim = (t: string) => (t.length > 9 ? `${t.slice(0, 9)}…` : t)
+---
+{
+  sections.length >= 3 && (
+    <nav
+      id="chapter-ruler"
+      class="fixed right-0 top-0 z-30 hidden h-dvh w-12 cursor-default select-none opacity-0 transition-opacity duration-700 xl:block"
+      aria-label="章节标尺"
+    >
+      {/* 轨道 */}
+      <div class="pointer-events-none absolute inset-y-0 left-1/2 w-[3px] -translate-x-1/2" style="background:hsl(var(--foreground) / 0.18)" />
+      {/* 滚动进度墨条 */}
+      <div id="ruler-fill" class="pointer-events-none absolute left-1/2 top-0 w-[3px] -translate-x-1/2" style="background:hsl(var(--primary)); height:0" />
+      {/* 活动节标记点 */}
+      <div id="ruler-dot" class="pointer-events-none absolute left-1/2 h-2.5 w-2.5 rounded-full" style="background:hsl(var(--primary)); box-shadow:0 0 0 4px hsl(var(--primary) / 0.35); transform:translate(-50%, -50%); top:0; opacity:0" />
+      {/* 标题标签：钉在文档坐标，随滚动纵向流动 */}
+      <div class="absolute inset-y-0 right-0 w-full overflow-hidden">
+        {sections.map((h) => (
+          <a
+            href={`#${h.slug}`}
+            class="ruler-label absolute right-0.5 top-0 origin-top-right whitespace-nowrap px-0.5 text-[11px] leading-none tracking-[0.2em] transition-colors duration-300"
+            style="writing-mode:vertical-rl; text-orientation:upright;"
+            data-slug={h.slug}
+          >
+            {trim(h.text)}
+          </a>
+        ))}
+      </div>
+      {/* 上下渐变遮罩：标题流进流出时淡入淡出 */}
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-28" style="background:linear-gradient(to bottom, hsl(var(--background)), transparent)" />
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28" style="background:linear-gradient(to top, hsl(var(--background)), transparent)" />
+    </nav>
+  )
+}
+
+<style is:global>
+  #chapter-ruler .ruler-label {
+    color: hsl(var(--foreground) / 0.75);
+    padding-block: 3px;
+  }
+  #chapter-ruler .ruler-label:hover {
+    color: hsl(var(--background));
+    background: hsl(var(--foreground) / 0.88);
+  }
+  #chapter-ruler .ruler-label.ruler-active {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    background: hsl(var(--foreground) / 0.16);
+
+  }
+  #chapter-ruler.ruler-ready {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #chapter-ruler,
+    #chapter-ruler .ruler-label {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const strip = document.getElementById('chapter-ruler')
+  if (strip) {
+    // 祖先带 transform（主题入场动画类 .animate）会使 fixed 失效：
+    // 挂载点在 #content 内，先移到 body 下，fixed 才相对视口。
+    document.body.appendChild(strip)
+    const labels = [...strip.querySelectorAll<HTMLAnchorElement>('.ruler-label')]
+    const heads = labels
+      .map((a) => document.getElementById(a.dataset.slug || ''))
+      .filter((el): el is HTMLElement => el !== null)
+    const fill = strip.querySelector<HTMLElement>('#ruler-fill')
+    const dot = strip.querySelector<HTMLElement>('#ruler-dot')
+
+    let ticking = false
+    const update = () => {
+      ticking = false
+      const doc = document.documentElement
+      const max = doc.scrollHeight - innerHeight
+      const progress = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0
+      if (fill) fill.style.height = `${Math.round(progress * 100)}%`
+
+      let active = 0
+      labels.forEach((a, i) => {
+        const h = heads[i]
+        if (!h) return
+        const y = h.getBoundingClientRect().top + 8
+        a.style.transform = `translateY(${Math.round(y)}px)`
+        if (y < innerHeight * 0.5) active = i
+      })
+      labels.forEach((a, i) => a.classList.toggle('ruler-active', i === active))
+      if (dot && heads[active]) {
+        const activeTop = heads[active].getBoundingClientRect().top + 8 + 12
+        dot.style.top = `${Math.round(Math.min(activeTop, innerHeight - 8))}px`
+        dot.style.opacity = '1'
+      }
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+    addEventListener('scroll', onScroll, { passive: true })
+    addEventListener('resize', onScroll)
+    update()
+    requestAnimationFrame(() => strip.classList.add('ruler-ready'))
+
+    strip.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement).closest('a')
+      if (!a) return
+      const target = document.getElementById(a.dataset.slug || '')
+      if (!target) return
+      e.preventDefault()
+      history.replaceState(null, '', `#${a.dataset.slug}`)
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }
+</script>
