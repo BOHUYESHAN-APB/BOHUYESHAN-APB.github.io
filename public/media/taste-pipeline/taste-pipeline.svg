@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="'Noto Sans SC', 'PingFang SC', system-ui, sans-serif">
+  <rect x="0" y="0" width="960" height="470" fill="#0f172a"/>
+  <text x="480" y="38" text-anchor="middle" font-size="18" fill="#e5e7eb">四步管线：判决被两个 LLM 夹在中间</text>
+  <text x="480" y="62" text-anchor="middle" font-size="12.5" fill="#94a3b8">LLM 把世界翻译成符号　→　判决模型在符号上做决定　→　LLM 翻译回文本</text>
+
+  <g>
+    <rect x="30" y="96" width="196" height="104" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="128" y="124" text-anchor="middle" font-size="13.5" fill="#e5e7eb">① 输入 LLM</text>
+    <text x="128" y="146" text-anchor="middle" font-size="11" fill="#94a3b8">读 prompt / 编辑 / 纠错 diff</text>
+    <text x="128" y="166" text-anchor="middle" font-size="11" fill="#94a3b8">→ 结构化信号</text>
+    <text x="128" y="186" text-anchor="middle" font-size="10.5" fill="#64748b">可替换</text>
+  </g>
+
+  <g>
+    <rect x="266" y="88" width="228" height="120" rx="8" fill="#0b2237" stroke="#38bdf8" stroke-width="1.6"/>
+    <text x="380" y="118" text-anchor="middle" font-size="14" fill="#7dd3fc">② taste-1</text>
+    <text x="380" y="140" text-anchor="middle" font-size="11" fill="#cbd5e1">真偏好？· 哪个类别？· 置信度</text>
+    <text x="380" y="161" text-anchor="middle" font-size="11" fill="#94a3b8">不是 LLM：不生成文本</text>
+    <text x="380" y="184" text-anchor="middle" font-size="10.5" fill="#475569">不可替换 · 固定算力</text>
+  </g>
+
+  <g>
+    <rect x="534" y="96" width="196" height="104" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="632" y="124" text-anchor="middle" font-size="13.5" fill="#e5e7eb">③ 输出 LLM</text>
+    <text x="632" y="146" text-anchor="middle" font-size="11" fill="#94a3b8">写成可读 markdown</text>
+    <text x="632" y="166" text-anchor="middle" font-size="11" fill="#94a3b8">与已有条目前合并</text>
+    <text x="632" y="186" text-anchor="middle" font-size="10.5" fill="#64748b">可替换</text>
+  </g>
+
+  <g>
+    <rect x="770" y="96" width="160" height="104" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="850" y="124" text-anchor="middle" font-size="13.5" fill="#e5e7eb">④ 存储</text>
+    <text x="850" y="146" text-anchor="middle" font-size="11" fill="#94a3b8">.commandcode/taste/</text>
+    <text x="850" y="166" text-anchor="middle" font-size="11" fill="#94a3b8">taste.md 纯文本</text>
+    <text x="850" y="186" text-anchor="middle" font-size="10.5" fill="#64748b">push / pull / lint</text>
+  </g>
+
+  <g stroke="#38bdf8" stroke-width="1.4" fill="#38bdf8">
+    <line x1="226" y1="148" x2="262" y2="148"/><polygon points="262,144 270,148 262,152"/>
+    <line x1="494" y1="148" x2="530" y2="148"/><polygon points="530,144 538,148 530,152"/>
+    <line x1="730" y1="148" x2="766" y2="148"/><polygon points="766,144 774,148 766,152"/>
+  </g>
+
+  <g>
+    <rect x="30" y="238" width="440" height="118" rx="8" fill="#0b1220" stroke="#1e293b"/>
+    <text x="50" y="264" font-size="12.5" fill="#7dd3fc">为什么便宜：动作空间有限</text>
+    <text x="50" y="288" font-size="11" fill="#cbd5e1">π*(y|x) ∝ π_ref(y|x) · exp(RM(x,y)/β)</text>
+    <text x="50" y="310" font-size="11" fill="#94a3b8">配分函数 Z(x) = Σ_k 精确枚举，K 个类别</text>
+    <text x="50" y="332" font-size="11" fill="#94a3b8">对比：自由文本要遍历序列，只能采样估计</text>
+  </g>
+
+  <g>
+    <rect x="490" y="238" width="440" height="118" rx="8" fill="#0b1220" stroke="#1e293b"/>
+    <text x="510" y="264" font-size="12.5" fill="#34d399">为什么可信：置信度可校准</text>
+    <text x="510" y="288" font-size="11" fill="#cbd5e1">说 0.8 的那批，实际正确率应 ≈ 80%</text>
+    <text x="510" y="310" font-size="11" fill="#94a3b8">文本记忆：置信度是模型自报的数字</text>
+    <text x="510" y="332" font-size="11" fill="#94a3b8">没有训练信号约束，系统性偏高</text>
+  </g>
+
+  <rect x="30" y="382" width="900" height="60" rx="8" fill="#111c33" stroke="#24344f"/>
+  <text x="50" y="406" font-size="12" fill="#cbd5e1">代价只在两端：第 1、3 步按 token 计费；第 2 步是固定算力</text>
+  <text x="50" y="428" font-size="12" fill="#f59e0b">厂商口径：便宜约 100×、快约 8×（未见独立复现）</text>
+</svg>
