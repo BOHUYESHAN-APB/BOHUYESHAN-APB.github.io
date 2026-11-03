@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" width="980" height="600" font-family="'Noto Sans SC', 'PingFang SC', system-ui, sans-serif">
+  <rect x="0" y="0" width="980" height="600" fill="#0f172a"/>
+  <text x="490" y="36" text-anchor="middle" font-size="18" fill="#e5e7eb">roboomp：一个带信用的机器人流水线</text>
+  <text x="490" y="60" text-anchor="middle" font-size="12.5" fill="#94a3b8">agent 只读代码、改 worktree；所有 GitHub 写操作走旁路，PAT 从不进容器</text>
+
+  <g>
+    <rect x="24" y="92" width="150" height="76" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="99" y="120" text-anchor="middle" font-size="13" fill="#e5e7eb">GitHub</text>
+    <text x="99" y="142" text-anchor="middle" font-size="10.5" fill="#94a3b8">issues.opened</text>
+  </g>
+
+  <g>
+    <rect x="204" y="92" width="150" height="76" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="279" y="120" text-anchor="middle" font-size="13" fill="#e5e7eb">webhook</text>
+    <text x="279" y="142" text-anchor="middle" font-size="10.5" fill="#94a3b8">HMAC 校验 · delivery 去重</text>
+  </g>
+
+  <g>
+    <rect x="384" y="80" width="250" height="240" rx="10" fill="#0b1220" stroke="#38bdf8" stroke-width="1.6"/>
+    <text x="509" y="108" text-anchor="middle" font-size="14" fill="#7dd3fc">robomp 容器</text>
+    <text x="509" y="128" text-anchor="middle" font-size="10.5" fill="#94a3b8">FastAPI · 持 HMAC 密钥，不持 PAT</text>
+
+    <rect x="404" y="142" width="210" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="509" y="164" text-anchor="middle" font-size="11" fill="#cbd5e1">sqlite 事件队列（去重）</text>
+
+    <rect x="404" y="186" width="210" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="509" y="208" text-anchor="middle" font-size="11" fill="#cbd5e1">WorkerPool 领取（BEGIN IMMEDIATE）</text>
+
+    <rect x="404" y="230" width="210" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="509" y="252" text-anchor="middle" font-size="11" fill="#cbd5e1">每 issue 一个 git worktree</text>
+
+    <rect x="404" y="274" width="210" height="34" rx="5" fill="#0b2237" stroke="#38bdf8"/>
+    <text x="509" y="296" text-anchor="middle" font-size="11" fill="#7dd3fc">omp --mode rpc（会话可续）</text>
+  </g>
+
+  <g>
+    <rect x="674" y="80" width="290" height="240" rx="10" fill="#0b1220" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="819" y="108" text-anchor="middle" font-size="14" fill="#fbbf24">gh-proxy 旁路容器</text>
+    <text x="819" y="128" text-anchor="middle" font-size="10.5" fill="#94a3b8">internal 网络，唯一出网方向 api.github.com</text>
+
+    <rect x="694" y="142" width="250" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="819" y="164" text-anchor="middle" font-size="11" fill="#cbd5e1">持有 GITHUB_TOKEN（细粒度 PAT）</text>
+
+    <rect x="694" y="186" width="250" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="819" y="208" text-anchor="middle" font-size="11" fill="#cbd5e1">校验签名 · 执行 REST 与 git push</text>
+
+    <rect x="694" y="230" width="250" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="819" y="252" text-anchor="middle" font-size="11" fill="#cbd5e1">host tools 只是写侧的唯一出口</text>
+
+    <rect x="694" y="274" width="250" height="34" rx="5" fill="#111c33" stroke="#24344f"/>
+    <text x="819" y="296" text-anchor="middle" font-size="11" fill="#cbd5e1">tool_calls 审计表（凭据已打码）</text>
+  </g>
+
+  <g stroke="#38bdf8" stroke-width="1.4" fill="#38bdf8">
+    <line x1="174" y1="130" x2="200" y2="130"/><polygon points="200,126 208,130 200,134"/>
+    <line x1="354" y1="130" x2="380" y2="130"/><polygon points="380,126 388,130 380,134"/>
+    <line x1="634" y1="150" x2="670" y2="150"/><polygon points="670,146 678,150 670,154"/>
+  </g>
+
+  <g>
+    <rect x="24" y="344" width="460" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="44" y="370" font-size="12.5" fill="#e5e7eb">产物：PR 正文的四段式</text>
+    <text x="44" y="394" font-size="11" fill="#cbd5e1">## Repro　可复现的最小步骤</text>
+    <text x="44" y="416" font-size="11" fill="#cbd5e1">## Cause　根因定位到文件与函数</text>
+    <text x="44" y="438" font-size="11" fill="#cbd5e1">## Fix　改了什么，为什么这样改</text>
+    <text x="44" y="460" font-size="11" fill="#cbd5e1">## Verification　跑了哪些测试，哪些没过为什么</text>
+    <text x="44" y="482" font-size="11" fill="#7dd3fc">末尾 Fixes #N，把 issue 和 PR 钉在一起</text>
+  </g>
+
+  <g>
+    <rect x="504" y="344" width="460" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="524" y="370" font-size="12.5" fill="#e5e7eb">分流规则（按标签）</text>
+    <text x="524" y="394" font-size="11" fill="#34d399">bug / documentation → 复现、修复、开 PR</text>
+    <text x="524" y="416" font-size="11" fill="#fbbf24">question → 一条评论 + 👎 保活，4 小时无反应自动关</text>
+    <text x="524" y="438" font-size="11" fill="#94a3b8">enhancement / proposal → 一条评论，不开 PR</text>
+    <text x="524" y="460" font-size="11" fill="#94a3b8">invalid / duplicate → 简短评论</text>
+    <text x="524" y="482" font-size="11" fill="#7dd3fc">评论、review 续用同一会话（--continue JSONL）</text>
+  </g>
+
+  <rect x="24" y="512" width="940" height="56" rx="8" fill="#0b1220" stroke="#24344f"/>
+  <text x="44" y="536" font-size="12" fill="#cbd5e1">为什么敢让它改：133 篇 docs 是规格，3343 个测试文件 / 6580 个 TS 文件 = 50.8%</text>
+  <text x="44" y="556" font-size="12" fill="#f87171">信任边界只有一个：PAT 在旁路容器里，agent 容器即使被提示词注入也拿不到写权限</text>
+</svg>
