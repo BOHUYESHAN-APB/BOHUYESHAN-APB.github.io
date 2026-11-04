@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" width="980" height="560" font-family="'Noto Sans SC', 'PingFang SC', system-ui, sans-serif">
+  <rect x="0" y="0" width="980" height="560" fill="#0f172a"/>
+  <text x="490" y="34" text-anchor="middle" font-size="18" fill="#e5e7eb">oh-my-pi 的机器人群：六个工位，三层闸门</text>
+  <text x="490" y="58" text-anchor="middle" font-size="12" fill="#94a3b8">最近 7 天 1,541 个提交 · 四个账号占 72.6% · 一晚 47 个提交 / 15 秒</text>
+
+  <!-- Row A: pipeline -->
+  <g>
+    <rect x="24" y="88" width="140" height="96" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="94" y="112" text-anchor="middle" font-size="12.5" fill="#e5e7eb">社区</text>
+    <text x="94" y="134" text-anchor="middle" font-size="9.8" fill="#94a3b8">issue / PR</text>
+    <text x="94" y="150" text-anchor="middle" font-size="9.8" fill="#94a3b8">百个 PR 里</text>
+    <text x="94" y="166" text-anchor="middle" font-size="9.8" fill="#94a3b8">sjawhar 33 个</text>
+  </g>
+  <g>
+    <rect x="182" y="88" width="140" height="96" rx="8" fill="#0b2237" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="252" y="112" text-anchor="middle" font-size="12.5" fill="#7dd3fc">roboomp · 急诊</text>
+    <text x="252" y="134" text-anchor="middle" font-size="9.8" fill="#cbd5e1">分诊 → 复现 → 修复</text>
+    <text x="252" y="150" text-anchor="middle" font-size="9.8" fill="#cbd5e1">100 条 95 条是 fix</text>
+    <text x="252" y="166" text-anchor="middle" font-size="9.8" fill="#cbd5e1">首答 60–96 秒</text>
+  </g>
+  <g>
+    <rect x="340" y="88" width="140" height="96" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="410" y="112" text-anchor="middle" font-size="12.5" fill="#e5e7eb">修复 PR</text>
+    <text x="410" y="134" text-anchor="middle" font-size="9.8" fill="#94a3b8">四段式正文</text>
+    <text x="410" y="150" text-anchor="middle" font-size="9.8" fill="#cbd5e1">Repro · Cause</text>
+    <text x="410" y="166" text-anchor="middle" font-size="9.8" fill="#cbd5e1">Fix · Verification</text>
+  </g>
+  <g>
+    <rect x="498" y="88" width="140" height="96" rx="8" fill="#111c33" stroke="#f59e0b"/>
+    <text x="568" y="112" text-anchor="middle" font-size="12.5" fill="#fbbf24">机器审查</text>
+    <text x="568" y="134" text-anchor="middle" font-size="9.8" fill="#cbd5e1">Codex findings</text>
+    <text x="568" y="150" text-anchor="middle" font-size="9.8" fill="#cbd5e1">分钟级回修</text>
+    <text x="568" y="166" text-anchor="middle" font-size="9.8" fill="#94a3b8">额度用完会停</text>
+  </g>
+  <g>
+    <rect x="656" y="88" width="140" height="96" rx="8" fill="#0b2237" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="726" y="112" text-anchor="middle" font-size="12.5" fill="#7dd3fc">合并列车</text>
+    <text x="726" y="134" text-anchor="middle" font-size="9.8" fill="#cbd5e1">H4vC · git mpr</text>
+    <text x="726" y="150" text-anchor="middle" font-size="9.8" fill="#cbd5e1">47 个 / 15 秒</text>
+    <text x="726" y="166" text-anchor="middle" font-size="9.8" fill="#cbd5e1">≤72 字符硬规矩</text>
+  </g>
+  <g>
+    <rect x="814" y="88" width="140" height="96" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="884" y="112" text-anchor="middle" font-size="12.5" fill="#e5e7eb">主干 main</text>
+    <text x="884" y="134" text-anchor="middle" font-size="9.8" fill="#cbd5e1">push CI</text>
+    <text x="884" y="150" text-anchor="middle" font-size="9.8" fill="#cbd5e1">六红一绿的那天</text>
+    <text x="884" y="166" text-anchor="middle" font-size="9.8" fill="#94a3b8">红 → 再修</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#38bdf8" stroke-width="1.3" fill="#38bdf8">
+    <line x1="166" y1="136" x2="178" y2="136"/><polygon points="178,132 185,136 178,140"/>
+    <line x1="324" y1="136" x2="336" y2="136"/><polygon points="336,132 343,136 336,140"/>
+    <line x1="482" y1="136" x2="494" y2="136"/><polygon points="494,132 501,136 494,140"/>
+    <line x1="640" y1="136" x2="652" y2="136"/><polygon points="652,132 659,136 652,140"/>
+    <line x1="798" y1="136" x2="810" y2="136"/><polygon points="810,132 817,136 810,140"/>
+  </g>
+
+  <!-- review loop -->
+  <g fill="none" stroke="#fbbf24" stroke-width="1.6">
+    <path d="M 568 186 C 568 212 410 212 410 190"/>
+  </g>
+  <polygon points="404,198 410,188 416,198" fill="#f59e0b"/>
+  <text x="489" y="216" text-anchor="middle" font-size="9.5" fill="#fbbf24">分钟级回修</text>
+
+  <!-- Row B -->
+  <text x="24" y="246" font-size="11" fill="#94a3b8">两个支线工位（也在往主干送活）</text>
+  <g>
+    <rect x="24" y="258" width="452" height="96" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="250" y="282" text-anchor="middle" font-size="12.5" fill="#e5e7eb">will-bogusz · 原生面</text>
+    <text x="250" y="304" text-anchor="middle" font-size="10.5" fill="#cbd5e1">natives 31 · docs(natives) 13 · browser 8（近 100 条提交）</text>
+    <text x="250" y="322" text-anchor="middle" font-size="10" fill="#94a3b8">X11 / Wayland / Windows 输入 · 窗口定位 · 截图</text>
+    <text x="250" y="340" text-anchor="middle" font-size="10" fill="#94a3b8">374 个 PR 已合 · 主干 163 条提交</text>
+  </g>
+  <g>
+    <rect x="504" y="258" width="452" height="96" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="730" y="282" text-anchor="middle" font-size="12.5" fill="#e5e7eb">can1357 · 核心产品</text>
+    <text x="730" y="304" text-anchor="middle" font-size="10.5" fill="#cbd5e1">shell · session · coding-agent · ai（31% 是 feat）</text>
+    <text x="730" y="322" text-anchor="middle" font-size="10" fill="#94a3b8">交互式 bash/zsh、后台自动更新、评测中止处理…</text>
+    <text x="730" y="340" text-anchor="middle" font-size="10" fill="#94a3b8">亲自合 #18019 · 直接推主干</text>
+  </g>
+
+  <!-- Row C: gates -->
+  <text x="24" y="382" font-size="11" fill="#94a3b8">三层闸门：规矩住在脚本里，不住在 wiki 里</text>
+  <g>
+    <rect x="24" y="394" width="300" height="100" rx="8" fill="#111c33" stroke="#f59e0b"/>
+    <text x="174" y="418" text-anchor="middle" font-size="12.5" fill="#fbbf24">① 能机检 → 脚本拒收</text>
+    <text x="174" y="440" text-anchor="middle" font-size="10" fill="#cbd5e1">merge-pr.ts：conventional 前缀</text>
+    <text x="174" y="456" text-anchor="middle" font-size="10" fill="#cbd5e1">+ ≤72 字符 + 小写开头 + 无句号</text>
+    <text x="174" y="472" text-anchor="middle" font-size="10" fill="#94a3b8">不合规 → 直接拒绝合并</text>
+  </g>
+  <g>
+    <rect x="342" y="394" width="300" height="100" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="492" y="418" text-anchor="middle" font-size="12.5" fill="#e5e7eb">② 合规率（近 100 条）</text>
+    <text x="492" y="440" text-anchor="middle" font-size="10" fill="#cbd5e1">机器人 96% 连长度都守住</text>
+    <text x="492" y="456" text-anchor="middle" font-size="10" fill="#cbd5e1">人类最长写过 119 字符</text>
+    <text x="492" y="472" text-anchor="middle" font-size="10" fill="#94a3b8">闸门只管愿意走闸门的人</text>
+  </g>
+  <g>
+    <rect x="660" y="394" width="300" height="100" rx="8" fill="#111c33" stroke="#24344f"/>
+    <text x="810" y="418" text-anchor="middle" font-size="12.5" fill="#e5e7eb">③ 不能机检 → 清单</text>
+    <text x="810" y="440" text-anchor="middle" font-size="10" fill="#cbd5e1">CONTRIBUTING：人话一句 +</text>
+    <text x="810" y="456" text-anchor="middle" font-size="10" fill="#cbd5e1">验证场景 + 责任在人</text>
+    <text x="810" y="472" text-anchor="middle" font-size="10" fill="#94a3b8">对外来机器人严格，对自家放行</text>
+  </g>
+
+  <text x="490" y="528" text-anchor="middle" font-size="11" fill="#94a3b8">班次：夜里跑编译（Nix 03:17 UTC）· 白天合并与修复 · 夜间回落属正常</text>
+  <text x="490" y="548" text-anchor="middle" font-size="9.5" fill="#64748b">数据：2026-11-04 上午 UTC 实测 · 上游 can1357/oh-my-pi</text>
+</svg>
