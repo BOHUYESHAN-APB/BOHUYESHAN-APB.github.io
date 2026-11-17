@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 660" width="1100" height="660" font-family="'Noto Sans SC', 'PingFang SC', system-ui, sans-serif">
+  <rect x="0" y="0" width="1100" height="660" fill="#0f172a"/>
+  <text x="550" y="36" text-anchor="middle" font-size="19" fill="#e5e7eb">中国番茄的四次换种：每一代都在解决上一代的病</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">1950s → 2020s · 品种、抗性基因与病害压力并行推进</text>
+
+  <!-- axis -->
+  <line x1="55" y1="320" x2="1055" y2="320" stroke="#334155" stroke-width="2"/>
+  <g fill="#38bdf8">
+    <circle cx="172" cy="320" r="7"/>
+    <circle cx="427" cy="320" r="7"/>
+    <circle cx="682" cy="320" r="7"/>
+    <circle cx="937" cy="320" r="7"/>
+  </g>
+  <g fill="#94a3b8" font-size="11" text-anchor="middle">
+    <text x="172" y="302">1950s–60s</text>
+    <text x="427" y="302">60s–70s</text>
+    <text x="682" y="302">80s–90s</text>
+    <text x="937" y="302">2000s–now</text>
+  </g>
+
+  <!-- stage 1 -->
+  <g>
+    <rect x="55" y="100" width="235" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="69" y="126" font-size="11" fill="#94a3b8">① 1950s–60s</text>
+    <text x="69" y="150" font-size="14.5" fill="#e5e7eb">引种 / 常规种</text>
+    <text x="69" y="176" font-size="10.2" fill="#cbd5e1">日、美品种为主，品种少</text>
+    <text x="69" y="196" font-size="10.2" fill="#cbd5e1">农民自留种，抗性弱</text>
+    <text x="69" y="216" font-size="10.2" fill="#fbbf24">70s TMV 大发生</text>
+    <text x="69" y="236" font-size="10.2" fill="#94a3b8">早粉2号 · 强丰</text>
+  </g>
+
+  <!-- stage 2 -->
+  <g>
+    <rect x="310" y="100" width="235" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="324" y="126" font-size="11" fill="#94a3b8">② 60s–70s</text>
+    <text x="324" y="150" font-size="14.5" fill="#e5e7eb">常规种 → 抗 TMV</text>
+    <text x="324" y="176" font-size="10.2" fill="#cbd5e1">地方种/外引种株选</text>
+    <text x="324" y="196" font-size="10.2" fill="#cbd5e1">Tm-1 引入，很快被突破</text>
+    <text x="324" y="216" font-size="10.2" fill="#cbd5e1">Tm-2 / Tm-2^2 暂时压住</text>
+    <text x="324" y="236" font-size="10.2" fill="#94a3b8">强力米寿 · 早粉2号 · 强丰</text>
+  </g>
+
+  <!-- stage 3 -->
+  <g>
+    <rect x="565" y="100" width="235" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="579" y="126" font-size="11" fill="#94a3b8">③ 80s–90s</text>
+    <text x="579" y="150" font-size="14.5" fill="#e5e7eb">抗病杂交 / 多抗</text>
+    <text x="579" y="176" font-size="10.2" fill="#cbd5e1">单抗病毒 → 多抗杂交</text>
+    <text x="579" y="196" font-size="10.2" fill="#cbd5e1">保护地专用、耐运输硬果</text>
+    <text x="579" y="216" font-size="10.2" fill="#cbd5e1">西粉 · 中蔬 · 佳粉</text>
+    <text x="579" y="236" font-size="10.2" fill="#94a3b8">苏抗 · 东农 · 浙杂</text>
+  </g>
+
+  <!-- stage 4 -->
+  <g>
+    <rect x="820" y="100" width="235" height="150" rx="10" fill="#0b2237" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="834" y="126" font-size="11" fill="#7dd3fc">④ 2000s–now</text>
+    <text x="834" y="150" font-size="14.5" fill="#e5e7eb">设施专用 / 优质多抗</text>
+    <text x="834" y="176" font-size="10.2" fill="#cbd5e1">寿光进口种子 80%</text>
+    <text x="834" y="196" font-size="10.2" fill="#cbd5e1">→ 国产种子 70%+</text>
+    <text x="834" y="216" font-size="10.2" fill="#cbd5e1">口感 / 樱桃 / 草莓番茄</text>
+    <text x="834" y="236" font-size="10.2" fill="#fbbf24">ToBRFV / Tuta 新压力</text>
+  </g>
+
+  <!-- below cards: diseases + genes -->
+  <g>
+    <rect x="55" y="360" width="235" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="69" y="386" font-size="10.5" fill="#fbbf24">病害 / 抗性基因</text>
+    <text x="69" y="410" font-size="10.2" fill="#cbd5e1">TMV（烟草花叶病毒）</text>
+    <text x="69" y="430" font-size="10.2" fill="#cbd5e1">一般减产约 50%</text>
+    <text x="69" y="450" font-size="10.2" fill="#cbd5e1">抗性：Tm-1</text>
+    <text x="69" y="470" font-size="10.2" fill="#94a3b8">随后被 Tm-2 取代</text>
+  </g>
+  <g>
+    <rect x="310" y="360" width="235" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="324" y="386" font-size="10.5" fill="#fbbf24">病害 / 抗性基因</text>
+    <text x="324" y="410" font-size="10.2" fill="#cbd5e1">TMV 继续流行</text>
+    <text x="324" y="430" font-size="10.2" fill="#cbd5e1">抗性：Tm-2 / Tm-2^2</text>
+    <text x="324" y="450" font-size="10.2" fill="#cbd5e1">仍以病毒病为主</text>
+    <text x="324" y="470" font-size="10.2" fill="#94a3b8">杂交育种开始起步</text>
+  </g>
+  <g>
+    <rect x="565" y="360" width="235" height="150" rx="10" fill="#111c33" stroke="#24344f"/>
+    <text x="579" y="386" font-size="10.5" fill="#fbbf24">病害 / 抗性基因</text>
+    <text x="579" y="410" font-size="10.2" fill="#cbd5e1">TYLCV / TSWV 上升</text>
+    <text x="579" y="430" font-size="10.2" fill="#cbd5e1">Ty-1/Ty-3 · Sw-5</text>
+    <text x="579" y="450" font-size="10.2" fill="#cbd5e1">Mi-1 · I-2 · Ph-3</text>
+    <text x="579" y="470" font-size="10.2" fill="#94a3b8">Cf-9 · 更多位点</text>
+  </g>
+  <g>
+    <rect x="820" y="360" width="235" height="150" rx="10" fill="#111c33" stroke="#3b2f1a"/>
+    <text x="834" y="386" font-size="10.5" fill="#fbbf24">病害 / 抗性基因</text>
+    <text x="834" y="410" font-size="10.2" fill="#cbd5e1">ToBRFV（2019 中国）</text>
+    <text x="834" y="430" font-size="10.2" fill="#cbd5e1">Tuta（2017 中国）</text>
+    <text x="834" y="450" font-size="10.2" fill="#cbd5e1">线虫/青枯/枯萎 复合</text>
+    <text x="834" y="470" font-size="10.2" fill="#cbd5e1">抗性：7–10 个位点聚合</text>
+  </g>
+
+  <!-- annotation arrows -->
+  <g stroke="#38bdf8" stroke-width="1.2" fill="#38bdf8">
+    <line x1="290" y1="327" x2="310" y2="327"/><polygon points="310,323 317,327 310,331"/>
+    <line x1="545" y1="327" x2="565" y2="327"/><polygon points="565,323 572,327 565,331"/>
+    <line x1="800" y1="327" x2="820" y2="327"/><polygon points="820,323 827,327 820,331"/>
+  </g>
+
+  <text x="550" y="590" text-anchor="middle" font-size="10.5" fill="#94a3b8">品种名为代表性例子，不是全部；四阶段划分参考中国农科院李君明团队。</text>
+  <text x="550" y="614" text-anchor="middle" font-size="10.5" fill="#fbbf24">换种不是一次事件，是一条持续的跑步机：每一代都在解决上一代的病，也制造下一代的脆弱性。</text>
+</svg>

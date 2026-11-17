@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 620" width="980" height="620" font-family="'Noto Sans SC', 'PingFang SC', system-ui, sans-serif">
+  <rect x="0" y="0" width="980" height="620" fill="#0f172a"/>
+  <text x="490" y="36" text-anchor="middle" font-size="19" fill="#e5e7eb">单一抗性的跑步机：生态、作物、分子三层</text>
+  <text x="490" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">抗性不是一堵墙，是一个会被绕过去的过滤器</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- cycle -->
+  <circle cx="285" cy="355" r="125" fill="none" stroke="#24344f" stroke-width="1.4" stroke-dasharray="4 6"/>
+  <g stroke="#38bdf8" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="285" y1="230" x2="403" y2="348"/>
+    <line x1="410" y1="355" x2="358" y2="447"/>
+    <line x1="362" y1="456" x2="218" y2="456"/>
+    <line x1="208" y1="456" x2="164" y2="364"/>
+    <line x1="160" y1="355" x2="278" y2="237"/>
+  </g>
+  <g fill="#38bdf8">
+    <circle cx="285" cy="230" r="9"/>
+    <circle cx="410" cy="355" r="9"/>
+    <circle cx="362" cy="456" r="9"/>
+    <circle cx="208" cy="456" r="9"/>
+    <circle cx="160" cy="355" r="9"/>
+  </g>
+
+  <!-- cycle labels -->
+  <g text-anchor="middle" font-size="10.5" fill="#e5e7eb">
+    <text x="285" y="186">大面积种同一品种</text>
+    <text x="285" y="202">同一抗性基因</text>
+  </g>
+  <g text-anchor="start" font-size="10.5" fill="#e5e7eb">
+    <text x="428" y="338">病原/害虫</text>
+    <text x="428" y="354">承受单一选择压</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#e5e7eb">
+    <text x="362" y="490">突变/重组</text>
+    <text x="362" y="506">效应器逃逸</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#e5e7eb">
+    <text x="208" y="490">抗性被击穿</text>
+    <text x="208" y="506">减产</text>
+  </g>
+  <g text-anchor="end" font-size="10.5" fill="#e5e7eb">
+    <text x="148" y="338">换新品种/新基因</text>
+    <text x="148" y="354">再大面积种</text>
+  </g>
+
+  <!-- panels -->
+  <g>
+    <rect x="545" y="95" width="405" height="120" rx="10" fill="#111c33" stroke="#1f6f52"/>
+    <rect x="545" y="95" width="5" height="120" rx="2.5" fill="#34d399"/>
+    <text x="565" y="121" font-size="13" fill="#6ee7b7">生态层</text>
+    <text x="565" y="146" font-size="10.5" fill="#cbd5e1">遗传多样性下降：大面积同质化</text>
+    <text x="565" y="168" font-size="10.5" fill="#cbd5e1">媒介：粉虱、蓟马、番茄潜叶蛾</text>
+    <text x="565" y="190" font-size="10.5" fill="#cbd5e1">设施连作、土壤微生物与线虫复合</text>
+  </g>
+  <g>
+    <rect x="545" y="235" width="405" height="120" rx="10" fill="#111c33" stroke="#5a421c"/>
+    <rect x="545" y="235" width="5" height="120" rx="2.5" fill="#f59e0b"/>
+    <text x="565" y="261" font-size="13" fill="#fbbf24">作物层</text>
+    <text x="565" y="286" font-size="10.5" fill="#cbd5e1">育种周期 8–12 年，病毒变异以月计</text>
+    <text x="565" y="308" font-size="10.5" fill="#cbd5e1">市场要求 uniformity、耐运输、货架期</text>
+    <text x="565" y="330" font-size="10.5" fill="#cbd5e1">轮作、嫁接、清种、种子检疫</text>
+  </g>
+  <g>
+    <rect x="545" y="375" width="405" height="120" rx="10" fill="#111c33" stroke="#3f2f63"/>
+    <rect x="545" y="375" width="5" height="120" rx="2.5" fill="#a78bfa"/>
+    <text x="565" y="401" font-size="13" fill="#c4b5fd">分子层</text>
+    <text x="565" y="426" font-size="10.5" fill="#cbd5e1">R 基因 / NLR / 效应器：识别与逃逸</text>
+    <text x="565" y="448" font-size="10.5" fill="#cbd5e1">RNAi / Cas13 / 基因聚合 / 多靶点</text>
+    <text x="565" y="470" font-size="10.5" fill="#cbd5e1">AI 设计新受体，但仍需田间验证</text>
+  </g>
+
+  <text x="490" y="578" text-anchor="middle" font-size="10.8" fill="#fbbf24">单一基因是过滤器，不是墙；病毒和害虫会从旁边绕过去。</text>
+  <text x="490" y="602" text-anchor="middle" font-size="10.2" fill="#94a3b8">“跑步机”不是比喻：抗性基因一换，病原/害虫的选择压也跟着换。</text>
+</svg>
